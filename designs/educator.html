@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Educator Program — My Toy Wagon</title>
+<meta name="description" content="Volume pricing, Net-30 invoicing, and one-on-one curation for schools, therapists, and homeschool families.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#F5F0E5;--warm-white:#FFFCF7;--ink:#2C2C2A;--forest:#3B6D11;--amber:#854F0B;--stone:#5F5E5A;--card-bg:#EDE3CD;--rule:rgba(44,44,42,0.12);--rule-strong:rgba(44,44,42,0.22);}
+*{box-sizing:border-box;}html,body{margin:0;padding:0;}
+body{font-family:'Mulish',sans-serif;color:var(--ink);background:var(--cream);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+img{max-width:100%;display:block;}a{color:inherit;text-decoration:none;}
+.label{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--stone);font-weight:500;}
+.utility{background:var(--ink);color:var(--cream);font-size:12px;letter-spacing:0.06em;}
+.utility-inner{max-width:1440px;margin:0 auto;padding:9px 40px;display:flex;justify-content:space-between;align-items:center;gap:24px;}
+.utility-center{flex:1;text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;}
+.utility-links{display:flex;gap:22px;color:rgba(245,240,229,0.7);}.utility-links a:hover{color:var(--cream);}
+header.nav{border-bottom:0.5px solid var(--rule);background:var(--cream);position:sticky;top:0;z-index:50;}
+.nav-inner{max-width:1440px;margin:0 auto;padding:18px 40px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:32px;}
+.nav-left,.nav-right{display:flex;align-items:center;gap:28px;}.nav-right{justify-content:flex-end;}
+.nav-link{font-size:13.5px;font-weight:500;letter-spacing:0.02em;padding:4px 0;}.nav-link:hover{color:var(--forest);}
+.nav-link.has-caret::after{content:"";display:inline-block;width:5px;height:5px;border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:rotate(45deg);margin-left:6px;vertical-align:2px;}
+.logo{display:inline-flex;align-items:center;gap:16px;line-height:1;}
+.logo-mark{width:100px;height:100px;background-color:var(--ink);-webkit-mask:url('assets/logo-mark.png') center/contain no-repeat;mask:url('assets/logo-mark.png') center/contain no-repeat;flex-shrink:0;}
+.logo-text{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;letter-spacing:0.24em;text-transform:uppercase;line-height:1;color:var(--ink);white-space:nowrap;}
+.logo small{display:block;font-family:'Mulish',sans-serif;font-style:normal;font-size:9.5px;letter-spacing:0.22em;text-transform:uppercase;color:var(--stone);margin-top:8px;font-weight:500;white-space:nowrap;}
+.nav-icon{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;}
+.search-pill{display:flex;align-items:center;gap:10px;padding:13px 20px;background:var(--warm-white);border:0.5px solid var(--rule-strong);border-radius:999px;font-size:14px;color:var(--ink);min-width:320px;font-family:'Cormorant Garamond',serif;font-style:italic;}
+.icon{width:16px;height:16px;stroke:currentColor;stroke-width:1.4;fill:none;flex-shrink:0;}
+.back-link{display:inline-flex;align-items:center;gap:10px;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--stone);font-weight:500;}
+.back-link::before{content:"";width:16px;height:1px;background:currentColor;}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;font-size:12.5px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;border-radius:2px;border:0.5px solid transparent;cursor:pointer;transition:all 160ms ease;background:none;font-family:inherit;}
+.btn-primary{background:var(--ink);color:var(--cream);}.btn-primary:hover{background:var(--forest);}
+.btn-ghost{border-color:var(--rule-strong);color:var(--ink);}.btn-ghost:hover{border-color:var(--ink);}
+.btn-arrow{width:14px;height:8px;position:relative;}
+.btn-arrow::before{content:"";position:absolute;left:0;top:50%;width:100%;height:1px;background:currentColor;transform:translateY(-50%);}
+.btn-arrow::after{content:"";position:absolute;right:0;top:50%;width:6px;height:6px;border-top:1px solid currentColor;border-right:1px solid currentColor;transform:translateY(-50%) rotate(45deg);}
+
+/* Hero */
+.edu-hero{max-width:1440px;margin:0 auto;padding:72px 40px 48px;display:grid;grid-template-columns:1.1fr 1fr;gap:80px;align-items:center;}
+.edu-hero .back-link{margin-bottom:28px;}
+.edu-hero-text .label{display:block;margin-bottom:22px;}
+.edu-hero-text h1{font-family:'Cormorant Garamond',serif;font-size:80px;font-weight:500;line-height:0.98;letter-spacing:-0.014em;margin:0 0 24px;text-wrap:balance;}
+.edu-hero-text h1 em{font-style:italic;}
+.edu-hero-text .dek{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:21px;color:var(--stone);line-height:1.5;margin:0 0 36px;max-width:520px;}
+.edu-hero-ctas{display:flex;gap:14px;flex-wrap:wrap;}
+.edu-hero-image{aspect-ratio:4/5;background:var(--card-bg);border-radius:2px;overflow:hidden;}
+.edu-hero-image img{width:100%;height:100%;object-fit:cover;}
+
+/* Benefits */
+.benefits{max-width:1100px;margin:0 auto;padding:80px 40px;}
+.benefits-head{text-align:center;margin-bottom:56px;}
+.benefits-head h2{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:500;line-height:1.05;margin:0 0 16px;letter-spacing:-0.005em;}
+.benefits-head h2 em{font-style:italic;}
+.benefits-head p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;color:var(--stone);line-height:1.5;max-width:540px;margin:0 auto;}
+.benefits-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;}
+.benefit{background:var(--warm-white);border:0.5px solid var(--rule);border-radius:2px;padding:32px 36px;}
+.benefit .num{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:var(--stone);margin-bottom:14px;display:block;}
+.benefit h3{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:500;margin:0 0 12px;line-height:1.2;letter-spacing:-0.005em;}
+.benefit h3 em{font-style:italic;}
+.benefit p{font-size:14.5px;line-height:1.65;color:var(--ink);margin:0;}
+
+/* How it works */
+.howto{background:var(--card-bg);}
+.howto-inner{max-width:1100px;margin:0 auto;padding:80px 40px;}
+.howto-head{text-align:center;margin-bottom:56px;}
+.howto-head h2{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:500;line-height:1.05;margin:0 0 14px;letter-spacing:-0.008em;}
+.howto-head h2 em{font-style:italic;}
+.howto-head p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;color:var(--stone);max-width:480px;margin:0 auto;line-height:1.5;}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;position:relative;}
+.steps::before{content:"";position:absolute;top:36px;left:12%;right:12%;height:0.5px;background:var(--rule-strong);z-index:0;}
+.step{text-align:center;position:relative;z-index:1;}
+.step-num{width:72px;height:72px;border-radius:50%;background:var(--warm-white);border:0.5px solid var(--rule-strong);display:inline-flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:30px;color:var(--ink);margin-bottom:20px;}
+.step h3{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:500;line-height:1.2;margin:0 0 10px;}
+.step p{font-size:13.5px;color:var(--stone);line-height:1.6;margin:0;max-width:200px;margin-left:auto;margin-right:auto;}
+
+/* Application form */
+.apply{max-width:780px;margin:0 auto;padding:80px 40px;}
+.apply h2{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:500;line-height:1.05;margin:0 0 16px;letter-spacing:-0.008em;text-align:center;}
+.apply h2 em{font-style:italic;}
+.apply .lead{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;color:var(--stone);max-width:540px;margin:0 auto 48px;line-height:1.5;text-align:center;}
+.form-card{background:var(--warm-white);border:0.5px solid var(--rule);border-radius:2px;padding:48px 56px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:18px;}
+.form-field{display:flex;flex-direction:column;}
+.form-field.full{grid-column:1/-1;}
+.form-field label{font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--stone);font-weight:500;margin-bottom:8px;}
+.form-field input,.form-field select,.form-field textarea{width:100%;padding:14px 16px;border:0.5px solid var(--rule-strong);border-radius:2px;background:var(--cream);font-family:'Mulish',sans-serif;font-size:14px;color:var(--ink);}
+.form-field input:focus,.form-field select:focus,.form-field textarea:focus{outline:none;border-color:var(--ink);}
+.form-field textarea{min-height:90px;resize:vertical;font-family:'Mulish',sans-serif;}
+.form-field .hint{font-size:12.5px;color:var(--stone);margin-top:6px;font-family:'Cormorant Garamond',serif;font-style:italic;}
+.form-submit{margin-top:24px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+.form-submit p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:var(--stone);margin:0;}
+
+/* Sign in band */
+.signin-band{background:var(--ink);color:var(--cream);}
+.signin-band-inner{max-width:900px;margin:0 auto;padding:64px 40px;text-align:center;}
+.signin-band .label{color:rgba(245,240,229,0.55);display:block;margin-bottom:16px;}
+.signin-band h2{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:500;line-height:1.1;margin:0 0 12px;letter-spacing:-0.005em;}
+.signin-band h2 em{font-style:italic;}
+.signin-band p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;color:rgba(245,240,229,0.85);margin:0 auto 24px;max-width:520px;line-height:1.5;}
+.signin-band .btn{background:var(--cream);color:var(--ink);}.signin-band .btn:hover{background:var(--warm-white);}
+
+footer{background:var(--cream);border-top:0.5px solid var(--rule);}
+.foot-bottom-band{max-width:1440px;margin:0 auto;padding:28px 40px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--stone);letter-spacing:0.04em;flex-wrap:wrap;gap:12px;}
+.foot-bottom-band a:hover{color:var(--ink);}
+.foot-bottom-band em{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:var(--ink);margin-right:10px;}
+.foot-bottom-band .foot-bottom-links{display:flex;gap:22px;}
+@media (max-width:900px){.edu-hero,.benefits-grid,.form-row{grid-template-columns:1fr;gap:40px;}.steps{grid-template-columns:repeat(2,1fr);gap:36px;}.steps::before{display:none;}}
+</style>
+</head>
+<body data-screen-label="Educator Program">
+
+<div class="utility">
+  <div class="utility-inner">
+    <div class="utility-links"><a href="#">Track order</a><a href="educator.html">Educator program</a></div>
+    <div class="utility-center">Free shipping on orders $150+ within the contiguous U.S.</div>
+    <div class="utility-links" style="justify-content:flex-end;"><a href="#">Gift cards</a><a href="#">Sign in</a></div>
+  </div>
+</div>
+
+<header class="nav">
+  <div class="nav-inner">
+    <nav class="nav-left">
+      <a href="#" class="nav-link has-caret">Shop all</a>
+      <a href="#" class="nav-link has-caret">Collections</a>
+      <a href="#" class="nav-link">Ages</a>
+    </nav>
+    <a href="MTW Homepage v3.html" class="logo">
+      <span class="logo-mark" aria-hidden="true"></span>
+      <span class="logo-text">My Toy Wagon<small>Los Angeles · California · est. 2020</small></span>
+    </a>
+    <div class="nav-right">
+      <div class="search-pill"><svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg><span>Search wooden blocks, plush…</span></div>
+      <a href="#" class="nav-icon">Account</a>
+      <a href="#" class="nav-icon">Cart</a>
+    </div>
+  </div>
+</header>
+
+<section class="edu-hero">
+  <div class="edu-hero-text">
+    <a href="MTW Homepage v3.html" class="back-link" style="margin-bottom:28px;">Back to the shop</a>
+    <span class="label">Educator Program</span>
+    <h1>For schools, therapists, and <em>homeschool families</em>.</h1>
+    <p class="dek">Volume pricing, Net-30 invoicing, and one-on-one curation with our team. Apply once, order forever. A program built quietly, in service of the children who use these toys every day.</p>
+    <div class="edu-hero-ctas">
+      <a href="#apply" class="btn btn-primary">Apply for an account <span class="btn-arrow"></span></a>
+      <a href="#signin" class="btn btn-ghost">Already a member? Sign in</a>
+    </div>
+  </div>
+  <div class="edu-hero-image">
+    <img src="assets/age-school.webp" alt="Two children examining a wildflower with a wooden magnifier">
+  </div>
+</section>
+
+<section class="benefits">
+  <div class="benefits-head">
+    <h2>What you'll <em>get</em>.</h2>
+    <p>Four practical things, designed for the way schools and therapy practices actually order toys.</p>
+  </div>
+  <div class="benefits-grid">
+    <div class="benefit">
+      <span class="num">i.</span>
+      <h3>Quote-and-PO <em>ordering</em>.</h3>
+      <p>Browse our Educator catalog, build a quote, and request a formal invoice. Pay by purchase order, credit card, or check. Itemized PDFs available for your accounting team.</p>
+    </div>
+    <div class="benefit">
+      <span class="num">ii.</span>
+      <h3>Net-30 or Net-60 <em>invoicing</em>.</h3>
+      <p>Verified schools and licensed therapists qualify for Net-30 terms. Net-60 available for larger orders or district-wide purchases.</p>
+    </div>
+    <div class="benefit">
+      <span class="num">iii.</span>
+      <h3>Replacement parts <em>and repair</em>.</h3>
+      <p>For every wooden set we carry, we keep a small inventory of spare pieces. A misplaced cube or a chipped tile does not mean replacing the whole set.</p>
+    </div>
+    <div class="benefit">
+      <span class="num">iv.</span>
+      <h3>One-on-one <em>curation</em>.</h3>
+      <p>Schedule a 30-minute call with our team for help selecting age-appropriate, classroom-tested toys. Free for all Educator account holders.</p>
+    </div>
+  </div>
+</section>
+
+<section class="howto">
+  <div class="howto-inner">
+    <div class="howto-head">
+      <h2>How it <em>works</em>.</h2>
+      <p>Four steps. Approval is usually same-day, never longer than two business days.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">i.</div>
+        <h3>Apply below.</h3>
+        <p>Fill out the form. Most schools and therapists are approved within 24 hours.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">ii.</div>
+        <h3>Upload documents.</h3>
+        <p>Tax-exempt certificate, W-9 if relevant, school or practice verification.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">iii.</div>
+        <h3>Browse the Educator catalog.</h3>
+        <p>The full My Toy Wagon catalog with exclusive bundles. Save items to a draft, add notes, and submit.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">iv.</div>
+        <h3>You pay, we ship.</h3>
+        <p>Pay by PO, check, ACH, or card. We ship most orders from our LA warehouse, with tracking emailed the day it leaves.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="apply" id="apply">
+  <h2>Apply for an <em>Educator account</em>.</h2>
+  <p class="lead">Tell us a little about your school, practice, or homeschool. We will reply within one to two business days. There is no fee to join, and no minimum order.</p>
+  <form class="form-card" onsubmit="event.preventDefault();window.location='educator-dashboard.html';">
+    <div class="form-row">
+      <div class="form-field">
+        <label for="ed-name">Your full name</label>
+        <input type="text" id="ed-name" required>
+      </div>
+      <div class="form-field">
+        <label for="ed-email">Email address</label>
+        <input type="email" id="ed-email" required>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-field">
+        <label for="ed-org">Organization name</label>
+        <input type="text" id="ed-org" placeholder="School, practice, or 'Homeschool'" required>
+      </div>
+      <div class="form-field">
+        <label for="ed-role">Your role</label>
+        <select id="ed-role" required>
+          <option value="">Choose one…</option>
+          <option>Teacher</option>
+          <option>Director / Head of school</option>
+          <option>Occupational therapist</option>
+          <option>Speech therapist</option>
+          <option>Special education</option>
+          <option>Homeschool parent</option>
+          <option>Buyer / Office manager</option>
+          <option>Other</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-field">
+        <label for="ed-type">Type of program</label>
+        <select id="ed-type" required>
+          <option value="">Choose one…</option>
+          <option>Preschool / Daycare</option>
+          <option>Elementary school</option>
+          <option>Montessori</option>
+          <option>Waldorf</option>
+          <option>Reggio</option>
+          <option>Homeschool co-op</option>
+          <option>Therapy practice</option>
+          <option>Library</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label for="ed-state">State</label>
+        <input type="text" id="ed-state" required>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-field full">
+        <label for="ed-notes">Anything you'd like us to know</label>
+        <textarea id="ed-notes" placeholder="Tell us about your program, the children you serve, or specific brands you're interested in."></textarea>
+        <span class="hint">Optional. Helps us reply with a useful first email.</span>
+      </div>
+    </div>
+    <div class="form-submit">
+      <p>By submitting, you agree to our <a href="terms.html" style="color:var(--ink);border-bottom:0.5px solid var(--rule-strong);">terms</a> and <a href="privacy.html" style="color:var(--ink);border-bottom:0.5px solid var(--rule-strong);">privacy policy</a>.</p>
+      <button type="submit" class="btn btn-primary">Submit application <span class="btn-arrow"></span></button>
+    </div>
+  </form>
+</section>
+
+<section class="signin-band" id="signin">
+  <div class="signin-band-inner">
+    <span class="label">Already a member</span>
+    <h2>Sign in to the <em>Educator catalog</em>.</h2>
+    <p>Educator pricing, your saved quotes, document uploads, and direct line to our team.</p>
+    <a href="educator-dashboard.html" class="btn">Sign in to your account <span class="btn-arrow"></span></a>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-bottom-band">
+    <span><em>Heirloom toys, curated by hand.</em>© 2026 My Toy Wagon. All rights reserved.</span>
+    <div class="foot-bottom-links">
+      <a href="MTW Homepage v3.html">Back to the shop</a>
+      <a href="shipping.html">Shipping</a>
+      <a href="returns.html">Returns</a>
+      <a href="faq.html">FAQ</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
