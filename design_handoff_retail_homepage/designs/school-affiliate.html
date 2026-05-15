@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>School Affiliate Program — My Toy Wagon</title>
+<meta name="description" content="A school affiliate program. Earn 5% on every parent purchase. Built around our Tara Treasures collection of heirloom felt toys.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#F5F0E5;--warm-white:#FFFCF7;--ink:#2C2C2A;--forest:#3B6D11;--amber:#854F0B;--stone:#5F5E5A;--card-bg:#EDE3CD;--rule:rgba(44,44,42,0.12);--rule-strong:rgba(44,44,42,0.22);}
+*{box-sizing:border-box;}html,body{margin:0;padding:0;}
+body{font-family:'Mulish',sans-serif;color:var(--ink);background:var(--cream);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+.label{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--stone);font-weight:500;}
+.utility{background:var(--ink);color:var(--cream);padding:9px 40px;text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;}
+header.nav{border-bottom:0.5px solid var(--rule);background:var(--cream);position:sticky;top:0;z-index:50;}
+.nav-inner{max-width:1440px;margin:0 auto;padding:16px 40px;display:flex;justify-content:space-between;align-items:center;}
+.logo{display:inline-flex;align-items:center;gap:14px;}
+.logo-mark{width:80px;height:80px;background-color:var(--ink);-webkit-mask:url('assets/logo-mark.png') center/contain no-repeat;mask:url('assets/logo-mark.png') center/contain no-repeat;}
+.logo-text{font-family:'Cormorant Garamond',serif;font-size:18px;letter-spacing:0.24em;text-transform:uppercase;}
+.logo small{display:block;font-size:8.5px;letter-spacing:0.22em;text-transform:uppercase;color:var(--stone);margin-top:6px;font-weight:500;}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 26px;font-size:12.5px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;border-radius:2px;border:0.5px solid transparent;cursor:pointer;font-family:inherit;}
+.btn-primary{background:var(--ink);color:var(--cream);}.btn-primary:hover{background:var(--forest);}
+.btn-ghost{background:none;border-color:var(--rule-strong);color:var(--ink);}.btn-ghost:hover{border-color:var(--ink);}
+.back-link{display:inline-flex;align-items:center;gap:10px;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--stone);font-weight:500;}
+.back-link::before{content:"";width:16px;height:1px;background:currentColor;}
+
+/* Hero — featured brand spread */
+.hero{max-width:1440px;margin:0 auto;padding:64px 40px 48px;display:grid;grid-template-columns:1.1fr 1fr;gap:80px;align-items:center;}
+.hero .back-link{margin-bottom:28px;}
+.hero-text .label{display:block;margin-bottom:22px;}
+.hero-text h1{font-family:'Cormorant Garamond',serif;font-size:76px;font-weight:500;line-height:0.98;letter-spacing:-0.014em;margin:0 0 22px;text-wrap:balance;}
+.hero-text h1 em{font-style:italic;}
+.hero-text .dek{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:21px;color:var(--stone);line-height:1.5;margin:0 0 32px;max-width:520px;}
+.hero-text .pct{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:120px;line-height:1;color:var(--forest);margin:0 0 8px;letter-spacing:-0.02em;}
+.hero-text .pct-sub{font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:var(--stone);font-weight:500;margin-bottom:32px;}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;}
+.hero-image{aspect-ratio:4/5;background:var(--card-bg);border-radius:2px;overflow:hidden;position:relative;}
+.hero-image img{width:100%;height:100%;object-fit:cover;}
+.hero-image-tag{position:absolute;left:24px;bottom:24px;background:var(--warm-white);border:0.5px solid var(--rule);padding:14px 18px;border-radius:2px;max-width:280px;box-shadow:0 2px 10px rgba(44,44,42,0.08);}
+.hero-image-tag .label{display:block;margin-bottom:6px;}
+.hero-image-tag p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;color:var(--ink);margin:0;line-height:1.3;}
+
+/* Featured brand band */
+.brand-band{background:var(--card-bg);padding:88px 40px;}
+.brand-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1.2fr;gap:64px;align-items:center;}
+.brand-img{aspect-ratio:1/1;background:var(--warm-white);border:0.5px solid var(--rule);border-radius:2px;overflow:hidden;}
+.brand-img img{width:100%;height:100%;object-fit:cover;}
+.brand-text .label{display:block;margin-bottom:16px;}
+.brand-text h2{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:500;line-height:1;margin:0 0 22px;letter-spacing:-0.012em;}
+.brand-text h2 em{font-style:italic;}
+.brand-text p{font-size:16.5px;line-height:1.78;color:var(--ink);margin:0 0 18px;max-width:480px;text-wrap:pretty;}
+.brand-text .quote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;line-height:1.45;padding-left:18px;border-left:2px solid var(--forest);margin:28px 0 0;color:var(--ink);}
+
+/* Steps */
+.steps-section{max-width:1100px;margin:0 auto;padding:80px 40px;}
+.steps-head{text-align:center;margin-bottom:56px;}
+.steps-head h2{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:500;line-height:1.05;margin:0 0 14px;letter-spacing:-0.008em;}
+.steps-head h2 em{font-style:italic;}
+.steps-head p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;color:var(--stone);max-width:540px;margin:0 auto;line-height:1.5;}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;position:relative;}
+.steps::before{content:"";position:absolute;top:36px;left:12%;right:12%;height:0.5px;background:var(--rule-strong);z-index:0;}
+.step{position:relative;z-index:1;text-align:center;}
+.step-num{width:72px;height:72px;border-radius:50%;background:var(--cream);border:0.5px solid var(--rule-strong);display:inline-flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:30px;margin-bottom:20px;}
+.step h3{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;line-height:1.2;margin:0 0 10px;}
+.step p{font-size:14px;color:var(--stone);line-height:1.6;margin:0;max-width:220px;margin-left:auto;margin-right:auto;}
+
+/* Benefits */
+.benefits{background:var(--warm-white);padding:80px 40px;border-top:0.5px solid var(--rule);}
+.benefits-inner{max-width:1100px;margin:0 auto;}
+.benefits-head{margin-bottom:48px;text-align:center;}
+.benefits-head h2{font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:500;line-height:1.05;margin:0 0 14px;letter-spacing:-0.008em;}
+.benefits-head h2 em{font-style:italic;}
+.benefits-head p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;color:var(--stone);max-width:520px;margin:0 auto;line-height:1.5;}
+.benefits-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
+.benefit{background:var(--cream);border:0.5px solid var(--rule);border-radius:2px;padding:28px 32px;}
+.benefit .num{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:var(--stone);margin-bottom:12px;display:block;}
+.benefit h3{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;margin:0 0 10px;line-height:1.2;letter-spacing:-0.005em;}
+.benefit h3 em{font-style:italic;}
+.benefit p{font-size:14.5px;line-height:1.65;color:var(--ink);margin:0;}
+
+/* Application */
+.apply{max-width:780px;margin:0 auto;padding:80px 40px;}
+.apply h2{font-family:'Cormorant Garamond',serif;font-size:46px;font-weight:500;line-height:1.05;text-align:center;margin:0 0 14px;letter-spacing:-0.008em;}
+.apply h2 em{font-style:italic;}
+.apply .lead{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;color:var(--stone);text-align:center;max-width:540px;margin:0 auto 40px;line-height:1.5;}
+.form-card{background:var(--warm-white);border:0.5px solid var(--rule);border-radius:2px;padding:40px 48px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:16px;}
+.form-field{display:flex;flex-direction:column;}
+.form-field.full{grid-column:1/-1;}
+.form-field label{font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--stone);font-weight:500;margin-bottom:8px;}
+.form-field input,.form-field select,.form-field textarea{width:100%;padding:13px 16px;border:0.5px solid var(--rule-strong);border-radius:2px;background:var(--cream);font-family:'Mulish',sans-serif;font-size:14px;color:var(--ink);}
+.form-field textarea{min-height:80px;resize:vertical;}
+.form-submit{margin-top:20px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;}
+.form-submit p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;color:var(--stone);margin:0;}
+
+/* Partner note */
+.partner-note{background:var(--ink);color:var(--cream);padding:48px 40px;text-align:center;}
+.partner-note .label{color:rgba(245,240,229,0.55);display:block;margin-bottom:12px;}
+.partner-note p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;color:rgba(245,240,229,0.9);max-width:680px;margin:0 auto;line-height:1.5;}
+.partner-note strong{color:var(--cream);font-weight:500;}
+
+footer{background:var(--cream);border-top:0.5px solid var(--rule);}
+.foot-bottom-band{max-width:1440px;margin:0 auto;padding:28px 40px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--stone);letter-spacing:0.04em;}
+.foot-bottom-band em{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:var(--ink);margin-right:10px;}
+.foot-bottom-band .foot-bottom-links{display:flex;gap:22px;}
+
+@media (max-width:900px){.hero,.brand-inner,.benefits-grid,.form-row,.steps{grid-template-columns:1fr;gap:36px;}.steps::before{display:none;}.hero-text h1{font-size:54px;}}
+</style>
+</head>
+<body data-screen-label="School Affiliate Program">
+
+<div class="utility">A partnership for schools. 5% of every parent purchase, returned to your classrooms.</div>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="MTW Homepage v3.html" class="logo">
+      <span class="logo-mark" aria-hidden="true"></span>
+      <span class="logo-text">My Toy Wagon<small>School Affiliate Program</small></span>
+    </a>
+    <div style="display:flex;gap:12px;">
+      <a href="educator.html" class="btn btn-ghost">Educator program</a>
+      <a href="catalog.html" class="btn btn-ghost">Catalog</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-text">
+    <a href="MTW Homepage v3.html" class="back-link">Back to the shop</a>
+    <span class="label">School Affiliate Program</span>
+    <div class="pct">5%</div>
+    <div class="pct-sub">Back to your school, on every parent purchase</div>
+    <h1>The <em>Heartwood</em> School Affiliate.</h1>
+    <p class="dek">A simple way for schools to earn from a community already shopping with us. Five percent of every parent purchase, returned to your classrooms — for materials, scholarships, or whatever your school needs most.</p>
+    <div class="hero-ctas">
+      <a href="#apply" class="btn btn-primary">Join the program</a>
+      <a href="#how" class="btn btn-ghost">How it works</a>
+    </div>
+  </div>
+  <div class="hero-image">
+    <img src="assets/tara-safari-playmat-child.webp" alt="A child playing with Tara Treasures felt safari playmat and animals">
+    <div class="hero-image-tag">
+      <span class="label">Featured maker</span>
+      <p>Tara Treasures · hand-felted in Nepal, designed in Melbourne</p>
+    </div>
+  </div>
+</section>
+
+<section class="brand-band">
+  <div class="brand-inner">
+    <div class="brand-img"><img src="assets/tara-room-on-broom.webp" alt="Tara Treasures Room on the Broom finger puppets with Julia Donaldson book"></div>
+    <div class="brand-text">
+      <span class="label">Featured maker · Tara Treasures</span>
+      <h2>Designed in Melbourne. Hand-felted in Nepal. <em>Fair Trade Certified.</em></h2>
+      <p>Tara Treasures is a small Melbourne studio founded by Jag Gurung and Jooli Chan. After the 2015 Nepal earthquake, the two returned to Jag's home country with a vision to create sustainable work for local artisans. They started by selling at Melbourne markets. They were the first toy brand in Australia to gain Fairtrade Certification.</p>
+      <p>Today, over 350 women artisans in Nepal hand-stitch every piece, working from home or in small community workshops so they can balance work with family. The wool is 100% GOTS-certified New Zealand merino, dyed with azo-free, non-toxic colorants. No glues, no polyester filler, no shortcuts.</p>
+      <p>Their licensed collections include May Gibbs' Gumnut Babies and Julia Donaldson's The Gruffalo. Their work is endorsed by The Wiggles and CNN Hero of the Year Anuradha Koirala. We carry the range because the craft and the conscience match: a Tara Treasures playmat lives on a child's floor for the better part of a decade, made by hands the same size as their own.</p>
+      <p class="quote">"Every child deserves to play with toys that are safe, beautiful, and fair trade."<cite style="display:block;font-style:normal;font-family:'Mulish',sans-serif;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;margin-top:14px;color:var(--stone);font-weight:500;">Jooli Chan, co-founder · Tara Treasures</cite></p>
+      <p style="margin-top:24px;"><a href="tara-treasures.html" style="font-size:12.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink);border-bottom:0.5px solid var(--rule-strong);padding-bottom:3px;font-weight:500;">Read more about Tara Treasures →</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="steps-section" id="how">
+  <div class="steps-head">
+    <h2>How it <em>works</em>.</h2>
+    <p>Approval is same-day. Earnings are paid quarterly to your school directly.</p>
+  </div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">i.</div>
+      <h3>Apply below.</h3>
+      <p>One short form. We approve schools within one business day.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">ii.</div>
+      <h3>Get your link.</h3>
+      <p>A personalized affiliate link, plus a QR code and banner for newsletters.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">iii.</div>
+      <h3>Share with families.</h3>
+      <p>Include the link in welcome packets, back-to-school guides, or your newsletter.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">iv.</div>
+      <h3>Earn 5%.</h3>
+      <p>Every purchase made through your link earns your school 5%, paid quarterly.</p>
+    </div>
+  </div>
+</section>
+
+<section class="benefits">
+  <div class="benefits-inner">
+    <div class="benefits-head">
+      <h2>What we provide <em>your school</em>.</h2>
+      <p>The marketing materials and resources to make this easy.</p>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit">
+        <span class="num">i.</span>
+        <h3>Custom <em>landing page</em>.</h3>
+        <p>A curated page on mytoywagon.com with your school's most-loved products, your branding, and a welcome note. Yours to share in any parent communication.</p>
+      </div>
+      <div class="benefit">
+        <span class="num">ii.</span>
+        <h3>Digital banners <em>and QR codes</em>.</h3>
+        <p>Drop them into your newsletter, parent portal, or printed materials. Designed to match your school's branding when possible.</p>
+      </div>
+      <div class="benefit">
+        <span class="num">iii.</span>
+        <h3>Back-to-school <em>parent guides</em>.</h3>
+        <p>Curated product suggestions matched to your curriculum and age groups, delivered as PDFs you can include in welcome packets.</p>
+      </div>
+      <div class="benefit">
+        <span class="num">iv.</span>
+        <h3>Auction <em>donations</em>.</h3>
+        <p>Product donations for school auctions and fundraisers, on request. Heirloom items that bid up well.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="apply" id="apply">
+  <h2>Join the <em>Affiliate Program</em>.</h2>
+  <p class="lead">A short form. Most schools are approved within one business day. There is no fee to join, no minimum, and no obligation.</p>
+  <form class="form-card" onsubmit="event.preventDefault();alert('Thank you. We will be in touch within one business day.');">
+    <div class="form-row">
+      <div class="form-field"><label for="aff-name">Your name</label><input type="text" id="aff-name" required></div>
+      <div class="form-field"><label for="aff-role">Your role</label><input type="text" id="aff-role" placeholder="Director, parent volunteer, etc." required></div>
+    </div>
+    <div class="form-row">
+      <div class="form-field"><label for="aff-school">School name</label><input type="text" id="aff-school" required></div>
+      <div class="form-field"><label for="aff-type">School type</label>
+        <select id="aff-type" required>
+          <option value="">Choose one…</option><option>Waldorf</option><option>Montessori</option><option>Reggio</option><option>Independent</option><option>Public</option><option>Homeschool co-op</option><option>Other</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-field"><label for="aff-email">Email</label><input type="email" id="aff-email" required></div>
+      <div class="form-field"><label for="aff-size">Approximate # of families</label><input type="text" id="aff-size" placeholder="e.g. 80"></div>
+    </div>
+    <div class="form-row">
+      <div class="form-field full"><label for="aff-notes">Anything you'd like us to know</label><textarea id="aff-notes" placeholder="Curriculum focus, what you'd use the earnings for, anything else."></textarea></div>
+    </div>
+    <div class="form-submit">
+      <p>By submitting, you agree to our <a href="terms.html" style="color:var(--ink);border-bottom:0.5px solid var(--rule-strong);">terms</a>.</p>
+      <button type="submit" class="btn btn-primary">Submit application</button>
+    </div>
+  </form>
+</section>
+
+<section class="partner-note">
+  <span class="label">Affiliate partner</span>
+  <p>Our affiliate program is administered through <strong>Awin</strong>, a third-party affiliate network that handles tracking and payouts. School payouts are sent quarterly by check or ACH.</p>
+</section>
+
+<footer>
+  <div class="foot-bottom-band">
+    <span><em>Heirloom toys, curated by hand.</em>© 2026 My Toy Wagon LLC. All rights reserved.</span>
+    <div class="foot-bottom-links">
+      <a href="MTW Homepage v3.html">Back to the shop</a>
+      <a href="educator.html">Educator</a>
+      <a href="ordering-for-schools.html">Schools</a>
+      <a href="catalog.html">Catalog</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inside Tara Treasures — Fair Trade felt toys, hand-felted in Nepal | My Toy Wagon</title>
+<meta name="description" content="The founder story, fair-trade certification, and 350+ women artisans behind Tara Treasures. Hand-felted in Nepal, designed in Melbourne.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#F5F0E5;--warm-white:#FFFCF7;--ink:#2C2C2A;--forest:#3B6D11;--amber:#854F0B;--stone:#5F5E5A;--card-bg:#EDE3CD;--rule:rgba(44,44,42,0.12);--rule-strong:rgba(44,44,42,0.22);}
+*{box-sizing:border-box;}html,body{margin:0;padding:0;}
+body{font-family:'Mulish',sans-serif;color:var(--ink);background:var(--cream);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+.label{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--stone);font-weight:500;}
+.utility{background:var(--ink);color:var(--cream);padding:9px 40px;text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;}
+header.nav{border-bottom:0.5px solid var(--rule);background:var(--cream);position:sticky;top:0;z-index:50;}
+.nav-inner{max-width:1440px;margin:0 auto;padding:16px 40px;display:flex;justify-content:space-between;align-items:center;}
+.logo{display:inline-flex;align-items:center;gap:14px;}
+.logo-mark{width:80px;height:80px;background-color:var(--ink);-webkit-mask:url('{{ FILES_BASE_URL }}/logo-mark.png') center/contain no-repeat;mask:url('{{ FILES_BASE_URL }}/logo-mark.png') center/contain no-repeat;}
+.logo-text{font-family:'Cormorant Garamond',serif;font-size:18px;letter-spacing:0.24em;text-transform:uppercase;}
+.logo small{display:block;font-size:8.5px;letter-spacing:0.22em;text-transform:uppercase;color:var(--stone);margin-top:6px;font-weight:500;}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 26px;font-size:12.5px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;border-radius:2px;border:0.5px solid transparent;cursor:pointer;font-family:inherit;}
+.btn-primary{background:var(--ink);color:var(--cream);}.btn-primary:hover{background:var(--forest);}
+.btn-ghost{background:none;border-color:var(--rule-strong);color:var(--ink);}.btn-ghost:hover{border-color:var(--ink);}
+.back-link{display:inline-flex;align-items:center;gap:10px;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--stone);font-weight:500;}
+.back-link::before{content:"";width:16px;height:1px;background:currentColor;}
+
+/* Hero */
+.hero{position:relative;padding:96px 40px 88px;background:var(--card-bg);text-align:center;border-bottom:0.5px solid var(--rule);}
+.hero-inner{max-width:880px;margin:0 auto;}
+.hero .back-link{margin-bottom:32px;}
+.hero .label{display:block;margin-bottom:20px;}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:88px;font-weight:500;line-height:1;letter-spacing:-0.014em;margin:0 0 24px;text-wrap:balance;}
+.hero h1 em{font-style:italic;}
+.hero .dek{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;color:var(--ink);max-width:680px;margin:0 auto;line-height:1.5;}
+
+/* Founder portrait spread */
+.founder{max-width:1100px;margin:0 auto;padding:96px 40px;display:grid;grid-template-columns:1fr 1.1fr;gap:64px;align-items:center;}
+.founder-img{aspect-ratio:4/3;background:var(--warm-white);border:0.5px solid var(--rule);border-radius:2px;overflow:hidden;}
+.founder-img img{width:100%;height:100%;object-fit:cover;}
+.founder-text .label{display:block;margin-bottom:18px;}
+.founder-text h2{font-family:'Cormorant Garamond',serif;font-size:54px;font-weight:500;line-height:1.02;margin:0 0 24px;letter-spacing:-0.012em;text-wrap:balance;}
+.founder-text h2 em{font-style:italic;}
+.founder-text p{font-size:16.5px;line-height:1.78;margin:0 0 18px;color:var(--ink);max-width:520px;text-wrap:pretty;}
+.founder-text .quote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;line-height:1.45;padding-left:18px;border-left:2px solid var(--forest);margin:24px 0 0;max-width:480px;}
+
+/* The name section */
+.name-band{background:var(--ink);color:var(--cream);padding:96px 40px;text-align:center;}
+.name-inner{max-width:780px;margin:0 auto;}
+.name-band .label{color:rgba(245,240,229,0.55);display:block;margin-bottom:18px;}
+.name-band h2{font-family:'Cormorant Garamond',serif;font-size:64px;font-weight:500;line-height:1.05;letter-spacing:-0.012em;margin:0 0 28px;}
+.name-band h2 em{font-style:italic;}
+.name-band p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:21px;color:rgba(245,240,229,0.9);line-height:1.55;margin:0 0 18px;}
+
+/* Stats grid */
+.stats{max-width:1100px;margin:0 auto;padding:96px 40px;}
+.stats-head{text-align:center;margin-bottom:56px;}
+.stats-head h2{font-family:'Cormorant Garamond',serif;font-size:54px;font-weight:500;line-height:1.05;margin:0 0 16px;letter-spacing:-0.012em;}
+.stats-head h2 em{font-style:italic;}
+.stats-head p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;color:var(--stone);max-width:560px;margin:0 auto;line-height:1.5;}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;}
+.stat{text-align:center;padding:28px 16px;}
+.stat-num{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:64px;line-height:1;color:var(--ink);letter-spacing:-0.02em;margin-bottom:12px;}
+.stat-lbl{font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:var(--stone);font-weight:600;margin-bottom:8px;}
+.stat-sub{font-size:13px;color:var(--ink);line-height:1.5;max-width:200px;margin:0 auto;}
+
+/* Materials section */
+.materials{background:var(--warm-white);padding:96px 40px;border-top:0.5px solid var(--rule);}
+.mat-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr;gap:64px;align-items:center;}
+.mat-img{aspect-ratio:1/1;background:var(--card-bg);border:0.5px solid var(--rule);border-radius:2px;overflow:hidden;}
+.mat-img img{width:100%;height:100%;object-fit:cover;}
+.mat-text .label{display:block;margin-bottom:18px;}
+.mat-text h2{font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:500;line-height:1.05;margin:0 0 22px;letter-spacing:-0.008em;}
+.mat-text h2 em{font-style:italic;}
+.mat-text ul{margin:18px 0 0;padding-left:0;list-style:none;}
+.mat-text li{padding:14px 0 14px 24px;border-bottom:0.5px solid var(--rule);position:relative;font-size:15px;line-height:1.65;}
+.mat-text li:first-child{border-top:0.5px solid var(--rule);}
+.mat-text li::before{content:"";position:absolute;left:0;top:24px;width:14px;height:0.5px;background:var(--forest);}
+.mat-text li strong{font-weight:600;}
+
+/* Products spotlight */
+.products-spot{max-width:1440px;margin:0 auto;padding:96px 40px;}
+.products-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:48px;gap:32px;flex-wrap:wrap;}
+.products-head h2{font-family:'Cormorant Garamond',serif;font-size:54px;font-weight:500;line-height:1;margin:0;letter-spacing:-0.012em;}
+.products-head h2 em{font-style:italic;}
+.products-head a{font-size:12.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--stone);border-bottom:0.5px solid var(--rule-strong);padding-bottom:3px;font-weight:500;}
+.products-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+.product-card{cursor:pointer;}
+.p-img{aspect-ratio:4/5;background:var(--warm-white);border:0.5px solid var(--rule);border-radius:2px;overflow:hidden;margin-bottom:12px;}
+.p-img img{width:100%;height:100%;object-fit:cover;}
+.p-maker{font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--stone);font-weight:500;margin-bottom:4px;}
+.p-name{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:500;line-height:1.2;margin:0 0 4px;}
+.p-meta{display:flex;justify-content:space-between;font-size:12.5px;color:var(--stone);}
+.p-price{color:var(--ink);font-weight:500;}
+
+/* Endorsements */
+.endorse{background:var(--card-bg);padding:96px 40px;}
+.endorse-inner{max-width:1000px;margin:0 auto;text-align:center;}
+.endorse .label{display:block;margin-bottom:18px;}
+.endorse h2{font-family:'Cormorant Garamond',serif;font-size:46px;font-weight:500;line-height:1.05;margin:0 0 36px;letter-spacing:-0.008em;}
+.endorse h2 em{font-style:italic;}
+.endorse-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;text-align:left;}
+.endorse-card{background:var(--warm-white);border:0.5px solid var(--rule);border-radius:2px;padding:28px 30px;}
+.endorse-card .endorse-type{font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--amber);font-weight:600;margin-bottom:12px;display:block;}
+.endorse-card h3{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;font-weight:500;margin:0 0 10px;line-height:1.25;}
+.endorse-card p{font-size:14px;line-height:1.65;color:var(--ink);margin:0;}
+
+/* Close band */
+.close-band{background:var(--ink);color:var(--cream);padding:96px 40px;text-align:center;}
+.close-band .label{color:rgba(245,240,229,0.55);display:block;margin-bottom:18px;}
+.close-band h2{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:500;line-height:1.05;margin:0 0 18px;letter-spacing:-0.008em;}
+.close-band h2 em{font-style:italic;}
+.close-band p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:19px;color:rgba(245,240,229,0.85);max-width:560px;margin:0 auto 32px;line-height:1.5;}
+.close-band .btn{margin:0 6px;}
+.close-band .btn-primary{background:var(--cream);color:var(--ink);}.close-band .btn-primary:hover{background:var(--warm-white);}
+.close-band .btn-ghost{border-color:rgba(245,240,229,0.4);color:var(--cream);}.close-band .btn-ghost:hover{border-color:var(--cream);}
+
+footer{background:var(--cream);border-top:0.5px solid var(--rule);}
+.foot-bottom-band{max-width:1440px;margin:0 auto;padding:28px 40px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--stone);letter-spacing:0.04em;}
+.foot-bottom-band em{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:var(--ink);margin-right:10px;}
+.foot-bottom-band .foot-bottom-links{display:flex;gap:22px;}
+
+@media (max-width:1000px){.hero h1{font-size:60px;}.founder,.mat-inner{grid-template-columns:1fr;gap:40px;}.stats-grid,.products-grid,.endorse-grid{grid-template-columns:repeat(2,1fr);}}
+</style>
+</head>
+<body data-screen-label="Tara Treasures Maker Page">
+
+<div class="utility">A maker we curate. The story behind every piece on the shelf.</div>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="MTW Homepage v3.html" class="logo">
+      <span class="logo-mark" aria-hidden="true"></span>
+      <span class="logo-text">My Toy Wagon<small>Inside the makers</small></span>
+    </a>
+    <div style="display:flex;gap:12px;">
+      <a href="catalog.html" class="btn btn-ghost">Catalog</a>
+      <a href="educator.html" class="btn btn-primary">Educator program</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <a href="MTW Homepage v3.html" class="back-link">Back to the shop</a>
+    <span class="label">Inside the makers</span>
+    <h1>Tara <em>Treasures</em>.</h1>
+    <p class="dek">Designed in Melbourne, hand-felted in Nepal by 350+ women artisans. The first toy brand in Australia to gain Fair Trade Certification, and the maker behind a quarter of the felt on our shelves.</p>
+  </div>
+</section>
+
+<section class="founder">
+  <div class="founder-img"><img src="{{ FILES_BASE_URL }}/tara-founders-nepal.webp" alt="Jag Gurung and Jooli Chan with their children, with the Annapurna range behind" style="object-position:center center;"></div>
+  <div class="founder-text">
+    <span class="label">A founder story</span>
+    <h2>Jag &amp; Jooli, <em>after the earthquake</em>.</h2>
+    <p>Tara Treasures began as a Melbourne-market side hustle. Jag Gurung grew up in a village in the mountains of Nepal; Jooli Chan grew up in Melbourne with a designer's eye and a love of children's craft. They met, married, and started selling handmade Nepalese goods at local markets on weekends.</p>
+    <p>The 2015 Nepal earthquake changed the scale of the work. Watching the devastation in Jag's home country, they made the decision to go back, formally — not as charity, but to build sustainable employment for women in the communities that had raised him.</p>
+    <p class="quote">"We were united by a shared passion to make a positive impact on the world."<cite style="display:block;font-style:normal;font-family:'Mulish',sans-serif;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;margin-top:14px;color:var(--stone);font-weight:500;">Jag Gurung and Jooli Chan, founders</cite></p>
+  </div>
+</section>
+
+<section class="name-band">
+  <div class="name-inner">
+    <span class="label">The name</span>
+    <h2>Tara, goddess of <em>compassion</em>.</h2>
+    <p>"Tara" is the name of the Buddhist goddess of compassion and peace. The studio is named for her, intentionally.</p>
+    <p>The work reflects it: women working from home or in small shared studios near their families, fair wages, sustainable materials, and toys made slowly enough to outlast a child's first decade. Compassion is the production model, not the marketing.</p>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="stats-head">
+    <h2>The work, by <em>the numbers</em>.</h2>
+    <p>What it means to be one of the first kids brands to earn Fair Trade Certification.</p>
+  </div>
+  <div class="stats-grid">
+    <div class="stat">
+      <div class="stat-num">350+</div>
+      <div class="stat-lbl">Women artisans</div>
+      <p class="stat-sub">Hand-felting in Nepal, working from home or small studios.</p>
+    </div>
+    <div class="stat">
+      <div class="stat-num">1st</div>
+      <div class="stat-lbl">Australian toy brand</div>
+      <p class="stat-sub">To gain Fair Trade USA™ Certification.</p>
+    </div>
+    <div class="stat">
+      <div class="stat-num">100%</div>
+      <div class="stat-lbl">GOTS wool</div>
+      <p class="stat-sub">Pure New Zealand merino, certified for textile standards.</p>
+    </div>
+    <div class="stat">
+      <div class="stat-num">0</div>
+      <div class="stat-lbl">Glues or fillers</div>
+      <p class="stat-sub">No polyester, no synthetics, azo-free natural dyes.</p>
+    </div>
+  </div>
+</section>
+
+<section class="materials">
+  <div class="mat-inner">
+    <div class="mat-img"><img src="{{ FILES_BASE_URL }}/tara-felt-flowers-child.webp" alt="A child holding hand-felted Tara Treasures flowers"></div>
+    <div class="mat-text">
+      <span class="label">How it is made</span>
+      <h2>One piece, by <em>two hands</em>.</h2>
+      <ul>
+        <li><strong>Wool.</strong> 100% GOTS-certified New Zealand merino, sourced direct from the South Island. Hand-carded in Kathmandu.</li>
+        <li><strong>Dyes.</strong> Azo-free, non-toxic, child-safe. No heavy metals, no synthetic colorants.</li>
+        <li><strong>Felting.</strong> Wet-felted by hand. No machinery. Each piece takes 4 to 24 hours depending on size.</li>
+        <li><strong>Stitching.</strong> Hand-stitched by the same artisan from start to finish. Each piece is signed by the woman who made it.</li>
+        <li><strong>Working conditions.</strong> Women set their own hours, work from home or in shared studios near their families. Fair wages guaranteed, health stipends, no piecework pressure.</li>
+        <li><strong>Packaging.</strong> Recycled and recyclable, designed to minimize waste.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="products-spot">
+  <div class="products-head">
+    <h2>What we <em>carry</em>.</h2>
+    <a href="#">See the full Tara Treasures collection →</a>
+  </div>
+  <div class="products-grid">
+    <a href="product-garden-of-the-moon.html" class="product-card">
+      <div class="p-img"><img src="{{ FILES_BASE_URL }}/garden-of-the-moon.webp" alt="Garden of the Moon Playscape"></div>
+      <p class="p-maker">Playscapes</p>
+      <h3 class="p-name">Garden of the Moon, Large</h3>
+      <div class="p-meta"><span>Ages 3 to 10</span><span class="p-price">$149</span></div>
+    </a>
+    <a href="#" class="product-card">
+      <div class="p-img"><img src="{{ FILES_BASE_URL }}/tara-farm-animals.webp" alt="Felt Farm Animals"></div>
+      <p class="p-maker">Felt animals</p>
+      <h3 class="p-name">Felt Farm Animals, Set of 10</h3>
+      <div class="p-meta"><span>Ages 3+</span><span class="p-price">$58</span></div>
+    </a>
+    <a href="#" class="product-card">
+      <div class="p-img"><img src="{{ FILES_BASE_URL }}/best-ingenious-insects.png" alt="Ingenious Insects"></div>
+      <p class="p-maker">Storybook collection</p>
+      <h3 class="p-name">Ingenious Insects · Puppet Set + Book</h3>
+      <div class="p-meta"><span>Ages 3+</span><span class="p-price">$68</span></div>
+    </a>
+    <a href="#" class="product-card">
+      <div class="p-img"><img src="{{ FILES_BASE_URL }}/tara-sea-rockpool-playscape.webp" alt="Large Sea and Rockpool Play Mat with felt sea creatures and wooden waves"></div>
+      <p class="p-maker">Playscapes</p>
+      <h3 class="p-name">Large Sea and Rockpool Play Mat</h3>
+      <div class="p-meta"><span>Ages 3+ · 80 cm</span><span class="p-price">$118</span></div>
+    </a>
+    <a href="#" class="product-card">
+      <div class="p-img"><img src="{{ FILES_BASE_URL }}/tara-bear-hunt-playmat.webp" alt="Felt Bear Hunt Play Mat with felt bear under a cave"></div>
+      <p class="p-maker">Storybook collection</p>
+      <h3 class="p-name">Felt Bear Hunt Play Mat + Bear Set</h3>
+      <div class="p-meta"><span>Ages 3+</span><span class="p-price">$132</span></div>
+    </a>
+    <a href="#" class="product-card">
+      <div class="p-img"><img src="{{ FILES_BASE_URL }}/tara-garden-planter-box.webp" alt="Felt Garden Planter Box with felt vegetables"></div>
+      <p class="p-maker">Imaginative play</p>
+      <h3 class="p-name">Felt Garden Planter Box with Vegetables</h3>
+      <div class="p-meta"><span>Ages 3+</span><span class="p-price">$94</span></div>
+    </a>
+    <a href="#" class="product-card">
+      <div class="p-img"><img src="{{ FILES_BASE_URL }}/tara-room-on-broom.webp" alt="Room on the Broom finger puppets with Julia Donaldson book"></div>
+      <p class="p-maker">Licensed · Julia Donaldson</p>
+      <h3 class="p-name">Room on the Broom · Finger Puppet Set + Book</h3>
+      <div class="p-meta"><span>Ages 3+</span><span class="p-price">$76</span></div>
+    </a>
+  </div>
+</section>
+
+<!-- IN THE CLASSROOM testimonial -->
+<section style="background:var(--warm-white);padding:96px 40px;border-top:0.5px solid var(--rule);">
+  <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1.1fr;gap:64px;align-items:center;">
+    <div style="aspect-ratio:1/1;background:var(--cream);border:0.5px solid var(--rule);border-radius:2px;overflow:hidden;">
+      <img src="{{ FILES_BASE_URL }}/tara-moon-crater-child-2.webp" alt="A child playing with the Tara Treasures Moon Crater playscape and astronaut" style="width:100%;height:100%;object-fit:cover;display:block;">
+    </div>
+    <div>
+      <span class="label" style="display:block;margin-bottom:18px;">In the classroom</span>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:500;line-height:1.05;margin:0 0 24px;letter-spacing:-0.008em;">A preschool teacher, on the <em>Moon Crater Playscape</em>.</h2>
+      <blockquote style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;line-height:1.6;color:var(--ink);margin:0 0 20px;padding:0;border:none;">
+        "I purchased this space playscape for my preschool students, as we are currently learning about outer space in the classroom. Students are using this playscape to create and act out their own space missions — we also added other planets and a rocket ship. It's been a wonderful prop for engaging students and encouraging them in using their imagination and creativity in play. The felt material is of high quality and seems like it'll be sturdy enough for years to come."
+      </blockquote>
+      <p style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:var(--stone);font-weight:600;margin:0;">Paulina M., preschool teacher · February 2023</p>
+    </div>
+  </div>
+  <!-- Second review -->
+  <div style="max-width:1100px;margin:64px auto 0;padding-top:48px;border-top:0.5px solid var(--rule);">
+    <blockquote style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:26px;line-height:1.45;color:var(--ink);margin:0 0 16px;padding:0;border:none;text-align:center;text-wrap:balance;max-width:760px;margin-left:auto;margin-right:auto;">
+      "Out of this world. A change from the common fairytale mushrooms, meadows, and rivers. Really well made and quite large."
+    </blockquote>
+    <p style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:var(--stone);font-weight:600;margin:0;text-align:center;">Tracy A. · Verified customer</p>
+  </div>
+</section>
+
+<section class="endorse">
+  <div class="endorse-inner">
+    <span class="label">Recognized by</span>
+    <h2>The work is <em>vouched for</em>.</h2>
+    <div class="endorse-grid">
+      <div class="endorse-card">
+        <span class="endorse-type">Humanitarian</span>
+        <h3>Anuradha Koirala, CNN Hero of the Year</h3>
+        <p>Endorses the studio's commitment to women's empowerment in Nepal. Featured in joint advocacy work.</p>
+      </div>
+      <div class="endorse-card">
+        <span class="endorse-type">Australian children's icon</span>
+        <h3>The Wiggles</h3>
+        <p>Use Tara Treasures pieces on screen and in their live shows. Long-standing partnership.</p>
+      </div>
+      <div class="endorse-card">
+        <span class="endorse-type">Literary licensing</span>
+        <h3>May Gibbs · Julia Donaldson</h3>
+        <p>Licensed product lines for May Gibbs' Gumnut Babies and Julia Donaldson's The Gruffalo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="close-band">
+  <span class="label">Bring Tara Treasures into your classroom</span>
+  <h2>Carried, with <em>conviction</em>.</h2>
+  <p>The makers we curate share our values. If you teach, run a therapy practice, or lead a homeschool co-op, our Educator Program and School Affiliate are built to bring these pieces into your community at fair pricing.</p>
+  <a href="educator.html" class="btn btn-primary">Apply for Educator pricing</a>
+  <a href="school-affiliate.html" class="btn btn-ghost">School Affiliate Program</a>
+</section>
+
+<footer>
+  <div class="foot-bottom-band">
+    <span><em>Heirloom toys, curated by hand.</em>© 2026 My Toy Wagon LLC. All rights reserved.</span>
+    <div class="foot-bottom-links">
+      <a href="MTW Homepage v3.html">Back to the shop</a>
+      <a href="catalog.html">Catalog</a>
+      <a href="educator.html">Educator</a>
+      <a href="school-affiliate.html">Affiliate</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

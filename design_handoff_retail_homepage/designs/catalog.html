@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Catalog — My Toy Wagon</title>
+<meta name="description" content="A long, scrollable look at the toys we curate. Wooden, felt, heirloom, hand-stitched. Designed for parents, educators, and gift buyers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#F5F0E5;--warm-white:#FFFCF7;--ink:#2C2C2A;--forest:#3B6D11;--amber:#854F0B;--stone:#5F5E5A;--card-bg:#EDE3CD;--rule:rgba(44,44,42,0.12);--rule-strong:rgba(44,44,42,0.22);}
+*{box-sizing:border-box;}html,body{margin:0;padding:0;scroll-behavior:smooth;}
+body{font-family:'Mulish',sans-serif;color:var(--ink);background:var(--cream);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+img{max-width:100%;display:block;}a{color:inherit;text-decoration:none;}
+.label{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--stone);font-weight:500;}
+.utility{background:var(--ink);color:var(--cream);font-size:12px;padding:9px 40px;text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;}
+.utility a{color:rgba(245,240,229,0.85);border-bottom:0.5px solid rgba(245,240,229,0.5);padding-bottom:1px;}
+
+header.nav{border-bottom:0.5px solid var(--rule);background:var(--cream);position:sticky;top:0;z-index:50;}
+.nav-inner{max-width:1440px;margin:0 auto;padding:14px 40px;display:flex;justify-content:space-between;align-items:center;gap:32px;}
+.logo{display:inline-flex;align-items:center;gap:14px;line-height:1;}
+.logo-mark{width:72px;height:72px;background-color:var(--ink);-webkit-mask:url('{{ FILES_BASE_URL }}/logo-mark.png') center/contain no-repeat;mask:url('{{ FILES_BASE_URL }}/logo-mark.png') center/contain no-repeat;flex-shrink:0;}
+.logo-text{font-family:'Cormorant Garamond',serif;font-size:18px;letter-spacing:0.24em;text-transform:uppercase;color:var(--ink);white-space:nowrap;}
+.nav-actions{display:flex;align-items:center;gap:18px;}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:11px 22px;font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;border-radius:2px;border:0.5px solid transparent;cursor:pointer;font-family:inherit;}
+.btn-primary{background:var(--ink);color:var(--cream);}.btn-primary:hover{background:var(--forest);}
+.btn-ghost{background:none;border-color:var(--rule-strong);color:var(--ink);}.btn-ghost:hover{border-color:var(--ink);}
+
+/* Cover */
+.cover{position:relative;height:100vh;min-height:680px;display:flex;align-items:flex-end;padding:0;overflow:hidden;background:var(--card-bg);}
+.cover-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.cover-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(44,44,42,0.05) 0%,rgba(44,44,42,0.55) 100%);}
+.cover-inner{position:relative;z-index:2;max-width:1440px;margin:0 auto;padding:80px 40px;color:var(--cream);width:100%;}
+.cover-eyebrow{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;color:rgba(245,240,229,0.85);margin-bottom:18px;letter-spacing:0;}
+.cover h1{font-family:'Cormorant Garamond',serif;font-size:120px;font-weight:500;line-height:0.92;letter-spacing:-0.018em;margin:0 0 24px;max-width:900px;color:var(--cream);text-wrap:balance;}
+.cover h1 em{font-style:italic;}
+.cover .dek{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:24px;color:rgba(245,240,229,0.9);max-width:560px;line-height:1.45;margin:0 0 40px;}
+.cover-meta{display:flex;gap:36px;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(245,240,229,0.7);font-weight:500;}
+
+/* Chapter nav (sticky) */
+.chapter-nav{position:sticky;top:0;background:var(--cream);border-bottom:0.5px solid var(--rule);z-index:40;padding:14px 40px;display:flex;justify-content:center;gap:32px;flex-wrap:wrap;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;font-weight:500;}
+.chapter-nav a{color:var(--stone);padding:6px 0;}
+.chapter-nav a:hover{color:var(--ink);}
+.chapter-nav a.active{color:var(--ink);border-bottom:1px solid var(--ink);}
+
+/* Letter / intro */
+.letter{max-width:780px;margin:0 auto;padding:120px 40px;}
+.letter .label{display:block;margin-bottom:24px;text-align:center;}
+.letter h2{font-family:'Cormorant Garamond',serif;font-size:72px;font-weight:500;line-height:1;letter-spacing:-0.014em;margin:0 0 36px;text-align:center;text-wrap:balance;}
+.letter h2 em{font-style:italic;}
+.letter p{font-size:18px;line-height:1.78;color:var(--ink);margin:0 0 22px;text-wrap:pretty;}
+.letter p:first-of-type::first-letter{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:78px;line-height:0.85;float:left;padding:8px 14px 0 0;color:var(--ink);font-weight:500;}
+.letter .signoff{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:24px;margin-top:36px;}
+.letter .signrole{font-size:11.5px;letter-spacing:0.18em;text-transform:uppercase;color:var(--stone);margin-top:4px;font-weight:500;}
+
+/* Chapter */
+.chapter{padding:96px 40px;border-top:0.5px solid var(--rule);}
+.chapter-inner{max-width:1440px;margin:0 auto;}
+.chapter-header{display:grid;grid-template-columns:1fr 1.2fr;gap:64px;margin-bottom:64px;align-items:end;}
+.chapter-num{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;color:var(--stone);margin-bottom:14px;}
+.chapter-header h2{font-family:'Cormorant Garamond',serif;font-size:72px;font-weight:500;line-height:1;letter-spacing:-0.014em;margin:0;text-wrap:balance;}
+.chapter-header h2 em{font-style:italic;}
+.chapter-header .lead{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;color:var(--ink);line-height:1.5;max-width:520px;text-wrap:pretty;}
+.chapter-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;}
+.cat-card{cursor:pointer;}
+.cat-img{aspect-ratio:4/5;background:var(--warm-white);border:0.5px solid var(--rule);border-radius:2px;overflow:hidden;margin-bottom:14px;position:relative;}
+.cat-img img{width:100%;height:100%;object-fit:cover;}
+.cat-tag{position:absolute;top:12px;left:12px;background:var(--warm-white);border:0.5px solid var(--rule);padding:4px 10px;border-radius:2px;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;color:var(--forest);}
+.cat-tag.amber{color:var(--amber);}
+.cat-maker{font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--stone);font-weight:500;margin-bottom:4px;}
+.cat-name{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:500;line-height:1.2;margin:0 0 4px;}
+.cat-meta{display:flex;justify-content:space-between;font-size:12.5px;color:var(--stone);}
+.cat-price{color:var(--ink);font-weight:500;}
+
+/* Spread (mid-chapter editorial) */
+.spread{margin-top:64px;padding:64px 0 0;border-top:0.5px solid var(--rule);display:grid;grid-template-columns:1fr 1.2fr;gap:64px;align-items:center;}
+.spread.reverse{grid-template-columns:1.2fr 1fr;}
+.spread.reverse .spread-text{order:2;}
+.spread.reverse .spread-img{order:1;}
+.spread-img{aspect-ratio:4/3;background:var(--card-bg);border-radius:2px;overflow:hidden;}
+.spread-img img{width:100%;height:100%;object-fit:cover;}
+.spread-text .label{display:block;margin-bottom:14px;}
+.spread-text h3{font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:500;line-height:1.05;margin:0 0 20px;letter-spacing:-0.008em;}
+.spread-text h3 em{font-style:italic;}
+.spread-text p{font-size:16px;line-height:1.78;margin:0 0 16px;color:var(--ink);text-wrap:pretty;}
+.spread-text .quote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;line-height:1.45;padding-left:18px;border-left:2px solid var(--forest);margin:24px 0 0;color:var(--ink);}
+.spread-text .quote cite{display:block;font-style:normal;font-family:'Mulish',sans-serif;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;margin-top:12px;color:var(--stone);}
+
+/* Educator gate */
+.gate{background:var(--ink);color:var(--cream);}
+.gate-inner{max-width:900px;margin:0 auto;padding:96px 40px;text-align:center;}
+.gate .label{color:rgba(245,240,229,0.55);display:block;margin-bottom:18px;}
+.gate h2{font-family:'Cormorant Garamond',serif;font-size:56px;font-weight:500;line-height:1.05;margin:0 0 22px;letter-spacing:-0.008em;}
+.gate h2 em{font-style:italic;}
+.gate p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;color:rgba(245,240,229,0.85);max-width:600px;margin:0 auto 28px;line-height:1.5;}
+.gate-features{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;max-width:680px;margin:36px auto 40px;text-align:left;}
+.gate-feature{display:flex;gap:12px;align-items:flex-start;font-size:14px;line-height:1.55;color:rgba(245,240,229,0.85);}
+.gate-feature::before{content:"";flex-shrink:0;width:20px;height:0.5px;background:var(--forest);margin-top:10px;}
+.gate-feature strong{color:var(--cream);font-weight:500;display:block;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;margin-bottom:3px;}
+.gate .btn-primary{background:var(--cream);color:var(--ink);}.gate .btn-primary:hover{background:var(--warm-white);}
+.gate-cta-row{display:inline-flex;gap:12px;flex-wrap:wrap;justify-content:center;}
+.gate-payment{margin-top:32px;font-size:12px;letter-spacing:0.1em;color:rgba(245,240,229,0.55);}
+
+/* Close */
+.catalog-close{max-width:780px;margin:0 auto;padding:96px 40px;text-align:center;}
+.catalog-close h2{font-family:'Cormorant Garamond',serif;font-size:54px;font-weight:500;line-height:1.05;margin:0 0 18px;letter-spacing:-0.008em;}
+.catalog-close h2 em{font-style:italic;}
+.catalog-close p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;color:var(--stone);margin:0 auto 28px;max-width:540px;line-height:1.5;}
+.catalog-close-actions{display:inline-flex;gap:12px;flex-wrap:wrap;}
+
+footer{background:var(--cream);border-top:0.5px solid var(--rule);}
+.foot-bottom-band{max-width:1440px;margin:0 auto;padding:28px 40px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--stone);letter-spacing:0.04em;flex-wrap:wrap;gap:12px;}
+.foot-bottom-band em{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:var(--ink);margin-right:10px;}
+.foot-bottom-band .foot-bottom-links{display:flex;gap:22px;}
+
+@media (max-width:900px){
+  .cover h1{font-size:64px;}
+  .chapter-header,.spread,.spread.reverse{grid-template-columns:1fr;gap:36px;}
+  .spread.reverse .spread-text,.spread.reverse .spread-img{order:0;}
+  .chapter-grid{grid-template-columns:repeat(2,1fr);}
+  .gate-features{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body data-screen-label="Catalog">
+
+<div class="utility">A long, scrollable catalog. <a href="#download">Download as PDF</a> · <a href="educator.html">Educator pricing</a></div>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="MTW Homepage v3.html" class="logo">
+      <span class="logo-mark" aria-hidden="true"></span>
+      <span class="logo-text">My Toy Wagon</span>
+    </a>
+    <div class="nav-actions">
+      <a href="educator.html" class="btn btn-ghost">Educator program</a>
+      <a href="MTW Homepage v3.html" class="btn btn-primary">Shop the site</a>
+    </div>
+  </div>
+</header>
+
+<!-- COVER -->
+<section class="cover">
+  <img class="cover-bg" src="{{ FILES_BASE_URL }}/hero-kaleidoscope.webp" alt="A child looks through an amber kaleidoscope">
+  <div class="cover-overlay"></div>
+  <div class="cover-inner">
+    <p class="cover-eyebrow">The Catalog — Spring &amp; Summer 2026</p>
+    <h1>Toys meant <em>to be kept</em>.</h1>
+    <p class="dek">A long, scrollable look at what we carry, why we carry it, and the makers behind every piece.</p>
+    <div class="cover-meta">
+      <span>Volume 04</span>
+      <span>140+ products</span>
+      <span>14 makers</span>
+    </div>
+  </div>
+</section>
+
+<!-- CHAPTER NAV -->
+<nav class="chapter-nav" id="chapterNav">
+  <a href="#letter">A letter</a>
+  <a href="#wooden">Wooden</a>
+  <a href="#felt">Felt</a>
+  <a href="#sensory">Sensory</a>
+  <a href="#heirloom">Heirloom</a>
+  <a href="#gifts">Gifts</a>
+  <a href="#educator">Educator</a>
+</nav>
+
+<!-- LETTER -->
+<section class="letter" id="letter">
+  <span class="label">A letter from the founders</span>
+  <h2>The shop, in one <em>document</em>.</h2>
+  <p>Most catalogs are a list of things to buy. This one is meant to read more like a long letter. The toys are here, with prices and the makers named, but so is the thinking behind them — why we picked what we picked, where the wood comes from, who hand-felts the playmat, what age a particular set really lives with.</p>
+  <p>We are a small family-run shop in Arcadia, California, online since 2020. Our daughters Hafsa and Noor are the reason we do this. We curate slowly. We say no to a lot of brands. The catalog you are reading covers everything we are confident enough to sell as heirloom.</p>
+  <p>Scroll through it the way you would a magazine. Each chapter ends with the products in that family. If you are an educator, therapist, or homeschool family, sign in for your bulk pricing and Net-30 terms.</p>
+  <p class="signoff">Irfana &amp; Rashid</p>
+  <p class="signrole">Founders, My Toy Wagon</p>
+</section>
+
+<!-- CHAPTER 1: WOODEN -->
+<section class="chapter" id="wooden">
+  <div class="chapter-inner">
+    <div class="chapter-header">
+      <div>
+        <p class="chapter-num">Chapter one</p>
+        <h2>Wooden, <em>kept</em>.</h2>
+      </div>
+      <p class="lead">European hardwood, hand-carved, finished with beeswax or food-safe oil. From Bumbu in Romania, Drewart in Germany, Fagus in Bavaria. The pieces that last the longest, and the ones we restock the most.</p>
+    </div>
+    <div class="chapter-grid">
+      <a href="product-drewart-camper-preorder.html" class="cat-card">
+        <div class="cat-img"><span class="cat-tag amber">Pre-order</span><img src="{{ FILES_BASE_URL }}/heirloom-drewart-camper.png" alt="Drewart Camper Van"></div>
+        <p class="cat-maker">Drewart · Germany</p>
+        <h3 class="cat-name">Wooden Camper Van, Natural</h3>
+        <div class="cat-meta"><span>Ages 3+</span><span class="cat-price">$410</span></div>
+      </a>
+      <a href="#" class="cat-card">
+        <div class="cat-img"><span class="cat-tag">In stock</span><img src="{{ FILES_BASE_URL }}/heirloom-bumbu-green-oak.webp" alt="Bumbu Green Oak"></div>
+        <p class="cat-maker">Bumbu · Romania</p>
+        <h3 class="cat-name">Large Green Oak Tree</h3>
+        <div class="cat-meta"><span>Ages 3 to 10</span><span class="cat-price">$148</span></div>
+      </a>
+      <a href="#" class="cat-card">
+        <div class="cat-img"><span class="cat-tag">In stock</span><img src="{{ FILES_BASE_URL }}/heirloom-fagus-semi.webp" alt="Fagus Semi-Truck"></div>
+        <p class="cat-maker">Fagus · Germany</p>
+        <h3 class="cat-name">Wooden Semi-Truck and Trailer</h3>
+        <div class="cat-meta"><span>Ages 3+</span><span class="cat-price">$268</span></div>
+      </a>
+      <a href="#" class="cat-card">
+        <div class="cat-img"><span class="cat-tag">In stock</span><img src="{{ FILES_BASE_URL }}/cat-animals.webp" alt="Bumbu Wooden Fawn"></div>
+        <p class="cat-maker">Bumbu · Romania</p>
+        <h3 class="cat-name">Wooden Fawn, hand-carved</h3>
+        <div class="cat-meta"><span>Ages 3+</span><span class="cat-price">$28</span></div>
+      </a>
+    </div>
+    <div class="spread">
+      <div class="spread-text">
+        <span class="label">From the workshop</span>
+        <h3>Inside <em>Bumbu</em>, Romania.</h3>
+        <p>Every Bumbu piece is hand-carved from maple, basswood, beech, or oak harvested from FSC-certified European forests. The line is hand-painted in small batches with water-based, non-toxic stains and finished with organic oils and beeswax.</p>
+        <p>We restock Bumbu directly from the workshop, in person when possible. Most of the pieces in this catalog arrived in our LA warehouse within the last two months.</p>
+        <p class="quote">Hand-carved wood, painted in small batches. A line that scales across childhood, and back onto the shelf each season.<cite>Irfana, founder</cite></p>
+      </div>
+      <div class="spread-img"><img src="{{ FILES_BASE_URL }}/blog-bumbu-treehouse.jpg" alt="Bumbu Enchanted Treehouse"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CHAPTER 2: FELT -->
+<section class="chapter" id="felt">
+  <div class="chapter-inner">
+    <div class="chapter-header">
+      <div>
+        <p class="chapter-num">Chapter two</p>
+        <h2>Felt, <em>by hand</em>.</h2>
+      </div>
+      <p class="lead">Needle-felted wool playmats and figures from Tara Treasures and Gus + Mabel. Substantial, hand-stitched, designed for slow imaginative play and the kind of room a toy lives in for years.</p>
+    </div>
+    <div class="chapter-grid">
+      <a href="product-coralwhim-cove.html" class="cat-card">
+        <div class="cat-img"><span class="cat-tag amber">Partner warehouse</span><img src="{{ FILES_BASE_URL }}/new-coralwhim-cove.webp" alt="Coralwhim Cove Felt Playmat"></div>
+        <p class="cat-maker">Gus + Mabel</p>
+        <h3 class="cat-name">Coralwhim Cove Felt Playmat</h3>
+        <div class="cat-meta"><span>Ages 3 to 10</span><span class="cat-price">$116</span></div>
+      </a>
+      <a href="product-garden-of-the-moon.html" class="cat-card">
+        <div class="cat-img"><span class="cat-tag">In stock</span><img src="{{ FILES_BASE_URL }}/garden-of-the-moon.webp" alt="Garden of the Moon Playscape"></div>
+        <p class="cat-maker">Tara Treasures</p>
+        <h3 class="cat-name">Garden of the Moon, Large</h3>
+        <div class="cat-meta"><span>Ages 3 to 10</span><span class="cat-price">$149</span></div>
+      </a>
+      <a href="#" class="cat-card">
+        <div class="cat-img"><span class="cat-tag">In stock</span><img src="{{ FILES_BASE_URL }}/tara-farm-animals.webp" alt="Tara Treasures Felt Farm Animals"></div>
+        <p class="cat-maker">Tara Treasures</p>
+        <h3 class="cat-name">Felt Farm Animals, set of 10</h3>
+        <div class="cat-meta"><span>Ages 3+</span><span class="cat-price">$58</span></div>
+      </a>
+      <a href="#" class="cat-card">
+        <div class="cat-img"><span class="cat-tag">In stock</span><img src="{{ FILES_BASE_URL }}/best-ingenious-insects.png" alt="Tara Treasures Ingenious Insects"></div>
+        <p class="cat-maker">Tara Treasures</p>
+        <h3 class="cat-name">Ingenious Insects, puppet set + book</h3>
+        <div class="cat-meta"><span>Ages 3+</span><span class="cat-price">$68</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CHAPTER 3: SENSORY -->
+<section class="chapter" id="sensory">
+  <div class="chapter-inner">
+    <div class="chapter-header">
+      <div>
+        <p class="chapter-num">Chapter three</p>
+        <h2>Sensory &amp; <em>discovery</em>.</h2>
+      </div>
+      <p class="lead">Open-ended trays, loose parts, light play, and the kind of materials that earn back the time spent setting them out. Reggio-friendly, Montessori-friendly, and quietly beautiful.</p>
+    </div>
+    <div class="chapter-grid">
+      <a href="#" class="cat-card">
+        <div class="cat-img"><span class="cat-tag amber">Partner warehouse</span><img src="{{ FILES_BASE_URL }}/blog-bbt-flatlay.webp" alt="Gus + Mabel Busy Bee Tray"></div>
+        <p class="cat-maker">Gus + Mabel</p>
+        <h3 class="cat-name">Busy Bee Tray, Half</h3>
+        <div class="cat-meta"><span>Ages 0+</span><span class="cat-price">$165</span></div>
+      </a>
+      <a href="#" class="cat-card">
+        <div class="cat-img"><span class="cat-tag">In stock</span><img src="{{ FILES_BASE_URL }}/best-bauspiel-color-track.png" alt="Bauspiel Color Track"></div>
+        <p class="cat-maker">Bauspiel · Germany</p>
+        <h3 class="cat-name">Color Track</h3>
+        <div class="cat-meta"><span>Ages 3 to 10</span><span class="cat-price">$245</span></div>
+      </a>
+      <a href="#" class="cat-card">
+        <div class="cat-img"><span class="cat-tag">In stock</span><img src="{{ FILES_BASE_URL }}/cat-sensory.webp" alt="Busy Bee Mirror Tray with flowers"></div>
+        <p class="cat-maker">Gus + Mabel</p>
+        <h3 class="cat-name">Reflective Play Mirror Inlay</h3>
+        <div class="cat-meta"><span>Ages 0+</span><span class="cat-price">$32</span></div>
+      </a>
+      <a href="#" class="cat-card">
+        <div class="cat-img"><span class="cat-tag">In stock</span><img src="{{ FILES_BASE_URL }}/cat-nature.webp" alt="Specimen jars by June &amp; December"></div>
+        <p class="cat-maker">June &amp; December</p>
+        <h3 class="cat-name">Specimen Collecting Kit</h3>
+        <div class="cat-meta"><span>Ages 5+</span><span class="cat-price">$48</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CHAPTER 4: HEIRLOOM -->
+<section class="chapter" id="heirloom">
+  <div class="chapter-inner">
+    <div class="chapter-header">
+      <div>
+        <p class="chapter-num">Chapter four</p>
+        <h2>For the next <em>sibling</em>.</h2>
+      </div>
+      <p class="lead">The pieces parents tell us they intend to keep. Hand-stitched butterflies, large wooden dollhouses, treehouse landscapes. Built to be passed down.</p>
+    </div>
+    <div class="chapter-grid">
+      <a href="#" class="cat-card">
+        <div class="cat-img"><span class="cat-tag">In stock</span><img src="{{ FILES_BASE_URL }}/heirloom-butterfly-wings.jpg" alt="Jack Be Nimble Butterfly Wings"></div>
+        <p class="cat-maker">Jack Be Nimble</p>
+        <h3 class="cat-name">Orange Monarch Butterfly Wings</h3>
+        <div class="cat-meta"><span>Ages 2+</span><span class="cat-price">$58</span></div>
+      </a>
+      <a href="#" class="cat-card">
+        <div class="cat-img"><span class="cat-tag">In stock</span><img src="{{ FILES_BASE_URL }}/drewart-dollhouse-girl.webp" alt="Drewart Wooden Dollhouse"></div>
+        <p class="cat-maker">Drewart · Germany</p>
+        <h3 class="cat-name">Wooden Dollhouse</h3>
+        <div class="cat-meta"><span>Ages 3 to 10</span><span class="cat-price">$498</span></div>
+      </a>
+      <a href="#" class="cat-card">
+        <div class="cat-img"><span class="cat-tag">In stock</span><img src="{{ FILES_BASE_URL }}/bumbu-acorn.png" alt="Bumbu Enchanted Treehouse"></div>
+        <p class="cat-maker">Bumbu · Romania</p>
+        <h3 class="cat-name">Enchanted Treehouse</h3>
+        <div class="cat-meta"><span>Ages 3 to 10</span><span class="cat-price">$184</span></div>
+      </a>
+      <a href="#" class="cat-card">
+        <div class="cat-img"><span class="cat-tag">In stock</span><img src="{{ FILES_BASE_URL }}/review-toverlux.jpg" alt="Toverlux Magic Wooden Lamp"></div>
+        <p class="cat-maker">Toverlux</p>
+        <h3 class="cat-name">Magic Wooden Lamp</h3>
+        <div class="cat-meta"><span>Ages 0+</span><span class="cat-price">$120</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CHAPTER 5: GIFTS -->
+<section class="chapter" id="gifts">
+  <div class="chapter-inner">
+    <div class="chapter-header">
+      <div>
+        <p class="chapter-num">Chapter five</p>
+        <h2>Gifts under <em>fifty</em>.</h2>
+      </div>
+      <p class="lead">For aunts, grandparents, and last-minute baskets. Small in price, kept for years.</p>
+    </div>
+    <div class="chapter-grid">
+      <a href="#" class="cat-card">
+        <div class="cat-img"><span class="cat-tag">In stock</span><img src="{{ FILES_BASE_URL }}/gift-leaf-cup.webp" alt="Wild Mountain Child Leaf Cup"></div>
+        <p class="cat-maker">Wild Mountain Child</p>
+        <h3 class="cat-name">Hand-carved Leaf Cup</h3>
+        <div class="cat-meta"><span>Ages 3+</span><span class="cat-price">$38</span></div>
+      </a>
+      <a href="#" class="cat-card">
+        <div class="cat-img"><span class="cat-tag">In stock</span><img src="{{ FILES_BASE_URL }}/gift-caterpillar-babies.webp" alt="Fairyshadow Little Critter"></div>
+        <p class="cat-maker">Fairyshadow</p>
+        <h3 class="cat-name">Little Critter in a Hedge Cozy</h3>
+        <div class="cat-meta"><span>Ages 3+</span><span class="cat-price">$42</span></div>
+      </a>
+      <a href="#" class="cat-card">
+        <div class="cat-img"><span class="cat-tag">In stock</span><img src="{{ FILES_BASE_URL }}/gift-kaleidoscope.webp" alt="Amber Kaleidoscope"></div>
+        <p class="cat-maker">Amber Kaleidoscope</p>
+        <h3 class="cat-name">Kaleidoscope, Blue Dreams</h3>
+        <div class="cat-meta"><span>Ages 3+</span><span class="cat-price">$38</span></div>
+      </a>
+      <a href="#" class="cat-card">
+        <div class="cat-img"><span class="cat-tag">In stock</span><img src="{{ FILES_BASE_URL }}/gift-felt-donuts.webp" alt="Tara Treasures Felt Donuts"></div>
+        <p class="cat-maker">Tara Treasures</p>
+        <h3 class="cat-name">Felt Donuts, Set of 4</h3>
+        <div class="cat-meta"><span>Ages 3+</span><span class="cat-price">$34</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATOR GATE -->
+<section class="gate" id="educator">
+  <div class="gate-inner">
+    <span class="label">Chapter six · For schools, therapists &amp; co-ops</span>
+    <h2>The educator <em>addendum</em>.</h2>
+    <p>Educators, therapists, and homeschool families see a different version of every page on our site once signed in. Volume pricing, Net invoicing, and a procurement process built for AP teams — quote in 24 hours, vendor forms completed in one business day.</p>
+    <div class="gate-features">
+      <div class="gate-feature"><div><strong>Volume pricing</strong>Educator pricing on every product, with quantity breaks for classroom-sized orders.</div></div>
+      <div class="gate-feature"><div><strong>Net-30, Net-60 available</strong>Net-30 is our default. Net-60 available for larger or recurring orders; case-by-case beyond.</div></div>
+      <div class="gate-feature"><div><strong>Vendor forms in one day</strong>Send us your district's vendor onboarding form and we will return it completed within one business day.</div></div>
+      <div class="gate-feature"><div><strong>Tax-exempt, all 50 states</strong>Tax-exempt certificates accepted. Once on file, sales tax is waived on every future invoice.</div></div>
+      <div class="gate-feature"><div><strong>Stock confirmed on every quote</strong>Quoted pricing is held for 30 days. If something goes out of stock, we substitute with your approval.</div></div>
+      <div class="gate-feature"><div><strong>20-minute call with our team</strong>Help with classroom selection, district-wide quotes, sole-source letters, or curriculum partnerships.</div></div>
+    </div>
+    <div class="gate-cta-row">
+      <a href="educator.html#apply" class="btn btn-primary">Apply for an account</a>
+      <a href="educator.html#signin" class="btn btn-ghost" style="border-color:rgba(245,240,229,0.4);color:var(--cream);">Already a member? Sign in</a>
+    </div>
+    <p class="gate-payment" style="margin-top:32px;padding-top:24px;border-top:0.5px solid rgba(245,240,229,0.18);">Full procurement guide — payment terms, vendor forms, sole-source letters, tax-exempt onboarding, sustainability certifications, references — at <strong style="color:var(--cream);font-weight:500;">mytoywagon.com/schools</strong>. Accepted payment · School / district checks · Purchase orders · ACH · Net-30 / Net-60 invoices · Major credit cards. <em style="color:rgba(245,240,229,0.7);">References available on request.</em></p>
+  </div>
+</section>
+
+<!-- CLOSE -->
+<section class="catalog-close" id="download">
+  <h2>That's the <em>spring</em> edition.</h2>
+  <p>A new edition every quarter. Print-quality PDF version below, in case you want to share with a partner, a grandparent, or your school's buyer.</p>
+  <div class="catalog-close-actions">
+    <a href="#" class="btn btn-primary">Download PDF catalog</a>
+    <a href="MTW Homepage v3.html" class="btn btn-ghost">Back to the shop</a>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-bottom-band">
+    <span><em>Heirloom toys, curated by hand.</em>© 2026 My Toy Wagon. Spring/Summer 2026 catalog.</span>
+    <div class="foot-bottom-links">
+      <a href="MTW Homepage v3.html">Shop</a>
+      <a href="educator.html">Educator</a>
+      <a href="faq.html">FAQ</a>
+      <a href="shipping.html">Shipping</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Sticky chapter nav highlight on scroll
+const sections = ['letter','wooden','felt','sensory','heirloom','gifts','educator'].map(id => document.getElementById(id));
+const navLinks = document.querySelectorAll('.chapter-nav a');
+function syncNav() {
+  let active = '';
+  for (const s of sections) {
+    if (s && s.getBoundingClientRect().top < 200) active = s.id;
+  }
+  navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + active));
+}
+window.addEventListener('scroll', syncNav, { passive: true });
+syncNav();
+</script>
+
+</body>
+</html>

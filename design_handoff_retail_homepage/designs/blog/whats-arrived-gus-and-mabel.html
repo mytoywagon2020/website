@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What's arrived this month: a quiet introduction to Gus + Mabel — My Toy Wagon</title>
+<meta name="description" content="An Australian studio you'll hear from often. And the small embossed Busy Bee Tray we keep restocking. Plus the felt habitats from the same maker.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #F5F0E5;
+  --warm-white: #FFFCF7;
+  --ink: #2C2C2A;
+  --forest: #3B6D11;
+  --amber: #854F0B;
+  --stone: #5F5E5A;
+  --card-bg: #EDE3CD;
+  --rule: rgba(44, 44, 42, 0.12);
+  --rule-strong: rgba(44, 44, 42, 0.22);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: 'Mulish', sans-serif;
+  color: var(--ink);
+  background: var(--cream);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+
+.label {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--stone);
+  font-weight: 500;
+}
+
+/* Utility bar */
+.utility { background: var(--ink); color: var(--cream); font-size: 12px; letter-spacing: 0.06em; }
+.utility-inner {
+  max-width: 1440px; margin: 0 auto; padding: 9px 40px;
+  display: flex; justify-content: space-between; align-items: center; gap: 24px;
+}
+.utility-center {
+  flex: 1; text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic; font-size: 14px; letter-spacing: 0;
+}
+.utility-links { display: flex; gap: 22px; color: rgba(245, 240, 229, 0.7); }
+.utility-links a:hover { color: var(--cream); }
+
+/* Nav */
+header.nav { border-bottom: 0.5px solid var(--rule); background: var(--cream); position: sticky; top: 0; z-index: 50; }
+.nav-inner {
+  max-width: 1440px; margin: 0 auto; padding: 18px 40px;
+  display: grid; grid-template-columns: 1fr auto 1fr;
+  align-items: center; gap: 32px;
+}
+.nav-left, .nav-right { display: flex; align-items: center; gap: 28px; }
+.nav-right { justify-content: flex-end; }
+.nav-link {
+  font-size: 13.5px; font-weight: 500; letter-spacing: 0.02em;
+  position: relative; padding: 4px 0;
+}
+.nav-link:hover { color: var(--forest); }
+.nav-link.has-caret::after {
+  content: ""; display: inline-block; width: 5px; height: 5px;
+  border-right: 1px solid currentColor; border-bottom: 1px solid currentColor;
+  transform: rotate(45deg); margin-left: 6px; vertical-align: 2px;
+}
+.logo {
+  display: inline-flex; align-items: center; gap: 16px;
+  text-align: left; line-height: 1;
+}
+.logo-mark {
+  width: 100px; height: 100px;
+  background-color: var(--ink);
+  -webkit-mask: url('../assets/logo-mark.png') center/contain no-repeat;
+  mask: url('../assets/logo-mark.png') center/contain no-repeat;
+  flex-shrink: 0;
+}
+.logo-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px; font-weight: 400; letter-spacing: 0.24em;
+  text-transform: uppercase; line-height: 1; color: var(--ink);
+  white-space: nowrap;
+}
+.logo small {
+  display: block;
+  font-family: 'Mulish', sans-serif;
+  font-style: normal;
+  font-size: 9.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--stone);
+  margin-top: 8px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.nav-icon { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; }
+.cart-count {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 18px; height: 18px; padding: 0 5px;
+  background: var(--forest); color: var(--cream);
+  border-radius: 9px; font-size: 11px; font-weight: 600;
+}
+.search-pill {
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 14px; background: var(--warm-white);
+  border: 0.5px solid var(--rule); border-radius: 999px;
+  font-size: 12.5px; color: var(--stone); min-width: 200px;
+}
+.icon { width: 16px; height: 16px; stroke: currentColor; stroke-width: 1.4; fill: none; flex-shrink: 0; }
+
+/* ---------- Article ---------- */
+.article {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 72px 32px 96px;
+}
+.article-meta {
+  display: flex; align-items: center; gap: 14px;
+  font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--stone); font-weight: 500;
+  margin-bottom: 24px;
+}
+.article-meta .cat { color: var(--amber); }
+.article-meta .dot { width: 3px; height: 3px; background: var(--stone); border-radius: 50%; display: inline-block; }
+.article-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 64px; font-weight: 500;
+  line-height: 1.02; letter-spacing: -0.012em;
+  margin: 0 0 22px; color: var(--ink); text-wrap: balance;
+}
+.article-dek {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic; font-size: 22px;
+  line-height: 1.45; color: var(--stone);
+  margin: 0 0 48px; max-width: 600px;
+}
+.article-byline {
+  font-size: 12.5px;
+  color: var(--stone);
+  border-top: 0.5px solid var(--rule);
+  border-bottom: 0.5px solid var(--rule);
+  padding: 16px 0;
+  margin-bottom: 56px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.article-byline .by {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 15px;
+  color: var(--ink);
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+/* Body type */
+.article p {
+  font-size: 17px;
+  line-height: 1.78;
+  margin: 0 0 24px;
+  color: var(--ink);
+  text-wrap: pretty;
+}
+.article h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  font-weight: 500;
+  line-height: 1.1;
+  margin: 56px 0 20px;
+  letter-spacing: -0.008em;
+  color: var(--ink);
+}
+.article h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  font-weight: 500;
+  font-style: italic;
+  line-height: 1.2;
+  margin: 36px 0 14px;
+  color: var(--ink);
+}
+.article ul {
+  margin: 0 0 28px;
+  padding-left: 0;
+  list-style: none;
+}
+.article ul li {
+  font-size: 16.5px;
+  line-height: 1.7;
+  padding: 12px 0 12px 22px;
+  border-bottom: 0.5px solid var(--rule);
+  position: relative;
+}
+.article ul li:first-child { border-top: 0.5px solid var(--rule); }
+.article ul li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 22px;
+  width: 12px; height: 0.5px;
+  background: var(--forest);
+}
+.article ul.plain li { padding-left: 0; border-bottom: none; }
+.article ul.plain li::before { display: none; }
+.article strong { font-weight: 600; color: var(--ink); }
+
+/* Pull image (full-width within article) */
+figure {
+  margin: 40px 0;
+}
+figure.bleed {
+  margin-left: calc((100vw - 100%) / -2 + 80px);
+  margin-right: calc((100vw - 100%) / -2 + 80px);
+  max-width: none;
+  margin-top: 56px;
+  margin-bottom: 56px;
+}
+figure img {
+  width: 100%;
+  height: auto;
+  border-radius: 2px;
+  display: block;
+}
+figcaption {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--stone);
+  margin-top: 14px;
+  line-height: 1.5;
+  max-width: 540px;
+}
+
+/* Three-column image row */
+.row3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin: 40px 0;
+}
+.row3 figure { margin: 0; }
+.row3 figure img { aspect-ratio: 1 / 1; object-fit: cover; }
+.row3 figcaption {
+  font-size: 12px; letter-spacing: 0.1em;
+  text-transform: uppercase; font-style: normal;
+  text-align: center; margin-top: 10px;
+  font-family: 'Mulish', sans-serif; font-weight: 500;
+}
+
+/* Habitat row (2-column) */
+.row2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin: 40px 0;
+}
+.row2 figure { margin: 0; }
+.row2 figure img { aspect-ratio: 1 / 1; object-fit: cover; }
+
+/* Section divider */
+.section-rule {
+  display: block;
+  width: 48px;
+  height: 0.5px;
+  background: var(--rule-strong);
+  margin: 56px auto;
+}
+
+/* Shop-this card */
+.shop-card {
+  background: var(--card-bg);
+  border-radius: 2px;
+  padding: 36px 40px;
+  margin: 56px 0;
+}
+.shop-card .label { display: block; margin-bottom: 16px; }
+.shop-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 500;
+  margin: 0 0 20px;
+  letter-spacing: -0.005em;
+}
+.shop-card ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.shop-card li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 15px;
+  padding: 14px 0;
+  border-bottom: 0.5px solid var(--rule);
+}
+.shop-card li:last-child { border-bottom: none; }
+.shop-card li::before { display: none; }
+.shop-card .item-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 18px;
+  color: var(--ink);
+}
+.shop-card .item-price {
+  font-size: 13px;
+  color: var(--stone);
+  font-weight: 500;
+}
+.shop-card a:hover .item-name { color: var(--forest); }
+.shop-card-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 24px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink);
+  border-bottom: 0.5px solid var(--ink);
+  padding-bottom: 4px;
+}
+
+/* Closer */
+.article-close {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 19px;
+  line-height: 1.5;
+  color: var(--ink);
+  padding-left: 18px;
+  border-left: 2px solid var(--forest);
+  margin: 56px 0;
+  max-width: 560px;
+}
+
+/* Back to blog */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--stone);
+  font-weight: 500;
+  margin-bottom: 36px;
+}
+.back-link::before {
+  content: "";
+  width: 16px;
+  height: 1px;
+  background: currentColor;
+}
+
+/* Next-up */
+.next-up {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 64px 32px 96px;
+  border-top: 0.5px solid var(--rule);
+}
+.next-up .label { text-align: center; display: block; margin-bottom: 32px; }
+.next-up h2 {
+  font-family: 'Cormorant Garamond', serif;
+  text-align: center;
+  font-size: 36px;
+  font-weight: 500;
+  margin: 0 0 48px;
+  letter-spacing: -0.005em;
+}
+.next-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+}
+.next-entry { cursor: pointer; }
+.next-entry-img {
+  aspect-ratio: 4 / 3;
+  background: var(--card-bg);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 18px;
+}
+.next-entry-img img { width: 100%; height: 100%; object-fit: cover; }
+.next-entry-cat {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--amber);
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.next-entry-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 1.2;
+  margin: 0 0 10px;
+  text-wrap: balance;
+}
+.next-entry-meta {
+  font-size: 12.5px;
+  color: var(--stone);
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+/* Footer */
+footer.foot { background: var(--cream); border-top: 0.5px solid var(--rule); }
+.foot-inner { max-width: 1440px; margin: 0 auto; padding: 64px 40px 32px; }
+.foot-top { display: grid; grid-template-columns: 1.2fr 1fr 1fr 1.1fr; gap: 48px; margin-bottom: 56px; }
+.foot-brand .full-logo {
+  display: block; width: 240px; height: 140px; margin-bottom: 8px;
+  background-color: var(--ink);
+  -webkit-mask: url('../assets/logo-tight.png') left center/contain no-repeat;
+  mask: url('../assets/logo-tight.png') left center/contain no-repeat;
+}
+.foot-tag {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic; color: var(--stone);
+  font-size: 16px; margin: 18px 0 22px; max-width: 280px; line-height: 1.5;
+}
+.foot-loc { font-size: 13px; color: var(--stone); line-height: 1.7; }
+.foot-col h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic; font-size: 18px; font-weight: 500;
+  margin: 0 0 20px; white-space: nowrap;
+}
+.foot-col ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.foot-col li { font-size: 13.5px; color: var(--ink); }
+.foot-col a:hover { color: var(--forest); }
+.foot-contact { font-size: 13.5px; line-height: 1.75; color: var(--ink); }
+.foot-contact a, .foot-contact span { display: block; }
+.foot-contact .stone { color: var(--stone); }
+.foot-contact .stone.spaced { margin-top: 12px; }
+.foot-contact a:hover { color: var(--forest); }
+.foot-bottom {
+  border-top: 0.5px solid var(--rule);
+  padding-top: 28px;
+  display: flex; justify-content: space-between;
+  align-items: center; font-size: 12px;
+  color: var(--stone); letter-spacing: 0.04em;
+}
+.foot-bottom-copy { display: inline-flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.foot-bottom-copy em {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic; font-size: 14px; color: var(--ink);
+}
+.foot-bottom-sep { color: var(--rule-strong); font-size: 14px; opacity: 0.7; }
+.foot-bottom-links { display: flex; gap: 20px; align-items: center; }
+.foot-bottom-links a:hover { color: var(--ink); }
+</style>
+</head>
+<body data-screen-label="Blog · Whats Arrived Gus and Mabel">
+
+<!-- Utility bar -->
+<div class="utility">
+  <div class="utility-inner">
+    <div class="utility-links">
+      <a href="#">Track order</a>
+      <a href="#">Educator program</a>
+    </div>
+    <div class="utility-center">Free shipping on orders $150+ within the contiguous U.S.</div>
+    <div class="utility-links" style="justify-content:flex-end;">
+      <a href="#">Gift cards</a>
+      <a href="#">Sign in</a>
+    </div>
+  </div>
+</div>
+
+<!-- Nav -->
+<header class="nav">
+  <div class="nav-inner">
+    <nav class="nav-left">
+      <a href="#" class="nav-link has-caret">Shop all</a>
+      <a href="#" class="nav-link has-caret">Collections</a>
+      <a href="#" class="nav-link">Ages</a>
+    </nav>
+    <a href="../MTW Homepage v3.html" class="logo">
+      <span class="logo-mark" aria-hidden="true"></span>
+      <span class="logo-text">
+        My Toy Wagon
+        <small>Los Angeles · California · est. 2020</small>
+      </span>
+    </a>
+    <div class="nav-right">
+      <div class="search-pill">
+        <svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+        <span>Search wooden blocks, plush…</span>
+      </div>
+      <a href="#" class="nav-icon">Account</a>
+      <a href="#" class="nav-icon">Cart <span class="cart-count">2</span></a>
+    </div>
+  </div>
+</header>
+
+<!-- Article -->
+<article class="article">
+  <a href="../MTW Homepage v3.html" class="back-link">Back to the shop</a>
+
+  <div class="article-meta">
+    <span class="cat">Field note</span>
+    <span class="dot"></span>
+    <span>May 14, 2026</span>
+    <span class="dot"></span>
+    <span>4 min read</span>
+  </div>
+
+  <h1 class="article-title">What's arrived this month: a quiet introduction to Gus + Mabel.</h1>
+  <p class="article-dek">An Australian studio you'll hear from often. And the small embossed tray we keep restocking.</p>
+
+  <div class="article-byline">
+    <span class="by">From the shop, Los Angeles</span>
+    <span>Share by <a href="#">email</a> · <a href="#">Pinterest</a></span>
+  </div>
+
+  <figure class="bleed">
+    <img src="../assets/blog/bbt-hero.webp" alt="A child in a cream sweater reaches into the Busy Bee Tray, filled with water and dried orange slices, thyme, and strawflowers. Wooden scoops float on the surface. A sixth-tray configuration sits beside it with dried citrus, cinnamon, pinecones, and dried blossoms.">
+    <figcaption>The Busy Bee Tray, half configuration, set up as an autumn sensory invitation with the quarter-tray loose-parts pantry alongside.</figcaption>
+  </figure>
+
+  <p>Every once in a while a brand turns up in the warehouse that changes the shape of the shelf. Gus + Mabel did this for us in late winter. We are now four restocks in.</p>
+
+  <p>If you haven't met them yet, here's what to know. Gus + Mabel is a small Australian studio founded in 2016 by Chanelle, a mother of three. The line is designed in Australia and ethically produced in their privately owned factory in China, a sentence we ask about for every supplier, and one they answer cleanly. Their work draws openly from Montessori, Waldorf, and Charlotte Mason approaches, which is part of why it sits naturally on a homeschool shelf, and equally at home on a kitchen counter.</p>
+
+  <p>We carry the Busy Bee Tray, its Reflective Play Mirror Inlay, and four of their felt habitats. The tray is the one we keep restocking, and the one this post is mostly about.</p>
+
+  <h2>The Busy Bee Tray</h2>
+
+  <p>It's a round play tray, just under sixteen inches across, made from bamboo fiber composite. The lid is embossed with native Australian flora and fauna, and it ships included with every configuration. The interior is satin-matte. Five and a half to six pounds in the hand, depending on configuration. Substantial.</p>
+
+  <figure>
+    <img src="../assets/blog/bbt-embossing.webp" alt="A close-up of the Busy Bee Tray lid, showing embossed botanical detail in matte bamboo composite.">
+    <figcaption>The lid pattern, embossed into the bamboo fibre composite. Native flora, native fauna, no painted decals.</figcaption>
+  </figure>
+
+  <p>What it's actually for is open play. The tray comes in three configurations, each sold complete with its embossed lid. The Reflective Play Mirror Inlay is the one add-on, an acrylic mirror cut to drop in.</p>
+
+  <div class="row3">
+    <figure>
+      <img src="../assets/blog/bbt-config-half.webp" alt="Busy Bee Tray, half configuration, two compartments.">
+      <figcaption>Half tray</figcaption>
+    </figure>
+    <figure>
+      <img src="../assets/blog/bbt-config-4.webp" alt="Busy Bee Tray, quarter configuration, four compartments.">
+      <figcaption>Quarter tray</figcaption>
+    </figure>
+    <figure>
+      <img src="../assets/blog/bbt-config-6.webp" alt="Busy Bee Tray, sixth configuration, six compartments.">
+      <figcaption>Sixth tray</figcaption>
+    </figure>
+  </div>
+
+  <p>We've watched it used as a play-dough station, a sand tray, a base for rolling pasta with a four-year-old, and (with the inlay slipped in) as a small water mirror with felt fish floating on top.</p>
+
+  <p>A few things that earned this its shelf space:</p>
+
+  <ul>
+    <li>It scales from a six-month-old reaching for felt balls in the open base, to a six-year-old sorting dried herbs and orange peels by color.</li>
+    <li>It stacks. The three configurations fit one inside another, so you can keep multiple set-ups going and rotate without finding new homes for everything.</li>
+    <li>It is, genuinely, top-shelf dishwasher-safe. After messy play with turmeric play-dough and beet-stained rice, the bamboo composite came out clean and unwarped.</li>
+    <li>It is one of the few play trays on the market that is plant-based, biodegradable, and compostable. Not a melamine pretending to be bamboo.</li>
+    <li>The lid is, in our opinion, the underrated feature. Set-ups don't need to be cleared at dinner. Lid on, slide the whole tray to the side of the table, lid off, pick up where you left off.</li>
+  </ul>
+
+  <h2>The Reflective Play Mirror Inlay</h2>
+
+  <p>The one add-on we recommend if you're buying the tray for a child under three. A thin acrylic mirror cut to drop into the tray, with a small finger notch on one edge. Shatterproof, lightweight, easy to wipe.</p>
+
+  <figure>
+    <img src="../assets/blog/bbt-water.webp" alt="A child in a tie-dye dress stands in dappled sunlight beside the Busy Bee Tray filled with water and floating hibiscus, frangipani, and marigold blossoms.">
+    <figcaption>Reflective Play Mirror Inlay under water, floating flowers on top. Doubled light, doubled color, doubled attention.</figcaption>
+  </figure>
+
+  <p>Children under three respond to mirrors the same way they respond to faces. Add a few felt mushrooms or a handful of acorns on top of the mirror, and you get reflected light, doubled objects, and the kind of long focus that's hard to engineer with most toys.</p>
+
+  <figure>
+    <img src="../assets/blog/bbt-mirror-child.webp" alt="A young blonde child peers into a flower-rimmed mirror tray and sees her own face reflected back.">
+    <figcaption>The same set-up, half an hour later. Wonder, ringed in petals.</figcaption>
+  </figure>
+
+  <h2>Three configurations, none of them wrong</h2>
+
+  <ul>
+    <li><strong>Half tray</strong>, two compartments. Best for younger children and water play. Pair with the Reflective Play Mirror Inlay if your child is under three.</li>
+    <li><strong>Quarter tray</strong>, four compartments. Best for sorting, color theory, and small-world setups.</li>
+    <li><strong>Sixth tray</strong>, six compartments. Best for older children working with loose parts, beads, dried herbs, or a Reggio-style invitation.</li>
+  </ul>
+
+  <p>Each ships with its lid.</p>
+
+  <h2>Care, briefly</h2>
+
+  <p>Bamboo composite is durable but not invincible. Don't drop it on tile. Don't leave colored paints or dyes pooling in it overnight; staining is possible with natural materials. A baking-soda paste rubbed in with a soft cloth pulls most stains. Lemon works on tannins. Skip the bleach.</p>
+
+  <p>Don't leave it in direct sun for an afternoon. Like wood, bamboo fiber prefers shade.</p>
+
+  <span class="section-rule"></span>
+
+  <h2>The felt habitats</h2>
+
+  <p>The same studio makes a small line of needle-felted playscapes. They're substantial, hand-felted wool, and dimensional, not flat printed mats. The coral, the moss, the mushrooms, the duck, all stand up off the surface. Four of them landed with this restock, each one a small world unto itself.</p>
+
+  <div class="row2">
+    <figure>
+      <img src="../assets/blog/habitat-fairy.webp" alt="Fairy Streamlet felt playscape with red toadstools, lavender flowers, and a small log with a caterpillar.">
+      <figcaption>Fairy Streamlet</figcaption>
+    </figure>
+    <figure>
+      <img src="../assets/blog/habitat-coralwhim.webp" alt="Coralwhim Cove felt reef playscape with hand-felted coral, anemones, and a yellow starfish.">
+      <figcaption>Coralwhim Cove</figcaption>
+    </figure>
+    <figure>
+      <img src="../assets/blog/habitat-featherfloat.webp" alt="Featherfloat Pond felt playscape with a hand-felted mallard duck, ducklings in a nest, and lavender florals.">
+      <figcaption>Featherfloat Pond</figcaption>
+    </figure>
+    <figure>
+      <img src="../assets/blog/habitat-tiny-terrains-2.webp" alt="Tiny Terrains, four small felt mats in moss green, snow white, autumn orange, and ocean blue.">
+      <figcaption>Tiny Terrains, set of four</figcaption>
+    </figure>
+  </div>
+
+  <p>Coralwhim Cove and Featherfloat Pond are full habitats in their own right, large enough to anchor a small-world story on the floor. Fairy Streamlet is the storybook one, with the felt toadstool tea-cup and the caterpillar mid-walk on a log. Tiny Terrains is a set of four smaller mats in moss, snow, autumn, and water, designed to be combined with figures and loose parts of your choosing.</p>
+
+  <p>Each one also fits inside the Busy Bee Tray, which turns the whole thing into a small-world scene with a built-in border. That overlap is part of why we now stock both lines from this studio. They're built to live together.</p>
+
+  <p style="font-style: italic; color: var(--stone); font-family: 'Cormorant Garamond', serif; font-size: 16px;">A practical note: the trays are substantial. Just under sixteen inches across, bamboo fiber composite, five and a half to six pounds depending on configuration.</p>
+
+  <h2>Why we carry them</h2>
+
+  <p>Gus + Mabel is the second studio on our shelf that centers textile and sensory play as a complete philosophy rather than a side category. Tara Treasures is the first. Both are heirloom in the literal sense: well enough made to pass to a younger sibling, and quiet enough in their styling that they don't shout in a room.</p>
+
+  <p>If you've already met our Tara Treasures range, Gus + Mabel will feel like a parallel line. If you haven't met either, the Busy Bee Tray is the most useful place to begin. We'd suggest the half configuration with the Reflective Play Mirror Inlay for a child under three, the quarter for ages three to six, and the sixth for older children working with smaller, more curated invitations.</p>
+
+  <div class="shop-card">
+    <span class="label">Shop the post</span>
+    <h3>Three places to start</h3>
+    <ul class="plain">
+      <li>
+        <span class="item-name">Busy Bee Tray, Half (with lid)</span>
+        <span class="item-price">$165</span>
+      </li>
+      <li>
+        <span class="item-name">Reflective Play Mirror Inlay</span>
+        <span class="item-price">$32</span>
+      </li>
+      <li>
+        <span class="item-name">Fairy Streamlet Felt Habitat</span>
+        <span class="item-price">$116</span>
+      </li>
+    </ul>
+    <a href="https://mytoywagon.com/collections/gus-mabel" class="shop-card-cta">Browse the full Gus + Mabel collection</a>
+  </div>
+
+  <p class="article-close">"Their work draws openly from Montessori, Waldorf, and Charlotte Mason. Built to live together, and to live a long time."</p>
+
+  <p style="text-align:center; margin-top: 64px;"><a href="../MTW Homepage v3.html" class="back-link">Back to the shop</a></p>
+</article>
+
+<!-- Next up -->
+<section class="next-up">
+  <span class="label">Read next</span>
+  <h2>Two more posts from the shop.</h2>
+  <div class="next-grid">
+    <a href="#" class="next-entry">
+      <div class="next-entry-img"><img src="../assets/drewart-camper.webp" alt="Drewart wooden camper"></div>
+      <p class="next-entry-cat">Care &amp; storage</p>
+      <h3 class="next-entry-title">How to clean a wooden toy without ruining the finish.</h3>
+      <div class="next-entry-meta">
+        <span>May 7, 2026</span>
+        <span>·</span>
+        <span>4 min read</span>
+      </div>
+    </a>
+    <a href="#" class="next-entry">
+      <div class="next-entry-img"><img src="../assets/blog-bumbu-treehouse.jpg" alt="Bumbu Enchanted Treehouse"></div>
+      <p class="next-entry-cat">From the maker</p>
+      <h3 class="next-entry-title">Inside the Bumbu workshop: maple, hand-painted, finished with beeswax.</h3>
+      <div class="next-entry-meta">
+        <span>Coming May 21</span>
+        <span>·</span>
+        <span>6 min read</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="foot">
+  <div class="foot-inner">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a href="../MTW Homepage v3.html" aria-label="My Toy Wagon"><span class="full-logo"></span></a>
+        <p class="foot-tag">Heirloom toys, curated by hand. A family-owned boutique, online since 2020.</p>
+        <p class="foot-loc">Los Angeles, California<br>Mon to Fri, 9 to 5 PT</p>
+      </div>
+      <div class="foot-col">
+        <h4>Customer care</h4>
+        <ul>
+          <li><a href="#">Rewards</a></li>
+          <li><a href="#">Wishlist</a></li>
+          <li><a href="#">Shipping</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">Gift cards</a></li>
+          <li><a href="#">Privacy policy</a></li>
+          <li><a href="#">Terms of service</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>About us</h4>
+        <ul>
+          <li><a href="#">Our story</a></li>
+          <li><a href="#">Customer reviews</a></li>
+          <li><a href="#">Our blog</a></li>
+          <li><a href="#">Register as a school</a></li>
+          <li><a href="#">Collaboration</a></li>
+          <li><a href="#">Affiliate program</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Contact us</h4>
+        <div class="foot-contact">
+          <a href="mailto:contact@mytoywagon.com">contact@mytoywagon.com</a>
+          <a href="tel:6268410421">626.841.0421</a>
+          <span class="stone spaced">Mon to Fri, 9 am to 5 pm PT</span>
+          <span class="stone">Los Angeles, California</span>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span class="foot-bottom-copy">
+        <em>Heirloom toys, curated by hand.</em>
+        <span class="foot-bottom-sep">·</span>
+        © 2026 My Toy Wagon. All rights reserved.
+      </span>
+      <div class="foot-bottom-links">
+        <a href="#">Instagram</a>
+        <a href="#">Pinterest</a>
+        <a href="#">YouTube</a>
+        <span class="foot-bottom-sep">·</span>
+        <a href="#">Privacy</a>
+        <a href="#">Accessibility</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

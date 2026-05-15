@@ -1,0 +1,2733 @@
+<!DOCTYPE html><html lang="en"><head>
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Toy Wagon — Heirloom toys, considered and kept</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&amp;family=Mulish:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #F5F0E5;
+  --warm-white: #FFFCF7;
+  --ink: #2C2C2A;
+  --forest: #3B6D11;
+  --amber: #854F0B;
+  --stone: #5F5E5A;
+  --card-bg: #EDE3CD;
+  --rule: rgba(44, 44, 42, 0.12);
+  --rule-strong: rgba(44, 44, 42, 0.22);
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: 'Mulish', sans-serif;
+  color: var(--ink);
+  background: var(--cream);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+
+.serif { font-family: 'Cormorant Garamond', serif; }
+.italic { font-style: italic; }
+.label {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--stone);
+  font-weight: 500;
+}
+
+/* ---------- Top utility bar ---------- */
+.utility {
+  background: var(--ink);
+  color: var(--cream);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+}
+.utility-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 9px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+}
+.utility-center {
+  flex: 1;
+  text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 14px;
+  letter-spacing: 0;
+}
+.utility-links {
+  display: flex;
+  gap: 22px;
+  color: rgba(245, 240, 229, 0.7);
+}
+.utility-links a:hover { color: var(--cream); }
+
+/* ---------- Nav ---------- */
+header.nav {
+  border-bottom: 0.5px solid var(--rule);
+  background: var(--cream);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+.nav-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 16px 40px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 32px;
+}
+.nav-left, .nav-right {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+.nav-right { justify-content: flex-end; }
+.nav-link {
+  font-size: 13.5px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  position: relative;
+  padding: 4px 0;
+}
+.nav-link:hover { color: var(--forest); }
+.nav-link.has-caret::after {
+  content: "";
+  display: inline-block;
+  width: 5px; height: 5px;
+  border-right: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+  transform: rotate(45deg);
+  margin-left: 6px;
+  vertical-align: 2px;
+}
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  text-align: left;
+  line-height: 1;
+}
+.logo-mark {
+  width: 100px;
+  height: 100px;
+  background-color: var(--ink);
+  -webkit-mask: url('{{ FILES_BASE_URL }}/logo-mark.png') center/contain no-repeat;
+  mask: url('{{ FILES_BASE_URL }}/logo-mark.png') center/contain no-repeat;
+  flex-shrink: 0;
+}
+.logo-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  line-height: 1;
+  color: var(--ink);
+  text-align: left;
+  white-space: nowrap;
+}
+.logo small {
+  display: block;
+  font-family: 'Mulish', sans-serif;
+  font-style: normal;
+  font-size: 9.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--stone);
+  margin-top: 8px;
+  font-weight: 500;
+  white-space: nowrap;
+  text-align: left;
+}
+.nav-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+}
+.cart-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  background: var(--forest);
+  color: var(--cream);
+  border-radius: 9px;
+  font-size: 11px;
+  font-weight: 600;
+}
+.search-pill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 20px;
+  background: var(--warm-white);
+  border: 0.5px solid var(--rule-strong);
+  border-radius: 999px;
+  font-size: 14px;
+  color: var(--ink);
+  min-width: 320px;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  cursor: pointer;
+  transition: border-color 200ms ease, box-shadow 200ms ease;
+}
+.search-pill:hover { border-color: var(--ink); box-shadow: 0 1px 12px rgba(44,44,42,0.06); }
+
+/* ---------- Hero (split) ---------- */
+.hero {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 56px 40px 88px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+.hero::before, .hero::after { display: none; }
+.hero-text { max-width: 540px; }
+.hero-eyebrow {
+  font-family: 'Mulish', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--stone);
+  font-weight: 500;
+  margin: 0 0 28px;
+}
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 86px;
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.014em;
+  margin: 0 0 28px;
+  color: var(--ink);
+  text-wrap: balance;
+}
+.hero-title em { font-style: italic; font-weight: 500; }
+.hero-body {
+  font-size: 16.5px;
+  line-height: 1.7;
+  color: var(--ink);
+  max-width: 480px;
+  margin: 0 0 36px;
+  text-wrap: pretty;
+}
+.hero-ctas {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 32px;
+}
+.hero-footnote {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 16px;
+  color: var(--stone);
+  margin: 0;
+}
+.hero-footnote a {
+  color: var(--ink);
+  border-bottom: 0.5px solid var(--rule-strong);
+  padding-bottom: 1px;
+}
+.hero-footnote a:hover { border-color: var(--forest); color: var(--forest); }
+.hero-image-wrap {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  border-radius: 2px;
+  overflow: hidden;
+  background: var(--card-bg);
+}
+.hero-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.hero-feature-tag {
+  position: absolute;
+  left: 24px;
+  bottom: 24px;
+  background: var(--ink);
+  color: var(--cream);
+  border-radius: 2px;
+  padding: 16px 20px;
+  max-width: 260px;
+  box-shadow: 0 2px 18px rgba(44,44,42,0.18);
+}
+.hero-feature-tag .label {
+  display: block;
+  margin-bottom: 6px;
+  color: rgba(245, 240, 229, 0.55);
+}
+.hero-feature-tag .ft-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 19px;
+  line-height: 1.2;
+  margin: 0 0 2px;
+  color: var(--cream);
+}
+.hero-feature-tag .ft-price {
+  font-size: 13px;
+  color: rgba(245, 240, 229, 0.7);
+}
+
+/* ---------- Trust strip ---------- */
+.trust {
+  background: var(--cream);
+  border-top: 0.5px solid var(--rule);
+}
+.trust-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 64px 40px 76px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 36px;
+  align-items: start;
+}
+.trust-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  transition: transform 220ms ease;
+}
+.trust-card:hover { transform: translateY(-2px); }
+.trust-card .ts-visual {
+  height: 132px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+  position: relative;
+}
+.trust-card .ts-visual img {
+  height: 132px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+.trust-card .wagon-badge {
+  position: absolute;
+  top: 12%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-8deg);
+  padding: 6px 12px;
+  background: #854F0B;
+  color: var(--cream);
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(44, 44, 42, 0.18);
+  border: 0.5px dashed rgba(245, 240, 229, 0.55);
+  pointer-events: none;
+}
+.trust-card .ts-illus {
+  width: 132px;
+  height: 110px;
+  display: block;
+}
+.trust-card .ts-divider {
+  width: 28px;
+  height: 0.5px;
+  background: var(--rule-strong);
+  margin: 2px auto 4px;
+}
+.trust-card .ts-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.1;
+  margin: 0;
+  letter-spacing: -0.005em;
+}
+.trust-card .ts-sub {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--stone);
+  margin: 0;
+  max-width: 220px;
+  text-wrap: pretty;
+}
+
+/* ---------- Shop by age ---------- */
+.ages-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 24px;
+}
+.age-card {
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.age-circle {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background: var(--card-bg);
+  margin-bottom: 18px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 220ms ease;
+  border: 0.5px solid var(--rule);
+}
+.age-card:hover .age-circle {
+  transform: translateY(-3px);
+  border-color: var(--rule-strong);
+}
+.age-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  font-weight: 500;
+  margin: 0 0 4px;
+  letter-spacing: -0.005em;
+}
+.age-range {
+  font-size: 11.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--stone);
+  font-weight: 500;
+}
+
+/* ---------- Brands ---------- */
+.brands-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.brand-tile {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  background: var(--card-bg);
+  border-radius: 2px;
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+.brand-tile .brand-img {
+  position: absolute;
+  inset: 0;
+}
+.brand-tile .brand-label {
+  position: absolute;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%);
+  background: var(--warm-white);
+  padding: 9px 18px;
+  border-radius: 1px;
+  font-family: 'Mulish', sans-serif;
+  font-size: 11.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--ink);
+  white-space: nowrap;
+  transition: padding 220ms ease, bottom 220ms ease;
+  box-shadow: 0 1px 2px rgba(44,44,42,0.06);
+}
+.brand-tile:hover .brand-label { padding: 11px 24px; bottom: 22px; }
+.brand-row-foot {
+  margin-top: 36px;
+  display: flex;
+  justify-content: center;
+}
+
+/* ---------- Star ratings ---------- */
+.stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+  font-size: 12px;
+  color: var(--stone);
+}
+.stars-glyphs {
+  display: inline-flex;
+  gap: 1px;
+  color: var(--amber);
+  letter-spacing: 0;
+  font-size: 13px;
+  line-height: 1;
+}
+
+/* Quick-view button (top-right, reveals on hover) */
+.product-image .quick-view {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: var(--warm-white);
+  border: 0.5px solid var(--rule-strong);
+  border-radius: 50%;
+  color: var(--ink);
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 220ms ease, transform 220ms ease, background 180ms ease, color 180ms ease;
+  z-index: 3;
+  cursor: pointer;
+}
+.product-image .quick-view svg {
+  width: 14px; height: 14px;
+  stroke: currentColor; stroke-width: 1.6; fill: none;
+}
+.product:hover .product-image .quick-view { opacity: 1; transform: translateY(0); }
+.product-image .quick-view:hover { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+
+/* Add-to-cart button reveal (replaces the old "Quick add" label) */
+.product-image .quick-add {
+  position: absolute;
+  left: 12px;
+  right: 60px;
+  bottom: 12px;
+  padding: 11px 14px;
+  background: var(--ink);
+  color: var(--cream);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-align: center;
+  border-radius: 2px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 220ms ease, transform 220ms ease, background 160ms ease;
+  z-index: 3;
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  letter-spacing: 0.14em;
+}
+.product:hover .quick-add { opacity: 1; transform: translateY(0); }
+.quick-add:hover { background: var(--forest); }
+
+/* ---------- Reviews ---------- */
+.reviews {
+  background: var(--cream);
+}
+.reviews-head {
+  text-align: center;
+  margin-bottom: 56px;
+}
+.reviews-head .label { display: block; margin-bottom: 18px; }
+.reviews-head h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 56px;
+  font-weight: 500;
+  line-height: 1.05;
+  margin: 0 0 16px;
+  letter-spacing: -0.005em;
+}
+.reviews-head h2 em { font-style: italic; }
+.reviews-summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--stone);
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 16px;
+}
+.reviews-summary .stars-glyphs { font-size: 16px; }
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+.review-card {
+  background: var(--warm-white);
+  border: 0.5px solid var(--rule);
+  border-radius: 2px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  overflow: hidden;
+}
+.review-product-image {
+  aspect-ratio: 4 / 3;
+  background: var(--cream);
+  width: 100%;
+  overflow: hidden;
+  border-bottom: 0.5px solid var(--rule);
+  position: relative;
+}
+.review-product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  padding: 14px;
+}
+.review-product-image .empty-label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: var(--stone);
+  font-size: 17px;
+  text-align: center;
+  padding: 24px;
+  line-height: 1.3;
+}
+.review-card-body {
+  padding: 28px 32px 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.review-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+.review-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--card-bg);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 17px;
+  color: var(--ink);
+  flex-shrink: 0;
+  border: 0.5px solid var(--rule-strong);
+  letter-spacing: 0;
+}
+.review-who-line { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.review-who-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.2;
+}
+.review-verified {
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--forest);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.review-verified svg {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+}
+.review-stars {
+  color: var(--amber);
+  font-size: 14px;
+  letter-spacing: 1px;
+  margin-bottom: 18px;
+}
+.review-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 22px;
+  line-height: 1.25;
+  margin: 0 0 14px;
+  color: var(--ink);
+  letter-spacing: -0.005em;
+}
+.review-body {
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: var(--ink);
+  margin: 0 0 20px;
+  flex: 1;
+}
+.review-meta {
+  border-top: 0.5px solid var(--rule);
+  padding-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 12.5px;
+  color: var(--stone);
+}
+.review-meta .who { color: var(--ink); font-weight: 500; }
+
+/* ---------- Press ---------- */
+.press {
+  border-top: 0.5px solid var(--rule);
+  border-bottom: 0.5px solid var(--rule);
+  background: var(--cream);
+}
+.press-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 44px 40px;
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  justify-content: space-between;
+}
+.press-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 18px;
+  color: var(--stone);
+  flex-shrink: 0;
+}
+.press-logos {
+  display: flex;
+  gap: 56px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+.press-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--stone);
+  opacity: 0.7;
+  transition: opacity 200ms ease;
+  white-space: nowrap;
+}
+.press-logo.caps {
+  font-family: 'Mulish', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.press-logo:hover { opacity: 1; }
+
+/* ---------- Our Story ---------- */
+.story {
+  background: var(--cream);
+  border-top: 0.5px solid var(--rule);
+}
+.story-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 120px 40px 110px;
+  text-align: center;
+  position: relative;
+}
+.story-ornament {
+  display: block;
+  width: 180px;
+  height: auto;
+  margin: 0 auto 28px;
+  opacity: 0.7;
+  filter: sepia(0.2);
+}
+.story .label { display: block; margin-bottom: 20px; }
+.story h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 60px;
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: -0.008em;
+  margin: 0 0 32px;
+  text-wrap: balance;
+}
+.story h2 em { font-style: italic; }
+.story p {
+  font-size: 17px;
+  line-height: 1.75;
+  margin: 0 auto 18px;
+  max-width: 600px;
+  text-wrap: pretty;
+}
+.story-lead {
+  font-size: 18.5px !important;
+  color: var(--ink);
+}
+.story-signoff {
+  margin: 36px auto 28px !important;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.story-signature {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 32px;
+  line-height: 1.1;
+  color: var(--ink);
+}
+.story-signrole {
+  font-size: 11.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--stone);
+  font-weight: 500;
+}
+.story-cta { margin-top: 12px; }
+
+/* ---------- Gifting ---------- */
+.gift {
+  background: var(--card-bg);
+}
+.gift-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 100px 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.gift-text .label { display: block; margin-bottom: 18px; }
+.gift-text h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 58px;
+  font-weight: 500;
+  line-height: 1;
+  margin: 0 0 24px;
+  letter-spacing: -0.008em;
+}
+.gift-text h2 em { font-style: italic; }
+.gift-text p {
+  font-size: 16.5px;
+  line-height: 1.7;
+  margin: 0 0 28px;
+  max-width: 460px;
+}
+.gift-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 36px;
+}
+.gift-tag {
+  padding: 9px 18px;
+  background: var(--warm-white);
+  border: 0.5px solid var(--rule-strong);
+  border-radius: 999px;
+  font-size: 12.5px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  transition: all 180ms ease;
+}
+.gift-tag:hover {
+  background: var(--ink);
+  color: var(--cream);
+  border-color: var(--ink);
+}
+.gift-image {
+  height: 520px;
+  background: var(--warm-white);
+  border-radius: 2px;
+  border: 0.5px solid var(--rule);
+  position: relative;
+  overflow: hidden;
+}
+.gift-note {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  background: var(--ink);
+  color: var(--cream);
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  padding: 12px 18px;
+  font-size: 15px;
+  max-width: 220px;
+  border-radius: 2px;
+  line-height: 1.4;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 24px;
+  font-size: 13.5px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  border-radius: 2px;
+  border: 0.5px solid transparent;
+  cursor: pointer;
+  transition: all 160ms ease;
+  background: none;
+  font-family: inherit;
+}
+.btn-primary {
+  background: var(--ink);
+  color: var(--cream);
+}
+.btn-primary:hover { background: var(--forest); }
+.btn-ghost {
+  border-color: var(--rule-strong);
+  color: var(--ink);
+}
+.btn-ghost:hover { border-color: var(--ink); }
+.btn-arrow {
+  width: 14px;
+  height: 8px;
+  position: relative;
+}
+.btn-arrow::before, .btn-arrow::after {
+  content: "";
+  position: absolute;
+  background: currentColor;
+}
+.btn-arrow::before {
+  left: 0; top: 50%;
+  width: 100%; height: 1px;
+  transform: translateY(-50%);
+}
+.btn-arrow::after {
+  right: 0; top: 50%;
+  width: 6px; height: 6px;
+  border-top: 1px solid currentColor;
+  border-right: 1px solid currentColor;
+  background: none;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.hero-image-wrap {
+  position: relative;
+}
+.hero-image {
+  width: 100%;
+  height: 620px;
+  background: var(--card-bg);
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-meta-card {
+  position: absolute;
+  left: -36px;
+  bottom: -28px;
+  background: var(--warm-white);
+  padding: 22px 26px;
+  border-radius: 2px;
+  max-width: 270px;
+  box-shadow: 0 1px 24px rgba(44, 44, 42, 0.08);
+  border: 0.5px solid var(--rule);
+}
+.hero-meta-card .label { margin-bottom: 10px; display: block; }
+.hero-meta-card .title-line {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 22px;
+  line-height: 1.25;
+  margin: 0 0 8px;
+}
+.hero-meta-card .price {
+  font-size: 14px;
+  font-weight: 500;
+}
+.hero-meta-card .status {
+  font-size: 12px;
+  color: var(--forest);
+  margin-top: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.hero-meta-card .status::before {
+  content: "";
+  display: inline-block;
+  width: 6px; height: 6px;
+  background: var(--forest);
+  border-radius: 50%;
+}
+
+.hero-side-info {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background: rgba(255, 252, 247, 0.92);
+  backdrop-filter: blur(4px);
+  padding: 14px 16px;
+  border-radius: 2px;
+  border: 0.5px solid var(--rule);
+  max-width: 200px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.hero-side-info .label { font-size: 10px; margin-bottom: 6px; display: block; }
+
+/* ---------- Section header ---------- */
+section.block {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 80px 40px;
+}
+.block-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 48px;
+  gap: 40px;
+}
+.block-head h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 56px;
+  font-weight: 500;
+  line-height: 1;
+  margin: 0;
+  letter-spacing: -0.005em;
+}
+.block-head .lead {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: var(--stone);
+  font-size: 18px;
+  max-width: 340px;
+  line-height: 1.45;
+  margin: 0;
+}
+.block-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 16px;
+  color: var(--stone);
+  margin-bottom: 12px;
+}
+
+/* ---------- Categories ---------- */
+.categories {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.cat {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  position: relative;
+  overflow: visible;
+  transition: transform 220ms ease;
+  cursor: pointer;
+}
+.cat:hover { transform: translateY(-3px); }
+.cat-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: var(--card-bg);
+  border-radius: 2px;
+  overflow: hidden;
+  margin: 0 0 18px;
+  position: relative;
+}
+.cat-image img,
+.cat-image image-slot {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.cat-image img { object-fit: cover; object-position: center center; }
+.cat-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 0 4px;
+}
+.cat-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 23px;
+  font-weight: 500;
+  line-height: 1.15;
+  margin: 0;
+  color: var(--ink);
+  letter-spacing: -0.005em;
+  text-wrap: balance;
+}
+.cat-count {
+  font-size: 12.5px;
+  letter-spacing: 0.04em;
+  color: var(--stone);
+  margin: 0;
+}
+
+/* ---------- Featured products ---------- */
+.products {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+}
+.product { cursor: pointer; position: relative; }
+.product-image {
+  aspect-ratio: 4 / 5;
+  background: var(--warm-white);
+  border-radius: 2px;
+  margin-bottom: 16px;
+  position: relative;
+  overflow: hidden;
+  border: 0.5px solid var(--rule);
+  transition: border-color 200ms ease;
+}
+.product:hover .product-image { border-color: var(--rule-strong); }
+.product-image img {
+  transition: transform 600ms ease, opacity 240ms ease;
+}
+.product:hover .product-image img.primary { transform: scale(1.04); opacity: 0; }
+.product-image img.secondary {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; opacity: 0;
+  transition: opacity 280ms ease, transform 600ms ease;
+  z-index: 1;
+}
+.product:hover .product-image img.secondary { opacity: 1; transform: scale(1.04); }
+.product-tag {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: var(--warm-white);
+  border: 0.5px solid var(--rule);
+  padding: 5px 10px;
+  border-radius: 2px;
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--stone);
+}
+.product-tag.amber { color: var(--amber); border-color: rgba(133, 79, 11, 0.3); background: rgba(255, 252, 247, 0.95); }
+.product-tag.forest { color: var(--forest); border-color: rgba(59, 109, 17, 0.3); background: rgba(255, 252, 247, 0.95); }
+.product-maker {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--stone);
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+.product-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.15;
+  margin: 0 0 6px;
+}
+.product-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 13px;
+  color: var(--stone);
+}
+.product-price { color: var(--ink); font-weight: 500; }
+
+/* ---------- Maker spotlight (9:16 vertical video alongside text) ---------- */
+.maker {
+  background: var(--ink);
+  color: var(--cream);
+  margin: 0;
+}
+.maker-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 100px 40px;
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 80px;
+  align-items: center;
+}
+.maker .label { color: rgba(245, 240, 229, 0.55); }
+.maker h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 56px;
+  font-weight: 500;
+  line-height: 1.02;
+  margin: 18px 0 28px;
+  letter-spacing: -0.005em;
+}
+.maker h2 em { font-style: italic; }
+.maker p {
+  font-size: 16.5px;
+  line-height: 1.75;
+  color: rgba(245, 240, 229, 0.82);
+  max-width: 540px;
+  margin: 0 0 20px;
+  text-wrap: pretty;
+}
+.maker-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 22px;
+  line-height: 1.45;
+  margin: 32px 0 36px;
+  padding-left: 18px;
+  border-left: 2px solid var(--forest);
+  max-width: 520px;
+}
+.maker-quote cite {
+  display: block;
+  font-style: normal;
+  font-family: 'Mulish', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-top: 14px;
+  color: rgba(245, 240, 229, 0.55);
+}
+.maker-image-wrap { position: relative; }
+.maker-image {
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  background: #3a3a36;
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+}
+.maker-image video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.maker-stats {
+  margin-top: 36px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px 40px;
+  max-width: 520px;
+  padding-top: 32px;
+  border-top: 0.5px solid rgba(245, 240, 229, 0.18);
+}
+.maker-stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 26px;
+  line-height: 1;
+  margin-bottom: 6px;
+  color: var(--cream);
+}
+.maker-stat-label {
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(245, 240, 229, 0.6);
+  font-weight: 500;
+}
+
+/* ---------- Educator program ---------- */
+.educator {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 80px 40px;
+}
+.educator-card {
+  background: var(--card-bg);
+  border-radius: 2px;
+  padding: 64px 72px;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+.educator h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px;
+  font-weight: 500;
+  line-height: 1.02;
+  margin: 14px 0 22px;
+  letter-spacing: -0.005em;
+}
+.educator p {
+  font-size: 16px;
+  line-height: 1.7;
+  margin: 0 0 16px;
+  max-width: 480px;
+  color: var(--ink);
+  text-wrap: pretty;
+}
+.educator-points {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px 28px;
+  margin-top: 28px;
+}
+.ep {
+  border-top: 0.5px solid var(--rule-strong);
+  padding-top: 14px;
+}
+.ep-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 13px;
+  color: var(--stone);
+  margin-bottom: 4px;
+}
+.ep-text {
+  font-size: 13.5px;
+  line-height: 1.55;
+  margin: 0;
+}
+.educator-cta {
+  margin-top: 32px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ---------- Journal ---------- */
+.journal-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 36px;
+}
+.entry-image {
+  aspect-ratio: 4 / 3;
+  background: var(--card-bg);
+  border-radius: 2px;
+  margin-bottom: 18px;
+  position: relative;
+  overflow: hidden;
+}
+.entry-cat {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--amber);
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.entry-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 1.18;
+  margin: 0 0 10px;
+  text-wrap: balance;
+}
+.entry-meta {
+  font-size: 12.5px;
+  color: var(--stone);
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.entry-meta .dot { width: 3px; height: 3px; background: var(--stone); border-radius: 50%; }
+
+/* ---------- Newsletter ---------- */
+.letter {
+  background: var(--warm-white);
+  border-top: 0.5px solid var(--rule);
+  border-bottom: 0.5px solid var(--rule);
+  margin-top: 40px;
+}
+.letter-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 88px 40px;
+  text-align: center;
+}
+.letter h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 56px;
+  font-weight: 500;
+  line-height: 1.05;
+  margin: 14px auto 22px;
+  max-width: 660px;
+  letter-spacing: -0.005em;
+  text-wrap: balance;
+}
+.letter h2 em { font-style: italic; }
+.letter p {
+  font-size: 16px;
+  color: var(--stone);
+  max-width: 520px;
+  margin: 0 auto 36px;
+  line-height: 1.7;
+  text-wrap: pretty;
+}
+.letter-form {
+  display: flex;
+  gap: 0;
+  max-width: 480px;
+  margin: 0 auto;
+  border: 0.5px solid var(--rule-strong);
+  border-radius: 2px;
+  overflow: hidden;
+  background: var(--cream);
+}
+.letter-form input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 16px 20px;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--ink);
+  outline: none;
+}
+.letter-form input::placeholder { color: var(--stone); }
+.letter-form button {
+  background: var(--ink);
+  color: var(--cream);
+  border: none;
+  padding: 0 28px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.letter-form button:hover { background: var(--forest); }
+.letter-note {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--stone);
+  margin-top: 18px;
+}
+
+/* ---------- Footer ---------- */
+footer.site-footer {
+  background: var(--cream);
+  border-top: 0.5px solid var(--rule);
+  margin-top: 0;
+}
+.foot-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 88px 40px 32px;
+}
+.foot-top {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr 1fr;
+  gap: 64px;
+  margin-bottom: 64px;
+  padding-bottom: 56px;
+  border-bottom: 0.5px solid var(--rule);
+}
+.foot-brand .full-logo {
+  display: block;
+  width: 220px;
+  height: 130px;
+  margin-bottom: 4px;
+  background-color: var(--ink);
+  -webkit-mask: url('{{ FILES_BASE_URL }}/logo-tight.png') left center/contain no-repeat;
+  mask: url('{{ FILES_BASE_URL }}/logo-tight.png') left center/contain no-repeat;
+}
+.foot-tag {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: var(--stone);
+  font-size: 17px;
+  margin: 6px 0 24px;
+  max-width: 320px;
+  line-height: 1.5;
+}
+.foot-loc {
+  font-size: 13.5px;
+  color: var(--ink);
+  line-height: 1.8;
+  margin: 0 0 24px;
+}
+.foot-loc strong { font-weight: 500; }
+.foot-social {
+  display: flex;
+  gap: 14px;
+  margin-top: 4px;
+}
+.foot-social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: 0.5px solid var(--rule-strong);
+  border-radius: 50%;
+  color: var(--ink);
+  transition: background 180ms ease, color 180ms ease, border-color 180ms ease;
+}
+.foot-social a:hover {
+  background: var(--ink);
+  color: var(--cream);
+  border-color: var(--ink);
+}
+.foot-social svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  stroke-width: 1.4;
+  fill: none;
+}
+.foot-col h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 18px;
+  font-weight: 500;
+  margin: 4px 0 22px;
+  color: var(--ink);
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+.foot-col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+.foot-col li { font-size: 13.5px; color: var(--ink); }
+.foot-col a:hover { color: var(--forest); }
+.foot-contact {
+  font-size: 13.5px;
+  line-height: 1.85;
+  color: var(--ink);
+}
+.foot-contact a {
+  display: block;
+  color: var(--ink);
+  font-weight: 500;
+}
+.foot-contact a:hover { color: var(--forest); }
+.foot-contact .stone { display: block; color: var(--stone); }
+.foot-contact .stone-block { margin-top: 14px; }
+
+/* Quiet payment row */
+.foot-mid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+  padding-bottom: 28px;
+  margin-bottom: 28px;
+  border-bottom: 0.5px solid var(--rule);
+  flex-wrap: wrap;
+}
+.foot-pay-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 15px;
+  color: var(--stone);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.pay-methods {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0;
+}
+.pay-chip {
+  display: inline-block;
+  padding: 0 14px 0 0;
+  margin-right: 14px;
+  border-right: 0.5px solid var(--rule);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--stone);
+  white-space: nowrap;
+  line-height: 1.2;
+}
+.pay-chip:last-child {
+  border-right: none;
+  margin-right: 0;
+  padding-right: 0;
+}
+
+.foot-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  font-size: 12px;
+  color: var(--stone);
+  letter-spacing: 0.04em;
+  flex-wrap: wrap;
+}
+.foot-bottom-copy { font-size: 12px; }
+.foot-bottom-copy em {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--ink);
+  letter-spacing: 0;
+  margin-right: 10px;
+}
+.foot-bottom-links {
+  display: flex;
+  gap: 22px;
+  align-items: center;
+}
+.foot-bottom-links a:hover { color: var(--ink); }
+
+/* ---------- Image-slot styling ---------- */
+image-slot {
+  --is-bg: transparent;
+  --is-border: 0;
+  --is-radius: 0;
+  --is-placeholder-color: var(--stone);
+  width: 100%;
+  height: 100%;
+}
+
+/* utility */
+.row { display: flex; align-items: center; gap: 8px; }
+.divider {
+  width: 36px;
+  height: 0.5px;
+  background: currentColor;
+  opacity: 0.4;
+  display: inline-block;
+  margin: 0 6px;
+}
+
+/* Icons */
+.icon { width: 16px; height: 16px; stroke: currentColor; stroke-width: 1.4; fill: none; flex-shrink: 0; }
+
+
+/* Free shipping progress bar (under utility, above nav) */
+.ship-progress {
+  background: var(--card-bg);
+  border-bottom: 0.5px solid var(--rule);
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--ink);
+  text-align: center;
+  padding: 9px 40px;
+  letter-spacing: 0;
+}
+.ship-progress strong { font-weight: 500; color: var(--forest); }
+.ship-progress-bar {
+  display: inline-block;
+  vertical-align: middle;
+  width: 120px;
+  height: 4px;
+  background: rgba(44,44,42,0.12);
+  border-radius: 2px;
+  margin: 0 10px;
+  position: relative;
+  overflow: hidden;
+}
+.ship-progress-fill {
+  display: block;
+  height: 100%;
+  width: 68%;
+  background: var(--forest);
+  border-radius: 2px;
+  transition: width 400ms ease;
+}
+
+/* Stock counter pill */
+.stock-low {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  background: var(--amber);
+  color: var(--cream);
+  padding: 5px 10px;
+  border-radius: 2px;
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 600;
+  z-index: 2;
+  font-family: 'Mulish', sans-serif;
+}
+
+/* Soft Educator banner (replaces card style) */
+.educator-soft {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 36px 40px;
+  border-top: 0.5px solid var(--rule);
+  border-bottom: 0.5px solid var(--rule);
+}
+.educator-soft-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.educator-soft-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 18px;
+  color: var(--ink);
+  max-width: 540px;
+  line-height: 1.4;
+}
+.educator-soft-text strong { font-weight: 500; font-style: normal; color: var(--stone); letter-spacing: 0.18em; text-transform: uppercase; font-size: 11px; display: block; margin-bottom: 6px; }
+.educator-soft-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink);
+  border-bottom: 0.5px solid var(--rule-strong);
+  padding-bottom: 4px;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+.educator-soft-cta:hover { border-color: var(--ink); color: var(--forest); }
+</style>
+<style>
+        .captureFixedShim { position: absolute !important; }
+        .captureStickyShim { position: static !important; }
+        .captureHeaderShim { position: relative !important; }
+    </style></head>
+<body style="">
+
+<!-- Utility bar -->
+<div class="utility">
+  <div class="utility-inner">
+    <div class="utility-links">
+      <a href="#">Track order</a>
+      <a href="#">Educator program</a>
+    </div>
+    <div class="utility-center">Pre-order opening soon · Tiny Fox Hole Birthday Ring</div>
+    <div class="utility-links" style="justify-content:flex-end;">
+      <a href="#">Gift cards</a>
+      <a href="#">Sign in</a>
+    </div>
+  </div>
+</div>
+<!-- Free shipping progress bar (CONDITIONAL: only render for shipping addresses in contiguous U.S.) -->
+<div class="ship-progress" data-show-for="contiguous-us-only">
+  You're <strong>$48 away</strong> from free shipping to the contiguous U.S.<span class="ship-progress-bar"><span class="ship-progress-fill"></span></span>Free at <strong>$150+</strong>.
+</div>
+
+<!-- Nav -->
+<header class="nav">
+  <div class="nav-inner">
+    <nav class="nav-left">
+      <a href="#" class="nav-link has-caret">Shop all</a>
+      <a href="#" class="nav-link has-caret">Collections</a>
+      <a href="#" class="nav-link">Ages</a>
+    </nav>
+    <a href="#" class="logo">
+      <span class="logo-mark" aria-hidden="true" style="width: 100px; height: 100px;"></span>
+      <span class="logo-text">
+        My Toy Wagon
+        <small>Los Angeles · California · est. 2020</small>
+      </span>
+    </a>
+    <div class="nav-right">
+      <div class="search-pill">
+        <svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+        <span>Search wooden blocks, plush…</span>
+      </div>
+      <a href="#" class="nav-icon">Account</a>
+      <a href="#" class="nav-icon">Cart <span class="cart-count">2</span></a>
+    </div>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-text">
+    <h1 class="hero-title">Toys meant <em>to be kept</em>, not outgrown.</h1>
+    <p class="hero-body">A family-run shop in Arcadia, California, online since 2020. We carry wooden toys, Waldorf dolls, and open-ended play sets, sourced from makers we know by name. Each piece is chosen to scale across a childhood, and to last for the sibling who comes after.</p>
+    <div class="hero-ctas">
+      <a href="#" class="btn btn-primary">Find a gift under $50 <span class="btn-arrow"></span></a>
+      <a href="#" class="btn btn-ghost">Read our story</a>
+    </div>
+    <p class="hero-footnote">Pre-order opening soon: <a href="#">Tiny Fox Hole Birthday Ring</a>. Sign up to be notified.</p>
+  </div>
+  <div class="hero-image-wrap">
+    <img src="{{ FILES_BASE_URL }}/hero-kaleidoscope.webp" alt="A child looking through an amber kaleidoscope at home">
+    <div class="hero-feature-tag">
+      <span class="label">Featured this week</span>
+      <p class="ft-name">Amber Kaleidoscope</p>
+      <p class="ft-price">$38 · In stock</p>
+    </div>
+  </div>
+</section>
+
+<!-- Educator program (soft strip) -->
+<section class="educator-soft">
+  <div class="educator-soft-inner">
+    <p class="educator-soft-text"><strong>For educators</strong>Volume pricing, Net-30 invoicing, and one-on-one curation for schools, therapists, and homeschool families.</p>
+    <a href="#" class="educator-soft-cta">Apply for an account →</a>
+  </div>
+</section>
+
+<!-- Trust strip -->
+<section class="trust">
+  <div class="trust-inner">
+    <a href="#" class="trust-card">
+      <div class="ts-visual"><img src="{{ FILES_BASE_URL }}/trust-shipping-mark.png" alt=""><span class="wagon-badge">free shipping</span></div>
+      <h3 class="ts-title">Free U.S. shipping</h3>
+      <div class="ts-divider"></div>
+      <p class="ts-sub">On orders $150 and up, contiguous U.S.</p>
+    </a>
+    <a href="#" class="trust-card">
+      <div class="ts-visual">
+        <svg class="ts-illus" viewBox="0 0 120 100" aria-hidden="true">
+          <!-- small flourish above -->
+          <g stroke="#854F0B" stroke-width="0.6" stroke-linecap="round" fill="none">
+            <path d="M44 26 L76 26"/>
+            <path d="M58 23 L62 29"/>
+          </g>
+          <!-- the figure: 30 in elegant Cormorant italic -->
+          <text x="60" y="54" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="42" fill="#3B6D11" font-weight="500">30</text>
+          <!-- 30 days/returns description -->
+          <text x="60" y="76" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="9.5" fill="#854F0B" letter-spacing="3" font-weight="500">DAY RETURNS</text>
+          <!-- flourish below -->
+          <g stroke="#854F0B" stroke-width="0.6" stroke-linecap="round" fill="none">
+            <path d="M44 86 L76 86"/>
+            <path d="M58 83 L62 89"/>
+          </g>
+        </svg>
+      </div>
+      <h3 class="ts-title">Free 30-day returns</h3>
+      <div class="ts-divider"></div>
+      <p class="ts-sub">If the toy isn't right, send it back, with our love.</p>
+    </a>
+    <a href="#" class="trust-card">
+      <div class="ts-visual">
+        <svg class="ts-illus" viewBox="0 0 120 100" aria-hidden="true">
+          <g fill="none" stroke="#3B6D11" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="38" y="42" width="44" height="36" rx="1"/>
+            <path d="M38 52 L82 52"/>
+            <path d="M60 42 L60 78"/>
+            <path d="M60 42 Q52 32 47 36 Q43 40 50 42 Z"/>
+            <path d="M60 42 Q68 32 73 36 Q77 40 70 42 Z"/>
+            <!-- tag hanging off corner -->
+            <path d="M82 50 L92 56"/>
+            <path d="M90 53 L98 50 L100 56 L94 60 Z"/>
+            <circle cx="92.5" cy="55" r="0.8" fill="#3B6D11"/>
+          </g>
+          <g fill="#854F0B">
+            <circle cx="30" cy="38" r="1.2"/>
+          </g>
+        </svg>
+      </div>
+      <h3 class="ts-title">Packed with care</h3>
+      <div class="ts-divider"></div>
+      <p class="ts-sub">Tissue-wrapped, with a handwritten note, free.</p>
+    </a>
+    <a href="#" class="trust-card">
+      <div class="ts-visual">
+        <svg class="ts-illus" viewBox="0 0 120 100" aria-hidden="true">
+          <!-- thick twisted rope hanger, lighter brown -->
+          <g fill="none" stroke="#A87242" stroke-width="4.5" stroke-linecap="round">
+            <path d="M40 30 Q60 14 80 30"/>
+          </g>
+          <g stroke="#5C3A1F" stroke-width="0.7" stroke-linecap="round" opacity="0.55">
+            <line x1="43" y1="27" x2="46" y2="30"/>
+            <line x1="47" y1="23" x2="50" y2="26"/>
+            <line x1="51" y1="19" x2="54" y2="22"/>
+            <line x1="56" y1="17" x2="59" y2="20"/>
+            <line x1="61" y1="16" x2="64" y2="19"/>
+            <line x1="66" y1="17" x2="69" y2="20"/>
+            <line x1="70" y1="19" x2="73" y2="22"/>
+            <line x1="74" y1="23" x2="77" y2="26"/>
+          </g>
+          <g stroke="#D4A772" stroke-width="0.8" stroke-linecap="round" opacity="0.7" fill="none">
+            <path d="M44 28 Q60 16 76 28"/>
+          </g>
+          <g fill="#5C3A1F">
+            <circle cx="40" cy="32" r="2"/>
+            <circle cx="80" cy="32" r="2"/>
+          </g>
+          <rect x="32" y="30" width="56" height="42" rx="3.5" fill="#3B6D11" stroke="#3B6D11" stroke-width="1.3"/>
+          <rect x="35" y="33" width="50" height="36" rx="2.5" fill="none" stroke="#F5F0E5" stroke-opacity="0.35" stroke-width="0.8"/>
+          <text x="60" y="49" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="9" fill="#F5F0E5" letter-spacing="1.5" font-weight="500">EARN</text>
+          <text x="60" y="61" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="9" fill="#F5F0E5" letter-spacing="1.5" font-weight="500">REWARDS</text>
+          <path d="M60 67 Q58 64 56 65.5 Q55 67 56.5 68.5 L60 71 L63.5 68.5 Q65 67 64 65.5 Q62 64 60 67 Z" fill="#E27D5C"/>
+          <g fill="#854F0B">
+            <path d="M18 38 L19 41 L22 41 L19.5 43 L20.5 46 L18 44 L15.5 46 L16.5 43 L14 41 L17 41 Z"/>
+            <path d="M100 30 L101 33 L104 33 L101.5 35 L102.5 38 L100 36 L97.5 38 L98.5 35 L96 33 L99 33 Z"/>
+            <path d="M104 58 L104.7 60 L106.7 60 L105 61.4 L105.7 63.4 L104 62 L102.3 63.4 L103 61.4 L101.3 60 L103.3 60 Z"/>
+            <path d="M16 60 L16.7 62 L18.7 62 L17 63.4 L17.7 65.4 L16 64 L14.3 65.4 L15 63.4 L13.3 62 L15.3 62 Z"/>
+            <path d="M28 78 L28.7 80 L30.7 80 L29 81.4 L29.7 83.4 L28 82 L26.3 83.4 L27 81.4 L25.3 80 L27.3 80 Z"/>
+            <path d="M92 78 L92.7 80 L94.7 80 L93 81.4 L93.7 83.4 L92 82 L90.3 83.4 L91 81.4 L89.3 80 L91.3 80 Z"/>
+          </g>
+          <g fill="#E27D5C">
+            <path d="M30 50 Q28.8 48.5 27.6 49.5 Q26.8 50.5 27.8 51.5 L30 53.4 L32.2 51.5 Q33.2 50.5 32.4 49.5 Q31.2 48.5 30 50 Z" opacity="0.7"/>
+            <path d="M90 48 Q88.8 46.5 87.6 47.5 Q86.8 48.5 87.8 49.5 L90 51.4 L92.2 49.5 Q93.2 48.5 92.4 47.5 Q91.2 46.5 90 48 Z" opacity="0.7"/>
+          </g>
+        </svg>
+      </div>
+      <h3 class="ts-title">Earn Rewards</h3>
+      <div class="ts-divider"></div>
+      <p class="ts-sub">Points on every order, redeem on the next.</p>
+    </a>
+  </div>
+</section>
+
+<!-- Featured products -->
+<section class="block">
+  <div class="block-head">
+    <div>
+      <p class="block-num">01 / Shop new items</p>
+      <h2>New and quietly loved.</h2>
+    </div>
+    <p class="lead">A few from the shop this week, including pieces from our range of felt florals.</p>
+  </div>
+
+  <div class="products">
+    <a href="#" class="product">
+      <div class="product-image">
+        <span class="product-tag amber">Pre-order opening soon</span>
+        <img class="primary" src="{{ FILES_BASE_URL }}/new-tiny-fox-hole-birthday-ring.jpg" alt="Tiny Fox Hole wooden birthday ring with hand-carved animals, flowers, and candle holder" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+        <button class="quick-view" aria-label="Quick view"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg></button>
+        <button class="quick-add">Add to cart</button>
+      </div>
+      <p class="product-maker">Tiny Fox Hole</p>
+      <h3 class="product-name">Wooden Birthday Ring</h3>
+      <div class="stars"><span class="stars-glyphs">★★★★★</span><span>Verified reviews</span></div>
+      <div class="product-meta">
+        <span>Ages 3 to 8</span>
+        <span class="product-price">$148</span>
+      </div>
+    </a>
+
+    <a href="#" class="product">
+      <div class="product-image">
+        <span class="product-tag forest">In stock</span>
+        <img class="primary" src="{{ FILES_BASE_URL }}/new-coralwhim-cove.webp" alt="Gus + Mabel Coralwhim Cove Felt Playmat" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+        <img class="secondary" src="{{ FILES_BASE_URL }}/blog-habitat-coralwhim.webp" alt="">
+        <button class="quick-view" aria-label="Quick view"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg></button>
+        <button class="quick-add">Add to cart</button>
+      </div>
+      <p class="product-maker">Gus + Mabel</p>
+      <h3 class="product-name">Coralwhim Cove Felt Playmat</h3>
+      <div class="stars"><span class="stars-glyphs">★★★★★</span><span>32 reviews</span></div>
+      <div class="product-meta">
+        <span>Ages 3 to 10</span>
+        <span class="product-price">$116</span>
+      </div>
+    </a>
+
+    <a href="#" class="product">
+      <div class="product-image">
+        <span class="product-tag forest">In stock</span>
+        <img class="primary" src="{{ FILES_BASE_URL }}/new-tender-leaf-gnomes.webp" alt="Tender Leaf Woodland Gnome Family" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+        <button class="quick-view" aria-label="Quick view"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg></button>
+        <button class="quick-add">Add to cart</button>
+      </div>
+      <p class="product-maker">Tender Leaf Toys</p>
+      <h3 class="product-name">Woodland Gnome Family</h3>
+      <div class="stars"><span class="stars-glyphs">★★★★★</span><span>27 reviews</span></div>
+      <div class="product-meta">
+        <span>Ages 3 and up</span>
+        <span class="product-price">$36.99</span>
+      </div>
+    </a>
+
+    <a href="#" class="product">
+      <div class="product-image">
+        <span class="product-tag forest">In stock</span>
+        <img class="primary" src="{{ FILES_BASE_URL }}/new-ganapati-finger-puppets.webp" alt="Ganapati Crafts Co wool felt finger puppet set with 12 hand-felted animals" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+        <button class="quick-view" aria-label="Quick view"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg></button>
+        <button class="quick-add">Add to cart</button>
+      </div>
+      <p class="product-maker">Ganapati Crafts Co</p>
+      <h3 class="product-name">Wool Felt Finger Puppets, choose your 12</h3>
+      <div class="stars"><span class="stars-glyphs">★★★★★</span><span>Verified reviews</span></div>
+      <div class="product-meta">
+        <span>Ages 2 and up</span>
+        <span class="product-price">$72</span>
+      </div>
+    </a>
+  </div>
+
+  <div class="brand-row-foot" style="margin-top: 36px;">
+    <a href="#" class="btn btn-ghost">See more new arrivals <span class="btn-arrow"></span></a>
+  </div>
+</section>
+
+<!-- Best sellers -->
+<section class="block" style="padding-top: 24px;">
+  <div class="block-head">
+    <div>
+      <p class="block-num">02 / Best sellers</p>
+      <h2>What keeps coming home.</h2>
+    </div>
+    <p class="lead">Four pieces we restock more often than the rest. Tested by your neighbors, kept on every shelf.</p>
+  </div>
+
+  <div class="products">
+    <a href="#" class="product">
+      <div class="product-image">
+        <span class="product-tag forest">In stock</span>
+        <img class="primary" src="{{ FILES_BASE_URL }}/best-bauspiel-color-track.png" alt="Bauspiel Color Track gem blocks in wooden tray" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+        <img class="secondary" src="{{ FILES_BASE_URL }}/bauspiel-lucent-tower.png" alt="">
+        <button class="quick-view" aria-label="Quick view"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg></button>
+        <button class="quick-add">Add to cart</button>
+      </div>
+      <p class="product-maker">Bauspiel</p>
+      <h3 class="product-name">Color Track, 45-Piece Set</h3>
+      <div class="stars"><span class="stars-glyphs">★★★★★</span><span>Verified reviews</span></div>
+      <div class="product-meta">
+        <span>Ages 3 to 10</span>
+        <span class="product-price">$245</span>
+      </div>
+    </a>
+
+    <a href="#" class="product">
+      <div class="product-image">
+        <span class="product-tag forest">In stock</span>
+        <img class="primary" src="{{ FILES_BASE_URL }}/best-pastel-gnomes.webp" alt="Set of six pastel felt-hooded wooden peg gnomes in rainbow colors" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+        <button class="quick-view" aria-label="Quick view"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg></button>
+        <button class="quick-add">Add to cart</button>
+      </div>
+      <p class="product-maker">Wonderheart</p>
+      <h3 class="product-name">Pastel Wooden Gnomes, set of 6</h3>
+      <div class="stars"><span class="stars-glyphs">★★★★★</span><span>Verified reviews</span></div>
+      <div class="product-meta">
+        <span>Ages 3 and up</span>
+        <span class="product-price">$58</span>
+      </div>
+    </a>
+
+    <a href="#" class="product">
+      <div class="product-image">
+        <span class="product-tag forest">In stock</span>
+        <img class="primary" src="{{ FILES_BASE_URL }}/tara-farm-animals.webp" alt="Tara Treasures Felt Farm Animals" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+        <button class="quick-view" aria-label="Quick view"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg></button>
+        <button class="quick-add">Add to cart</button>
+      </div>
+      <p class="product-maker">Tara Treasures</p>
+      <h3 class="product-name">Felt Farm Animals, Set of 10</h3>
+      <div class="stars"><span class="stars-glyphs">★★★★★</span><span>89 reviews</span></div>
+      <div class="product-meta">
+        <span>Ages 3 and up</span>
+        <span class="product-price">$58</span>
+      </div>
+    </a>
+
+    <a href="#" class="product">
+      <div class="product-image">
+        <span class="product-tag forest">In stock</span>
+        <img class="primary" src="{{ FILES_BASE_URL }}/best-ingenious-insects.png" alt="Ingenious Insects felt puppet set with book by Sarah Allen" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+        <button class="quick-view" aria-label="Quick view"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg></button>
+        <button class="quick-add">Add to cart</button>
+      </div>
+      <p class="product-maker">Tara Treasures</p>
+      <h3 class="product-name">Ingenious Insects, puppet set + book</h3>
+      <div class="stars"><span class="stars-glyphs">★★★★★</span><span>Verified reviews</span></div>
+      <div class="product-meta">
+        <span>Ages 3 and up</span>
+        <span class="product-price">$68</span>
+      </div>
+    </a>
+  </div>
+
+  <div class="brand-row-foot" style="margin-top: 36px;">
+    <a href="#" class="btn btn-ghost">See all best sellers <span class="btn-arrow"></span></a>
+  </div>
+</section>
+
+<!-- Gifts under $50 -->
+<section class="block" style="padding-top: 24px;">
+  <div class="block-head">
+    <div>
+      <p class="block-num">03 / Gifts under $50</p>
+      <h2>Small, but kept for years.</h2>
+    </div>
+    <p class="lead">For aunts, grandparents, and last-minute baskets. Each one heirloom enough to outlast the season.</p>
+  </div>
+
+  <div class="products">
+    <a href="#" class="product">
+      <div class="product-image">
+        <span class="product-tag forest">In stock</span>
+        <img class="primary" src="{{ FILES_BASE_URL }}/gift-leaf-cup.webp" alt="Wild Mountain Child hand-carved leaf cup with daisies" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+        <button class="quick-view" aria-label="Quick view"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg></button>
+        <button class="quick-add">Add to cart</button>
+      </div>
+      <p class="product-maker">Wild Mountain Child</p>
+      <h3 class="product-name">Hand-carved Leaf Cup</h3>
+      <div class="stars"><span class="stars-glyphs">★★★★★</span><span>Verified reviews</span></div>
+      <div class="product-meta">
+        <span>Ages 3 and up</span>
+        <span class="product-price">$38</span>
+      </div>
+    </a>
+
+    <a href="#" class="product">
+      <div class="product-image">
+        <span class="product-tag forest">In stock</span>
+        <img class="primary" src="{{ FILES_BASE_URL }}/gift-caterpillar-babies.webp" alt="Fairyshadow Little Critter in a Hedge Cozy, Brown Mouse" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+        <button class="quick-view" aria-label="Quick view"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg></button>
+        <button class="quick-add">Add to cart</button>
+      </div>
+      <p class="product-maker">Fairyshadow</p>
+      <h3 class="product-name">Little Critter in a Hedge Cozy, Brown Mouse</h3>
+      <div class="stars"><span class="stars-glyphs">★★★★★</span><span>Verified reviews</span></div>
+      <div class="product-meta">
+        <span>Ages 3 and up</span>
+        <span class="product-price">$42</span>
+      </div>
+    </a>
+
+    <a href="#" class="product">
+      <div class="product-image">
+        <span class="product-tag forest">In stock</span>
+        <img class="primary" src="{{ FILES_BASE_URL }}/gift-kaleidoscope.webp" alt="Amber Dreams kaleidoscope" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+        <button class="quick-view" aria-label="Quick view"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg></button>
+        <button class="quick-add">Add to cart</button>
+      </div>
+      <p class="product-maker">Amber Kaleidoscope</p>
+      <h3 class="product-name">Kaleidoscope, Blue Dreams</h3>
+      <div class="stars"><span class="stars-glyphs">★★★★★</span><span>Verified reviews</span></div>
+      <div class="product-meta">
+        <span>Ages 3 and up</span>
+        <span class="product-price">$38</span>
+      </div>
+    </a>
+
+    <a href="#" class="product">
+      <div class="product-image">
+        <span class="product-tag forest">In stock</span>
+        <img class="primary" src="{{ FILES_BASE_URL }}/gift-felt-donuts.webp" alt="Tara Treasures felt donuts, set of four" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+        <button class="quick-view" aria-label="Quick view"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg></button>
+        <button class="quick-add">Add to cart</button>
+      </div>
+      <p class="product-maker">Tara Treasures</p>
+      <h3 class="product-name">Felt Donuts, Set of 4</h3>
+      <div class="stars"><span class="stars-glyphs">★★★★★</span><span>Verified reviews</span></div>
+      <div class="product-meta">
+        <span>Ages 3 and up</span>
+        <span class="product-price">$34</span>
+      </div>
+    </a>
+  </div>
+
+  <div class="brand-row-foot" style="margin-top: 36px;">
+    <a href="#" class="btn btn-ghost">See all gifts under $50 <span class="btn-arrow"></span></a>
+  </div>
+</section>
+
+<!-- Heirloom favorites -->
+<section class="block" style="padding-top: 24px;">
+  <div class="block-head">
+    <div>
+      <p class="block-num">04 / Heirloom favorites</p>
+      <h2>For the next sibling, and the next.</h2>
+    </div>
+    <p class="lead">The pieces parents tell us they'll keep. Hand-stitched, hand-carved, and built to be passed down.</p>
+  </div>
+
+  <div class="products">
+    <a href="#" class="product">
+      <div class="product-image">
+        <span class="product-tag forest">In stock</span>
+        <img class="primary" src="{{ FILES_BASE_URL }}/heirloom-butterfly-wings.jpg" alt="Two siblings walking on a wooded path wearing purple and orange monarch butterfly wings" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+        <img class="secondary" src="{{ FILES_BASE_URL }}/monarchbutterflywings23.webp" alt="">
+        <button class="quick-view" aria-label="Quick view"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg></button>
+        <button class="quick-add">Add to cart</button>
+      </div>
+      <p class="product-maker">Jack Be Nimble</p>
+      <h3 class="product-name">Orange Monarch Butterfly Costume Wings</h3>
+      <div class="stars"><span class="stars-glyphs">★★★★★</span><span>Verified reviews</span></div>
+      <div class="product-meta">
+        <span>Ages 2 and up</span>
+        <span class="product-price">$58</span>
+      </div>
+    </a>
+
+    <a href="#" class="product">
+      <div class="product-image">
+        <span class="product-tag forest">In stock</span>
+        <img class="primary" src="{{ FILES_BASE_URL }}/heirloom-bumbu-green-oak.webp" alt="Bumbu Large Green Oak, hand-carved wooden tree" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+        <button class="quick-view" aria-label="Quick view"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg></button>
+        <button class="quick-add">Add to cart</button>
+      </div>
+      <p class="product-maker">Bumbu Toys</p>
+      <h3 class="product-name">Large Green Oak Tree</h3>
+      <div class="stars"><span class="stars-glyphs">★★★★★</span><span>Verified reviews</span></div>
+      <div class="product-meta">
+        <span>Ages 3 to 10</span>
+        <span class="product-price">$148</span>
+      </div>
+    </a>
+
+    <a href="#" class="product">
+      <div class="product-image">
+        <span class="product-tag forest">In stock</span>
+        <img class="primary" src="{{ FILES_BASE_URL }}/heirloom-drewart-camper.png" alt="Drewart wooden camper van with Maileg mice" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+        <img class="secondary" src="{{ FILES_BASE_URL }}/drewart-camper.webp" alt="">
+        <button class="quick-view" aria-label="Quick view"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg></button>
+        <button class="quick-add">Add to cart</button>
+      </div>
+      <p class="product-maker">Drewart</p>
+      <h3 class="product-name">Wooden Camper Van, Natural</h3>
+      <div class="stars"><span class="stars-glyphs">★★★★★</span><span>Verified reviews</span></div>
+      <div class="product-meta">
+        <span>Ages 3 and up</span>
+        <span class="product-price">$148</span>
+      </div>
+    </a>
+
+    <a href="#" class="product">
+      <div class="product-image">
+        <span class="product-tag forest">In stock</span>
+        <img class="primary" src="{{ FILES_BASE_URL }}/heirloom-fagus-semi.webp" alt="Fagus wooden semi-truck and trailer in autumn leaves" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+        <button class="quick-view" aria-label="Quick view"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg></button>
+        <button class="quick-add">Add to cart</button>
+      </div>
+      <p class="product-maker">Fagus</p>
+      <h3 class="product-name">Wooden Semi-Truck and Trailer</h3>
+      <div class="stars"><span class="stars-glyphs">★★★★★</span><span>Verified reviews</span></div>
+      <div class="product-meta">
+        <span>Ages 3 and up</span>
+        <span class="product-price">$268</span>
+      </div>
+    </a>
+  </div>
+
+  <div class="brand-row-foot" style="margin-top: 36px;">
+    <a href="#" class="btn btn-ghost">See all heirloom toys <span class="btn-arrow"></span></a>
+  </div>
+</section>
+
+<!-- Shop by age -->
+<section class="block">
+  <div class="block-head">
+    <div>
+      <p class="block-num">05 / Shop by age</p>
+      <h2>The right toy, by the year.</h2>
+    </div>
+    <p class="lead">Most parents shop by age. We sort by the developmental window each toy actually opens, so the gift lands in the right season.</p>
+  </div>
+
+  <div class="ages-grid">
+    <a href="#" class="age-card">
+      <div class="age-circle"><img src="{{ FILES_BASE_URL }}/age-first-year.webp" alt="Baby with HABA wooden fish rattle" style="width:100%;height:100%;object-fit:cover;"></div>
+      <h3 class="age-name">First year</h3>
+      <span class="age-range">0 to 12 months</span>
+    </a>
+    <a href="#" class="age-card">
+      <div class="age-circle"><img src="{{ FILES_BASE_URL }}/age-toddler.webp" alt="Toddler exploring Sabo Concept alphabet blocks" style="width:100%;height:100%;object-fit:cover;object-position:center top;"></div>
+      <h3 class="age-name">Toddler</h3>
+      <span class="age-range">1 to 3 years</span>
+    </a>
+    <a href="#" class="age-card">
+      <div class="age-circle"><img src="{{ FILES_BASE_URL }}/age-preschool.webp" alt="Two sisters building a wooden block castle together" style="width:100%;height:100%;object-fit:cover;object-position:center top;"></div>
+      <h3 class="age-name">Preschool</h3>
+      <span class="age-range">3 to 5 years</span>
+    </a>
+    <a href="#" class="age-card">
+      <div class="age-circle"><img src="{{ FILES_BASE_URL }}/age-early-school-fagus.webp" alt="Boy examining a Fagus wooden fire truck ladder" style="width:100%;height:100%;object-fit:cover;object-position:center center;"></div>
+      <h3 class="age-name">Early school</h3>
+      <span class="age-range">5 to 8 years</span>
+    </a>
+    <a href="#" class="age-card">
+      <div class="age-circle"><img src="{{ FILES_BASE_URL }}/age-school.webp" alt="Two girls examining a wildflower with a wooden magnifier" style="width:100%;height:100%;object-fit:cover;object-position:center center;"></div>
+      <h3 class="age-name">School age</h3>
+      <span class="age-range">8 years and up</span>
+    </a>
+  </div>
+</section>
+
+<!-- Categories -->
+<section class="block">
+  <div class="block-head">
+    <div>
+      <p class="block-num">06 / Shop by category</p>
+      <h2>The shelves, sorted by hand.</h2>
+    </div>
+    <p class="lead">Nine collections, curated against a single criterion: a toy is worth keeping if it scales across childhood and across a sibling.</p>
+  </div>
+
+  <div class="categories">
+    <a href="#" class="cat">
+      <div class="cat-image"><img src="{{ FILES_BASE_URL }}/cat-sensory.webp" alt="Child looking at flowers reflected in a Busy Bee mirror tray"></div>
+      <div class="cat-meta">
+        <h3 class="cat-name">Sensory &amp; discovery</h3>
+        <p class="cat-count">Loose parts, sorting trays, felt</p>
+      </div>
+    </a>
+    <a href="#" class="cat">
+      <div class="cat-image"><img src="{{ FILES_BASE_URL }}/cat-animals.webp" alt="Bumbu hand-carved wooden fawn"></div>
+      <div class="cat-meta">
+        <h3 class="cat-name">Wooden animals</h3>
+        <p class="cat-count">Bumbu, hand-carved in Romania</p>
+      </div>
+    </a>
+    <a href="#" class="cat">
+      <div class="cat-image"><img src="{{ FILES_BASE_URL }}/cat-kitchen-felt-veg.png" alt="Felt fruits and vegetables"></div>
+      <div class="cat-meta">
+        <h3 class="cat-name">Kitchen play</h3>
+        <p class="cat-count">Felt food, wooden produce</p>
+      </div>
+    </a>
+    <a href="#" class="cat">
+      <div class="cat-image"><img src="{{ FILES_BASE_URL }}/cat-felt-florals.png" alt="Child holding a bouquet of felt flowers"></div>
+      <div class="cat-meta">
+        <h3 class="cat-name">Felt florals</h3>
+        <p class="cat-count">Hand-felted, curated worldwide</p>
+      </div>
+    </a>
+    <a href="#" class="cat">
+      <div class="cat-image"><img src="{{ FILES_BASE_URL }}/cat-rideons-speedster.webp" alt="Two children on Baghera Speedster ride-ons"></div>
+      <div class="cat-meta">
+        <h3 class="cat-name">Ride-ons</h3>
+        <p class="cat-count">Baghera, Plan Toys</p>
+      </div>
+    </a>
+    <a href="#" class="cat">
+      <div class="cat-image"><img src="{{ FILES_BASE_URL }}/cat-fairy-house.webp" alt="Woodland homes & fairy houses"></div>
+      <div class="cat-meta">
+        <h3 class="cat-name">Woodland homes &amp; fairy houses</h3>
+        <p class="cat-count">Felt, wool, hand-stitched</p>
+      </div>
+    </a>
+    <a href="#" class="cat">
+      <div class="cat-image"><img src="{{ FILES_BASE_URL }}/cat-felt-mats-farm.webp" alt="Wooden farm animals on a large felt farm playscape"></div>
+      <div class="cat-meta">
+        <h3 class="cat-name">Felt mats &amp; playscapes</h3>
+        <p class="cat-count">Papoose, Gus + Mabel, Tara Treasures</p>
+      </div>
+    </a>
+    <a href="#" class="cat">
+      <div class="cat-image"><img src="{{ FILES_BASE_URL }}/bauspiel-lucent-tower.png" alt="Bauspiel lucent cube tower"></div>
+      <div class="cat-meta">
+        <h3 class="cat-name">Build &amp; construct</h3>
+        <p class="cat-count">Bauspiel, light-play blocks, marble runs</p>
+      </div>
+    </a>
+    <a href="#" class="cat">
+      <div class="cat-image"><img src="{{ FILES_BASE_URL }}/cat-nature.png" alt="June &amp; December specimen jars on mossy wood"></div>
+      <div class="cat-meta">
+        <h3 class="cat-name">Nature play</h3>
+        <p class="cat-count">Botanicals, stones, wood</p>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- Featured brands -->
+<section class="block">
+  <div class="block-head">
+    <div>
+      <p class="block-num">07 / Favorite brands</p>
+      <h2>The makers <em>we keep coming back to</em>.</h2>
+    </div>
+    <p class="lead">Heirloom workshops from Europe, family-owned studios from Australia and the U.S., and a handful of small makers we found ourselves. Every brand is vetted for safety, materials, and the kind of finish that survives a sibling.</p>
+  </div>
+
+  <div class="brands-grid">
+    <a href="#" class="brand-tile">
+      <div class="brand-img"><img src="{{ FILES_BASE_URL }}/brand-bauspiel-optical.png" alt="Bauspiel optical blocks" style="width:100%;height:100%;object-fit:cover;"></div>
+      <span class="brand-label">Bauspiel</span>
+    </a>
+    <a href="#" class="brand-tile">
+      <div class="brand-img"><img src="{{ FILES_BASE_URL }}/bumbu-acorn.png" alt="Bumbu acorn house" style="width:100%;height:100%;object-fit:cover;"></div>
+      <span class="brand-label">Bumbu Toys</span>
+    </a>
+    <a href="#" class="brand-tile">
+      <div class="brand-img"><img src="{{ FILES_BASE_URL }}/brand-drewart-cupboard.webp" alt="Drewart wooden kitchen cupboard" style="width:100%;height:100%;object-fit:cover;"></div>
+      <span class="brand-label">Drewart</span>
+    </a>
+    <a href="#" class="brand-tile">
+      <div class="brand-img"><img src="{{ FILES_BASE_URL }}/brand-fairyshadow.webp" alt="Fairyshadow strawberry baby necklace" style="width:100%;height:100%;object-fit:cover;"></div>
+      <span class="brand-label">Fairyshadow</span>
+    </a>
+    <a href="#" class="brand-tile">
+      <div class="brand-img"><img src="{{ FILES_BASE_URL }}/brand-gus-mabel-fairy.webp" alt="Gus + Mabel Fairy Streamlet felt playscape" style="width:100%;height:100%;object-fit:cover;"></div>
+      <span class="brand-label">Gus + Mabel</span>
+    </a>
+    <a href="#" class="brand-tile">
+      <div class="brand-img"><img src="{{ FILES_BASE_URL }}/papoose-hot-drinks.webp" alt="Papoose felt hot drinks set" style="width:100%;height:100%;object-fit:cover;"></div>
+      <span class="brand-label">Papoose</span>
+    </a>
+    <a href="#" class="brand-tile">
+      <div class="brand-img"><img src="{{ FILES_BASE_URL }}/brand-tara-lollipops.png" alt="Tara Treasures felt lollipops, set of 7" style="width:100%;height:100%;object-fit:cover;"></div>
+      <span class="brand-label">Tara Treasures</span>
+    </a>
+    <a href="#" class="brand-tile">
+      <div class="brand-img"><img src="{{ FILES_BASE_URL }}/tender-leaf-forest-floor.webp" alt="Tender Leaf Toys My Forest Floor" style="width:100%;height:100%;object-fit:cover;"></div>
+      <span class="brand-label">Tender Leaf Toys</span>
+    </a>
+    <a href="#" class="brand-tile">
+      <div class="brand-img"><img src="{{ FILES_BASE_URL }}/wild-mountain-child-cup.jpg" alt="Wild Mountain Child wildflower pouring cup" style="width:100%;height:100%;object-fit:cover;"></div>
+      <span class="brand-label">Wild Mountain Child</span>
+    </a>
+  </div>
+
+  <div class="brand-row-foot">
+    <a href="#" class="btn btn-ghost">Browse all brands <span class="btn-arrow"></span></a>
+  </div>
+</section>
+
+
+
+<!-- Maker spotlight -->
+<section class="maker">
+  <div class="maker-inner">
+    <div>
+      <span class="label">Featured brand</span>
+      <h2>Hand-carved in Romania, by the makers at <em>Bumbu Toys</em>.</h2>
+      <p>Each piece in the Bumbu line is shaped from maple and basswood (the American name for linden or lime wood), with beech and oak chosen for heavier landscape elements and large trees. All timber is FSC-certified, harvested from responsibly managed European forests.</p>
+      <p>Pieces are hand-painted in small batches with water-based, non-toxic stains, then finished with organic oils and/or beeswax. Safe for the toddler who insists on mouthing the horse, durable enough for the older sibling who builds it into a story.</p>
+      <blockquote class="maker-quote">
+        Hand-carved wood, painted in small batches. A line that scales across childhood, and back onto the shelf each season.
+      </blockquote>
+      <div class="maker-stats">
+        <div>
+          <div class="maker-stat-num">Non-toxic</div>
+          <div class="maker-stat-label">Hand-painted stains</div>
+        </div>
+        <div>
+          <div class="maker-stat-num">FSC-certified</div>
+          <div class="maker-stat-label">European forests</div>
+        </div>
+        <div>
+          <div class="maker-stat-num">Maple</div>
+          <div class="maker-stat-label">+ basswood, beech, oak</div>
+        </div>
+        <div>
+          <div class="maker-stat-num">Beeswax</div>
+          <div class="maker-stat-label">+ organic oil finish</div>
+        </div>
+      </div>
+    </div>
+    <div class="maker-image-wrap">
+      <div class="maker-image">
+        <video autoplay muted loop playsinline preload="metadata">
+          <source src="{{ FILES_BASE_URL }}/bumbu-workshop.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Reviews -->
+<section class="reviews block">
+  <div class="reviews-head">
+    <span class="label">Verified customer reviews</span>
+    <h2>Loved by parents <em>and the children</em> they shop for.</h2>
+    <div class="reviews-summary">
+      <span class="stars-glyphs">★★★★★</span>
+      <span>4.87 out of 5 · <a href="#" style="color:var(--ink); border-bottom: 0.5px solid var(--rule-strong); padding-bottom: 1px;">Read all 2,500+ reviews</a></span>
+    </div>
+  </div>
+
+  <div class="reviews-grid">
+    <article class="review-card">
+      <div class="review-product-image"><img src="{{ FILES_BASE_URL }}/review-drewart-dollhouse.webp" alt="A little girl playing inside the Drewart wooden dollhouse"></div>
+      <div class="review-card-body">
+        <div class="review-head">
+          <span class="review-avatar">TB</span>
+          <div class="review-who-line">
+            <span class="review-who-name">Tami B. · Rocklin, CA</span>
+            <span class="review-verified"><svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="6" cy="6" r="6" fill="#3B6D11"/><path d="M3.5 6.2l1.6 1.6L8.5 4.5" stroke="#F5F0E5" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Verified purchase</span>
+          </div>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <h3 class="review-title">"Truly an heirloom gift."</h3>
+        <p class="review-body">A beautiful dollhouse. We bought this for our granddaughter for Christmas and anticipate her having years of enjoyment with it. It is truly an heirloom gift. Thank you, My Toy Wagon, for the care you took in the packing and shipping, and for your prompt communication with any questions I had.</p>
+        <div class="review-meta">
+          <span>Drewart Dollhouse</span>
+          <span>Jan 2023</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="review-card">
+      <div class="review-product-image"><img src="{{ FILES_BASE_URL }}/review-haba-eggs.webp" alt="HABA Wooden Musical Eggs"></div>
+      <div class="review-card-body">
+        <div class="review-head">
+        <span class="review-avatar">MB</span>
+        <div class="review-who-line">
+          <span class="review-who-name">Mary B. · Eugene, OR</span>
+          <span class="review-verified"><svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="6" cy="6" r="6" fill="#3B6D11"/><path d="M3.5 6.2l1.6 1.6L8.5 4.5" stroke="#F5F0E5" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Verified purchase</span>
+        </div>
+      </div>
+      <div class="review-stars">★★★★★</div>
+      <h3 class="review-title">"A hit for many ages."</h3>
+      <p class="review-body">We got the Musical Eggs for a one-year-old and she loves them. Before she could take them home, a three-year-old at the party could not stop carrying them around, trading each one for his new favorite. A hit for many ages.</p>
+      <div class="review-meta">
+        <span>HABA Wooden Musical Eggs</span>
+        <span>Apr 2025</span>
+      </div>
+          </div>
+    </article>
+
+    <article class="review-card">
+      <div class="review-product-image"><img src="{{ FILES_BASE_URL }}/review-toverlux.jpg" alt="Toverlux Magic Wooden Lamp"></div>
+      <div class="review-card-body">
+        <div class="review-head">
+        <span class="review-avatar">KG</span>
+        <div class="review-who-line">
+          <span class="review-who-name">Kathleen G. · Brownfield, ME</span>
+          <span class="review-verified"><svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="6" cy="6" r="6" fill="#3B6D11"/><path d="M3.5 6.2l1.6 1.6L8.5 4.5" stroke="#F5F0E5" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Verified purchase</span>
+        </div>
+      </div>
+      <div class="review-stars">★★★★★</div>
+      <h3 class="review-title">"Top-notch quality and customer service."</h3>
+      <p class="review-body">The Toverlux lamp is beautifully made, and the transparencies are so pretty. The customer service, shipping, and quality are top notch. Thank you.</p>
+      <div class="review-meta">
+        <span>Toverlux Magic Wooden Lamp</span>
+        <span>Nov 2025</span>
+      </div>
+          </div>
+    </article>
+  </div>
+</section>
+
+<!-- Our Story / Founders -->
+<section class="story">
+  <div class="story-inner">
+    <span class="label">Our Story</span>
+    <h2>A small toy shop, with a <em>big heart</em>.</h2>
+    <p class="story-lead">My Toy Wagon began with a simple inspiration: our two daughters, Hafsa and Noor. They are the heartbeat of the shop, the reminders that childhood is fleeting, and that the toys we choose for it matter.</p>
+    <p>We carefully curate wooden and felt toys that hold up to real play, that scale across ages, and that pass quietly to a younger sibling. Most orders are packed and shipped by hand from our shop in Los Angeles. A few of the larger, heavier pieces ship directly from our partner warehouses, with the same care.</p>
+    <p class="story-signoff">
+      <span class="story-signature">Irfana &amp; Rashid</span>
+      <span class="story-signrole">Founders, My Toy Wagon</span>
+    </p>
+    <a href="#" class="btn btn-ghost story-cta">Read our full story <span class="btn-arrow"></span></a>
+  </div>
+</section>
+
+<!-- Gifting -->
+<section class="gift">
+  <div class="gift-inner">
+    <div class="gift-text">
+      <span class="label">Gifts that arrive ready</span>
+      <h2>Chosen, written, and on its way <em>in seconds</em>.</h2>
+      <p>Tell us at checkout it's a gift and we'll leave the price off the packing slip. For gifts you need now, our digital gift cards include a personal note from you, delivered to their inbox in seconds.</p>
+      <div class="gift-tags">
+        <a href="#" class="gift-tag">Gifts under $30</a>
+        <a href="#" class="gift-tag">Gifts under $75</a>
+        <a href="#" class="gift-tag">For new babies</a>
+        <a href="#" class="gift-tag">For grandparents</a>
+        <a href="#" class="gift-tag">Last-minute gifts</a>
+      </div>
+      <a href="#" class="btn btn-primary">Send a digital gift card <span class="btn-arrow"></span></a>
+    </div>
+    <div class="gift-image">
+      <img src="{{ FILES_BASE_URL }}/gift-card-floral.png" alt="My Toy Wagon digital gift card" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+      <div class="gift-note">Delivered by email, redeemable any time.</div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Blog -->
+<section class="block">
+  <div class="block-head">
+    <div>
+      <p class="block-num">08 / The blog</p>
+      <h2>Reading, slowly.</h2>
+    </div>
+    <p class="lead">A new post every other Thursday. Care guides, maker stories, and notes from the shop.</p>
+  </div>
+
+  <div class="journal-grid">
+    <a href="#" class="entry">
+      <div class="entry-image"><img src="{{ FILES_BASE_URL }}/blog-bumbu-treehouse.jpg" alt="Bumbu Enchanted Treehouse with three fairies" style="width:100%;height:100%;object-fit:cover;"></div>
+      <p class="entry-cat">From the maker</p>
+      <h3 class="entry-title">Inside the Bumbu workshop: maple, hand-painted, finished with beeswax.</h3>
+      <div class="entry-meta">
+        <span>Coming May 21</span>
+        <span class="dot"></span>
+        <span>6 min read</span>
+      </div>
+    </a>
+
+    <a href="blog/whats-arrived-gus-and-mabel.html" class="entry">
+      <div class="entry-image"><img src="{{ FILES_BASE_URL }}/blog-bbt-hero.webp" alt="Child playing with the Busy Bee Tray, autumn sensory invitation" style="width:100%;height:100%;object-fit:cover;"></div>
+      <p class="entry-cat">Field note</p>
+      <h3 class="entry-title">What's arrived: a quiet introduction to Gus + Mabel.</h3>
+      <div class="entry-meta">
+        <span>May 14, 2026</span>
+        <span class="dot"></span>
+        <span>4 min read</span>
+      </div>
+    </a>
+
+    <a href="#" class="entry">
+      <div class="entry-image"><img src="{{ FILES_BASE_URL }}/drewart-camper.webp" alt="Drewart wooden camper" style="width:100%;height:100%;object-fit:cover;"></div>
+      <p class="entry-cat">Care &amp; storage</p>
+      <h3 class="entry-title">How to clean a wooden toy without ruining the finish.</h3>
+      <div class="entry-meta">
+        <span>May 7, 2026</span>
+        <span class="dot"></span>
+        <span>4 min read</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- Newsletter -->
+<section class="letter">
+  <div class="letter-inner">
+    <span class="label">Letters from My Toy Wagon</span>
+    <h2>Curated <em>collections</em>, in your inbox.</h2>
+    <p>Regular edits from the shop: fresh restocks, new arrivals, seasonal collections, and the pieces parents and caregivers can't stop reordering. A short, beautiful letter.</p>
+    <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 16px; color: var(--stone); margin-top: -12px; margin-bottom: 36px;">Different from the blog. The blog is long, evergreen, written slowly. The Letter is short, curated, and timed to what just came in.</p>
+    <form class="letter-form" onsubmit="event.preventDefault();">
+      <input type="email" placeholder="your@email.com">
+      <button type="submit">Subscribe</button>
+    </form>
+    <p class="letter-note">Curated by hand. Unsubscribe in one click, any time.</p>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="foot-inner">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a href="#" aria-label="My Toy Wagon"><span class="full-logo"></span></a>
+        <p class="foot-tag">Heirloom toys, curated by hand. A family-owned boutique, online since 2020.</p>
+        <p class="foot-loc">
+          <strong>Los Angeles, California</strong><br>
+          Mon to Fri, 9 am to 5 pm PT
+        </p>
+        <div class="foot-social">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg></a>
+          <a href="#" aria-label="Pinterest"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M11 8c-2 .5-3.5 2.5-3 4.5.3 1.3 1.5 1.6 1.5.5 0-1 .5-2 1.5-2.5 1.5-.8 3.5 0 4 1.5.5 2-.5 4-2.5 4-1 0-1.5-.5-1.3-1.5L12 11"/><path d="M11 13.5 9.5 19"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="3"/><path d="M10 9.5v5l4.5-2.5z" fill="currentColor"/></svg></a>
+          <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M14 4v10.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 4c0 2 1.5 4 4 4"/></svg></a>
+        </div>
+      </div>
+
+      <div class="foot-col">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="#">All toys</a></li>
+          <li><a href="#">Shop by age</a></li>
+          <li><a href="#">Shop by brand</a></li>
+          <li><a href="#">New arrivals</a></li>
+          <li><a href="#">Gift cards</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h4>Customer care</h4>
+        <ul>
+          <li><a href="#">Shipping</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">Rewards</a></li>
+          <li><a href="#">Wishlist</a></li>
+          <li><a href="#">FAQs</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h4>About us</h4>
+        <ul>
+          <li><a href="#">Our story</a></li>
+          <li><a href="#">The blog</a></li>
+          <li><a href="#">Customer reviews</a></li>
+          <li><a href="#">Educator program</a></li>
+          <li><a href="#">Collaboration</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h4>Contact</h4>
+        <div class="foot-contact">
+          <a href="mailto:contact@mytoywagon.com">contact@mytoywagon.com</a>
+          <a href="tel:6268410421">626.841.0421</a>
+          <span class="stone stone-block">Mon to Fri, 9 am to 5 pm PT</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="foot-mid">
+      <span class="foot-pay-label">We accept</span>
+      <div class="pay-methods">
+        <span class="pay-chip">Visa</span>
+        <span class="pay-chip">Mastercard</span>
+        <span class="pay-chip">Amex</span>
+        <span class="pay-chip">Discover</span>
+        <span class="pay-chip">Diners</span>
+        <span class="pay-chip">Apple&nbsp;Pay</span>
+        <span class="pay-chip">Google&nbsp;Pay</span>
+        <span class="pay-chip">PayPal</span>
+        <span class="pay-chip">Shop&nbsp;Pay</span>
+      </div>
+    </div>
+
+    <!-- Top Quality Store badge placeholder -->
+    <div style="display:flex;justify-content:center;align-items:center;gap:14px;padding:24px 0;border-top:0.5px solid var(--rule);margin-top:24px;">
+      <span style="display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:var(--warm-white);border:0.5px solid var(--rule-strong);">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--ink)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.5 6 6.5.5-5 4.5 1.5 6.5L12 16l-5.5 3.5L8 13 3 8.5l6.5-.5z"/></svg>
+      </span>
+      <div style="font-size:11.5px;letter-spacing:0.14em;color:var(--stone);font-weight:500;text-transform:uppercase;">
+        <strong style="display:block;color:var(--ink);font-weight:600;letter-spacing:0.16em;margin-bottom:2px;">Top Quality Store</strong>
+        <span style="text-transform:none;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;letter-spacing:0;color:var(--stone);">Awarded by Google · 2026</span>
+      </div>
+    </div>
+
+    <div class="foot-bottom">
+      <span class="foot-bottom-copy">
+        <em>Heirloom toys, curated by hand.</em>
+        © 2026 My Toy Wagon. All rights reserved.
+      </span>
+      <div class="foot-bottom-links">
+        <a href="#">Privacy policy</a>
+        <a href="#">Terms of service</a>
+        <a href="#">Accessibility</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="image-slot.js"></script>
+
+</body>
+</html>

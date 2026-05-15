@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wishlist — My Toy Wagon</title>
+<meta name="description" content="Save your favorite toys for birthdays, celebrations, and holidays. Sign in to start your list, then share it with family and friends.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {--cream:#F5F0E5;--warm-white:#FFFCF7;--ink:#2C2C2A;--forest:#3B6D11;--amber:#854F0B;--stone:#5F5E5A;--card-bg:#EDE3CD;--rule:rgba(44,44,42,0.12);--rule-strong:rgba(44,44,42,0.22);}
+*{box-sizing:border-box;}html,body{margin:0;padding:0;}
+body{font-family:'Mulish',sans-serif;color:var(--ink);background:var(--cream);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+img{max-width:100%;display:block;}a{color:inherit;text-decoration:none;}
+.label{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--stone);font-weight:500;}
+.utility{background:var(--ink);color:var(--cream);font-size:12px;letter-spacing:0.06em;}
+.utility-inner{max-width:1440px;margin:0 auto;padding:9px 40px;display:flex;justify-content:space-between;align-items:center;gap:24px;}
+.utility-center{flex:1;text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;letter-spacing:0;}
+.utility-links{display:flex;gap:22px;color:rgba(245,240,229,0.7);}.utility-links a:hover{color:var(--cream);}
+header.nav{border-bottom:0.5px solid var(--rule);background:var(--cream);position:sticky;top:0;z-index:50;}
+.nav-inner{max-width:1440px;margin:0 auto;padding:18px 40px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:32px;}
+.nav-left,.nav-right{display:flex;align-items:center;gap:28px;}.nav-right{justify-content:flex-end;}
+.nav-link{font-size:13.5px;font-weight:500;letter-spacing:0.02em;padding:4px 0;}.nav-link:hover{color:var(--forest);}
+.nav-link.has-caret::after{content:"";display:inline-block;width:5px;height:5px;border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:rotate(45deg);margin-left:6px;vertical-align:2px;}
+.logo{display:inline-flex;align-items:center;gap:16px;line-height:1;}
+.logo-mark{width:100px;height:100px;background-color:var(--ink);-webkit-mask:url('{{ FILES_BASE_URL }}/logo-mark.png') center/contain no-repeat;mask:url('{{ FILES_BASE_URL }}/logo-mark.png') center/contain no-repeat;flex-shrink:0;}
+.logo-text{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;letter-spacing:0.24em;text-transform:uppercase;line-height:1;color:var(--ink);white-space:nowrap;}
+.logo small{display:block;font-family:'Mulish',sans-serif;font-style:normal;font-size:9.5px;letter-spacing:0.22em;text-transform:uppercase;color:var(--stone);margin-top:8px;font-weight:500;white-space:nowrap;}
+.nav-icon{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;}
+.cart-count{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:18px;padding:0 5px;background:var(--forest);color:var(--cream);border-radius:9px;font-size:11px;font-weight:600;}
+.search-pill{display:flex;align-items:center;gap:8px;padding:8px 14px;background:var(--warm-white);border:0.5px solid var(--rule);border-radius:999px;font-size:12.5px;color:var(--stone);min-width:200px;}
+.icon{width:16px;height:16px;stroke:currentColor;stroke-width:1.4;fill:none;flex-shrink:0;}
+.back-link{display:inline-flex;align-items:center;gap:10px;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--stone);font-weight:500;}
+.back-link::before{content:"";width:16px;height:1px;background:currentColor;}
+
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 28px;font-size:13px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;border-radius:2px;border:0.5px solid transparent;cursor:pointer;transition:all 160ms ease;background:none;font-family:inherit;}
+.btn-primary{background:var(--ink);color:var(--cream);}.btn-primary:hover{background:var(--forest);}
+.btn-ghost{border-color:var(--rule-strong);color:var(--ink);}.btn-ghost:hover{border-color:var(--ink);}
+.btn-arrow{width:14px;height:8px;position:relative;display:inline-block;}
+.btn-arrow::before{content:"";position:absolute;left:0;top:50%;width:100%;height:1px;background:currentColor;transform:translateY(-50%);}
+.btn-arrow::after{content:"";position:absolute;right:0;top:50%;width:6px;height:6px;border-top:1px solid currentColor;border-right:1px solid currentColor;transform:translateY(-50%) rotate(45deg);}
+
+/* Wishlist hero */
+.wishlist-hero{max-width:1100px;margin:0 auto;padding:72px 40px 56px;text-align:center;position:relative;}
+.wishlist-hero .back-link{margin-bottom:32px;}
+.wishlist-hero .heart-mark{display:inline-flex;align-items:center;justify-content:center;width:72px;height:72px;border-radius:50%;background:var(--card-bg);margin-bottom:24px;}
+.wishlist-hero .heart-mark svg{width:32px;height:32px;fill:var(--amber);stroke:var(--amber);stroke-width:1;}
+.wishlist-hero .label{display:block;margin-bottom:20px;}
+.wishlist-hero h1{font-family:'Cormorant Garamond',serif;font-size:86px;font-weight:500;line-height:0.98;letter-spacing:-0.014em;margin:0 auto 24px;max-width:780px;text-wrap:balance;}
+.wishlist-hero h1 em{font-style:italic;}
+.wishlist-hero .dek{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;color:var(--stone);line-height:1.5;max-width:620px;margin:0 auto 36px;}
+.wishlist-cta{display:inline-flex;gap:14px;align-items:center;justify-content:center;flex-wrap:wrap;}
+
+/* How it works steps */
+.section{max-width:1100px;margin:0 auto;padding:88px 40px;}
+.section-head{text-align:center;margin-bottom:56px;}
+.section-num{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;color:var(--stone);margin-bottom:12px;}
+.section-head h2{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:500;line-height:1.05;margin:0 0 16px;letter-spacing:-0.008em;}
+.section-head h2 em{font-style:italic;}
+.section-head p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;color:var(--stone);line-height:1.5;max-width:520px;margin:0 auto;}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;position:relative;}
+.steps::before{content:"";position:absolute;top:36px;left:12%;right:12%;height:0.5px;background:var(--rule-strong);z-index:0;}
+.step{text-align:center;position:relative;z-index:1;}
+.step-num{width:72px;height:72px;border-radius:50%;background:var(--cream);border:0.5px solid var(--rule-strong);display:inline-flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:36px;color:var(--ink);margin-bottom:24px;letter-spacing:-0.01em;}
+.step h3{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;line-height:1.2;margin:0 0 12px;letter-spacing:-0.005em;}
+.step p{font-size:14.5px;color:var(--stone);line-height:1.65;margin:0;max-width:280px;margin-left:auto;margin-right:auto;}
+
+/* Empty-state band */
+.empty-state{background:var(--warm-white);border-top:0.5px solid var(--rule);border-bottom:0.5px solid var(--rule);}
+.empty-state-inner{max-width:1100px;margin:0 auto;padding:80px 40px;text-align:center;}
+.empty-state .label{display:block;margin-bottom:14px;}
+.empty-state h2{font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:500;line-height:1.05;margin:0 0 14px;letter-spacing:-0.008em;}
+.empty-state h2 em{font-style:italic;}
+.empty-state p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;color:var(--stone);line-height:1.5;max-width:520px;margin:0 auto 28px;}
+
+/* Customer favorites grid */
+.favorites{max-width:1440px;margin:0 auto;padding:80px 40px 96px;}
+.fav-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px;gap:40px;}
+.fav-head h2{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:500;line-height:1;margin:0;letter-spacing:-0.005em;}
+.fav-head h2 em{font-style:italic;}
+.fav-head .lead{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--stone);font-size:17px;max-width:360px;line-height:1.45;margin:0;}
+.fav-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;}
+.fav-card{cursor:pointer;}
+.fav-image{aspect-ratio:4/5;background:var(--warm-white);border-radius:2px;margin-bottom:16px;position:relative;overflow:hidden;border:0.5px solid var(--rule);transition:border-color 200ms ease;}
+.fav-card:hover .fav-image{border-color:var(--rule-strong);}
+.fav-image img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
+.fav-heart{position:absolute;top:12px;right:12px;width:36px;height:36px;border-radius:50%;background:var(--warm-white);border:0.5px solid var(--rule);display:flex;align-items:center;justify-content:center;transition:all 180ms ease;}
+.fav-heart svg{width:16px;height:16px;stroke:var(--ink);fill:none;stroke-width:1.5;transition:fill 180ms ease,stroke 180ms ease;}
+.fav-card:hover .fav-heart{background:var(--cream);border-color:var(--rule-strong);}
+.fav-heart.active svg{fill:var(--amber);stroke:var(--amber);}
+.fav-maker{font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--stone);margin-bottom:6px;font-weight:500;}
+.fav-name{font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:500;line-height:1.15;margin:0 0 6px;}
+.fav-meta{display:flex;justify-content:space-between;align-items:baseline;font-size:13px;color:var(--stone);}
+.fav-price{color:var(--ink);font-weight:500;}
+
+/* Close band */
+.close-band{background:var(--ink);color:var(--cream);}
+.close-band-inner{max-width:900px;margin:0 auto;padding:88px 40px;text-align:center;}
+.close-band .label{color:rgba(245,240,229,0.55);display:block;margin-bottom:18px;}
+.close-band h2{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:500;line-height:1.05;margin:0 0 18px;letter-spacing:-0.008em;}
+.close-band h2 em{font-style:italic;}
+.close-band p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;color:rgba(245,240,229,0.85);margin:0 auto 32px;max-width:500px;line-height:1.5;}
+.close-band .btn-primary{background:var(--cream);color:var(--ink);}
+.close-band .btn-primary:hover{background:var(--warm-white);}
+
+footer{background:var(--cream);border-top:0.5px solid var(--rule);}
+.foot-bottom-band{max-width:1440px;margin:0 auto;padding:28px 40px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--stone);letter-spacing:0.04em;flex-wrap:wrap;gap:12px;}
+.foot-bottom-band a:hover{color:var(--ink);}
+.foot-bottom-band em{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:var(--ink);margin-right:10px;}
+.foot-bottom-band .foot-bottom-links{display:flex;gap:22px;}
+</style>
+</head>
+<body data-screen-label="Wishlist">
+
+<div class="utility">
+  <div class="utility-inner">
+    <div class="utility-links"><a href="#">Track order</a><a href="#">Educator program</a></div>
+    <div class="utility-center">Free shipping on orders $150+ within the contiguous U.S.</div>
+    <div class="utility-links" style="justify-content:flex-end;"><a href="#">Gift cards</a><a href="#">Sign in</a></div>
+  </div>
+</div>
+
+<header class="nav">
+  <div class="nav-inner">
+    <nav class="nav-left">
+      <a href="#" class="nav-link has-caret">Shop all</a>
+      <a href="#" class="nav-link has-caret">Collections</a>
+      <a href="#" class="nav-link">Ages</a>
+    </nav>
+    <a href="MTW Homepage v3.html" class="logo">
+      <span class="logo-mark" aria-hidden="true"></span>
+      <span class="logo-text">My Toy Wagon<small>Los Angeles · California · est. 2020</small></span>
+    </a>
+    <div class="nav-right">
+      <div class="search-pill"><svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg><span>Search wooden blocks, plush…</span></div>
+      <a href="#" class="nav-icon">Account</a>
+      <a href="#" class="nav-icon">Cart <span class="cart-count">0</span></a>
+    </div>
+  </div>
+</header>
+
+<section class="wishlist-hero">
+  <a href="MTW Homepage v3.html" class="back-link">Back to the shop</a>
+  <div class="heart-mark">
+    <svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5 6.5 5c2 0 3.5 1.2 5.5 3.5C14 6.2 15.5 5 17.5 5c4 0 5.5 4 4 7C19 16.5 12 21 12 21z"/></svg>
+  </div>
+  <span class="label">Your wishlist</span>
+  <h1>The toys you want, <em>saved for later</em>.</h1>
+  <p class="dek">Add your favorites to your wishlist for easy access around birthdays, celebrations, and holidays. Sign in to start your list and share it with family and friends.</p>
+  <div class="wishlist-cta">
+    <a href="#" class="btn btn-primary">Sign in to your account <span class="btn-arrow"></span></a>
+    <a href="#" class="btn btn-ghost">Create an account</a>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="section-head">
+    <p class="section-num">How it works</p>
+    <h2>Three small steps, <em>then it lives with you</em>.</h2>
+  </div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">i.</div>
+      <h3>Sign in or create an account.</h3>
+      <p>Free to make. You'll use the same account for your orders, rewards, and wishlist.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">ii.</div>
+      <h3>Tap the heart on any product.</h3>
+      <p>It will turn amber and the toy is saved to your list. Tap again to remove.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">iii.</div>
+      <h3>Share, or shop, when ready.</h3>
+      <p>Send the list to a grandparent before a birthday. Or buy it yourself when the moment comes.</p>
+    </div>
+  </div>
+</section>
+
+<section class="empty-state">
+  <div class="empty-state-inner">
+    <span class="label">Your list is empty</span>
+    <h2>Nothing saved <em>yet</em>.</h2>
+    <p>Browse the shop and tap the heart on any product to start your list. A few of the most-loved toys this season are below.</p>
+    <a href="MTW Homepage v3.html" class="btn btn-primary">Browse the shop <span class="btn-arrow"></span></a>
+  </div>
+</section>
+
+<section class="favorites">
+  <div class="fav-head">
+    <div>
+      <p class="section-num">Start with</p>
+      <h2>Customer <em>favorites</em>.</h2>
+    </div>
+    <p class="lead">A small selection of pieces our customers keep coming back for. Tap the heart on any to save it.</p>
+  </div>
+  <div class="fav-grid">
+    <a href="#" class="fav-card">
+      <div class="fav-image">
+        <img src="{{ FILES_BASE_URL }}/best-bauspiel-color-track.png" alt="Bauspiel Color Track gem blocks in wooden tray">
+        <button class="fav-heart" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5 6.5 5c2 0 3.5 1.2 5.5 3.5C14 6.2 15.5 5 17.5 5c4 0 5.5 4 4 7C19 16.5 12 21 12 21z"/></svg></button>
+      </div>
+      <p class="fav-maker">Bauspiel</p>
+      <h3 class="fav-name">Color Track, 45-Piece Set</h3>
+      <div class="fav-meta"><span>Ages 3 to 10</span><span class="fav-price">$245</span></div>
+    </a>
+    <a href="#" class="fav-card">
+      <div class="fav-image">
+        <img src="{{ FILES_BASE_URL }}/best-pastel-gnomes.webp" alt="Set of six pastel felt-hooded wooden peg gnomes">
+        <button class="fav-heart active" aria-label="Remove from wishlist"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5 6.5 5c2 0 3.5 1.2 5.5 3.5C14 6.2 15.5 5 17.5 5c4 0 5.5 4 4 7C19 16.5 12 21 12 21z"/></svg></button>
+      </div>
+      <p class="fav-maker">Wonderheart</p>
+      <h3 class="fav-name">Pastel Wooden Gnomes, set of 6</h3>
+      <div class="fav-meta"><span>Ages 3 and up</span><span class="fav-price">$58</span></div>
+    </a>
+    <a href="#" class="fav-card">
+      <div class="fav-image">
+        <img src="{{ FILES_BASE_URL }}/tara-farm-animals.webp" alt="Tara Treasures Felt Farm Animals, set of 10">
+        <button class="fav-heart" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5 6.5 5c2 0 3.5 1.2 5.5 3.5C14 6.2 15.5 5 17.5 5c4 0 5.5 4 4 7C19 16.5 12 21 12 21z"/></svg></button>
+      </div>
+      <p class="fav-maker">Tara Treasures</p>
+      <h3 class="fav-name">Felt Farm Animals, Set of 10</h3>
+      <div class="fav-meta"><span>Ages 3 and up</span><span class="fav-price">$58</span></div>
+    </a>
+    <a href="#" class="fav-card">
+      <div class="fav-image">
+        <img src="{{ FILES_BASE_URL }}/best-ingenious-insects.png" alt="Tara Treasures Ingenious Insects felt puppet set with book">
+        <button class="fav-heart" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5 6.5 5c2 0 3.5 1.2 5.5 3.5C14 6.2 15.5 5 17.5 5c4 0 5.5 4 4 7C19 16.5 12 21 12 21z"/></svg></button>
+      </div>
+      <p class="fav-maker">Tara Treasures</p>
+      <h3 class="fav-name">Ingenious Insects, puppet set + book</h3>
+      <div class="fav-meta"><span>Ages 3 and up</span><span class="fav-price">$68</span></div>
+    </a>
+  </div>
+</section>
+
+<section class="close-band">
+  <div class="close-band-inner">
+    <span class="label">Have an account already</span>
+    <h2>Sign in and pick up <em>where you left off</em>.</h2>
+    <p>Your wishlist follows your account. Sign in once and it's there on any device, ready to share with grandparents, friends, or anyone shopping for your child.</p>
+    <a href="#" class="btn btn-primary">Sign in <span class="btn-arrow"></span></a>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-bottom-band">
+    <span><em>Heirloom toys, curated by hand.</em>© 2026 My Toy Wagon. All rights reserved.</span>
+    <div class="foot-bottom-links">
+      <a href="MTW Homepage v3.html">Back to the shop</a>
+      <a href="shipping.html">Shipping</a>
+      <a href="returns.html">Returns</a>
+      <a href="rewards.html">Rewards</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

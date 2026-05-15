@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tara Treasures — Hand-felted toys from Nepal | My Toy Wagon</title>
+<meta name="description" content="Shop the full Tara Treasures collection. Hand-felted playscapes, finger puppets, and felt food, designed in Melbourne and stitched in Nepal.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#F5F0E5;--warm-white:#FFFCF7;--ink:#2C2C2A;--forest:#3B6D11;--amber:#854F0B;--stone:#5F5E5A;--card-bg:#EDE3CD;--rule:rgba(44,44,42,0.12);--rule-strong:rgba(44,44,42,0.22);}
+*{box-sizing:border-box;}html,body{margin:0;padding:0;}
+body{font-family:'Mulish',sans-serif;color:var(--ink);background:var(--cream);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+img{max-width:100%;display:block;}a{color:inherit;text-decoration:none;}
+.label{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--stone);font-weight:500;}
+.utility{background:var(--ink);color:var(--cream);padding:9px 40px;text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;}
+header.nav{border-bottom:0.5px solid var(--rule);background:var(--cream);position:sticky;top:0;z-index:50;}
+.nav-inner{max-width:1440px;margin:0 auto;padding:18px 40px;display:flex;justify-content:space-between;align-items:center;}
+.logo{display:inline-flex;align-items:center;gap:14px;}
+.logo-mark{width:80px;height:80px;background-color:var(--ink);-webkit-mask:url('assets/logo-mark.png') center/contain no-repeat;mask:url('assets/logo-mark.png') center/contain no-repeat;}
+.logo-text{font-family:'Cormorant Garamond',serif;font-size:18px;letter-spacing:0.24em;text-transform:uppercase;}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;border-radius:2px;border:0.5px solid transparent;cursor:pointer;font-family:inherit;background:none;}
+.btn-primary{background:var(--ink);color:var(--cream);}.btn-primary:hover{background:var(--forest);}
+.btn-ghost{border-color:var(--rule-strong);color:var(--ink);}.btn-ghost:hover{border-color:var(--ink);}
+
+/* Crumbs */
+.crumbs{max-width:1440px;margin:0 auto;padding:24px 40px 0;font-size:12.5px;color:var(--stone);letter-spacing:0.04em;}
+.crumbs a:hover{color:var(--ink);}.crumbs .sep{margin:0 8px;opacity:0.5;}
+
+/* Collection hero */
+.coll-hero{max-width:1440px;margin:0 auto;padding:40px 40px 56px;display:grid;grid-template-columns:1fr 1.1fr;gap:64px;align-items:center;}
+.coll-hero .label{display:block;margin-bottom:18px;}
+.coll-hero h1{font-family:'Cormorant Garamond',serif;font-size:80px;font-weight:500;line-height:1;letter-spacing:-0.014em;margin:0 0 22px;text-wrap:balance;}
+.coll-hero h1 em{font-style:italic;}
+.coll-hero .dek{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:21px;color:var(--stone);line-height:1.5;margin:0 0 28px;max-width:520px;}
+.coll-hero .cta-row{display:inline-flex;gap:12px;flex-wrap:wrap;}
+.coll-hero-image{aspect-ratio:4/5;background:var(--card-bg);border-radius:2px;overflow:hidden;}
+.coll-hero-image img{width:100%;height:100%;object-fit:cover;}
+
+/* Filter bar */
+.filter-bar{background:var(--warm-white);border-top:0.5px solid var(--rule);border-bottom:0.5px solid var(--rule);position:sticky;top:117px;z-index:40;}
+.filter-inner{max-width:1440px;margin:0 auto;padding:14px 40px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;}
+.filter-pills{display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.filter-pill{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;background:var(--cream);border:0.5px solid var(--rule-strong);border-radius:999px;font-size:12px;font-weight:500;letter-spacing:0.04em;cursor:pointer;transition:border-color 160ms ease;}
+.filter-pill:hover{border-color:var(--ink);}
+.filter-pill.active{background:var(--ink);color:var(--cream);border-color:var(--ink);}
+.filter-pill svg{width:11px;height:11px;}
+.filter-meta{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14.5px;color:var(--stone);}
+.filter-sort{display:inline-flex;align-items:center;gap:8px;font-size:12px;color:var(--ink);letter-spacing:0.04em;cursor:pointer;font-weight:500;}
+
+/* Layout: sidebar + grid */
+.coll-body{max-width:1440px;margin:0 auto;padding:48px 40px 96px;display:grid;grid-template-columns:240px 1fr;gap:48px;}
+.sidebar{position:sticky;top:175px;align-self:start;max-height:calc(100vh - 200px);overflow-y:auto;padding-right:8px;}
+.sidebar-group{margin-bottom:28px;border-bottom:0.5px solid var(--rule);padding-bottom:24px;}
+.sidebar-group:last-child{border-bottom:none;}
+.sidebar h3{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;font-weight:500;margin:0 0 12px;letter-spacing:-0.005em;}
+.facet{display:flex;align-items:center;gap:10px;padding:6px 0;font-size:13.5px;cursor:pointer;color:var(--ink);}
+.facet input{appearance:none;width:14px;height:14px;border:0.5px solid var(--rule-strong);border-radius:2px;background:var(--warm-white);cursor:pointer;position:relative;}
+.facet input:checked{background:var(--ink);border-color:var(--ink);}
+.facet input:checked::after{content:"";position:absolute;left:3px;top:0px;width:5px;height:9px;border-right:1.5px solid var(--cream);border-bottom:1.5px solid var(--cream);transform:rotate(45deg);}
+.facet .count{margin-left:auto;color:var(--stone);font-size:12px;}
+.price-range{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.price-range input{width:100%;padding:8px 10px;border:0.5px solid var(--rule-strong);border-radius:2px;background:var(--warm-white);font-family:inherit;font-size:13px;}
+.sidebar-clear{font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--stone);font-weight:500;border-bottom:0.5px solid var(--rule-strong);padding-bottom:2px;cursor:pointer;}
+
+/* Pair-this-filter widget */
+.pair-filter{background:var(--card-bg);border-radius:2px;padding:16px 18px;margin-top:18px;}
+.pair-filter .lbl{font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--amber);font-weight:600;margin-bottom:6px;}
+.pair-filter .copy{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;line-height:1.4;color:var(--ink);margin:0 0 10px;}
+.pair-filter a{font-size:11.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink);border-bottom:0.5px solid var(--rule-strong);padding-bottom:2px;font-weight:500;}
+
+/* Product grid */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;}
+.prod{cursor:pointer;position:relative;}
+.prod-img{aspect-ratio:4/5;background:var(--warm-white);border:0.5px solid var(--rule);border-radius:2px;overflow:hidden;margin-bottom:14px;position:relative;}
+.prod-img img{width:100%;height:100%;object-fit:cover;transition:opacity 200ms ease,transform 600ms ease;}
+.prod-img img.secondary{position:absolute;inset:0;opacity:0;}
+.prod:hover .prod-img img.primary{opacity:0;transform:scale(1.04);}
+.prod:hover .prod-img img.secondary{opacity:1;transform:scale(1.04);}
+.prod-tag{position:absolute;top:12px;left:12px;background:var(--warm-white);border:0.5px solid var(--rule);padding:5px 10px;border-radius:2px;font-size:10.5px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;color:var(--forest);}
+.prod-tag.amber{color:var(--amber);}
+.prod-heart{position:absolute;top:12px;right:12px;width:32px;height:32px;border-radius:50%;background:var(--warm-white);border:0.5px solid var(--rule);display:flex;align-items:center;justify-content:center;opacity:0;transform:translateY(-4px);transition:all 200ms ease;cursor:pointer;}
+.prod:hover .prod-heart{opacity:1;transform:translateY(0);}
+.prod-heart svg{width:14px;height:14px;stroke:var(--ink);fill:none;stroke-width:1.5;}
+.prod-heart.active svg{fill:var(--amber);stroke:var(--amber);}
+.prod-add{position:absolute;left:12px;right:12px;bottom:12px;padding:10px;background:var(--ink);color:var(--cream);font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;text-align:center;border-radius:2px;opacity:0;transform:translateY(8px);transition:all 220ms ease;cursor:pointer;}
+.prod:hover .prod-add{opacity:1;transform:translateY(0);}
+.prod-add:hover{background:var(--forest);}
+.prod-maker{font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--stone);font-weight:500;margin-bottom:4px;}
+.prod-name{font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:500;line-height:1.2;margin:0 0 6px;}
+.prod-stars{font-size:12px;color:var(--amber);letter-spacing:1px;margin-bottom:6px;}
+.prod-stars span{color:var(--stone);letter-spacing:0;font-size:12px;margin-left:6px;}
+.prod-meta{display:flex;justify-content:space-between;align-items:baseline;font-size:13px;color:var(--stone);}
+.prod-price{color:var(--ink);font-weight:500;}
+
+/* Pagination */
+.pag{margin-top:64px;text-align:center;border-top:0.5px solid var(--rule);padding-top:36px;}
+.pag-count{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;color:var(--stone);margin:0 0 18px;}
+.pag-bar{display:inline-flex;align-items:center;gap:6px;}
+.pag-btn{min-width:40px;height:40px;padding:0 14px;background:var(--warm-white);border:0.5px solid var(--rule);border-radius:2px;font-family:inherit;font-size:13px;font-weight:500;color:var(--ink);cursor:pointer;}
+.pag-btn.active{background:var(--ink);color:var(--cream);border-color:var(--ink);}
+.pag-btn:hover:not(.active){border-color:var(--ink);}
+
+footer{background:var(--cream);border-top:0.5px solid var(--rule);}
+.foot-bottom-band{max-width:1440px;margin:0 auto;padding:28px 40px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--stone);letter-spacing:0.04em;flex-wrap:wrap;gap:12px;}
+.foot-bottom-band em{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:var(--ink);margin-right:10px;}
+.foot-bottom-band .foot-bottom-links{display:flex;gap:22px;}
+
+@media (max-width:1000px){.coll-hero{grid-template-columns:1fr;gap:40px;}.coll-body{grid-template-columns:1fr;}.sidebar{position:static;max-height:none;}.grid{grid-template-columns:repeat(2,1fr);gap:20px;}}
+</style>
+</head>
+<body data-screen-label="Collection · Tara Treasures">
+
+<div class="utility">Free shipping on orders $150+ within the contiguous U.S.</div>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="MTW Homepage v3.html" class="logo">
+      <span class="logo-mark" aria-hidden="true"></span>
+      <span class="logo-text">My Toy Wagon</span>
+    </a>
+    <div style="display:flex;gap:12px;">
+      <a href="#" class="btn btn-ghost">Account</a>
+      <a href="#" class="btn btn-primary">Cart (0)</a>
+    </div>
+  </div>
+</header>
+
+<nav class="crumbs">
+  <a href="MTW Homepage v3.html">Home</a><span class="sep">·</span><a href="#">Shop all</a><span class="sep">·</span><a href="#">Brands</a><span class="sep">·</span><span style="color:var(--ink);">Tara Treasures</span>
+</nav>
+
+<section class="coll-hero">
+  <div>
+    <span class="label">Featured maker · Fair Trade Certified</span>
+    <h1>Tara <em>Treasures</em>.</h1>
+    <p class="dek">Designed in Melbourne, hand-felted in Nepal by 350+ women artisans. The first toy brand in Australia to gain Fair Trade Certification.</p>
+    <div class="cta-row">
+      <a href="tara-treasures.html" class="btn btn-primary">Read the maker story</a>
+      <a href="#grid" class="btn btn-ghost">Browse the collection</a>
+    </div>
+  </div>
+  <div class="coll-hero-image"><img src="assets/tara-safari-playmat-child.webp" alt="A child playing with Tara Treasures felt safari playmat"></div>
+</section>
+
+<div class="filter-bar">
+  <div class="filter-inner">
+    <div class="filter-pills">
+      <span class="filter-meta">42 products</span>
+      <span class="filter-pill active">Felt mats · 8 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></span>
+      <span class="filter-pill active">Ages 3+ · 38 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></span>
+    </div>
+    <div class="filter-sort">Sort: Best sellers <svg style="width:9px;height:9px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+  </div>
+</div>
+
+<div class="coll-body">
+  <aside class="sidebar">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:18px;">
+      <span class="label">Filter</span>
+      <span class="sidebar-clear">Clear all</span>
+    </div>
+
+    <div class="sidebar-group">
+      <h3>Category</h3>
+      <label class="facet"><input type="checkbox" checked> Felt mats &amp; playscapes <span class="count">8</span></label>
+      <label class="facet"><input type="checkbox"> Finger puppets <span class="count">12</span></label>
+      <label class="facet"><input type="checkbox"> Play food <span class="count">14</span></label>
+      <label class="facet"><input type="checkbox"> Felt animals <span class="count">9</span></label>
+      <label class="facet"><input type="checkbox"> Storybook collections <span class="count">6</span></label>
+    </div>
+
+    <div class="sidebar-group">
+      <h3>Age</h3>
+      <label class="facet"><input type="checkbox"> 0 to 12 months <span class="count">4</span></label>
+      <label class="facet"><input type="checkbox"> 1 to 3 years <span class="count">18</span></label>
+      <label class="facet"><input type="checkbox" checked> 3 to 5 years <span class="count">32</span></label>
+      <label class="facet"><input type="checkbox" checked> 5 to 8 years <span class="count">22</span></label>
+      <label class="facet"><input type="checkbox"> 8 years and up <span class="count">6</span></label>
+    </div>
+
+    <div class="sidebar-group">
+      <h3>Approach</h3>
+      <label class="facet"><input type="checkbox"> Reggio <span class="count">28</span></label>
+      <label class="facet"><input type="checkbox"> Montessori <span class="count">22</span></label>
+      <label class="facet"><input type="checkbox"> Waldorf <span class="count">31</span></label>
+      <label class="facet"><input type="checkbox"> Charlotte Mason <span class="count">14</span></label>
+    </div>
+
+    <div class="sidebar-group">
+      <h3>Price</h3>
+      <div class="price-range">
+        <input type="text" placeholder="$ min">
+        <input type="text" placeholder="$ max">
+      </div>
+    </div>
+
+    <div class="sidebar-group">
+      <h3>Availability</h3>
+      <label class="facet"><input type="checkbox" checked> In stock <span class="count">36</span></label>
+      <label class="facet"><input type="checkbox"> Pre-order <span class="count">4</span></label>
+      <label class="facet"><input type="checkbox"> Notify when back <span class="count">2</span></label>
+    </div>
+
+    <div class="pair-filter">
+      <div class="lbl">Pair this filter</div>
+      <p class="copy">Felt mats + Ages 3 to 8 — try our hand-picked playscape edit.</p>
+      <a href="#">See the edit →</a>
+    </div>
+  </aside>
+
+  <main id="grid">
+    <div class="grid">
+
+      <a href="product-garden-of-the-moon.html" class="prod">
+        <div class="prod-img">
+          <span class="prod-tag">In stock</span>
+          <button class="prod-heart" aria-label="Save"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5 6.5 5c2 0 3.5 1.2 5.5 3.5C14 6.2 15.5 5 17.5 5c4 0 5.5 4 4 7C19 16.5 12 21 12 21z"/></svg></button>
+          <img class="primary" src="assets/garden-of-the-moon.webp" alt="Garden of the Moon Playscape">
+          <img class="secondary" src="assets/tara-farm-animals.webp" alt="">
+          <button class="prod-add">Add to cart</button>
+        </div>
+        <p class="prod-maker">Tara Treasures</p>
+        <h3 class="prod-name">Garden of the Moon, Large</h3>
+        <div class="prod-stars">★★★★★<span>18 reviews</span></div>
+        <div class="prod-meta"><span>Ages 3 to 10</span><span class="prod-price">$149</span></div>
+      </a>
+
+      <a href="#" class="prod">
+        <div class="prod-img">
+          <span class="prod-tag">In stock</span>
+          <button class="prod-heart" aria-label="Save"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5 6.5 5c2 0 3.5 1.2 5.5 3.5C14 6.2 15.5 5 17.5 5c4 0 5.5 4 4 7C19 16.5 12 21 12 21z"/></svg></button>
+          <img class="primary" src="assets/tara-bear-hunt-playmat.webp" alt="Bear Hunt Play Mat">
+          <img class="secondary" src="assets/best-ingenious-insects.png" alt="">
+          <button class="prod-add">Add to cart</button>
+        </div>
+        <p class="prod-maker">Tara Treasures</p>
+        <h3 class="prod-name">Felt Bear Hunt Play Mat + Bear Set</h3>
+        <div class="prod-stars">★★★★★<span>24 reviews</span></div>
+        <div class="prod-meta"><span>Ages 3 and up</span><span class="prod-price">$132</span></div>
+      </a>
+
+      <a href="#" class="prod">
+        <div class="prod-img">
+          <span class="prod-tag">In stock</span>
+          <button class="prod-heart" aria-label="Save"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5 6.5 5c2 0 3.5 1.2 5.5 3.5C14 6.2 15.5 5 17.5 5c4 0 5.5 4 4 7C19 16.5 12 21 12 21z"/></svg></button>
+          <img class="primary" src="assets/tara-sea-rockpool-playscape.webp" alt="Sea and Rockpool Play Mat">
+          <img class="secondary" src="assets/tara-moon-crater-child-2.webp" alt="">
+          <button class="prod-add">Add to cart</button>
+        </div>
+        <p class="prod-maker">Tara Treasures</p>
+        <h3 class="prod-name">Large Sea and Rockpool Play Mat</h3>
+        <div class="prod-stars">★★★★★<span>31 reviews</span></div>
+        <div class="prod-meta"><span>Ages 3 and up</span><span class="prod-price">$118</span></div>
+      </a>
+
+      <a href="#" class="prod">
+        <div class="prod-img">
+          <span class="prod-tag">In stock</span>
+          <button class="prod-heart" aria-label="Save"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5 6.5 5c2 0 3.5 1.2 5.5 3.5C14 6.2 15.5 5 17.5 5c4 0 5.5 4 4 7C19 16.5 12 21 12 21z"/></svg></button>
+          <img class="primary" src="assets/best-ingenious-insects.png" alt="Ingenious Insects">
+          <img class="secondary" src="assets/tara-room-on-broom.webp" alt="">
+          <button class="prod-add">Add to cart</button>
+        </div>
+        <p class="prod-maker">Tara Treasures</p>
+        <h3 class="prod-name">Ingenious Insects · Puppet Set + Book</h3>
+        <div class="prod-stars">★★★★★<span>42 reviews</span></div>
+        <div class="prod-meta"><span>Ages 3 and up</span><span class="prod-price">$68</span></div>
+      </a>
+
+      <a href="#" class="prod">
+        <div class="prod-img">
+          <span class="prod-tag">In stock</span>
+          <button class="prod-heart" aria-label="Save"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5 6.5 5c2 0 3.5 1.2 5.5 3.5C14 6.2 15.5 5 17.5 5c4 0 5.5 4 4 7C19 16.5 12 21 12 21z"/></svg></button>
+          <img class="primary" src="assets/tara-room-on-broom.webp" alt="Room on the Broom Finger Puppets">
+          <img class="secondary" src="assets/tara-three-little-pigs.webp" alt="">
+          <button class="prod-add">Add to cart</button>
+        </div>
+        <p class="prod-maker">Tara Treasures · Julia Donaldson</p>
+        <h3 class="prod-name">Room on the Broom · Finger Puppet Set + Book</h3>
+        <div class="prod-stars">★★★★★<span>16 reviews</span></div>
+        <div class="prod-meta"><span>Ages 3 and up</span><span class="prod-price">$76</span></div>
+      </a>
+
+      <a href="#" class="prod">
+        <div class="prod-img">
+          <span class="prod-tag">In stock</span>
+          <button class="prod-heart" aria-label="Save"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5 6.5 5c2 0 3.5 1.2 5.5 3.5C14 6.2 15.5 5 17.5 5c4 0 5.5 4 4 7C19 16.5 12 21 12 21z"/></svg></button>
+          <img class="primary" src="assets/tara-farm-animals.webp" alt="Felt Farm Animals">
+          <img class="secondary" src="assets/cat-felt-mats-farm.webp" alt="">
+          <button class="prod-add">Add to cart</button>
+        </div>
+        <p class="prod-maker">Tara Treasures</p>
+        <h3 class="prod-name">Felt Farm Animals, Set of 10</h3>
+        <div class="prod-stars">★★★★★<span>89 reviews</span></div>
+        <div class="prod-meta"><span>Ages 3 and up</span><span class="prod-price">$58</span></div>
+      </a>
+
+      <a href="#" class="prod">
+        <div class="prod-img">
+          <span class="prod-tag">In stock</span>
+          <button class="prod-heart" aria-label="Save"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5 6.5 5c2 0 3.5 1.2 5.5 3.5C14 6.2 15.5 5 17.5 5c4 0 5.5 4 4 7C19 16.5 12 21 12 21z"/></svg></button>
+          <img class="primary" src="assets/tara-garden-planter-box.webp" alt="Felt Garden Planter Box">
+          <img class="secondary" src="assets/gift-felt-donuts.webp" alt="">
+          <button class="prod-add">Add to cart</button>
+        </div>
+        <p class="prod-maker">Tara Treasures</p>
+        <h3 class="prod-name">Felt Garden Planter Box with Vegetables</h3>
+        <div class="prod-stars">★★★★★<span>27 reviews</span></div>
+        <div class="prod-meta"><span>Ages 3 and up</span><span class="prod-price">$94</span></div>
+      </a>
+
+      <a href="#" class="prod">
+        <div class="prod-img">
+          <span class="prod-tag amber">Low stock · 2 left</span>
+          <button class="prod-heart" aria-label="Save"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5 6.5 5c2 0 3.5 1.2 5.5 3.5C14 6.2 15.5 5 17.5 5c4 0 5.5 4 4 7C19 16.5 12 21 12 21z"/></svg></button>
+          <img class="primary" src="assets/tara-moon-crater-child-2.webp" alt="Moon Crater Playscape">
+          <img class="secondary" src="assets/tara-moon-crater-child-8.webp" alt="">
+          <button class="prod-add">Add to cart</button>
+        </div>
+        <p class="prod-maker">Tara Treasures</p>
+        <h3 class="prod-name">Moon Crater with Astronaut Playscape</h3>
+        <div class="prod-stars">★★★★★<span>11 reviews</span></div>
+        <div class="prod-meta"><span>Ages 3 and up</span><span class="prod-price">$124</span></div>
+      </a>
+
+      <a href="#" class="prod">
+        <div class="prod-img">
+          <span class="prod-tag">In stock</span>
+          <button class="prod-heart" aria-label="Save"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5 6.5 5c2 0 3.5 1.2 5.5 3.5C14 6.2 15.5 5 17.5 5c4 0 5.5 4 4 7C19 16.5 12 21 12 21z"/></svg></button>
+          <img class="primary" src="assets/gift-felt-donuts.webp" alt="Felt Donuts">
+          <img class="secondary" src="assets/brand-tara-lollipops.png" alt="">
+          <button class="prod-add">Add to cart</button>
+        </div>
+        <p class="prod-maker">Tara Treasures</p>
+        <h3 class="prod-name">Felt Donuts, Set of 4</h3>
+        <div class="prod-stars">★★★★★<span>52 reviews</span></div>
+        <div class="prod-meta"><span>Ages 3 and up</span><span class="prod-price">$34</span></div>
+      </a>
+
+    </div>
+
+    <div class="pag">
+      <p class="pag-count">Showing 9 of 42 products</p>
+      <div class="pag-bar">
+        <button class="pag-btn active">1</button>
+        <button class="pag-btn">2</button>
+        <button class="pag-btn">3</button>
+        <button class="pag-btn">4</button>
+        <button class="pag-btn">5</button>
+        <button class="pag-btn">Next →</button>
+      </div>
+    </div>
+  </main>
+</div>
+
+<footer>
+  <div class="foot-bottom-band">
+    <span><em>Heirloom toys, curated by hand.</em>© 2026 My Toy Wagon LLC. All rights reserved.</span>
+    <div class="foot-bottom-links">
+      <a href="MTW Homepage v3.html">Back to the shop</a>
+      <a href="tara-treasures.html">Maker story</a>
+      <a href="shipping.html">Shipping</a>
+      <a href="returns.html">Returns</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

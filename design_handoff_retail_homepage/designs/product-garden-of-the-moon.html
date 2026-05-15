@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Garden of the Moon Playscape, Large — Tara Treasures | My Toy Wagon</title>
+<meta name="description" content="A reversible hand-felted playscape. A spring garden by day, a moonlit meadow by night. Ages 3 to 10. Heirloom wool, fair-trade hand-stitched in Nepal.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#F5F0E5;--warm-white:#FFFCF7;--ink:#2C2C2A;--forest:#3B6D11;--amber:#854F0B;--stone:#5F5E5A;--card-bg:#EDE3CD;--rule:rgba(44,44,42,0.12);--rule-strong:rgba(44,44,42,0.22);}
+*{box-sizing:border-box;}html,body{margin:0;padding:0;}
+body{font-family:'Mulish',sans-serif;color:var(--ink);background:var(--cream);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+img{max-width:100%;display:block;}a{color:inherit;text-decoration:none;}
+.label{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--stone);font-weight:500;}
+
+.utility{background:var(--ink);color:var(--cream);font-size:12px;letter-spacing:0.06em;}
+.utility-inner{max-width:1440px;margin:0 auto;padding:9px 40px;display:flex;justify-content:space-between;align-items:center;gap:24px;}
+.utility-center{flex:1;text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;}
+.utility-links{display:flex;gap:22px;color:rgba(245,240,229,0.7);}.utility-links a:hover{color:var(--cream);}
+
+header.nav{border-bottom:0.5px solid var(--rule);background:var(--cream);position:sticky;top:0;z-index:50;}
+.nav-inner{max-width:1440px;margin:0 auto;padding:20px 40px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:32px;}
+.nav-left,.nav-right{display:flex;align-items:center;gap:30px;}.nav-right{justify-content:flex-end;}
+.nav-link{font-size:14.5px;font-weight:500;letter-spacing:0.02em;padding:4px 0;}.nav-link:hover{color:var(--forest);}
+.nav-link.has-caret::after{content:"";display:inline-block;width:5px;height:5px;border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:rotate(45deg);margin-left:6px;vertical-align:2px;}
+.logo{display:inline-flex;align-items:center;gap:18px;line-height:1;}
+.logo-mark{width:130px;height:130px;background-color:var(--ink);-webkit-mask:url('{{ FILES_BASE_URL }}/logo-mark.png') center/contain no-repeat;mask:url('{{ FILES_BASE_URL }}/logo-mark.png') center/contain no-repeat;flex-shrink:0;}
+.logo-text{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;letter-spacing:0.24em;text-transform:uppercase;line-height:1;color:var(--ink);white-space:nowrap;}
+.logo small{display:block;font-family:'Mulish',sans-serif;font-style:normal;font-size:10.5px;letter-spacing:0.22em;text-transform:uppercase;color:var(--stone);margin-top:10px;font-weight:500;white-space:nowrap;}
+.nav-icon{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:500;}
+.cart-count{display:inline-flex;align-items:center;justify-content:center;min-width:20px;height:20px;padding:0 6px;background:var(--forest);color:var(--cream);border-radius:10px;font-size:11.5px;font-weight:600;}
+.search-pill{display:flex;align-items:center;gap:10px;padding:14px 20px;background:var(--warm-white);border:0.5px solid var(--rule-strong);border-radius:999px;font-size:14px;color:var(--ink);min-width:340px;font-family:'Cormorant Garamond',serif;font-style:italic;cursor:pointer;transition:border-color 200ms ease, box-shadow 200ms ease;}
+.search-pill:hover{border-color:var(--ink);box-shadow:0 1px 12px rgba(44,44,42,0.06);}
+.search-pill .icon{width:18px;height:18px;color:var(--ink);}
+.search-pill span{color:var(--ink);}
+.icon{width:18px;height:18px;stroke:currentColor;stroke-width:1.4;fill:none;flex-shrink:0;}
+
+.crumbs{max-width:1440px;margin:0 auto;padding:24px 40px 0;font-size:12.5px;color:var(--stone);letter-spacing:0.04em;}
+.crumbs a:hover{color:var(--ink);}.crumbs .sep{margin:0 8px;opacity:0.5;}.crumbs .current{color:var(--ink);}
+
+.pdp{max-width:1440px;margin:0 auto;padding:32px 40px 80px;display:grid;grid-template-columns:1.15fr 1fr;gap:80px;align-items:start;}
+
+/* Gallery */
+.gallery{display:grid;grid-template-columns:80px 1fr;gap:18px;position:sticky;top:120px;}
+.thumbs{display:flex;flex-direction:column;gap:10px;}
+.thumb{aspect-ratio:1/1;background:var(--warm-white);border:0.5px solid var(--rule);border-radius:2px;overflow:hidden;cursor:pointer;transition:border-color 180ms ease;}
+.thumb:hover{border-color:var(--rule-strong);}
+.thumb.active{border-color:var(--ink);border-width:1px;}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+.main-image{aspect-ratio:1/1;background:var(--warm-white);border:0.5px solid var(--rule);border-radius:2px;overflow:hidden;position:relative;}
+.main-image img{width:100%;height:100%;object-fit:cover;display:block;}
+.gallery-badge{position:absolute;top:18px;left:18px;background:var(--warm-white);border:0.5px solid var(--rule);padding:7px 14px;border-radius:2px;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;font-weight:500;color:var(--forest);}
+.gallery-heart{position:absolute;top:18px;right:18px;width:42px;height:42px;border-radius:50%;background:var(--warm-white);border:0.5px solid var(--rule);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 180ms ease;}
+.gallery-heart svg{width:18px;height:18px;stroke:var(--ink);fill:none;stroke-width:1.5;}
+.gallery-heart:hover{background:var(--cream);}
+.gallery-heart.active svg{fill:var(--amber);stroke:var(--amber);}
+
+/* Meta column */
+.meta-col{padding-top:8px;}
+.meta-maker{font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:var(--amber);font-weight:600;margin-bottom:14px;}
+.meta-maker a{border-bottom:0.5px solid currentColor;padding-bottom:1px;}
+.meta-title{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:500;line-height:1.02;letter-spacing:-0.012em;margin:0 0 18px;text-wrap:balance;}
+.meta-rating{display:flex;align-items:center;gap:14px;margin-bottom:22px;font-size:13px;color:var(--stone);}
+.meta-rating .stars{color:var(--amber);font-size:15px;letter-spacing:1px;}
+.meta-rating a{color:var(--stone);border-bottom:0.5px solid var(--rule-strong);padding-bottom:1px;}
+.meta-rating a:hover{color:var(--ink);}
+.meta-price-row{display:flex;align-items:baseline;gap:14px;margin-bottom:6px;}
+.meta-price{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:40px;font-weight:500;color:var(--ink);line-height:1;letter-spacing:-0.01em;}
+.meta-shipping-pill{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;font-weight:500;color:var(--forest);background:rgba(59,109,17,0.08);padding:6px 12px;border-radius:2px;}
+.meta-tax{font-size:12.5px;color:var(--stone);margin-bottom:28px;}
+.meta-tax a:hover{color:var(--ink);}
+
+.variants{margin-bottom:26px;}
+.variant-group{margin-bottom:18px;}
+.variant-label{font-size:11.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--stone);font-weight:500;margin-bottom:10px;display:flex;justify-content:space-between;align-items:baseline;}
+.variant-label .selected{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:var(--ink);text-transform:none;letter-spacing:0;font-weight:500;}
+.variant-options{display:flex;gap:8px;flex-wrap:wrap;}
+.variant-chip{display:inline-flex;align-items:center;justify-content:center;padding:11px 18px;border:0.5px solid var(--rule-strong);border-radius:2px;font-size:13.5px;font-weight:500;background:var(--warm-white);cursor:pointer;transition:all 160ms ease;}
+.variant-chip:hover{border-color:var(--ink);}
+.variant-chip.active{background:var(--ink);color:var(--cream);border-color:var(--ink);}
+
+.add-row{display:grid;grid-template-columns:120px 1fr;gap:12px;margin-bottom:14px;}
+.qty{display:inline-flex;align-items:center;border:0.5px solid var(--rule-strong);border-radius:2px;background:var(--warm-white);height:54px;}
+.qty button{width:36px;height:54px;border:none;background:none;font-size:18px;cursor:pointer;color:var(--ink);}
+.qty button:hover{background:var(--cream);}
+.qty input{width:48px;height:54px;border:none;background:none;text-align:center;font-family:inherit;font-size:15px;font-weight:500;color:var(--ink);}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:0 28px;height:54px;font-size:13.5px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;border-radius:2px;border:0.5px solid transparent;cursor:pointer;transition:all 160ms ease;background:none;font-family:inherit;}
+.btn-primary{background:var(--ink);color:var(--cream);width:100%;}.btn-primary:hover{background:var(--forest);}
+.btn-buy-now{background:var(--card-bg);color:var(--ink);width:100%;height:54px;margin-bottom:24px;}.btn-buy-now:hover{background:#E0D3B5;}
+
+.trust-mini{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:18px 0;border-top:0.5px solid var(--rule);border-bottom:0.5px solid var(--rule);margin-bottom:24px;}
+.trust-mini-item{display:flex;align-items:center;gap:10px;font-size:12.5px;line-height:1.4;color:var(--ink);}
+.trust-mini-item svg{width:22px;height:22px;stroke:var(--forest);fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;}
+.trust-mini-item strong{display:block;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;font-weight:500;color:var(--ink);line-height:1.1;margin-bottom:2px;}
+
+.meta-ship-note{font-size:13.5px;color:var(--stone);line-height:1.65;margin:0;}
+.meta-ship-note strong{color:var(--ink);font-weight:500;}
+
+/* Founder lifestyle band */
+.founder-band{background:var(--warm-white);border-top:0.5px solid var(--rule);border-bottom:0.5px solid var(--rule);}
+.founder-band-inner{max-width:1100px;margin:0 auto;padding:72px 40px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+.founder-band img{width:100%;aspect-ratio:4/4;object-fit:cover;border-radius:2px;}
+.founder-band .label{display:block;margin-bottom:18px;}
+.founder-band h2{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:500;line-height:1.05;margin:0 0 20px;letter-spacing:-0.008em;}
+.founder-band h2 em{font-style:italic;}
+.founder-band p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:19px;color:var(--ink);line-height:1.55;margin:0 0 18px;max-width:480px;}
+.founder-band cite{display:block;font-style:normal;font-family:'Mulish',sans-serif;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--stone);margin-top:14px;font-weight:500;}
+
+/* Description (Brand-guide Option B, single-column 700px) */
+.pdp-desc{max-width:760px;margin:0 auto;padding:80px 40px;}
+
+.pdp-hero-para{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:21px;line-height:1.65;color:var(--ink);margin:0 0 56px;text-wrap:pretty;}
+
+.why-section{margin-bottom:48px;}
+.why-section h2{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:500;line-height:1.05;margin:0 0 18px;letter-spacing:-0.005em;}
+.why-section h2 em{font-style:italic;}
+.why-section p{font-size:16px;line-height:1.78;margin:0 0 16px;color:var(--ink);text-wrap:pretty;}
+
+.glance{background:var(--card-bg);border-radius:2px;padding:32px 36px;margin-bottom:48px;}
+.glance .label{display:block;margin-bottom:20px;}
+.glance dl{margin:0;display:grid;grid-template-columns:140px 1fr;gap:14px 32px;}
+.glance dt{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--stone);font-size:15.5px;line-height:1.5;}
+.glance dd{margin:0;color:var(--ink);font-size:15px;line-height:1.6;}
+
+.emotional{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;line-height:1.45;padding-left:20px;border-left:3px solid var(--forest);color:var(--ink);margin:0 0 56px;max-width:600px;}
+
+.accordion{border-top:0.5px solid var(--rule);}
+.accordion-item{border-bottom:0.5px solid var(--rule);}
+.accordion-summary{padding:22px 0;display:flex;justify-content:space-between;align-items:center;cursor:pointer;list-style:none;font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;line-height:1.2;color:var(--ink);letter-spacing:-0.005em;position:relative;padding-right:36px;}
+.accordion-summary::-webkit-details-marker{display:none;}
+.accordion-summary::before,.accordion-summary::after{content:"";position:absolute;right:8px;top:50%;width:14px;height:0.5px;background:var(--ink);transition:transform 280ms ease,opacity 200ms ease;transform-origin:center;}
+.accordion-summary::before{transform:rotate(90deg);}
+details[open] .accordion-summary::before{transform:rotate(0deg);}
+.accordion-body{padding:0 0 26px;font-size:15.5px;line-height:1.78;color:var(--ink);}
+.accordion-body p{margin:0 0 14px;}
+.accordion-body p:last-child{margin-bottom:0;}
+.accordion-body strong{font-weight:600;}
+.faq-q{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;font-weight:500;margin:22px 0 6px;color:var(--ink);}
+.faq-q:first-child{margin-top:0;}
+
+/* Reviews band */
+.reviews-band{background:var(--cream);border-top:0.5px solid var(--rule);border-bottom:0.5px solid var(--rule);}
+.reviews-band-inner{max-width:1440px;margin:0 auto;padding:64px 40px;display:grid;grid-template-columns:340px 1fr;gap:64px;align-items:start;}
+.reviews-summary{padding-right:40px;border-right:0.5px solid var(--rule);}
+.reviews-summary .label{display:block;margin-bottom:18px;}
+.reviews-summary .summary-fig{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:64px;line-height:1;color:var(--ink);letter-spacing:-0.012em;margin-bottom:8px;}
+.reviews-summary .stars{color:var(--amber);font-size:18px;letter-spacing:2px;margin-bottom:8px;}
+.reviews-summary .count{font-size:13.5px;color:var(--stone);}
+.reviews-summary .write-btn{margin-top:24px;display:inline-flex;align-items:center;gap:10px;border-bottom:0.5px solid var(--rule-strong);padding-bottom:4px;font-size:12.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink);font-weight:500;}
+.reviews-summary .write-btn:hover{border-color:var(--ink);color:var(--forest);}
+.reviews-list{display:flex;flex-direction:column;gap:32px;}
+.review-item{}
+.review-head{display:flex;align-items:center;gap:14px;margin-bottom:10px;}
+.review-avatar{width:42px;height:42px;border-radius:50%;background:var(--card-bg);display:inline-flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;color:var(--ink);border:0.5px solid var(--rule-strong);}
+.review-who{display:flex;flex-direction:column;gap:2px;font-size:13px;}
+.review-who-name{font-weight:500;color:var(--ink);}
+.review-who-meta{color:var(--stone);font-size:12px;letter-spacing:0.04em;}
+.review-stars{color:var(--amber);font-size:14px;letter-spacing:1px;margin-bottom:8px;}
+.review-title{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;line-height:1.25;margin:0 0 8px;}
+.review-body{font-size:14.5px;line-height:1.65;color:var(--ink);margin:0;}
+
+/* Related */
+.related{max-width:1440px;margin:0 auto;padding:80px 40px 24px;}
+.related-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:32px;}
+.related-head h2{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:500;line-height:1;margin:0;letter-spacing:-0.005em;}
+.related-head h2 em{font-style:italic;}
+.related-head a{font-size:12.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--stone);border-bottom:0.5px solid var(--rule-strong);padding-bottom:2px;font-weight:500;}
+.related-head a:hover{color:var(--ink);}
+.related-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+.related-card{cursor:pointer;}
+.related-image{aspect-ratio:4/5;background:var(--warm-white);border:0.5px solid var(--rule);border-radius:2px;overflow:hidden;margin-bottom:14px;position:relative;}
+.related-image img{width:100%;height:100%;object-fit:cover;display:block;}
+.related-maker{font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--stone);font-weight:500;margin-bottom:4px;}
+.related-name{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:500;line-height:1.2;margin:0 0 4px;}
+.related-meta{display:flex;justify-content:space-between;font-size:13px;color:var(--stone);}
+.related-price{color:var(--ink);font-weight:500;}
+
+/* Recently viewed */
+.recently{max-width:1440px;margin:0 auto;padding:48px 40px 96px;border-top:0.5px solid var(--rule);}
+.recently h2{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:24px;font-weight:500;margin:0 0 24px;}
+.recently-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;}
+.recently-card{cursor:pointer;}
+.recently-image{aspect-ratio:1/1;background:var(--warm-white);border:0.5px solid var(--rule);border-radius:2px;overflow:hidden;margin-bottom:10px;}
+.recently-image img{width:100%;height:100%;object-fit:cover;display:block;}
+.recently-name{font-size:12px;line-height:1.3;color:var(--ink);margin:0 0 2px;}
+.recently-price{font-size:11px;color:var(--stone);}
+
+footer{background:var(--cream);border-top:0.5px solid var(--rule);}
+.foot-bottom-band{max-width:1440px;margin:0 auto;padding:28px 40px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--stone);letter-spacing:0.04em;flex-wrap:wrap;gap:12px;}
+.foot-bottom-band a:hover{color:var(--ink);}
+.foot-bottom-band em{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:var(--ink);margin-right:10px;}
+.foot-bottom-band .foot-bottom-links{display:flex;gap:22px;}
+
+@media (max-width:1100px){
+  .pdp{grid-template-columns:1fr;gap:48px;}
+  .gallery{position:static;}
+  .founder-band-inner{grid-template-columns:1fr;gap:40px;}
+  .reviews-band-inner{grid-template-columns:1fr;gap:40px;}
+  .reviews-summary{border-right:none;border-bottom:0.5px solid var(--rule);padding-right:0;padding-bottom:32px;}
+  .related-grid,.recently-grid{grid-template-columns:repeat(2,1fr);}
+}
+
+/* Sticky add-to-cart bar */
+.sticky-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: var(--warm-white);
+  border-bottom: 0.5px solid var(--rule);
+  z-index: 100;
+  transform: translateY(-100%);
+  transition: transform 320ms ease;
+  box-shadow: 0 1px 16px rgba(44,44,42,0.06);
+}
+.sticky-bar.show { transform: translateY(0); }
+.sticky-bar-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 12px 40px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.sticky-bar-thumb {
+  width: 52px;
+  height: 52px;
+  border-radius: 2px;
+  background: var(--cream);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.sticky-bar-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.sticky-bar-text { flex: 1; min-width: 0; }
+.sticky-bar-maker { font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--stone); font-weight: 500; margin-bottom: 2px; }
+.sticky-bar-name { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 18px; font-weight: 500; color: var(--ink); line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sticky-bar-price { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 22px; color: var(--ink); font-weight: 500; flex-shrink: 0; }
+.sticky-bar-cta { background: var(--ink); color: var(--cream); border: none; padding: 12px 24px; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; border-radius: 2px; cursor: pointer; font-family: inherit; transition: background 160ms ease; flex-shrink: 0; }
+.sticky-bar-cta:hover { background: var(--forest); }
+@media (max-width: 700px) {
+  .sticky-bar-thumb, .sticky-bar-maker { display: none; }
+  .sticky-bar-inner { padding: 10px 16px; gap: 12px; }
+}
+</style>
+</head>
+<body data-screen-label="PDP · Garden of the Moon">
+
+<div class="utility">
+  <div class="utility-inner">
+    <div class="utility-links"><a href="#">Track order</a><a href="#">Educator program</a></div>
+    <div class="utility-center">Free shipping on orders $150+ within the contiguous U.S.</div>
+    <div class="utility-links" style="justify-content:flex-end;"><a href="#">Gift cards</a><a href="#">Sign in</a></div>
+  </div>
+</div>
+
+<header class="nav">
+  <div class="nav-inner">
+    <nav class="nav-left">
+      <a href="#" class="nav-link has-caret">Shop all</a>
+      <a href="#" class="nav-link has-caret">Collections</a>
+      <a href="#" class="nav-link">Ages</a>
+    </nav>
+    <a href="MTW Homepage v3.html" class="logo">
+      <span class="logo-mark" aria-hidden="true"></span>
+      <span class="logo-text">My Toy Wagon<small>Los Angeles · California · est. 2020</small></span>
+    </a>
+    <div class="nav-right">
+      <div class="search-pill"><svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg><span>Search wooden blocks, plush…</span></div>
+      <a href="#" class="nav-icon">Account</a>
+      <a href="#" class="nav-icon">Cart <span class="cart-count">2</span></a>
+    </div>
+  </div>
+</header>
+
+<!-- Sticky add-to-cart bar -->
+<div class="sticky-bar" id="stickyBar" aria-hidden="true">
+  <div class="sticky-bar-inner">
+    <div class="sticky-bar-thumb"><img src="{{ FILES_BASE_URL }}/garden-of-the-moon.webp" alt=""></div>
+    <div class="sticky-bar-text">
+      <div class="sticky-bar-maker">Tara Treasures</div>
+      <div class="sticky-bar-name">Garden of the Moon, Large</div>
+    </div>
+    <div class="sticky-bar-price">$149</div>
+    <button class="sticky-bar-cta" onclick="window.scrollTo({top:0,behavior:'smooth'})">Add to cart</button>
+  </div>
+</div>
+
+
+<nav class="crumbs">
+  <a href="MTW Homepage v3.html">Home</a>
+  <span class="sep">·</span>
+  <a href="#">Shop all</a>
+  <span class="sep">·</span>
+  <a href="#">Felt mats &amp; playscapes</a>
+  <span class="sep">·</span>
+  <span class="current">Garden of the Moon Playscape, Large</span>
+</nav>
+
+<!-- PDP main -->
+<section class="pdp">
+  <div class="gallery">
+    <div class="thumbs">
+      <div class="thumb active"><img src="{{ FILES_BASE_URL }}/garden-of-the-moon.webp" alt="Garden of the Moon playscape, both sides shown"></div>
+    </div>
+    <div class="main-image">
+      <span class="gallery-badge">In stock</span>
+      <button class="gallery-heart" aria-label="Save to wishlist"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5 6.5 5c2 0 3.5 1.2 5.5 3.5C14 6.2 15.5 5 17.5 5c4 0 5.5 4 4 7C19 16.5 12 21 12 21z"/></svg></button>
+      <img src="{{ FILES_BASE_URL }}/garden-of-the-moon.webp" alt="Garden of the Moon Playscape, Large — a reversible hand-felted playmat with a spring garden on one side and a moonlit field on the other">
+    </div>
+  </div>
+
+  <div class="meta-col">
+    <p class="meta-maker"><a href="#">Tara Treasures</a></p>
+    <h1 class="meta-title">Garden of the Moon Playscape, Large</h1>
+    <div class="meta-rating">
+      <span class="stars" style="color:var(--rule-strong);">☆☆☆☆☆</span>
+      <a href="#reviews">No reviews yet · Be the first</a>
+    </div>
+    <div class="meta-price-row">
+      <span class="meta-price">$149</span>
+      <span class="meta-shipping-pill">Free shipping over $150</span>
+    </div>
+    <p class="meta-tax">Tax included where applicable. <a href="shipping.html">Shipping calculated at checkout.</a></p>
+
+    <div class="variants">
+      <div class="variant-group">
+        <div class="variant-label">Size <span class="selected">Large (30 × 24 in)</span></div>
+        <div class="variant-options">
+          <span class="variant-chip">Small (18 × 14 in)</span>
+          <span class="variant-chip active">Large (30 × 24 in)</span>
+        </div>
+      </div>
+      <div class="variant-group">
+        <div class="variant-label">Pair with <span class="selected">Just the mat</span></div>
+        <div class="variant-options">
+          <span class="variant-chip active">Just the mat</span>
+          <span class="variant-chip">+ Bumbu wooden fawn ($28)</span>
+          <span class="variant-chip">+ Felt farm animals, set of 10 ($58)</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="add-row">
+      <div class="qty">
+        <button aria-label="Decrease">−</button>
+        <input type="text" value="1" aria-label="Quantity">
+        <button aria-label="Increase">+</button>
+      </div>
+      <button class="btn btn-primary">Add to cart</button>
+    </div>
+    <button class="btn btn-buy-now">Buy now with Shop Pay</button>
+
+    <div class="trust-mini">
+      <div class="trust-mini-item">
+        <svg viewBox="0 0 24 24"><path d="M3 7h13l5 5v5h-3"/><path d="M14 17H8"/><circle cx="6" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg>
+        <div><strong>Free U.S. shipping</strong>On orders $150+</div>
+      </div>
+      <div class="trust-mini-item">
+        <svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg>
+        <div><strong>30-day returns</strong>If the toy isn't right</div>
+      </div>
+      <div class="trust-mini-item">
+        <svg viewBox="0 0 24 24"><path d="M4 7h16v13H4z"/><path d="M4 7l8 5 8-5"/><path d="M9 7V4h6v3"/></svg>
+        <div><strong>Packed by hand</strong>Tissue + a card, free</div>
+      </div>
+    </div>
+
+    <p class="meta-ship-note"><strong>Ships within 2–4 business days</strong> from our Los Angeles warehouse. Standard transit 1–6 business days.</p>
+  </div>
+</section>
+
+<!-- Founders' daughters lifestyle band -->
+<section class="founder-band">
+  <div class="founder-band-inner">
+    <div>
+      <img src="{{ FILES_BASE_URL }}/hafsa-and-noor.webp" alt="Hafsa and Noor playing with the Garden of the Moon felt playscape at home" id="founderImg">
+    </div>
+    <div>
+      <span class="label">At home with the founders</span>
+      <h2>Hafsa and <em>Noor</em>, on a quiet afternoon.</h2>
+      <p>This is the playmat we keep in our own house. The girls reach for it on rainy mornings, then leave it set up on the floor for days. Felt stones in hand, half a story in the air. We carry it because they love it.</p>
+      <cite>Irfana, founder · My Toy Wagon</cite>
+    </div>
+  </div>
+</section>
+
+<!-- Brand-guide Option B description -->
+<section class="pdp-desc">
+
+  <p class="pdp-hero-para">A large needle-felted playscape from Tara Treasures, hand-stitched in Nepal in pure New Zealand wool. The garden side wakes in spring green with violet, pink, and white florals, a curving stream, and three round stones. Turn it over and the moon side opens to a soft grey-blue meadow under a full moon, white-and-grey blossoms scattered across a starlit ground. Reversible by design, large enough to anchor an afternoon of small-world play, and gentle enough to live on a low table in a room you also live in.</p>
+
+  <div class="why-section">
+    <h2>Why <em>you'll love it</em></h2>
+    <p>This is a playmat that scales. A two-year-old will lay belly-down and run a hand across the felted textures. By five, they're walking wooden animals along the stream. By nine, they're combining both sides into a single sweeping tale, day and night across the same floor. The double-sided design is the trick: one mat, two distinct moods, the same wool that softens with years.</p>
+    <p>It also lives well outside of play. The moon side, rolled out on a low table, looks like a piece of textile art. The garden side, on a child's nightstand with a single small figure, becomes a small altar to spring. It is, in our opinion, one of the few playmats that earns its place in a room you've decorated.</p>
+  </div>
+
+  <div class="glance">
+    <span class="label">At a glance</span>
+    <dl>
+      <dt>Material</dt>
+      <dd>100% pure New Zealand wool, hand needle-felted. No polyester, no fillers.</dd>
+      <dt>Size</dt>
+      <dd>Large, approximately 30 in × 24 in (76 × 61 cm). Also available in Small (18 × 14 in).</dd>
+      <dt>Sides</dt>
+      <dd>Reversible: a spring garden, and a moonlit meadow. Both sides fully felted, equally finished.</dd>
+      <dt>What's included</dt>
+      <dd>One large playmat. Florals, stream, and three felted stones are stitched to the base; the stones are removable for supervised older children.</dd>
+      <dt>Gifting</dt>
+      <dd>Wrapped by hand in cream tissue with a handwritten note, free. Add a checkout note and we will leave the price off the packing slip.</dd>
+      <dt>Age range</dt>
+      <dd>Ages 3 to 10 years. Younger children should play with supervision.</dd>
+      <dt>Origin</dt>
+      <dd>Designed in Australia by Tara Treasures, hand-felted in Nepal by women artisans in a fair-trade cooperative.</dd>
+    </dl>
+  </div>
+
+  <p class="emotional">"A garden by day, a moon-quiet meadow by night, on a single woolen ground built to last."</p>
+
+  <div class="accordion">
+
+    <details class="accordion-item" open>
+      <summary class="accordion-summary">Materials and construction</summary>
+      <div class="accordion-body">
+        <p>The base is pure New Zealand wool, hand needle-felted. The garden florals, stream, and moon-side blossoms are stitched into the base with a second layer of wool to give the surface dimension. The three felted stones are removable and lightly weighted with a wool core. No glues, no polyester backing.</p>
+        <p>All yarn is OEKO-TEX certified, meaning no harmful dyes or finishes. Production is hand-felted in Nepal in a fair-trade cooperative, where women artisans hand-felt each mat from start to finish.</p>
+      </div>
+    </details>
+
+    <details class="accordion-item">
+      <summary class="accordion-summary">Ways to play</summary>
+      <div class="accordion-body">
+        <p>Small-world storytelling. Place wooden animals on the mat and a story begins on its own.</p>
+        <p>Day-and-night play. Flip the mat between sides to mark the rhythm of a long afternoon.</p>
+        <p>Quiet sensory exploration. Younger children spend long minutes tracing the felted stream with a finger, or arranging the three stones into patterns along the garden path.</p>
+        <p>Co-play. The Large size is built for two children to share without crowding.</p>
+      </div>
+    </details>
+
+    <details class="accordion-item">
+      <summary class="accordion-summary">Skills it builds</summary>
+      <div class="accordion-body">
+        <p>Tactile discrimination across three distinct textures. Narrative imagination and sequencing through two-sided design. Cooperative play and turn-taking. Seasonal and natural vocabulary: stream, blossom, moon, stone, meadow. Unhurried attention, the rarest skill of all to build.</p>
+      </div>
+    </details>
+
+    <details class="accordion-item">
+      <summary class="accordion-summary">Who it is for</summary>
+      <div class="accordion-body">
+        <p>Reggio, Montessori, and Waldorf-aligned homes. Homeschool families building unit studies on seasons, day and night, or nature observation. Occupational therapists for sensory work; preschool teachers as a quiet-corner anchor. Grandparents looking for an heirloom gift that passes to a younger sibling intact.</p>
+      </div>
+    </details>
+
+    <details class="accordion-item">
+      <summary class="accordion-summary">Care and storage</summary>
+      <div class="accordion-body">
+        <p>Spot clean only. Dampen a cloth with cool water and a small amount of wool-safe soap, and rub gently along the surface. Do not submerge or machine wash; the wool will felt further and tighten the textures.</p>
+        <p>Air dry flat, away from direct sunlight. Like all natural-dye wool, prolonged sun exposure will fade the colors over time. Store rolled in a cotton bag with a cedar block or a few drops of lavender oil.</p>
+      </div>
+    </details>
+
+    <details class="accordion-item">
+      <summary class="accordion-summary">Includes / set contents</summary>
+      <div class="accordion-body">
+        <p>One large reversible playmat (approximately 30 in × 24 in, 76 × 61 cm), with florals, stream, and moon-side blossoms stitched to the base. Three removable felted stones.</p>
+        <p>Wooden animals and figures shown in product photos are not included.</p>
+      </div>
+    </details>
+
+    <details class="accordion-item">
+      <summary class="accordion-summary">FAQ</summary>
+      <div class="accordion-body">
+        <p class="faq-q">Is it really reversible?</p>
+        <p>Yes. Both sides are fully designed, hand-felted, and finished. The garden side is spring-green with florals and a stream; the moon side is grey-blue with a white full moon and white-and-grey blossoms.</p>
+
+        <p class="faq-q">Are the stones safe for a toddler?</p>
+        <p>The three felted stones are removable. We recommend supervision for children under three. The florals and stream are stitched to the base and do not detach.</p>
+
+        <p class="faq-q">Is it gift-appropriate?</p>
+        <p>Yes. Every order from our Los Angeles warehouse ships in cream tissue with a handwritten note. Tell us at checkout that it's a gift and we'll leave the price off the packing slip.</p>
+
+        <p class="faq-q">Will it fit in the Gus + Mabel Busy Bee Tray?</p>
+        <p>No. The Large is designed for floor or low-table play, not for the Busy Bee Tray. If you want a smaller felt habitat that fits the Tray, see the Gus + Mabel Coralwhim Cove or Tiny Terrains.</p>
+
+        <p class="faq-q">Prefer flexibility?</p>
+        <p>A My Toy Wagon gift card works for any item in the shop.</p>
+      </div>
+    </details>
+
+
+    <details class="accordion-item">
+      <summary class="accordion-summary">Shipping</summary>
+      <div class="accordion-body">
+        <p>Standard shipping in the contiguous U.S. is $9.95. Free at the $150 order subtotal. Local delivery in LA and Orange County is $10 with a $100 minimum. Quick Ship and expedited options available at checkout.</p>
+        <p>See our <a class="inline" href="shipping.html">full shipping policy</a> for international quotes, Hawaii and Alaska rates, and pre-order timing.</p>
+      </div>
+    </details>
+
+    <details class="accordion-item">
+      <summary class="accordion-summary">Returns</summary>
+      <div class="accordion-body">
+        <p>30-day returns from the day you receive your order. Free returns on items that arrive damaged or defective. A small return-shipping fee applies to change-of-mind returns. Email <a class="inline" href="mailto:contact@mytoywagon.com">contact@mytoywagon.com</a> with your order number to start.</p>
+        <p>See our <a class="inline" href="returns.html">full returns policy</a> for details.</p>
+      </div>
+    </details>
+
+    <details class="accordion-item">
+      <summary class="accordion-summary">Ask a question</summary>
+      <div class="accordion-body">
+        <p>Have a question about this product? We are a small shop in Los Angeles, and there is a real person at the other end.</p>
+        <p>Email <a class="inline" href="mailto:contact@mytoywagon.com?subject=Question%20about%20a%20product">contact@mytoywagon.com</a> or call <strong>626-841-0421</strong>, Monday to Friday, 9 am to 5 pm Pacific.</p>
+      </div>
+    </details>
+  </div>
+
+</section>
+
+<!-- Reviews band -->
+<section class="reviews-band" id="reviews">
+  <div class="reviews-band-inner" style="grid-template-columns:1fr;text-align:center;">
+    <div class="reviews-summary" style="padding-right:0;border-right:none;text-align:center;">
+      <span class="label" style="display:block;margin-bottom:18px;">Customer reviews</span>
+      <div class="summary-fig" style="font-size:48px;">—</div>
+      <div class="count" style="margin-bottom:24px;">No reviews yet for this product.</div>
+      <a href="#" class="write-btn" style="display:inline-flex;">Be the first to review</a>
+    </div>
+  </div>
+</section>
+
+<!-- Meet the maker -->
+<section style="background:var(--card-bg);padding:80px 40px;">
+  <div style="max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr 1.4fr;gap:64px;align-items:center;">
+    <div style="aspect-ratio:1/1;background:var(--warm-white);border:0.5px solid var(--rule);border-radius:2px;overflow:hidden;">
+      <img src="{{ FILES_BASE_URL }}/tara-farm-animals.webp" alt="Tara Treasures" style="width:100%;height:100%;object-fit:cover;">
+    </div>
+    <div>
+      <span class="label" style="display:block;margin-bottom:16px;">Meet the maker</span>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:500;line-height:1.05;letter-spacing:-0.008em;margin:0 0 18px;color:var(--ink);">Tara Treasures · Sydney, Australia</h2>
+      <p style="font-size:16px;line-height:1.78;color:var(--ink);margin:0 0 18px;max-width:480px;text-wrap:pretty;">Tara Treasures is a small studio in Sydney making hand-felted playmats and figures with a singular conviction: that natural materials and slow craft are not optional in a toy a child will keep.</p>
+      <p style="font-size:16px;line-height:1.78;color:var(--ink);margin:0 0 24px;max-width:480px;text-wrap:pretty;">Each piece is designed in Australia, then hand-felted in Nepal by women artisans working in a fair-trade cooperative. No glues, no polyester backing, no shortcuts. The wool comes from New Zealand; the patience comes from generations.</p>
+      <a href="#" style="display:inline-flex;align-items:center;gap:10px;font-size:12.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink);border-bottom:0.5px solid var(--rule-strong);padding-bottom:4px;font-weight:500;">Browse all Tara Treasures</a>
+    </div>
+  </div>
+</section>
+
+<!-- Related -->
+<section class="related">
+  <div class="related-head">
+    <h2>From the same maker.</h2>
+    <a href="#">Browse all Tara Treasures</a>
+  </div>
+  <div class="related-grid">
+    <a href="#" class="related-card">
+      <div class="related-image"><img src="{{ FILES_BASE_URL }}/cat-felt-mats-farm.webp" alt="Large Felt Farm Playmat"></div>
+      <p class="related-maker">Tara Treasures</p>
+      <h3 class="related-name">Large Felt Farm Playmat</h3>
+      <div class="related-meta"><span>Ages 3 to 10</span><span class="related-price">$135</span></div>
+    </a>
+    <a href="#" class="related-card">
+      <div class="related-image"><img src="{{ FILES_BASE_URL }}/tara-farm-animals.webp" alt="Tara Treasures Felt Farm Animals"></div>
+      <p class="related-maker">Tara Treasures</p>
+      <h3 class="related-name">Felt Farm Animals, set of 10</h3>
+      <div class="related-meta"><span>Ages 3 and up</span><span class="related-price">$58</span></div>
+    </a>
+    <a href="#" class="related-card">
+      <div class="related-image"><img src="{{ FILES_BASE_URL }}/best-ingenious-insects.png" alt="Tara Treasures Ingenious Insects puppet set with book"></div>
+      <p class="related-maker">Tara Treasures</p>
+      <h3 class="related-name">Ingenious Insects, puppet set + book</h3>
+      <div class="related-meta"><span>Ages 3 and up</span><span class="related-price">$68</span></div>
+    </a>
+    <a href="#" class="related-card">
+      <div class="related-image"><img src="{{ FILES_BASE_URL }}/gift-felt-donuts.webp" alt="Tara Treasures Felt Donuts, set of four"></div>
+      <p class="related-maker">Tara Treasures</p>
+      <h3 class="related-name">Felt Donuts, Set of 4</h3>
+      <div class="related-meta"><span>Ages 3 and up</span><span class="related-price">$34</span></div>
+    </a>
+  </div>
+</section>
+
+<!-- All reviews for this collection -->
+<section style="background:var(--cream);padding:64px 40px;border-top:0.5px solid var(--rule);">
+  <div style="max-width:760px;margin:0 auto;text-align:center;">
+    <span class="label" style="display:block;margin-bottom:18px;">More from the maker</span>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:500;line-height:1.05;letter-spacing:-0.005em;margin:0 0 16px;">Read every review from the Tara Treasures collection.</h2>
+    <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;color:var(--stone);line-height:1.5;margin:0 auto 28px;max-width:520px;">Filtered, verified, and posted as written. Every star, every word, every photo.</p>
+    <a href="#" style="display:inline-flex;align-items:center;gap:10px;padding:14px 28px;font-size:13px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;border-radius:2px;border:0.5px solid var(--rule-strong);color:var(--ink);">See all Tara Treasures reviews</a>
+  </div>
+</section>
+
+<!-- Recently viewed -->
+<section class="recently">
+  <h2>Recently viewed</h2>
+  <div class="recently-grid">
+    <a href="#" class="recently-card">
+      <div class="recently-image"><img src="{{ FILES_BASE_URL }}/new-coralwhim-cove.webp" alt="Coralwhim Cove"></div>
+      <p class="recently-name">Coralwhim Cove Felt Playmat</p>
+      <p class="recently-price">$116</p>
+    </a>
+    <a href="#" class="recently-card">
+      <div class="recently-image"><img src="{{ FILES_BASE_URL }}/new-bumbu-spring-flowers.webp" alt="Bumbu Spring Flowers"></div>
+      <p class="recently-name">Wooden Spring Flowers</p>
+      <p class="recently-price">$105</p>
+    </a>
+    <a href="#" class="recently-card">
+      <div class="recently-image"><img src="{{ FILES_BASE_URL }}/new-mushie-rainbow-maze.webp" alt="Mushie Rainbow Maze"></div>
+      <p class="recently-name">Wooden Magnetic Rainbow Maze</p>
+      <p class="recently-price">$29.99</p>
+    </a>
+    <a href="#" class="recently-card">
+      <div class="recently-image"><img src="{{ FILES_BASE_URL }}/new-tender-leaf-gnomes.webp" alt="Tender Leaf Gnomes"></div>
+      <p class="recently-name">Woodland Gnome Family</p>
+      <p class="recently-price">$36.99</p>
+    </a>
+    <a href="#" class="recently-card">
+      <div class="recently-image"><img src="{{ FILES_BASE_URL }}/drewart-dollhouse-girl.webp" alt="Drewart Dollhouse"></div>
+      <p class="recently-name">Drewart Dollhouse</p>
+      <p class="recently-price">$498</p>
+    </a>
+    <a href="#" class="recently-card">
+      <div class="recently-image"><img src="{{ FILES_BASE_URL }}/bumbu-acorn.png" alt="Bumbu Enchanted Treehouse"></div>
+      <p class="recently-name">Bumbu Enchanted Treehouse</p>
+      <p class="recently-price">$184</p>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-bottom-band">
+    <span><em>Heirloom toys, curated by hand.</em>© 2026 My Toy Wagon. All rights reserved.</span>
+    <div class="foot-bottom-links">
+      <a href="MTW Homepage v3.html">Back to the shop</a>
+      <a href="shipping.html">Shipping</a>
+      <a href="returns.html">Returns</a>
+      <a href="rewards.html">Rewards</a>
+      <a href="privacy.html">Privacy</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.thumb').forEach((t) => {
+  t.addEventListener('click', () => {
+    document.querySelectorAll('.thumb').forEach(x => x.classList.remove('active'));
+    t.classList.add('active');
+    const mainImg = document.querySelector('.main-image img');
+    const thumbImg = t.querySelector('img');
+    if (mainImg && thumbImg) {
+      mainImg.src = thumbImg.src;
+      mainImg.alt = thumbImg.alt;
+    }
+  });
+});
+document.querySelectorAll('.variant-group').forEach((g) => {
+  g.querySelectorAll('.variant-chip').forEach((c) => {
+    c.addEventListener('click', () => {
+      g.querySelectorAll('.variant-chip').forEach(x => x.classList.remove('active'));
+      c.classList.add('active');
+      const label = g.querySelector('.variant-label .selected');
+      if (label) label.textContent = c.textContent;
+    });
+  });
+});
+const heart = document.querySelector('.gallery-heart');
+if (heart) heart.addEventListener('click', () => heart.classList.toggle('active'));
+document.querySelectorAll('.qty').forEach((q) => {
+  const input = q.querySelector('input');
+  const [minus, plus] = q.querySelectorAll('button');
+  minus.addEventListener('click', () => { const v = Math.max(1, (parseInt(input.value)||1)-1); input.value = v; });
+  plus.addEventListener('click', () => { const v = (parseInt(input.value)||1)+1; input.value = v; });
+});
+</script>
+
+
+<script>
+(function() {
+  const bar = document.getElementById('stickyBar');
+  const trigger = document.querySelector('.pdp');
+  if (!bar || !trigger) return;
+  function onScroll() {
+    const rect = trigger.getBoundingClientRect();
+    const past = rect.bottom < 0;
+    if (past) bar.classList.add('show');
+    else bar.classList.remove('show');
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+</script>
+</body>
+</html>

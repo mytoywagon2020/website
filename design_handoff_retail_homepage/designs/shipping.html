@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shipping — My Toy Wagon</title>
+<meta name="description" content="$9.95 standard shipping in the contiguous U.S. Free on orders $150+. Local LA/Orange County delivery, Quick Ship, expedited, and international quotes by request.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {--cream:#F5F0E5;--warm-white:#FFFCF7;--ink:#2C2C2A;--forest:#3B6D11;--amber:#854F0B;--stone:#5F5E5A;--card-bg:#EDE3CD;--rule:rgba(44,44,42,0.12);--rule-strong:rgba(44,44,42,0.22);}
+*{box-sizing:border-box;}html,body{margin:0;padding:0;}
+body{font-family:'Mulish',sans-serif;color:var(--ink);background:var(--cream);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+img{max-width:100%;display:block;}a{color:inherit;text-decoration:none;}
+.label{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--stone);font-weight:500;}
+.utility{background:var(--ink);color:var(--cream);font-size:12px;letter-spacing:0.06em;}
+.utility-inner{max-width:1440px;margin:0 auto;padding:9px 40px;display:flex;justify-content:space-between;align-items:center;gap:24px;}
+.utility-center{flex:1;text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;letter-spacing:0;}
+.utility-links{display:flex;gap:22px;color:rgba(245,240,229,0.7);}.utility-links a:hover{color:var(--cream);}
+header.nav{border-bottom:0.5px solid var(--rule);background:var(--cream);position:sticky;top:0;z-index:50;}
+.nav-inner{max-width:1440px;margin:0 auto;padding:18px 40px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:32px;}
+.nav-left,.nav-right{display:flex;align-items:center;gap:28px;}.nav-right{justify-content:flex-end;}
+.nav-link{font-size:13.5px;font-weight:500;letter-spacing:0.02em;padding:4px 0;}.nav-link:hover{color:var(--forest);}
+.nav-link.has-caret::after{content:"";display:inline-block;width:5px;height:5px;border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:rotate(45deg);margin-left:6px;vertical-align:2px;}
+.logo{display:inline-flex;align-items:center;gap:16px;line-height:1;}
+.logo-mark{width:100px;height:100px;background-color:var(--ink);-webkit-mask:url('{{ FILES_BASE_URL }}/logo-mark.png') center/contain no-repeat;mask:url('{{ FILES_BASE_URL }}/logo-mark.png') center/contain no-repeat;flex-shrink:0;}
+.logo-text{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;letter-spacing:0.24em;text-transform:uppercase;line-height:1;color:var(--ink);white-space:nowrap;}
+.logo small{display:block;font-family:'Mulish',sans-serif;font-style:normal;font-size:9.5px;letter-spacing:0.22em;text-transform:uppercase;color:var(--stone);margin-top:8px;font-weight:500;white-space:nowrap;}
+.nav-icon{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;}
+.cart-count{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:18px;padding:0 5px;background:var(--forest);color:var(--cream);border-radius:9px;font-size:11px;font-weight:600;}
+.search-pill{display:flex;align-items:center;gap:8px;padding:8px 14px;background:var(--warm-white);border:0.5px solid var(--rule);border-radius:999px;font-size:12.5px;color:var(--stone);min-width:200px;}
+.icon{width:16px;height:16px;stroke:currentColor;stroke-width:1.4;fill:none;flex-shrink:0;}
+.back-link{display:inline-flex;align-items:center;gap:10px;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--stone);font-weight:500;}
+.back-link::before{content:"";width:16px;height:1px;background:currentColor;}
+.policy-hero{max-width:1100px;margin:0 auto;padding:72px 40px 56px;text-align:center;}
+.policy-hero .back-link{margin-bottom:32px;}
+.policy-hero .label{display:block;margin-bottom:22px;}
+.policy-hero h1{font-family:'Cormorant Garamond',serif;font-size:84px;font-weight:500;line-height:0.98;letter-spacing:-0.014em;margin:0 auto 24px;max-width:820px;text-wrap:balance;}
+.policy-hero h1 em{font-style:italic;}
+.policy-hero .dek{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;color:var(--stone);line-height:1.5;max-width:620px;margin:0 auto;}
+.glance{max-width:1100px;margin:0 auto 64px;padding:0 40px;}
+.glance-inner{background:var(--card-bg);border-radius:2px;padding:40px 48px;}
+.glance-inner .label{display:block;margin-bottom:22px;}
+.glance-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;}
+.glance-tile h3{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:28px;font-weight:500;margin:0 0 8px;line-height:1.05;letter-spacing:-0.005em;color:var(--ink);}
+.glance-tile p{font-size:13.5px;color:var(--stone);line-height:1.55;margin:0;}
+.policy{max-width:760px;margin:0 auto;padding:0 40px 72px;}
+.policy section{border-top:0.5px solid var(--rule);padding:56px 0;}
+.policy section:last-child{border-bottom:0.5px solid var(--rule);}
+.policy h2{font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:500;line-height:1.05;margin:0 0 24px;letter-spacing:-0.008em;}
+.policy h2 em{font-style:italic;}
+.policy h3{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;font-weight:500;margin:28px 0 12px;color:var(--ink);letter-spacing:-0.005em;}
+.policy p{font-size:16px;line-height:1.78;margin:0 0 18px;color:var(--ink);text-wrap:pretty;}
+.policy ul{margin:0 0 24px;padding-left:0;list-style:none;}
+.policy ul li{font-size:15.5px;line-height:1.65;padding:12px 0 12px 22px;border-bottom:0.5px solid var(--rule);position:relative;}
+.policy ul li:first-child{border-top:0.5px solid var(--rule);}
+.policy ul li::before{content:"";position:absolute;left:0;top:22px;width:12px;height:0.5px;background:var(--forest);}
+.policy strong{font-weight:600;color:var(--ink);}
+.policy a.inline{color:var(--ink);border-bottom:0.5px solid var(--rule-strong);padding-bottom:1px;}
+.policy a.inline:hover{color:var(--forest);border-color:var(--forest);}
+.rate-table{width:100%;border-collapse:collapse;margin:18px 0 28px;font-size:15px;}
+.rate-table th{background:var(--card-bg);text-align:left;padding:14px 16px;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:16px;border-bottom:0.5px solid var(--rule);}
+.rate-table td{padding:14px 16px;border-bottom:0.5px solid var(--rule);vertical-align:top;}
+.rate-table td.price{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;color:var(--ink);white-space:nowrap;width:140px;}
+.rate-table td.price strong{font-weight:500;}
+.rate-table td.label-cell{font-weight:500;width:180px;}
+.rate-table tr:last-child td{border-bottom:none;}
+.callout{background:var(--card-bg);border-left:2px solid var(--forest);padding:18px 22px;margin:20px 0 24px;border-radius:0 2px 2px 0;font-size:15px;line-height:1.65;}
+.callout strong{color:var(--ink);}
+.exclusions{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 20px;}
+.exclusions span{display:inline-block;padding:5px 12px;background:var(--warm-white);border:0.5px solid var(--rule);border-radius:999px;font-size:12.5px;color:var(--stone);}
+.close-band{background:var(--ink);color:var(--cream);margin-top:24px;}
+.close-band-inner{max-width:900px;margin:0 auto;padding:88px 40px;text-align:center;}
+.close-band .label{color:rgba(245,240,229,0.55);display:block;margin-bottom:18px;}
+.close-band h2{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:500;line-height:1.05;margin:0 0 18px;letter-spacing:-0.008em;}
+.close-band h2 em{font-style:italic;}
+.close-band p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;color:rgba(245,240,229,0.85);margin:0 auto 32px;max-width:500px;line-height:1.5;}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 28px;font-size:13px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;border-radius:2px;border:0.5px solid transparent;cursor:pointer;transition:all 160ms ease;background:none;font-family:inherit;}
+.close-band .btn{background:var(--cream);color:var(--ink);}.close-band .btn:hover{background:var(--warm-white);}
+footer{background:var(--cream);border-top:0.5px solid var(--rule);}
+.foot-bottom-band{max-width:1440px;margin:0 auto;padding:28px 40px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--stone);letter-spacing:0.04em;flex-wrap:wrap;gap:12px;}
+.foot-bottom-band a:hover{color:var(--ink);}
+.foot-bottom-band em{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:var(--ink);margin-right:10px;}
+.foot-bottom-band .foot-bottom-links{display:flex;gap:22px;}
+</style>
+</head>
+<body data-screen-label="Shipping">
+
+<div class="utility">
+  <div class="utility-inner">
+    <div class="utility-links"><a href="#">Track order</a><a href="#">Educator program</a></div>
+    <div class="utility-center">Free shipping on orders $150+ within the contiguous U.S.</div>
+    <div class="utility-links" style="justify-content:flex-end;"><a href="#">Gift cards</a><a href="#">Sign in</a></div>
+  </div>
+</div>
+
+<header class="nav">
+  <div class="nav-inner">
+    <nav class="nav-left">
+      <a href="#" class="nav-link has-caret">Shop all</a>
+      <a href="#" class="nav-link has-caret">Collections</a>
+      <a href="#" class="nav-link">Ages</a>
+    </nav>
+    <a href="MTW Homepage v3.html" class="logo">
+      <span class="logo-mark" aria-hidden="true"></span>
+      <span class="logo-text">My Toy Wagon<small>Los Angeles · California · est. 2020</small></span>
+    </a>
+    <div class="nav-right">
+      <div class="search-pill"><svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg><span>Search wooden blocks, plush…</span></div>
+      <a href="#" class="nav-icon">Account</a>
+      <a href="#" class="nav-icon">Cart <span class="cart-count">0</span></a>
+    </div>
+  </div>
+</header>
+
+<section class="policy-hero">
+  <a href="MTW Homepage v3.html" class="back-link">Back to the shop</a>
+  <span class="label">Shipping Policy</span>
+  <h1>Shipped from <em>Los Angeles</em>, with care.</h1>
+  <p class="dek">$9.95 standard shipping within the contiguous U.S. Free on orders $150 and up. Local delivery in LA and Orange County, Quick Ship and expedited options, and international quotes by request.</p>
+</section>
+
+<section class="glance">
+  <div class="glance-inner">
+    <span class="label">The rates, at a glance</span>
+    <div class="glance-grid">
+      <div class="glance-tile"><h3>$9.95</h3><p>Standard shipping, contiguous 48 states.</p></div>
+      <div class="glance-tile"><h3>Free</h3><p>On orders $150 and up, after discounts.</p></div>
+      <div class="glance-tile"><h3>$10</h3><p>Local delivery in LA + Orange County, $100 minimum.</p></div>
+      <div class="glance-tile"><h3>1–6 days</h3><p>Typical standard delivery, plus 1–3 days handling.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="policy">
+
+  <section>
+    <h2>Where we ship</h2>
+    <p>My Toy Wagon ships throughout the United States and to most addresses in Canada, China, France, Japan, and Mexico, via USPS, UPS, DHL, or FedEx.</p>
+    <p>Most orders ship directly from our warehouse in Los Angeles County. A small number of larger or specialty items ship through our trusted brand partners, from their own warehouses inside the contiguous U.S. Either way, your order is tracked from the moment it leaves the dock.</p>
+  </section>
+
+  <section>
+    <h2>Shipping to the 48 contiguous U.S.</h2>
+    <table class="rate-table">
+      <thead>
+        <tr><th>Service</th><th>What you get</th><th>Rate</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="label-cell">Standard</td>
+          <td>USPS Ground Advantage, USPS Priority, UPS Ground, or FedEx Home Delivery. 1–6 business days in transit (excluding weekends), plus 1–3 business days of processing.</td>
+          <td class="price"><strong>$9.95</strong></td>
+        </tr>
+        <tr>
+          <td class="label-cell">Free shipping</td>
+          <td>Orders that subtotal $150 or more after discounts and rewards points, before taxes.</td>
+          <td class="price"><strong>Free</strong></td>
+        </tr>
+        <tr>
+          <td class="label-cell">Quick Ship</td>
+          <td>Expedited handling plus standard shipping. Orders placed by 11 a.m. PT on weekdays ship same day from our LA warehouse.</td>
+          <td class="price"><strong>$14.95</strong></td>
+        </tr>
+        <tr>
+          <td class="label-cell">Expedited</td>
+          <td>Expedited handling plus expedited shipping, typically 1–2 days in transit (2nd day air via UPS, depending on zone).</td>
+          <td class="price"><strong>$37.95</strong></td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size:13.5px;color:var(--stone);"><strong style="color:var(--ink);">To qualify for free standard shipping:</strong> the subtotal of your order (after discounts or rewards points have been applied, before taxes) must reach $150 or more.</p>
+  </section>
+
+  <section>
+    <h2>Local delivery</h2>
+    <p>We're happy to offer local delivery in Los Angeles and Orange County for a flat $10. The minimum order for local delivery is $100. Check this option at checkout.</p>
+    <p>If your shipping address is outside our delivery area (roughly a 30-mile radius from Arcadia, CA), we'll send you an invoice if an additional shipping charge applies to your order.</p>
+  </section>
+
+  <section>
+    <h2>Hawaii, Alaska, Puerto Rico, Guam, and APO/FPO/DPO</h2>
+    <p>Shipping rates to these locations are calculated at checkout. Orders ship via USPS, UPS, or FedEx, depending on the location and service available. If there's any discrepancy in the shipping cost, we'll send you an invoice for the difference.</p>
+    <p>Average handling times are 2 to 5 business days. Shipping times vary based on location and service. We cannot promise delivery times to areas outside the 48 contiguous states.</p>
+  </section>
+
+  <section>
+    <h2>International orders</h2>
+    <p>We currently ship most products to Canada, China, France, Japan, and Mexico via USPS, UPS, DHL, or FedEx. Some brands are excluded because of geofencing rules from the maker, or because they ship directly from a partner warehouse.</p>
+    <p>If you'd like to place an international order, email us at <a class="inline" href="mailto:contact@mytoywagon.com">contact@mytoywagon.com</a> and we'll confirm whether it's possible and send you an exact quote.</p>
+    <p>Our system provides limited carrier quotes for the locations above; discrepancies occasionally arise. For a precise quote, email us first.</p>
+    <div class="callout">
+      Average handling time on international orders is 2 to 5 business days. We are not responsible for any additional agent, import, or carrier fees or duties incurred on your shipment.
+    </div>
+  </section>
+
+  <section>
+    <h2>Shipping address responsibility</h2>
+    <p>Please double-check all address details (apartment numbers, zip codes, delivery instructions) before submitting your order.</p>
+    <p>My Toy Wagon is not responsible for orders shipped to an incorrect or incomplete address. If a package is returned to us due to an address error, the customer may be responsible for additional shipping charges to resend the order.</p>
+    <p>Once an order has been processed and shipped, we may be unable to make changes to the delivery address.</p>
+  </section>
+
+  <section>
+    <h2>Shipping methods, in detail</h2>
+    <h3>Economy</h3>
+    <p>Most items ship from our warehouse in Los Angeles within 2–4 business days. Some large items ship directly from the manufacturer and may take up to 2 weeks. Check the product listing for ship-time details on individual products.</p>
+    <p>Standard service ships via USPS Ground Advantage, USPS Priority Mail, UPS Ground, or FedEx Home Delivery/Ground, with transit times of 1 to 6 business days (excluding weekends).</p>
+
+    <h3>Quick Ship and Expedited</h3>
+    <p>Quick Ship and expedited orders receive priority handling. Quick Ship orders ship at standard rates; expedited orders ship at 3-day-or-less rates, depending on location. These services may vary slightly during the holiday season.</p>
+    <p>Orders received by 11 a.m. PT on weekdays ship the same day from our LA warehouse via UPS or FedEx. Orders received after 11 a.m. PT ship the next business day.</p>
+    <p><strong>Quick Ship and Expedited are not available for:</strong></p>
+    <div class="exclusions">
+      <span>Oversize or heavy items (Drewart, Connetix)</span>
+      <span>Items shipping directly from the maker</span>
+      <span>Amboss Toys</span>
+      <span>Baghera</span>
+      <span>Ellie &amp; Becks</span>
+      <span>Milton &amp; Goose</span>
+      <span>Poppie Toys</span>
+    </div>
+  </section>
+
+  <section>
+    <h2>Estimated delivery times</h2>
+    <h3>Regular orders</h3>
+    <p>We provide an estimated delivery timeframe at checkout based on the items in your order and your location. These estimates do not include processing time, which is 1 to 3 business days depending on the season.</p>
+    <p>Some orders may arrive in multiple shipments. During the holiday season and other periods of high traffic, delays in shipping and delivery may occur. Please place time-sensitive orders well in advance.</p>
+    <p>My Toy Wagon is not responsible for delays affecting delivery once orders are in the care of the carrier.</p>
+
+    <h3>Pre-orders</h3>
+    <p>Pre-order shipping times are estimates based on projections from our partners and occasionally change due to transit delays. We'll communicate any delays as soon as we know.</p>
+    <div class="callout">
+      <strong>If you're in a rush:</strong> all orders containing a pre-order item will ship together when the pre-order arrives. Order in-stock items separately if you need them sooner.
+    </div>
+  </section>
+
+  <section>
+    <h2>Still have a question?</h2>
+    <p>Email <a class="inline" href="mailto:contact@mytoywagon.com">contact@mytoywagon.com</a> for an international quote, an address change, or anything time-sensitive. For faster help, call <strong>626-841-0421</strong> between 9 a.m. and 5 p.m. PT, Monday through Friday.</p>
+  </section>
+
+</div>
+
+<section class="close-band">
+  <div class="close-band-inner">
+    <span class="label">Need a quote</span>
+    <h2>International, oversize, or last-minute, <em>email us</em>.</h2>
+    <p>Send your order details and shipping address and we'll get you an exact quote within 24 hours.</p>
+    <a href="mailto:contact@mytoywagon.com?subject=Shipping%20quote" class="btn">Email contact@mytoywagon.com</a>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-bottom-band">
+    <span><em>Heirloom toys, curated by hand.</em>© 2026 My Toy Wagon. All rights reserved.</span>
+    <div class="foot-bottom-links">
+      <a href="MTW Homepage v3.html">Back to the shop</a>
+      <a href="returns.html">Returns</a>
+      <a href="rewards.html">Rewards</a>
+      <a href="#">Privacy</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

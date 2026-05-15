@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>New Quote — Educator Portal | My Toy Wagon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#F5F0E5;--warm-white:#FFFCF7;--ink:#2C2C2A;--forest:#3B6D11;--amber:#854F0B;--stone:#5F5E5A;--card-bg:#EDE3CD;--rule:rgba(44,44,42,0.12);--rule-strong:rgba(44,44,42,0.22);}
+*{box-sizing:border-box;}html,body{margin:0;padding:0;}
+body{font-family:'Mulish',sans-serif;color:var(--ink);background:var(--cream);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+.label{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--stone);font-weight:500;}
+.topbar{background:var(--ink);color:var(--cream);padding:10px 40px;display:flex;justify-content:space-between;align-items:center;font-size:12px;letter-spacing:0.06em;}
+.topbar .acct{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;letter-spacing:0;}
+.topbar .acct strong{font-weight:500;}
+header.nav{border-bottom:0.5px solid var(--rule);background:var(--cream);position:sticky;top:0;z-index:50;}
+.nav-inner{max-width:1440px;margin:0 auto;padding:16px 40px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:32px;}
+.nav-left,.nav-right{display:flex;align-items:center;gap:24px;}.nav-right{justify-content:flex-end;}
+.nav-link{font-size:13.5px;font-weight:500;padding:4px 0;}
+.nav-link.active{color:var(--forest);}
+.logo{display:inline-flex;align-items:center;gap:14px;line-height:1;}
+.logo-mark{width:80px;height:80px;background-color:var(--ink);-webkit-mask:url('{{ FILES_BASE_URL }}/logo-mark.png') center/contain no-repeat;mask:url('{{ FILES_BASE_URL }}/logo-mark.png') center/contain no-repeat;}
+.logo-text{font-family:'Cormorant Garamond',serif;font-size:18px;letter-spacing:0.24em;text-transform:uppercase;}
+.logo small{display:block;font-size:8.5px;letter-spacing:0.22em;text-transform:uppercase;color:var(--stone);margin-top:6px;font-weight:500;}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 18px;font-size:12px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;border-radius:2px;border:0.5px solid transparent;cursor:pointer;font-family:inherit;}
+.btn-primary{background:var(--ink);color:var(--cream);}.btn-primary:hover{background:var(--forest);}
+.btn-ghost{background:none;border-color:var(--rule-strong);color:var(--ink);}.btn-ghost:hover{border-color:var(--ink);}
+
+.wrap{max-width:1440px;margin:0 auto;padding:32px 40px 64px;display:grid;grid-template-columns:1fr 380px;gap:48px;align-items:start;}
+.crumbs{font-size:12px;color:var(--stone);letter-spacing:0.04em;margin-bottom:14px;}
+.crumbs .sep{margin:0 8px;opacity:0.5;}
+.main h1{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:500;line-height:1;letter-spacing:-0.012em;margin:0 0 8px;}
+.main h1 em{font-style:italic;}
+.main .dek{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;color:var(--stone);margin:0 0 36px;}
+
+/* Quote metadata */
+.meta-card{background:var(--warm-white);border:0.5px solid var(--rule);border-radius:2px;padding:24px 28px;margin-bottom:24px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;}
+.meta-card .field label{font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--stone);font-weight:500;margin-bottom:6px;display:block;}
+.meta-card .field input{width:100%;padding:10px 12px;border:0.5px solid var(--rule);border-radius:2px;background:var(--cream);font-family:inherit;font-size:13.5px;color:var(--ink);}
+.meta-card .field .val{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;color:var(--ink);}
+
+/* Search bar */
+.search-row{display:flex;gap:10px;margin-bottom:24px;}
+.search-row input{flex:1;padding:14px 18px;border:0.5px solid var(--rule-strong);border-radius:2px;background:var(--warm-white);font-family:inherit;font-size:14px;color:var(--ink);}
+.search-row .btn{height:auto;}
+
+/* Line items table */
+.lines{background:var(--warm-white);border:0.5px solid var(--rule);border-radius:2px;overflow:hidden;margin-bottom:24px;}
+.line-head{display:grid;grid-template-columns:60px 1fr 80px 100px 100px 36px;gap:16px;padding:14px 20px;background:var(--card-bg);font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--stone);font-weight:600;}
+.line{display:grid;grid-template-columns:60px 1fr 80px 100px 100px 36px;gap:16px;padding:16px 20px;border-bottom:0.5px solid var(--rule);align-items:center;}
+.line:last-child{border-bottom:none;}
+.line-thumb{width:48px;height:48px;background:var(--cream);border:0.5px solid var(--rule);border-radius:2px;overflow:hidden;}
+.line-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+.line-product{font-size:14px;line-height:1.35;}
+.line-product strong{display:block;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;font-weight:500;margin-bottom:2px;}
+.line-product .sku{font-size:11px;color:var(--stone);letter-spacing:0.04em;}
+.qty-cell input{width:60px;padding:6px 8px;border:0.5px solid var(--rule);border-radius:2px;background:var(--cream);text-align:center;font-family:inherit;font-size:14px;font-weight:500;}
+.line-price{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;text-align:right;}
+.line-price .each{font-size:11px;color:var(--stone);display:block;font-style:normal;font-family:'Mulish',sans-serif;letter-spacing:0.04em;}
+.line-total{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;text-align:right;font-weight:500;}
+.line-remove{background:none;border:none;cursor:pointer;color:var(--stone);font-size:18px;padding:4px;}
+.line-remove:hover{color:var(--ink);}
+
+.empty-state{padding:48px 24px;text-align:center;color:var(--stone);font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;}
+
+/* Notes */
+.notes-card{background:var(--warm-white);border:0.5px solid var(--rule);border-radius:2px;padding:24px 28px;margin-bottom:24px;}
+.notes-card label{font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--stone);font-weight:500;margin-bottom:10px;display:block;}
+.notes-card textarea{width:100%;min-height:90px;padding:12px 14px;border:0.5px solid var(--rule);border-radius:2px;background:var(--cream);font-family:inherit;font-size:14px;color:var(--ink);resize:vertical;}
+
+/* Sidebar */
+.sidebar{position:sticky;top:96px;}
+.sidebar-card{background:var(--warm-white);border:0.5px solid var(--rule);border-radius:2px;padding:24px 26px;margin-bottom:18px;}
+.sidebar-card h3{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;font-weight:500;margin:0 0 16px;}
+.summary-row{display:flex;justify-content:space-between;align-items:baseline;padding:10px 0;font-size:14px;border-bottom:0.5px solid var(--rule);}
+.summary-row:last-of-type{border-bottom:none;}
+.summary-row.total{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;font-weight:500;padding-top:16px;margin-top:8px;border-top:1px solid var(--ink);}
+.summary-row .key{color:var(--stone);}
+.summary-row .val{font-weight:500;color:var(--ink);}
+.summary-shipping{font-size:12px;color:var(--stone);font-family:'Cormorant Garamond',serif;font-style:italic;margin:10px 0 0;line-height:1.5;}
+
+.actions{display:flex;flex-direction:column;gap:10px;margin-top:18px;}
+.actions .btn{width:100%;padding:14px 18px;font-size:12px;}
+
+.note{background:var(--card-bg);border-left:2px solid var(--forest);padding:14px 18px;border-radius:0 2px 2px 0;font-size:13px;line-height:1.6;color:var(--ink);}
+.note strong{font-weight:500;}
+
+/* Shopify integration banner */
+.integration{background:var(--ink);color:var(--cream);padding:16px 26px;border-radius:2px;font-size:12px;line-height:1.5;letter-spacing:0.04em;margin-bottom:24px;display:flex;align-items:center;gap:14px;}
+.integration svg{width:22px;height:22px;stroke:var(--cream);fill:none;stroke-width:1.4;flex-shrink:0;}
+.integration strong{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:var(--cream);font-weight:500;letter-spacing:0;margin-right:6px;}
+
+footer{background:var(--ink);color:var(--cream);}
+.foot{max-width:1440px;margin:0 auto;padding:24px 40px;font-size:11.5px;color:rgba(245,240,229,0.65);}
+
+@media (max-width:1000px){.wrap{grid-template-columns:1fr;}.sidebar{position:static;}.line,.line-head{grid-template-columns:1fr;gap:6px;}.meta-card{grid-template-columns:1fr;}}
+</style>
+</head>
+<body data-screen-label="New Quote">
+
+<div class="topbar">
+  <span><a href="educator-dashboard.html">← Back to dashboard</a></span>
+  <span class="acct">Signed in as <strong>Sarah Chen, Maple Tree Montessori</strong> · Net-30 · <a href="#">Sign out</a></span>
+</div>
+
+<header class="nav">
+  <div class="nav-inner">
+    <nav class="nav-left">
+      <a href="educator-dashboard.html" class="nav-link">Dashboard</a>
+      <a href="#" class="nav-link">Educator Catalog</a>
+      <a href="#" class="nav-link active">Quotes</a>
+      <a href="#" class="nav-link">Orders</a>
+    </nav>
+    <a href="educator-dashboard.html" class="logo">
+      <span class="logo-mark" aria-hidden="true"></span>
+      <span class="logo-text">My Toy Wagon<small>Educator Portal</small></span>
+    </a>
+    <div class="nav-right">
+      <button class="btn btn-ghost">Save draft</button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="main">
+    <p class="crumbs"><a href="educator-dashboard.html">Dashboard</a><span class="sep">·</span><a href="#">Quotes</a><span class="sep">·</span><span style="color:var(--ink);">New quote</span></p>
+    <h1>New <em>quote</em>.</h1>
+    <p class="dek">Build a draft quote. Save it for later, or submit it for review. Shipping is calculated when the quote is approved and converted to an order.</p>
+
+    <div class="integration">
+      <svg viewBox="0 0 24 24"><path d="M3 12l3-9 3 9-3 9z"/><path d="M9 12h12"/><path d="M9 6l12 6-12 6"/></svg>
+      <div><strong>Connected to Shopify.</strong> When you submit, a draft order is created in our Shopify admin with these line items, your account info, and your notes attached.</div>
+    </div>
+
+    <div class="meta-card">
+      <div class="field">
+        <label>Quote name</label>
+        <input type="text" placeholder="Spring sensory restock" value="Spring sensory restock">
+      </div>
+      <div class="field">
+        <label>For (program / classroom)</label>
+        <input type="text" placeholder="Toddler room A">
+      </div>
+      <div class="field">
+        <label>Needed by</label>
+        <input type="date">
+      </div>
+    </div>
+
+    <div class="search-row">
+      <input type="text" placeholder="Search the Educator catalog by name or SKU…">
+      <button class="btn btn-primary">Add to quote</button>
+    </div>
+
+    <div class="lines">
+      <div class="line-head">
+        <span></span>
+        <span>Product</span>
+        <span>Qty</span>
+        <span style="text-align:right;">Educator price</span>
+        <span style="text-align:right;">Total</span>
+        <span></span>
+      </div>
+      <div class="line">
+        <div class="line-thumb"><img src="{{ FILES_BASE_URL }}/best-bauspiel-color-track.png" alt=""></div>
+        <div class="line-product">
+          <strong>Bauspiel Color Track, 45-Piece Set</strong>
+          <span class="sku">SKU · BS-CT45-NAT · In stock</span>
+        </div>
+        <div class="qty-cell"><input type="number" value="4" min="1"></div>
+        <div class="line-price">$184<span class="each">per unit · 5+ price</span></div>
+        <div class="line-total">$736</div>
+        <button class="line-remove" aria-label="Remove">×</button>
+      </div>
+      <div class="line">
+        <div class="line-thumb"><img src="{{ FILES_BASE_URL }}/bauspiel-lucent-tower.png" alt=""></div>
+        <div class="line-product">
+          <strong>Bauspiel Lucent Cubes, Set of 100</strong>
+          <span class="sku">SKU · BS-LC100 · In stock</span>
+        </div>
+        <div class="qty-cell"><input type="number" value="1" min="1"></div>
+        <div class="line-price">$208<span class="each">per unit</span></div>
+        <div class="line-total">$208</div>
+        <button class="line-remove" aria-label="Remove">×</button>
+      </div>
+      <div class="line">
+        <div class="line-thumb"><img src="{{ FILES_BASE_URL }}/cat-sensory.webp" alt=""></div>
+        <div class="line-product">
+          <strong>Busy Bee Reflective Mirror Inlay</strong>
+          <span class="sku">SKU · GM-BBMI · In stock</span>
+        </div>
+        <div class="qty-cell"><input type="number" value="2" min="1"></div>
+        <div class="line-price">$27<span class="each">per unit · 2+ price</span></div>
+        <div class="line-total">$54</div>
+        <button class="line-remove" aria-label="Remove">×</button>
+      </div>
+      <div class="line">
+        <div class="line-thumb"><img src="{{ FILES_BASE_URL }}/garden-of-the-moon.webp" alt=""></div>
+        <div class="line-product">
+          <strong>Tara Treasures Garden of the Moon, Large</strong>
+          <span class="sku">SKU · TT-GOM-L · 6 in stock</span>
+        </div>
+        <div class="qty-cell"><input type="number" value="2" min="1"></div>
+        <div class="line-price">$125<span class="each">per unit</span></div>
+        <div class="line-total">$250</div>
+        <button class="line-remove" aria-label="Remove">×</button>
+      </div>
+    </div>
+
+    <div class="notes-card">
+      <label>Notes for our team</label>
+      <textarea placeholder="Anything we should know? Shipping preferences, classroom configuration, timing, related questions…">Please ship to the school front office. Our purchasing officer needs an itemized PDF for board approval before we issue a PO. Net-30 terms.</textarea>
+    </div>
+
+    <div class="note"><strong>How quotes become orders.</strong> Submitting creates a draft order in our Shopify admin. We review pricing, confirm stock, and email back an itemized PDF for your administrator. Once you return a signed PO, we convert the draft to an order and your warehouse pull begins. Shipping is added at order creation, calculated by size and destination.</div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-card">
+      <h3>Quote summary</h3>
+      <div class="summary-row"><span class="key">Items</span><span class="val">4</span></div>
+      <div class="summary-row"><span class="key">Units</span><span class="val">9</span></div>
+      <div class="summary-row"><span class="key">Subtotal</span><span class="val">$1,248</span></div>
+      <div class="summary-row"><span class="key">Educator discount</span><span class="val" style="color:var(--forest);">−$184</span></div>
+      <div class="summary-row total"><span class="key">Estimated total</span><span class="val">$1,064</span></div>
+      <p class="summary-shipping">Shipping and any applicable tax are calculated when the quote is converted to an order. Sales tax waived for verified tax-exempt accounts.</p>
+      <div class="actions">
+        <button class="btn btn-primary">Submit quote for review</button>
+        <button class="btn btn-ghost">Save as draft</button>
+      </div>
+    </div>
+
+    <div class="sidebar-card" style="background:var(--card-bg);">
+      <h3 style="margin-bottom:10px;">Need help?</h3>
+      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14.5px;color:var(--ink);line-height:1.5;margin:0;">Building a classroom-wide order, or working on a curriculum unit? <a href="mailto:contact@mytoywagon.com" style="border-bottom:0.5px solid var(--rule-strong);">Email our team</a> or call 626.841.0421.</p>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <div class="foot">My Toy Wagon Educator Portal · Quote builder · Drafts auto-save every 60 seconds</div>
+</footer>
+
+</body>
+</html>

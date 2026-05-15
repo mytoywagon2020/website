@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catalog Back Matter — My Toy Wagon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#F5F0E5;--warm-white:#FFFCF7;--ink:#2C2C2A;--forest:#3B6D11;--amber:#854F0B;--stone:#5F5E5A;--card-bg:#EDE3CD;--rule:rgba(44,44,42,0.12);--rule-strong:rgba(44,44,42,0.22);}
+*{box-sizing:border-box;}html,body{margin:0;padding:0;}
+body{font-family:'Mulish',sans-serif;color:var(--ink);background:var(--cream);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+.label{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--stone);font-weight:500;}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 22px;font-size:12.5px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;border-radius:2px;border:0.5px solid transparent;cursor:pointer;font-family:inherit;}
+.btn-primary{background:var(--ink);color:var(--cream);}.btn-primary:hover{background:var(--forest);}
+.btn-ghost{background:none;border-color:var(--rule-strong);color:var(--ink);}.btn-ghost:hover{border-color:var(--ink);}
+
+.note-bar{background:var(--ink);color:var(--cream);padding:14px 32px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14.5px;line-height:1.5;text-align:center;}
+.note-bar strong{font-weight:500;letter-spacing:0.04em;text-transform:uppercase;font-style:normal;font-family:'Mulish',sans-serif;font-size:10.5px;display:block;margin-bottom:6px;color:rgba(245,240,229,0.7);}
+
+/* --- Chapter 6: Educator addendum (dark gate) --- */
+.gate{background:#1a1a18;color:var(--cream);padding:120px 40px;border-top:0.5px solid var(--rule);}
+.gate-inner{max-width:880px;margin:0 auto;text-align:center;}
+.gate .label{color:rgba(245,240,229,0.65);display:block;margin-bottom:20px;}
+.gate h2{font-family:'Cormorant Garamond',serif;font-size:60px;font-weight:500;line-height:1;letter-spacing:-0.014em;margin:0 0 24px;text-wrap:balance;color:var(--cream);}
+.gate h2 em{font-style:italic;}
+.gate p.lede{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;color:rgba(245,240,229,0.85);max-width:600px;margin:0 auto 28px;line-height:1.5;}
+.gate-features{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;max-width:680px;margin:36px auto 40px;text-align:left;}
+.gate-feature{display:flex;gap:12px;align-items:flex-start;font-size:14px;line-height:1.55;color:rgba(245,240,229,0.85);}
+.gate-feature::before{content:"";flex-shrink:0;width:20px;height:0.5px;background:var(--forest);margin-top:10px;}
+.gate-feature strong{color:var(--cream);font-weight:500;display:block;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;margin-bottom:3px;}
+.gate .btn-primary{background:var(--cream);color:var(--ink);}.gate .btn-primary:hover{background:var(--warm-white);}
+.gate-cta-row{display:inline-flex;gap:12px;flex-wrap:wrap;justify-content:center;}
+.gate-footer{margin:48px auto 0;max-width:680px;padding-top:32px;border-top:0.5px solid rgba(245,240,229,0.18);display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center;text-align:left;}
+.qr{width:128px;height:128px;background:var(--cream);padding:8px;border-radius:2px;flex-shrink:0;}
+.qr img{width:100%;height:100%;display:block;}
+.qr-caption{font-family:'Mulish',sans-serif;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(245,240,229,0.6);text-align:center;margin-top:8px;}
+.gate-footer .copy{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:rgba(245,240,229,0.7);line-height:1.6;}
+.gate-footer .copy strong{display:block;font-style:normal;font-family:'Mulish',sans-serif;font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--cream);font-weight:600;margin-bottom:6px;}
+
+/* --- Chapter 7+: light catalog spreads --- */
+.spread{padding:96px 40px;border-top:0.5px solid var(--rule);}
+.spread-inner{max-width:1100px;margin:0 auto;}
+.spread-head{text-align:center;margin-bottom:56px;}
+.spread-head .label{display:block;margin-bottom:14px;}
+.spread-head h2{font-family:'Cormorant Garamond',serif;font-size:54px;font-weight:500;line-height:1.02;letter-spacing:-0.012em;margin:0 0 18px;text-wrap:balance;}
+.spread-head h2 em{font-style:italic;}
+.spread-head .lede{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:19px;color:var(--stone);max-width:560px;margin:0 auto;line-height:1.5;}
+
+/* Procurement notes grid */
+.notes-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
+.note-card{background:var(--warm-white);border:0.5px solid var(--rule);border-radius:2px;padding:26px 30px;}
+.note-card h3{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;font-weight:500;margin:0 0 10px;letter-spacing:-0.005em;}
+.note-card p{font-size:14.5px;line-height:1.7;color:var(--ink);margin:0;}
+.note-card.span2{grid-column:1/-1;}
+.note-tail{text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15.5px;color:var(--stone);margin:36px 0 0;letter-spacing:0.02em;}
+
+/* Process steps */
+.steps-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+.step{background:var(--warm-white);border:0.5px solid var(--rule);border-radius:2px;padding:32px 28px 30px;position:relative;}
+.step-num{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:48px;color:var(--forest);line-height:1;margin-bottom:14px;}
+.step h3{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;font-weight:500;margin:0 0 8px;letter-spacing:-0.005em;}
+.step p{font-size:13.5px;line-height:1.65;color:var(--ink);margin:0;}
+.step .tlabel{display:block;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--stone);font-weight:600;margin-top:12px;padding-top:12px;border-top:0.5px solid var(--rule);}
+
+/* Contacts directory */
+.contacts-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.contact-card{background:var(--warm-white);border:0.5px solid var(--rule);border-radius:2px;padding:32px 36px;}
+.contact-card h3{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:24px;font-weight:500;margin:0 0 8px;letter-spacing:-0.005em;}
+.contact-card .role{font-size:13.5px;line-height:1.6;color:var(--stone);font-family:'Cormorant Garamond',serif;font-style:italic;margin:0 0 18px;}
+.contact-card .addr{font-size:14.5px;line-height:1.7;}
+.contact-card .addr strong{display:block;font-weight:500;color:var(--ink);}
+.contact-card .addr a{color:var(--ink);border-bottom:0.5px solid var(--rule-strong);}
+.contact-card.full{grid-column:1/-1;text-align:center;background:var(--card-bg);}
+
+@media (max-width:900px){
+  .gate{padding:80px 24px;}
+  .gate h2{font-size:42px;}
+  .gate-features{grid-template-columns:1fr;}
+  .gate-footer{grid-template-columns:1fr;text-align:center;}
+  .spread{padding:64px 24px;}
+  .spread-head h2{font-size:38px;}
+  .notes-grid{grid-template-columns:1fr;}
+  .steps-flow{grid-template-columns:1fr 1fr;}
+  .contacts-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body data-screen-label="Catalog Back Matter">
+
+<div class="note-bar">
+  <strong>Catalog back matter · For review</strong>
+  Chapters 6–9 of the My Toy Wagon catalog — the educator and procurement back matter. These are the pages AP teams and school buyers see at the end of the catalog. Together they replace the single Chapter 6 spread and mirror the procurement guide PDF.
+</div>
+
+<!-- CHAPTER 6 -->
+<section class="gate" id="chapter-6">
+  <div class="gate-inner">
+    <span class="label">Chapter six · For schools, therapists &amp; co-ops</span>
+    <h2>The educator <em>addendum</em>.</h2>
+    <p class="lede">Educators, therapists, and homeschool families see a different version of every page on our site once signed in. Volume pricing, Net invoicing, and a procurement process built for AP teams — quote in 24 hours, vendor forms completed in one business day.</p>
+    <div class="gate-features">
+      <div class="gate-feature"><div><strong>Volume pricing</strong>Educator pricing on every product, with quantity breaks for classroom-sized orders.</div></div>
+      <div class="gate-feature"><div><strong>Net-30, Net-60 available</strong>Net-30 is our default. Net-60 available for larger or recurring orders; case-by-case beyond.</div></div>
+      <div class="gate-feature"><div><strong>Vendor forms in one day</strong>Send us your district's vendor onboarding form and we will return it completed within one business day.</div></div>
+      <div class="gate-feature"><div><strong>Tax-exempt, all 50 states</strong>Tax-exempt certificates accepted. Once on file, sales tax is waived on every future invoice.</div></div>
+      <div class="gate-feature"><div><strong>Stock confirmed on every quote</strong>Quoted pricing is held for 30 days. If something goes out of stock, we substitute with your approval.</div></div>
+      <div class="gate-feature"><div><strong>20-minute call with our team</strong>Help with classroom selection, district-wide quotes, sole-source letters, or curriculum partnerships.</div></div>
+    </div>
+    <div class="gate-cta-row">
+      <a href="educator.html#apply" class="btn btn-primary">Apply for an account</a>
+      <a href="educator.html#signin" class="btn btn-ghost" style="border-color:rgba(245,240,229,0.4);color:var(--cream);">Already a member? Sign in</a>
+    </div>
+    <div class="gate-footer">
+      <div style="display:flex;gap:24px;">
+        <div>
+          <div class="qr"><img src="https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=https%3A%2F%2Fmytoywagon.com%2Feducator&margin=0&color=2C2C2A&bgcolor=F5F0E5" alt="QR code linking to educator portal sign-in"></div>
+          <div class="qr-caption">Register or sign in</div>
+        </div>
+        <div>
+          <div class="qr"><img src="https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=https%3A%2F%2Fmytoywagon.com%2Fprocurement-guide&margin=0&color=2C2C2A&bgcolor=F5F0E5" alt="QR code linking to procurement guide PDF"></div>
+          <div class="qr-caption">Procurement guide</div>
+        </div>
+      </div>
+      <div class="copy">
+        <strong>Educator portal &amp; procurement guide</strong>
+        Apply, sign in, build a quote, or upload a vendor form from the portal. The full five-page procurement guide — payment terms, vendor forms, sole-source letters, sustainability certifications, references — is one scan away.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHAPTER 7 — Process -->
+<section class="spread" style="background:var(--cream);">
+  <div class="spread-inner">
+    <div class="spread-head">
+      <span class="label">Chapter seven · How it works</span>
+      <h2>From quote, <em>to PO, to delivery</em>.</h2>
+      <p class="lede">Most school orders move from first inquiry to confirmed PO in three to five business days. The process is short by design.</p>
+    </div>
+    <div class="steps-flow">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Educator account</h3>
+        <p>Apply at mytoywagon.com/educator. Once verified, your account sees educator pricing across the catalog and access to the portal for quotes and order history.</p>
+        <span class="tlabel">1–2 business days</span>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>Build a quote</h3>
+        <p>Use the in-portal quote builder, or email educators@mytoywagon.com. Every quote confirms current stock on every line, with itemized educator pricing.</p>
+        <span class="tlabel">24 hours</span>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>Submit a PO</h3>
+        <p>Reference the quote number on your PO and email to accounting@mytoywagon.com. We confirm receipt within one business day, with PO acknowledgment.</p>
+        <span class="tlabel">Same day</span>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h3>Fulfillment</h3>
+        <p>Pick-and-pack begins within two business days. Most orders ship within five days; large orders in two to three weeks. Invoice issued at shipment.</p>
+        <span class="tlabel">5–15 business days</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHAPTER 8 — Procurement notes -->
+<section class="spread" style="background:var(--card-bg);">
+  <div class="spread-inner">
+    <div class="spread-head">
+      <span class="label">Chapter eight · Procurement notes</span>
+      <h2>The fine print, <em>plainly stated</em>.</h2>
+      <p class="lede">Answers to the questions schools tend to ask after a quote has been issued and before a purchase order has been signed.</p>
+    </div>
+    <div class="notes-grid">
+      <div class="note-card">
+        <h3>Stock confirmed on every quote.</h3>
+        <p>Every quote we send confirms current inventory on every line item. If anything is short, we flag it before you submit a PO.</p>
+      </div>
+      <div class="note-card">
+        <h3>Pricing held for 30 days.</h3>
+        <p>Quoted pricing is honored for 30 calendar days from quote date. Plenty of time for district approval and PO issuance.</p>
+      </div>
+      <div class="note-card">
+        <h3>If something goes out of stock.</h3>
+        <p>If a quoted item becomes unavailable between quote and PO, we will substitute with your written approval or remove it from the order.</p>
+      </div>
+      <div class="note-card">
+        <h3>Vendor forms, one business day.</h3>
+        <p>Send your district's vendor onboarding form to accounting@mytoywagon.com and we will return it completed within one business day.</p>
+      </div>
+      <div class="note-card">
+        <h3>Ship to multiple classrooms.</h3>
+        <p>Drop-ship to multiple classroom addresses on one PO. We do this regularly. Email educators@mytoywagon.com for a coordinated quote.</p>
+      </div>
+      <div class="note-card">
+        <h3>Sole-source letters, on request.</h3>
+        <p>For districts that require a non-competitive-bid justification (Tara Treasures, Bauspiel, and other genuinely unique brands), we write the letter within two business days.</p>
+      </div>
+      <div class="note-card">
+        <h3>Tax-exempt, all 50 states.</h3>
+        <p>We accept tax-exempt certificates from any state. Once on file, sales tax is waived on every future invoice automatically.</p>
+      </div>
+      <div class="note-card">
+        <h3>Sustainability, on the record.</h3>
+        <p>Tara Treasures is Fair Trade USA Certified. Bauspiel and Drewart use FSC-certified European hardwood. Most of our line is OEKO-TEX or GOTS certified.</p>
+      </div>
+      <div class="note-card">
+        <h3>Cancellations after fulfillment.</h3>
+        <p>PO cancelled after pick-and-pack has begun is subject to a 15% restocking fee plus return shipping. Cancellations before fulfillment are free.</p>
+      </div>
+      <div class="note-card">
+        <h3>Payment terms.</h3>
+        <p>Net-30 is our default. Net-60 available for larger or recurring orders. Net-60 is our maximum; extensions are reviewed case by case based on need.</p>
+      </div>
+    </div>
+    <p class="note-tail">References from currently-served schools available on request.</p>
+  </div>
+</section>
+
+<!-- CHAPTER 9 — Contacts -->
+<section class="spread" style="background:var(--cream);">
+  <div class="spread-inner">
+    <div class="spread-head">
+      <span class="label">Chapter nine · Contacts</span>
+      <h2>Who to write, <em>for what</em>.</h2>
+      <p class="lede">We route procurement inquiries to the right team based on subject. Use the right address and you will hear back within one business day.</p>
+    </div>
+    <div class="contacts-grid">
+      <div class="contact-card">
+        <h3>Educator orders &amp; quotes</h3>
+        <p class="role">For quote-building, classroom orders, and curriculum-aligned procurement.</p>
+        <div class="addr">
+          <strong><a href="mailto:educators@mytoywagon.com">educators@mytoywagon.com</a></strong>
+          626.841.0421 · Monday–Friday, 9–5 PT
+        </div>
+      </div>
+      <div class="contact-card">
+        <h3>Accounting &amp; vendor forms</h3>
+        <p class="role">For W-9, vendor onboarding forms, COI requests, remit-to information, and invoice questions.</p>
+        <div class="addr">
+          <strong><a href="mailto:accounting@mytoywagon.com">accounting@mytoywagon.com</a></strong>
+          626.841.0421 ext. 2
+        </div>
+      </div>
+      <div class="contact-card">
+        <h3>General inquiries</h3>
+        <p class="role">For everything else — retail orders, returns, product questions, press, partnerships.</p>
+        <div class="addr">
+          <strong><a href="mailto:contact@mytoywagon.com">contact@mytoywagon.com</a></strong>
+          626.841.0421
+        </div>
+      </div>
+      <div class="contact-card">
+        <h3>Mailing address</h3>
+        <p class="role">For checks, vendor paperwork, and remit-to records.</p>
+        <div class="addr">
+          <strong>My Toy Wagon, LLC</strong>
+          37 W Huntington Drive<br>
+          Arcadia, California 91007
+        </div>
+      </div>
+      <div class="contact-card full">
+        <h3>Schedule a 20-minute call.</h3>
+        <p class="role" style="max-width:520px;margin:0 auto 18px;">For coordinated orders, district-wide procurement, sole-source letters, or curriculum partnerships, we are happy to talk. Book a call from your educator dashboard.</p>
+        <a href="educator-dashboard.html" class="btn btn-primary">Open the educator portal</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

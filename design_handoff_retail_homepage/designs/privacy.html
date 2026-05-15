@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — My Toy Wagon</title>
+<meta name="description" content="How My Toy Wagon collects, uses, and discloses your personal information. Updated May 10, 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#F5F0E5;--warm-white:#FFFCF7;--ink:#2C2C2A;--forest:#3B6D11;--amber:#854F0B;--stone:#5F5E5A;--card-bg:#EDE3CD;--rule:rgba(44,44,42,0.12);--rule-strong:rgba(44,44,42,0.22);}
+*{box-sizing:border-box;}html,body{margin:0;padding:0;}
+body{font-family:'Mulish',sans-serif;color:var(--ink);background:var(--cream);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+img{max-width:100%;display:block;}a{color:inherit;text-decoration:none;}
+.label{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--stone);font-weight:500;}
+.utility{background:var(--ink);color:var(--cream);font-size:12px;letter-spacing:0.06em;}
+.utility-inner{max-width:1440px;margin:0 auto;padding:9px 40px;display:flex;justify-content:space-between;align-items:center;gap:24px;}
+.utility-center{flex:1;text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;}
+.utility-links{display:flex;gap:22px;color:rgba(245,240,229,0.7);}.utility-links a:hover{color:var(--cream);}
+header.nav{border-bottom:0.5px solid var(--rule);background:var(--cream);position:sticky;top:0;z-index:50;}
+.nav-inner{max-width:1440px;margin:0 auto;padding:18px 40px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:32px;}
+.nav-left,.nav-right{display:flex;align-items:center;gap:28px;}.nav-right{justify-content:flex-end;}
+.nav-link{font-size:13.5px;font-weight:500;letter-spacing:0.02em;padding:4px 0;}.nav-link:hover{color:var(--forest);}
+.nav-link.has-caret::after{content:"";display:inline-block;width:5px;height:5px;border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:rotate(45deg);margin-left:6px;vertical-align:2px;}
+.logo{display:inline-flex;align-items:center;gap:16px;line-height:1;}
+.logo-mark{width:100px;height:100px;background-color:var(--ink);-webkit-mask:url('{{ FILES_BASE_URL }}/logo-mark.png') center/contain no-repeat;mask:url('{{ FILES_BASE_URL }}/logo-mark.png') center/contain no-repeat;flex-shrink:0;}
+.logo-text{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;letter-spacing:0.24em;text-transform:uppercase;line-height:1;color:var(--ink);white-space:nowrap;}
+.logo small{display:block;font-family:'Mulish',sans-serif;font-style:normal;font-size:9.5px;letter-spacing:0.22em;text-transform:uppercase;color:var(--stone);margin-top:8px;font-weight:500;white-space:nowrap;}
+.nav-icon{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;}
+.cart-count{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:18px;padding:0 5px;background:var(--forest);color:var(--cream);border-radius:9px;font-size:11px;font-weight:600;}
+.search-pill{display:flex;align-items:center;gap:8px;padding:8px 14px;background:var(--warm-white);border:0.5px solid var(--rule);border-radius:999px;font-size:12.5px;color:var(--stone);min-width:200px;}
+.icon{width:16px;height:16px;stroke:currentColor;stroke-width:1.4;fill:none;flex-shrink:0;}
+.back-link{display:inline-flex;align-items:center;gap:10px;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--stone);font-weight:500;}
+.back-link::before{content:"";width:16px;height:1px;background:currentColor;}
+
+/* Privacy layout */
+.privacy-wrap{max-width:1100px;margin:0 auto;padding:64px 40px 96px;display:grid;grid-template-columns:240px 1fr;gap:64px;}
+.privacy-toc{position:sticky;top:120px;align-self:start;}
+.privacy-toc .label{display:block;margin-bottom:18px;}
+.privacy-toc ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;}
+.privacy-toc a{font-size:13.5px;color:var(--stone);line-height:1.4;display:block;padding:4px 0;border-left:0.5px solid var(--rule);padding-left:14px;}
+.privacy-toc a:hover{color:var(--ink);border-color:var(--rule-strong);}
+.privacy-main .back-link{margin-bottom:24px;}
+.privacy-main h1{font-family:'Cormorant Garamond',serif;font-size:64px;font-weight:500;line-height:1;letter-spacing:-0.012em;margin:0 0 18px;text-wrap:balance;}
+.privacy-main h1 em{font-style:italic;}
+.privacy-main .meta{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;color:var(--stone);margin:0 0 12px;}
+.privacy-main .dek{font-size:16px;color:var(--ink);max-width:600px;margin:0 0 40px;line-height:1.7;}
+.privacy-main section{border-top:0.5px solid var(--rule);padding:36px 0;}
+.privacy-main section:last-child{border-bottom:0.5px solid var(--rule);}
+.privacy-main h2{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:500;line-height:1.1;margin:0 0 18px;letter-spacing:-0.005em;}
+.privacy-main h3{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;font-weight:500;margin:24px 0 10px;color:var(--ink);}
+.privacy-main p{font-size:15.5px;line-height:1.78;margin:0 0 16px;color:var(--ink);text-wrap:pretty;}
+.privacy-main ul{margin:0 0 20px;padding-left:0;list-style:none;}
+.privacy-main ul li{font-size:15px;line-height:1.65;padding:10px 0 10px 22px;border-bottom:0.5px solid var(--rule);position:relative;}
+.privacy-main ul li:first-child{border-top:0.5px solid var(--rule);}
+.privacy-main ul li::before{content:"";position:absolute;left:0;top:20px;width:12px;height:0.5px;background:var(--forest);}
+.privacy-main strong{font-weight:600;color:var(--ink);}
+.privacy-main a.inline{color:var(--ink);border-bottom:0.5px solid var(--rule-strong);padding-bottom:1px;}
+.privacy-main a.inline:hover{color:var(--forest);border-color:var(--forest);}
+.privacy-table{width:100%;border-collapse:collapse;margin:14px 0 24px;font-size:14px;}
+.privacy-table th{background:var(--card-bg);text-align:left;padding:12px 14px;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:15px;border-bottom:0.5px solid var(--rule);}
+.privacy-table td{padding:12px 14px;border-bottom:0.5px solid var(--rule);vertical-align:top;line-height:1.55;}
+.privacy-table tr:last-child td{border-bottom:none;}
+.contact-card{background:var(--card-bg);border-radius:2px;padding:24px 28px;margin:16px 0 0;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;line-height:1.6;color:var(--ink);}
+.contact-card .label-line{font-family:'Mulish',sans-serif;font-style:normal;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--stone);display:block;margin-bottom:8px;font-weight:500;}
+.contact-card a{border-bottom:0.5px solid var(--rule-strong);}
+.contact-card a:hover{color:var(--forest);border-color:var(--forest);}
+
+footer{background:var(--cream);border-top:0.5px solid var(--rule);}
+.foot-bottom-band{max-width:1440px;margin:0 auto;padding:28px 40px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--stone);letter-spacing:0.04em;flex-wrap:wrap;gap:12px;}
+.foot-bottom-band a:hover{color:var(--ink);}
+.foot-bottom-band em{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:var(--ink);margin-right:10px;}
+.foot-bottom-band .foot-bottom-links{display:flex;gap:22px;}
+@media (max-width:900px){.privacy-wrap{grid-template-columns:1fr;}.privacy-toc{position:static;}}
+</style>
+</head>
+<body data-screen-label="Privacy Policy">
+
+<div class="utility">
+  <div class="utility-inner">
+    <div class="utility-links"><a href="#">Track order</a><a href="#">Educator program</a></div>
+    <div class="utility-center">Free shipping on orders $150+ within the contiguous U.S.</div>
+    <div class="utility-links" style="justify-content:flex-end;"><a href="#">Gift cards</a><a href="#">Sign in</a></div>
+  </div>
+</div>
+
+<header class="nav">
+  <div class="nav-inner">
+    <nav class="nav-left">
+      <a href="#" class="nav-link has-caret">Shop all</a>
+      <a href="#" class="nav-link has-caret">Collections</a>
+      <a href="#" class="nav-link">Ages</a>
+    </nav>
+    <a href="MTW Homepage v3.html" class="logo">
+      <span class="logo-mark" aria-hidden="true"></span>
+      <span class="logo-text">My Toy Wagon<small>Los Angeles · California · est. 2020</small></span>
+    </a>
+    <div class="nav-right">
+      <div class="search-pill"><svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg><span>Search wooden blocks, plush…</span></div>
+      <a href="#" class="nav-icon">Account</a>
+      <a href="#" class="nav-icon">Cart <span class="cart-count">0</span></a>
+    </div>
+  </div>
+</header>
+
+<div class="privacy-wrap">
+  <aside class="privacy-toc">
+    <span class="label">In this policy</span>
+    <ul>
+      <li><a href="#changes">Changes</a></li>
+      <li><a href="#collect">How we collect &amp; use</a></li>
+      <li><a href="#what">What we collect</a></li>
+      <li><a href="#use">How we use it</a></li>
+      <li><a href="#cookies">Cookies</a></li>
+      <li><a href="#disclose">How we disclose</a></li>
+      <li><a href="#third-party">Third-party links</a></li>
+      <li><a href="#children">Children's data</a></li>
+      <li><a href="#security">Security &amp; retention</a></li>
+      <li><a href="#rights">Your rights</a></li>
+      <li><a href="#complaints">Complaints</a></li>
+      <li><a href="#international">International users</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </aside>
+
+  <main class="privacy-main">
+    <a href="MTW Homepage v3.html" class="back-link">Back to the shop</a>
+    <h1>Privacy <em>Policy</em></h1>
+    <p class="meta">Last updated: May 10, 2026</p>
+    <p class="dek">This Privacy Policy describes how My Toy Wagon (the "Site," "we," "us," or "our") collects, uses, and discloses your personal information when you visit, use our services, or make a purchase from mytoywagon.com, or otherwise communicate with us regarding the Site (collectively, the "Services"). Please read it carefully.</p>
+
+    <section id="changes">
+      <h2>Changes to this Privacy Policy</h2>
+      <p>We may update this Privacy Policy from time to time, including to reflect changes to our practices or for other operational, legal, or regulatory reasons. We will post the revised policy on the Site, update the "Last updated" date, and take any other steps required by applicable law.</p>
+    </section>
+
+    <section id="collect">
+      <h2>How we collect and use your personal information</h2>
+      <p>To provide the Services, we collect and have collected over the past 12 months personal information about you from a variety of sources, as set out below. The information we collect and use varies depending on how you interact with us.</p>
+      <p>In addition to the specific uses set out below, we may use information we collect about you to communicate with you, to provide or improve the Services, to comply with applicable legal obligations, to enforce any applicable terms of service, and to protect or defend the Services, our rights, and the rights of our users or others.</p>
+    </section>
+
+    <section id="what">
+      <h2>What personal information we collect</h2>
+      <p>The types of personal information we obtain about you depends on how you interact with our Site and use our Services. When we use the term "personal information," we are referring to information that identifies, relates to, describes, or can be associated with you.</p>
+
+      <h3>Information we collect directly from you</h3>
+      <ul>
+        <li><strong>Contact details</strong> including your name, address, phone number, and email.</li>
+        <li><strong>Order information</strong> including your name, billing address, shipping address, payment confirmation, email address, and phone number.</li>
+        <li><strong>Account information</strong> including your username, password, security questions, and other information used for account security purposes.</li>
+        <li><strong>Shopping information</strong> including items you view, put in your cart, save to your account (such as loyalty points, reviews, referrals, or gift cards), or purchase.</li>
+        <li><strong>Customer support information</strong> including the information you choose to include in communications with us, for example when sending a message through the Services.</li>
+      </ul>
+      <p>Some features of the Services may require you to directly provide us with certain information about yourself. You may elect not to provide this information, but doing so may prevent you from using or accessing these features.</p>
+
+      <h3>Information we collect about your usage</h3>
+      <p>We may also automatically collect certain information about your interaction with the Services ("Usage Data"). To do this, we may use cookies, pixels, and similar technologies ("Cookies"). Usage Data may include information about how you access and use our Site and your account, including device information, browser information, network connection, IP address, and other interaction details.</p>
+
+      <h3>Information we obtain from third parties</h3>
+      <p>We may obtain information about you from third parties, including vendors and service providers who collect information on our behalf, such as:</p>
+      <ul>
+        <li>Companies who support our Site and Services, such as Shopify.</li>
+        <li>Our payment processors, who collect payment information (e.g., bank account, credit or debit card information, billing address) to process your payment in order to fulfill your orders.</li>
+        <li>When you visit our Site, open or click emails we send you, or interact with our Services or advertisements, we or third parties we work with may automatically collect information using online tracking technologies such as pixels, web beacons, software developer kits, third-party libraries, and cookies.</li>
+      </ul>
+      <p>Any information we obtain from third parties will be treated in accordance with this Privacy Policy.</p>
+    </section>
+
+    <section id="use">
+      <h2>How we use your personal information</h2>
+      <h3>Providing products and services</h3>
+      <p>We use your personal information to provide you with the Services in order to perform our contract with you, including to process your payments, fulfill your orders, send notifications related to your account, purchases, returns, exchanges, or other transactions, create and maintain your account, arrange for shipping, and facilitate returns and exchanges.</p>
+
+      <h3>Marketing and advertising</h3>
+      <p>We may use your personal information for marketing and promotional purposes, such as to send marketing, advertising, and promotional communications by email, text message, or postal mail, and to show you advertisements for products or services. If you are an EEA resident, the legal basis for these data processing activities is our legitimate interest in selling our products, according to Art. 6 (1) (f) GDPR.</p>
+
+      <h3>Security and fraud prevention</h3>
+      <p>We use your personal information to detect, investigate, or take action regarding possible fraudulent, illegal, or malicious activity. If you choose to register an account, you are responsible for keeping your account credentials safe. If you believe your account has been compromised, please contact us immediately. If you are an EEA resident, the legal basis for these activities is our legitimate interest in keeping our website secure.</p>
+
+      <h3>Communicating with you and improving the Services</h3>
+      <p>We use your personal information to provide customer support and improve our Services. This is in our legitimate interest in being responsive to you and maintaining our business relationship with you.</p>
+    </section>
+
+    <section id="cookies">
+      <h2>Cookies</h2>
+      <p>Like many websites, we use Cookies on our Site. For specific information about the Cookies that we use related to powering our store with Shopify, see <a class="inline" href="https://www.shopify.com/legal/cookies">shopify.com/legal/cookies</a>. We use Cookies to power and improve our Site and our Services (including to remember your actions and preferences), to run analytics, and to better understand user interaction with the Services.</p>
+      <p>Most browsers automatically accept Cookies by default, but you can choose to set your browser to remove or reject Cookies through your browser controls. Removing or blocking Cookies can negatively impact your user experience and may cause some Services to work incorrectly or no longer be available.</p>
+      <p>Our website recognizes the Global Privacy Control (GPC) signal, which enables you to opt out of certain uses or disclosures of your information. If you notify us of your preference through GPC, we will treat it as a valid request to opt out of sharing or targeted advertising for the associated browser or device. To learn more, visit <a class="inline" href="https://globalprivacycontrol.org/">globalprivacycontrol.org</a>. Other than GPC, we do not recognize other "Do Not Track" signals.</p>
+    </section>
+
+    <section id="disclose">
+      <h2>How we disclose personal information</h2>
+      <p>In certain circumstances, we may disclose your personal information to third parties for contract fulfillment, legitimate purposes, and other reasons subject to this Privacy Policy. Circumstances include:</p>
+      <ul>
+        <li>With vendors or other third parties who perform services on our behalf (IT management, payment processing, data analytics, customer support, cloud storage, fulfillment, and shipping).</li>
+        <li>With business and marketing partners to provide services and advertise to you. Our partners will use your information in accordance with their own privacy notices.</li>
+        <li>When you direct, request, or otherwise consent to our disclosure of certain information to third parties, such as to ship you products or through social media widgets or login integrations.</li>
+        <li>With our affiliates or otherwise within our corporate group, in our legitimate interests to run a successful business.</li>
+        <li>In connection with a business transaction such as a merger or bankruptcy, to comply with applicable legal obligations (including subpoenas, search warrants, and similar requests), to enforce terms of service, and to protect or defend the Services.</li>
+      </ul>
+      <p>We have, in the past 12 months, disclosed the following categories of personal information for the purposes set out above:</p>
+      <table class="privacy-table">
+        <thead><tr><th>Category</th><th>Categories of recipients</th></tr></thead>
+        <tbody>
+          <tr><td>Identifiers such as basic contact details and certain order and account information</td><td rowspan="5">Vendors and third parties who perform services on our behalf (Internet service providers, payment processors, fulfillment partners, customer support partners, data analytics providers), business and marketing partners, affiliates</td></tr>
+          <tr><td>California Customer Records information, such as basic contact details and certain order and account information</td></tr>
+          <tr><td>Commercial information such as order, shopping, and customer support information</td></tr>
+          <tr><td>Internet or other similar network activity, such as Usage Data</td></tr>
+          <tr><td>Geolocation data such as locations determined by an IP address or other technical measures</td></tr>
+        </tbody>
+      </table>
+      <p>We do not use or disclose sensitive personal information without your consent or for the purposes of inferring characteristics about you.</p>
+      <p>With your consent, we share personal information for advertising and marketing activities. We have "sold" and "shared" (as those terms are defined in applicable law) personal information over the preceding 12 months for advertising and marketing as follows:</p>
+      <table class="privacy-table">
+        <thead><tr><th>Category of personal information</th><th>Categories of recipients</th></tr></thead>
+        <tbody>
+          <tr><td>Identifiers such as name, e-mail address, and phone number</td><td rowspan="3">Business and marketing partners</td></tr>
+          <tr><td>Commercial information such as records of products or services purchased</td></tr>
+          <tr><td>Usage Data</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="third-party">
+      <h2>Third-party websites and links</h2>
+      <p>Our Site may provide links to websites or other online platforms operated by third parties. If you follow links to sites not affiliated or controlled by us, you should review their privacy and security policies and other terms. We do not guarantee and are not responsible for the privacy or security of such sites. Information you provide on public or semi-public venues, including third-party social networking platforms, may also be viewable by other users without limitation. Our inclusion of such links does not, by itself, imply any endorsement.</p>
+    </section>
+
+    <section id="children">
+      <h2>Children's data</h2>
+      <p>The Services are not intended to be used by children, and we do not knowingly collect any personal information about children. If you are the parent or guardian of a child who has provided us with their personal information, you may contact us to request that it be deleted.</p>
+      <p>As of the effective date of this Privacy Policy, we do not have actual knowledge that we "share" or "sell" personal information of individuals under 16 years of age.</p>
+    </section>
+
+    <section id="security">
+      <h2>Security and retention of your information</h2>
+      <p>Please be aware that no security measures are perfect or impenetrable, and we cannot guarantee "perfect security." Any information you send to us may not be secure while in transit. We recommend that you do not use insecure channels to communicate sensitive or confidential information.</p>
+      <p>How long we retain your personal information depends on factors such as whether we need the information to maintain your account, provide the Services, comply with legal obligations, resolve disputes, or enforce other applicable contracts and policies.</p>
+    </section>
+
+    <section id="rights">
+      <h2>Your rights</h2>
+      <p>Depending on where you live, you may have some or all of the rights listed below. These rights are not absolute, may apply only in certain circumstances, and in certain cases we may decline your request as permitted by law.</p>
+      <ul>
+        <li><strong>Right to Access / Know:</strong> request access to personal information we hold about you.</li>
+        <li><strong>Right to Delete:</strong> request that we delete personal information we maintain about you.</li>
+        <li><strong>Right to Correct:</strong> request that we correct inaccurate personal information.</li>
+        <li><strong>Right of Portability:</strong> receive a copy and request transfer to a third party, with certain exceptions.</li>
+        <li><strong>Right to Opt Out of Sale, Sharing, or Targeted Advertising:</strong> direct us not to "sell" or "share" your information.</li>
+        <li><strong>Restriction of Processing:</strong> ask us to stop or restrict our processing of your personal information.</li>
+        <li><strong>Withdrawal of Consent:</strong> where we rely on consent, you may withdraw it.</li>
+        <li><strong>Appeal:</strong> appeal our decision if we decline your request, by replying directly to our denial.</li>
+        <li><strong>Managing Communication Preferences:</strong> opt out of promotional emails via the unsubscribe link.</li>
+      </ul>
+      <p>You may exercise any of these rights where indicated on our Site or by contacting us using the details below. We will not discriminate against you for exercising any of these rights. We may need to collect information from you to verify your identity, such as your email address or account information, before responding. You may designate an authorized agent to make requests on your behalf; we will require proof of authorization and may verify your identity directly.</p>
+    </section>
+
+    <section id="complaints">
+      <h2>Complaints</h2>
+      <p>If you have complaints about how we process your personal information, please contact us using the details below. If you are not satisfied with our response, depending on where you live, you may have the right to appeal or to lodge your complaint with your local data protection authority. For the EEA, you can find a list of the responsible supervisory authorities through the European Commission.</p>
+    </section>
+
+    <section id="international">
+      <h2>International users</h2>
+      <p>Please note that we may transfer, store, and process your personal information outside the country you live in. Your personal information is also processed by staff and third-party service providers and partners in these countries.</p>
+      <p>If we transfer your personal information out of Europe, we will rely on recognized transfer mechanisms such as the European Commission's Standard Contractual Clauses, or equivalent contracts issued by the relevant competent authority of the UK, unless the transfer is to a country determined to provide an adequate level of protection.</p>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Should you have any questions about our privacy practices or this Privacy Policy, or if you would like to exercise any of the rights available to you, please call or email us.</p>
+      <div class="contact-card">
+        <span class="label-line">My Toy Wagon LLC</span>
+        37 W Huntington Dr<br>
+        Arcadia, CA 91007, US<br><br>
+        <a href="mailto:contact@mytoywagon.com">contact@mytoywagon.com</a><br>
+        <a href="tel:6268410421">626.841.0421</a>
+      </div>
+      <p style="margin-top:24px;font-size:14px;color:var(--stone);">For the purpose of applicable data protection laws, and if not explicitly stated otherwise, we are the data controller of your personal information.</p>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  <div class="foot-bottom-band">
+    <span><em>Heirloom toys, curated by hand.</em>© 2026 My Toy Wagon. All rights reserved.</span>
+    <div class="foot-bottom-links">
+      <a href="MTW Homepage v3.html">Back to the shop</a>
+      <a href="shipping.html">Shipping</a>
+      <a href="returns.html">Returns</a>
+      <a href="rewards.html">Rewards</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
