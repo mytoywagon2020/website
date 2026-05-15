@@ -1,0 +1,149 @@
+{%- comment -%}
+  MTW Product Rail — reusable editorial product row pulling real products
+  from a chosen collection. New namespaced section (.mtw-rail) so it cannot
+  collide with Impulse. Heading, eyebrow, lead, collection and "view all"
+  link are all editable in the theme editor. Used 4x on the homepage.
+{%- endcomment -%}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+{%- style -%}
+  #shopify-section-{{ section.id }} { background: #F5F0E5; }
+  .mtw-rail {
+    --cream:#F5F0E5; --warm-white:#FFFCF7; --ink:#2C2C2A; --forest:#3B6D11;
+    --amber:#854F0B; --stone:#5F5E5A; --rule:rgba(44,44,42,0.12);
+    --rule-strong:rgba(44,44,42,0.22);
+    max-width:1440px; margin:0 auto; padding:{{ section.settings.padding_top }}px 40px {{ section.settings.padding_bottom }}px;
+    box-sizing:border-box;
+    font-family:'Mulish',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    color:var(--ink);
+  }
+  .mtw-rail *, .mtw-rail *::before, .mtw-rail *::after { box-sizing:border-box; }
+  .mtw-rail__head { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:48px; gap:40px; }
+  .mtw-rail__num { font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-size:16px; color:var(--stone); margin:0 0 12px; }
+  .mtw-rail__title { font-family:'Cormorant Garamond',Georgia,serif; font-size:56px; font-weight:500; line-height:1; margin:0; letter-spacing:-0.005em; color:var(--ink); }
+  .mtw-rail__title em { font-style:italic; }
+  .mtw-rail__lead { font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; color:var(--stone); font-size:18px; max-width:340px; line-height:1.45; margin:0; }
+  .mtw-rail__grid { display:grid; grid-template-columns:repeat(4,1fr); gap:28px; }
+  .mtw-rail__card { cursor:pointer; position:relative; text-decoration:none; color:inherit; display:block; }
+  .mtw-rail__media {
+    aspect-ratio:4 / 5; background:var(--warm-white); border-radius:2px; margin-bottom:16px;
+    position:relative; overflow:hidden; border:0.5px solid var(--rule); transition:border-color 200ms ease;
+  }
+  .mtw-rail__card:hover .mtw-rail__media { border-color:var(--rule-strong); }
+  .mtw-rail__img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform 600ms ease, opacity 240ms ease; }
+  .mtw-rail__img--secondary { opacity:0; z-index:1; }
+  .mtw-rail__card:hover .mtw-rail__img--primary.has-second { opacity:0; transform:scale(1.04); }
+  .mtw-rail__card:hover .mtw-rail__img--secondary { opacity:1; transform:scale(1.04); }
+  .mtw-rail__card:hover .mtw-rail__img--primary.no-second { transform:scale(1.04); }
+  .mtw-rail__tag {
+    position:absolute; top:14px; left:14px; background:var(--warm-white);
+    border:0.5px solid var(--rule); padding:5px 10px; border-radius:2px; font-size:10.5px;
+    letter-spacing:0.12em; text-transform:uppercase; font-weight:500; color:var(--stone); z-index:2;
+  }
+  .mtw-rail__tag--forest { color:var(--forest); border-color:rgba(59,109,17,0.3); background:rgba(255,252,247,0.95); }
+  .mtw-rail__tag--amber { color:var(--amber); border-color:rgba(133,79,11,0.3); background:rgba(255,252,247,0.95); }
+  .mtw-rail__maker { font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--stone); margin:0 0 6px; font-weight:500; }
+  .mtw-rail__name { font-family:'Cormorant Garamond',Georgia,serif; font-size:22px; font-weight:500; line-height:1.15; margin:0 0 6px; color:var(--ink); }
+  .mtw-rail__stars { display:inline-flex; align-items:center; gap:6px; margin-bottom:8px; font-size:12px; color:var(--stone); }
+  .mtw-rail__stars-g { color:var(--amber); font-size:13px; line-height:1; letter-spacing:0; }
+  .mtw-rail__meta { display:flex; justify-content:space-between; align-items:baseline; font-size:13px; color:var(--stone); }
+  .mtw-rail__price { color:var(--ink); font-weight:500; }
+  .mtw-rail__price s { color:var(--stone); font-weight:400; margin-right:6px; }
+  .mtw-rail__foot { margin-top:36px; display:flex; justify-content:center; }
+  .mtw-rail__btn {
+    display:inline-flex; align-items:center; gap:10px; padding:14px 24px; font-size:13.5px;
+    font-weight:500; letter-spacing:0.04em; border-radius:2px; border:0.5px solid var(--rule-strong);
+    color:var(--ink); background:none; text-decoration:none; transition:all 160ms ease;
+  }
+  .mtw-rail__btn:hover { border-color:var(--ink); }
+  .mtw-rail__arrow { width:14px; height:8px; position:relative; display:inline-block; }
+  .mtw-rail__arrow::before, .mtw-rail__arrow::after { content:""; position:absolute; background:currentColor; }
+  .mtw-rail__arrow::before { left:0; top:50%; width:100%; height:1px; transform:translateY(-50%); }
+  .mtw-rail__arrow::after { right:0; top:50%; width:6px; height:6px; border-top:1px solid currentColor; border-right:1px solid currentColor; background:none; transform:translateY(-50%) rotate(45deg); }
+  .mtw-rail__empty { font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; color:var(--stone); font-size:18px; padding:40px 0; }
+  @media (max-width:1100px) { .mtw-rail__grid { grid-template-columns:repeat(2,1fr); gap:24px; } .mtw-rail__title { font-size:42px; } }
+  @media (max-width:900px) { .mtw-rail__head { flex-direction:column; align-items:flex-start; gap:14px; margin-bottom:32px; } .mtw-rail { padding:48px 24px; } }
+  @media (max-width:520px) { .mtw-rail__grid { grid-template-columns:1fr 1fr; gap:16px; } }
+{%- endstyle -%}
+
+{%- assign coll = section.settings.collection -%}
+<div class="mtw-rail">
+  <div class="mtw-rail__head">
+    <div>
+      {%- if section.settings.eyebrow != blank -%}<p class="mtw-rail__num">{{ section.settings.eyebrow }}</p>{%- endif -%}
+      {%- if section.settings.heading != blank -%}<h2 class="mtw-rail__title">{{ section.settings.heading }}</h2>{%- endif -%}
+    </div>
+    {%- if section.settings.lead != blank -%}<p class="mtw-rail__lead">{{ section.settings.lead }}</p>{%- endif -%}
+  </div>
+
+  {%- if coll != blank and coll.products.size > 0 -%}
+    <div class="mtw-rail__grid">
+      {%- for product in coll.products limit: section.settings.products_to_show -%}
+        <a class="mtw-rail__card" href="{{ product.url }}">
+          <div class="mtw-rail__media">
+            {%- if product.available -%}
+              <span class="mtw-rail__tag mtw-rail__tag--forest">In stock</span>
+            {%- else -%}
+              <span class="mtw-rail__tag mtw-rail__tag--amber">Sold out</span>
+            {%- endif -%}
+            {%- assign has_second = false -%}
+            {%- if product.images.size > 1 -%}{%- assign has_second = true -%}{%- endif -%}
+            {%- if product.featured_image -%}
+              <img class="mtw-rail__img mtw-rail__img--primary {% if has_second %}has-second{% else %}no-second{% endif %}"
+                src="{{ product.featured_image | image_url: width: 700 }}"
+                srcset="{{ product.featured_image | image_url: width: 400 }} 400w, {{ product.featured_image | image_url: width: 700 }} 700w, {{ product.featured_image | image_url: width: 900 }} 900w"
+                sizes="(min-width:1100px) 22vw, 45vw"
+                alt="{{ product.featured_image.alt | default: product.title | escape }}" loading="lazy" width="700" height="875">
+            {%- endif -%}
+            {%- if has_second -%}
+              <img class="mtw-rail__img mtw-rail__img--secondary"
+                src="{{ product.images[1] | image_url: width: 700 }}"
+                alt="" loading="lazy" width="700" height="875">
+            {%- endif -%}
+          </div>
+          {%- if product.vendor != blank -%}<p class="mtw-rail__maker">{{ product.vendor }}</p>{%- endif -%}
+          <h3 class="mtw-rail__name">{{ product.title }}</h3>
+          <div class="mtw-rail__stars"><span class="mtw-rail__stars-g">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span>Verified reviews</span></div>
+          <div class="mtw-rail__meta">
+            <span>{% if product.type != blank %}{{ product.type }}{% else %}{{ coll.title }}{% endif %}</span>
+            <span class="mtw-rail__price">
+              {%- if product.compare_at_price > product.price -%}<s>{{ product.compare_at_price | money }}</s>{%- endif -%}
+              {{ product.price | money }}
+            </span>
+          </div>
+        </a>
+      {%- endfor -%}
+    </div>
+    {%- if section.settings.view_all_text != blank -%}
+      <div class="mtw-rail__foot">
+        <a class="mtw-rail__btn" href="{{ section.settings.view_all_link | default: coll.url }}">{{ section.settings.view_all_text }} <span class="mtw-rail__arrow"></span></a>
+      </div>
+    {%- endif -%}
+  {%- else -%}
+    <p class="mtw-rail__empty">Choose a collection for this section in the theme editor.</p>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "MTW Product Rail",
+  "tag": "section",
+  "class": "mtw-rail-section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow (e.g. 01 / Shop new items)" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "New and quietly loved." },
+    { "type": "text", "id": "lead", "label": "Lead (italic side note)" },
+    { "type": "collection", "id": "collection", "label": "Collection" },
+    { "type": "range", "id": "products_to_show", "label": "Products to show", "min": 2, "max": 8, "step": 1, "default": 4 },
+    { "type": "text", "id": "view_all_text", "label": "View-all button text", "default": "See more" },
+    { "type": "url", "id": "view_all_link", "label": "View-all link (defaults to the collection)" },
+    { "type": "header", "content": "Spacing" },
+    { "type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 80 },
+    { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 80 }
+  ],
+  "presets": [{ "name": "MTW Product Rail" }]
+}
+{% endschema %}

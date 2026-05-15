@@ -35,7 +35,7 @@
         "eyebrow": "For educators",
         "text": "Volume pricing, Net-30 invoicing, and one-on-one curation for schools, therapists, and homeschool families.",
         "cta_text": "Apply for an account",
-        "cta_link": ""
+        "cta_link": "/pages/educator-register"
       }
     },
     "mtw_trust": {
@@ -47,6 +47,62 @@
         "card_rewards": { "type": "card", "settings": { "image": "shopify://shop_images/trust-strip-rewards-mark.png", "badge": "", "title": "Earn Rewards", "subtitle": "Points on every order, redeem on the next.", "link": "" } }
       },
       "block_order": ["card_ship", "card_returns", "card_packed", "card_rewards"]
+    },
+    "mtw_rail_new": {
+      "type": "mtw-product-rail",
+      "settings": {
+        "eyebrow": "01 / Shop new items",
+        "heading": "New and quietly loved.",
+        "lead": "A few from the shop this week, including pieces from our range of felt florals.",
+        "collection": "whats-new",
+        "products_to_show": 4,
+        "view_all_text": "See more new arrivals",
+        "view_all_link": "",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "mtw_rail_best": {
+      "type": "mtw-product-rail",
+      "settings": {
+        "eyebrow": "02 / Best sellers",
+        "heading": "What keeps coming home.",
+        "lead": "Four pieces we restock more often than the rest. Tested by your neighbors, kept on every shelf.",
+        "collection": "best-sellers",
+        "products_to_show": 4,
+        "view_all_text": "See all best sellers",
+        "view_all_link": "",
+        "padding_top": 24,
+        "padding_bottom": 80
+      }
+    },
+    "mtw_rail_gifts": {
+      "type": "mtw-product-rail",
+      "settings": {
+        "eyebrow": "03 / Gifts under $50",
+        "heading": "Small, but kept for years.",
+        "lead": "For aunts, grandparents, and last-minute baskets. Each one heirloom enough to outlast the season.",
+        "collection": "50-and-under",
+        "products_to_show": 4,
+        "view_all_text": "See all gifts under $50",
+        "view_all_link": "",
+        "padding_top": 24,
+        "padding_bottom": 80
+      }
+    },
+    "mtw_rail_heirloom": {
+      "type": "mtw-product-rail",
+      "settings": {
+        "eyebrow": "04 / Heirloom favorites",
+        "heading": "For the next sibling, and the next.",
+        "lead": "The pieces parents tell us they'll keep. Hand-stitched, hand-carved, and built to be passed down.",
+        "collection": "customer-favorites",
+        "products_to_show": 4,
+        "view_all_text": "See all heirloom toys",
+        "view_all_link": "",
+        "padding_top": 24,
+        "padding_bottom": 80
+      }
     },
     "hero": {
       "type": "slideshow",
@@ -232,6 +288,6 @@
       "settings": {"full_width": false, "space_around": true}
     }
   },
-  "order": ["mtw_hero", "mtw_educator", "mtw_trust", "hero", "trust_strip", "customer_favorites", "favorite_brands", "promo", "new_arrivals", "popular_categories", "story", "bumbu_spotlight", "reviews", "map", "1778483303cd9eb1a3"]
+  "order": ["mtw_hero", "mtw_educator", "mtw_trust", "mtw_rail_new", "mtw_rail_best", "mtw_rail_gifts", "mtw_rail_heirloom", "hero", "trust_strip", "customer_favorites", "favorite_brands", "promo", "new_arrivals", "popular_categories", "story", "bumbu_spotlight", "reviews", "map", "1778483303cd9eb1a3"]
 }
 
