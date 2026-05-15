@@ -29,6 +29,25 @@
         "feature_link": ""
       }
     },
+    "mtw_educator": {
+      "type": "mtw-educator-strip",
+      "settings": {
+        "eyebrow": "For educators",
+        "text": "Volume pricing, Net-30 invoicing, and one-on-one curation for schools, therapists, and homeschool families.",
+        "cta_text": "Apply for an account",
+        "cta_link": ""
+      }
+    },
+    "mtw_trust": {
+      "type": "mtw-trust-strip",
+      "blocks": {
+        "card_ship": { "type": "card", "settings": { "image": "shopify://shop_images/trust-strip-shipping-wagon-mark.png", "badge": "free shipping", "title": "Free U.S. shipping", "subtitle": "On orders $150 and up, contiguous U.S.", "link": "" } },
+        "card_returns": { "type": "card", "settings": { "image": "shopify://shop_images/trust-strip-returns-mark.png", "badge": "", "title": "Free 30-day returns", "subtitle": "If the toy isn't right, send it back, with our love.", "link": "" } },
+        "card_packed": { "type": "card", "settings": { "image": "shopify://shop_images/trust-strip-packed-mark.png", "badge": "", "title": "Packed with care", "subtitle": "Tissue-wrapped, with a handwritten note, free.", "link": "" } },
+        "card_rewards": { "type": "card", "settings": { "image": "shopify://shop_images/trust-strip-rewards-mark.png", "badge": "", "title": "Earn Rewards", "subtitle": "Points on every order, redeem on the next.", "link": "" } }
+      },
+      "block_order": ["card_ship", "card_returns", "card_packed", "card_rewards"]
+    },
     "hero": {
       "type": "slideshow",
       "blocks": {
@@ -213,6 +232,6 @@
       "settings": {"full_width": false, "space_around": true}
     }
   },
-  "order": ["mtw_hero", "hero", "trust_strip", "customer_favorites", "favorite_brands", "promo", "new_arrivals", "popular_categories", "story", "bumbu_spotlight", "reviews", "map", "1778483303cd9eb1a3"]
+  "order": ["mtw_hero", "mtw_educator", "mtw_trust", "hero", "trust_strip", "customer_favorites", "favorite_brands", "promo", "new_arrivals", "popular_categories", "story", "bumbu_spotlight", "reviews", "map", "1778483303cd9eb1a3"]
 }
 
