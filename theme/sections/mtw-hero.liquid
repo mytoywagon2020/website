@@ -1,0 +1,168 @@
+{%- comment -%}
+  MTW Hero — custom editorial split hero for My Toy Wagon.
+  New, namespaced section (prefix .mtw-hero / mtw- ) so it never collides
+  with Impulse's own .hero / .btn / .label styles, and survives theme updates.
+  All copy + the image are editable in the theme editor (Customize).
+{%- endcomment -%}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+{%- style -%}
+  #shopify-section-{{ section.id }} { background: #F5F0E5; }
+  .mtw-hero {
+    --cream:#F5F0E5; --warm-white:#FFFCF7; --ink:#2C2C2A; --forest:#3B6D11;
+    --amber:#854F0B; --stone:#5F5E5A; --card-bg:#EDE3CD;
+    --rule:rgba(44,44,42,0.12); --rule-strong:rgba(44,44,42,0.22);
+    max-width:1440px; margin:0 auto; padding:56px 40px 88px;
+    display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;
+    box-sizing:border-box; color:var(--ink);
+    font-family:'Mulish',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  }
+  .mtw-hero *, .mtw-hero *::before, .mtw-hero *::after { box-sizing:border-box; }
+  .mtw-hero__text { max-width:540px; }
+  .mtw-hero__eyebrow {
+    font-size:11px; letter-spacing:0.28em; text-transform:uppercase;
+    color:var(--stone); font-weight:500; margin:0 0 28px;
+  }
+  .mtw-hero__title {
+    font-family:'Cormorant Garamond',Georgia,serif; font-size:86px; font-weight:500;
+    line-height:1.05; letter-spacing:-0.014em; margin:0 0 28px; color:var(--ink);
+  }
+  .mtw-hero__title em { font-style:italic; font-weight:500; }
+  .mtw-hero__body, .mtw-hero__body p {
+    font-size:16.5px; line-height:1.7; color:var(--ink); margin:0 0 36px; max-width:480px;
+  }
+  .mtw-hero__body p:last-child { margin-bottom:0; }
+  .mtw-hero__ctas { display:flex; flex-wrap:wrap; gap:14px; align-items:center; margin:0 0 32px; }
+  .mtw-hero__btn {
+    display:inline-flex; align-items:center; gap:10px; padding:14px 24px;
+    font-size:13.5px; font-weight:500; letter-spacing:0.04em; border-radius:2px;
+    border:0.5px solid transparent; cursor:pointer; transition:all 160ms ease;
+    font-family:inherit; text-decoration:none;
+  }
+  .mtw-hero__btn--primary { background:var(--ink); color:var(--cream); }
+  .mtw-hero__btn--primary:hover { background:var(--forest); }
+  .mtw-hero__btn--ghost { border-color:var(--rule-strong); color:var(--ink); background:none; }
+  .mtw-hero__btn--ghost:hover { border-color:var(--ink); }
+  .mtw-hero__arrow { width:14px; height:8px; position:relative; display:inline-block; }
+  .mtw-hero__arrow::before, .mtw-hero__arrow::after { content:""; position:absolute; background:currentColor; }
+  .mtw-hero__arrow::before { left:0; top:50%; width:100%; height:1px; transform:translateY(-50%); }
+  .mtw-hero__arrow::after {
+    right:0; top:50%; width:6px; height:6px; border-top:1px solid currentColor;
+    border-right:1px solid currentColor; background:none; transform:translateY(-50%) rotate(45deg);
+  }
+  .mtw-hero__footnote, .mtw-hero__footnote p {
+    font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-size:16px;
+    color:var(--stone); margin:0;
+  }
+  .mtw-hero__footnote a { color:var(--ink); border-bottom:0.5px solid var(--rule-strong); padding-bottom:1px; text-decoration:none; }
+  .mtw-hero__footnote a:hover { border-color:var(--forest); color:var(--forest); }
+  .mtw-hero__media {
+    position:relative; aspect-ratio:3/4; border-radius:2px; overflow:hidden; background:var(--card-bg);
+  }
+  .mtw-hero__img { width:100%; height:100%; object-fit:cover; display:block; }
+  .mtw-hero__tag {
+    position:absolute; left:24px; bottom:24px; background:var(--ink); color:var(--cream);
+    border-radius:2px; padding:16px 20px; max-width:260px; box-shadow:0 2px 18px rgba(44,44,42,0.18);
+    text-decoration:none;
+  }
+  .mtw-hero__tag-eyebrow {
+    display:block; margin-bottom:6px; font-size:11px; letter-spacing:0.18em;
+    text-transform:uppercase; font-weight:500; color:rgba(245,240,229,0.55);
+  }
+  .mtw-hero__tag-name {
+    font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-size:19px;
+    line-height:1.2; margin:0 0 2px; color:var(--cream);
+  }
+  .mtw-hero__tag-price { font-size:13px; color:rgba(245,240,229,0.7); margin:0; }
+  @media (max-width:900px) {
+    .mtw-hero { grid-template-columns:1fr; gap:40px; padding:40px 24px 64px; }
+    .mtw-hero__title { font-size:clamp(44px,11vw,64px); }
+    .mtw-hero__text { max-width:none; }
+  }
+{%- endstyle -%}
+
+<div class="mtw-hero">
+  <div class="mtw-hero__text">
+    {%- if section.settings.eyebrow != blank -%}
+      <p class="mtw-hero__eyebrow">{{ section.settings.eyebrow }}</p>
+    {%- endif -%}
+    {%- if section.settings.title != blank -%}
+      <h1 class="mtw-hero__title">{{ section.settings.title }}</h1>
+    {%- endif -%}
+    {%- if section.settings.body != blank -%}
+      <div class="mtw-hero__body">{{ section.settings.body }}</div>
+    {%- endif -%}
+    {%- if section.settings.cta1_text != blank or section.settings.cta2_text != blank -%}
+      <div class="mtw-hero__ctas">
+        {%- if section.settings.cta1_text != blank -%}
+          <a class="mtw-hero__btn mtw-hero__btn--primary" href="{{ section.settings.cta1_link | default: '#' }}">
+            {{ section.settings.cta1_text }}<span class="mtw-hero__arrow" aria-hidden="true"></span>
+          </a>
+        {%- endif -%}
+        {%- if section.settings.cta2_text != blank -%}
+          <a class="mtw-hero__btn mtw-hero__btn--ghost" href="{{ section.settings.cta2_link | default: '#' }}">
+            {{ section.settings.cta2_text }}
+          </a>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+    {%- if section.settings.footnote != blank -%}
+      <div class="mtw-hero__footnote">{{ section.settings.footnote }}</div>
+    {%- endif -%}
+  </div>
+
+  <div class="mtw-hero__media">
+    {%- if section.settings.image != blank -%}
+      {{ section.settings.image
+        | image_url: width: 1400
+        | image_tag:
+          loading: 'eager',
+          fetchpriority: 'high',
+          sizes: '(min-width: 900px) 50vw, 100vw',
+          widths: '480, 720, 960, 1200, 1400, 1600',
+          alt: section.settings.image.alt | default: section.settings.image_alt,
+          class: 'mtw-hero__img' }}
+    {%- else -%}
+      <img class="mtw-hero__img" src="{{ 'hero-amber-kaleidoscope.webp' | file_url }}" alt="{{ section.settings.image_alt | escape }}">
+    {%- endif -%}
+
+    {%- if section.settings.show_feature_tag -%}
+      {%- if section.settings.feature_link != blank -%}<a class="mtw-hero__tag" href="{{ section.settings.feature_link }}">{%- else -%}<div class="mtw-hero__tag">{%- endif -%}
+        {%- if section.settings.feature_eyebrow != blank -%}<span class="mtw-hero__tag-eyebrow">{{ section.settings.feature_eyebrow }}</span>{%- endif -%}
+        {%- if section.settings.feature_name != blank -%}<p class="mtw-hero__tag-name">{{ section.settings.feature_name }}</p>{%- endif -%}
+        {%- if section.settings.feature_price != blank -%}<p class="mtw-hero__tag-price">{{ section.settings.feature_price }}</p>{%- endif -%}
+      {%- if section.settings.feature_link != blank -%}</a>{%- else -%}</div>{%- endif -%}
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "MTW Hero",
+  "tag": "section",
+  "class": "mtw-hero-section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow (small label above title)" },
+    { "type": "inline_richtext", "id": "title", "label": "Headline", "info": "Wrap a word or two in italics for emphasis.", "default": "Toys meant <em>to be kept</em>, not outgrown." },
+    { "type": "richtext", "id": "body", "label": "Body text", "default": "<p>A family-run shop in Arcadia, California, online since 2020. We carry wooden toys, Waldorf dolls, and open-ended play sets, sourced from makers we know by name. Each piece is chosen to scale across a childhood, and to last for the sibling who comes after.</p>" },
+    { "type": "text", "id": "cta1_text", "label": "Button 1 text", "default": "Find a gift under $50" },
+    { "type": "url", "id": "cta1_link", "label": "Button 1 link" },
+    { "type": "text", "id": "cta2_text", "label": "Button 2 text", "default": "Read our story" },
+    { "type": "url", "id": "cta2_link", "label": "Button 2 link" },
+    { "type": "richtext", "id": "footnote", "label": "Footnote", "default": "<p>Pre-order opening soon: Tiny Fox Hole Birthday Ring. Sign up to be notified.</p>" },
+    { "type": "header", "content": "Image" },
+    { "type": "image_picker", "id": "image", "label": "Hero image" },
+    { "type": "text", "id": "image_alt", "label": "Image alt text (fallback)", "default": "A child looking through an amber kaleidoscope at home" },
+    { "type": "header", "content": "Feature tag (overlay card)" },
+    { "type": "checkbox", "id": "show_feature_tag", "label": "Show feature tag", "default": true },
+    { "type": "text", "id": "feature_eyebrow", "label": "Tag eyebrow", "default": "Featured this week" },
+    { "type": "text", "id": "feature_name", "label": "Tag product name", "default": "Amber Kaleidoscope" },
+    { "type": "text", "id": "feature_price", "label": "Tag price / status", "default": "$38 · In stock" },
+    { "type": "url", "id": "feature_link", "label": "Tag link (optional)" }
+  ],
+  "presets": [{ "name": "MTW Hero" }]
+}
+{% endschema %}

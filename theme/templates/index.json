@@ -1,0 +1,218 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "mtw_hero": {
+      "type": "mtw-hero",
+      "settings": {
+        "eyebrow": "",
+        "title": "Toys meant <em>to be kept</em>, not outgrown.",
+        "body": "<p>A family-run shop in Arcadia, California, online since 2020. We carry wooden toys, Waldorf dolls, and open-ended play sets, sourced from makers we know by name. Each piece is chosen to scale across a childhood, and to last for the sibling who comes after.</p>",
+        "cta1_text": "Find a gift under $50",
+        "cta1_link": "",
+        "cta2_text": "Read our story",
+        "cta2_link": "/pages/our-story",
+        "footnote": "<p>Pre-order opening soon: Tiny Fox Hole Birthday Ring. Sign up to be notified.</p>",
+        "image": "shopify://shop_images/hero-amber-kaleidoscope.webp",
+        "image_alt": "A child looking through an amber kaleidoscope at home",
+        "show_feature_tag": true,
+        "feature_eyebrow": "Featured this week",
+        "feature_name": "Amber Kaleidoscope",
+        "feature_price": "$38 · In stock",
+        "feature_link": ""
+      }
+    },
+    "hero": {
+      "type": "slideshow",
+      "blocks": {
+        "image_x8P3GU": {
+          "type": "image",
+          "settings": {
+            "top_subheading": "",
+            "title": "GUS + MABEL",
+            "title_size": 40,
+            "subheading": "",
+            "link": "shopify://collections/gus-mabel",
+            "link_text": "Shop Now",
+            "link_2": "",
+            "link_text_2": "",
+            "color_accent": "#e8e8e1",
+            "text_align": "vertical-bottom horizontal-center",
+            "image": "shopify://shop_images/Busy-Bee-Tray_-6-Sixth-Inserts_-and-Lid-Set.jpg",
+            "image_mobile": "shopify://shop_images/BusyBeeTray_1800x1800_1.jpg",
+            "parallax_direction": "top",
+            "overlay_opacity": 0
+          }
+        },
+        "image_4M9TCa": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "top_subheading": "GUS + MABEL",
+            "title": "Busy Bee Tray Reflective Mirror",
+            "title_size": 40,
+            "subheading": "",
+            "link": "shopify://collections/gus-mabel",
+            "link_text": "Shop Now",
+            "link_2": "https://mytoywagon.com/collections/gus-mabel",
+            "link_text_2": "",
+            "color_accent": "#e8e8e1",
+            "text_align": "vertical-bottom horizontal-center",
+            "image": "shopify://shop_images/Busy-Bee-Tray-Reflective-Mirror-Insert.jpg",
+            "image_mobile": "shopify://shop_images/Busy-Bee-Tray-Reflective-Mirror.jpg",
+            "parallax_direction": "top",
+            "overlay_opacity": 0
+          }
+        },
+        "image_Fg8nBc": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "top_subheading": "",
+            "title": "Fairyshadow",
+            "title_size": 40,
+            "subheading": "",
+            "link": "shopify://collections/fairyshadow",
+            "link_text": "Shop Now",
+            "link_2": "",
+            "link_text_2": "",
+            "color_accent": "#e8e8e1",
+            "text_align": "vertical-bottom horizontal-center",
+            "image": "shopify://shop_images/Fairy-Shadow-2.jpg",
+            "image_mobile": "shopify://shop_images/Untitled_design_9.jpg",
+            "parallax_direction": "top",
+            "overlay_opacity": 0
+          }
+        },
+        "image_XH3YTY": {
+          "type": "image",
+          "settings": {
+            "top_subheading": "Wildflower Pouring Cup",
+            "title": "Wild Mountain Child",
+            "title_size": 40,
+            "subheading": "",
+            "link": "shopify://collections/wild-mountain-child",
+            "link_text": "Shop Now",
+            "link_2": "",
+            "link_text_2": "",
+            "color_accent": "#e8e8e1",
+            "text_align": "vertical-bottom horizontal-center",
+            "image": "shopify://shop_images/Wild-Mountain-Child_409d04f8-52ec-4354-8abd-ae34fb041021.jpg",
+            "image_mobile": "shopify://shop_images/Wild-Mountain-Child_fb7fb474-fde9-4c52-b7e6-749269caf9b0.jpg",
+            "parallax_direction": "top",
+            "overlay_opacity": 0
+          }
+        }
+      },
+      "block_order": ["image_x8P3GU", "image_4M9TCa", "image_Fg8nBc", "image_XH3YTY"],
+      "settings": {
+        "section_height": "100vh",
+        "mobile_height": "300px",
+        "parallax": false,
+        "style": "arrows",
+        "autoplay": true,
+        "autoplay_speed": 7
+      }
+    },
+    "trust_strip": {
+      "type": "text-columns",
+      "blocks": {
+        "trust_1": {"type": "text_block", "settings": {"enable_image": true, "image_mask": "none", "image_width": 100, "title": "Free Shipping $150+", "text": "<p>Free to the lower 48, packed in Los Angeles.</p>", "button_label": "", "button_link": ""}},
+        "trust_2": {"type": "text_block", "settings": {"enable_image": true, "image_mask": "none", "image_width": 100, "title": "Family-Owned Since 2020", "text": "<p>Run by Irfana and Rashid, with two small assistants named Hafsa and Noor.</p>", "button_label": "", "button_link": ""}},
+        "trust_3": {"type": "text_block", "settings": {"enable_image": true, "image_mask": "none", "image_width": 100, "title": "Free Damage Returns", "text": "<p>If it breaks, we send a replacement. No fuss.</p>", "button_label": "", "button_link": ""}},
+        "trust_4": {"type": "text_block", "settings": {"enable_image": true, "image_mask": "none", "image_width": 100, "title": "Loved by Customers", "text": "<p>2,521 reviews from educators and families.</p>", "button_label": "", "button_link": ""}}
+      },
+      "block_order": ["trust_1", "trust_2", "trust_3", "trust_4"],
+      "settings": {"title": "", "heading_size": "h3", "align_text": "center", "divider": false}
+    },
+    "customer_favorites": {
+      "type": "featured-collection",
+      "settings": {"title": "Customer Favorites", "heading_size": "h2", "home_featured_products": "customer-favorites", "per_row": 3, "rows": 2, "mobile_scrollable": true, "view_all": true, "divider": true}
+    },
+    "favorite_brands": {
+      "type": "featured-collections",
+      "blocks": {
+        "baghera": {"type": "collection", "settings": {"collection": "baghera", "title": "Baghera", "focal_point": "center center"}},
+        "bumbu": {"type": "collection", "settings": {"collection": "bumbu-toys", "title": "Bumbu Toys", "focal_point": "center center"}},
+        "drewart": {"type": "collection", "settings": {"collection": "drewart", "title": "Drewart", "focal_point": "center center"}},
+        "fagus": {"type": "collection", "settings": {"collection": "fagus", "title": "Fagus", "focal_point": "center center"}},
+        "grapat": {"type": "collection", "settings": {"collection": "grapat", "title": "Grapat", "focal_point": "center center"}},
+        "mon_ami": {"type": "collection", "settings": {"collection": "mon-ami", "title": "Mon Ami", "focal_point": "center center"}},
+        "plan_toys": {"type": "collection", "settings": {"collection": "plan-toys", "title": "Plan Toys", "focal_point": "center center"}},
+        "tara_treasures": {"type": "collection", "settings": {"collection": "wild-mountain-child", "title": "Wild Mountain Child", "focal_point": "center center"}}
+      },
+      "block_order": ["baghera", "bumbu", "drewart", "fagus", "grapat", "mon_ami", "plan_toys", "tara_treasures"],
+      "settings": {"title": "Shop by Brand", "heading_size": "h2", "divider": false, "per_row": 4}
+    },
+    "promo": {
+      "type": "promo-grid",
+      "blocks": {
+        "banner_0": {"type": "banner", "settings": {"heading": "", "heading_size": "h3", "text": "", "link": "", "label": "", "color_tint": "#000000", "color_tint_opacity": 8, "framed": false}},
+        "promo_bauspiel": {"type": "advanced", "settings": {"subheading": "Bauspiel", "heading": "", "heading_size": "h2", "textarea": "", "cta_text1": "Shop Now", "cta_link1": "shopify://collections/bauspiel", "cta_text2": "", "cta_link2": "", "image": "shopify://shop_images/Untitled_design_62.png", "video_url": "", "width": "50", "height": 800, "text_align": "vertical-bottom horizontal-center", "color_accent": "#854f0b", "boxed": false, "framed": true}},
+        "promo_tara": {"type": "advanced", "settings": {"subheading": "Tara Treasures", "heading": "", "heading_size": "h2", "textarea": "", "cta_text1": "Shop Now", "cta_link1": "shopify://collections/tara-treasures", "cta_text2": "", "cta_link2": "", "image": "shopify://shop_images/farm_felt_animals.png", "video_url": "", "width": "50", "height": 800, "text_align": "vertical-bottom horizontal-center", "color_accent": "#854f0b", "boxed": false, "framed": true}}
+      },
+      "block_order": ["banner_0", "promo_bauspiel", "promo_tara"],
+      "settings": {"full_width": true, "gutter_size": 20, "space_above": true, "space_below": true}
+    },
+    "new_arrivals": {
+      "type": "featured-collection",
+      "settings": {"title": "New Arrivals", "heading_size": "h2", "home_featured_products": "new-arrivals", "per_row": 3, "rows": 5, "mobile_scrollable": true, "view_all": true, "divider": true}
+    },
+    "popular_categories": {
+      "type": "featured-collections",
+      "blocks": {
+        "c_kitchen": {"type": "collection", "settings": {"collection": "kitchen-play", "title": "Kitchen Play", "focal_point": "center center"}},
+        "c_nursery": {"type": "collection", "settings": {"collection": "nursery-and-playroom", "title": "Nursery and Playroom", "focal_point": "center center"}},
+        "c_nature": {"type": "collection", "settings": {"collection": "natural-baby-toys", "title": "Nature Play", "focal_point": "center center"}},
+        "c_puzzles": {"type": "collection", "disabled": true, "settings": {"collection": "puzzles", "title": "Puzzles & Stackers", "focal_point": "center center"}},
+        "c_sensory": {"type": "collection", "settings": {"collection": "sensory-discovery", "title": "Sensory & Discovery", "focal_point": "center center"}},
+        "c_animals": {"type": "collection", "settings": {"collection": "wooden-animals", "title": "Wooden Animals", "focal_point": "center center"}},
+        "c_rideons": {"type": "collection", "settings": {"collection": "ride-on-toys-and-accessories", "title": "Ride-Ons", "focal_point": "center center"}},
+        "c_playscapes": {"type": "collection", "settings": {"collection": "felt-play-mats-and-playscapes", "title": "Playmats and Playscapes", "focal_point": "center center"}},
+        "c_cars": {"type": "collection", "disabled": true, "settings": {"collection": "model-cars", "title": "Model Cars", "focal_point": "center center"}},
+        "c_woodland": {"type": "collection", "settings": {"collection": "woodland-homes-and-fairy-houses", "title": "Woodland Homes & Fairy Castles", "focal_point": "center center"}},
+        "c_garlands": {"type": "collection", "disabled": true, "settings": {"collection": "garlands_and_wreaths", "title": "Garlands & Wreaths", "focal_point": "center center"}},
+        "c_ornaments": {"type": "collection", "disabled": true, "settings": {"collection": "ornaments-and-stockings", "title": "Ornaments & Stockings", "focal_point": "center center"}}
+      },
+      "block_order": ["c_kitchen", "c_nursery", "c_nature", "c_puzzles", "c_sensory", "c_animals", "c_rideons", "c_playscapes", "c_cars", "c_woodland", "c_garlands", "c_ornaments"],
+      "settings": {"title": "Shop by Category", "heading_size": "h2", "divider": false, "per_row": 4}
+    },
+    "story": {
+      "type": "background-image-text",
+      "settings": {"subtitle": "OUR STORY", "title": "A small toy shop with a big heart", "heading_size": "h2", "text": "<p>My Toy Wagon is the family business of Irfana and Rashid, inspired by their daughters Hafsa and Noor. We've curated wooden and felt toys from independent makers around the world since 2020, choosing each piece for the kind of play that lasts.</p>", "button_label": "Read Our Story", "button_link": "/pages/our-story", "layout": "center", "height": 550, "framed": false, "parallax": false, "parallax_direction": "top"}
+    },
+    "bumbu_spotlight": {
+      "type": "featured-collection",
+      "settings": {"title": "Bumbu Spotlight", "heading_size": "h2", "home_featured_products": "bumbu-toys", "per_row": 3, "rows": 2, "mobile_scrollable": true, "view_all": true, "divider": true}
+    },
+    "reviews": {
+      "type": "apps",
+      "blocks": {
+        "judgeme_carousel": {"type": "shopify://apps/judge-me-reviews/blocks/featured_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8", "settings": {"maxwidth": 1080}}
+      },
+      "block_order": ["judgeme_carousel"],
+      "settings": {"full_width": false, "space_around": true}
+    },
+    "map": {
+      "type": "map",
+      "settings": {"map_title": "My Toy Wagon LLC", "heading_size": "h3", "address": "<p>Los Angeles, California</p><p>Monday to Friday: 9:00am - 5:00pm Pacific<br/>Saturday: 9:00am - 5:00pm Pacific<br/>Sunday: Closed</p><p>contact@mytoywagon.com</p>", "map_address": "", "api_key": "", "show_button": false, "background_image": "shopify://shop_images/Untitled-3_0e533a3b-0d0b-43ae-a909-fca4cd8ad9e3.jpg"}
+    },
+    "1778483303cd9eb1a3": {
+      "type": "apps",
+      "blocks": {
+        "wishlist_hero_header_icon_wwgpYP": {"type": "shopify://apps/wishlist-hero/blocks/header-icon/a9a5079b-59e8-47cb-b659-ecf1c60b9b72", "settings": {"customThemeName": "~", "useCustomHeaderColor": false, "customHeaderColor": "", "useCustomHeaderSize": false, "customHeaderIconSize": 22, "additionalIconCssClassNames": "", "additionalIconStyle": "", "additionalContainerClasses": "", "additionalContainerStyle": "", "replaceExistingClasses": false}}
+      },
+      "block_order": ["wishlist_hero_header_icon_wwgpYP"],
+      "settings": {"full_width": false, "space_around": true}
+    }
+  },
+  "order": ["mtw_hero", "hero", "trust_strip", "customer_favorites", "favorite_brands", "promo", "new_arrivals", "popular_categories", "story", "bumbu_spotlight", "reviews", "map", "1778483303cd9eb1a3"]
+}
+
