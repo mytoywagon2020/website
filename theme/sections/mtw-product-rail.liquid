@@ -114,7 +114,6 @@
           <h3 class="mtw-rail__name">{{ product.title }}</h3>
           <div class="mtw-rail__stars"><div class="jdgm-widget jdgm-preview-badge" data-id="{{ product.id }}" data-template="index"></div></div>
           <div class="mtw-rail__meta">
-            <span>{% if product.type != blank %}{{ product.type }}{% else %}{{ coll.title }}{% endif %}</span>
             <span class="mtw-rail__price">
               {%- if product.compare_at_price > product.price -%}<s>{{ product.compare_at_price | money }}</s>{%- endif -%}
               {{ product.price | money }}
