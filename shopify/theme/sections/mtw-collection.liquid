@@ -381,8 +381,6 @@
               <span class="mtwc-badge mtwc-badge--sold">Sold out</span>
             {%- elsif is_preorder -%}
               <span class="mtwc-badge mtwc-badge--preorder">Pre-order</span>
-            {%- elsif tracked and inv > 0 and inv <= low_threshold -%}
-              <span class="mtwc-badge mtwc-badge--low">Low stock · {{ inv }} left</span>
             {%- elsif is_best -%}
               <span class="mtwc-badge mtwc-badge--best">Bestseller</span>
             {%- elsif is_new -%}
