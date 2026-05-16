@@ -9,6 +9,10 @@
   Cart drawer + mobile nav drawer remain wired (hamburger opens the
   Impulse NavDrawer); schema is preserved so the theme editor and
   header-group.json keep working.
+
+  Desktop nav is driven by the Shopify navigation menu chosen in the
+  "Menu" setting (main_menu_link_list, default `main-menu`). Manage the
+  links in Online Store → Navigation — no code changes needed.
 {%- endcomment -%}
 
 {%- liquid
@@ -166,12 +170,12 @@
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18"/><path d="M3 12h18"/><path d="M3 18h18"/></svg>
         </button>
         <nav class="mtw-hdr__links" aria-label="Primary">
-          <a href="/collections/all" class="mtw-hdr__link has-caret">Shop</a>
-          <a href="/collections/by-age" class="mtw-hdr__link has-caret">Ages</a>
-          <a href="/collections/brands" class="mtw-hdr__link has-caret">Brands</a>
-          <a href="/collections/new" class="mtw-hdr__link">New</a>
-          <a href="/collections/preorder" class="mtw-hdr__link">Pre-order</a>
-          <a href="/collections/sale" class="mtw-hdr__link sale">Sale</a>
+          {%- for link in main_menu.links -%}
+            {%- assign lt = link.title | downcase -%}
+            <a href="{{ link.url }}"
+               class="mtw-hdr__link{% if link.links.size > 0 %} has-caret{% endif %}{% if lt contains 'sale' %} sale{% endif %}"
+               {% if link.current %}aria-current="page"{% endif %}>{{ link.title }}</a>
+          {%- endfor -%}
         </nav>
       </div>
 
