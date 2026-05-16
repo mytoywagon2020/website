@@ -216,7 +216,7 @@
             "collection": "sensory-discovery",
             "title": "Sensory & discovery",
             "caption": "Loose parts, sorting trays, felt",
-            "link": ""
+            "link": "/collections/sensory-discovery"
           }
         },
         "c2": {
@@ -225,7 +225,7 @@
             "collection": "wooden-animals",
             "title": "Wooden animals",
             "caption": "Bumbu, hand-carved in Romania",
-            "link": ""
+            "link": "/collections/wooden-animals"
           }
         },
         "c3": {
@@ -234,7 +234,7 @@
             "collection": "kitchen-play",
             "title": "Kitchen play",
             "caption": "Felt food, wooden produce",
-            "link": ""
+            "link": "/collections/kitchen-play"
           }
         },
         "c4": {
@@ -243,7 +243,7 @@
             "collection": "felt-play-mats-and-playscapes",
             "title": "Felt mats & playscapes",
             "caption": "Papoose, Gus + Mabel, Tara Treasures",
-            "link": ""
+            "link": "/collections/felt-play-mats-and-playscapes"
           }
         },
         "c5": {
@@ -252,7 +252,7 @@
             "collection": "ride-on-toys-and-accessories",
             "title": "Ride-ons",
             "caption": "Baghera, Plan Toys",
-            "link": ""
+            "link": "/collections/ride-on-toys-and-accessories"
           }
         },
         "c6": {
@@ -261,7 +261,7 @@
             "collection": "woodland-homes-and-fairy-houses",
             "title": "Woodland homes & fairy houses",
             "caption": "Felt, wool, hand-stitched",
-            "link": ""
+            "link": "/collections/woodland-homes-and-fairy-houses"
           }
         },
         "c7": {
@@ -270,7 +270,7 @@
             "collection": "natural-baby-toys",
             "title": "Nature play",
             "caption": "Botanicals, stones, wood",
-            "link": ""
+            "link": "/collections/natural-baby-toys"
           }
         },
         "c8": {
@@ -279,7 +279,7 @@
             "collection": "nursery-and-playroom",
             "title": "Nursery & playroom",
             "caption": "Cribside, first toys",
-            "link": ""
+            "link": "/collections/nursery-and-playroom"
           }
         },
         "c9": {
@@ -288,7 +288,7 @@
             "collection": "bumbu-toys",
             "title": "Build & construct",
             "caption": "Bauspiel, blocks, marble runs",
-            "link": ""
+            "link": "/collections/bumbu-toys"
           }
         }
       },
@@ -318,7 +318,7 @@
             "collection": "bauspiel",
             "label": "Bauspiel",
             "image": "shopify://shop_images/brand-tile-bauspiel-optical-blocks.png",
-            "link": ""
+            "link": "/collections/bauspiel"
           }
         },
         "b2": {
@@ -327,7 +327,7 @@
             "collection": "bumbu-toys",
             "label": "Bumbu Toys",
             "image": "shopify://shop_images/BumbuToys_Wooden_House_-_Acorn.png",
-            "link": ""
+            "link": "/collections/bumbu-toys"
           }
         },
         "b3": {
@@ -336,7 +336,7 @@
             "collection": "drewart",
             "label": "Drewart",
             "image": "shopify://shop_images/brand-drewart-kitchen-cupboard.webp",
-            "link": ""
+            "link": "/collections/drewart"
           }
         },
         "b4": {
@@ -345,7 +345,7 @@
             "collection": "fairyshadow",
             "label": "Fairyshadow",
             "image": "shopify://shop_images/brand-tile-fairyshadow.webp",
-            "link": ""
+            "link": "/collections/fairyshadow"
           }
         },
         "b5": {
@@ -354,7 +354,7 @@
             "collection": "gus-mabel",
             "label": "Gus + Mabel",
             "image": "shopify://shop_images/brand-gus-mabel-fairy-scene.webp",
-            "link": ""
+            "link": "/collections/gus-mabel"
           }
         },
         "b6": {
@@ -363,7 +363,7 @@
             "collection": "papoose-toys",
             "label": "Papoose",
             "image": "shopify://shop_images/brand-tile-papoose-forest-caves.png",
-            "link": ""
+            "link": "/collections/papoose-toys"
           }
         },
         "b7": {
@@ -372,7 +372,7 @@
             "collection": "tara-treasures",
             "label": "Tara Treasures",
             "image": "shopify://shop_images/brand-tara-treasures-felt-lollipops.png",
-            "link": ""
+            "link": "/collections/tara-treasures"
           }
         },
         "b8": {
@@ -381,7 +381,7 @@
             "collection": "tender-leaf",
             "label": "Tender Leaf Toys",
             "image": "shopify://shop_images/product-tender-leaf-my-forest-floor.webp",
-            "link": ""
+            "link": "/collections/tender-leaf"
           }
         },
         "b9": {
@@ -390,7 +390,7 @@
             "collection": "wild-mountain-child",
             "label": "Wild Mountain Child",
             "image": "shopify://shop_images/brand-tile-wild-mountain-child-cup.jpg",
-            "link": ""
+            "link": "/collections/wild-mountain-child"
           }
         }
       },
@@ -592,7 +592,6 @@
   },
   "order": [
     "mtw_hero",
-    "mtw_educator",
     "mtw_trust",
     "mtw_rail_new",
     "mtw_rail_best",
