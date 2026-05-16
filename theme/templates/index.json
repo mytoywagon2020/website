@@ -443,24 +443,6 @@
         "poster": ""
       }
     },
-    "reviews": {
-      "type": "apps",
-      "blocks": {
-        "judgeme_carousel": {
-          "type": "shopify://apps/judge-me-reviews/blocks/featured_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {
-            "maxwidth": 1080
-          }
-        }
-      },
-      "block_order": [
-        "judgeme_carousel"
-      ],
-      "settings": {
-        "full_width": false,
-        "space_around": true
-      }
-    },
     "mtw_story": {
       "type": "mtw-story",
       "settings": {
@@ -602,7 +584,6 @@
     "mtw_category",
     "mtw_brands",
     "mtw_maker",
-    "reviews",
     "mtw_story",
     "mtw_gift",
     "mtw_blog",
