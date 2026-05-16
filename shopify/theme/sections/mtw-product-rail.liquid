@@ -49,6 +49,9 @@
   .mtw-rail__name { font-family:'Cormorant Garamond',Georgia,serif; font-size:22px; font-weight:500; line-height:1.15; margin:0 0 6px; color:var(--ink); }
   .mtw-rail__stars { display:inline-flex; align-items:center; gap:6px; margin-bottom:8px; font-size:12px; color:var(--stone); }
   .mtw-rail__stars-g { color:var(--amber); font-size:13px; line-height:1; letter-spacing:0; }
+  .mtw-rail__meta { font-size:13px; color:var(--stone); }
+  .mtw-rail__price { color:var(--ink); font-weight:500; }
+  .mtw-rail__price s { color:var(--stone); font-weight:400; margin-right:6px; }
   .mtw-rail__foot { margin-top:36px; display:flex; justify-content:center; }
   .mtw-rail__btn {
     display:inline-flex; align-items:center; gap:10px; padding:14px 24px; font-size:13.5px;
@@ -110,6 +113,12 @@
           {%- if product.vendor != blank -%}<p class="mtw-rail__maker">{{ product.vendor }}</p>{%- endif -%}
           <h3 class="mtw-rail__name">{{ product.title }}</h3>
           <div class="mtw-rail__stars"><div class="jdgm-widget jdgm-preview-badge" data-id="{{ product.id }}" data-template="index"></div></div>
+          <div class="mtw-rail__meta">
+            <span class="mtw-rail__price">
+              {%- if product.compare_at_price > product.price -%}<s>{{ product.compare_at_price | money }}</s>{%- endif -%}
+              {{ product.price | money }}
+            </span>
+          </div>
         </a>
       {%- endfor -%}
     </div>
