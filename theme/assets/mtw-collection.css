@@ -13,10 +13,10 @@
 .mtw-coll__dek { font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-size:21px; color:var(--stone); line-height:1.5; margin:0 0 28px; max-width:520px; }
 .mtw-coll__cta-row { display:inline-flex; gap:12px; flex-wrap:wrap; }
 .mtw-coll__btn { display:inline-flex; align-items:center; gap:8px; padding:11px 22px; font-size:12px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; border-radius:2px; border:0.5px solid transparent; cursor:pointer; font-family:inherit; background:none; }
-.mtw-coll__btn--primary { background:var(--ink); color:var(--cream); }
-.mtw-coll__btn--primary:hover { background:var(--forest); }
-.mtw-coll__btn--ghost { border-color:var(--rule-strong); color:var(--ink); }
-.mtw-coll__btn--ghost:hover { border-color:var(--ink); }
+.mtw-coll a.mtw-coll__btn--primary, .mtw-coll .mtw-coll__btn--primary { background:#2C2C2A !important; color:#F5F0E5 !important; }
+.mtw-coll a.mtw-coll__btn--primary:hover, .mtw-coll .mtw-coll__btn--primary:hover { background:#3B6D11 !important; color:#F5F0E5 !important; }
+.mtw-coll a.mtw-coll__btn--ghost, .mtw-coll .mtw-coll__btn--ghost { border-color:rgba(44,44,42,0.22); color:#2C2C2A !important; background:transparent !important; }
+.mtw-coll a.mtw-coll__btn--ghost:hover, .mtw-coll .mtw-coll__btn--ghost:hover { border-color:#2C2C2A !important; }
 .mtw-coll__hero-img { aspect-ratio:4/5; background:var(--card-bg); border-radius:2px; overflow:hidden; }
 .mtw-coll__hero-img img { width:100%; height:100%; object-fit:cover; }
 .mtw-coll__filterbar { background:var(--warm-white); border-top:0.5px solid var(--rule); border-bottom:0.5px solid var(--rule); position:sticky; top:0; z-index:40; }
