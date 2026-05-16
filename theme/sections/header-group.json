@@ -13,7 +13,9 @@
   "sections": {
     "mtw_utility": {
       "type": "mtw-utility-bar",
-      "settings": {}
+      "settings": {
+        "announcement_text": "Pre-order opening soon · Tiny Fox Hole Birthday Ring"
+      }
     },
     "header": {
       "type": "header",
@@ -51,7 +53,7 @@
         "mobile_logo_width": 90,
         "main_menu_link_list": "main-menu",
         "hover_menu": true,
-        "main_menu_alignment": "left",
+        "main_menu_alignment": "center-left",
         "header_style": "normal",
         "sticky_index": false,
         "sticky_collection": false,

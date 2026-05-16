@@ -81,7 +81,11 @@
 
   {%- if coll != blank and coll.products.size > 0 -%}
     <div class="mtw-rail__grid">
-      {%- for product in coll.products limit: section.settings.products_to_show -%}
+      {%- comment -%} In-stock first, sold-out last {%- endcomment -%}
+      {%- assign mtw_avail = coll.products | where: 'available', true -%}
+      {%- assign mtw_sold = coll.products | where: 'available', false -%}
+      {%- assign mtw_ordered = mtw_avail | concat: mtw_sold -%}
+      {%- for product in mtw_ordered limit: section.settings.products_to_show -%}
         <a class="mtw-rail__card" href="{{ product.url }}">
           <div class="mtw-rail__media">
             {%- assign mtw_is_preorder = false -%}

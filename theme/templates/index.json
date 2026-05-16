@@ -315,8 +315,9 @@
         "b1": {
           "type": "brand",
           "settings": {
-            "collection": "baghera",
-            "label": "",
+            "collection": "bauspiel",
+            "label": "Bauspiel",
+            "image": "shopify://shop_images/brand-tile-bauspiel-optical-blocks.png",
             "link": ""
           }
         },
@@ -324,7 +325,8 @@
           "type": "brand",
           "settings": {
             "collection": "bumbu-toys",
-            "label": "",
+            "label": "Bumbu Toys",
+            "image": "shopify://shop_images/BumbuToys_Wooden_House_-_Acorn.png",
             "link": ""
           }
         },
@@ -332,47 +334,62 @@
           "type": "brand",
           "settings": {
             "collection": "drewart",
-            "label": "",
+            "label": "Drewart",
+            "image": "shopify://shop_images/brand-drewart-kitchen-cupboard.webp",
             "link": ""
           }
         },
         "b4": {
           "type": "brand",
           "settings": {
-            "collection": "fagus",
-            "label": "",
+            "collection": "fairyshadow",
+            "label": "Fairyshadow",
+            "image": "shopify://shop_images/brand-tile-fairyshadow.webp",
             "link": ""
           }
         },
         "b5": {
           "type": "brand",
           "settings": {
-            "collection": "grapat",
-            "label": "",
+            "collection": "gus-mabel",
+            "label": "Gus + Mabel",
+            "image": "shopify://shop_images/brand-gus-mabel-fairy-scene.webp",
             "link": ""
           }
         },
         "b6": {
           "type": "brand",
           "settings": {
-            "collection": "mon-ami",
-            "label": "",
+            "collection": "papoose-toys",
+            "label": "Papoose",
+            "image": "shopify://shop_images/brand-tile-papoose-forest-caves.png",
             "link": ""
           }
         },
         "b7": {
           "type": "brand",
           "settings": {
-            "collection": "plan-toys",
-            "label": "",
+            "collection": "tara-treasures",
+            "label": "Tara Treasures",
+            "image": "shopify://shop_images/brand-tara-treasures-felt-lollipops.png",
             "link": ""
           }
         },
         "b8": {
           "type": "brand",
           "settings": {
+            "collection": "tender-leaf",
+            "label": "Tender Leaf Toys",
+            "image": "shopify://shop_images/product-tender-leaf-my-forest-floor.webp",
+            "link": ""
+          }
+        },
+        "b9": {
+          "type": "brand",
+          "settings": {
             "collection": "wild-mountain-child",
-            "label": "",
+            "label": "Wild Mountain Child",
+            "image": "shopify://shop_images/brand-tile-wild-mountain-child-cup.jpg",
             "link": ""
           }
         }
@@ -385,7 +402,8 @@
         "b5",
         "b6",
         "b7",
-        "b8"
+        "b8",
+        "b9"
       ],
       "settings": {
         "eyebrow": "07 / Favorite brands",
