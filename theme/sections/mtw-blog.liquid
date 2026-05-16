@@ -1,0 +1,77 @@
+{%- comment -%} MTW Blog — 3 journal entries (manual blocks). {%- endcomment -%}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+{%- style -%}
+  #shopify-section-{{ section.id }} { background:#F5F0E5; }
+  .mtw-blog {
+    --cream:#F5F0E5; --ink:#2C2C2A; --stone:#5F5E5A; --amber:#854F0B; --card-bg:#EDE3CD;
+    max-width:1440px; margin:0 auto; padding:80px 40px; box-sizing:border-box;
+    font-family:'Mulish',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; color:var(--ink);
+  }
+  .mtw-blog *, .mtw-blog *::before, .mtw-blog *::after { box-sizing:border-box; }
+  .mtw-blog__head { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:48px; gap:40px; }
+  .mtw-blog__num { font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-size:16px; color:var(--stone); margin:0 0 12px; }
+  .mtw-blog__title { font-family:'Cormorant Garamond',Georgia,serif; font-size:56px; font-weight:500; line-height:1; margin:0; letter-spacing:-0.005em; }
+  .mtw-blog__lead { font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; color:var(--stone); font-size:18px; max-width:340px; line-height:1.45; margin:0; }
+  .mtw-blog__grid { display:grid; grid-template-columns:repeat(3,1fr); gap:36px; }
+  .mtw-blog__entry { text-decoration:none; color:inherit; display:block; }
+  .mtw-blog__media { aspect-ratio:4 / 3; background:var(--card-bg); border-radius:2px; margin-bottom:18px; position:relative; overflow:hidden; }
+  .mtw-blog__media img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .mtw-blog__cat { font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--amber); font-weight:500; margin:0 0 10px; }
+  .mtw-blog__name { font-family:'Cormorant Garamond',Georgia,serif; font-size:26px; font-weight:500; line-height:1.18; margin:0 0 10px; }
+  .mtw-blog__meta { font-size:12.5px; color:var(--stone); display:flex; gap:12px; align-items:center; }
+  .mtw-blog__dot { width:3px; height:3px; background:var(--stone); border-radius:50%; }
+  @media (max-width:900px) { .mtw-blog__grid { grid-template-columns:1fr; gap:28px; } .mtw-blog__head { flex-direction:column; align-items:flex-start; gap:14px; } .mtw-blog { padding:48px 24px; } .mtw-blog__title { font-size:42px; } }
+{%- endstyle -%}
+<div class="mtw-blog">
+  <div class="mtw-blog__head">
+    <div>
+      {%- if section.settings.eyebrow != blank -%}<p class="mtw-blog__num">{{ section.settings.eyebrow }}</p>{%- endif -%}
+      {%- if section.settings.heading != blank -%}<h2 class="mtw-blog__title">{{ section.settings.heading }}</h2>{%- endif -%}
+    </div>
+    {%- if section.settings.lead != blank -%}<p class="mtw-blog__lead">{{ section.settings.lead }}</p>{%- endif -%}
+  </div>
+  <div class="mtw-blog__grid">
+    {%- for block in section.blocks -%}
+      <a class="mtw-blog__entry" href="{{ block.settings.link | default: '#' }}" {{ block.shopify_attributes }}>
+        <div class="mtw-blog__media">
+          {%- if block.settings.image != blank -%}{{ block.settings.image | image_url: width: 800 | image_tag: loading: 'lazy', alt: block.settings.title, widths: '400, 600, 800' }}{%- endif -%}
+        </div>
+        {%- if block.settings.category != blank -%}<p class="mtw-blog__cat">{{ block.settings.category }}</p>{%- endif -%}
+        <h3 class="mtw-blog__name">{{ block.settings.title }}</h3>
+        <div class="mtw-blog__meta"><span>{{ block.settings.date }}</span><span class="mtw-blog__dot"></span><span>{{ block.settings.read_time }}</span></div>
+      </a>
+    {%- endfor -%}
+  </div>
+</div>
+{% schema %}
+{
+  "name": "MTW Blog",
+  "tag": "section",
+  "class": "mtw-blog-section",
+  "max_blocks": 6,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "08 / The blog" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Reading, slowly." },
+    { "type": "text", "id": "lead", "label": "Lead", "default": "A new post every other Thursday. Care guides, maker stories, and notes from the shop." }
+  ],
+  "blocks": [
+    { "type": "entry", "name": "Entry", "settings": [
+      { "type": "image_picker", "id": "image", "label": "Image" },
+      { "type": "text", "id": "category", "label": "Category", "default": "Field note" },
+      { "type": "text", "id": "title", "label": "Title", "default": "A note from the shop." },
+      { "type": "text", "id": "date", "label": "Date", "default": "May 2026" },
+      { "type": "text", "id": "read_time", "label": "Read time", "default": "4 min read" },
+      { "type": "url", "id": "link", "label": "Link" }
+    ] }
+  ],
+  "presets": [
+    { "name": "MTW Blog", "blocks": [
+      { "type": "entry", "settings": { "category": "From the maker", "title": "Inside the Bumbu workshop: maple, hand-painted, finished with beeswax.", "date": "Coming May 21", "read_time": "6 min read" } },
+      { "type": "entry", "settings": { "category": "Field note", "title": "What's arrived: a quiet introduction to Gus + Mabel.", "date": "May 14, 2026", "read_time": "4 min read" } },
+      { "type": "entry", "settings": { "category": "Care & storage", "title": "How to clean a wooden toy without ruining the finish.", "date": "May 7, 2026", "read_time": "4 min read" } }
+    ] }
+  ]
+}
+{% endschema %}
