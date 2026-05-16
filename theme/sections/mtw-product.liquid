@@ -147,7 +147,35 @@
     {%- endif -%}
 
     <div class="mtw-pdp__acc">
-      {%- assign acc_keys = 'materials_and_construction|Materials and construction,ways_to_play|Ways to play,skills_it_builds|Skills it builds,who_it_is_for|Who it is for,care_and_storage|Care and storage,includes_set_contents|Includes / set contents,faq|FAQ' | split: ',' -%}
+      {%- assign age_band = product.metafields.custom.age_band.value -%}
+      {%- if age_band != blank and age_band.size > 0 -%}
+        {%- assign ar_infant = false -%}
+        {%- assign ar_18 = false -%}
+        {%- assign ar_years = '' -%}
+        {%- for ar_t in age_band -%}
+          {%- if ar_t == '0–12 mo' -%}
+            {%- assign ar_infant = true -%}
+          {%- elsif ar_t == '18 mo' -%}
+            {%- assign ar_18 = true -%}
+          {%- else -%}
+            {%- assign ar_years = ar_years | append: ar_t | append: ',' -%}
+          {%- endif -%}
+        {%- endfor -%}
+        <details open><summary>Age Recommendations</summary>
+          <div class="mtw-pdp__acc-body">
+            <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:2px 0 4px;">
+              {%- if ar_infant -%}<span style="height:38px;padding:0 15px;border-radius:999px;border:1px solid rgba(44,44,42,0.28);display:inline-flex;align-items:center;font-weight:600;font-size:12.5px;letter-spacing:0.03em;color:#2C2C2A;">Under 1 yr</span>{%- endif -%}
+              {%- if ar_18 -%}<span style="height:38px;padding:0 15px;border-radius:999px;border:1px solid rgba(44,44,42,0.28);display:inline-flex;align-items:center;font-weight:600;font-size:12.5px;letter-spacing:0.03em;color:#2C2C2A;">18 months</span>{%- endif -%}
+              {%- assign ar_yarr = ar_years | split: ',' -%}
+              {%- for ar_y in ar_yarr -%}
+                {%- if ar_y != blank -%}<span style="width:40px;height:40px;border-radius:50%;border:1px solid rgba(44,44,42,0.28);display:inline-flex;align-items:center;justify-content:center;font-weight:600;font-size:15px;color:#2C2C2A;">{{ ar_y }}</span>{%- endif -%}
+              {%- endfor -%}
+            </div>
+            <p style="font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:14.5px;color:#5F5E5A;margin:10px 0 0;">Recommended ages, in years. Sorted by the developmental window this toy opens, so it lands in the right season.</p>
+          </div>
+        </details>
+      {%- endif -%}
+      {%- assign acc_keys = 'materials_and_construction|Materials and construction,ways_to_play|Ways to play,skills_it_builds|Skills it builds,care_and_storage|Care and storage,includes_set_contents|Includes / set contents,faq|FAQ' | split: ',' -%}
       {%- for pair in acc_keys -%}
         {%- assign kv = pair | split: '|' -%}
         {%- assign val = product.metafields.custom[kv[0]] -%}
