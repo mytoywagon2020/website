@@ -1,0 +1,593 @@
+{%- comment -%}
+  MTW Collection — story-anchored collection template. Namespaced .mtwc so
+  it cannot collide with Impulse. Hero/stats/interlude/maker/related are
+  editable in the theme editor (settings + blocks) and fall back to the
+  collection's own title / description / image. Products, filters, sort
+  and pagination are native Shopify (collection.filters, sort_options,
+  paginate).
+{%- endcomment -%}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+{%- style -%}
+  #shopify-section-{{ section.id }} { background:#F5F0E5; }
+  .mtwc {
+    --cream:#F5F0E5; --warm-white:#FFFCF7; --ink:#2C2C2A; --forest:#3B6D11;
+    --amber:#854F0B; --stone:#5F5E5A; --card-bg:#EDE3CD; --rule:rgba(44,44,42,0.12);
+    --rule-strong:rgba(44,44,42,0.22);
+    font-family:'Mulish',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    color:var(--ink); font-size:15px; line-height:1.6;
+  }
+  .mtwc *, .mtwc *::before, .mtwc *::after { box-sizing:border-box; }
+  .mtwc a { color:inherit; text-decoration:none; }
+  .mtwc img { display:block; max-width:100%; }
+  .mtwc__label { font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--stone); font-weight:500; }
+
+  .mtwc-crumbs { max-width:1440px; margin:0 auto; padding:18px 40px; font-size:12px; letter-spacing:0.06em; color:var(--stone); }
+  .mtwc-crumbs a:hover { color:var(--ink); }
+  .mtwc-crumbs .sep { margin:0 10px; opacity:0.5; }
+  .mtwc-crumbs .here { color:var(--ink); }
+
+  .mtwc-hero { max-width:1440px; margin:0 auto; padding:40px 40px 80px; display:grid; grid-template-columns:1fr 1.1fr; gap:80px; align-items:center; }
+  .mtwc-hero__text .mtwc__label { display:block; margin-bottom:22px; }
+  .mtwc-hero__text h1 { font-family:'Cormorant Garamond',Georgia,serif; font-size:88px; font-weight:500; line-height:0.96; letter-spacing:-0.018em; margin:0 0 22px; text-wrap:balance; }
+  .mtwc-hero__text h1 em { font-style:italic; }
+  .mtwc-hero__lede { font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-size:22px; color:var(--ink); line-height:1.5; margin:0 0 28px; max-width:520px; text-wrap:pretty; }
+  .mtwc-hero__body { font-size:16px; line-height:1.78; color:var(--ink); max-width:520px; margin:0 0 28px; text-wrap:pretty; }
+  .mtwc-hero__ctas { display:flex; gap:14px; align-items:center; flex-wrap:wrap; }
+  .mtwc-btn { display:inline-flex; align-items:center; justify-content:center; gap:10px; padding:14px 26px; font-size:12.5px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; border-radius:2px; border:0.5px solid transparent; cursor:pointer; font-family:inherit; }
+  .mtwc-btn--primary { background:var(--ink); color:var(--cream); }
+  .mtwc-btn--primary:hover { background:var(--forest); }
+  .mtwc-readlink { display:inline-flex; align-items:center; gap:10px; font-size:13px; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink); border-bottom:0.5px solid var(--rule-strong); padding-bottom:4px; font-weight:500; }
+  .mtwc-readlink:hover { color:var(--forest); border-color:var(--forest); }
+  .mtwc-hero__img { aspect-ratio:4/5; background:var(--card-bg); border-radius:2px; overflow:hidden; position:relative; }
+  .mtwc-hero__img img { width:100%; height:100%; object-fit:cover; }
+  .mtwc-hero__tag { position:absolute; left:24px; bottom:24px; background:var(--warm-white); border:0.5px solid var(--rule); padding:14px 20px; border-radius:2px; max-width:280px; }
+  .mtwc-hero__tag .mtwc__label { display:block; margin-bottom:6px; }
+  .mtwc-hero__tag p { font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-size:17px; margin:0; line-height:1.3; }
+
+  .mtwc-stats { background:var(--card-bg); padding:36px 40px; border-top:0.5px solid var(--rule); border-bottom:0.5px solid var(--rule); }
+  .mtwc-stats__in { max-width:1440px; margin:0 auto; display:grid; grid-template-columns:repeat(4,1fr); gap:36px; }
+  .mtwc-stat { text-align:center; }
+  .mtwc-stat__n { font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-size:36px; color:var(--ink); line-height:1; margin-bottom:8px; letter-spacing:-0.012em; }
+  .mtwc-stat__l { font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--stone); font-weight:600; }
+
+  .mtwc-toolbar { position:sticky; top:0; z-index:30; background:var(--cream); border-bottom:0.5px solid var(--rule); padding:14px 40px; }
+  .mtwc-toolbar__in { max-width:1440px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; gap:24px; flex-wrap:wrap; }
+  .mtwc-toolbar__l { display:flex; gap:14px; align-items:center; flex-wrap:wrap; }
+  .mtwc-chip { display:inline-flex; align-items:center; gap:6px; padding:7px 14px; border:0.5px solid var(--rule-strong); border-radius:999px; font-size:12.5px; color:var(--ink); background:var(--warm-white); }
+  .mtwc-chip span { font-size:14px; line-height:1; margin-left:4px; }
+  .mtwc-chip:hover { background:var(--ink); color:var(--cream); border-color:var(--ink); }
+  .mtwc-count { font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-size:15px; color:var(--stone); margin-left:10px; }
+  .mtwc-toolbar__r { display:flex; gap:12px; align-items:center; }
+  .mtwc-sortbox { display:inline-flex; align-items:center; gap:8px; font-size:12.5px; color:var(--ink); }
+  .mtwc-sortbox select { padding:7px 14px; border:0.5px solid var(--rule-strong); border-radius:2px; background:var(--warm-white); font-family:inherit; font-size:12.5px; color:var(--ink); cursor:pointer; }
+  .mtwc-vt { display:inline-flex; border:0.5px solid var(--rule-strong); border-radius:2px; overflow:hidden; }
+  .mtwc-vt button { padding:6px 10px; background:var(--warm-white); border:none; cursor:pointer; color:var(--stone); font-size:14px; line-height:1; }
+  .mtwc-vt button.is-active { background:var(--ink); color:var(--cream); }
+  .mtwc-filtertoggle { display:none; }
+
+  .mtwc-main { max-width:1440px; margin:0 auto; padding:40px; display:grid; grid-template-columns:240px 1fr; gap:48px; align-items:start; }
+  .mtwc-sidebar { position:sticky; top:80px; align-self:start; }
+  .mtwc-group { padding:18px 0; border-bottom:0.5px solid var(--rule); }
+  .mtwc-group:first-child { padding-top:0; }
+  .mtwc-group summary { font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--ink); font-weight:600; cursor:pointer; list-style:none; display:flex; justify-content:space-between; align-items:center; padding:4px 0; }
+  .mtwc-group summary::-webkit-details-marker { display:none; }
+  .mtwc-group summary::after { content:"+"; font-size:18px; font-weight:400; color:var(--stone); }
+  .mtwc-group[open] summary::after { content:"\2212"; }
+  .mtwc-group ul { list-style:none; margin:14px 0 0; padding:0; display:flex; flex-direction:column; gap:9px; }
+  .mtwc-fval { font-size:13.5px; color:var(--ink); display:flex; align-items:center; gap:10px; line-height:1.5; }
+  .mtwc-fval .mtwc-box { width:14px; height:14px; border:1px solid var(--rule-strong); border-radius:2px; flex-shrink:0; display:inline-block; position:relative; }
+  .mtwc-fval.is-active .mtwc-box { background:var(--ink); border-color:var(--ink); }
+  .mtwc-fval.is-active .mtwc-box::after { content:""; position:absolute; left:4px; top:1px; width:4px; height:8px; border:solid var(--cream); border-width:0 1.5px 1.5px 0; transform:rotate(45deg); }
+  .mtwc-fval .mtwc-fcount { color:var(--stone); font-size:12px; margin-left:auto; }
+  .mtwc-fval[aria-disabled="true"] { opacity:0.4; pointer-events:none; }
+  .mtwc-price { display:flex; gap:8px; margin-top:12px; flex-wrap:wrap; }
+  .mtwc-price input { width:90px; flex:1; padding:8px 10px; border:0.5px solid var(--rule-strong); border-radius:2px; background:var(--warm-white); font-family:inherit; font-size:12.5px; }
+  .mtwc-price button { padding:8px 12px; border:0.5px solid var(--ink); background:var(--ink); color:var(--cream); border-radius:2px; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; cursor:pointer; }
+  .mtwc-clear { font-size:12px; letter-spacing:0.06em; text-decoration:underline; color:var(--stone); background:none; border:none; cursor:pointer; margin-top:14px; padding:0; font-family:inherit; display:inline-block; }
+
+  .mtwc-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:32px 24px; }
+  .mtwc-grid[data-cols="4"] { grid-template-columns:repeat(4,1fr); }
+  .mtwc-card { cursor:pointer; }
+  .mtwc-card__img { aspect-ratio:4/5; background:var(--warm-white); border:0.5px solid var(--rule); border-radius:2px; overflow:hidden; position:relative; margin-bottom:14px; }
+  .mtwc-card__img img { width:100%; height:100%; object-fit:cover; transition:opacity 280ms ease, transform 600ms ease; }
+  .mtwc-card__img img.mtwc-sec { position:absolute; inset:0; opacity:0; }
+  .mtwc-card:hover .mtwc-card__img img.mtwc-sec { opacity:1; }
+  .mtwc-card:hover .mtwc-card__img img.mtwc-pri { transform:scale(1.04); }
+  .mtwc-badge { position:absolute; top:12px; left:12px; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; font-weight:600; padding:5px 9px; border-radius:2px; background:var(--warm-white); color:var(--ink); border:0.5px solid var(--rule); z-index:2; }
+  .mtwc-badge--new { background:var(--ink); color:var(--cream); border-color:var(--ink); }
+  .mtwc-badge--best { background:var(--forest); color:var(--cream); border-color:var(--forest); }
+  .mtwc-badge--exclusive { background:var(--amber); color:var(--cream); border-color:var(--amber); }
+  .mtwc-badge--low, .mtwc-badge--preorder { background:rgba(133,79,11,0.92); color:var(--cream); border-color:transparent; }
+  .mtwc-badge--sold { background:var(--stone); color:var(--cream); border-color:transparent; }
+  .mtwc-wish { position:absolute; top:12px; right:12px; width:34px; height:34px; border-radius:50%; background:var(--warm-white); border:0.5px solid var(--rule-strong); display:flex; align-items:center; justify-content:center; cursor:pointer; opacity:0; transition:opacity 200ms ease, background 200ms ease; z-index:2; }
+  .mtwc-card:hover .mtwc-wish { opacity:1; }
+  .mtwc-wish svg { width:16px; height:16px; stroke:var(--ink); fill:none; stroke-width:1.5; }
+  .mtwc-wish:hover { background:var(--ink); }
+  .mtwc-wish:hover svg { stroke:var(--cream); }
+  .mtwc-qa { position:absolute; left:12px; right:12px; bottom:12px; padding:11px 14px; background:var(--ink); color:var(--cream); border:none; font-size:11.5px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; border-radius:2px; opacity:0; transform:translateY(8px); transition:opacity 200ms ease, transform 200ms ease; cursor:pointer; font-family:inherit; text-align:center; display:block; }
+  .mtwc-card:hover .mtwc-qa { opacity:1; transform:translateY(0); }
+  .mtwc-qa:hover { background:var(--forest); }
+  .mtwc-card__maker { font-size:10.5px; letter-spacing:0.16em; text-transform:uppercase; color:var(--stone); font-weight:600; margin:0 0 4px; }
+  .mtwc-card__name { font-family:'Cormorant Garamond',Georgia,serif; font-size:20px; font-weight:500; font-style:italic; line-height:1.2; margin:0 0 4px; }
+  .mtwc-card__meta { display:flex; justify-content:space-between; align-items:baseline; font-size:13px; color:var(--stone); }
+  .mtwc-card__price { color:var(--ink); font-weight:500; }
+  .mtwc-card__price s { color:var(--stone); font-weight:400; margin-right:6px; }
+
+  .mtwc-interlude { grid-column:1/-1; background:var(--card-bg); border-radius:2px; padding:56px 64px; display:grid; grid-template-columns:1fr 1.3fr; gap:48px; align-items:center; margin:16px 0; }
+  .mtwc-interlude__img { aspect-ratio:4/3; background:var(--warm-white); border-radius:2px; overflow:hidden; }
+  .mtwc-interlude__img img { width:100%; height:100%; object-fit:cover; }
+  .mtwc-interlude__t .mtwc__label { display:block; margin-bottom:14px; }
+  .mtwc-interlude__t h3 { font-family:'Cormorant Garamond',Georgia,serif; font-size:36px; font-weight:500; line-height:1.05; margin:0 0 16px; letter-spacing:-0.008em; text-wrap:balance; }
+  .mtwc-interlude__t h3 em { font-style:italic; }
+  .mtwc-interlude__q { font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-size:19px; line-height:1.5; padding-left:18px; border-left:2px solid var(--forest); margin:18px 0 0; color:var(--ink); }
+  .mtwc-interlude__q cite { display:block; font-style:normal; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--stone); font-weight:500; margin-top:14px; }
+
+  .mtwc-empty { grid-column:1/-1; text-align:center; padding:80px 0; font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-size:20px; color:var(--stone); }
+
+  .mtwc-pag { display:flex; justify-content:center; gap:6px; margin:48px 0 0; }
+  .mtwc-pag a, .mtwc-pag span { min-width:38px; height:38px; padding:0 6px; border:0.5px solid var(--rule-strong); background:var(--warm-white); font-size:13px; color:var(--ink); border-radius:2px; display:inline-flex; align-items:center; justify-content:center; }
+  .mtwc-pag a:hover { border-color:var(--ink); }
+  .mtwc-pag span.is-active { background:var(--ink); color:var(--cream); border-color:var(--ink); }
+  .mtwc-pag span.is-disabled { opacity:0.4; }
+
+  .mtwc-maker { background:var(--ink); color:var(--cream); }
+  .mtwc-maker__in { max-width:1100px; margin:0 auto; padding:96px 40px; display:grid; grid-template-columns:1fr 1.3fr; gap:64px; align-items:center; }
+  .mtwc-maker__img { aspect-ratio:4/5; background:rgba(245,240,229,0.08); border-radius:2px; overflow:hidden; }
+  .mtwc-maker__img img { width:100%; height:100%; object-fit:cover; }
+  .mtwc-maker__t .mtwc__label { color:rgba(245,240,229,0.55); display:block; margin-bottom:18px; }
+  .mtwc-maker__t h2 { font-family:'Cormorant Garamond',Georgia,serif; font-size:48px; font-weight:500; line-height:1.05; letter-spacing:-0.012em; margin:0 0 22px; color:var(--cream); text-wrap:balance; }
+  .mtwc-maker__t h2 em { font-style:italic; }
+  .mtwc-maker__t p { font-size:16px; line-height:1.78; color:rgba(245,240,229,0.92); margin:0 0 18px; max-width:520px; text-wrap:pretty; }
+  .mtwc-maker .mtwc-btn--primary { background:var(--cream); color:var(--ink); }
+  .mtwc-maker .mtwc-btn--primary:hover { background:var(--warm-white); }
+
+  .mtwc-related { max-width:1440px; margin:0 auto; padding:96px 40px; }
+  .mtwc-related__head { text-align:center; margin-bottom:48px; }
+  .mtwc-related__head .mtwc__label { display:block; margin-bottom:14px; }
+  .mtwc-related__head h2 { font-family:'Cormorant Garamond',Georgia,serif; font-size:46px; font-weight:500; line-height:1.05; margin:0; letter-spacing:-0.012em; }
+  .mtwc-related__head h2 em { font-style:italic; }
+  .mtwc-related__grid { display:grid; grid-template-columns:repeat(3,1fr); gap:32px; }
+  .mtwc-related__card .mtwc-related__im { aspect-ratio:1/1; background:var(--card-bg); border-radius:2px; overflow:hidden; margin-bottom:14px; }
+  .mtwc-related__card .mtwc-related__im img { width:100%; height:100%; object-fit:cover; transition:transform 600ms ease; }
+  .mtwc-related__card:hover .mtwc-related__im img { transform:scale(1.04); }
+  .mtwc-related__card h4 { font-family:'Cormorant Garamond',Georgia,serif; font-size:24px; font-weight:500; font-style:italic; margin:0 0 4px; letter-spacing:-0.005em; }
+  .mtwc-related__card p { font-size:13px; color:var(--stone); margin:0; }
+
+  @media (max-width:1000px) {
+    .mtwc-hero { grid-template-columns:1fr; gap:40px; padding-bottom:48px; }
+    .mtwc-hero__text h1 { font-size:60px; }
+    .mtwc-stats__in { grid-template-columns:repeat(2,1fr); gap:28px; }
+    .mtwc-main { grid-template-columns:1fr; }
+    .mtwc-sidebar { position:fixed; top:0; left:0; bottom:0; width:300px; max-width:84vw; background:var(--cream); z-index:60; padding:24px; overflow-y:auto; transform:translateX(-105%); transition:transform 260ms ease; box-shadow:0 0 40px rgba(44,44,42,0.18); }
+    .mtwc-sidebar.is-open { transform:translateX(0); }
+    .mtwc-filtertoggle { display:inline-flex; align-items:center; gap:8px; padding:7px 16px; border:0.5px solid var(--rule-strong); border-radius:999px; background:var(--warm-white); font-size:12.5px; cursor:pointer; font-family:inherit; color:var(--ink); }
+    .mtwc-sidebar__close { display:block; margin:0 0 18px auto; background:none; border:none; font-size:22px; cursor:pointer; color:var(--ink); }
+    .mtwc-grid, .mtwc-grid[data-cols="4"] { grid-template-columns:repeat(2,1fr); gap:24px 16px; }
+    .mtwc-interlude { grid-template-columns:1fr; padding:36px; }
+    .mtwc-maker__in, .mtwc-related__grid { grid-template-columns:1fr; gap:40px; }
+    .mtwc-vt { display:none; }
+  }
+  @media (min-width:1001px) { .mtwc-sidebar__close { display:none; } }
+  @media (max-width:560px) {
+    .mtwc-hero, .mtwc-crumbs, .mtwc-toolbar, .mtwc-main, .mtwc-related { padding-left:20px; padding-right:20px; }
+    .mtwc-hero__text h1 { font-size:46px; }
+    .mtwc-grid, .mtwc-grid[data-cols="4"] { grid-template-columns:1fr 1fr; }
+  }
+{%- endstyle -%}
+
+{%- liquid
+  assign m = 'money'
+  assign preorder_handle = section.settings.preorder_collection
+  assign low_threshold = section.settings.low_stock_threshold
+  assign new_days = section.settings.new_days
+-%}
+
+<div class="mtwc">
+
+  <nav class="mtwc-crumbs">
+    <a href="{{ routes.root_url }}">Home</a><span class="sep">·</span>
+    <a href="{{ routes.collections_url }}">Shop</a><span class="sep">·</span>
+    <span class="here">{{ collection.title }}</span>
+  </nav>
+
+  {%- comment -%} 1. STORY HERO {%- endcomment -%}
+  <section class="mtwc-hero">
+    <div class="mtwc-hero__text">
+      <span class="mtwc__label">{{ section.settings.hero_label | default: 'The Collection' }}</span>
+      <h1>{% if section.settings.hero_title != blank %}{{ section.settings.hero_title }}{% else %}{{ collection.title }}{% endif %}</h1>
+      {%- if section.settings.hero_lede != blank -%}<p class="mtwc-hero__lede">{{ section.settings.hero_lede }}</p>{%- endif -%}
+      {%- assign hero_body = section.settings.hero_body -%}
+      {%- if hero_body == blank and collection.description != blank -%}{%- assign hero_body = collection.description -%}{%- endif -%}
+      {%- if hero_body != blank -%}<div class="mtwc-hero__body">{{ hero_body }}</div>{%- endif -%}
+      <div class="mtwc-hero__ctas">
+        <a href="#mtwc-products" class="mtwc-btn mtwc-btn--primary">{{ section.settings.hero_cta_text | default: 'Shop the collection' }}</a>
+        {%- if section.settings.hero_link_text != blank and section.settings.hero_link_url != blank -%}
+          <a href="{{ section.settings.hero_link_url }}" class="mtwc-readlink">{{ section.settings.hero_link_text }} →</a>
+        {%- endif -%}
+      </div>
+    </div>
+    <div class="mtwc-hero__img">
+      {%- if section.settings.hero_image != blank -%}
+        {{ section.settings.hero_image | image_url: width: 1100 | image_tag: loading: 'lazy', alt: collection.title, widths: '480, 720, 1100' }}
+      {%- elsif collection.image != blank -%}
+        {{ collection.image | image_url: width: 1100 | image_tag: loading: 'lazy', alt: collection.title, widths: '480, 720, 1100' }}
+      {%- elsif collection.products.first.featured_image != blank -%}
+        {{ collection.products.first.featured_image | image_url: width: 1100 | image_tag: loading: 'lazy', alt: collection.title, widths: '480, 720, 1100' }}
+      {%- endif -%}
+      {%- if section.settings.hero_tag_text != blank -%}
+        <div class="mtwc-hero__tag">
+          {%- if section.settings.hero_tag_label != blank -%}<span class="mtwc__label">{{ section.settings.hero_tag_label }}</span>{%- endif -%}
+          <p>{{ section.settings.hero_tag_text }}</p>
+        </div>
+      {%- endif -%}
+    </div>
+  </section>
+
+  {%- comment -%} 2. STATS {%- endcomment -%}
+  {%- assign stat_blocks = section.blocks | where: 'type', 'stat' -%}
+  {%- if section.settings.auto_count_stat or stat_blocks.size > 0 -%}
+    <section class="mtwc-stats">
+      <div class="mtwc-stats__in">
+        {%- if section.settings.auto_count_stat -%}
+          <div class="mtwc-stat"><div class="mtwc-stat__n">{{ collection.products_count }}</div><div class="mtwc-stat__l">{{ section.settings.count_stat_label | default: 'Pieces in the collection' }}</div></div>
+        {%- endif -%}
+        {%- for block in stat_blocks limit: 4 -%}
+          <div class="mtwc-stat" {{ block.shopify_attributes }}><div class="mtwc-stat__n">{{ block.settings.num }}</div><div class="mtwc-stat__l">{{ block.settings.label }}</div></div>
+        {%- endfor -%}
+      </div>
+    </section>
+  {%- endif -%}
+
+  {%- paginate collection.products by section.settings.products_per_page -%}
+
+  {%- comment -%} 3. STICKY TOOLBAR {%- endcomment -%}
+  <div class="mtwc-toolbar">
+    <div class="mtwc-toolbar__in">
+      <div class="mtwc-toolbar__l">
+        <button class="mtwc-filtertoggle" type="button" data-mtwc-openfilters>Filters</button>
+        {%- assign has_active = false -%}
+        {%- for filter in collection.filters -%}
+          {%- if filter.type == 'price_range' -%}
+            {%- if filter.min_value.value != blank or filter.max_value.value != blank -%}
+              {%- assign has_active = true -%}
+              <a class="mtwc-chip" href="{{ filter.url_to_remove }}">{{ filter.label }} <span>×</span></a>
+            {%- endif -%}
+          {%- else -%}
+            {%- for value in filter.active_values -%}
+              {%- assign has_active = true -%}
+              <a class="mtwc-chip" href="{{ value.url_to_remove }}">{{ value.label }} <span>×</span></a>
+            {%- endfor -%}
+          {%- endif -%}
+        {%- endfor -%}
+        {%- if has_active -%}<a class="mtwc-clear" href="{{ collection.url }}">Clear all</a>{%- endif -%}
+        <span class="mtwc-count">{{ collection.products_count }} {% if collection.products_count == 1 %}piece{% else %}pieces{% endif %}</span>
+      </div>
+      <div class="mtwc-toolbar__r">
+        {%- if collection.sort_options.size > 0 -%}
+          {%- assign sort_now = collection.sort_by | default: collection.default_sort_by -%}
+          <div class="mtwc-sortbox">
+            <label for="mtwc-sort-{{ section.id }}">Sort by</label>
+            <select id="mtwc-sort-{{ section.id }}" onchange="(function(v){var u=new URL(window.location.href);u.searchParams.set('sort_by',v);u.searchParams.delete('page');window.location.href=u.toString();})(this.value)">
+              {%- for opt in collection.sort_options -%}
+                <option value="{{ opt.value }}" {% if opt.value == sort_now %}selected{% endif %}>{{ opt.name }}</option>
+              {%- endfor -%}
+            </select>
+          </div>
+        {%- endif -%}
+        <div class="mtwc-vt" role="group" aria-label="Grid columns">
+          <button type="button" class="is-active" data-mtwc-cols="3" aria-label="3 columns">▦</button>
+          <button type="button" data-mtwc-cols="4" aria-label="4 columns">▤</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {%- comment -%} 4. SIDEBAR + GRID {%- endcomment -%}
+  <div class="mtwc-main" id="mtwc-products">
+    <aside class="mtwc-sidebar" data-mtwc-sidebar>
+      <button class="mtwc-sidebar__close" type="button" data-mtwc-closefilters aria-label="Close filters">×</button>
+      {%- if collection.filters.size > 0 -%}
+        {%- for filter in collection.filters -%}
+          <details class="mtwc-group" open>
+            <summary>{{ filter.label }}</summary>
+            {%- case filter.type -%}
+              {%- when 'list', 'boolean' -%}
+                <ul>
+                  {%- for value in filter.values -%}
+                    <li>
+                      <a class="mtwc-fval {% if value.active %}is-active{% endif %}"
+                         href="{% if value.active %}{{ value.url_to_remove }}{% else %}{{ value.url_to_add }}{% endif %}"
+                         {% if value.count == 0 and value.active == false %}aria-disabled="true"{% endif %}>
+                        <span class="mtwc-box"></span>
+                        <span>{{ value.label }}</span>
+                        <span class="mtwc-fcount">{{ value.count }}</span>
+                      </a>
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              {%- when 'price_range' -%}
+                <form class="mtwc-price" method="get">
+                  {%- for f2 in collection.filters -%}
+                    {%- unless f2.type == 'price_range' -%}
+                      {%- for v in f2.active_values -%}<input type="hidden" name="{{ v.param_name }}" value="{{ v.value | escape }}">{%- endfor -%}
+                    {%- endunless -%}
+                  {%- endfor -%}
+                  {%- if collection.sort_by != blank -%}<input type="hidden" name="sort_by" value="{{ collection.sort_by }}">{%- endif -%}
+                  <input type="number" name="{{ filter.min_value.param_name }}" value="{{ filter.min_value.value }}" placeholder="$ min" min="0">
+                  <input type="number" name="{{ filter.max_value.param_name }}" value="{{ filter.max_value.value }}" placeholder="$ max" min="0">
+                  <button type="submit">Go</button>
+                </form>
+            {%- endcase -%}
+          </details>
+        {%- endfor -%}
+      {%- endif -%}
+    </aside>
+
+    <div class="mtwc-grid" data-cols="{{ section.settings.products_per_row | default: 3 }}" data-mtwc-grid>
+      {%- for product in collection.products -%}
+        {%- liquid
+          assign is_preorder = false
+          for pc in product.collections
+            if pc.handle == preorder_handle
+              assign is_preorder = true
+            endif
+          endfor
+          assign tagstr = product.tags | join: ',' | downcase
+          assign is_best = false
+          if tagstr contains 'bestseller'
+            assign is_best = true
+          endif
+          assign is_excl = false
+          if tagstr contains 'exclusive'
+            assign is_excl = true
+          endif
+          assign is_new = false
+          assign nows = 'now' | date: '%s' | times: 1
+          assign crs = product.created_at | date: '%s' | times: 1
+          assign age_days = nows | minus: crs | divided_by: 86400
+          if age_days <= new_days
+            assign is_new = true
+          endif
+          assign inv = 0
+          assign tracked = false
+          for v in product.variants
+            if v.inventory_management != blank
+              assign tracked = true
+              assign inv = inv | plus: v.inventory_quantity
+            endif
+          endfor
+        -%}
+        <a href="{{ product.url }}" class="mtwc-card">
+          <div class="mtwc-card__img">
+            {%- if product.available == false -%}
+              <span class="mtwc-badge mtwc-badge--sold">Sold out</span>
+            {%- elsif is_preorder -%}
+              <span class="mtwc-badge mtwc-badge--preorder">Pre-order</span>
+            {%- elsif tracked and inv > 0 and inv <= low_threshold -%}
+              <span class="mtwc-badge mtwc-badge--low">Low stock · {{ inv }} left</span>
+            {%- elsif is_best -%}
+              <span class="mtwc-badge mtwc-badge--best">Bestseller</span>
+            {%- elsif is_new -%}
+              <span class="mtwc-badge mtwc-badge--new">New</span>
+            {%- elsif is_excl -%}
+              <span class="mtwc-badge mtwc-badge--exclusive">Exclusive</span>
+            {%- endif -%}
+            <span class="mtwc-wish" role="button" aria-label="Save to wishlist" tabindex="-1">
+              <svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5 6.5 5c2 0 3.5 1.2 5.5 3.5C14 6.2 15.5 5 17.5 5c4 0 5.5 4 4 7C19 16.5 12 21 12 21z"/></svg>
+            </span>
+            {%- if product.featured_image != blank -%}
+              <img class="mtwc-pri" src="{{ product.featured_image | image_url: width: 600 }}"
+                srcset="{{ product.featured_image | image_url: width: 360 }} 360w, {{ product.featured_image | image_url: width: 600 }} 600w, {{ product.featured_image | image_url: width: 820 }} 820w"
+                sizes="(min-width:1001px) 28vw, 45vw"
+                alt="{{ product.featured_image.alt | default: product.title | escape }}" loading="lazy" width="600" height="750">
+            {%- endif -%}
+            {%- if product.images[1] != blank -%}
+              <img class="mtwc-sec" src="{{ product.images[1] | image_url: width: 600 }}" alt="" loading="lazy" width="600" height="750">
+            {%- endif -%}
+            {%- if product.available == false -%}
+              <span class="mtwc-qa">Notify me</span>
+            {%- elsif is_preorder -%}
+              <span class="mtwc-qa">Pre-order</span>
+            {%- else -%}
+              <span class="mtwc-qa">View product</span>
+            {%- endif -%}
+          </div>
+          {%- if product.vendor != blank -%}<p class="mtwc-card__maker">{{ product.vendor }}</p>{%- endif -%}
+          <h3 class="mtwc-card__name">{{ product.title }}</h3>
+          <div class="mtwc-card__meta">
+            <span class="jdgm-widget jdgm-preview-badge" data-id="{{ product.id }}" data-template="collection"></span>
+            <span class="mtwc-card__price">
+              {%- if product.compare_at_price > product.price -%}<s>{{ product.compare_at_price | money }}</s>{%- endif -%}
+              {{ product.price | money }}
+            </span>
+          </div>
+        </a>
+
+        {%- if section.settings.interlude_heading != blank and paginate.current_page == 1 and forloop.index == section.settings.interlude_after -%}
+          <div class="mtwc-interlude">
+            <div class="mtwc-interlude__img">
+              {%- if section.settings.interlude_image != blank -%}
+                {%- assign mtwc_il_alt = section.settings.interlude_heading | strip_html -%}
+                {{ section.settings.interlude_image | image_url: width: 800 | image_tag: loading: 'lazy', alt: mtwc_il_alt, widths: '400, 600, 800' }}
+              {%- endif -%}
+            </div>
+            <div class="mtwc-interlude__t">
+              {%- if section.settings.interlude_label != blank -%}<span class="mtwc__label">{{ section.settings.interlude_label }}</span>{%- endif -%}
+              <h3>{{ section.settings.interlude_heading }}</h3>
+              {%- if section.settings.interlude_body != blank -%}<div style="font-size:15px;line-height:1.7;margin:0;">{{ section.settings.interlude_body }}</div>{%- endif -%}
+              {%- if section.settings.interlude_quote != blank -%}
+                <p class="mtwc-interlude__q">{{ section.settings.interlude_quote }}{% if section.settings.interlude_cite != blank %}<cite>{{ section.settings.interlude_cite }}</cite>{% endif %}</p>
+              {%- endif -%}
+            </div>
+          </div>
+        {%- endif -%}
+      {%- else -%}
+        <p class="mtwc-empty">No products match these filters. <a href="{{ collection.url }}" style="text-decoration:underline;">Clear filters</a>.</p>
+      {%- endfor -%}
+    </div>
+  </div>
+
+  {%- if paginate.pages > 1 -%}
+    <nav class="mtwc-pag" style="max-width:1440px;margin:0 auto;padding:0 40px 80px;" aria-label="Pagination">
+      {%- if paginate.previous -%}<a href="{{ paginate.previous.url }}" aria-label="Previous">←</a>{%- else -%}<span class="is-disabled">←</span>{%- endif -%}
+      {%- for part in paginate.parts -%}
+        {%- if part.is_link -%}<a href="{{ part.url }}">{{ part.title }}</a>
+        {%- else -%}<span class="{% if part.title == paginate.current_page %}is-active{% endif %}">{{ part.title }}</span>{%- endif -%}
+      {%- endfor -%}
+      {%- if paginate.next -%}<a href="{{ paginate.next.url }}" aria-label="Next">→</a>{%- else -%}<span class="is-disabled">→</span>{%- endif -%}
+    </nav>
+  {%- endif -%}
+
+  {%- endpaginate -%}
+
+  {%- comment -%} MEET THE MAKER {%- endcomment -%}
+  {%- if section.settings.maker_heading != blank -%}
+    <section class="mtwc-maker">
+      <div class="mtwc-maker__in">
+        <div class="mtwc-maker__img">
+          {%- if section.settings.maker_image != blank -%}
+            {%- assign mtwc_mk_alt = section.settings.maker_heading | strip_html -%}
+            {{ section.settings.maker_image | image_url: width: 900 | image_tag: loading: 'lazy', alt: mtwc_mk_alt, widths: '420, 640, 900' }}
+          {%- endif -%}
+        </div>
+        <div class="mtwc-maker__t">
+          {%- if section.settings.maker_label != blank -%}<span class="mtwc__label">{{ section.settings.maker_label }}</span>{%- endif -%}
+          <h2>{{ section.settings.maker_heading }}</h2>
+          {%- if section.settings.maker_body != blank -%}<p>{{ section.settings.maker_body }}</p>{%- endif -%}
+          {%- if section.settings.maker_body2 != blank -%}<p>{{ section.settings.maker_body2 }}</p>{%- endif -%}
+          {%- if section.settings.maker_btn_text != blank and section.settings.maker_btn_link != blank -%}
+            <a href="{{ section.settings.maker_btn_link }}" class="mtwc-btn mtwc-btn--primary">{{ section.settings.maker_btn_text }} →</a>
+          {%- endif -%}
+        </div>
+      </div>
+    </section>
+  {%- endif -%}
+
+  {%- comment -%} RELATED COLLECTIONS {%- endcomment -%}
+  {%- assign rel_blocks = section.blocks | where: 'type', 'related' -%}
+  {%- if rel_blocks.size > 0 -%}
+    <section class="mtwc-related">
+      <div class="mtwc-related__head">
+        {%- if section.settings.related_label != blank -%}<span class="mtwc__label">{{ section.settings.related_label }}</span>{%- endif -%}
+        {%- if section.settings.related_heading != blank -%}<h2>{{ section.settings.related_heading }}</h2>{%- endif -%}
+      </div>
+      <div class="mtwc-related__grid">
+        {%- for block in rel_blocks -%}
+          {%- assign rc = block.settings.collection -%}
+          {%- if rc != blank -%}
+            <a href="{{ rc.url }}" class="mtwc-related__card" {{ block.shopify_attributes }}>
+              <div class="mtwc-related__im">
+                {%- if rc.image != blank -%}{{ rc.image | image_url: width: 600 | image_tag: loading: 'lazy', alt: rc.title }}
+                {%- elsif rc.products.first.featured_image != blank -%}{{ rc.products.first.featured_image | image_url: width: 600 | image_tag: loading: 'lazy', alt: rc.title }}{%- endif -%}
+              </div>
+              <h4>{{ rc.title }}</h4>
+              {%- if block.settings.caption != blank -%}<p>{{ block.settings.caption }}</p>{%- endif -%}
+            </a>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </section>
+  {%- endif -%}
+
+</div>
+
+<script>
+(function(){
+  var root = document.currentScript.previousElementSibling;
+  if (!root) return;
+  var grid = root.querySelector('[data-mtwc-grid]');
+  root.querySelectorAll('[data-mtwc-cols]').forEach(function(b){
+    b.addEventListener('click', function(){
+      if (!grid) return;
+      grid.setAttribute('data-cols', b.getAttribute('data-mtwc-cols'));
+      root.querySelectorAll('[data-mtwc-cols]').forEach(function(x){ x.classList.remove('is-active'); });
+      b.classList.add('is-active');
+    });
+  });
+  var sb = root.querySelector('[data-mtwc-sidebar]');
+  var open = root.querySelector('[data-mtwc-openfilters]');
+  var close = root.querySelector('[data-mtwc-closefilters]');
+  if (open && sb) open.addEventListener('click', function(){ sb.classList.add('is-open'); });
+  if (close && sb) close.addEventListener('click', function(){ sb.classList.remove('is-open'); });
+})();
+</script>
+
+{% schema %}
+{
+  "name": "MTW Collection",
+  "tag": "section",
+  "class": "mtw-collection-section",
+  "settings": [
+    { "type": "header", "content": "Hero" },
+    { "type": "text", "id": "hero_label", "label": "Eyebrow", "default": "The Collection" },
+    { "type": "text", "id": "hero_title", "label": "Headline (blank = collection title). Use <em> for italics." },
+    { "type": "textarea", "id": "hero_lede", "label": "Lede (italic)" },
+    { "type": "richtext", "id": "hero_body", "label": "Body (blank = collection description)" },
+    { "type": "text", "id": "hero_cta_text", "label": "Primary button", "default": "Shop the collection" },
+    { "type": "text", "id": "hero_link_text", "label": "Secondary link text" },
+    { "type": "url", "id": "hero_link_url", "label": "Secondary link URL" },
+    { "type": "image_picker", "id": "hero_image", "label": "Hero image (blank = collection image)" },
+    { "type": "text", "id": "hero_tag_label", "label": "Hero image tag — eyebrow" },
+    { "type": "text", "id": "hero_tag_text", "label": "Hero image tag — text" },
+    { "type": "header", "content": "Stats band" },
+    { "type": "checkbox", "id": "auto_count_stat", "label": "Show product-count stat", "default": true },
+    { "type": "text", "id": "count_stat_label", "label": "Product-count stat label", "default": "Pieces in the collection" },
+    { "type": "header", "content": "Product grid" },
+    { "type": "range", "id": "products_per_page", "label": "Products per page", "min": 8, "max": 48, "step": 4, "default": 24 },
+    { "type": "select", "id": "products_per_row", "label": "Default columns", "options": [{ "value": "3", "label": "3" }, { "value": "4", "label": "4" }], "default": "3" },
+    { "type": "text", "id": "preorder_collection", "label": "Pre-order collection handle", "default": "pre-order" },
+    { "type": "range", "id": "low_stock_threshold", "label": "Low-stock badge at or below", "min": 1, "max": 20, "step": 1, "default": 3 },
+    { "type": "range", "id": "new_days", "label": "“New” badge within (days)", "min": 5, "max": 120, "step": 5, "default": 30 },
+    { "type": "header", "content": "Editorial interlude" },
+    { "type": "range", "id": "interlude_after", "label": "Insert after product #", "min": 3, "max": 12, "step": 1, "default": 6 },
+    { "type": "text", "id": "interlude_label", "label": "Eyebrow" },
+    { "type": "text", "id": "interlude_heading", "label": "Heading (blank = hidden). Use <em>." },
+    { "type": "richtext", "id": "interlude_body", "label": "Body" },
+    { "type": "textarea", "id": "interlude_quote", "label": "Pull quote" },
+    { "type": "text", "id": "interlude_cite", "label": "Quote attribution" },
+    { "type": "image_picker", "id": "interlude_image", "label": "Interlude image" },
+    { "type": "header", "content": "Meet the maker" },
+    { "type": "text", "id": "maker_label", "label": "Eyebrow" },
+    { "type": "text", "id": "maker_heading", "label": "Heading (blank = hidden). Use <em>." },
+    { "type": "richtext", "id": "maker_body", "label": "Paragraph 1" },
+    { "type": "richtext", "id": "maker_body2", "label": "Paragraph 2" },
+    { "type": "image_picker", "id": "maker_image", "label": "Maker image" },
+    { "type": "text", "id": "maker_btn_text", "label": "Button text" },
+    { "type": "url", "id": "maker_btn_link", "label": "Button link" },
+    { "type": "header", "content": "Related collections" },
+    { "type": "text", "id": "related_label", "label": "Eyebrow", "default": "You might also love" },
+    { "type": "text", "id": "related_heading", "label": "Heading. Use <em>." }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat",
+      "settings": [
+        { "type": "text", "id": "num", "label": "Number / phrase", "default": "From $42" },
+        { "type": "text", "id": "label", "label": "Label", "default": "Ornaments to playsets" }
+      ]
+    },
+    {
+      "type": "related",
+      "name": "Related collection",
+      "settings": [
+        { "type": "collection", "id": "collection", "label": "Collection" },
+        { "type": "text", "id": "caption", "label": "Caption" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "MTW Collection",
+      "blocks": [
+        { "type": "stat", "settings": { "num": "Hand-stitched", "label": "Made in small batches" } },
+        { "type": "stat", "settings": { "num": "Heirloom", "label": "Built to be kept" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
