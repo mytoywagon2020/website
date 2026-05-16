@@ -1,0 +1,182 @@
+{%- comment -%}
+  MTW Collection — editorial collection template. Native Shopify
+  faceted filters / sort / pagination. Header & footer come from the
+  theme. Namespaced .mtw-coll so it can't collide with Impulse.
+{%- endcomment -%}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+{{ 'mtw-collection.css' | asset_url | stylesheet_tag }}
+
+<div class="mtw-coll">
+  <nav class="mtw-coll__crumbs">
+    <a href="{{ routes.root_url }}">Home</a><span class="sep">·</span>
+    <a href="{{ routes.collections_url }}">Collections</a><span class="sep">·</span>
+    <span style="color:var(--ink);">{{ collection.title }}</span>
+  </nav>
+
+  <section class="mtw-coll__hero">
+    <div>
+      {%- if section.settings.eyebrow != blank -%}<span class="label">{{ section.settings.eyebrow }}</span>{%- endif -%}
+      <h1>{{ collection.title }}</h1>
+      {%- if collection.description != blank -%}
+        <div class="mtw-coll__dek">{{ collection.description | strip_html | truncatewords: 40 }}</div>
+      {%- endif -%}
+      <div class="mtw-coll__cta-row">
+        <a href="#mtw-coll-grid" class="mtw-coll__btn mtw-coll__btn--primary">Browse the collection</a>
+        {%- if section.settings.cta_link != blank -%}<a href="{{ section.settings.cta_link }}" class="mtw-coll__btn mtw-coll__btn--ghost">{{ section.settings.cta_text | default: 'Read more' }}</a>{%- endif -%}
+      </div>
+    </div>
+    <div class="mtw-coll__hero-img">
+      {%- if section.settings.hero_image != blank -%}
+        {{ section.settings.hero_image | image_url: width: 1100 | image_tag: loading: 'eager', alt: collection.title }}
+      {%- elsif collection.image -%}
+        {{ collection.image | image_url: width: 1100 | image_tag: loading: 'eager', alt: collection.title }}
+      {%- endif -%}
+    </div>
+  </section>
+
+  {%- paginate collection.products by 24 -%}
+  <div class="mtw-coll__filterbar">
+    <div class="mtw-coll__filterinner">
+      <div class="mtw-coll__pills">
+        <span class="mtw-coll__meta">{{ collection.products_count | default: paginate.items }} products</span>
+        {%- for filter in collection.filters -%}
+          {%- for value in filter.active_values -%}
+            <a class="mtw-coll__pill" href="{{ value.url_to_remove }}">{{ value.label }}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            </a>
+          {%- endfor -%}
+          {%- if filter.type == 'price_range' -%}
+            {%- if filter.min_value.value != null or filter.max_value.value != null -%}
+              <a class="mtw-coll__pill" href="{{ filter.url_to_remove }}">Price
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              </a>
+            {%- endif -%}
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+      <form method="get" class="mtw-coll__sort">
+        <label for="mtw-sort">Sort:</label>
+        <select id="mtw-sort" name="sort_by" onchange="this.form.submit()">
+          {%- for opt in collection.sort_options -%}
+            <option value="{{ opt.value }}" {% if opt.value == collection.sort_by %}selected{% endif %}>{{ opt.name }}</option>
+          {%- endfor -%}
+        </select>
+        {%- for f in collection.filters -%}
+          {%- for v in f.active_values -%}<input type="hidden" name="{{ v.param_name }}" value="{{ v.value }}">{%- endfor -%}
+        {%- endfor -%}
+      </form>
+    </div>
+  </div>
+
+  <div class="mtw-coll__body">
+    <aside class="mtw-coll__side">
+      <div class="mtw-coll__side-top">
+        <span class="label">Filter</span>
+        <a class="mtw-coll__clear" href="{{ collection.url }}{% if collection.sort_by != blank %}?sort_by={{ collection.sort_by }}{% endif %}">Clear all</a>
+      </div>
+      <form method="get">
+        {%- if collection.sort_by != blank -%}<input type="hidden" name="sort_by" value="{{ collection.sort_by }}">{%- endif -%}
+        {%- for filter in collection.filters -%}
+          <div class="mtw-coll__group">
+            <h3>{{ filter.label }}</h3>
+            {%- if filter.type == 'price_range' -%}
+              <div class="mtw-coll__price">
+                <input type="text" inputmode="decimal" name="{{ filter.min_value.param_name }}" value="{{ filter.min_value.value }}" placeholder="$ min">
+                <input type="text" inputmode="decimal" name="{{ filter.max_value.param_name }}" value="{{ filter.max_value.value }}" placeholder="$ max">
+              </div>
+            {%- else -%}
+              {%- for value in filter.values -%}
+                <label class="mtw-coll__facet">
+                  <input type="checkbox" name="{{ value.param_name }}" value="{{ value.value }}" {% if value.active %}checked{% endif %} onchange="this.form.submit()">
+                  {{ value.label }} <span class="count">{{ value.count }}</span>
+                </label>
+              {%- endfor -%}
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+        <button type="submit" class="mtw-coll__apply">Apply filters</button>
+      </form>
+    </aside>
+
+    <main id="mtw-coll-grid">
+      {%- if collection.products.size > 0 -%}
+        <div class="mtw-coll__grid">
+          {%- for product in collection.products -%}
+            {%- assign cur = product.selected_or_first_available_variant -%}
+            {%- assign is_pre = false -%}
+            {%- for pc in product.collections -%}{%- if pc.handle == section.settings.preorder_collection -%}{%- assign is_pre = true -%}{%- endif -%}{%- endfor -%}
+            {%- assign has2 = false -%}{%- if product.images.size > 1 -%}{%- assign has2 = true -%}{%- endif -%}
+            <div class="mtw-coll__prod">
+              <a class="mtw-coll__prod-img" href="{{ product.url }}">
+                {%- if is_pre -%}<span class="mtw-coll__tag amber">Pre-order</span>
+                {%- elsif product.available == false -%}<span class="mtw-coll__tag amber">Sold out</span>
+                {%- elsif cur.inventory_management != blank and cur.inventory_policy != 'continue' and cur.inventory_quantity > 0 and cur.inventory_quantity <= section.settings.low_stock_threshold -%}<span class="mtw-coll__tag amber">Low stock · {{ cur.inventory_quantity }} left</span>
+                {%- else -%}<span class="mtw-coll__tag">In stock</span>{%- endif -%}
+                {%- if product.featured_image -%}
+                  <img class="primary {% if has2 %}has2{% else %}no2{% endif %}" src="{{ product.featured_image | image_url: width: 700 }}" srcset="{{ product.featured_image | image_url: width: 400 }} 400w, {{ product.featured_image | image_url: width: 700 }} 700w" sizes="(min-width:1000px) 30vw, 45vw" alt="{{ product.featured_image.alt | default: product.title | escape }}" loading="lazy" width="700" height="875">
+                {%- endif -%}
+                {%- if has2 -%}<img class="secondary" src="{{ product.images[1] | image_url: width: 700 }}" alt="" loading="lazy" width="700" height="875">{%- endif -%}
+              </a>
+              {%- if product.available and is_pre == false -%}
+                <form method="post" action="{{ routes.cart_add_url }}">
+                  <input type="hidden" name="id" value="{{ cur.id }}">
+                  <button type="submit" class="mtw-coll__add">Add to cart</button>
+                </form>
+              {%- elsif is_pre -%}
+                <form method="post" action="{{ routes.cart_add_url }}">
+                  <input type="hidden" name="id" value="{{ cur.id }}">
+                  <button type="submit" class="mtw-coll__add">Pre-order</button>
+                </form>
+              {%- endif -%}
+              {%- if product.vendor != blank -%}<p class="mtw-coll__maker">{{ product.vendor }}</p>{%- endif -%}
+              <h3 class="mtw-coll__name"><a href="{{ product.url }}">{{ product.title }}</a></h3>
+              <div class="mtw-coll__stars"><div class="jdgm-widget jdgm-preview-badge" data-id="{{ product.id }}" data-template="index"></div></div>
+              <div class="mtw-coll__pmeta">
+                <span>{% if product.type != blank %}{{ product.type }}{% endif %}</span>
+                <span class="mtw-coll__pprice">
+                  {%- if product.compare_at_price > product.price -%}<s>{{ product.compare_at_price | money }}</s>{%- endif -%}
+                  {{ product.price | money }}
+                </span>
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+
+        <div class="mtw-coll__pag">
+          <p class="mtw-coll__pag-count">Showing {{ collection.products.size }} of {{ paginate.items }} products</p>
+          {%- if paginate.pages > 1 -%}
+            <div class="mtw-coll__pag-bar">
+              {%- if paginate.previous -%}<a href="{{ paginate.previous.url }}">&larr; Prev</a>{%- endif -%}
+              {%- for part in paginate.parts -%}
+                {%- if part.is_link -%}<a href="{{ part.url }}">{{ part.title }}</a>
+                {%- elsif part.title == paginate.current_page -%}<span class="current">{{ part.title }}</span>
+                {%- else -%}<span>{{ part.title }}</span>{%- endif -%}
+              {%- endfor -%}
+              {%- if paginate.next -%}<a href="{{ paginate.next.url }}">Next &rarr;</a>{%- endif -%}
+            </div>
+          {%- endif -%}
+        </div>
+      {%- else -%}
+        <p class="mtw-coll__empty">No products match these filters. <a href="{{ collection.url }}" style="border-bottom:0.5px solid var(--rule-strong);">Clear all</a></p>
+      {%- endif -%}
+    </main>
+  </div>
+  {%- endpaginate -%}
+</div>
+
+{% schema %}
+{
+  "name": "MTW Collection",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Hero eyebrow", "default": "The collection" },
+    { "type": "image_picker", "id": "hero_image", "label": "Hero image override (else uses collection image)" },
+    { "type": "text", "id": "cta_text", "label": "Secondary CTA text" },
+    { "type": "url", "id": "cta_link", "label": "Secondary CTA link" },
+    { "type": "text", "id": "preorder_collection", "label": "Pre-order collection handle", "default": "pre-order" },
+    { "type": "range", "id": "low_stock_threshold", "label": "Low-stock threshold", "min": 1, "max": 10, "step": 1, "default": 3 }
+  ]
+}
+{% endschema %}
