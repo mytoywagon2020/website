@@ -16,7 +16,7 @@
         "title": "Toys meant <em>to be kept</em>, not outgrown.",
         "body": "<p>A family-run shop in Los Angeles, California, online since 2020. We carry wooden toys, Waldorf dolls, and open-ended play sets, sourced from makers we know by name. Each piece is chosen to scale across a childhood, and to last for the sibling who comes after.</p>",
         "cta1_text": "Find a gift under $50",
-        "cta1_link": "",
+        "cta1_link": "/collections/gifts-under-50",
         "cta2_text": "Read our story",
         "cta2_link": "/pages/our-story",
         "footnote": "<p>Pre-order opening soon: Tiny Fox Hole Birthday Ring. Sign up to be notified.</p>",
@@ -26,7 +26,7 @@
         "feature_eyebrow": "Featured this week",
         "feature_name": "Amber Kaleidoscope",
         "feature_price": "$38",
-        "feature_link": ""
+        "feature_link": "/products/amber-kaleidoscope"
       }
     },
     "mtw_trust": {
@@ -114,7 +114,7 @@
         "eyebrow": "03 / Gifts under $50",
         "heading": "Small, but kept for years.",
         "lead": "For aunts, grandparents, and last-minute baskets. Each one heirloom enough to outlast the season.",
-        "collection": "50-and-under",
+        "collection": "gifts-under-50",
         "products_to_show": 4,
         "view_all_text": "See all gifts under $50",
         "view_all_link": "",
@@ -472,35 +472,35 @@
           "type": "tag",
           "settings": {
             "label": "Gifts under $30",
-            "link": ""
+            "link": "/collections/gifts-under-30"
           }
         },
         "g2": {
           "type": "tag",
           "settings": {
             "label": "Gifts under $75",
-            "link": ""
+            "link": "/collections/gifts-under-75"
           }
         },
         "g3": {
           "type": "tag",
           "settings": {
             "label": "For new babies",
-            "link": ""
+            "link": "/collections/0-12-months"
           }
         },
         "g4": {
           "type": "tag",
           "settings": {
             "label": "For grandparents",
-            "link": ""
+            "link": "/collections/customer-favorites"
           }
         },
         "g5": {
           "type": "tag",
           "settings": {
             "label": "Last-minute gifts",
-            "link": ""
+            "link": "/collections/gifts-under-50"
           }
         }
       },
