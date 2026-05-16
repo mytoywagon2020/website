@@ -13,7 +13,10 @@
   "sections": {
     "mtw_footer": {
       "type": "mtw-footer",
-      "settings": {}
+      "settings": {
+        "show_badge": true,
+        "badge_sub": "Awarded by Google · 2026"
+      }
     }
   },
   "order": [
