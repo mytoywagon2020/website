@@ -36,9 +36,7 @@ LINK_REPLACEMENTS = {
 }
 
 # Applied to every page after the generic passes.
-GLOBAL_REPLACEMENTS = {
-    "accounting@mytoywagon.com": "accounts@mytoywagon.com",
-}
+GLOBAL_REPLACEMENTS = {}
 
 # Page-specific fixes applied after the generic + global passes. The
 # procurement guide is a live printable page (not yet a static PDF), so
@@ -61,8 +59,8 @@ PER_PAGE_REPLACEMENTS = {
     ],
     "vendor-profile": [
         ('    <div class="info-row"><span class="key">DUNS number</span><span class="val">Available on request</span></div>\n', ''),
-        # Button label said contact@ while its link points to accounts@.
-        ('class="btn">Email contact@mytoywagon.com</a>', 'class="btn">Email accounts@mytoywagon.com</a>'),
+        # Button label said contact@ while its link points to accounting@.
+        ('class="btn">Email contact@mytoywagon.com</a>', 'class="btn">Email accounting@mytoywagon.com</a>'),
     ],
 }
 
