@@ -104,6 +104,68 @@
         "padding_bottom": 80
       }
     },
+    "mtw_age": {
+      "type": "mtw-age",
+      "blocks": {
+        "a1": { "type": "age", "settings": { "image": "shopify://shop_images/age-first-year-haba-fish-rattle.webp", "name": "First year", "range": "0 to 12 months", "link": "" } },
+        "a2": { "type": "age", "settings": { "image": "shopify://shop_images/age-toddler-sabo-alphabet-blocks.webp", "name": "Toddler", "range": "1 to 3 years", "link": "" } },
+        "a3": { "type": "age", "settings": { "image": "shopify://shop_images/age-preschool-sisters-building-blocks.webp", "name": "Preschool", "range": "3 to 5 years", "link": "" } },
+        "a4": { "type": "age", "settings": { "image": "shopify://shop_images/age-early-school-fagus-firetruck.webp", "name": "Early school", "range": "5 to 8 years", "link": "" } },
+        "a5": { "type": "age", "settings": { "image": "shopify://shop_images/age-school-girls-huckleberry-magnifier.webp", "name": "School age", "range": "8 years and up", "link": "" } }
+      },
+      "block_order": ["a1", "a2", "a3", "a4", "a5"],
+      "settings": { "eyebrow": "05 / Shop by age", "heading": "The right toy, by the year.", "lead": "Most parents shop by age. We sort by the developmental window each toy actually opens, so the gift lands in the right season." }
+    },
+    "mtw_category": {
+      "type": "mtw-category",
+      "blocks": {
+        "c1": { "type": "cat", "settings": { "collection": "sensory-discovery", "title": "Sensory & discovery", "caption": "Loose parts, sorting trays, felt", "link": "" } },
+        "c2": { "type": "cat", "settings": { "collection": "wooden-animals", "title": "Wooden animals", "caption": "Bumbu, hand-carved in Romania", "link": "" } },
+        "c3": { "type": "cat", "settings": { "collection": "kitchen-play", "title": "Kitchen play", "caption": "Felt food, wooden produce", "link": "" } },
+        "c4": { "type": "cat", "settings": { "collection": "felt-play-mats-and-playscapes", "title": "Felt mats & playscapes", "caption": "Papoose, Gus + Mabel, Tara Treasures", "link": "" } },
+        "c5": { "type": "cat", "settings": { "collection": "ride-on-toys-and-accessories", "title": "Ride-ons", "caption": "Baghera, Plan Toys", "link": "" } },
+        "c6": { "type": "cat", "settings": { "collection": "woodland-homes-and-fairy-houses", "title": "Woodland homes & fairy houses", "caption": "Felt, wool, hand-stitched", "link": "" } },
+        "c7": { "type": "cat", "settings": { "collection": "natural-baby-toys", "title": "Nature play", "caption": "Botanicals, stones, wood", "link": "" } },
+        "c8": { "type": "cat", "settings": { "collection": "nursery-and-playroom", "title": "Nursery & playroom", "caption": "Cribside, first toys", "link": "" } },
+        "c9": { "type": "cat", "settings": { "collection": "bumbu-toys", "title": "Build & construct", "caption": "Bauspiel, blocks, marble runs", "link": "" } }
+      },
+      "block_order": ["c1", "c2", "c3", "c4", "c5", "c6", "c7", "c8", "c9"],
+      "settings": { "eyebrow": "06 / Shop by category", "heading": "The shelves, sorted by hand.", "lead": "Nine collections, curated against a single criterion: a toy is worth keeping if it scales across childhood and across a sibling." }
+    },
+    "mtw_brands": {
+      "type": "mtw-brands",
+      "blocks": {
+        "b1": { "type": "brand", "settings": { "collection": "baghera", "label": "", "link": "" } },
+        "b2": { "type": "brand", "settings": { "collection": "bumbu-toys", "label": "", "link": "" } },
+        "b3": { "type": "brand", "settings": { "collection": "drewart", "label": "", "link": "" } },
+        "b4": { "type": "brand", "settings": { "collection": "fagus", "label": "", "link": "" } },
+        "b5": { "type": "brand", "settings": { "collection": "grapat", "label": "", "link": "" } },
+        "b6": { "type": "brand", "settings": { "collection": "mon-ami", "label": "", "link": "" } },
+        "b7": { "type": "brand", "settings": { "collection": "plan-toys", "label": "", "link": "" } },
+        "b8": { "type": "brand", "settings": { "collection": "wild-mountain-child", "label": "", "link": "" } }
+      },
+      "block_order": ["b1", "b2", "b3", "b4", "b5", "b6", "b7", "b8"],
+      "settings": { "eyebrow": "07 / Favorite brands", "heading": "The makers <em>we keep coming back to</em>.", "lead": "Heirloom workshops from Europe, family studios from Australia and the U.S., and small makers we found ourselves. Every brand vetted for safety, materials, and a finish that survives a sibling.", "button_text": "Browse all brands", "button_link": "/collections" }
+    },
+    "mtw_maker": {
+      "type": "mtw-maker-spotlight",
+      "blocks": {
+        "s1": { "type": "stat", "settings": { "num": "Non-toxic", "label": "Hand-painted stains" } },
+        "s2": { "type": "stat", "settings": { "num": "FSC-certified", "label": "European forests" } },
+        "s3": { "type": "stat", "settings": { "num": "Maple", "label": "+ basswood, beech, oak" } },
+        "s4": { "type": "stat", "settings": { "num": "Beeswax", "label": "+ organic oil finish" } }
+      },
+      "block_order": ["s1", "s2", "s3", "s4"],
+      "settings": {
+        "label": "Featured brand",
+        "heading": "Hand-carved in Romania, by the makers at <em>Bumbu Toys</em>.",
+        "body": "<p>Each piece in the Bumbu line is shaped from maple and basswood, with beech and oak for heavier landscape elements. All timber is FSC-certified, harvested from responsibly managed European forests.</p><p>Pieces are hand-painted in small batches with water-based, non-toxic stains, then finished with organic oils and beeswax. Safe for the toddler who mouths the horse, durable for the older sibling who builds it into a story.</p>",
+        "quote": "Hand-carved wood, painted in small batches. A line that scales across childhood, and back onto the shelf each season.",
+        "video": "",
+        "video_url": "",
+        "poster": ""
+      }
+    },
     "hero": {
       "type": "slideshow",
       "blocks": {
@@ -288,6 +350,6 @@
       "settings": {"full_width": false, "space_around": true}
     }
   },
-  "order": ["mtw_hero", "mtw_educator", "mtw_trust", "mtw_rail_new", "mtw_rail_best", "mtw_rail_gifts", "mtw_rail_heirloom", "hero", "trust_strip", "customer_favorites", "favorite_brands", "promo", "new_arrivals", "popular_categories", "story", "bumbu_spotlight", "reviews", "map", "1778483303cd9eb1a3"]
+  "order": ["mtw_hero", "mtw_educator", "mtw_trust", "mtw_rail_new", "mtw_rail_best", "mtw_rail_gifts", "mtw_rail_heirloom", "mtw_age", "mtw_category", "mtw_brands", "mtw_maker", "hero", "trust_strip", "customer_favorites", "favorite_brands", "promo", "new_arrivals", "popular_categories", "story", "bumbu_spotlight", "reviews", "map", "1778483303cd9eb1a3"]
 }
 

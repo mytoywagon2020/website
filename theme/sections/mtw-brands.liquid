@@ -1,0 +1,90 @@
+{%- comment -%} MTW Favorite Brands — collection tiles with label pill. {%- endcomment -%}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+{%- style -%}
+  #shopify-section-{{ section.id }} { background:#F5F0E5; }
+  .mtw-brands {
+    --cream:#F5F0E5; --warm-white:#FFFCF7; --ink:#2C2C2A; --stone:#5F5E5A; --card-bg:#EDE3CD;
+    --rule-strong:rgba(44,44,42,0.22);
+    max-width:1440px; margin:0 auto; padding:80px 40px; box-sizing:border-box;
+    font-family:'Mulish',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; color:var(--ink);
+  }
+  .mtw-brands *, .mtw-brands *::before, .mtw-brands *::after { box-sizing:border-box; }
+  .mtw-brands__head { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:48px; gap:40px; }
+  .mtw-brands__num { font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-size:16px; color:var(--stone); margin:0 0 12px; }
+  .mtw-brands__title { font-family:'Cormorant Garamond',Georgia,serif; font-size:56px; font-weight:500; line-height:1; margin:0; letter-spacing:-0.005em; }
+  .mtw-brands__title em { font-style:italic; }
+  .mtw-brands__lead { font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; color:var(--stone); font-size:18px; max-width:360px; line-height:1.45; margin:0; }
+  .mtw-brands__grid { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+  .mtw-brands__tile { position:relative; aspect-ratio:1 / 1; background:var(--card-bg); border-radius:2px; overflow:hidden; display:flex; }
+  .mtw-brands__tile img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .mtw-brands__label { position:absolute; left:50%; bottom:18px; transform:translateX(-50%); background:var(--warm-white); padding:9px 18px; border-radius:1px; font-size:11.5px; letter-spacing:0.22em; text-transform:uppercase; font-weight:500; color:var(--ink); white-space:nowrap; transition:padding 220ms ease, bottom 220ms ease; box-shadow:0 1px 2px rgba(44,44,42,0.06); }
+  .mtw-brands__tile:hover .mtw-brands__label { padding:11px 24px; bottom:22px; }
+  .mtw-brands__foot { margin-top:36px; display:flex; justify-content:center; }
+  .mtw-brands__btn { display:inline-flex; align-items:center; gap:10px; padding:14px 24px; font-size:13.5px; font-weight:500; letter-spacing:0.04em; border-radius:2px; border:0.5px solid var(--rule-strong); color:var(--ink); text-decoration:none; transition:all 160ms ease; }
+  .mtw-brands__btn:hover { border-color:var(--ink); }
+  .mtw-brands__arrow { width:14px; height:8px; position:relative; display:inline-block; }
+  .mtw-brands__arrow::before, .mtw-brands__arrow::after { content:""; position:absolute; background:currentColor; }
+  .mtw-brands__arrow::before { left:0; top:50%; width:100%; height:1px; transform:translateY(-50%); }
+  .mtw-brands__arrow::after { right:0; top:50%; width:6px; height:6px; border-top:1px solid currentColor; border-right:1px solid currentColor; background:none; transform:translateY(-50%) rotate(45deg); }
+  @media (max-width:900px) { .mtw-brands__grid { grid-template-columns:repeat(2,1fr); } .mtw-brands__head { flex-direction:column; align-items:flex-start; gap:14px; } .mtw-brands { padding:48px 24px; } .mtw-brands__title { font-size:42px; } }
+{%- endstyle -%}
+<div class="mtw-brands">
+  <div class="mtw-brands__head">
+    <div>
+      {%- if section.settings.eyebrow != blank -%}<p class="mtw-brands__num">{{ section.settings.eyebrow }}</p>{%- endif -%}
+      {%- if section.settings.heading != blank -%}<h2 class="mtw-brands__title">{{ section.settings.heading }}</h2>{%- endif -%}
+    </div>
+    {%- if section.settings.lead != blank -%}<p class="mtw-brands__lead">{{ section.settings.lead }}</p>{%- endif -%}
+  </div>
+  <div class="mtw-brands__grid">
+    {%- for block in section.blocks -%}
+      {%- assign c = block.settings.collection -%}
+      <a class="mtw-brands__tile" href="{% if block.settings.link != blank %}{{ block.settings.link }}{% elsif c != blank %}{{ c.url }}{% else %}#{% endif %}" {{ block.shopify_attributes }}>
+        {%- if block.settings.image != blank -%}
+          {{ block.settings.image | image_url: width: 700 | image_tag: loading: 'lazy', alt: block.settings.label, widths: '350, 520, 700' }}
+        {%- elsif c != blank and c.featured_image -%}
+          {{ c.featured_image | image_url: width: 700 | image_tag: loading: 'lazy', alt: c.title, widths: '350, 520, 700' }}
+        {%- elsif c != blank and c.products.first.featured_image -%}
+          {{ c.products.first.featured_image | image_url: width: 700 | image_tag: loading: 'lazy', alt: c.title, widths: '350, 520, 700' }}
+        {%- endif -%}
+        <span class="mtw-brands__label">{% if block.settings.label != blank %}{{ block.settings.label }}{% elsif c != blank %}{{ c.title }}{% endif %}</span>
+      </a>
+    {%- endfor -%}
+  </div>
+  {%- if section.settings.button_text != blank -%}
+    <div class="mtw-brands__foot">
+      <a class="mtw-brands__btn" href="{{ section.settings.button_link | default: '/collections' }}">{{ section.settings.button_text }} <span class="mtw-brands__arrow"></span></a>
+    </div>
+  {%- endif -%}
+</div>
+{% schema %}
+{
+  "name": "MTW Favorite Brands",
+  "tag": "section",
+  "class": "mtw-brands-section",
+  "max_blocks": 12,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "07 / Favorite brands" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "The makers <em>we keep coming back to</em>." },
+    { "type": "text", "id": "lead", "label": "Lead" },
+    { "type": "text", "id": "button_text", "label": "Button text", "default": "Browse all brands" },
+    { "type": "url", "id": "button_link", "label": "Button link" }
+  ],
+  "blocks": [
+    { "type": "brand", "name": "Brand", "settings": [
+      { "type": "collection", "id": "collection", "label": "Collection" },
+      { "type": "text", "id": "label", "label": "Label override (optional)" },
+      { "type": "image_picker", "id": "image", "label": "Image override (optional)" },
+      { "type": "url", "id": "link", "label": "Link override (optional)" }
+    ] }
+  ],
+  "presets": [
+    { "name": "MTW Favorite Brands", "blocks": [
+      { "type": "brand" }, { "type": "brand" }, { "type": "brand" }, { "type": "brand" },
+      { "type": "brand" }, { "type": "brand" }, { "type": "brand" }, { "type": "brand" }
+    ] }
+  ]
+}
+{% endschema %}

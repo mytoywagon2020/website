@@ -1,0 +1,85 @@
+{%- comment -%} MTW Shop by Category — collection cards, image from the collection. {%- endcomment -%}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+{%- style -%}
+  #shopify-section-{{ section.id }} { background:#F5F0E5; }
+  .mtw-cat {
+    --cream:#F5F0E5; --ink:#2C2C2A; --stone:#5F5E5A; --card-bg:#EDE3CD; --rule:rgba(44,44,42,0.12);
+    max-width:1440px; margin:0 auto; padding:80px 40px; box-sizing:border-box;
+    font-family:'Mulish',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; color:var(--ink);
+  }
+  .mtw-cat *, .mtw-cat *::before, .mtw-cat *::after { box-sizing:border-box; }
+  .mtw-cat__head { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:48px; gap:40px; }
+  .mtw-cat__num { font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-size:16px; color:var(--stone); margin:0 0 12px; }
+  .mtw-cat__title { font-family:'Cormorant Garamond',Georgia,serif; font-size:56px; font-weight:500; line-height:1; margin:0; letter-spacing:-0.005em; }
+  .mtw-cat__lead { font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; color:var(--stone); font-size:18px; max-width:340px; line-height:1.45; margin:0; }
+  .mtw-cat__grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  .mtw-cat__card { display:flex; flex-direction:column; cursor:pointer; transition:transform 220ms ease; text-decoration:none; color:inherit; }
+  .mtw-cat__card:hover { transform:translateY(-3px); }
+  .mtw-cat__media { width:100%; aspect-ratio:1 / 1; background:var(--card-bg); border-radius:2px; overflow:hidden; margin:0 0 18px; position:relative; }
+  .mtw-cat__media img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .mtw-cat__name { font-family:'Cormorant Garamond',Georgia,serif; font-size:23px; font-weight:500; line-height:1.15; margin:0 0 4px; letter-spacing:-0.005em; }
+  .mtw-cat__count { font-size:12.5px; letter-spacing:0.04em; color:var(--stone); margin:0; }
+  @media (max-width:900px) { .mtw-cat__grid { grid-template-columns:repeat(2,1fr); } .mtw-cat__head { flex-direction:column; align-items:flex-start; gap:14px; } .mtw-cat { padding:48px 24px; } .mtw-cat__title { font-size:42px; } }
+  @media (max-width:520px) { .mtw-cat__grid { grid-template-columns:1fr 1fr; gap:14px; } }
+{%- endstyle -%}
+<div class="mtw-cat">
+  <div class="mtw-cat__head">
+    <div>
+      {%- if section.settings.eyebrow != blank -%}<p class="mtw-cat__num">{{ section.settings.eyebrow }}</p>{%- endif -%}
+      {%- if section.settings.heading != blank -%}<h2 class="mtw-cat__title">{{ section.settings.heading }}</h2>{%- endif -%}
+    </div>
+    {%- if section.settings.lead != blank -%}<p class="mtw-cat__lead">{{ section.settings.lead }}</p>{%- endif -%}
+  </div>
+  <div class="mtw-cat__grid">
+    {%- for block in section.blocks -%}
+      {%- assign c = block.settings.collection -%}
+      <a class="mtw-cat__card" href="{% if block.settings.link != blank %}{{ block.settings.link }}{% elsif c != blank %}{{ c.url }}{% else %}#{% endif %}" {{ block.shopify_attributes }}>
+        <div class="mtw-cat__media">
+          {%- if block.settings.image != blank -%}
+            {{ block.settings.image | image_url: width: 700 | image_tag: loading: 'lazy', alt: block.settings.title, widths: '350, 520, 700' }}
+          {%- elsif c != blank and c.featured_image -%}
+            {{ c.featured_image | image_url: width: 700 | image_tag: loading: 'lazy', alt: c.title, widths: '350, 520, 700' }}
+          {%- elsif c != blank and c.products.first.featured_image -%}
+            {{ c.products.first.featured_image | image_url: width: 700 | image_tag: loading: 'lazy', alt: c.title, widths: '350, 520, 700' }}
+          {%- endif -%}
+        </div>
+        <h3 class="mtw-cat__name">{% if block.settings.title != blank %}{{ block.settings.title }}{% elsif c != blank %}{{ c.title }}{% endif %}</h3>
+        {%- if block.settings.caption != blank -%}<p class="mtw-cat__count">{{ block.settings.caption }}</p>{%- endif -%}
+      </a>
+    {%- endfor -%}
+  </div>
+</div>
+{% schema %}
+{
+  "name": "MTW Shop by Category",
+  "tag": "section",
+  "class": "mtw-cat-section",
+  "max_blocks": 12,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "06 / Shop by category" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "The shelves, sorted by hand." },
+    { "type": "text", "id": "lead", "label": "Lead" }
+  ],
+  "blocks": [
+    { "type": "cat", "name": "Category", "settings": [
+      { "type": "collection", "id": "collection", "label": "Collection" },
+      { "type": "text", "id": "title", "label": "Title override (optional)" },
+      { "type": "text", "id": "caption", "label": "Caption" },
+      { "type": "image_picker", "id": "image", "label": "Image override (optional)" },
+      { "type": "url", "id": "link", "label": "Link override (optional)" }
+    ] }
+  ],
+  "presets": [
+    { "name": "MTW Shop by Category", "blocks": [
+      { "type": "cat", "settings": { "caption": "Loose parts, sorting trays, felt" } },
+      { "type": "cat", "settings": { "caption": "Bumbu, hand-carved in Romania" } },
+      { "type": "cat", "settings": { "caption": "Felt food, wooden produce" } },
+      { "type": "cat", "settings": { "caption": "Hand-felted, curated worldwide" } },
+      { "type": "cat", "settings": { "caption": "Baghera, Plan Toys" } },
+      { "type": "cat", "settings": { "caption": "Felt, wool, hand-stitched" } }
+    ] }
+  ]
+}
+{% endschema %}
