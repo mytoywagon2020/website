@@ -96,3 +96,29 @@ efaa539 Add educator-portal public marketing pages (schools, procurement, vendor
 3. Owner: disable Judge.me floating tab in the app/app-embeds.
 4. Owner: review + publish the 3 educator drafts; upload real PDFs for placeholder document links.
 5. Re-share the "three icons" with intended placement.
+
+---
+
+## 12. Session continuation log (2026-05-16, later)
+
+**⚠️ Theme state is volatile — always re-check `themes{ role }` before any push.** It flipped MAIN↔UNPUBLISHED many times. As of this log: **LIVE/MAIN = old "Current Shop " (`132143448234`)**; **9.0 (`145720180906`) = UNPUBLISHED** and API-writable again. The §4 header line above is stale — 9.0 is NOT currently live.
+
+### Production incident — store-wide "out of stock" (RESOLVED)
+- Symptom: entire live storefront showed every product (incl. pre-orders) sold out, on both themes; Admin showed healthy inventory.
+- Root cause: **primary market "International" had its catalog in `DRAFT`** (`gid://shopify/MarketCatalog/1586757802`).
+- Fix applied: `catalogUpdate` → status `ACTIVE`. Price list is base USD at 0% adjustment (no price change). Reversible. Confirmed resolved by owner. Not theme/code related.
+- Follow-up (owner, optional): consider making "United States" the primary market (can't be done via API; admin only).
+
+### Theme/store changes shipped (mirrored to git, pushed to 9.0 draft unless noted)
+- **mtw-collection** section + `templates/collection.json` — story-anchored collection template (hero/stats/sticky filters/grid/interlude/maker/related; native filters/sort/paginate). Fixes: removed invalid `pluralize`; fixed `image_tag` alt; `new_days` range; **sold-out now computed from variant inventory** (was false-flagging via `product.available`); **low-stock badge removed**; **Brand/Category/Product type filter groups hidden**.
+- Caveat: collections with a **custom template suffix** (e.g. "Gifts under $50" → `collection-landing`) do NOT use the new default template — owner must switch them to **Default** in admin, or roll mtw-collection into those suffix templates.
+- **header.liquid** — desktop nav now **menu-driven** from the section's `main_menu_link_list` (default `main-menu`); search-bar text darkened to ink for contrast.
+- **mtw-product-rail** — cards now render **vendor → title → ★ → price** (category line removed; price kept).
+- **Shop by Age page** — `/pages/shop-by-age` (`gid://shopify/Page/115585122474`, published), tiled grid with photos → the 5 age collections (`0-to-12-months`, `1-to-3-years`, `3-to-5-years`, `5-to-8-years-1`, `5-to-8-years`). `main-menu` "Shop by Age" item (`453152899242`) repointed to it via `menuUpdate` (full tree + dropdown children preserved). Admin-native → works on both themes.
+
+### Still open
+- Footer/homepage link fixes (footer `e-gift-card`→`my-toy-wagon-digital-gift-card`, hero "Find a gift under $50" CTA → `/collections/gifts-under-50`, `mtw_age` a2 "Toddler" → `1-to-3-years`, `mtw_gift` pills). Header link fixes are now moot (menu-driven).
+- Age smart-collection population (owner owns the age-tag/metafield cleanup) — the 4/5 age collections are still empty.
+- Optional: rebuild Shop by Age as an editable theme section; per-collection story content via metafields for mtw-collection.
+- Judge.me floating tab (owner, app settings).
+- When 9.0 is to go live, owner publishes it; if it's MAIN, API theme writes are blocked (use admin code editor or duplicate→publish).
