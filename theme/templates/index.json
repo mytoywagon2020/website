@@ -525,8 +525,8 @@
         "title": "Chosen, written, and on its way <em>in seconds</em>.",
         "text": "<p>Tell us at checkout it's a gift and we'll leave the price off the packing slip. For gifts you need now, our digital gift cards include a personal note from you, delivered to their inbox in seconds.</p>",
         "button_text": "Send a digital gift card",
-        "button_link": "/products/gift-card",
-        "image": "",
+        "button_link": "/products/my-toy-wagon-e-gift-card",
+        "image": "shopify://shop_images/MTWE-GiftCard.png",
         "note": "Delivered by email, redeemable any time."
       }
     },
