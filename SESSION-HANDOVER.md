@@ -1,7 +1,7 @@
 # Session Handover — Educator Portal + Theme Work
 
 Branch: `claude/fix-github-access-pFh80` (all work mirrored to GitHub).
-Theme: **"Current Shop with Updated Impulse (9.0)"** — `gid://shopify/OnlineStoreTheme/145720180906`, **UNPUBLISHED** (safe to edit; live "Current Shop" MAIN theme untouched).
+Theme: **"Current Shop with Updated Impulse (9.0)"** — `gid://shopify/OnlineStoreTheme/145720180906`, **NOW `role: MAIN` (LIVE/published)** as of 2026-05-16. It was treated as unpublished earlier this session but has since been published. **Shopify API blocks all theme-file writes to the live theme** — theme changes can no longer be pushed via API; they must be mirrored in git and applied by the merchant (admin code editor) or via a duplicate→edit→merchant-publish flow. Earlier "pushed to theme" claims below predate this and may already be live.
 Store: My Toy Wagon (mytoywagon.com), plan Shopify.
 
 This documents everything done/pending in this session so work can continue. It does **not** replace the original `HANDOVER.md` (designer → build handoff); this is the implementation-status companion.
