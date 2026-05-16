@@ -84,11 +84,9 @@
       {%- for product in coll.products limit: section.settings.products_to_show -%}
         <a class="mtw-rail__card" href="{{ product.url }}">
           <div class="mtw-rail__media">
-            {%- if product.available -%}
-              <span class="mtw-rail__tag mtw-rail__tag--forest">In stock</span>
-            {%- else -%}
+            {%- unless product.available -%}
               <span class="mtw-rail__tag mtw-rail__tag--amber">Sold out</span>
-            {%- endif -%}
+            {%- endunless -%}
             {%- assign has_second = false -%}
             {%- if product.images.size > 1 -%}{%- assign has_second = true -%}{%- endif -%}
             {%- if product.featured_image -%}
