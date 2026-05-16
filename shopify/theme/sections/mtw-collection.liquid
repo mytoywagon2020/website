@@ -360,10 +360,20 @@
               assign inv = inv | plus: v.inventory_quantity
             endif
           endfor
+          assign sells_when_oos = false
+          for v in product.variants
+            if v.inventory_policy == 'continue'
+              assign sells_when_oos = true
+            endif
+          endfor
+          assign is_sold = false
+          if tracked and sells_when_oos == false and inv <= 0
+            assign is_sold = true
+          endif
         -%}
         <a href="{{ product.url }}" class="mtwc-card">
           <div class="mtwc-card__img">
-            {%- if product.available == false -%}
+            {%- if is_sold -%}
               <span class="mtwc-badge mtwc-badge--sold">Sold out</span>
             {%- elsif is_preorder -%}
               <span class="mtwc-badge mtwc-badge--preorder">Pre-order</span>
@@ -388,7 +398,7 @@
             {%- if product.images[1] != blank -%}
               <img class="mtwc-sec" src="{{ product.images[1] | image_url: width: 600 }}" alt="" loading="lazy" width="600" height="750">
             {%- endif -%}
-            {%- if product.available == false -%}
+            {%- if is_sold -%}
               <span class="mtwc-qa">Notify me</span>
             {%- elsif is_preorder -%}
               <span class="mtwc-qa">Pre-order</span>
