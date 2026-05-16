@@ -14,7 +14,7 @@
     "mtw_footer": {
       "type": "mtw-footer",
       "settings": {
-        "show_badge": false,
+        "show_badge": true,
         "badge_sub": "Awarded by Google · 2026"
       }
     }
