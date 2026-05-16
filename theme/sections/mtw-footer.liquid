@@ -1,0 +1,253 @@
+{%- comment -%}
+  MTW Footer — namespaced editorial footer (.mtw-foot) so it cannot
+  collide with Impulse's .site-footer. Brand block uses the wagon mark
+  via CSS mask (inherits ink). High-value copy is editable in the
+  theme editor; link columns are fixed to the design's IA.
+  Mark asset: mytoywagon-logo-mark.png in Shopify Files (2541x1105).
+{%- endcomment -%}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+{%- liquid
+  assign mark_url = 'mytoywagon-logo-mark.png' | file_url
+  assign phone_href = section.settings.phone | remove: '.' | remove: ' ' | remove: '(' | remove: ')' | remove: '-'
+-%}
+
+{%- style -%}
+  #shopify-section-{{ section.id }} { background: #F5F0E5; }
+  .mtw-foot {
+    --cream:#F5F0E5; --warm-white:#FFFCF7; --ink:#2C2C2A; --forest:#3B6D11;
+    --stone:#5F5E5A; --rule:rgba(44,44,42,0.12); --rule-strong:rgba(44,44,42,0.22);
+    border-top:0.5px solid var(--rule);
+    font-family:'Mulish',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; color:var(--ink);
+  }
+  .mtw-foot *, .mtw-foot *::before, .mtw-foot *::after { box-sizing:border-box; }
+  .mtw-foot a { text-decoration:none; color:inherit; }
+  .mtw-foot__inner { max-width:1440px; margin:0 auto; padding:88px 40px 32px; }
+  .mtw-foot__top {
+    display:grid; grid-template-columns:1.6fr 1fr 1fr 1fr 1fr; gap:64px;
+    margin-bottom:64px; padding-bottom:56px; border-bottom:0.5px solid var(--rule);
+  }
+  .mtw-foot__logo {
+    display:block; width:210px; height:91px; margin-bottom:4px; background-color:var(--ink);
+    -webkit-mask:url('{{ mark_url }}') left center / contain no-repeat;
+            mask:url('{{ mark_url }}') left center / contain no-repeat;
+  }
+  .mtw-foot__tag {
+    font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; color:var(--stone);
+    font-size:17px; margin:6px 0 24px; max-width:320px; line-height:1.5;
+  }
+  .mtw-foot__loc { font-size:13.5px; color:var(--ink); line-height:1.8; margin:0 0 24px; }
+  .mtw-foot__loc strong { font-weight:500; }
+  .mtw-foot__social { display:flex; gap:14px; margin-top:4px; }
+  .mtw-foot__social a {
+    display:inline-flex; align-items:center; justify-content:center; width:38px; height:38px;
+    border:0.5px solid var(--rule-strong); border-radius:50%; color:var(--ink);
+    transition:background 180ms ease, color 180ms ease, border-color 180ms ease;
+  }
+  .mtw-foot__social a:hover { background:var(--ink); color:var(--cream); border-color:var(--ink); }
+  .mtw-foot__social svg { width:16px; height:16px; stroke:currentColor; stroke-width:1.4; fill:none; }
+  .mtw-foot__col h4 {
+    font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-size:18px;
+    font-weight:500; margin:4px 0 22px; color:var(--ink); white-space:nowrap;
+  }
+  .mtw-foot__col ul { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:13px; }
+  .mtw-foot__col li { font-size:13.5px; color:var(--ink); }
+  .mtw-foot__col a:hover { color:var(--forest); }
+  .mtw-foot__contact { font-size:13.5px; line-height:1.85; color:var(--ink); }
+  .mtw-foot__contact a { display:block; color:var(--ink); font-weight:500; }
+  .mtw-foot__contact a:hover { color:var(--forest); }
+  .mtw-foot__contact .stone { display:block; color:var(--stone); }
+  .mtw-foot__contact .stone-block { margin-top:14px; }
+  .mtw-foot__mid {
+    display:flex; justify-content:space-between; align-items:center; gap:32px;
+    padding-bottom:28px; margin-bottom:28px; border-bottom:0.5px solid var(--rule); flex-wrap:wrap;
+  }
+  .mtw-foot__pay-label {
+    font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-size:15px;
+    color:var(--stone); white-space:nowrap; flex-shrink:0;
+  }
+  .mtw-foot__pay { display:flex; flex-wrap:wrap; align-items:center; gap:0; }
+  .mtw-foot__chip {
+    display:inline-block; padding:0 14px 0 0; margin-right:14px; border-right:0.5px solid var(--rule);
+    font-size:11px; letter-spacing:0.1em; text-transform:uppercase; font-weight:500;
+    color:var(--stone); white-space:nowrap; line-height:1.2;
+  }
+  .mtw-foot__chip:last-child { border-right:none; margin-right:0; padding-right:0; }
+  .mtw-foot__badge {
+    display:flex; justify-content:center; align-items:center; gap:14px;
+    padding:24px 0; border-top:0.5px solid var(--rule); margin-top:24px;
+  }
+  .mtw-foot__badge-icon {
+    display:inline-flex; align-items:center; justify-content:center; width:36px; height:36px;
+    border-radius:50%; background:var(--warm-white); border:0.5px solid var(--rule-strong);
+  }
+  .mtw-foot__badge-icon svg { width:20px; height:20px; stroke:var(--ink); fill:none; stroke-width:1.4; }
+  .mtw-foot__badge-text { font-size:11.5px; letter-spacing:0.14em; color:var(--stone); font-weight:500; text-transform:uppercase; }
+  .mtw-foot__badge-text strong { display:block; color:var(--ink); font-weight:600; letter-spacing:0.16em; margin-bottom:2px; }
+  .mtw-foot__badge-text span { text-transform:none; font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-size:13px; letter-spacing:0; color:var(--stone); }
+  .mtw-foot__bottom {
+    display:flex; justify-content:space-between; align-items:center; gap:24px;
+    font-size:12px; color:var(--stone); letter-spacing:0.04em; flex-wrap:wrap;
+  }
+  .mtw-foot__bottom-copy { font-size:12px; }
+  .mtw-foot__bottom-copy em {
+    font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-size:14px;
+    color:var(--ink); letter-spacing:0; margin-right:10px;
+  }
+  .mtw-foot__bottom-links { display:flex; gap:22px; align-items:center; }
+  .mtw-foot__bottom-links a:hover { color:var(--ink); }
+  @media (max-width:1100px) {
+    .mtw-foot__top { grid-template-columns:1fr 1fr 1fr; gap:40px; }
+    .mtw-foot__brand { grid-column:1 / -1; }
+  }
+  @media (max-width:700px) {
+    .mtw-foot__inner { padding:64px 24px 24px; }
+    .mtw-foot__top { grid-template-columns:1fr 1fr; gap:36px; padding-bottom:40px; margin-bottom:40px; }
+    .mtw-foot__logo { width:150px; height:65px; }
+    .mtw-foot__mid { flex-direction:column; align-items:flex-start; gap:14px; }
+    .mtw-foot__bottom { flex-direction:column; align-items:flex-start; gap:14px; }
+  }
+{%- endstyle -%}
+
+<div class="mtw-foot" data-section-id="{{ section.id }}" data-section-type="footer-section">
+  <div class="mtw-foot__inner">
+
+    <div class="mtw-foot__top">
+      <div class="mtw-foot__brand">
+        <a href="{{ routes.root_url }}" aria-label="{{ shop.name | escape }}"><span class="mtw-foot__logo" aria-hidden="true"></span></a>
+        {%- if section.settings.tagline != blank -%}<p class="mtw-foot__tag">{{ section.settings.tagline }}</p>{%- endif -%}
+        <p class="mtw-foot__loc">
+          {%- if section.settings.location != blank -%}<strong>{{ section.settings.location }}</strong><br>{%- endif -%}
+          {{ section.settings.hours }}
+        </p>
+        <div class="mtw-foot__social">
+          {%- if section.settings.instagram != blank -%}
+          <a href="{{ section.settings.instagram }}" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg></a>
+          {%- endif -%}
+          {%- if section.settings.pinterest != blank -%}
+          <a href="{{ section.settings.pinterest }}" aria-label="Pinterest"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M11 8c-2 .5-3.5 2.5-3 4.5.3 1.3 1.5 1.6 1.5.5 0-1 .5-2 1.5-2.5 1.5-.8 3.5 0 4 1.5.5 2-.5 4-2.5 4-1 0-1.5-.5-1.3-1.5L12 11"/><path d="M11 13.5 9.5 19"/></svg></a>
+          {%- endif -%}
+          {%- if section.settings.youtube != blank -%}
+          <a href="{{ section.settings.youtube }}" aria-label="YouTube"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="3"/><path d="M10 9.5v5l4.5-2.5z" fill="currentColor"/></svg></a>
+          {%- endif -%}
+          {%- if section.settings.tiktok != blank -%}
+          <a href="{{ section.settings.tiktok }}" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M14 4v10.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 4c0 2 1.5 4 4 4"/></svg></a>
+          {%- endif -%}
+        </div>
+      </div>
+
+      <div class="mtw-foot__col">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="/collections/all">All toys</a></li>
+          <li><a href="/collections/by-age">Shop by age</a></li>
+          <li><a href="/collections">Shop by brand</a></li>
+          <li><a href="/collections/whats-new">New arrivals</a></li>
+          <li><a href="/products/gift-card">Gift cards</a></li>
+        </ul>
+      </div>
+
+      <div class="mtw-foot__col">
+        <h4>Customer care</h4>
+        <ul>
+          <li><a href="/pages/shipping">Shipping</a></li>
+          <li><a href="/pages/returns">Returns</a></li>
+          <li><a href="/pages/rewards">Rewards</a></li>
+          <li><a href="/pages/wishlist">Wishlist</a></li>
+          <li><a href="/pages/faq">FAQs</a></li>
+        </ul>
+      </div>
+
+      <div class="mtw-foot__col">
+        <h4>About us</h4>
+        <ul>
+          <li><a href="/pages/our-story">Our story</a></li>
+          <li><a href="/blogs/news">The blog</a></li>
+          <li><a href="/pages/reviews">Customer reviews</a></li>
+          <li><a href="/pages/educator-register">Educator program</a></li>
+          <li><a href="/pages/collaboration">Collaboration</a></li>
+        </ul>
+      </div>
+
+      <div class="mtw-foot__col">
+        <h4>Contact</h4>
+        <div class="mtw-foot__contact">
+          {%- if section.settings.email != blank -%}<a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a>{%- endif -%}
+          {%- if section.settings.phone != blank -%}<a href="tel:{{ phone_href }}">{{ section.settings.phone }}</a>{%- endif -%}
+          {%- if section.settings.hours != blank -%}<span class="stone stone-block">{{ section.settings.hours }}</span>{%- endif -%}
+        </div>
+      </div>
+    </div>
+
+    <div class="mtw-foot__mid">
+      <span class="mtw-foot__pay-label">We accept</span>
+      <div class="mtw-foot__pay">
+        <span class="mtw-foot__chip">Visa</span>
+        <span class="mtw-foot__chip">Mastercard</span>
+        <span class="mtw-foot__chip">Amex</span>
+        <span class="mtw-foot__chip">Discover</span>
+        <span class="mtw-foot__chip">Diners</span>
+        <span class="mtw-foot__chip">Apple&nbsp;Pay</span>
+        <span class="mtw-foot__chip">Google&nbsp;Pay</span>
+        <span class="mtw-foot__chip">PayPal</span>
+        <span class="mtw-foot__chip">Shop&nbsp;Pay</span>
+      </div>
+    </div>
+
+    {%- if section.settings.show_badge -%}
+    <div class="mtw-foot__badge">
+      <span class="mtw-foot__badge-icon">
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.5 6 6.5.5-5 4.5 1.5 6.5L12 16l-5.5 3.5L8 13 3 8.5l6.5-.5z"/></svg>
+      </span>
+      <div class="mtw-foot__badge-text">
+        <strong>{{ section.settings.badge_title }}</strong>
+        <span>{{ section.settings.badge_sub }}</span>
+      </div>
+    </div>
+    {%- endif -%}
+
+    <div class="mtw-foot__bottom">
+      <span class="mtw-foot__bottom-copy">
+        {%- if section.settings.bottom_tagline != blank -%}<em>{{ section.settings.bottom_tagline }}</em>{%- endif -%}
+        &copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. {{ section.settings.copyright_suffix }}
+      </span>
+      <div class="mtw-foot__bottom-links">
+        <a href="/policies/privacy-policy">Privacy policy</a>
+        <a href="/policies/terms-of-service">Terms of service</a>
+        <a href="/pages/accessibility">Accessibility</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "MTW Footer",
+  "settings": [
+    { "type": "header", "content": "Brand block" },
+    { "type": "text", "id": "tagline", "label": "Tagline", "default": "Heirloom toys, curated by hand. A family-owned boutique, online since 2020." },
+    { "type": "text", "id": "location", "label": "Location line", "default": "Arcadia, California" },
+    { "type": "text", "id": "hours", "label": "Hours", "default": "Mon to Fri, 9 am to 5 pm PT" },
+    { "type": "header", "content": "Contact" },
+    { "type": "text", "id": "email", "label": "Email", "default": "contact@mytoywagon.com" },
+    { "type": "text", "id": "phone", "label": "Phone", "default": "626.841.0421" },
+    { "type": "header", "content": "Social" },
+    { "type": "url", "id": "instagram", "label": "Instagram URL" },
+    { "type": "url", "id": "pinterest", "label": "Pinterest URL" },
+    { "type": "url", "id": "youtube", "label": "YouTube URL" },
+    { "type": "url", "id": "tiktok", "label": "TikTok URL" },
+    { "type": "header", "content": "Top Quality Store badge" },
+    { "type": "checkbox", "id": "show_badge", "label": "Show Google badge", "default": false, "info": "Only enable once the award has actually been granted." },
+    { "type": "text", "id": "badge_title", "label": "Badge title", "default": "Top Quality Store" },
+    { "type": "text", "id": "badge_sub", "label": "Badge subtitle", "default": "Awarded by Google" },
+    { "type": "header", "content": "Bottom bar" },
+    { "type": "text", "id": "bottom_tagline", "label": "Bottom tagline", "default": "Heirloom toys, curated by hand." },
+    { "type": "text", "id": "copyright_suffix", "label": "Copyright suffix", "default": "All rights reserved." }
+  ],
+  "presets": [{ "name": "MTW Footer" }]
+}
+{% endschema %}
