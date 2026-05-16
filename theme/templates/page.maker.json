@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "main": {
+      "type": "mtw-maker",
+      "settings": {}
+    }
+  },
+  "order": ["main"]
+}
