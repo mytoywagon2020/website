@@ -112,9 +112,7 @@
             <div class="mtw-coll__prod">
               <a class="mtw-coll__prod-img" href="{{ product.url }}">
                 {%- if is_pre -%}<span class="mtw-coll__tag amber">Pre-order</span>
-                {%- elsif product.available == false -%}<span class="mtw-coll__tag amber">Sold out</span>
-                {%- elsif cur.inventory_management != blank and cur.inventory_policy != 'continue' and cur.inventory_quantity > 0 and cur.inventory_quantity <= section.settings.low_stock_threshold -%}<span class="mtw-coll__tag amber">Low stock · {{ cur.inventory_quantity }} left</span>
-                {%- else -%}<span class="mtw-coll__tag">In stock</span>{%- endif -%}
+                {%- elsif product.available == false -%}<span class="mtw-coll__tag amber">Sold out</span>{%- endif -%}
                 {%- if product.featured_image -%}
                   <img class="primary {% if has2 %}has2{% else %}no2{% endif %}" src="{{ product.featured_image | image_url: width: 700 }}" srcset="{{ product.featured_image | image_url: width: 400 }} 400w, {{ product.featured_image | image_url: width: 700 }} 700w" sizes="(min-width:1000px) 30vw, 45vw" alt="{{ product.featured_image.alt | default: product.title | escape }}" loading="lazy" width="700" height="875">
                 {%- endif -%}
@@ -175,8 +173,7 @@
     { "type": "image_picker", "id": "hero_image", "label": "Hero image override (else uses collection image)" },
     { "type": "text", "id": "cta_text", "label": "Secondary CTA text" },
     { "type": "url", "id": "cta_link", "label": "Secondary CTA link" },
-    { "type": "text", "id": "preorder_collection", "label": "Pre-order collection handle", "default": "pre-order" },
-    { "type": "range", "id": "low_stock_threshold", "label": "Low-stock threshold", "min": 1, "max": 10, "step": 1, "default": 3 }
+    { "type": "text", "id": "preorder_collection", "label": "Pre-order collection handle", "default": "pre-order" }
   ]
 }
 {% endschema %}

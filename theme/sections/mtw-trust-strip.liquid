@@ -65,7 +65,12 @@
       {%- if block.settings.link != blank -%}<a class="mtw-trust__card" href="{{ block.settings.link }}" {{ block.shopify_attributes }}>{%- else -%}<div class="mtw-trust__card" {{ block.shopify_attributes }}>{%- endif -%}
         <div class="mtw-trust__visual">
           {%- if block.settings.image != blank -%}
-            {{ block.settings.image | image_url: width: 320 | image_tag: loading: 'lazy', alt: block.settings.title, widths: '160, 240, 320, 440' }}
+            {%- assign img_src = block.settings.image | image_url -%}
+            {%- if img_src contains '.svg' -%}
+              <img src="{{ img_src }}" loading="lazy" alt="{{ block.settings.title | escape }}" width="320" height="280">
+            {%- else -%}
+              {{ block.settings.image | image_url: width: 320 | image_tag: loading: 'lazy', alt: block.settings.title, widths: '160, 240, 320, 440' }}
+            {%- endif -%}
           {%- endif -%}
           {%- if block.settings.badge != blank -%}<span class="mtw-trust__badge">{{ block.settings.badge }}</span>{%- endif -%}
         </div>

@@ -25,7 +25,7 @@
         "show_feature_tag": true,
         "feature_eyebrow": "Featured this week",
         "feature_name": "Amber Kaleidoscope",
-        "feature_price": "$38 · In stock",
+        "feature_price": "$38",
         "feature_link": ""
       }
     },
@@ -44,8 +44,8 @@
         "card_ship": {
           "type": "card",
           "settings": {
-            "image": "shopify://shop_images/trust-strip-shipping-wagon-mark.png",
-            "badge": "free shipping",
+            "image": "shopify://shop_images/trust-shipping-with-sign_1.png",
+            "badge": "",
             "title": "Free U.S. shipping",
             "subtitle": "On orders $150 and up, contiguous U.S.",
             "link": ""
@@ -54,7 +54,7 @@
         "card_returns": {
           "type": "card",
           "settings": {
-            "image": "shopify://shop_images/trust-strip-returns-mark.png",
+            "image": "shopify://shop_images/trust-30day-returns.svg",
             "badge": "",
             "title": "Free 30-day returns",
             "subtitle": "If the toy isn't right, send it back, with our love.",
@@ -64,7 +64,7 @@
         "card_packed": {
           "type": "card",
           "settings": {
-            "image": "shopify://shop_images/trust-strip-packed-mark.png",
+            "image": "shopify://shop_images/trust-packed-with-care.svg",
             "badge": "",
             "title": "Packed with care",
             "subtitle": "Tissue-wrapped, with a handwritten note, free.",
@@ -74,7 +74,7 @@
         "card_rewards": {
           "type": "card",
           "settings": {
-            "image": "shopify://shop_images/trust-strip-rewards-mark.png",
+            "image": "shopify://shop_images/trust-earn-rewards.svg",
             "badge": "",
             "title": "Earn Rewards",
             "subtitle": "Points on every order, redeem on the next.",

@@ -54,7 +54,6 @@
           {%- when 'pre_order' -%}<span class="mtw-pdp__badge amber">Pre-order</span>
           {%- when 'partner' -%}<span class="mtw-pdp__badge amber">Ships from partner warehouse</span>
           {%- when 'sold_out' -%}<span class="mtw-pdp__badge amber">Sold out</span>
-          {%- else -%}<span class="mtw-pdp__badge">In stock</span>
         {%- endcase -%}
         {%- if product.featured_image -%}
           <img data-mtw-main src="{{ product.featured_image | image_url: width: 1100 }}" alt="{{ product.featured_image.alt | default: product.title | escape }}" width="1100" height="1375">
@@ -122,7 +121,7 @@
       {%- elsif state == 'pre_order' -%}
         <p class="mtw-pdp__shipnote"><strong>Pre-order.</strong> {% if product.metafields.fulfillment.ship_date != blank %}Ships on or around {{ product.metafields.fulfillment.ship_date }}.{% else %}We'll email you when it ships.{% endif %} Your card is charged at checkout.</p>
       {%- else -%}
-        <p class="mtw-pdp__shipnote"><strong>In stock.</strong> Ships within 2 to 4 business days from our Los Angeles warehouse.</p>
+        <p class="mtw-pdp__shipnote"><strong>Ships within 2 to 4 business days</strong> from our Los Angeles warehouse.</p>
       {%- endif -%}
     </div>
   </section>
