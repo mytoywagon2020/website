@@ -95,10 +95,10 @@
         "eyebrow": "01 / Shop new items",
         "heading": "New and quietly loved.",
         "lead": "A few from the shop this week, including pieces from our range of felt florals.",
-        "collection": "whats-new",
+        "collection": "new-arrivals",
         "products_to_show": 4,
         "view_all_text": "See more new arrivals",
-        "view_all_link": "",
+        "view_all_link": "/collections/new-arrivals",
         "padding_top": 80,
         "padding_bottom": 80
       }
