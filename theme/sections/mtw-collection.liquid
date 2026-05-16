@@ -29,10 +29,12 @@
       </div>
     </div>
     <div class="mtw-coll__hero-img">
-      {%- if section.settings.hero_image != blank -%}
-        {{ section.settings.hero_image | image_url: width: 1100 | image_tag: loading: 'eager', alt: collection.title }}
-      {%- elsif collection.image -%}
+      {%- if collection.image -%}
         {{ collection.image | image_url: width: 1100 | image_tag: loading: 'eager', alt: collection.title }}
+      {%- elsif collection.products.first.featured_image -%}
+        {{ collection.products.first.featured_image | image_url: width: 1100 | image_tag: loading: 'eager', alt: collection.products.first.title }}
+      {%- elsif section.settings.hero_image != blank -%}
+        {{ section.settings.hero_image | image_url: width: 1100 | image_tag: loading: 'eager', alt: collection.title }}
       {%- endif -%}
     </div>
   </section>
@@ -170,7 +172,7 @@
   "name": "MTW Collection",
   "settings": [
     { "type": "text", "id": "eyebrow", "label": "Hero eyebrow", "default": "The collection" },
-    { "type": "image_picker", "id": "hero_image", "label": "Hero image override (else uses collection image)" },
+    { "type": "image_picker", "id": "hero_image", "label": "Fallback hero image (only used if a collection has no image and no products)" },
     { "type": "text", "id": "cta_text", "label": "Secondary CTA text" },
     { "type": "url", "id": "cta_link", "label": "Secondary CTA link" },
     { "type": "text", "id": "preorder_collection", "label": "Pre-order collection handle", "default": "pre-order" }
