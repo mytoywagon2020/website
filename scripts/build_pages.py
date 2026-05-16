@@ -35,15 +35,34 @@ LINK_REPLACEMENTS = {
     'href="ordering-for-schools.html"': 'href="/pages/schools"',
 }
 
-# Page-specific fixes applied after the generic passes. The procurement
-# guide is a live printable page (not yet a static PDF), so its dead
-# placeholder links resolve to that page instead.
+# Applied to every page after the generic passes.
+GLOBAL_REPLACEMENTS = {
+    "accounting@mytoywagon.com": "accounts@mytoywagon.com",
+}
+
+# Page-specific fixes applied after the generic + global passes. The
+# procurement guide is a live printable page (not yet a static PDF), so
+# its dead placeholder links resolve to that page. DUNS is removed
+# (phased out by the U.S. government). Catalog is not linked yet.
 PER_PAGE_REPLACEMENTS = {
     "schools": [
         ('<a href="#" class="btn btn-primary">\n          <svg width="16" height="16" viewBox="0 0 24 24"',
          '<a href="/pages/procurement-guide" class="btn btn-primary">\n          <svg width="16" height="16" viewBox="0 0 24 24"'),
         ('<h4>Procurement guide</h4>\n        <p>Full guide for schools, 5 pages</p>\n      </div>\n      <div class="resource-actions">\n        <a href="#" class="action-btn primary">Download PDF</a>',
          '<h4>Procurement guide</h4>\n        <p>Full guide for schools, 5 pages</p>\n      </div>\n      <div class="resource-actions">\n        <a href="/pages/procurement-guide" class="action-btn primary">View / print</a>'),
+        # Catalog has no link yet — remove the header button, the
+        # resources row, and the footer link.
+        ('      <a href="/pages/catalog" class="btn btn-ghost">Catalog</a>\n', ''),
+        ('    <div class="resource-row">\n      <div class="resource-meta">\n        <h4>Catalog (PDF)</h4>\n        <p>Spring/Summer 2026 · Print-ready for sharing with your team</p>\n      </div>\n      <div class="resource-actions">\n        <a href="/pages/catalog" class="action-btn">View online</a>\n        <a href="#" class="action-btn primary">Download PDF</a>\n      </div>\n    </div>\n', ''),
+        ('      <a href="/pages/catalog">Catalog</a>\n', ''),
+    ],
+    "procurement-guide": [
+        (" · DUNS 117 8492 30", ""),
+    ],
+    "vendor-profile": [
+        ('    <div class="info-row"><span class="key">DUNS number</span><span class="val">Available on request</span></div>\n', ''),
+        # Button label said contact@ while its link points to accounts@.
+        ('class="btn">Email contact@mytoywagon.com</a>', 'class="btn">Email accounts@mytoywagon.com</a>'),
     ],
 }
 
@@ -63,6 +82,8 @@ def transform(src_html: str, handle: str) -> str:
     for token, url in IMAGE_REPLACEMENTS.items():
         out = out.replace(token, url)
     for old, new in LINK_REPLACEMENTS.items():
+        out = out.replace(old, new)
+    for old, new in GLOBAL_REPLACEMENTS.items():
         out = out.replace(old, new)
     for old, new in PER_PAGE_REPLACEMENTS.get(handle, []):
         if old not in out:
