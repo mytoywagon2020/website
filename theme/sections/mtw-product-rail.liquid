@@ -84,9 +84,13 @@
       {%- for product in coll.products limit: section.settings.products_to_show -%}
         <a class="mtw-rail__card" href="{{ product.url }}">
           <div class="mtw-rail__media">
-            {%- unless product.available -%}
+            {%- assign mtw_is_preorder = false -%}
+            {%- for pc in product.collections -%}{%- if pc.handle == section.settings.preorder_collection -%}{%- assign mtw_is_preorder = true -%}{%- endif -%}{%- endfor -%}
+            {%- if mtw_is_preorder -%}
+              <span class="mtw-rail__tag mtw-rail__tag--amber">Pre-order</span>
+            {%- elsif product.available == false -%}
               <span class="mtw-rail__tag mtw-rail__tag--amber">Sold out</span>
-            {%- endunless -%}
+            {%- endif -%}
             {%- assign has_second = false -%}
             {%- if product.images.size > 1 -%}{%- assign has_second = true -%}{%- endif -%}
             {%- if product.featured_image -%}
@@ -104,7 +108,7 @@
           </div>
           {%- if product.vendor != blank -%}<p class="mtw-rail__maker">{{ product.vendor }}</p>{%- endif -%}
           <h3 class="mtw-rail__name">{{ product.title }}</h3>
-          <div class="mtw-rail__stars"><span class="mtw-rail__stars-g">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span>Verified reviews</span></div>
+          <div class="mtw-rail__stars"><div class="jdgm-widget jdgm-preview-badge" data-id="{{ product.id }}" data-template="index"></div></div>
           <div class="mtw-rail__meta">
             <span>{% if product.type != blank %}{{ product.type }}{% else %}{{ coll.title }}{% endif %}</span>
             <span class="mtw-rail__price">
@@ -135,6 +139,7 @@
     { "type": "text", "id": "heading", "label": "Heading", "default": "New and quietly loved." },
     { "type": "text", "id": "lead", "label": "Lead (italic side note)" },
     { "type": "collection", "id": "collection", "label": "Collection" },
+    { "type": "text", "id": "preorder_collection", "label": "Pre-order collection handle", "default": "pre-order" },
     { "type": "range", "id": "products_to_show", "label": "Products to show", "min": 2, "max": 8, "step": 1, "default": 4 },
     { "type": "text", "id": "view_all_text", "label": "View-all button text", "default": "See more" },
     { "type": "url", "id": "view_all_link", "label": "View-all link (defaults to the collection)" },
