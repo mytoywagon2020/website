@@ -29,15 +29,6 @@
         "feature_link": ""
       }
     },
-    "mtw_educator": {
-      "type": "mtw-educator-strip",
-      "settings": {
-        "eyebrow": "For educators",
-        "text": "Volume pricing, Net-30 invoicing, and one-on-one curation for schools, therapists, and homeschool families.",
-        "cta_text": "Apply for an account",
-        "cta_link": "/pages/educator-register"
-      }
-    },
     "mtw_trust": {
       "type": "mtw-trust-strip",
       "blocks": {
