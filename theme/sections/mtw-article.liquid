@@ -1,0 +1,91 @@
+{%- comment -%}
+  MTW Article — editorial blog article template. Renders the Shopify
+  article object; merchant writes body content in the blog editor and
+  it picks up the .mtw-article__body typography. Header/footer come
+  from the theme. Namespaced .mtw-article so it can't collide.
+{%- endcomment -%}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+{{ 'mtw-article.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign words = article.content | strip_html | split: ' ' | size
+  assign read_min = words | divided_by: 200 | plus: 1
+  assign cat = blog.title
+  if article.tags.size > 0
+    assign cat = article.tags.first
+  endif
+-%}
+
+<div class="mtw-article-wrap">
+  <article class="mtw-article">
+    <a href="{{ blog.url }}" class="mtw-article__back">Back to {{ blog.title }}</a>
+
+    <div class="mtw-article__meta">
+      <span class="cat">{{ cat }}</span>
+      <span class="dot"></span>
+      <span>{{ article.published_at | date: '%B %-d, %Y' }}</span>
+      <span class="dot"></span>
+      <span>{{ read_min }} min read</span>
+    </div>
+
+    <h1 class="mtw-article__title">{{ article.title }}</h1>
+    {%- if article.excerpt != blank -%}
+      <div class="mtw-article__dek">{{ article.excerpt }}</div>
+    {%- endif -%}
+
+    <div class="mtw-article__byline">
+      <span class="by">{% if article.author != blank %}By {{ article.author }}{% else %}From the shop, Los Angeles{% endif %}</span>
+      <span>Share by <a href="mailto:?subject={{ article.title | url_encode }}&body={{ shop.url }}{{ article.url }}">email</a> &middot; <a href="https://pinterest.com/pin/create/button/?url={{ shop.url }}{{ article.url }}&description={{ article.title | url_encode }}" target="_blank" rel="noopener">Pinterest</a></span>
+    </div>
+
+    {%- if article.image -%}
+      <div class="mtw-article__hero">
+        {{ article.image | image_url: width: 1600 | image_tag: loading: 'eager', alt: article.image.alt | default: article.title, widths: '720, 1100, 1600' }}
+      </div>
+    {%- endif -%}
+
+    <div class="mtw-article__body rte">
+      {{ article.content }}
+    </div>
+
+    <p style="text-align:center; margin-top:64px;"><a href="{{ blog.url }}" class="mtw-article__back">Back to {{ blog.title }}</a></p>
+  </article>
+
+  {%- assign others = blog.articles | where: 'id', article.id -%}
+  {%- if blog.articles.size > 1 -%}
+    <section class="mtw-article__nextwrap">
+      <span class="mtw-article__nextlabel">Read next</span>
+      <h2>{{ section.settings.next_heading | default: 'More from the shop.' }}</h2>
+      <div class="mtw-article__nextgrid">
+        {%- assign shown = 0 -%}
+        {%- for a in blog.articles -%}
+          {%- if a.id != article.id and shown < 2 -%}
+            {%- assign shown = shown | plus: 1 -%}
+            {%- assign a_cat = blog.title -%}
+            {%- if a.tags.size > 0 -%}{%- assign a_cat = a.tags.first -%}{%- endif -%}
+            <a href="{{ a.url }}" class="mtw-article__next">
+              <div class="mtw-article__nextimg">
+                {%- if a.image -%}{{ a.image | image_url: width: 700 | image_tag: loading: 'lazy', alt: a.title }}{%- endif -%}
+              </div>
+              <p class="mtw-article__nextcat">{{ a_cat }}</p>
+              <h3 class="mtw-article__nexttitle">{{ a.title }}</h3>
+              <div class="mtw-article__nextmeta"><span>{{ a.published_at | date: '%B %-d, %Y' }}</span></div>
+            </a>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </section>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "MTW Article",
+  "settings": [
+    { "type": "text", "id": "next_heading", "label": "Read-next heading", "default": "More from the shop." }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "main": {
+      "type": "mtw-school-affiliate",
+      "settings": {}
+    }
+  },
+  "order": ["main"]
+}

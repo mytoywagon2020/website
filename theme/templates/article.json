@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "main": {
+      "type": "mtw-article",
+      "settings": {}
+    }
+  },
+  "order": ["main"]
+}
