@@ -251,6 +251,8 @@
         <button class="mtwc-filtertoggle" type="button" data-mtwc-openfilters>Filters</button>
         {%- assign has_active = false -%}
         {%- for filter in collection.filters -%}
+          {%- assign fl = filter.label | downcase -%}
+          {%- if fl == 'brand' or fl == 'vendor' or fl == 'category' or fl == 'product category' or fl == 'product type' or fl == 'type' -%}{%- continue -%}{%- endif -%}
           {%- if filter.type == 'price_range' -%}
             {%- if filter.min_value.value != blank or filter.max_value.value != blank -%}
               {%- assign has_active = true -%}
@@ -292,6 +294,8 @@
       <button class="mtwc-sidebar__close" type="button" data-mtwc-closefilters aria-label="Close filters">×</button>
       {%- if collection.filters.size > 0 -%}
         {%- for filter in collection.filters -%}
+          {%- assign fl = filter.label | downcase -%}
+          {%- if fl == 'brand' or fl == 'vendor' or fl == 'category' or fl == 'product category' or fl == 'product type' or fl == 'type' -%}{%- continue -%}{%- endif -%}
           <details class="mtwc-group" open>
             <summary>{{ filter.label }}</summary>
             {%- case filter.type -%}
