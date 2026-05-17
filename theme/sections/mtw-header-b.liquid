@@ -38,6 +38,9 @@
     assign navlist = linklists['mtw-main-menu']
   endif
   assign phone_digits = section.settings.phone | remove: ' ' | remove: '(' | remove: ')' | remove: '-' | remove: '.'
+  assign mark_url = 'mytoywagon-logo-mark.png' | file_url
+  assign ship_url = section.settings.shipping_url | default: '/pages/shipping'
+  assign returns_url = section.settings.returns_url | default: '/pages/returns'
 -%}
 
 {%- style -%}
@@ -85,6 +88,12 @@
   [data-mtw-header="b-v1"] .mtwhb-logo { display:inline-flex; align-items:center; gap:14px; line-height:1; justify-self:center; }
   [data-mtw-header="b-v1"] .mtwhb-logo__text { font-family:'Cormorant Garamond',Georgia,serif; font-size:28px; font-weight:400; letter-spacing:0.28em; text-transform:uppercase; line-height:1; color:var(--ink); white-space:nowrap; }
   [data-mtw-header="b-v1"] .mtwhb-logo__text small { display:block; font-family:'Mulish',sans-serif; font-size:10px; letter-spacing:0.22em; text-transform:uppercase; color:var(--stone); margin-top:8px; font-weight:500; }
+  [data-mtw-header="b-v1"] .mtwhb-logo__mark { height:52px; width:120px; flex-shrink:0; display:block; background-color:var(--ink); -webkit-mask:url('{{ mark_url }}') center / contain no-repeat; mask:url('{{ mark_url }}') center / contain no-repeat; }
+  [data-mtw-header="b-v1"] .mtwhb-m__logo-mark { height:38px; width:88px; flex-shrink:0; display:block; background-color:var(--ink); -webkit-mask:url('{{ mark_url }}') center / contain no-repeat; mask:url('{{ mark_url }}') center / contain no-repeat; }
+  [data-mtw-header="b-v1"] .mtwhb-ship a { color:inherit; border-bottom:0.5px solid rgba(44,44,42,0.35); }
+  [data-mtw-header="b-v1"] .mtwhb-ship a:hover { color:var(--forest); }
+  [data-mtw-header="b-v1"] .mtwhb-ship__ret, [data-mtw-header="b-v1"] .mtwhb-m-ship__ret { font-style:normal; font-family:'Mulish',sans-serif; font-size:12px; margin-left:14px; }
+  [data-mtw-header="b-v1"] .mtwhb-m-ship a { color:inherit; border-bottom:0.5px solid rgba(44,44,42,0.35); }
   [data-mtw-header="b-v1"] .mtwhb-iconlink { display:inline-flex; align-items:center; gap:6px; font-size:13.5px; font-weight:500; color:var(--ink); position:relative; }
   [data-mtw-header="b-v1"] .mtwhb-iconlink:hover { color:var(--forest); }
   [data-mtw-header="b-v1"] .mtwhb-cart-count { display:inline-flex; align-items:center; justify-content:center; min-width:18px; height:18px; padding:0 6px; background:var(--forest); color:var(--cream); border-radius:10px; font-size:11px; font-weight:600; }
@@ -161,11 +170,11 @@
     {%- if show_ship -%}
       <div class="mtwhb-ship" data-show-for="contiguous-us-only">
         {%- if subtotal <= 0 -%}
-          Free shipping on orders <strong>{{ threshold | money_without_trailing_zeros }}+</strong>, lower 48 only.<span class="mtwhb-ship__bar"><span class="mtwhb-ship__fill" style="width:0%;"></span></span>
+          <a href="{{ ship_url }}">Free shipping</a> on orders <strong>{{ threshold | money_without_trailing_zeros }}+</strong>, lower 48 only.<span class="mtwhb-ship__bar"><span class="mtwhb-ship__fill" style="width:0%;"></span></span><a class="mtwhb-ship__ret" href="{{ returns_url }}">30-day returns</a>
         {%- elsif remaining > 0 -%}
-          You're <strong>{{ remaining | money_without_trailing_zeros }} away</strong> from free shipping<span class="mtwhb-ship__bar"><span class="mtwhb-ship__fill" style="width:{{ progress }}%;"></span></span>Free at <strong>{{ threshold | money_without_trailing_zeros }}+</strong>, lower 48 only.
+          You're <strong>{{ remaining | money_without_trailing_zeros }} away</strong> from <a href="{{ ship_url }}">free shipping</a><span class="mtwhb-ship__bar"><span class="mtwhb-ship__fill" style="width:{{ progress }}%;"></span></span>Free at <strong>{{ threshold | money_without_trailing_zeros }}+</strong>, lower 48 only.<a class="mtwhb-ship__ret" href="{{ returns_url }}">30-day returns</a>
         {%- else -%}
-          <strong>Free shipping unlocked.</strong> Your order ships free, lower 48 only.<span class="mtwhb-ship__bar"><span class="mtwhb-ship__fill" style="width:100%;"></span></span>
+          <strong><a href="{{ ship_url }}">Free shipping unlocked.</a></strong> Your order ships free, lower 48 only.<span class="mtwhb-ship__bar"><span class="mtwhb-ship__fill" style="width:100%;"></span></span><a class="mtwhb-ship__ret" href="{{ returns_url }}">30-day returns</a>
         {%- endif -%}
       </div>
     {%- endif -%}
@@ -181,6 +190,8 @@
         <a href="/" class="mtwhb-logo" aria-label="My Toy Wagon home">
           {%- if section.settings.logo != blank -%}
             <img src="{{ section.settings.logo | image_url: width: 520 }}" alt="My Toy Wagon" width="{{ section.settings.logo_width }}" loading="eager">
+          {%- elsif mark_url != blank -%}
+            <span class="mtwhb-logo__mark" aria-hidden="true"></span>
           {%- else -%}
             <span class="mtwhb-logo__text">My Toy Wagon<small>Los Angeles · California · est. 2020</small></span>
           {%- endif -%}
@@ -227,11 +238,11 @@
     {%- if show_ship -%}
       <div class="mtwhb-m-ship" data-show-for="contiguous-us-only">
         {%- if remaining > 0 and subtotal > 0 -%}
-          You're <strong>{{ remaining | money_without_trailing_zeros }} away</strong> from free shipping<span class="mtwhb-m-ship__bar"><span style="width:{{ progress }}%;"></span></span>
+          You're <strong>{{ remaining | money_without_trailing_zeros }} away</strong> from <a href="{{ ship_url }}">free shipping</a><span class="mtwhb-m-ship__bar"><span style="width:{{ progress }}%;"></span></span><a class="mtwhb-m-ship__ret" href="{{ returns_url }}">Returns</a>
         {%- elsif subtotal <= 0 -%}
-          Free shipping on orders <strong>{{ threshold | money_without_trailing_zeros }}+</strong>, lower 48<span class="mtwhb-m-ship__bar"><span style="width:0%;"></span></span>
+          <a href="{{ ship_url }}">Free shipping</a> on orders <strong>{{ threshold | money_without_trailing_zeros }}+</strong>, lower 48<span class="mtwhb-m-ship__bar"><span style="width:0%;"></span></span><a class="mtwhb-m-ship__ret" href="{{ returns_url }}">Returns</a>
         {%- else -%}
-          <strong>Free shipping unlocked.</strong> Lower 48 only.<span class="mtwhb-m-ship__bar"><span style="width:100%;"></span></span>
+          <strong><a href="{{ ship_url }}">Free shipping unlocked.</a></strong> Lower 48 only.<span class="mtwhb-m-ship__bar"><span style="width:100%;"></span></span><a class="mtwhb-m-ship__ret" href="{{ returns_url }}">Returns</a>
         {%- endif -%}
       </div>
     {%- endif -%}
@@ -244,6 +255,8 @@
         <a href="/" class="mtwhb-m__logo" aria-label="My Toy Wagon home">
           {%- if section.settings.logo != blank -%}
             <img src="{{ section.settings.logo | image_url: width: 280 }}" alt="My Toy Wagon" width="{{ section.settings.logo_width_mobile }}" loading="eager">
+          {%- elsif mark_url != blank -%}
+            <span class="mtwhb-m__logo-mark" aria-hidden="true"></span>
           {%- else -%}
             <div class="mtwhb-m__logo-text">My Toy Wagon<small>Los Angeles · est. 2020</small></div>
           {%- endif -%}
@@ -372,6 +385,8 @@
     { "type": "text", "id": "track_order_url", "label": "Track order URL", "default": "/account" },
     { "type": "text", "id": "giftcards_url", "label": "Gift cards URL", "default": "/products/my-toy-wagon-digital-gift-card" },
     { "type": "text", "id": "signin_url", "label": "Sign in URL", "default": "/account/login" },
+    { "type": "text", "id": "shipping_url", "label": "Shipping page URL", "default": "/pages/shipping" },
+    { "type": "text", "id": "returns_url", "label": "Returns page URL", "default": "/pages/returns" },
     { "type": "textarea", "id": "utility_messages", "label": "Rotating center messages", "default": "Free shipping on orders $150+, lower 48 only · $10 off your first order with email signup\n$10 off your first order with email signup", "info": "One message per line. Rotates every 8 seconds. No em-dashes or exclamation marks." },
     { "type": "header", "content": "Free-shipping progress bar" },
     { "type": "checkbox", "id": "show_progress_bar", "label": "Show progress bar", "default": true },
