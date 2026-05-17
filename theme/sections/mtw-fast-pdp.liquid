@@ -1,0 +1,568 @@
+{%- comment -%}
+  MTW Fast PDP — one-pager product template, rollout build.
+  Namespaced [data-mtw-pdp="fast-v1"] / .ff-* so it never collides with
+  Impulse. Every section renders from a metafield and hides entirely
+  when empty (handover P11). Three+ fulfillment states (P12). Reviews
+  and Schema.org rating come ONLY from real review data; both are
+  omitted when the count is zero (P1/P2). No invented facts (P5).
+
+  Metafield contract (single custom.* namespace for one Matrixify
+  rollout column set; confirm during the SEO/description run):
+    custom.hero_blurb            richtext   customer prose, 60-80 words
+    custom.why_lede              richtext   "Why it stays" lede
+    custom.why_1_title .. _3     text       optional H3 sub-sections
+    custom.why_1 .. _3           richtext   optional H3 bodies
+    custom.material_short        text       at-a-glance cell (<=40)
+    custom.includes_short        text       at-a-glance cell (<=40)
+    custom.size_short            text       at-a-glance cell (<=40)
+    custom.certifications        text       at-a-glance cell
+    custom.origin_designed       text       country / region
+    custom.origin_made           text       country (optional)
+    custom.flex_label/_value     text       overrides the Origin cell
+    custom.small_parts_warning   boolean    CPSIA choking warning
+    custom.age_band              list       established age metafield
+    custom.materials_and_construction richtext  accordion
+    custom.ways_to_play          richtext   accordion
+    custom.skills_it_builds      richtext   accordion
+    custom.care_and_storage      richtext   accordion
+    custom.safety                richtext   accordion (separate from age)
+    custom.faq                   richtext   accordion + FAQ schema
+    custom.maker_blurb           richtext   one-sentence maker line
+    custom.maker_image           file       maker portrait (optional)
+    custom.scale_image           file       scale shot (optional)
+    custom.seo_long_description   multiline  schema description (P9)
+{%- endcomment -%}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+{{ 'pdp-formats-base.css' | asset_url | stylesheet_tag }}
+{{ 'pdp-fast.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign cur = product.selected_or_first_available_variant
+
+  comment Fulfillment state resolution (handover §6, P12) endcomment
+  assign ship_estimate = product.metafields.custom.preorder_ship_estimate | default: product.metafields.preorder.ship_estimate
+  assign from_partner = product.metafields.custom.from_partner_warehouse | default: product.metafields.shipping.from_partner_warehouse
+  assign is_pre = false
+  for pc in product.collections
+    if pc.handle == section.settings.preorder_collection
+      assign is_pre = true
+    endif
+  endfor
+  if ship_estimate != blank
+    assign is_pre = true
+  endif
+
+  assign state = 'in_stock'
+  if product.available == false
+    assign state = 'sold_out'
+  elsif is_pre
+    assign state = 'pre_order'
+  elsif from_partner == true
+    assign state = 'partner'
+  endif
+
+  comment Low-stock line only when a real tracked count is known and small endcomment
+  assign stock_count = cur.inventory_quantity
+  assign show_low = false
+  if state == 'in_stock' and cur.inventory_management != blank and stock_count > 0 and stock_count <= 3
+    assign show_low = true
+  endif
+
+  comment Review count, best-effort from Judge.me cached badge then SSW (P1/P2) endcomment
+  assign review_count = 0
+  assign jm_badge = product.metafields.judgeme.badge
+  if jm_badge != blank
+    assign jm_parts = jm_badge | split: "data-number-of-reviews='"
+    if jm_parts.size > 1
+      assign review_count = jm_parts[1] | split: "'" | first | plus: 0
+    endif
+  endif
+  if review_count == 0 and product.metafields.ssw.review != blank
+    assign ssw_c = product.metafields.ssw.review.value.count | default: 0 | plus: 0
+    assign review_count = ssw_c
+  endif
+
+  assign m = product.metafields.custom
+-%}
+
+<div data-mtw-pdp="fast-v1" class="ff-root">
+  <main class="ff-page">
+
+    {%- comment -%} Breadcrumb — mirrors BreadcrumbList schema (P17) {%- endcomment -%}
+    {%- assign crumb_col = product.collections.first -%}
+    <nav class="ff-crumbs" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="{{ routes.root_url }}">Home</a></li>
+        <li aria-hidden="true" class="ff-crumb-sep">·</li>
+        <li><a href="{{ routes.all_products_collection_url }}">Shop all</a></li>
+        {%- if crumb_col -%}
+          <li aria-hidden="true" class="ff-crumb-sep">·</li>
+          <li><a href="{{ crumb_col.url }}">{{ crumb_col.title }}</a></li>
+        {%- endif -%}
+        {%- if product.vendor != blank -%}
+          <li aria-hidden="true" class="ff-crumb-sep">·</li>
+          <li><a href="{{ product.vendor | url_for_vendor }}">{{ product.vendor }}</a></li>
+        {%- endif -%}
+        <li aria-hidden="true" class="ff-crumb-sep">·</li>
+        <li aria-current="page">{{ product.title }}</li>
+      </ol>
+    </nav>
+
+    <section class="ff-top">
+
+      {%- comment -%} Gallery {%- endcomment -%}
+      <div class="ff-gallery">
+        <div class="ff-thumbs">
+          {%- for image in product.images limit: 6 -%}
+            {%- assign alt_default = product.title | append: ' · view ' | append: forloop.index -%}
+            <div class="ff-thumb {% if forloop.first %}active{% endif %}" data-ff-thumb="{{ image | image_url: width: 1000 }}">
+              <img src="{{ image | image_url: width: 160 }}" alt="{{ image.alt | default: alt_default | escape }}" loading="lazy" width="160" height="200">
+            </div>
+          {%- endfor -%}
+          {%- if m.scale_image != blank -%}
+            <div class="ff-thumb ff-thumb-scale" data-ff-thumb="{{ m.scale_image | image_url: width: 1000 }}">
+              <img src="{{ m.scale_image | image_url: width: 160 }}" alt="{{ product.title }} shown next to a child's hand for size reference" loading="lazy" width="160" height="200">
+              <span class="ff-thumb-tag">Scale</span>
+            </div>
+          {%- endif -%}
+        </div>
+        <div class="ff-main">
+          {%- if product.featured_image -%}
+            <img data-ff-main src="{{ product.featured_image | image_url: width: 1100 }}" alt="{{ product.featured_image.alt | default: product.title | escape }}" width="1100" height="1375">
+          {%- endif -%}
+        </div>
+      </div>
+
+      {%- comment -%} Buy column {%- endcomment -%}
+      <div class="ff-buy">
+        {%- if product.vendor != blank -%}<p class="ff-maker"><a href="{{ product.vendor | url_for_vendor }}">{{ product.vendor }}</a></p>{%- endif -%}
+        <h1 class="ff-title">{{ product.title }}</h1>
+
+        {%- if review_count > 0 -%}
+          <div class="ff-rating">
+            <div class="jdgm-widget jdgm-preview-badge" data-id="{{ product.id }}" data-template="index"></div>
+            <a href="#reviews">{{ review_count }} review{% if review_count != 1 %}s{% endif %}</a>
+          </div>
+        {%- endif -%}
+
+        <div class="ff-price">
+          {%- if product.compare_at_price > product.price -%}<s>{{ product.compare_at_price | money }}</s> {% endif -%}
+          {{ product.price | money }}
+        </div>
+        <p class="ff-tax">Free U.S. shipping at {{ section.settings.free_ship_threshold | default: '$150' }}. <a href="/pages/shipping" style="border-bottom:0.5px solid var(--rule-strong);padding-bottom:1px;">Calculated at checkout.</a></p>
+
+        {%- comment -%} Status block — exactly one (handover §6) {%- endcomment -%}
+        {%- case state -%}
+          {%- when 'pre_order' -%}
+            <div class="ff-status pre-order">
+              <span class="dot amber" aria-hidden="true"></span>
+              <div>
+                <strong>Pre-order open</strong>
+                <p>{% if ship_estimate != blank %}{{ ship_estimate }}{% else %}Ships soon.{% endif %} We will email you the moment it ships.</p>
+              </div>
+            </div>
+          {%- when 'partner' -%}
+            <div class="ff-status partner">
+              <span class="dot stone" aria-hidden="true"></span>
+              <div>
+                <strong>Ships from our partner warehouse</strong>
+                <p>{{ section.settings.partner_sla | default: '1 to 4 business days from our partner warehouse. Returns and questions still come to My Toy Wagon directly.' }}</p>
+              </div>
+            </div>
+          {%- when 'sold_out' -%}
+            <div class="ff-status sold-out">
+              <span class="dot stone" aria-hidden="true"></span>
+              <div>
+                <strong>Sold out</strong>
+                <p>This one is between batches. Leave your email and we will tell you the moment it is back.</p>
+              </div>
+            </div>
+          {%- else -%}
+            <div class="ff-status in-stock">
+              <span class="dot forest" aria-hidden="true"></span>
+              <div>
+                <strong>In stock, ready to ship</strong>
+                <p data-sla-copy>{{ section.settings.instock_sla | default: 'Leaves our Los Angeles warehouse within 1 to 3 business days.' }}</p>
+                {%- if show_low -%}<p class="ff-status-low">Only {{ stock_count }} left at our LA warehouse.</p>{%- endif -%}
+              </div>
+            </div>
+        {%- endcase -%}
+
+        {%- if m.hero_blurb != blank -%}
+          <div class="ff-blurb">{{ m.hero_blurb | metafield_tag }}</div>
+        {%- endif -%}
+
+        {%- comment -%} At-a-glance — cells hide individually when empty (P11) {%- endcomment -%}
+        {%- assign age_band = m.age_band.value -%}
+        {%- liquid
+          assign age_text = ''
+          if age_band != blank and age_band.size > 0
+            assign a_lo = age_band | first
+            assign a_hi = age_band | last
+            if a_lo == '0–12 mo'
+              assign a_lo = 'under 1'
+            elsif a_lo == '18 mo'
+              assign a_lo = '1.5'
+            endif
+            if a_hi == '0–12 mo'
+              assign a_hi = '1'
+            elsif a_hi == '18 mo'
+              assign a_hi = '2'
+            endif
+            if a_lo == a_hi
+              assign age_text = a_lo | append: ' years'
+            else
+              assign age_text = a_lo | append: ' to ' | append: a_hi | append: ' years'
+            endif
+          endif
+        -%}
+        <div class="ff-glance-row">
+          {%- if age_text != blank -%}<div><span class="gk">Age</span><span class="gv">{{ age_text }}</span></div>{%- endif -%}
+          {%- if m.material_short != blank -%}<div><span class="gk">Material</span><span class="gv">{{ m.material_short }}</span></div>{%- endif -%}
+          {%- if m.includes_short != blank -%}<div><span class="gk">Includes</span><span class="gv">{{ m.includes_short }}</span></div>{%- endif -%}
+          {%- if m.size_short != blank -%}<div><span class="gk">Size</span><span class="gv">{{ m.size_short }}</span></div>{%- endif -%}
+          {%- if m.certifications != blank -%}<div><span class="gk">Certified</span><span class="gv">{{ m.certifications }}</span></div>{%- endif -%}
+          {%- if m.flex_label != blank and m.flex_value != blank -%}
+            <div><span class="gk">{{ m.flex_label }}</span><span class="gv">{{ m.flex_value }}</span></div>
+          {%- elsif m.origin_designed != blank -%}
+            <div>
+              <span class="gk">Origin</span>
+              {%- if m.origin_made != blank and m.origin_made != m.origin_designed -%}
+                <span class="gv gv-multi">
+                  <span class="gv-line"><span class="gv-tag">Designed</span>{{ m.origin_designed }}</span>
+                  <span class="gv-line"><span class="gv-tag">Made</span>{{ m.origin_made }}</span>
+                </span>
+              {%- elsif m.origin_made == m.origin_designed -%}
+                <span class="gv">{{ m.origin_designed }}</span>
+              {%- else -%}
+                <span class="gv gv-multi">
+                  <span class="gv-line"><span class="gv-tag">Designed</span>{{ m.origin_designed }}</span>
+                </span>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        </div>
+
+        {%- comment -%} CPSIA small-parts warning — conditional (P14, P20) {%- endcomment -%}
+        {%- if m.small_parts_warning == true -%}
+          <div class="ff-warning" role="alert">
+            <span class="ff-warning-icon" aria-hidden="true">!</span>
+            <div class="ff-warning-text">
+              <strong>Warning, choking hazard</strong>
+              <span>Small parts. Not for children under 3 years.</span>
+            </div>
+          </div>
+        {%- endif -%}
+
+        {%- comment -%} Buy actions — hidden entirely when sold out {%- endcomment -%}
+        {%- if state == 'sold_out' -%}
+          <form class="ff-notify" method="post" action="/contact#contact_form" accept-charset="UTF-8">
+            <input type="hidden" name="form_type" value="contact">
+            <input type="hidden" name="contact[tags]" value="back-in-stock">
+            <input type="hidden" name="contact[body]" value="Notify me when {{ product.title | escape }} is back in stock.">
+            <input type="email" name="contact[email]" placeholder="you@email.com" required>
+            <button type="submit">Notify me when back</button>
+          </form>
+          <p class="ff-notify-meta">We will email you the moment it is back. No marketing.</p>
+        {%- else -%}
+          {%- form 'product', product, id: 'ff-pform', novalidate: 'novalidate' -%}
+            {%- unless product.has_only_default_variant -%}
+              {%- for option in product.options_with_values -%}
+                <div class="ff-vgroup">
+                  <div class="ff-vlabel">{{ option.name }}</div>
+                  <div class="ff-vopts">
+                    {%- for value in option.values -%}
+                      <label class="ff-chip {% if option.selected_value == value %}sel{% endif %}">
+                        <input type="radio" name="ff-opt-{{ forloop.parentloop.index0 }}" value="{{ value | escape }}" {% if option.selected_value == value %}checked{% endif %} data-ff-opt="{{ forloop.parentloop.index0 }}">
+                        {{ value }}
+                      </label>
+                    {%- endfor -%}
+                  </div>
+                </div>
+              {%- endfor -%}
+            {%- endunless -%}
+            <input type="hidden" name="id" data-ff-vid value="{{ cur.id }}">
+            <div class="ff-add-row">
+              <div class="ff-qty">
+                <button type="button" data-ff-qm aria-label="Decrease">−</button>
+                <input name="quantity" value="1" data-ff-qty inputmode="numeric" aria-label="Quantity">
+                <button type="button" data-ff-qp aria-label="Increase">+</button>
+              </div>
+              <button type="submit" class="ff-btn ff-btn-primary" data-ff-add {% unless product.available %}disabled{% endunless %}>
+                {%- if state == 'pre_order' -%}Pre-order{%- else -%}Add to cart{%- endif -%} · {{ product.price | money }}
+              </button>
+            </div>
+            {%- if product.available and state != 'pre_order' -%}
+              <div class="ff-dynamic">{{ form | payment_button }}</div>
+            {%- endif -%}
+          {%- endform -%}
+        {%- endif -%}
+
+        {%- comment -%} Trust strip — icons reused from homepage {%- endcomment -%}
+        <div class="ff-trust">
+          <div>
+            <div class="ff-trust-icon">
+              <img src="{{ 'trust-shipping-mark.png' | asset_url }}" alt="" loading="lazy">
+              <span class="wagon-badge">free shipping</span>
+            </div>
+            <strong>Free U.S. shipping</strong>
+            <span class="ff-trust-sub">Orders $150+, lower 48 only</span>
+          </div>
+          <div>
+            <div class="ff-trust-icon"><img src="{{ 'trust-30day-returns.svg' | asset_url }}" alt="" loading="lazy"></div>
+            <strong>30-day returns</strong>
+            <span class="ff-trust-sub">If the toy isn't right</span>
+          </div>
+          <div>
+            <div class="ff-trust-icon"><img src="{{ 'trust-packed-with-care.svg' | asset_url }}" alt="" loading="lazy"></div>
+            <strong>Packed with care</strong>
+            <span class="ff-trust-sub">By hand, from Los Angeles</span>
+          </div>
+        </div>
+        {%- comment -%} ShareTheMeal line stays disabled until the program is live (P3) {%- endcomment -%}
+      </div>
+    </section>
+
+    <section class="ff-below">
+      <div class="ff-below-inner">
+
+        {%- comment -%} Why it stays — lede always, H3 subsections optional (P13) {%- endcomment -%}
+        {%- if m.why_lede != blank -%}
+          <section class="ff-why">
+            <h2>Why <em>it stays.</em></h2>
+            <div class="ff-why-lede">{{ m.why_lede | metafield_tag }}</div>
+            {%- for i in (1..3) -%}
+              {%- assign t_key = 'why_' | append: i | append: '_title' -%}
+              {%- assign b_key = 'why_' | append: i -%}
+              {%- assign w_title = m[t_key] -%}
+              {%- assign w_body = m[b_key] -%}
+              {%- if w_title != blank and w_body != blank -%}
+                <h3>{{ w_title }}</h3>
+                <div class="ff-why-body">{{ w_body | metafield_tag }}</div>
+              {%- endif -%}
+            {%- endfor -%}
+          </section>
+        {%- endif -%}
+
+        {%- comment -%} Reviews — real data only. Band when count>0, else empty state (P1/P10) {%- endcomment -%}
+        {%- if review_count > 0 -%}
+          <section class="ff-reviews" id="reviews">
+            <div class="ff-reviews-head">
+              <h2 class="ff-reviews-h">Reviews</h2>
+            </div>
+            <div class="jdgm-widget jdgm-review-widget" data-id="{{ product.id }}" data-product-title="{{ product.title | escape }}"></div>
+          </section>
+        {%- else -%}
+          <section class="ff-reviews-empty" id="reviewsEmpty">
+            <div class="ff-reviews-empty-card">
+              <div class="ff-reviews-empty-icon" aria-hidden="true">
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4 l3.7 7.6 8.3 1.2 -6 5.9 1.4 8.3 -7.4 -3.9 -7.4 3.9 1.4 -8.3 -6 -5.9 8.3 -1.2 z"/></svg>
+              </div>
+              <h2 class="ff-reviews-empty-title">Be the <em>first</em> to review.</h2>
+              <p class="ff-reviews-empty-body">No reviews yet for this set. Have you brought it home? Tell the next family what you found.</p>
+              <button type="button" class="ff-reviews-empty-cta" data-ff-write-review data-id="{{ product.id }}">★ Write a review</button>
+              <div class="jdgm-widget jdgm-review-widget" data-id="{{ product.id }}" data-product-title="{{ product.title | escape }}" hidden></div>
+            </div>
+          </section>
+        {%- endif -%}
+
+        {%- comment -%} Product details accordion — each item hides if its metafield is empty (P11) {%- endcomment -%}
+        {%- capture acc -%}
+          {%- if m.materials_and_construction != blank -%}<details class="ff-details-item" open><summary class="ff-details-sum">Materials &amp; construction</summary><div class="ff-details-body">{{ m.materials_and_construction | metafield_tag }}</div></details>{%- endif -%}
+          {%- if m.ways_to_play != blank -%}<details class="ff-details-item"><summary class="ff-details-sum">Ways to play</summary><div class="ff-details-body">{{ m.ways_to_play | metafield_tag }}</div></details>{%- endif -%}
+          {%- if m.skills_it_builds != blank -%}<details class="ff-details-item"><summary class="ff-details-sum">Skills it builds</summary><div class="ff-details-body">{{ m.skills_it_builds | metafield_tag }}</div></details>{%- endif -%}
+          {%- if age_text != blank -%}<details class="ff-details-item"><summary class="ff-details-sum">Age recommendations</summary><div class="ff-details-body"><p>Recommended ages {{ age_text }}. Sorted by the developmental window this toy opens.</p></div></details>{%- endif -%}
+          {%- if m.safety != blank -%}<details class="ff-details-item"><summary class="ff-details-sum">Safety</summary><div class="ff-details-body">{{ m.safety | metafield_tag }}</div></details>{%- endif -%}
+          {%- if m.care_and_storage != blank -%}<details class="ff-details-item"><summary class="ff-details-sum">Care &amp; storage</summary><div class="ff-details-body">{{ m.care_and_storage | metafield_tag }}</div></details>{%- endif -%}
+          {%- if section.settings.shipping_text != blank -%}<details class="ff-details-item"><summary class="ff-details-sum">Shipping &amp; returns</summary><div class="ff-details-body">{{ section.settings.shipping_text }}</div></details>{%- endif -%}
+          {%- if m.faq != blank -%}<details class="ff-details-item"><summary class="ff-details-sum">FAQs</summary><div class="ff-details-body">{{ m.faq | metafield_tag }}</div></details>{%- endif -%}
+        {%- endcapture -%}
+        {%- assign acc_t = acc | strip -%}
+        {%- if acc_t != blank -%}<div class="ff-details">{{ acc }}</div>{%- endif -%}
+
+        {%- comment -%} Maker line — image optional, falls back to text-only {%- endcomment -%}
+        {%- if m.maker_blurb != blank and product.vendor != blank -%}
+          <a href="{{ product.vendor | url_for_vendor }}" class="ff-maker-line">
+            {%- if m.maker_image != blank -%}
+              <div class="ff-maker-line-img"><img src="{{ m.maker_image | image_url: width: 240 }}" alt="{{ product.vendor | escape }} workshop" loading="lazy"></div>
+            {%- endif -%}
+            <div class="ff-maker-line-text">
+              <strong>{{ product.vendor }}</strong>
+              {{ m.maker_blurb | metafield_tag }}
+            </div>
+            <span>Browse all {{ product.vendor }} →</span>
+          </a>
+        {%- endif -%}
+
+      </div>
+    </section>
+  </main>
+
+  {%- comment -%} Sticky buy bar — namespaced, fails silent if trigger missing (P6) {%- endcomment -%}
+  {%- if state != 'sold_out' -%}
+    <div class="ff-sticky" data-ff-sticky aria-hidden="true">
+      <div class="ff-sticky-inner">
+        <div class="ff-sticky-thumb">{%- if product.featured_image -%}<img src="{{ product.featured_image | image_url: width: 120 }}" alt="">{%- endif -%}</div>
+        <div class="ff-sticky-text">
+          {%- if product.vendor != blank -%}<div class="ff-sticky-maker">{{ product.vendor }}</div>{%- endif -%}
+          <div class="ff-sticky-name">{{ product.title }}</div>
+        </div>
+        {%- if review_count > 0 -%}<span class="ff-sticky-rating" data-ff-sticky-rating>{{ review_count }} reviews</span>{%- endif -%}
+        <span class="ff-sticky-price" data-ff-sticky-price>{{ product.price | money }}</span>
+        <button type="button" class="ff-sticky-cta" data-ff-sticky-cta>{% if state == 'pre_order' %}Pre-order{% else %}Add to cart{% endif %}</button>
+      </div>
+    </div>
+  {%- endif -%}
+</div>
+
+{%- comment -%} ===== Schema.org — dynamic; rating/review omitted when count==0 (P2) ===== {%- endcomment -%}
+{%- capture schema_desc -%}{{ product.metafields.custom.seo_long_description | default: product.description | strip_html | truncate: 500 }}{%- endcapture -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Product",
+      "@id": "{{ shop.url }}{{ product.url }}#product",
+      "name": {{ product.title | json }},
+      "description": {{ schema_desc | strip_newlines | json }},
+      "sku": {{ cur.sku | default: product.id | json }},
+      "image": [{% for image in product.images limit: 6 %}{{ image | image_url: width: 1400 | prepend: 'https:' | json }}{% unless forloop.last %},{% endunless %}{% endfor %}],
+      {% if product.vendor != blank %}"brand": { "@type": "Brand", "name": {{ product.vendor | json }} },{% endif %}
+      "offers": {
+        "@type": "Offer",
+        "url": "{{ shop.url }}{{ product.url }}",
+        "priceCurrency": {{ cart.currency.iso_code | json }},
+        "price": "{{ product.price | divided_by: 100.0 }}",
+        "availability": "https://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}",
+        "itemCondition": "https://schema.org/NewCondition",
+        "seller": { "@type": "Organization", "name": "My Toy Wagon", "address": { "@type": "PostalAddress", "addressLocality": "Los Angeles", "addressRegion": "CA", "addressCountry": "US" } }
+      }{% if review_count > 0 and product.metafields.judgeme.badge != blank %},
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "{{ product.metafields.judgeme.badge | split: "data-average-rating='" | last | split: "'" | first }}", "reviewCount": "{{ review_count }}" }{% endif %}
+    },
+    {%- assign faq_html = product.metafields.custom.faq -%}
+    {%- if faq_html != blank -%}
+    {
+      "@type": "FAQPage",
+      "@id": "{{ shop.url }}{{ product.url }}#faq",
+      "mainEntity": [
+        {%- assign faq_blocks = faq_html | metafield_tag | split: '<p class="faq-q">' -%}
+        {%- for blk in faq_blocks offset: 1 -%}
+          {%- assign q = blk | split: '</p>' | first | strip_html | strip -%}
+          {%- assign a = blk | split: '</p>' | last | strip_html | strip -%}
+          { "@type": "Question", "name": {{ q | json }}, "acceptedAnswer": { "@type": "Answer", "text": {{ a | json }} } }{% unless forloop.last %},{% endunless %}
+        {%- endfor -%}
+      ]
+    },
+    {%- endif -%}
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ shop.url }}{{ routes.root_url }}" },
+        { "@type": "ListItem", "position": 2, "name": "Shop all", "item": "{{ shop.url }}{{ routes.all_products_collection_url }}" }{% if crumb_col %},
+        { "@type": "ListItem", "position": 3, "name": {{ crumb_col.title | json }}, "item": "{{ shop.url }}{{ crumb_col.url }}" }{% endif %},
+        { "@type": "ListItem", "position": {% if crumb_col %}4{% else %}3{% endif %}, "name": {{ product.title | json }} }
+      ]
+    }
+  ]
+}
+</script>
+
+<script>
+(function(){
+  var root = document.querySelector('[data-mtw-pdp="fast-v1"]');
+  if (!root) return;
+  var variants = {{ product.variants | json }};
+  var optCount = {{ product.options.size }};
+
+  root.querySelectorAll('[data-ff-thumb]').forEach(function(t){
+    t.addEventListener('click', function(){
+      root.querySelectorAll('.ff-thumb').forEach(function(x){ x.classList.remove('active'); });
+      t.classList.add('active');
+      var main = root.querySelector('[data-ff-main]');
+      if (main) main.src = t.getAttribute('data-ff-thumb');
+    });
+  });
+
+  var qty = root.querySelector('[data-ff-qty]');
+  var qm = root.querySelector('[data-ff-qm]'), qp = root.querySelector('[data-ff-qp]');
+  if (qm) qm.addEventListener('click', function(){ var v = Math.max(1,(parseInt(qty.value,10)||1)-1); qty.value = v; });
+  if (qp) qp.addEventListener('click', function(){ qty.value = (parseInt(qty.value,10)||1)+1; });
+
+  var vid = root.querySelector('[data-ff-vid]');
+  var addBtn = root.querySelector('[data-ff-add]');
+  function selectedOpts(){
+    var o = [];
+    for (var i=0;i<optCount;i++){
+      var r = root.querySelector('input[data-ff-opt="'+i+'"]:checked');
+      o.push(r ? r.value : null);
+    }
+    return o;
+  }
+  function resolve(){
+    if (!variants || !variants.length) return;
+    var o = selectedOpts();
+    var v = variants.find(function(x){ return x.options.every(function(val,i){ return o[i]==null || val==o[i]; }); }) || variants[0];
+    if (vid) vid.value = v.id;
+    if (addBtn){
+      if (v.available){ addBtn.removeAttribute('disabled'); }
+      else { addBtn.setAttribute('disabled','disabled'); }
+    }
+  }
+  root.querySelectorAll('input[data-ff-opt]').forEach(function(inp){
+    inp.addEventListener('change', function(){
+      var g = inp.closest('.ff-vopts');
+      if (g) g.querySelectorAll('.ff-chip').forEach(function(c){ c.classList.remove('sel'); });
+      var lbl = inp.closest('.ff-chip'); if (lbl) lbl.classList.add('sel');
+      resolve();
+    });
+  });
+  resolve();
+
+  var wr = root.querySelector('[data-ff-write-review]');
+  if (wr) wr.addEventListener('click', function(){
+    try { if (window.JudgeMe && JudgeMe.openReviewForm) { JudgeMe.openReviewForm(wr.getAttribute('data-id')); return; } } catch(e){}
+    var w = root.querySelector('.jdgm-write-review-link, .jdgm-write-rev-link'); if (w) w.click();
+  });
+
+  var sticky = root.querySelector('[data-ff-sticky]');
+  var form = document.getElementById('ff-pform');
+  var sCta = root.querySelector('[data-ff-sticky-cta]');
+  if (sCta && form) sCta.addEventListener('click', function(){ if (addBtn && addBtn.hasAttribute('disabled')) return; if (form.requestSubmit) form.requestSubmit(addBtn); else form.submit(); });
+  if (sticky){
+    var trigger = root.querySelector('.ff-top');
+    var armed = false;
+    var t0 = Date.now();
+    (function arm(){
+      trigger = trigger || root.querySelector('.ff-top');
+      if (trigger){
+        armed = true;
+        var onScroll = function(){ sticky.classList.toggle('show', trigger.getBoundingClientRect().bottom < 0); };
+        window.addEventListener('scroll', onScroll, { passive:true });
+        onScroll();
+      } else if (Date.now() - t0 < 500){
+        requestAnimationFrame(arm);
+      } else {
+        console.warn('[mtw-fast-pdp] sticky trigger not found; disabled');
+      }
+    })();
+  }
+})();
+</script>
+
+{% schema %}
+{
+  "name": "MTW Fast PDP",
+  "settings": [
+    { "type": "text", "id": "preorder_collection", "label": "Pre-order collection handle", "default": "pre-order" },
+    { "type": "text", "id": "free_ship_threshold", "label": "Free shipping threshold", "default": "$150" },
+    { "type": "text", "id": "instock_sla", "label": "In-stock SLA copy", "default": "Leaves our Los Angeles warehouse within 1 to 3 business days." },
+    { "type": "text", "id": "partner_sla", "label": "Partner-warehouse SLA copy", "default": "1 to 4 business days from our partner warehouse. Returns and questions still come to My Toy Wagon directly." },
+    { "type": "richtext", "id": "shipping_text", "label": "Shipping & returns accordion", "default": "<p>Free U.S. shipping at the $150 subtotal. Standard shipping is $9.95 in the contiguous U.S. Returns accepted for 30 days from delivery.</p>" }
+  ],
+  "presets": [{ "name": "MTW Fast PDP" }]
+}
+{% endschema %}

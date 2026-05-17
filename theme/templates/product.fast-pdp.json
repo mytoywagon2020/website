@@ -1,0 +1,6 @@
+{
+  "sections": {
+    "main": { "type": "mtw-fast-pdp" }
+  },
+  "order": ["main"]
+}

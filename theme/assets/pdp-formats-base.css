@@ -1,0 +1,155 @@
+/* ===========================================================
+   MTW PDP Description Formats — shared base
+   =========================================================== */
+:root {
+  --cream: #F5F0E5;
+  --warm-white: #FFFCF7;
+  --ink: #2C2C2A;
+  --forest: #3B6D11;
+  --amber: #854F0B;
+  --stone: #5F5E5A;
+  --card-bg: #EDE3CD;
+  --rule: rgba(44, 44, 42, 0.12);
+  --rule-strong: rgba(44, 44, 42, 0.22);
+  --forest-tint: rgba(59, 109, 17, 0.07);
+  --amber-tint: rgba(133, 79, 11, 0.08);
+  --stone-tint: rgba(95, 94, 90, 0.08);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: 'Mulish', sans-serif;
+  color: var(--ink);
+  background: #E4DCC9;
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+
+/* Page header */
+.page-head {
+  padding: 40px 56px 28px;
+  border-bottom: 0.5px solid var(--rule);
+  background: var(--cream);
+}
+.page-head-inner {
+  max-width: 1240px; margin: 0 auto;
+  display: grid; grid-template-columns: auto 1fr; gap: 40px; align-items: end;
+}
+.page-eyebrow {
+  font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--stone); font-weight: 500; margin: 0 0 10px;
+}
+.page-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 44px; font-weight: 500; line-height: 1.02;
+  letter-spacing: -0.012em; margin: 0;
+}
+.page-title em { font-style: italic; }
+.page-blurb {
+  font-size: 14.5px; line-height: 1.65; color: var(--stone);
+  max-width: 520px; margin: 0;
+}
+
+/* Status pill primitives — shared across all three designs */
+.dot {
+  display: inline-block; width: 7px; height: 7px; border-radius: 50%;
+  flex-shrink: 0; vertical-align: middle;
+}
+.dot.forest { background: var(--forest); box-shadow: 0 0 0 3px rgba(59,109,17,0.18); }
+.dot.amber  { background: var(--amber);  box-shadow: 0 0 0 3px rgba(133,79,11,0.18); }
+.dot.stone  { background: var(--stone);  box-shadow: 0 0 0 3px rgba(95,94,90,0.18); }
+
+/* Variant strip at bottom of each artboard */
+.variant-strip {
+  background: var(--cream); border-top: 0.5px dashed var(--rule-strong);
+  padding: 26px 48px 32px;
+}
+.variant-strip .label {
+  font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--stone); font-weight: 500; margin-bottom: 14px;
+}
+.variant-strip-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+}
+.variant-mini {
+  padding: 14px 16px; background: var(--warm-white);
+  border: 0.5px solid var(--rule); border-radius: 2px;
+  display: flex; flex-direction: column; gap: 6px;
+}
+.variant-mini .vm-head {
+  font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+  font-weight: 600; display: flex; align-items: center; gap: 8px;
+}
+.variant-mini.fo .vm-head { color: var(--forest); }
+.variant-mini.am .vm-head { color: var(--amber); }
+.variant-mini.st .vm-head { color: var(--stone); }
+.variant-mini .vm-line { font-size: 12px; color: var(--ink); line-height: 1.45; }
+.variant-mini .vm-line em { font-family: 'Cormorant Garamond', serif; font-style: italic; }
+
+/* Annotation pill at top-left of each artboard */
+.ab-annotation {
+  position: absolute; top: 18px; left: 18px;
+  background: var(--ink); color: var(--cream);
+  font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase;
+  font-weight: 600; padding: 7px 12px; border-radius: 2px;
+  display: inline-flex; align-items: center; gap: 9px; z-index: 2;
+}
+.ab-annotation .ab-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--cream); opacity: 0.85; }
+
+/* Every artboard wrapper */
+.ab {
+  background: var(--cream); position: relative; overflow: hidden;
+  border-radius: 2px; box-shadow: 0 0 0 0.5px var(--rule);
+}
+
+/* ===== Photo placeholders ===== */
+.ph {
+  position: relative;
+  background: #E8DFC9;
+  border: 0.5px dashed rgba(44,44,42,0.28);
+  border-radius: 2px;
+  overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--stone);
+  font-family: 'Mulish', sans-serif;
+}
+.ph::before, .ph::after {
+  content: ""; position: absolute; background: rgba(44,44,42,0.10);
+}
+.ph::before { left: 0; right: 0; top: 50%; height: 1px; }
+.ph::after { top: 0; bottom: 0; left: 50%; width: 1px; }
+.ph-inner {
+  position: relative; z-index: 1;
+  background: var(--cream);
+  padding: 10px 16px; text-align: center;
+  border: 0.5px solid var(--rule-strong);
+  max-width: 78%;
+}
+.ph-eyebrow {
+  font-size: 9.5px; letter-spacing: 0.22em; text-transform: uppercase;
+  font-weight: 600; color: var(--stone); margin-bottom: 4px; display: block;
+}
+.ph-label {
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-size: 15px; color: var(--ink); line-height: 1.3; display: block;
+}
+.ph-meta {
+  font-size: 10.5px; color: var(--stone); margin-top: 4px;
+  letter-spacing: 0.04em;
+}
+.ph.ratio-4x5 { aspect-ratio: 4/5; }
+.ph.ratio-3x2 { aspect-ratio: 3/2; }
+.ph.ratio-16x9 { aspect-ratio: 16/9; }
+.ph.ratio-1x1 { aspect-ratio: 1/1; }
+
+/* Shared typography helpers */
+.serif { font-family: 'Cormorant Garamond', serif; }
+.italic { font-style: italic; }
+.label-eyebrow {
+  font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--stone); font-weight: 500;
+}
