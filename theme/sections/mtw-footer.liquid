@@ -45,7 +45,7 @@
 
   /* Top region */
   .mtw-foot__top { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:56px; padding-bottom:48px; border-bottom:0.5px solid var(--rule); }
-  .mtw-foot__logo { display:block; width:200px; height:88px; background-color:var(--ink); -webkit-mask:url('{{ mark_url }}') left center/contain no-repeat; mask:url('{{ mark_url }}') left center/contain no-repeat; margin-bottom:22px; }
+  .mtw-foot__logo { display:block; width:220px; height:96px; background-color:var(--ink); -webkit-mask:url('{{ mark_url }}') left center/contain no-repeat; mask:url('{{ mark_url }}') left center/contain no-repeat; margin-bottom:22px; }
   .mtw-foot__tag { font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-size:16px; color:var(--stone); margin:0 0 18px; max-width:320px; line-height:1.5; }
   .mtw-foot__loc { font-size:13.5px; color:var(--ink); line-height:1.6; margin:0 0 18px; }
   .mtw-foot__loc strong { font-weight:500; }
@@ -108,15 +108,15 @@
     .mtw-foot__band h2 { font-size:24px; }
     .mtw-foot__band p { font-size:14px; }
     .mtw-foot__top { display:flex; flex-direction:column; gap:0; padding-bottom:0; border-bottom:none; }
-    .mtw-foot__brand { order:2; text-align:center; padding-bottom:22px; margin-bottom:6px; border-bottom:0.5px solid var(--rule); }
-    .mtw-foot__logo { margin:0 auto 14px; -webkit-mask-position:center; mask-position:center; }
+    .mtw-foot__brand { order:2; display:flex; flex-direction:column; align-items:center; text-align:center; padding-bottom:22px; margin-bottom:6px; border-bottom:0.5px solid var(--rule); }
+    .mtw-foot__logo { order:2; width:180px; height:80px; margin:0 auto 14px; -webkit-mask-position:center; mask-position:center; }
+    .mtw-foot__tag { order:3; } .mtw-foot__loc { order:4; } .mtw-foot__contact { order:5; } .mtw-foot__brand .mtw-foot__social { order:6; }
     .mtw-foot__tag, .mtw-foot__loc { margin-left:auto; margin-right:auto; }
     .mtw-foot__brand .mtw-foot__social { justify-content:center; margin-top:14px; }
-    .mtw-foot__news { order:1; max-width:none; text-align:center; border-top:none; padding-top:0; margin:0 0 28px; padding-bottom:28px; border-bottom:0.5px solid var(--rule); }
+    .mtw-foot__news { order:1; width:100%; max-width:none; text-align:center; border-top:none; padding-top:0; margin:0 0 28px; padding-bottom:28px; border-bottom:0.5px solid var(--rule); }
     .mtw-foot__news form { grid-template-columns:1fr; }
     .mtw-foot__news input { height:46px; text-align:center; }
     .mtw-foot__news button { height:46px; }
-    .mtw-foot__contact { order:6; }
     .mtw-foot__acc { order:3; border-bottom:0.5px solid var(--rule); }
     .mtw-foot__acc summary { cursor:pointer; padding:18px 4px; margin:0; }
     .mtw-foot__acc summary::after { display:block; }
@@ -126,6 +126,7 @@
     .mtw-foot__acc:not([open]) > ul { display:none; }
     .mtw-foot__contact { text-align:center; padding:32px 8px; border-bottom:0.5px solid var(--rule); margin-bottom:0; }
     .mtw-foot__mid { justify-content:center; padding:24px 0; }
+    .mtw-foot__chip--lo { display:none; }
     .mtw-foot__bottom { flex-direction:column; text-align:center; gap:14px; padding-top:24px; }
   }
   @media (min-width:721px) {
@@ -236,10 +237,10 @@
         <span class="mtw-foot__chip">Visa</span>
         <span class="mtw-foot__chip">Mastercard</span>
         <span class="mtw-foot__chip">Amex</span>
-        <span class="mtw-foot__chip">Discover</span>
-        <span class="mtw-foot__chip">Diners</span>
+        <span class="mtw-foot__chip mtw-foot__chip--lo">Discover</span>
+        <span class="mtw-foot__chip mtw-foot__chip--lo">Diners</span>
         <span class="mtw-foot__chip">Apple&nbsp;Pay</span>
-        <span class="mtw-foot__chip">Google&nbsp;Pay</span>
+        <span class="mtw-foot__chip mtw-foot__chip--lo">Google&nbsp;Pay</span>
         <span class="mtw-foot__chip">PayPal</span>
         <span class="mtw-foot__chip">Shop&nbsp;Pay</span>
       </div>
@@ -300,7 +301,7 @@
     { "type": "text", "id": "news_heading", "label": "Heading", "default": "Stay close." },
     { "type": "text", "id": "news_body", "label": "Body", "default": "New arrivals, restocks, and a few thoughts on heirloom play. No spam, ever." },
     { "type": "text", "id": "news_button", "label": "Button label", "default": "Sign up" },
-    { "type": "text", "id": "news_perk", "label": "Perk line", "default": "Welcome offer, $10 off your first order of $75 or more." },
+    { "type": "text", "id": "news_perk", "label": "Perk line", "default": "Welcome offer · $10 off your first order of $75 or more." },
     { "type": "text", "id": "klaviyo_company_id", "label": "Klaviyo public API key", "default": "SZm3nN" },
     { "type": "text", "id": "klaviyo_list_id", "label": "Klaviyo list ID", "default": "TDw9Ei", "info": "TDw9Ei = SIGNUP LIST- N. Double opt-in sends a confirmation email." },
     { "type": "header", "content": "Contact" },
