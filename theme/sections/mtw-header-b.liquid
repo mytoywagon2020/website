@@ -38,7 +38,7 @@
     assign navlist = linklists['mtw-main-menu']
   endif
   assign phone_digits = section.settings.phone | remove: ' ' | remove: '(' | remove: ')' | remove: '-' | remove: '.'
-  assign mark_url = 'mytoywagon-logo-mark.png' | file_url
+  assign mark_url = 'mytoywagon-logo-wordmark.png' | file_url
   assign ship_url = section.settings.shipping_url | default: '/pages/shipping'
   assign returns_url = section.settings.returns_url | default: '/pages/returns'
 -%}
@@ -88,8 +88,8 @@
   [data-mtw-header="b-v1"] .mtwhb-logo { display:inline-flex; align-items:center; gap:14px; line-height:1; justify-self:center; }
   [data-mtw-header="b-v1"] .mtwhb-logo__text { font-family:'Cormorant Garamond',Georgia,serif; font-size:28px; font-weight:400; letter-spacing:0.28em; text-transform:uppercase; line-height:1; color:var(--ink); white-space:nowrap; }
   [data-mtw-header="b-v1"] .mtwhb-logo__text small { display:block; font-family:'Mulish',sans-serif; font-size:10px; letter-spacing:0.22em; text-transform:uppercase; color:var(--stone); margin-top:8px; font-weight:500; }
-  [data-mtw-header="b-v1"] .mtwhb-logo__mark { height:52px; width:120px; flex-shrink:0; display:block; background-color:var(--ink); -webkit-mask:url('{{ mark_url }}') center / contain no-repeat; mask:url('{{ mark_url }}') center / contain no-repeat; }
-  [data-mtw-header="b-v1"] .mtwhb-m__logo-mark { height:38px; width:88px; flex-shrink:0; display:block; background-color:var(--ink); -webkit-mask:url('{{ mark_url }}') center / contain no-repeat; mask:url('{{ mark_url }}') center / contain no-repeat; }
+  [data-mtw-header="b-v1"] .mtwhb-logo__mark { height:26px; width:268px; max-width:46vw; flex-shrink:0; display:block; background-color:var(--ink); -webkit-mask:url('{{ mark_url }}') center / contain no-repeat; mask:url('{{ mark_url }}') center / contain no-repeat; }
+  [data-mtw-header="b-v1"] .mtwhb-m__logo-mark { height:18px; width:185px; max-width:54vw; flex-shrink:0; display:block; background-color:var(--ink); -webkit-mask:url('{{ mark_url }}') center / contain no-repeat; mask:url('{{ mark_url }}') center / contain no-repeat; }
   [data-mtw-header="b-v1"] .mtwhb-ship a { color:inherit; border-bottom:0.5px solid rgba(44,44,42,0.35); }
   [data-mtw-header="b-v1"] .mtwhb-ship a:hover { color:var(--forest); }
   [data-mtw-header="b-v1"] .mtwhb-ship__ret, [data-mtw-header="b-v1"] .mtwhb-m-ship__ret { font-style:normal; font-family:'Mulish',sans-serif; font-size:12px; margin-left:14px; }
