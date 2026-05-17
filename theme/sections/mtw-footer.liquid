@@ -45,7 +45,7 @@
 
   /* Top region */
   .mtw-foot__top { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:56px; padding-bottom:48px; border-bottom:0.5px solid var(--rule); }
-  .mtw-foot__logo { display:block; width:220px; height:96px; background-color:var(--ink); -webkit-mask:url('{{ mark_url }}') left center/contain no-repeat; mask:url('{{ mark_url }}') left center/contain no-repeat; margin-bottom:22px; }
+  .mtw-foot__logo { display:block; width:220px; height:auto; margin-bottom:22px; }
   .mtw-foot__tag { font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-size:16px; color:var(--stone); margin:0 0 18px; max-width:320px; line-height:1.5; }
   .mtw-foot__loc { font-size:13.5px; color:var(--ink); line-height:1.6; margin:0 0 18px; }
   .mtw-foot__loc strong { font-weight:500; }
@@ -109,7 +109,7 @@
     .mtw-foot__band p { font-size:14px; }
     .mtw-foot__top { display:flex; flex-direction:column; gap:0; padding-bottom:0; border-bottom:none; }
     .mtw-foot__brand { order:2; display:flex; flex-direction:column; align-items:center; text-align:center; padding-bottom:22px; margin-bottom:6px; border-bottom:0.5px solid var(--rule); }
-    .mtw-foot__logo { order:2; width:180px; height:80px; margin:0 auto 14px; -webkit-mask-position:center; mask-position:center; }
+    .mtw-foot__logo { order:2; width:180px; height:auto; margin:0 auto 14px; }
     .mtw-foot__tag { order:3; } .mtw-foot__loc { order:4; } .mtw-foot__contact { order:5; } .mtw-foot__brand .mtw-foot__social { order:6; }
     .mtw-foot__tag, .mtw-foot__loc { margin-left:auto; margin-right:auto; }
     .mtw-foot__brand .mtw-foot__social { justify-content:center; margin-top:14px; }
@@ -148,7 +148,7 @@
     <div class="mtw-foot__top">
 
       <div class="mtw-foot__brand">
-        <a href="{{ routes.root_url }}" aria-label="{{ shop.name | escape }}"><span class="mtw-foot__logo" aria-hidden="true"></span></a>
+        <a href="{{ routes.root_url }}" aria-label="{{ shop.name | escape }}"><img class="mtw-foot__logo" src="{{ mark_url }}" alt="" loading="lazy"></a>
         {%- if section.settings.tagline != blank -%}<p class="mtw-foot__tag">{{ section.settings.tagline }}</p>{%- endif -%}
         <p class="mtw-foot__loc">
           {%- if section.settings.location != blank -%}<strong>{{ section.settings.location }}</strong><br>{%- endif -%}
