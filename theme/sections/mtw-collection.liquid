@@ -12,6 +12,16 @@
   .mtw-coll__facet--more { display:none; }
   .mtw-coll__group.is-open .mtw-coll__facet--more { display:flex; }
   .mtw-coll__showmore { margin-top:10px; background:none; border:none; padding:2px 0; font-family:inherit; font-size:11.5px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:var(--forest,#3B6D11); cursor:pointer; border-bottom:0.5px solid var(--forest,#3B6D11); }
+  .mtw-coll__story { border-top:0.5px solid var(--rule,rgba(44,44,42,0.12)); background:var(--warm-white,#FFFCF7); }
+  .mtw-coll__story-inner { max-width:1280px; margin:0 auto; padding:80px 40px; display:grid; grid-template-columns:0.85fr 1fr; gap:64px; align-items:center; }
+  .mtw-coll__story-media { aspect-ratio:4/5; border-radius:2px; overflow:hidden; background:var(--card-bg,#EDE3CD); }
+  .mtw-coll__story-media img { width:100%; height:100%; object-fit:cover; display:block; }
+  .mtw-coll__story-body .label { display:block; margin-bottom:14px; }
+  .mtw-coll__story-body h2 { font-family:'Cormorant Garamond',Georgia,serif; font-size:42px; font-weight:500; line-height:1.1; letter-spacing:-0.008em; margin:0 0 22px; color:var(--ink,#2C2C2A); }
+  .mtw-coll__story-body h2 em { font-style:italic; }
+  .mtw-coll__story-rte, .mtw-coll__story-rte p { font-size:16.5px; line-height:1.78; color:var(--ink,#2C2C2A); margin:0 0 18px; }
+  .mtw-coll__story-rte p:last-child { margin-bottom:0; }
+  @media (max-width:1000px) { .mtw-coll__story-inner { grid-template-columns:1fr; gap:36px; padding:56px 24px; } .mtw-coll__story-body h2 { font-size:32px; } }
 {%- endstyle -%}
 
 <div class="mtw-coll">
@@ -206,6 +216,27 @@
     </main>
   </div>
   {%- endpaginate -%}
+
+  {%- assign mstory = collection.metafields.custom.maker_story -%}
+  {%- if mstory != blank -%}
+    {%- assign mhead = collection.metafields.custom.maker_heading -%}
+    {%- assign mimg = collection.metafields.custom.maker_image -%}
+    <section class="mtw-coll__story" aria-label="The story behind {{ collection.title | escape }}">
+      <div class="mtw-coll__story-inner">
+        <div class="mtw-coll__story-media">
+          {%- if mimg != blank -%}{{ mimg | image_url: width: 1000 | image_tag: loading: 'lazy', alt: collection.title | append: ' — the maker story' }}
+          {%- elsif collection.image -%}{{ collection.image | image_url: width: 1000 | image_tag: loading: 'lazy', alt: collection.title }}
+          {%- elsif collection.products.first.featured_image -%}{{ collection.products.first.featured_image | image_url: width: 1000 | image_tag: loading: 'lazy', alt: collection.products.first.title }}
+          {%- endif -%}
+        </div>
+        <div class="mtw-coll__story-body">
+          <span class="label">{{ section.settings.story_eyebrow | default: 'The maker' }}</span>
+          <h2>{% if mhead != blank %}{{ mhead }}{% else %}The story behind <em>{{ collection.title }}</em>{% endif %}</h2>
+          <div class="mtw-coll__story-rte rte">{{ mstory | metafield_tag }}</div>
+        </div>
+      </div>
+    </section>
+  {%- endif -%}
 </div>
 
 <script>
@@ -228,7 +259,8 @@
     { "type": "image_picker", "id": "hero_image", "label": "Fallback hero image (used only if no collection image/products)" },
     { "type": "text", "id": "cta_text", "label": "Secondary CTA text" },
     { "type": "url", "id": "cta_link", "label": "Secondary CTA link" },
-    { "type": "text", "id": "preorder_collection", "label": "Pre-order collection handle", "default": "pre-order" }
+    { "type": "text", "id": "preorder_collection", "label": "Pre-order collection handle", "default": "pre-order" },
+    { "type": "text", "id": "story_eyebrow", "label": "Maker-story eyebrow", "default": "The maker" }
   ]
 }
 {% endschema %}
