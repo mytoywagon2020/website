@@ -154,17 +154,14 @@
           {{ section.settings.hours }}
         </p>
 
-        <div class="mtw-foot__news">
+        <div class="mtw-foot__news" data-mtw-klaviyo data-kl-company="{{ section.settings.klaviyo_company_id }}" data-kl-list="{{ section.settings.klaviyo_list_id }}">
           <h4>{{ section.settings.news_heading | default: 'Stay close.' }}</h4>
           {%- if section.settings.news_body != blank -%}<p>{{ section.settings.news_body }}</p>{%- endif -%}
-          {%- form 'customer' -%}
-            {%- if form.posted_successfully? -%}
-              <p class="mtw-foot__news-ok">Thanks. Look for a note in your inbox.</p>
-            {%- endif -%}
-            <input type="hidden" name="contact[tags]" value="newsletter, footer">
-            <input type="email" name="contact[email]" placeholder="you@email.com" required aria-label="Email address" value="{{ form.email }}">
-            <button type="submit" name="commit">{{ section.settings.news_button | default: 'Sign up' }}</button>
-          {%- endform -%}
+          <form class="mtw-foot__news-form" novalidate>
+            <input type="email" name="email" placeholder="you@email.com" required aria-label="Email address">
+            <button type="submit">{{ section.settings.news_button | default: 'Sign up' }}</button>
+          </form>
+          <p class="mtw-foot__news-ok" hidden>Thanks. Look for a note in your inbox to confirm.</p>
           {%- if section.settings.news_perk != blank -%}<p class="mtw-foot__news-perk">{{ section.settings.news_perk }}</p>{%- endif -%}
         </div>
 
@@ -263,6 +260,31 @@
   </div>
 </div>
 
+<script>
+(function(){
+  var box=document.querySelector('[data-mtw-klaviyo]');
+  if(!box||box.dataset.klInit)return; box.dataset.klInit='1';
+  var form=box.querySelector('form'), ok=box.querySelector('.mtw-foot__news-ok');
+  var company=box.dataset.klCompany, list=box.dataset.klList;
+  if(!form)return;
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var input=form.querySelector('input[name=email]');
+    var email=input?input.value.trim():'';
+    if(!email||!company||!list)return;
+    var btn=form.querySelector('button'); if(btn){btn.disabled=true;}
+    fetch('https://a.klaviyo.com/client/subscriptions/?company_id='+encodeURIComponent(company),{
+      method:'POST',
+      headers:{'content-type':'application/json','revision':'2024-10-15'},
+      body:JSON.stringify({data:{type:'subscription',attributes:{profile:{data:{type:'profile',attributes:{email:email}}}},relationships:{list:{data:{type:'list',id:list}}}}})
+    }).then(function(r){
+      if(r.ok||r.status===202){ form.hidden=true; if(ok){ok.hidden=false;} }
+      else if(btn){ btn.disabled=false; }
+    }).catch(function(){ if(btn){btn.disabled=false;} });
+  });
+})();
+</script>
+
 {% schema %}
 {
   "name": "MTW Footer",
@@ -279,6 +301,8 @@
     { "type": "text", "id": "news_body", "label": "Body", "default": "New arrivals, restocks, and a few thoughts on heirloom play. No spam, ever." },
     { "type": "text", "id": "news_button", "label": "Button label", "default": "Sign up" },
     { "type": "text", "id": "news_perk", "label": "Perk line", "default": "Welcome offer, $10 off your first order of $75 or more." },
+    { "type": "text", "id": "klaviyo_company_id", "label": "Klaviyo public API key", "default": "SZm3nN" },
+    { "type": "text", "id": "klaviyo_list_id", "label": "Klaviyo list ID", "default": "TDw9Ei", "info": "TDw9Ei = SIGNUP LIST- N. Double opt-in sends a confirmation email." },
     { "type": "header", "content": "Contact" },
     { "type": "text", "id": "email", "label": "Email", "default": "contact@mytoywagon.com" },
     { "type": "text", "id": "phone", "label": "Phone", "default": "(626) 841-0421" },

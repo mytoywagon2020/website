@@ -11,6 +11,12 @@
 {%- style -%}
   .mtw-coll__facet--more { display:none; }
   .mtw-coll__group.is-open .mtw-coll__facet--more { display:flex; }
+  .mtw-coll__group > h3 { cursor:pointer; display:flex; align-items:center; justify-content:space-between; gap:10px; }
+  .mtw-coll__group > h3::after { content:""; width:7px; height:7px; border-right:1.5px solid currentColor; border-bottom:1.5px solid currentColor; transform:rotate(45deg); transition:transform .2s ease; opacity:.55; flex:none; }
+  .mtw-coll__group.is-collapsed > h3::after { transform:rotate(-45deg); }
+  .mtw-coll__group.is-collapsed .mtw-coll__facet,
+  .mtw-coll__group.is-collapsed .mtw-coll__price,
+  .mtw-coll__group.is-collapsed .mtw-coll__showmore { display:none !important; }
   .mtw-coll__showmore { margin-top:10px; background:none; border:none; padding:2px 0; font-family:inherit; font-size:11.5px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:var(--forest,#3B6D11); cursor:pointer; border-bottom:0.5px solid var(--forest,#3B6D11); }
   .mtw-coll__story { border-top:0.5px solid var(--rule,rgba(44,44,42,0.12)); background:var(--warm-white,#FFFCF7); }
   .mtw-coll__story-inner { max-width:1280px; margin:0 auto; padding:80px 40px; display:grid; grid-template-columns:0.85fr 1fr; gap:64px; align-items:center; }
@@ -123,7 +129,7 @@
       <form method="get">
         {%- if collection.sort_by != blank -%}<input type="hidden" name="sort_by" value="{{ collection.sort_by }}">{%- endif -%}
         {%- for filter in collection.filters -%}
-          <div class="mtw-coll__group">
+          <div class="mtw-coll__group{% unless filter.active_values.size > 0 %} is-collapsed{% endunless %}">
             <h3>{{ filter.label }}</h3>
             {%- if filter.type == 'price_range' -%}
               <div class="mtw-coll__price">
@@ -144,7 +150,7 @@
                       {%- if value.value == '0–12 mo' -%}{%- assign disp = 'Under 1 yr' -%}
                       {%- elsif value.value == '18 mo' -%}{%- assign disp = '18 months' -%}
                       {%- else -%}{%- assign disp = value.value | append: ' yr' -%}{%- endif -%}
-                      <label class="mtw-coll__facet{% if vis > 10 and value.active == false %} mtw-coll__facet--more{% endif %}">
+                      <label class="mtw-coll__facet{% if vis > 6 and value.active == false %} mtw-coll__facet--more{% endif %}">
                         <input type="checkbox" name="{{ value.param_name }}" value="{{ value.value }}" {% if value.active %}checked{% endif %} onchange="this.form.submit()">
                         {{ disp }} <span class="count">{{ value.count }}</span>
                       </label>
@@ -155,7 +161,7 @@
                   {%- assign needle = ',' | append: value.value | append: ',' -%}
                   {%- unless age_seen contains needle -%}
                     {%- assign vis = vis | plus: 1 -%}
-                    <label class="mtw-coll__facet{% if vis > 10 and value.active == false %} mtw-coll__facet--more{% endif %}">
+                    <label class="mtw-coll__facet{% if vis > 6 and value.active == false %} mtw-coll__facet--more{% endif %}">
                       <input type="checkbox" name="{{ value.param_name }}" value="{{ value.value }}" {% if value.active %}checked{% endif %} onchange="this.form.submit()">
                       {{ value.label }} <span class="count">{{ value.count }}</span>
                     </label>
@@ -164,13 +170,13 @@
               {%- else -%}
                 {%- for value in filter.values -%}
                   {%- assign vis = vis | plus: 1 -%}
-                  <label class="mtw-coll__facet{% if vis > 10 and value.active == false %} mtw-coll__facet--more{% endif %}">
+                  <label class="mtw-coll__facet{% if vis > 6 and value.active == false %} mtw-coll__facet--more{% endif %}">
                     <input type="checkbox" name="{{ value.param_name }}" value="{{ value.value }}" {% if value.active %}checked{% endif %} onchange="this.form.submit()">
                     {{ value.label }} <span class="count">{{ value.count }}</span>
                   </label>
                 {%- endfor -%}
               {%- endif -%}
-              {%- if vis > 10 -%}
+              {%- if vis > 6 -%}
                 <button type="button" class="mtw-coll__showmore" data-mtw-showmore data-all="Show all ({{ vis }})">Show all ({{ vis }})</button>
               {%- endif -%}
             {%- endif -%}
@@ -183,7 +189,11 @@
     <main id="mtw-coll-grid">
       {%- if collection.products.size > 0 -%}
         <div class="mtw-coll__grid">
-          {%- for product in collection.products -%}
+          {%- comment -%} In-stock (incl. pre-orders that keep selling) first, sold-out last. Per displayed page. {%- endcomment -%}
+          {%- assign coll_avail = collection.products | where: 'available', true -%}
+          {%- assign coll_sold = collection.products | where: 'available', false -%}
+          {%- assign coll_ordered = coll_avail | concat: coll_sold -%}
+          {%- for product in coll_ordered -%}
             {%- assign cur = product.selected_or_first_available_variant -%}
             {%- assign is_pre = false -%}
             {%- for pc in product.collections -%}{%- if pc.handle == section.settings.preorder_collection -%}{%- assign is_pre = true -%}{%- endif -%}{%- endfor -%}
@@ -272,6 +282,12 @@
       var g=b.closest('.mtw-coll__group'); if(!g) return;
       var open=g.classList.toggle('is-open');
       b.textContent=open?'Show less':b.getAttribute('data-all');
+    });
+  });
+  document.querySelectorAll('.mtw-coll__group > h3').forEach(function(h){
+    h.addEventListener('click',function(e){
+      if(e.target.closest('a,input,label,button')) return;
+      h.parentElement.classList.toggle('is-collapsed');
     });
   });
 })();
