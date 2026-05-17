@@ -51,7 +51,7 @@
         "logo": "shopify://shop_images/MyToyWagon_primarylogo_lightbg_transparent_brown_51213426-0940-44ab-a222-28582c574ae2.png",
         "desktop_logo_width": 160,
         "mobile_logo_width": 90,
-        "main_menu_link_list": "main-menu",
+        "main_menu_link_list": "mtw-main-menu",
         "hover_menu": true,
         "main_menu_alignment": "center-left",
         "header_style": "normal",
