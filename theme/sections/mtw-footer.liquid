@@ -1,54 +1,48 @@
 {%- comment -%}
-  MTW Footer — rebuilt to the "MTW Footer 3" spec. Namespaced .mtw-foot
-  so it cannot collide with Impulse's .site-footer. One responsive
-  component: 4-col grid on desktop, accordion link columns + promoted
-  newsletter on mobile (<details>/<summary>, keyboard accessible).
-  Brand mark uses mytoywagon-logo-mark.png (Shopify Files) via CSS mask
-  so it inherits ink. Newsletter posts to Shopify customer signup.
-  Customer copy contains no em-dashes and no exclamation marks.
+  MTW Footer — editorial footer (.mtw-foot), namespaced so it cannot collide
+  with Impulse's .site-footer. Reconciled to the MTW_Footer_6 spec:
+  tagline band, brand + 3 link columns (accordions on mobile), promoted
+  newsletter, dedicated mobile "Talk to us", payments band, bottom bar.
+  Responsive breakpoint: 720px.
 {%- endcomment -%}
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+{%- if section.settings.show_badge -%}<script src="https://apis.google.com/js/platform.js?onload=renderBadge" async defer></script>{%- endif -%}
 
 {%- liquid
   assign mark_url = 'mytoywagon-logo-mark.png' | file_url
   assign phone_href = section.settings.phone | remove: '.' | remove: ' ' | remove: '(' | remove: ')' | remove: '-'
-  assign year = 'now' | date: '%Y'
 -%}
-
-{%- if section.settings.show_badge -%}
-  <script src="https://apis.google.com/js/platform.js" async defer></script>
-{%- endif -%}
 
 {%- style -%}
   #shopify-section-{{ section.id }} { background:#F5F0E5; }
   .mtw-foot {
     --cream:#F5F0E5; --warm-white:#FFFCF7; --ink:#2C2C2A; --forest:#3B6D11;
-    --amber:#854F0B; --stone:#5F5E5A; --card-bg:#EDE3CD;
-    --rule:rgba(44,44,42,0.12); --rule-strong:rgba(44,44,42,0.22);
-    border-top:0.5px solid var(--rule);
+    --amber:#854F0B; --stone:#5F5E5A; --rule:rgba(44,44,42,0.12); --rule-strong:rgba(44,44,42,0.22);
+    border-top:0.5px solid var(--rule); background:var(--cream);
     font-family:'Mulish',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; color:var(--ink);
   }
   .mtw-foot *, .mtw-foot *::before, .mtw-foot *::after { box-sizing:border-box; }
   .mtw-foot a { text-decoration:none; color:inherit; }
-  .mtw-foot img { max-width:100%; display:block; }
-  .mtw-foot button { font-family:inherit; cursor:pointer; }
   .mtw-foot__inner { max-width:1440px; margin:0 auto; padding:72px 40px 28px; }
 
-  /* Heirloom-is-sustainability band */
   .mtw-foot__band { text-align:center; padding:0 0 56px; border-bottom:0.5px solid var(--rule); margin-bottom:56px; }
   .mtw-foot__band h2 { font-family:'Cormorant Garamond',Georgia,serif; font-size:30px; font-weight:500; letter-spacing:-0.008em; line-height:1.15; color:var(--ink); margin:0 0 8px; }
   .mtw-foot__band h2 em { font-style:italic; color:var(--forest); }
   .mtw-foot__band p { font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-size:16px; color:var(--stone); max-width:560px; margin:0 auto; line-height:1.5; }
 
-  /* Top region */
   .mtw-foot__top { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:56px; padding-bottom:48px; border-bottom:0.5px solid var(--rule); }
-  .mtw-foot__logo { display:block; width:220px; height:auto; margin-bottom:22px; }
+  .mtw-foot__brand { display:flex; flex-direction:column; }
+  .mtw-foot__logo { display:block; width:218px; height:218px; margin-bottom:24px; background-color:var(--ink); -webkit-mask:url('{{ mark_url }}') left center/contain no-repeat; mask:url('{{ mark_url }}') left center/contain no-repeat; }
   .mtw-foot__tag { font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-size:16px; color:var(--stone); margin:0 0 18px; max-width:320px; line-height:1.5; }
   .mtw-foot__loc { font-size:13.5px; color:var(--ink); line-height:1.6; margin:0 0 18px; }
   .mtw-foot__loc strong { font-weight:500; }
+  .mtw-foot__social { display:flex; gap:12px; }
+  .mtw-foot__social a { display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px; border-radius:50%; border:0.5px solid var(--rule-strong); color:var(--stone); transition:background 180ms ease,color 180ms ease,border-color 180ms ease; }
+  .mtw-foot__social a:hover { background:var(--ink); color:var(--cream); border-color:var(--ink); }
+  .mtw-foot__social svg { width:15px; height:15px; stroke:currentColor; stroke-width:1.4; stroke-linecap:round; stroke-linejoin:round; fill:none; }
 
   .mtw-foot__news { margin:4px 0 22px; padding-top:22px; border-top:0.5px solid var(--rule); max-width:340px; }
   .mtw-foot__news h4 { font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-size:18px; font-weight:500; color:var(--ink); margin:0 0 6px; }
@@ -57,41 +51,35 @@
   .mtw-foot__news input { height:40px; padding:0 12px; background:var(--warm-white); border:0.5px solid var(--rule-strong); border-radius:2px; font-family:inherit; font-size:13.5px; color:var(--ink); outline:none; }
   .mtw-foot__news input::placeholder { color:var(--stone); }
   .mtw-foot__news input:focus { border-color:var(--ink); }
-  .mtw-foot__news button { height:40px; padding:0 18px; background:var(--ink); color:var(--cream); border:none; border-radius:2px; font-size:10.5px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; }
+  .mtw-foot__news button { height:40px; padding:0 18px; background:var(--ink); color:var(--cream); border:none; border-radius:2px; font-size:10.5px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; cursor:pointer; }
   .mtw-foot__news button:hover { background:var(--forest); }
   .mtw-foot__news-perk { font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-size:12.5px; color:var(--stone); margin:8px 0 0; }
-  .mtw-foot__news-ok { font-size:13px; color:var(--forest); margin:0 0 10px; font-weight:600; }
+  .mtw-foot__news-ok { font-size:13px; color:var(--forest); margin:0; font-weight:600; }
 
-  .mtw-foot__contact { font-size:13.5px; line-height:1.7; color:var(--ink); margin-bottom:22px; }
+  .mtw-foot__contact { font-size:13.5px; line-height:1.7; color:var(--ink); margin:18px 0 22px; }
   .mtw-foot__contact a { color:var(--ink); font-weight:500; display:block; }
   .mtw-foot__contact a:hover { color:var(--forest); }
   .mtw-foot__contact .small { font-size:12.5px; color:var(--stone); margin-top:6px; display:block; }
 
-  .mtw-foot__social { display:flex; gap:12px; }
-  .mtw-foot__social a { display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px; border-radius:50%; border:0.5px solid var(--rule-strong); color:var(--stone); transition:background 180ms ease,color 180ms ease,border-color 180ms ease; }
-  .mtw-foot__social a:hover { background:var(--ink); color:var(--cream); border-color:var(--ink); }
-  .mtw-foot__social svg { width:15px; height:15px; stroke:currentColor; stroke-width:1.4; stroke-linecap:round; stroke-linejoin:round; fill:none; }
+  .mtw-foot__col h4,
+  .mtw-foot__col summary { font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-size:18px; font-weight:500; color:var(--ink); margin:0 0 18px; letter-spacing:-0.003em; }
+  .mtw-foot__col summary { list-style:none; cursor:default; display:flex; justify-content:space-between; align-items:center; }
+  .mtw-foot__col summary::-webkit-details-marker { display:none; }
+  .mtw-foot__col summary::after { content:""; width:8px; height:8px; border-right:1.5px solid var(--stone); border-bottom:1.5px solid var(--stone); transform:rotate(45deg); transition:transform 240ms ease; margin-right:4px; display:none; }
+  .mtw-foot__col ul { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px; }
+  .mtw-foot__col li { font-size:13.5px; color:var(--ink); }
+  .mtw-foot__col a:hover { color:var(--forest); }
 
-  /* Link columns — <details> so they collapse on mobile */
-  .mtw-foot__acc { border:none; }
-  .mtw-foot__acc summary { display:flex; justify-content:space-between; align-items:center; font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-size:18px; font-weight:500; color:var(--ink); margin:0 0 18px; list-style:none; cursor:default; }
-  .mtw-foot__acc summary::-webkit-details-marker { display:none; }
-  .mtw-foot__acc summary::after { content:""; width:8px; height:8px; border-right:1.5px solid var(--stone); border-bottom:1.5px solid var(--stone); transform:rotate(45deg); transition:transform 240ms ease; display:none; }
-  .mtw-foot__acc ul { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px; }
-  .mtw-foot__acc li { font-size:13.5px; color:var(--ink); }
-  .mtw-foot__acc a:hover { color:var(--forest); }
+  .mtw-foot__talk { display:none; }
 
-  /* Payments band */
+  .mtw-foot__badge { display:flex; justify-content:center; align-items:center; gap:14px; padding:24px 0; border-bottom:0.5px solid var(--rule); }
+
   .mtw-foot__mid { display:flex; justify-content:space-between; align-items:center; padding:24px 0; border-bottom:0.5px solid var(--rule); gap:24px; flex-wrap:wrap; }
   .mtw-foot__pay-label { font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-size:13.5px; color:var(--stone); }
   .mtw-foot__pay { display:flex; align-items:center; flex-wrap:wrap; }
   .mtw-foot__chip { display:inline-block; padding:0 14px 0 0; margin-right:14px; border-right:0.5px solid var(--rule); font-size:12px; color:var(--ink); letter-spacing:0.06em; font-weight:500; line-height:1.2; }
   .mtw-foot__chip:last-child { border-right:none; margin-right:0; padding-right:0; }
 
-  /* Trust badge */
-  .mtw-foot__badge { display:flex; justify-content:center; align-items:center; gap:14px; padding:24px 0; border-bottom:0.5px solid var(--rule); }
-
-  /* Bottom bar */
   .mtw-foot__bottom { display:flex; justify-content:space-between; align-items:center; padding-top:22px; gap:16px; flex-wrap:wrap; }
   .mtw-foot__bottom-copy { font-size:12px; color:var(--stone); }
   .mtw-foot__bottom-copy em { font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-size:13.5px; color:var(--ink); margin-right:10px; }
@@ -99,48 +87,64 @@
   .mtw-foot__bottom-links a { font-size:12px; color:var(--stone); }
   .mtw-foot__bottom-links a:hover { color:var(--ink); }
 
-  .mtw-foot__contact-h { font-size:10.5px; letter-spacing:0.22em; text-transform:uppercase; color:var(--stone); font-weight:600; margin:0 0 12px; }
+  @media (min-width:721px) {
+    .mtw-foot__col > ul { display:flex !important; }
+  }
 
-  /* ===== Mobile (<=720px): accordions + promoted newsletter ===== */
   @media (max-width:720px) {
-    .mtw-foot__inner { padding:40px 24px 24px; }
-    .mtw-foot__band { padding-bottom:24px; margin-bottom:22px; }
+    .mtw-foot__inner { padding:32px 24px 24px; }
+    .mtw-foot__band { padding-bottom:24px; margin-bottom:20px; }
     .mtw-foot__band h2 { font-size:24px; }
     .mtw-foot__band p { font-size:14px; }
+
     .mtw-foot__top { display:flex; flex-direction:column; gap:0; padding-bottom:0; border-bottom:none; }
-    .mtw-foot__brand { order:2; display:flex; flex-direction:column; align-items:center; text-align:center; padding-bottom:22px; margin-bottom:6px; border-bottom:0.5px solid var(--rule); }
-    .mtw-foot__logo { order:2; width:180px; height:auto; margin:0 auto 14px; }
-    .mtw-foot__tag { order:3; } .mtw-foot__loc { order:4; } .mtw-foot__contact { order:5; } .mtw-foot__brand .mtw-foot__social { order:6; }
-    .mtw-foot__tag, .mtw-foot__loc { margin-left:auto; margin-right:auto; }
-    .mtw-foot__brand .mtw-foot__social { justify-content:center; margin-top:14px; }
-    .mtw-foot__news { order:1; width:100%; max-width:none; text-align:center; border-top:none; padding-top:0; margin:0 0 28px; padding-bottom:28px; border-bottom:0.5px solid var(--rule); }
+
+    .mtw-foot__brand { order:2; align-items:center; text-align:center; padding-bottom:20px; margin-bottom:20px; border-bottom:0.5px solid var(--rule); }
+    .mtw-foot__logo { width:180px; height:180px; margin:0 auto 4px; -webkit-mask-position:center; mask-position:center; }
+    .mtw-foot__tag { order:3; margin:0 auto 10px; max-width:280px; }
+    .mtw-foot__loc { order:4; margin:0 auto; }
+    .mtw-foot__social { order:6; justify-content:center; margin-top:14px; }
+    .mtw-foot__contact { display:none; }
+
+    .mtw-foot__news { order:1; width:100%; max-width:none; margin:0 0 32px; padding:0 0 32px; border-top:none; border-bottom:0.5px solid var(--rule); text-align:center; }
+    .mtw-foot__news-perk { order:-1; margin:0 0 10px; }
     .mtw-foot__news form { grid-template-columns:1fr; }
     .mtw-foot__news input { height:46px; text-align:center; }
-    .mtw-foot__news button { height:46px; }
-    .mtw-foot__acc { order:3; border-bottom:0.5px solid var(--rule); }
-    .mtw-foot__acc summary { cursor:pointer; padding:18px 4px; margin:0; }
-    .mtw-foot__acc summary::after { display:block; }
-    .mtw-foot__acc[open] summary::after { transform:rotate(-135deg); }
-    .mtw-foot__acc ul { padding:0 4px 18px; gap:14px; }
-    .mtw-foot__acc li { font-size:15px; }
-    .mtw-foot__acc:not([open]) > ul { display:none; }
-    .mtw-foot__contact { text-align:center; padding:32px 8px; border-bottom:0.5px solid var(--rule); margin-bottom:0; }
-    .mtw-foot__mid { justify-content:center; padding:24px 0; }
+    .mtw-foot__news button { height:46px; font-size:12px; }
+
+    .mtw-foot__col { order:3; border-bottom:0.5px solid var(--rule); }
+    .mtw-foot__col summary { cursor:pointer; padding:18px 4px; margin:0; }
+    .mtw-foot__col summary::after { display:block; }
+    .mtw-foot__col[open] summary::after { transform:rotate(-135deg); }
+    .mtw-foot__col ul { padding:0 4px 18px; gap:14px; }
+    .mtw-foot__col li { font-size:15px; }
+    .mtw-foot__col:not([open]) > ul { display:none; }
+
+    .mtw-foot__talk { display:block; order:4; text-align:center; padding:40px 8px 32px; border-bottom:0.5px solid var(--rule); }
+    .mtw-foot__talk h4 { font-size:10.5px; letter-spacing:0.22em; text-transform:uppercase; color:var(--stone); font-weight:600; margin:0 0 16px; }
+    .mtw-foot__talk a { display:block; font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-size:19px; font-weight:500; color:var(--ink); padding:4px 0; line-height:1.3; }
+    .mtw-foot__talk a:hover { color:var(--forest); }
+    .mtw-foot__talk .small { font-size:11.5px; color:var(--stone); margin-top:14px; letter-spacing:0.16em; text-transform:uppercase; font-weight:500; display:block; }
+
+    .mtw-foot__badge { flex-direction:column; gap:8px; padding:24px 8px 26px; }
+
+    .mtw-foot__mid { justify-content:center; padding:28px 8px 24px; text-align:center; }
+    .mtw-foot__pay-label { display:block; width:100%; font-family:'Mulish',sans-serif; font-style:normal; font-size:10px; letter-spacing:0.22em; text-transform:uppercase; font-weight:600; margin-bottom:12px; }
+    .mtw-foot__pay { justify-content:center; gap:14px; }
+    .mtw-foot__chip { padding:0; margin:0; border-right:none; font-size:11px; letter-spacing:0.08em; color:var(--stone); }
     .mtw-foot__chip--lo { display:none; }
-    .mtw-foot__bottom { flex-direction:column; text-align:center; gap:14px; padding-top:24px; }
-  }
-  @media (min-width:721px) {
-    .mtw-foot__acc summary::after { display:none; }
-    .mtw-foot__acc > ul { display:flex !important; }
+
+    .mtw-foot__bottom { flex-direction:column; text-align:center; gap:14px; padding:28px 8px 20px; }
+    .mtw-foot__bottom-links { justify-content:center; flex-wrap:wrap; }
   }
 {%- endstyle -%}
 
 <div class="mtw-foot" data-section-id="{{ section.id }}" data-section-type="footer-section">
   <div class="mtw-foot__inner">
 
-    {%- if section.settings.show_band -%}
+    {%- if section.settings.band_heading != blank -%}
     <div class="mtw-foot__band">
-      <h2>Heirloom is <em>sustainability.</em></h2>
+      <h2>{{ section.settings.band_heading }}</h2>
       {%- if section.settings.band_subtitle != blank -%}<p>{{ section.settings.band_subtitle }}</p>{%- endif -%}
     </div>
     {%- endif -%}
@@ -148,23 +152,24 @@
     <div class="mtw-foot__top">
 
       <div class="mtw-foot__brand">
-        <a href="{{ routes.root_url }}" aria-label="{{ shop.name | escape }}"><img class="mtw-foot__logo" src="{{ mark_url }}" alt="" loading="lazy"></a>
-        {%- if section.settings.tagline != blank -%}<p class="mtw-foot__tag">{{ section.settings.tagline }}</p>{%- endif -%}
-        <p class="mtw-foot__loc">
-          {%- if section.settings.location != blank -%}<strong>{{ section.settings.location }}</strong><br>{%- endif -%}
-          {{ section.settings.hours }}
-        </p>
+        <a href="{{ routes.root_url }}" aria-label="{{ shop.name | escape }}"><span class="mtw-foot__logo" aria-hidden="true"></span></a>
 
-        <div class="mtw-foot__news" data-mtw-klaviyo data-kl-company="{{ section.settings.klaviyo_company_id }}" data-kl-list="{{ section.settings.klaviyo_list_id }}">
+        <div class="mtw-foot__news" data-mtw-news data-kl-company="{{ section.settings.klaviyo_company_id }}" data-kl-list="{{ section.settings.klaviyo_list_id }}">
           <h4>{{ section.settings.news_heading | default: 'Stay close.' }}</h4>
+          {%- if section.settings.news_perk != blank -%}<p class="mtw-foot__news-perk">{{ section.settings.news_perk }}</p>{%- endif -%}
           {%- if section.settings.news_body != blank -%}<p>{{ section.settings.news_body }}</p>{%- endif -%}
           <form class="mtw-foot__news-form" novalidate>
             <input type="email" name="email" placeholder="you@email.com" required aria-label="Email address">
             <button type="submit">{{ section.settings.news_button | default: 'Sign up' }}</button>
           </form>
           <p class="mtw-foot__news-ok" hidden>Thanks. Look for a note in your inbox to confirm.</p>
-          {%- if section.settings.news_perk != blank -%}<p class="mtw-foot__news-perk">{{ section.settings.news_perk }}</p>{%- endif -%}
         </div>
+
+        {%- if section.settings.tagline != blank -%}<p class="mtw-foot__tag">{{ section.settings.tagline }}</p>{%- endif -%}
+        <p class="mtw-foot__loc">
+          {%- if section.settings.location != blank -%}<strong>{{ section.settings.location }}</strong><br>{%- endif -%}
+          {{ section.settings.hours }}
+        </p>
 
         <div class="mtw-foot__contact">
           {%- if section.settings.email != blank -%}<a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a>{%- endif -%}
@@ -188,7 +193,7 @@
         </div>
       </div>
 
-      <details class="mtw-foot__acc mtw-foot__col">
+      <details class="mtw-foot__col" open>
         <summary>Shop</summary>
         <ul>
           <li><a href="/pages/shop-by-age">Shop by Age</a></li>
@@ -201,7 +206,7 @@
         </ul>
       </details>
 
-      <details class="mtw-foot__acc mtw-foot__col">
+      <details class="mtw-foot__col" open>
         <summary>Customer care</summary>
         <ul>
           <li><a href="/pages/shipping">Shipping</a></li>
@@ -212,7 +217,7 @@
         </ul>
       </details>
 
-      <details class="mtw-foot__acc mtw-foot__col">
+      <details class="mtw-foot__col" open>
         <summary>About</summary>
         <ul>
           <li><a href="/pages/our-story">Our story</a></li>
@@ -223,6 +228,13 @@
           <li><a href="/pages/accessibility">Accessibility</a></li>
         </ul>
       </details>
+
+      <div class="mtw-foot__talk">
+        <h4>Talk to us</h4>
+        {%- if section.settings.email != blank -%}<a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a>{%- endif -%}
+        {%- if section.settings.phone != blank -%}<a href="tel:{{ phone_href }}">{{ section.settings.phone }}</a>{%- endif -%}
+        {%- if section.settings.hours != blank -%}<span class="small">{{ section.settings.hours }}</span>{%- endif -%}
+      </div>
     </div>
 
     {%- if section.settings.show_badge -%}
@@ -249,7 +261,7 @@
     <div class="mtw-foot__bottom">
       <span class="mtw-foot__bottom-copy">
         {%- if section.settings.bottom_tagline != blank -%}<em>{{ section.settings.bottom_tagline }}</em>{%- endif -%}
-        &copy; {{ year }} {{ shop.name }}. {{ section.settings.copyright_suffix }}
+        &copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. {{ section.settings.copyright_suffix }}
       </span>
       <div class="mtw-foot__bottom-links">
         <a href="/policies/privacy-policy">Privacy policy</a>
@@ -263,25 +275,23 @@
 
 <script>
 (function(){
-  var box=document.querySelector('[data-mtw-klaviyo]');
-  if(!box||box.dataset.klInit)return; box.dataset.klInit='1';
-  var form=box.querySelector('form'), ok=box.querySelector('.mtw-foot__news-ok');
-  var company=box.dataset.klCompany, list=box.dataset.klList;
-  if(!form)return;
-  form.addEventListener('submit',function(e){
+  var w=document.querySelector('[data-mtw-news][data-section-id-fallback], .mtw-foot [data-mtw-news]');
+  if(!w) return;
+  var f=w.querySelector('form'), ok=w.querySelector('.mtw-foot__news-ok');
+  if(!f) return;
+  f.addEventListener('submit',function(e){
     e.preventDefault();
-    var input=form.querySelector('input[name=email]');
-    var email=input?input.value.trim():'';
-    if(!email||!company||!list)return;
-    var btn=form.querySelector('button'); if(btn){btn.disabled=true;}
-    fetch('https://a.klaviyo.com/client/subscriptions/?company_id='+encodeURIComponent(company),{
-      method:'POST',
-      headers:{'content-type':'application/json','revision':'2024-10-15'},
-      body:JSON.stringify({data:{type:'subscription',attributes:{profile:{data:{type:'profile',attributes:{email:email}}}},relationships:{list:{data:{type:'list',id:list}}}}})
-    }).then(function(r){
-      if(r.ok||r.status===202){ form.hidden=true; if(ok){ok.hidden=false;} }
-      else if(btn){ btn.disabled=false; }
-    }).catch(function(){ if(btn){btn.disabled=false;} });
+    var email=(f.querySelector('input[name=email]')||{}).value||'';
+    if(!email||email.indexOf('@')<0){ return; }
+    var co=w.getAttribute('data-kl-company'), list=w.getAttribute('data-kl-list');
+    var done=function(){ f.style.display='none'; if(ok){ ok.hidden=false; } };
+    if(co && list){
+      fetch('https://a.klaviyo.com/client/subscriptions/?company_id='+encodeURIComponent(co),{
+        method:'POST',
+        headers:{'Content-Type':'application/json','revision':'2024-10-15'},
+        body:JSON.stringify({data:{type:'subscription',attributes:{profile:{data:{type:'profile',attributes:{email:email}}}},relationships:{list:{data:{type:'list',id:list}}}}})
+      }).then(done).catch(done);
+    } else { done(); }
   });
 })();
 </script>
@@ -291,7 +301,7 @@
   "name": "MTW Footer",
   "settings": [
     { "type": "header", "content": "Sustainability band" },
-    { "type": "checkbox", "id": "show_band", "label": "Show heirloom-is-sustainability band", "default": true },
+    { "type": "text", "id": "band_heading", "label": "Band heading (HTML em allowed)", "default": "Heirloom is <em>sustainability.</em>" },
     { "type": "text", "id": "band_subtitle", "label": "Band subtitle", "default": "Toys played with for a decade are toys not bought, broken, and replaced." },
     { "type": "header", "content": "Brand block" },
     { "type": "text", "id": "tagline", "label": "Tagline", "default": "Heirloom toys, curated by hand. A family-owned boutique, online since 2020." },
@@ -302,8 +312,8 @@
     { "type": "text", "id": "news_body", "label": "Body", "default": "New arrivals, restocks, and a few thoughts on heirloom play. No spam, ever." },
     { "type": "text", "id": "news_button", "label": "Button label", "default": "Sign up" },
     { "type": "text", "id": "news_perk", "label": "Perk line", "default": "Welcome offer · $10 off your first order of $75 or more." },
-    { "type": "text", "id": "klaviyo_company_id", "label": "Klaviyo public API key", "default": "SZm3nN" },
-    { "type": "text", "id": "klaviyo_list_id", "label": "Klaviyo list ID", "default": "TDw9Ei", "info": "TDw9Ei = SIGNUP LIST- N. Double opt-in sends a confirmation email." },
+    { "type": "text", "id": "klaviyo_company_id", "label": "Klaviyo public company ID", "info": "Optional. If set with a list ID, the form subscribes via Klaviyo." },
+    { "type": "text", "id": "klaviyo_list_id", "label": "Klaviyo list ID" },
     { "type": "header", "content": "Contact" },
     { "type": "text", "id": "email", "label": "Email", "default": "contact@mytoywagon.com" },
     { "type": "text", "id": "phone", "label": "Phone", "default": "(626) 841-0421" },
@@ -312,9 +322,11 @@
     { "type": "url", "id": "pinterest", "label": "Pinterest URL" },
     { "type": "url", "id": "youtube", "label": "YouTube URL" },
     { "type": "url", "id": "tiktok", "label": "TikTok URL" },
-    { "type": "header", "content": "Top Quality Store badge" },
-    { "type": "checkbox", "id": "show_badge", "label": "Show Google reviews badge", "default": false, "info": "Only enable once the award is actually granted. Loads Google platform.js." },
-    { "type": "text", "id": "badge_merchant_id", "label": "Google merchant id", "default": "370063513" },
+    { "type": "header", "content": "Google Top Quality Store badge" },
+    { "type": "checkbox", "id": "show_badge", "label": "Show Google rating badge", "default": false },
+    { "type": "text", "id": "badge_merchant_id", "label": "Google merchant ID", "default": "370063513" },
+    { "type": "text", "id": "badge_title", "label": "Badge title (legacy)", "default": "Top Quality Store" },
+    { "type": "text", "id": "badge_sub", "label": "Badge subtitle (legacy)", "default": "Awarded by Google" },
     { "type": "header", "content": "Bottom bar" },
     { "type": "text", "id": "bottom_tagline", "label": "Bottom tagline", "default": "Heirloom toys, curated by hand." },
     { "type": "text", "id": "copyright_suffix", "label": "Copyright suffix", "default": "All rights reserved." }
