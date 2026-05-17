@@ -76,6 +76,18 @@
     .mtw-utility__links { gap:14px; font-size:11.5px; }
     .mtw-utility__center { font-size:13px; order:-1; flex-basis:100%; }
   }
+
+  /* Header overflow guard. The Impulse nav/search/cart row was running
+     off the page; this stops the sideways overflow and lets the header
+     shrink so the cart icon stays on screen. Scoped here (our section,
+     always first in the header group) so it never edits Impulse core
+     and survives theme updates. Harmless no-op for any selector this
+     Impulse version does not use. */
+  html, body { overflow-x:hidden; max-width:100%; }
+  #shopify-section-header, .header-sticky-wrapper, .site-header { max-width:100%; }
+  .site-header .header-layout, .site-header .page-width { max-width:100%; box-sizing:border-box; }
+  .site-header__icons, .site-header__element--top-right { flex-shrink:0; }
+  .site-nav, .site-nav__wrapper, .site-header__element--top-center { min-width:0; }
 {%- endstyle -%}
 
 <div class="mtw-utility" data-section-id="{{ section.id }}">
