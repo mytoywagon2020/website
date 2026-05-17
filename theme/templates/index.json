@@ -145,7 +145,7 @@
             "image": "shopify://shop_images/age-first-year-haba-fish-rattle.webp",
             "name": "First year",
             "range": "0 to 12 months",
-            "link": ""
+            "link": "/collections/0-12-months"
           }
         },
         "a2": {
@@ -154,7 +154,7 @@
             "image": "shopify://shop_images/age-toddler-sabo-alphabet-blocks.webp",
             "name": "Toddler",
             "range": "1 to 3 years",
-            "link": ""
+            "link": "/collections/age-1-3-years"
           }
         },
         "a3": {
@@ -163,7 +163,7 @@
             "image": "shopify://shop_images/age-preschool-sisters-building-blocks.webp",
             "name": "Preschool",
             "range": "3 to 5 years",
-            "link": ""
+            "link": "/collections/age-3-5-years"
           }
         },
         "a4": {
@@ -172,7 +172,7 @@
             "image": "shopify://shop_images/age-early-school-fagus-firetruck.webp",
             "name": "Early school",
             "range": "5 to 8 years",
-            "link": ""
+            "link": "/collections/age-5-8-years"
           }
         },
         "a5": {
@@ -181,7 +181,7 @@
             "image": "shopify://shop_images/age-school-girls-huckleberry-magnifier.webp",
             "name": "School age",
             "range": "8 years and up",
-            "link": ""
+            "link": "/collections/8-years"
           }
         }
       },

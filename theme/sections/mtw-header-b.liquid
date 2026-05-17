@@ -90,6 +90,8 @@
   [data-mtw-header="b-v1"] .mtwhb-logo__text small { display:block; font-family:'Mulish',sans-serif; font-size:10px; letter-spacing:0.22em; text-transform:uppercase; color:var(--stone); margin-top:8px; font-weight:500; }
   [data-mtw-header="b-v1"] .mtwhb-logo__mark { height:54px; width:124px; flex-shrink:0; display:block; background-color:var(--ink); -webkit-mask:url('{{ mark_url }}') center / contain no-repeat; mask:url('{{ mark_url }}') center / contain no-repeat; }
   [data-mtw-header="b-v1"] .mtwhb-m__logo-mark { height:40px; width:92px; flex-shrink:0; display:block; background-color:var(--ink); -webkit-mask:url('{{ mark_url }}') center / contain no-repeat; mask:url('{{ mark_url }}') center / contain no-repeat; }
+  [data-mtw-header="b-v1"] .mtwhb-logo__img { height:54px; width:auto; flex-shrink:0; display:block; }
+  [data-mtw-header="b-v1"] .mtwhb-m__logo-img { height:40px; width:auto; flex-shrink:0; display:block; }
   [data-mtw-header="b-v1"] .mtwhb-ship a { color:inherit; border-bottom:0.5px solid rgba(44,44,42,0.35); }
   [data-mtw-header="b-v1"] .mtwhb-ship a:hover { color:var(--forest); }
   [data-mtw-header="b-v1"] .mtwhb-ship__ret, [data-mtw-header="b-v1"] .mtwhb-m-ship__ret { font-style:normal; font-family:'Mulish',sans-serif; font-size:12px; margin-left:14px; }
@@ -191,7 +193,7 @@
           {%- if section.settings.logo != blank -%}
             <img src="{{ section.settings.logo | image_url: width: 520 }}" alt="My Toy Wagon" width="{{ section.settings.logo_width }}" loading="eager">
           {%- elsif mark_url != blank -%}
-            <span class="mtwhb-logo__mark" aria-hidden="true"></span>
+            <img class="mtwhb-logo__img" src="{{ mark_url }}" alt="{{ shop.name | escape }}" height="54" loading="eager">
           {%- else -%}
             <span class="mtwhb-logo__text">My Toy Wagon<small>Los Angeles · California · est. 2020</small></span>
           {%- endif -%}
@@ -256,7 +258,7 @@
           {%- if section.settings.logo != blank -%}
             <img src="{{ section.settings.logo | image_url: width: 280 }}" alt="My Toy Wagon" width="{{ section.settings.logo_width_mobile }}" loading="eager">
           {%- elsif mark_url != blank -%}
-            <span class="mtwhb-m__logo-mark" aria-hidden="true"></span>
+            <img class="mtwhb-m__logo-img" src="{{ mark_url }}" alt="{{ shop.name | escape }}" height="40" loading="eager">
           {%- else -%}
             <div class="mtwhb-m__logo-text">My Toy Wagon<small>Los Angeles · est. 2020</small></div>
           {%- endif -%}
