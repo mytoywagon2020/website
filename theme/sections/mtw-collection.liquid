@@ -22,6 +22,15 @@
   .mtw-coll__story-rte, .mtw-coll__story-rte p { font-size:16.5px; line-height:1.78; color:var(--ink,#2C2C2A); margin:0 0 18px; }
   .mtw-coll__story-rte p:last-child { margin-bottom:0; }
   @media (max-width:1000px) { .mtw-coll__story-inner { grid-template-columns:1fr; gap:36px; padding:56px 24px; } .mtw-coll__story-body h2 { font-size:32px; } }
+
+  .mtw-coll__age { border-top:0.5px solid var(--rule,rgba(44,44,42,0.12)); border-bottom:0.5px solid var(--rule,rgba(44,44,42,0.12)); background:var(--cream,#F5F0E5); }
+  .mtw-coll__age-inner { max-width:1280px; margin:0 auto; padding:34px 40px; display:grid; grid-template-columns:1.45fr 1fr; gap:48px; align-items:center; }
+  .mtw-coll__age-lede .label { display:block; margin-bottom:10px; }
+  .mtw-coll__age-lede p { font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-size:20px; line-height:1.5; color:var(--ink,#2C2C2A); margin:0; }
+  .mtw-coll__age-trust { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px; }
+  .mtw-coll__age-trust li { font-size:13px; letter-spacing:0.04em; color:var(--stone,#5F5E5A); padding-left:20px; position:relative; }
+  .mtw-coll__age-trust li::before { content:""; position:absolute; left:0; top:6px; width:7px; height:7px; border-radius:50%; background:var(--forest,#3B6D11); }
+  @media (max-width:1000px) { .mtw-coll__age-inner { grid-template-columns:1fr; gap:22px; padding:26px 24px; } .mtw-coll__age-lede p { font-size:17px; } }
 {%- endstyle -%}
 
 <div class="mtw-coll">
@@ -53,6 +62,23 @@
       {%- endif -%}
     </div>
   </section>
+
+  {%- assign milestones = collection.metafields.custom.age_milestones -%}
+  {%- if milestones != blank -%}
+    <section class="mtw-coll__age" aria-label="About this age">
+      <div class="mtw-coll__age-inner">
+        <div class="mtw-coll__age-lede">
+          <span class="label">{{ section.settings.age_eyebrow | default: 'The developmental window' }}</span>
+          <p>{{ milestones.value | escape | newline_to_br }}</p>
+        </div>
+        <ul class="mtw-coll__age-trust">
+          <li>Free shipping over $150 in the contiguous U.S.</li>
+          <li>Gift-ready on every order</li>
+          <li>Easy 30-day returns</li>
+        </ul>
+      </div>
+    </section>
+  {%- endif -%}
 
   {%- paginate collection.products by 24 -%}
   <div class="mtw-coll__filterbar">
@@ -260,7 +286,8 @@
     { "type": "text", "id": "cta_text", "label": "Secondary CTA text" },
     { "type": "url", "id": "cta_link", "label": "Secondary CTA link" },
     { "type": "text", "id": "preorder_collection", "label": "Pre-order collection handle", "default": "pre-order" },
-    { "type": "text", "id": "story_eyebrow", "label": "Maker-story eyebrow", "default": "The maker" }
+    { "type": "text", "id": "story_eyebrow", "label": "Maker-story eyebrow", "default": "The maker" },
+    { "type": "text", "id": "age_eyebrow", "label": "Age-milestone eyebrow", "default": "The developmental window" }
   ]
 }
 {% endschema %}
