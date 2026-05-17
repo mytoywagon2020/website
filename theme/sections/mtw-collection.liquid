@@ -37,6 +37,14 @@
   .mtw-coll__age-trust li { font-size:13px; letter-spacing:0.04em; color:var(--stone,#5F5E5A); padding-left:20px; position:relative; }
   .mtw-coll__age-trust li::before { content:""; position:absolute; left:0; top:6px; width:7px; height:7px; border-radius:50%; background:var(--forest,#3B6D11); }
   @media (max-width:1000px) { .mtw-coll__age-inner { grid-template-columns:1fr; gap:22px; padding:26px 24px; } .mtw-coll__age-lede p { font-size:17px; } }
+
+  .mtw-coll__readmore { border-top:0.5px solid var(--rule,rgba(44,44,42,0.12)); background:var(--cream,#F5F0E5); }
+  .mtw-coll__readmore-inner { max-width:1280px; margin:0 auto; padding:52px 40px; display:flex; align-items:baseline; justify-content:space-between; gap:28px; flex-wrap:wrap; }
+  .mtw-coll__readmore .label { display:block; margin-bottom:8px; }
+  .mtw-coll__readmore h2 { font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-size:26px; font-weight:500; line-height:1.28; margin:0; color:var(--ink,#2C2C2A); max-width:680px; }
+  .mtw-coll__readmore-cta { flex:none; font-size:12px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink,#2C2C2A); border-bottom:0.5px solid var(--ink,#2C2C2A); padding-bottom:4px; white-space:nowrap; }
+  .mtw-coll__readmore-cta:hover { color:var(--forest,#3B6D11); border-color:var(--forest,#3B6D11); }
+  @media (max-width:1000px) { .mtw-coll__readmore-inner { padding:38px 24px; flex-direction:column; align-items:flex-start; gap:18px; } .mtw-coll__readmore h2 { font-size:21px; } }
 {%- endstyle -%}
 
 <div class="mtw-coll">
@@ -277,6 +285,20 @@
           <h2>{% if mhead != blank %}{{ mhead }}{% else %}The story behind <em>{{ collection.title }}</em>{% endif %}</h2>
           <div class="mtw-coll__story-rte rte">{{ mstory | metafield_tag }}</div>
         </div>
+      </div>
+    </section>
+  {%- endif -%}
+
+  {%- assign rm_url = collection.metafields.custom.blog_url.value -%}
+  {%- if rm_url != blank -%}
+    {%- assign rm_title = collection.metafields.custom.blog_title.value -%}
+    <section class="mtw-coll__readmore" aria-label="From the shop">
+      <div class="mtw-coll__readmore-inner">
+        <div>
+          <span class="label">From the shop</span>
+          <h2>{% if rm_title != blank %}{{ rm_title }}{% else %}Read the story behind {{ collection.title }}{% endif %}</h2>
+        </div>
+        <a class="mtw-coll__readmore-cta" href="{{ rm_url }}">Read the post &rarr;</a>
       </div>
     </section>
   {%- endif -%}
