@@ -88,6 +88,19 @@
   .site-header .header-layout, .site-header .page-width { max-width:100%; box-sizing:border-box; }
   .site-header__icons, .site-header__element--top-right { flex-shrink:0; }
   .site-nav, .site-nav__wrapper, .site-header__element--top-center { min-width:0; }
+
+  /* Rewards page hero. Makes the photo read through more (less opaque
+     card, lighter blur), frames the gift boxes/bear with a deliberate
+     crop, and gives the hero a touch more height. Targets the rewards
+     page's own unique .rewards-* classes only, with !important so it
+     overrides that page's inline style without editing the live page. */
+  .rewards-hero { min-height:640px !important; }
+  .rewards-hero-bg { object-position:center 38% !important; }
+  .rewards-hero-inner {
+    background:rgba(255,252,247,0.85) !important;
+    backdrop-filter:blur(6px) !important;
+    -webkit-backdrop-filter:blur(6px) !important;
+  }
 {%- endstyle -%}
 
 <div class="mtw-utility" data-section-id="{{ section.id }}">
