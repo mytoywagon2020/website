@@ -42,7 +42,7 @@
 {%- liquid
   assign cur = product.selected_or_first_available_variant
 
-  comment Fulfillment state resolution (handover §6, P12) endcomment
+  # Fulfillment state resolution (handover section 6, P12)
   assign ship_estimate = product.metafields.custom.preorder_ship_estimate | default: product.metafields.preorder.ship_estimate
   assign from_partner = product.metafields.custom.from_partner_warehouse | default: product.metafields.shipping.from_partner_warehouse
   assign is_pre = false
@@ -64,14 +64,14 @@
     assign state = 'partner'
   endif
 
-  comment Low-stock line only when a real tracked count is known and small endcomment
+  # Low-stock line only when a real tracked count is known and small
   assign stock_count = cur.inventory_quantity
   assign show_low = false
   if state == 'in_stock' and cur.inventory_management != blank and stock_count > 0 and stock_count <= 3
     assign show_low = true
   endif
 
-  comment Review count, best-effort from Judge.me cached badge then SSW (P1/P2) endcomment
+  # Review count, best-effort from Judge.me cached badge then SSW (P1/P2)
   assign review_count = 0
   assign jm_badge = product.metafields.judgeme.badge
   if jm_badge != blank
