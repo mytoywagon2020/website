@@ -435,3 +435,9 @@
 [data-mtw-pdp="fast-v1"] .jdgm-ask-question-link:hover { background: var(--forest) !important; }
 [data-mtw-pdp="fast-v1"] .jdgm-paginate__page { color: var(--stone) !important; }
 [data-mtw-pdp="fast-v1"] .jdgm-paginate__page--active { color: var(--ink) !important; font-weight: 600; }
+
+/* Age-recommendation circular-chip treatment (ported from the existing PDP) */
+[data-mtw-pdp="fast-v1"] .ff-age-chips { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin: 4px 0 0; }
+[data-mtw-pdp="fast-v1"] .ff-age-pill { height: 38px; padding: 0 16px; border-radius: 999px; border: 1px solid var(--rule-strong); display: inline-flex; align-items: center; font-family: 'Mulish', sans-serif; font-weight: 600; font-size: 12.5px; letter-spacing: 0.03em; color: var(--ink); }
+[data-mtw-pdp="fast-v1"] .ff-age-circle { width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--rule-strong); display: inline-flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 500; font-size: 18px; color: var(--ink); }
+[data-mtw-pdp="fast-v1"] .ff-age-note { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 14.5px; color: var(--stone); margin: 12px 0 0; }

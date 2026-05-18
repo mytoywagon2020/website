@@ -396,6 +396,11 @@
           assign acc_ways = product.metafields.details.ways_to_play | default: product.metafields.custom.ways_to_play
           assign acc_skills = product.metafields.details.skills_built | default: product.metafields.custom.skills_it_builds
           assign acc_age = product.metafields.details.age_recommendations
+          assign age_band = product.metafields.custom.age_band.value
+          assign has_age_band = false
+          if age_band != blank and age_band.size > 0
+            assign has_age_band = true
+          endif
           assign acc_safety = product.metafields.details.safety
           assign acc_care = product.metafields.details.care_storage | default: product.metafields.custom.care_and_storage
           assign acc_includes = product.metafields.details.includes | default: product.metafields.custom.includes_set_contents
@@ -406,7 +411,24 @@
         {%- if acc_ways != blank -%}<details class="ff-details-item" {% unless first_done %}open{% assign first_done = true %}{% endunless %}><summary class="ff-details-sum">Ways to play</summary><div class="ff-details-body rte">{{ acc_ways }}</div></details>{%- endif -%}
         {%- if acc_skills != blank -%}<details class="ff-details-item"><summary class="ff-details-sum">Skills it builds</summary><div class="ff-details-body rte">{{ acc_skills }}</div></details>{%- endif -%}
         {%- if acc_includes != blank -%}<details class="ff-details-item"><summary class="ff-details-sum">Includes / set contents</summary><div class="ff-details-body rte">{{ acc_includes }}</div></details>{%- endif -%}
-        {%- if acc_age != blank -%}<details class="ff-details-item"><summary class="ff-details-sum">Age recommendations</summary><div class="ff-details-body rte">{{ acc_age }}</div></details>{%- endif -%}
+        {%- if acc_age != blank or has_age_band -%}<details class="ff-details-item"><summary class="ff-details-sum">Age recommendations</summary><div class="ff-details-body rte">
+          {%- if acc_age != blank -%}{{ acc_age }}{%- endif -%}
+          {%- if has_age_band -%}
+            {%- assign ar_infant = false -%}{%- assign ar_18 = false -%}{%- assign ar_years = '' -%}
+            {%- for ar_t in age_band -%}
+              {%- if ar_t == '0–12 mo' -%}{%- assign ar_infant = true -%}
+              {%- elsif ar_t == '18 mo' -%}{%- assign ar_18 = true -%}
+              {%- else -%}{%- assign ar_years = ar_years | append: ar_t | append: ',' -%}{%- endif -%}
+            {%- endfor -%}
+            <div class="ff-age-chips">
+              {%- if ar_infant -%}<span class="ff-age-pill">Under 1 yr</span>{%- endif -%}
+              {%- if ar_18 -%}<span class="ff-age-pill">18 months</span>{%- endif -%}
+              {%- assign ar_yarr = ar_years | split: ',' -%}
+              {%- for ar_y in ar_yarr -%}{%- if ar_y != blank -%}<span class="ff-age-circle">{{ ar_y }}</span>{%- endif -%}{%- endfor -%}
+            </div>
+            <p class="ff-age-note">Recommended ages, in years. Sorted by the developmental window this toy opens, so it lands in the right season.</p>
+          {%- endif -%}
+        </div></details>{%- endif -%}
         {%- if acc_safety != blank -%}<details class="ff-details-item"><summary class="ff-details-sum">Safety</summary><div class="ff-details-body rte">{{ acc_safety }}</div></details>{%- endif -%}
         {%- if acc_care != blank -%}<details class="ff-details-item"><summary class="ff-details-sum">Care &amp; storage</summary><div class="ff-details-body rte">{{ acc_care }}</div></details>{%- endif -%}
         {%- if section.settings.shipping_text != blank -%}<details class="ff-details-item"><summary class="ff-details-sum">Shipping &amp; returns</summary><div class="ff-details-body rte">{{ section.settings.shipping_text }}{{ section.settings.returns_text }}</div></details>{%- endif -%}
