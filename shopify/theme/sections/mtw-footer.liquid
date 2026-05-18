@@ -27,7 +27,7 @@
   .mtwft__band h2 em{font-style:italic;color:var(--forest);}
   .mtwft__band p{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:16px;color:var(--stone);max-width:560px;margin:0 auto;line-height:1.5;}
   .mtwft__top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:56px;padding-bottom:48px;border-bottom:.5px solid var(--rule);}
-  .mtwft__logo{display:block;width:200px;height:120px;background-color:var(--ink);-webkit-mask:url('{{ 'mytoywagon-logo-mark.png' | file_url }}') left center/contain no-repeat;mask:url('{{ 'mytoywagon-logo-mark.png' | file_url }}') left center/contain no-repeat;margin-bottom:20px;}
+  .mtwft__logo{display:block;width:auto;max-width:230px;height:auto;margin-bottom:20px;}
   .mtwft__tag{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:16px;color:var(--stone);margin:0 0 18px;max-width:320px;line-height:1.5;}
   .mtwft__loc{font-size:13.5px;color:var(--ink);line-height:1.6;margin:0 0 18px;}
   .mtwft__loc strong{font-weight:500;}
@@ -78,7 +78,7 @@
   .mtwft__m-nl input{height:46px;padding:0 14px;background:var(--warm-white);border:.5px solid var(--rule-strong);border-radius:2px;font-family:inherit;font-size:14px;color:var(--ink);outline:none;text-align:center;}
   .mtwft__m-nl button{height:46px;background:var(--ink);color:var(--cream);border:none;border-radius:2px;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;}
   .mtwft__m-brand{text-align:center;margin-bottom:20px;padding-bottom:20px;border-bottom:.5px solid var(--rule);}
-  .mtwft__m-brand .mtwft__logo{width:160px;height:96px;-webkit-mask-position:center;mask-position:center;margin:0 auto 8px;}
+  .mtwft__m-brand .mtwft__logo{max-width:180px;margin:0 auto 8px;}
   .mtwft__m-brand .mtwft__tag{text-align:center;margin:0 auto 10px;max-width:280px;}
   .mtwft__m-brand .mtwft__loc{text-align:center;margin:0 auto;}
   .mtwft__m-brand .mtwft__social{justify-content:center;margin-top:14px;}
@@ -125,7 +125,7 @@
       <div class="mtwft__top">
 
         <div class="mtwft__brand">
-          <a href="{{ routes.root_url }}" aria-label="{{ shop.name | escape }}"><span class="mtwft__logo"></span></a>
+          <a href="{{ routes.root_url }}" aria-label="{{ shop.name | escape }}"><img class="mtwft__logo" src="https://cdn.shopify.com/s/files/1/0522/0882/8586/files/MyToyWagon_primarylogo_lightbg_transparent.png?v=1664428420" alt="{{ shop.name | escape }}" loading="lazy"></a>
           {%- if section.settings.tagline != blank -%}<p class="mtwft__tag">{{ section.settings.tagline }}</p>{%- endif -%}
           <p class="mtwft__loc">
             {%- if section.settings.location != blank -%}<strong>{{ section.settings.location }}</strong><br>{%- endif -%}
@@ -252,7 +252,7 @@
       </div>
 
       <div class="mtwft__m-brand">
-        <a href="{{ routes.root_url }}" aria-label="{{ shop.name | escape }}"><span class="mtwft__logo"></span></a>
+        <a href="{{ routes.root_url }}" aria-label="{{ shop.name | escape }}"><img class="mtwft__logo" src="https://cdn.shopify.com/s/files/1/0522/0882/8586/files/MyToyWagon_primarylogo_lightbg_transparent.png?v=1664428420" alt="{{ shop.name | escape }}" loading="lazy"></a>
         {%- if section.settings.tagline != blank -%}<p class="mtwft__tag">{{ section.settings.tagline }}</p>{%- endif -%}
         <p class="mtwft__loc">
           {%- if section.settings.location != blank -%}<strong>{{ section.settings.location }}</strong><br>{%- endif -%}
