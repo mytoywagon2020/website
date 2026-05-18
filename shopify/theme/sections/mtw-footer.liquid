@@ -125,8 +125,7 @@
       <div class="mtwft__top">
 
         <div class="mtwft__brand">
-          <a href="{{ routes.root_url }}" aria-label="{{ shop.name | escape }}"><img class="mtwft__logo" src="https://cdn.shopify.com/s/files/1/0522/0882/8586/files/MyToyWagon_primarylogo_lightbg_transparent.png?v=1664428420" alt="{{ shop.name | escape }}" loading="lazy"></a>
-          {%- if section.settings.tagline != blank -%}<p class="mtwft__tag">{{ section.settings.tagline }}</p>{%- endif -%}
+            {%- if section.settings.tagline != blank -%}<p class="mtwft__tag">{{ section.settings.tagline }}</p>{%- endif -%}
           <p class="mtwft__loc">
             {%- if section.settings.location != blank -%}<strong>{{ section.settings.location }}</strong><br>{%- endif -%}
             {{ section.settings.hours }}
@@ -252,7 +251,6 @@
       </div>
 
       <div class="mtwft__m-brand">
-        <a href="{{ routes.root_url }}" aria-label="{{ shop.name | escape }}"><img class="mtwft__logo" src="https://cdn.shopify.com/s/files/1/0522/0882/8586/files/MyToyWagon_primarylogo_lightbg_transparent.png?v=1664428420" alt="{{ shop.name | escape }}" loading="lazy"></a>
         {%- if section.settings.tagline != blank -%}<p class="mtwft__tag">{{ section.settings.tagline }}</p>{%- endif -%}
         <p class="mtwft__loc">
           {%- if section.settings.location != blank -%}<strong>{{ section.settings.location }}</strong><br>{%- endif -%}
