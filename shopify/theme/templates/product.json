@@ -1,0 +1,15 @@
+{
+  "sections": {
+    "main": {
+      "type": "mtw-product",
+      "settings": {
+        "preorder_collection": "pre-order",
+        "shipping_text": "<p>$9.95 standard U.S. shipping, free on orders $150 and up. Ships within 1 to 3 business days from our Los Angeles warehouse. Orders shipped from our partner warehouses process within 1 to 4 business days</p>",
+        "returns_text": "<p>30-day returns. If the toy isn't right, send it back. Free returns on damaged or defective items.</p>"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

@@ -122,3 +122,39 @@ efaa539 Add educator-portal public marketing pages (schools, procurement, vendor
 - Optional: rebuild Shop by Age as an editable theme section; per-collection story content via metafields for mtw-collection.
 - Judge.me floating tab (owner, app settings).
 - When 9.0 is to go live, owner publishes it; if it's MAIN, API theme writes are blocked (use admin code editor or duplicate→publish).
+
+---
+
+## 13. Session continuation log (2026-05-17/18)
+
+Theme state still volatile — **always re-check `themes{ role }` before any push.** At this log: LIVE/MAIN = old "Current Shop " (`132143448234`); **9.0 (`145720180906`) = UNPUBLISHED** and API-writable.
+
+### Footer (recovered + deployed)
+- `sections/mtw-footer.liquid` had been a **109-byte stub** — the other window crashed mid "base64 deploy", so the footer rendered empty though `footer-group.json` was correctly wired.
+- Rebuilt from the owner's `MTW Footer` spec: heirloom band, brand block + **working Shopify newsletter** (`{% form 'customer' %}`, `newsletter` tag), Shop/Customer care/About columns (real verified links), optional Google rating badge (gated by `show_badge`), payments, legal; responsive desktop→mobile-accordion at 720px; scoped `.mtwft`; settings bound to existing `footer-group.json` keys. Brand mark = `mytoywagon-logo-mark.png` asset (wagon only, no wordmark), ~170/140px. Pushed to 9.0, mirrored: `shopify/theme/sections/mtw-footer.liquid`.
+
+### Featured Brands (new)
+- Page `/pages/featured-brands` (`Page/115630506154`, published) from the owner's handover spec — scoped `.mtw-fb`, breadcrumb/hero/region-filter/30 brand cards/CTA. 13 brands have real photos from Files; rest use the intentional placeholder.
+- All links verified; handle fixes (`bumbu`→`bumbu-toys`, `tender-leaf-toys`→`tender-leaf`); 6 brand collections created by owner and wired (`ganapati-crafts-co`, `global-goods-partners`, `gry-and-sif`, `haba-usa`, `himalayan-felt-co`, `kahiniwalla-x-pebble`). CTA → `contact@mytoywagon.com`. Wonderheart = "USA · est. 2021".
+- `main-menu` "Featured Brands" item repointed COLLECTION→PAGE `/pages/featured-brands` (full tree preserved). Mirror: `shopify/pages/featured-brands.html`.
+
+### Shop by Age (new)
+- Page `/pages/shop-by-age` (`Page/115585122474`, published), tiled grid + homepage age photos → the 5 age collections. `main-menu` "Shop by Age" repointed to it. Mirror: `shopify/pages/shop-by-age.html`.
+
+### Collection / rail / header tweaks (9.0 draft, mirrored)
+- `mtw-collection`: sold-out now inventory-computed; **low-stock badge removed**; **Brand/Category/Product type filter groups hidden**.
+- `mtw-product-rail`: cards = vendor → title → ★ → price (category line dropped; price kept).
+- `header.liquid`: desktop nav menu-driven from `main_menu_link_list`; search-bar text darkened.
+
+### PDP (verified + now mirrored)
+- Product page was already complete and correctly deployed by the other workstream — `templates/product.json` → `sections/mtw-product.liquid` (full PDP, metafield-driven with description fallback) + `assets/mtw-product.css` (present). Not a stub. Now **mirrored to git**: `shopify/theme/sections/mtw-product.liquid`, `shopify/theme/templates/product.json`, `shopify/theme/assets/mtw-product.css`. Per-product richness needs `metafields.custom.*` / `metafields.fulfillment.*` filled (graceful fallback otherwise).
+
+### Resolved earlier this stretch
+- Store-wide out-of-stock incident (primary market "International" catalog was DRAFT → set ACTIVE) — RESOLVED, confirmed by owner.
+
+### Still open
+- Footer/homepage link fixes (footer `e-gift-card`→`my-toy-wagon-digital-gift-card` etc.) — note the new `mtw-footer` already uses the correct gift-card link; the homepage `mtw_gift`/`mtw_hero`/`mtw_age` a2 fixes remain.
+- Age smart-collection population (owner owns tag/metafield cleanup).
+- Per-collection story content via metafields for `mtw-collection`; optional Shop-by-Age/Featured-Brands as editable theme sections.
+- Judge.me floating tab (owner, app settings).
+- Owner to publish 9.0 when ready (then API theme writes are blocked — use admin code editor / duplicate→publish).
