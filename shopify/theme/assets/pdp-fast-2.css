@@ -398,3 +398,40 @@
   [data-mtw-pdp="fast-v1"] .ff-review-list { grid-template-columns: 1fr; }
   [data-mtw-pdp="fast-v1"] .ff-reviews-head { grid-template-columns: 1fr; }
 }
+
+/* Original 4-tone canvas from the uploaded design: the darkest tan
+   (#E4DCC9, the reference body color) frames the cream page. .ff-page
+   stays cream, .ff-below warm-white, cards stay --card-bg. */
+[data-mtw-pdp="fast-v1"] { background: #E4DCC9; }
+
+/* Judge.me widget restyled to the MTW brand (real reviews, brand skin) */
+[data-mtw-pdp="fast-v1"] .jdgm-widget,
+[data-mtw-pdp="fast-v1"] .jdgm-widget * { font-family: 'Mulish', sans-serif; }
+[data-mtw-pdp="fast-v1"] .jdgm-rev-widg,
+[data-mtw-pdp="fast-v1"] .jdgm-rev-widg__header,
+[data-mtw-pdp="fast-v1"] .jdgm-rev-widg__body,
+[data-mtw-pdp="fast-v1"] .jdgm-all-reviews-text,
+[data-mtw-pdp="fast-v1"] .jdgm-widget { background: transparent !important; border: none !important; box-shadow: none !important; }
+[data-mtw-pdp="fast-v1"] .jdgm-rev-widg__title,
+[data-mtw-pdp="fast-v1"] .jdgm-histogram + * .jdgm-rev-widg__title { font-family: 'Cormorant Garamond', serif !important; font-style: italic; font-weight: 500; color: var(--ink) !important; font-size: 24px; }
+[data-mtw-pdp="fast-v1"] .jdgm-star { color: var(--amber) !important; }
+[data-mtw-pdp="fast-v1"] .jdgm-star.jdgm--off,
+[data-mtw-pdp="fast-v1"] .jdgm--star-off { color: var(--rule-strong) !important; }
+[data-mtw-pdp="fast-v1"] .jdgm-rev,
+[data-mtw-pdp="fast-v1"] .jdgm-histogram__bar-content { border-color: var(--rule) !important; }
+[data-mtw-pdp="fast-v1"] .jdgm-rev__author,
+[data-mtw-pdp="fast-v1"] .jdgm-rev__body,
+[data-mtw-pdp="fast-v1"] .jdgm-rev__title,
+[data-mtw-pdp="fast-v1"] .jdgm-rev__timestamp,
+[data-mtw-pdp="fast-v1"] .jdgm-all-reviews-rating,
+[data-mtw-pdp="fast-v1"] .jdgm-rev-widg__summary-text { color: var(--ink) !important; }
+[data-mtw-pdp="fast-v1"] .jdgm-write-rev-link,
+[data-mtw-pdp="fast-v1"] .jdgm-ask-question-link {
+  background: var(--ink) !important; color: var(--cream) !important; border: none !important;
+  border-radius: 2px !important; font-family: 'Mulish', sans-serif !important;
+  text-transform: uppercase !important; letter-spacing: .12em !important;
+  font-size: 11.5px !important; font-weight: 600 !important; padding: 12px 22px !important; }
+[data-mtw-pdp="fast-v1"] .jdgm-write-rev-link:hover,
+[data-mtw-pdp="fast-v1"] .jdgm-ask-question-link:hover { background: var(--forest) !important; }
+[data-mtw-pdp="fast-v1"] .jdgm-paginate__page { color: var(--stone) !important; }
+[data-mtw-pdp="fast-v1"] .jdgm-paginate__page--active { color: var(--ink) !important; font-weight: 600; }
