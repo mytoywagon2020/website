@@ -95,6 +95,9 @@
   .mtwft__m-contact a{display:block;font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:19px;font-weight:500;color:var(--ink);padding:4px 0;line-height:1.3;}
   .mtwft__m-contact a:hover{color:var(--forest);}
   .mtwft__m-contact .small{font-size:11.5px;color:var(--stone);margin-top:14px;letter-spacing:.16em;text-transform:uppercase;font-weight:500;}
+  .mtwft__m-cta{display:inline-flex;align-items:center;gap:8px;margin-top:18px;font-family:'Mulish',sans-serif;font-style:normal;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);border:.5px solid var(--rule-strong);border-radius:2px;padding:11px 20px;}
+  .mtwft__m-cta:hover{background:var(--ink);color:var(--cream);}
+  .mtwft__m-cta svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;}
   .mtwft__m-pay{padding:28px 8px 24px;border-bottom:.5px solid var(--rule);text-align:center;}
   .mtwft__m-pay-label{display:block;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--stone);font-weight:600;margin-bottom:12px;}
   .mtwft__m-pay .mtwft__pay{justify-content:center;gap:14px;flex-wrap:wrap;display:flex;}
@@ -308,6 +311,7 @@
         {%- if section.settings.email != blank -%}<a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a>{%- endif -%}
         {%- if section.settings.phone != blank -%}<a href="tel:+1{{ tel }}">{{ section.settings.phone }}</a>{%- endif -%}
         <p class="small">{{ section.settings.hours }}</p>
+        {%- if section.settings.email != blank -%}<a href="mailto:{{ section.settings.email }}" class="mtwft__m-cta"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8l9 6 9-6M3 8v10h18V8M3 8l9-5 9 5"/></svg>Email us</a>{%- endif -%}
       </div>
 
       {%- if section.settings.show_badge -%}

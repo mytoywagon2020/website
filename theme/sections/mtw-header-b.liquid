@@ -1,0 +1,387 @@
+{%- comment -%}
+  MTW Header B. Single self-contained header for the header group.
+  Replaces the Impulse core header AND the old mtw-utility-bar.
+  Everything is namespaced under [data-mtw-header="b-v1"] and .mtwhb-*
+  so it cannot collide with Impulse CSS or JS. Includes: utility bar,
+  cart-aware free-shipping progress bar (contiguous-US only), a
+  centered-logo nav with a shop bar underneath, a mobile header with
+  an always-visible inline search, a slide-down drawer, CSS sticky,
+  and the Rewards-page hero override ported from the retired
+  mtw-utility-bar so that page keeps its treatment. Customer copy
+  contains no em-dashes and no exclamation marks per brand voice.
+{%- endcomment -%}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+{%- liquid
+  assign threshold = section.settings.free_ship_threshold | times: 100
+  assign subtotal = cart.total_price
+  assign remaining = threshold | minus: subtotal
+  assign progress = 0
+  if threshold > 0
+    assign progress = subtotal | times: 100 | divided_by: threshold
+  endif
+  if progress > 100
+    assign progress = 100
+  endif
+  assign show_ship = section.settings.show_progress_bar
+  if cart.shipping_address
+    assign st = cart.shipping_address.province_code
+    if st == 'AK' or st == 'HI' or st == 'PR' or cart.shipping_address.country_code != 'US'
+      assign show_ship = false
+    endif
+  endif
+  assign navlist = linklists[section.settings.menu]
+  if navlist == blank or navlist.links.size == 0
+    assign navlist = linklists['mtw-main-menu']
+  endif
+  assign phone_digits = section.settings.phone | remove: ' ' | remove: '(' | remove: ')' | remove: '-' | remove: '.'
+  assign logo_mark = 'MyToyWagon_logomark_lightbg_transparent.png' | file_url
+-%}
+
+{%- style -%}
+  [data-mtw-header="b-v1"] {
+    --cream:#F5F0E5; --warm-white:#FFFCF7; --ink:#2C2C2A; --forest:#3B6D11;
+    --amber:#854F0B; --stone:#5F5E5A; --card-bg:#EDE3CD;
+    --rule:rgba(44,44,42,0.12); --rule-strong:rgba(44,44,42,0.22);
+    position:sticky; top:0; z-index:60; display:block;
+    font-family:'Mulish',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    color:var(--ink); background:var(--cream);
+  }
+  [data-mtw-header="b-v1"] *, [data-mtw-header="b-v1"] *::before, [data-mtw-header="b-v1"] *::after { box-sizing:border-box; }
+  [data-mtw-header="b-v1"] a { color:inherit; text-decoration:none; }
+  [data-mtw-header="b-v1"] button { font-family:inherit; cursor:pointer; }
+  [data-mtw-header="b-v1"] img { max-width:100%; display:block; }
+  [data-mtw-header="b-v1"].is-stuck { box-shadow:0 6px 24px rgba(44,44,42,0.08); }
+
+  [data-mtw-header="b-v1"] .mtwhb-icon { width:18px; height:18px; stroke:currentColor; stroke-width:1.4; fill:none; flex-shrink:0; }
+
+  /* Utility bar */
+  [data-mtw-header="b-v1"] .mtwhb-utility { background:var(--ink); color:var(--cream); font-size:12px; letter-spacing:0.06em; }
+  [data-mtw-header="b-v1"] .mtwhb-utility__inner { max-width:1440px; margin:0 auto; padding:9px 40px; display:flex; justify-content:space-between; align-items:center; gap:24px; }
+  [data-mtw-header="b-v1"] .mtwhb-utility__links { display:flex; gap:22px; color:rgba(245,240,229,0.7); }
+  [data-mtw-header="b-v1"] .mtwhb-utility__links--end { justify-content:flex-end; }
+  [data-mtw-header="b-v1"] .mtwhb-utility__links a:hover { color:var(--cream); }
+  [data-mtw-header="b-v1"] .mtwhb-utility__center { flex:1; text-align:center; font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-size:14px; letter-spacing:0; }
+  [data-mtw-header="b-v1"] .mtwhb-rot { transition:opacity 320ms ease; }
+  [data-mtw-header="b-v1"] .mtwhb-rot.is-fading { opacity:0; }
+
+  /* Free-shipping progress bar */
+  [data-mtw-header="b-v1"] .mtwhb-ship { background:var(--card-bg); border-bottom:0.5px solid var(--rule); font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-size:14px; color:var(--ink); text-align:center; padding:9px 40px; letter-spacing:0; }
+  [data-mtw-header="b-v1"] .mtwhb-ship strong { font-weight:500; color:var(--forest); font-style:normal; font-family:'Mulish',sans-serif; }
+  [data-mtw-header="b-v1"] .mtwhb-ship__bar { display:inline-block; vertical-align:middle; width:140px; height:5px; background:rgba(44,44,42,0.12); border-radius:3px; margin:0 12px; position:relative; overflow:hidden; }
+  [data-mtw-header="b-v1"] .mtwhb-ship__fill { display:block; height:100%; background:var(--forest); border-radius:3px; transition:width 400ms ease; }
+
+  /* Desktop nav */
+  [data-mtw-header="b-v1"] .mtwhb-d { display:block; }
+  [data-mtw-header="b-v1"] .mtwhb-nav { background:var(--cream); border-bottom:0.5px solid var(--rule); }
+  [data-mtw-header="b-v1"] .mtwhb-nav__top { display:grid; grid-template-columns:1fr auto 1fr; align-items:center; padding:22px 40px 14px; max-width:1440px; margin:0 auto; gap:32px; }
+  [data-mtw-header="b-v1"] .mtwhb-nav__left, [data-mtw-header="b-v1"] .mtwhb-nav__right { display:flex; align-items:center; gap:22px; }
+  [data-mtw-header="b-v1"] .mtwhb-nav__right { justify-content:flex-end; }
+  [data-mtw-header="b-v1"] .mtwhb-search { display:flex; align-items:center; gap:8px; padding:10px 16px; background:var(--warm-white); border:0.5px solid var(--rule); border-radius:999px; font-size:13px; color:var(--stone); min-width:220px; }
+  [data-mtw-header="b-v1"] .mtwhb-search input { flex:1; min-width:0; border:none; background:none; outline:none; font-family:inherit; font-size:13px; color:var(--ink); }
+  [data-mtw-header="b-v1"] .mtwhb-search input::placeholder { color:var(--stone); }
+  [data-mtw-header="b-v1"] .mtwhb-logo { display:inline-flex; align-items:center; gap:14px; line-height:1; justify-self:center; }
+  [data-mtw-header="b-v1"] .mtwhb-logo__mark { width:110px; height:110px; background-color:var(--ink); -webkit-mask:url("{{ logo_mark }}") center/contain no-repeat; mask:url("{{ logo_mark }}") center/contain no-repeat; flex-shrink:0; }
+  [data-mtw-header="b-v1"] .mtwhb-logo__text { font-family:'Cormorant Garamond',Georgia,serif; font-size:28px; font-weight:400; letter-spacing:0.28em; text-transform:uppercase; line-height:1; color:var(--ink); white-space:nowrap; }
+  [data-mtw-header="b-v1"] .mtwhb-logo__text small { display:block; font-family:'Mulish',sans-serif; font-size:10px; letter-spacing:0.22em; text-transform:uppercase; color:var(--stone); margin-top:8px; font-weight:500; }
+  [data-mtw-header="b-v1"] .mtwhb-iconlink { display:inline-flex; align-items:center; gap:6px; font-size:13.5px; font-weight:500; color:var(--ink); position:relative; }
+  [data-mtw-header="b-v1"] .mtwhb-iconlink:hover { color:var(--forest); }
+  [data-mtw-header="b-v1"] .mtwhb-cart-count { display:inline-flex; align-items:center; justify-content:center; min-width:18px; height:18px; padding:0 6px; background:var(--forest); color:var(--cream); border-radius:10px; font-size:11px; font-weight:600; }
+  [data-mtw-header="b-v1"] .mtwhb-shopbar { border-top:0.5px solid var(--rule); padding:14px 40px; }
+  [data-mtw-header="b-v1"] .mtwhb-shopbar ul { list-style:none; margin:0 auto; padding:0; display:flex; gap:40px; justify-content:center; max-width:1440px; flex-wrap:wrap; }
+  [data-mtw-header="b-v1"] .mtwhb-shopbar a { font-size:13.5px; font-weight:500; letter-spacing:0.04em; color:var(--ink); padding:4px 0; }
+  [data-mtw-header="b-v1"] .mtwhb-shopbar a:hover { color:var(--forest); }
+  [data-mtw-header="b-v1"] .mtwhb-shopbar a.is-muted { color:var(--stone); }
+
+  /* Mobile */
+  [data-mtw-header="b-v1"] .mtwhb-m-wrap { display:none; }
+  [data-mtw-header="b-v1"] .mtwhb-m-utility { background:var(--ink); color:var(--cream); text-align:center; font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-size:12.5px; padding:8px 16px; letter-spacing:0.01em; }
+  [data-mtw-header="b-v1"] .mtwhb-m-ship { background:var(--card-bg); border-bottom:0.5px solid var(--rule); text-align:center; padding:8px 16px; font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-size:13px; color:var(--ink); display:flex; align-items:center; justify-content:center; gap:8px; flex-wrap:wrap; }
+  [data-mtw-header="b-v1"] .mtwhb-m-ship strong { font-weight:500; color:var(--forest); font-style:normal; font-family:'Mulish',sans-serif; font-size:12.5px; }
+  [data-mtw-header="b-v1"] .mtwhb-m-ship__bar { display:inline-block; width:80px; height:4px; background:rgba(44,44,42,0.12); border-radius:2px; overflow:hidden; }
+  [data-mtw-header="b-v1"] .mtwhb-m-ship__bar > span { display:block; height:100%; background:var(--forest); border-radius:2px; }
+  [data-mtw-header="b-v1"] .mtwhb-m { background:var(--cream); border-bottom:0.5px solid var(--rule); padding:14px 16px; }
+  [data-mtw-header="b-v1"] .mtwhb-m__top { display:grid; grid-template-columns:28px 1fr 28px 28px; align-items:center; gap:12px; margin-bottom:12px; }
+  [data-mtw-header="b-v1"] .mtwhb-m__btn { background:none; border:none; padding:0; display:inline-flex; align-items:center; justify-content:center; color:var(--ink); position:relative; }
+  [data-mtw-header="b-v1"] .mtwhb-m__btn:hover { color:var(--forest); }
+  [data-mtw-header="b-v1"] .mtwhb-m__btn .mtwhb-cart-count { position:absolute; top:-2px; right:-8px; }
+  [data-mtw-header="b-v1"] .mtwhb-m__logo { display:inline-flex; align-items:center; gap:8px; line-height:1; justify-content:center; }
+  [data-mtw-header="b-v1"] .mtwhb-m__logo-mark { width:44px; height:44px; background-color:var(--ink); -webkit-mask:url("{{ logo_mark }}") center/contain no-repeat; mask:url("{{ logo_mark }}") center/contain no-repeat; flex-shrink:0; }
+  [data-mtw-header="b-v1"] .mtwhb-m__logo-text { font-family:'Cormorant Garamond',Georgia,serif; font-size:18px; font-weight:400; letter-spacing:0.22em; text-transform:uppercase; text-align:center; color:var(--ink); line-height:1; }
+  [data-mtw-header="b-v1"] .mtwhb-m__logo-text small { display:block; font-family:'Mulish',sans-serif; font-size:8.5px; letter-spacing:0.18em; text-transform:uppercase; color:var(--stone); margin-top:6px; font-weight:500; }
+  [data-mtw-header="b-v1"] .mtwhb-m__search { display:flex; align-items:center; gap:10px; padding:11px 14px; background:var(--warm-white); border:0.5px solid var(--rule); border-radius:999px; font-size:13px; color:var(--stone); width:100%; }
+  [data-mtw-header="b-v1"] .mtwhb-m__search input { flex:1; border:none; background:none; outline:none; font-family:inherit; font-size:13px; color:var(--ink); min-width:0; }
+  [data-mtw-header="b-v1"] .mtwhb-m__search input::placeholder { color:var(--stone); }
+  [data-mtw-header="b-v1"] .mtwhb-drawer { background:var(--cream); border-top:0.5px solid var(--rule); padding:8px 0; max-height:0; overflow:hidden; transition:max-height 320ms ease; }
+  [data-mtw-header="b-v1"] .mtwhb-drawer.is-open { max-height:80vh; overflow-y:auto; }
+  [data-mtw-header="b-v1"] .mtwhb-drawer ul { list-style:none; margin:0; padding:0; }
+  [data-mtw-header="b-v1"] .mtwhb-drawer li { border-bottom:0.5px solid var(--rule); }
+  [data-mtw-header="b-v1"] .mtwhb-drawer li:last-child { border-bottom:none; }
+  [data-mtw-header="b-v1"] .mtwhb-drawer a { display:flex; justify-content:space-between; align-items:center; padding:20px 22px; font-size:17px; font-weight:500; letter-spacing:0.02em; color:var(--ink); }
+  [data-mtw-header="b-v1"] .mtwhb-drawer a.is-muted { color:var(--stone); }
+  [data-mtw-header="b-v1"] .mtwhb-drawer a .chev { width:9px; height:9px; border-right:1.5px solid var(--stone); border-top:1.5px solid var(--stone); transform:rotate(45deg); opacity:0.6; }
+  [data-mtw-header="b-v1"] .mtwhb-drawer__util { background:var(--card-bg); padding:8px 0; }
+  [data-mtw-header="b-v1"] .mtwhb-drawer__util a { font-size:14.5px; padding:14px 22px; font-weight:500; }
+
+  @media (max-width:720px) {
+    [data-mtw-header="b-v1"] .mtwhb-d { display:none; }
+    [data-mtw-header="b-v1"] .mtwhb-m-wrap { display:block; }
+  }
+
+  /* Rewards page hero override (ported from the retired mtw-utility-bar
+     so the Rewards page keeps its treatment site-wide). Scoped to that
+     page's own unique .rewards-* classes only. */
+  .rewards-hero { min-height:640px !important; }
+  .rewards-hero-bg { object-position:center 38% !important; }
+  .rewards-hero-inner {
+    background:rgba(255,252,247,0.85) !important;
+    backdrop-filter:blur(6px) !important;
+    -webkit-backdrop-filter:blur(6px) !important;
+  }
+{%- endstyle -%}
+
+<div data-mtw-header="b-v1" class="mtwhb">
+
+  {%- comment -%} ===== Desktop ===== {%- endcomment -%}
+  <div class="mtwhb-d">
+    <div class="mtwhb-utility">
+      <div class="mtwhb-utility__inner">
+        <div class="mtwhb-utility__links">
+          {%- if section.settings.phone != blank -%}<a href="tel:{{ phone_digits }}">{{ section.settings.phone }}</a>{%- endif -%}
+          <a href="{{ section.settings.track_order_url }}">Track order</a>
+        </div>
+        <div class="mtwhb-utility__center"><span class="mtwhb-rot" data-mtwhb-rot>{{ section.settings.utility_messages | newline_to_br | strip_newlines | split: '<br />' | first | strip }}</span></div>
+        <div class="mtwhb-utility__links mtwhb-utility__links--end">
+          <a href="{{ section.settings.giftcards_url }}">Gift cards</a>
+          <a href="{{ section.settings.signin_url }}">Sign in</a>
+        </div>
+      </div>
+    </div>
+
+    {%- if show_ship -%}
+      <div class="mtwhb-ship" data-show-for="contiguous-us-only">
+        {%- if subtotal <= 0 -%}
+          Free shipping on orders <strong>{{ threshold | money_without_trailing_zeros }}+</strong>, lower 48 only.<span class="mtwhb-ship__bar"><span class="mtwhb-ship__fill" style="width:0%;"></span></span>
+        {%- elsif remaining > 0 -%}
+          You're <strong>{{ remaining | money_without_trailing_zeros }} away</strong> from free shipping<span class="mtwhb-ship__bar"><span class="mtwhb-ship__fill" style="width:{{ progress }}%;"></span></span>Free at <strong>{{ threshold | money_without_trailing_zeros }}+</strong>, lower 48 only.
+        {%- else -%}
+          <strong>Free shipping unlocked.</strong> Your order ships free, lower 48 only.<span class="mtwhb-ship__bar"><span class="mtwhb-ship__fill" style="width:100%;"></span></span>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <header class="mtwhb-nav">
+      <div class="mtwhb-nav__top">
+        <div class="mtwhb-nav__left">
+          <form class="mtwhb-search" action="/search" method="get" role="search">
+            <svg class="mtwhb-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+            <input type="search" name="q" placeholder="{{ section.settings.search_placeholder }}" aria-label="Search products">
+          </form>
+        </div>
+        <a href="/" class="mtwhb-logo" aria-label="My Toy Wagon home">
+          <span class="mtwhb-logo__mark" aria-hidden="true"></span>
+          <span class="mtwhb-logo__text">My Toy Wagon<small>Los Angeles · California · est. 2020</small></span>
+        </a>
+        <div class="mtwhb-nav__right">
+          <a href="/account" class="mtwhb-iconlink">
+            <svg class="mtwhb-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c0-4 4-7 8-7s8 3 8 7"></path></svg>
+            Account
+          </a>
+          <a href="/pages/wishlist" class="mtwhb-iconlink">
+            <svg class="mtwhb-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5 6.5 5c2 0 3.5 1.2 5.5 3.5C14 6.2 15.5 5 17.5 5c4 0 5.5 4 4 7C19 16.5 12 21 12 21z"/></svg>
+            Wishlist
+          </a>
+          <a href="/cart" class="mtwhb-iconlink" aria-label="Cart, {{ cart.item_count }} items">
+            <svg class="mtwhb-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7V5a3 3 0 0 1 6 0v2"/></svg>
+            Cart {%- if cart.item_count > 0 %} <span class="mtwhb-cart-count" data-mtwhb-cart-count>{{ cart.item_count }}</span>{%- endif -%}
+          </a>
+        </div>
+      </div>
+      <nav class="mtwhb-shopbar" aria-label="Primary">
+        <ul>
+          {%- if navlist != blank and navlist.links.size > 0 -%}
+            {%- for link in navlist.links -%}
+              {%- assign lt = link.title | downcase -%}
+              <li><a href="{{ link.url }}"{% if lt contains 'sale' %} class="is-muted"{% endif %}>{{ link.title }}</a></li>
+            {%- endfor -%}
+          {%- else -%}
+            <li><a href="/pages/shop-by-age">Shop by Age</a></li>
+            <li><a href="/collections/all">Shop by Category</a></li>
+            <li><a href="/pages/featured-brands">Featured Brands</a></li>
+            <li><a href="https://mytoywagon.com/collections/new-arrivals?sort_by=created-descending">New</a></li>
+            <li><a href="/collections/pre-order">Pre-Order</a></li>
+            <li><a href="/collections/sale" class="is-muted">Sale</a></li>
+          {%- endif -%}
+        </ul>
+      </nav>
+    </header>
+  </div>
+
+  {%- comment -%} ===== Mobile ===== {%- endcomment -%}
+  <div class="mtwhb-m-wrap">
+    <div class="mtwhb-m-utility"><span class="mtwhb-rot" data-mtwhb-rot>{{ section.settings.utility_messages | newline_to_br | strip_newlines | split: '<br />' | first | strip }}</span></div>
+
+    {%- if show_ship -%}
+      <div class="mtwhb-m-ship" data-show-for="contiguous-us-only">
+        {%- if remaining > 0 and subtotal > 0 -%}
+          You're <strong>{{ remaining | money_without_trailing_zeros }} away</strong> from free shipping<span class="mtwhb-m-ship__bar"><span style="width:{{ progress }}%;"></span></span>
+        {%- elsif subtotal <= 0 -%}
+          Free shipping on orders <strong>{{ threshold | money_without_trailing_zeros }}+</strong>, lower 48<span class="mtwhb-m-ship__bar"><span style="width:0%;"></span></span>
+        {%- else -%}
+          <strong>Free shipping unlocked.</strong> Lower 48 only.<span class="mtwhb-m-ship__bar"><span style="width:100%;"></span></span>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <header class="mtwhb-m">
+      <div class="mtwhb-m__top">
+        <button class="mtwhb-m__btn" data-mtwhb-toggle aria-label="Open menu" aria-expanded="false" aria-controls="mtwhb-drawer">
+          <svg class="mtwhb-icon" data-mtwhb-burger viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        </button>
+        <a href="/" class="mtwhb-m__logo" aria-label="My Toy Wagon home">
+          <span class="mtwhb-m__logo-mark" aria-hidden="true"></span>
+          <div class="mtwhb-m__logo-text">My Toy Wagon<small>Los Angeles · est. 2020</small></div>
+        </a>
+        <a href="/account" class="mtwhb-m__btn" aria-label="Account">
+          <svg class="mtwhb-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c0-4 4-7 8-7s8 3 8 7"></path></svg>
+        </a>
+        <a href="/cart" class="mtwhb-m__btn" aria-label="Cart, {{ cart.item_count }} items">
+          <svg class="mtwhb-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7V5a3 3 0 0 1 6 0v2"/></svg>
+          {%- if cart.item_count > 0 -%}<span class="mtwhb-cart-count" data-mtwhb-cart-count>{{ cart.item_count }}</span>{%- endif -%}
+        </a>
+      </div>
+      <form class="mtwhb-m__search" action="/search" method="get" role="search">
+        <svg class="mtwhb-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+        <input type="search" name="q" placeholder="{{ section.settings.search_placeholder }}" aria-label="Search products">
+      </form>
+    </header>
+
+    <nav class="mtwhb-drawer" id="mtwhb-drawer" role="navigation" aria-label="Mobile menu">
+      <ul>
+        {%- if navlist != blank and navlist.links.size > 0 -%}
+          {%- for link in navlist.links -%}
+            {%- assign lt = link.title | downcase -%}
+            <li><a href="{{ link.url }}"{% if lt contains 'sale' %} class="is-muted"{% endif %}>{{ link.title }}{% if link.links.size > 0 %} <span class="chev" aria-hidden="true"></span>{% endif %}</a></li>
+          {%- endfor -%}
+        {%- else -%}
+          <li><a href="/pages/shop-by-age">Shop by Age <span class="chev" aria-hidden="true"></span></a></li>
+          <li><a href="/collections/all">Shop by Category <span class="chev" aria-hidden="true"></span></a></li>
+          <li><a href="/pages/featured-brands">Featured Brands</a></li>
+          <li><a href="https://mytoywagon.com/collections/new-arrivals?sort_by=created-descending">New</a></li>
+          <li><a href="/collections/pre-order">Pre-Order</a></li>
+          <li><a href="/collections/sale" class="is-muted">Sale</a></li>
+        {%- endif -%}
+      </ul>
+      <div class="mtwhb-drawer__util">
+        <ul>
+          <li><a href="{{ section.settings.track_order_url }}">Track order</a></li>
+          <li><a href="/pages/wishlist">Wishlist</a></li>
+          <li><a href="{{ section.settings.giftcards_url }}">Gift cards</a></li>
+          <li><a href="{{ section.settings.signin_url }}">Sign in</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<script>
+(function () {
+  var root = document.querySelector('[data-mtw-header="b-v1"]');
+  if (!root || root.dataset.mtwhbInit === '1') return;
+  root.dataset.mtwhbInit = '1';
+
+  var toggle = root.querySelector('[data-mtwhb-toggle]');
+  var drawer = root.querySelector('#mtwhb-drawer');
+  var burger = root.querySelector('[data-mtwhb-burger]');
+  var BURGER = 'M3 6h18M3 12h18M3 18h18';
+  var CLOSE = 'M6 6l12 12M18 6L6 18';
+
+  function focusables() {
+    return drawer ? drawer.querySelectorAll('a[href], button:not([disabled])') : [];
+  }
+  function setOpen(open) {
+    if (!drawer || !toggle) return;
+    drawer.classList.toggle('is-open', open);
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    if (burger) burger.querySelector('path').setAttribute('d', open ? CLOSE : BURGER);
+    toggle.style.color = open ? 'var(--forest)' : '';
+    if (open) {
+      var f = focusables();
+      if (f.length) f[0].focus();
+    } else {
+      toggle.focus();
+    }
+  }
+  if (toggle && drawer) {
+    toggle.addEventListener('click', function () {
+      setOpen(!drawer.classList.contains('is-open'));
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && drawer.classList.contains('is-open')) setOpen(false);
+      if (e.key === 'Tab' && drawer.classList.contains('is-open')) {
+        var f = focusables();
+        if (!f.length) return;
+        var first = f[0], last = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+    });
+  }
+
+  // Rotating utility messages (one per line in the section setting).
+  var raw = {{ section.settings.utility_messages | json }};
+  var msgs = (raw || '').split('\n').map(function (s) { return s.trim(); }).filter(Boolean);
+  if (msgs.length > 1) {
+    var slots = root.querySelectorAll('[data-mtwhb-rot]');
+    var i = 0;
+    setInterval(function () {
+      i = (i + 1) % msgs.length;
+      slots.forEach(function (el) {
+        el.classList.add('is-fading');
+        setTimeout(function () { el.textContent = msgs[i]; el.classList.remove('is-fading'); }, 320);
+      });
+    }, 8000);
+  }
+
+  // Subtle shadow once the sticky header has left the very top.
+  var ticking = false;
+  window.addEventListener('scroll', function () {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function () {
+      root.classList.toggle('is-stuck', window.scrollY > 100);
+      ticking = false;
+    });
+  }, { passive: true });
+})();
+</script>
+
+{% schema %}
+{
+  "name": "MTW Header B",
+  "settings": [
+    { "type": "header", "content": "Utility bar" },
+    { "type": "text", "id": "phone", "label": "Phone number", "default": "(626) 841-0421" },
+    { "type": "text", "id": "track_order_url", "label": "Track order URL", "default": "/account" },
+    { "type": "text", "id": "giftcards_url", "label": "Gift cards URL", "default": "/products/my-toy-wagon-digital-gift-card" },
+    { "type": "text", "id": "signin_url", "label": "Sign in URL", "default": "/account/login" },
+    { "type": "textarea", "id": "utility_messages", "label": "Rotating center messages", "default": "Free shipping on orders $150+, lower 48 only · $10 off your first order with email signup\n$10 off your first order with email signup", "info": "One message per line. Rotates every 8 seconds. No em-dashes or exclamation marks." },
+    { "type": "header", "content": "Free-shipping progress bar" },
+    { "type": "checkbox", "id": "show_progress_bar", "label": "Show progress bar", "default": true },
+    { "type": "range", "id": "free_ship_threshold", "label": "Free-shipping threshold", "min": 25, "max": 500, "step": 5, "unit": "$", "default": 150, "info": "Match your real Shopify free-shipping setting." },
+    { "type": "header", "content": "Logo" },
+    { "type": "image_picker", "id": "logo", "label": "Logo image", "info": "Optional override. If empty, the spec wagon mark + My Toy Wagon wordmark is used." },
+    { "type": "range", "id": "logo_width", "label": "Logo width (desktop)", "min": 80, "max": 280, "step": 5, "unit": "px", "default": 170 },
+    { "type": "range", "id": "logo_width_mobile", "label": "Logo width (mobile)", "min": 60, "max": 160, "step": 5, "unit": "px", "default": 90 },
+    { "type": "header", "content": "Navigation" },
+    { "type": "link_list", "id": "menu", "label": "Shop bar menu", "info": "Defaults to the mtw-main-menu navigation if left unset." },
+    { "type": "header", "content": "Search" },
+    { "type": "text", "id": "search_placeholder", "label": "Search placeholder", "default": "Search wooden blocks, plush, age 4..." }
+  ],
+  "presets": [{ "name": "MTW Header B" }]
+}
+{% endschema %}
