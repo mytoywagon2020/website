@@ -1,0 +1,190 @@
+<!-- Shopify Page: handle "featured-brands" -> /pages/featured-brands.
+     Mirror of the admin page body. Scoped under .mtw-fb so it cannot
+     collide with Impulse. v1: placeholder tiles (no asset images yet).
+     Missing brand collections point to /collections (flagged): ganapati-crafts,
+     global-goods-partners, gry-and-sif, haba, himalayan-felt, kahiniwalla.
+     CTA email + Wonderheart place are placeholders to confirm. -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+<div class="mtw-fb">
+<style>
+  .mtw-fb{--cream:#F5F0E5;--warm-white:#FFFCF7;--ink:#2C2C2A;--forest:#3B6D11;--amber:#854F0B;--stone:#5F5E5A;--card-bg:#EDE3CD;--rule:rgba(44,44,42,.12);--rule-strong:rgba(44,44,42,.22);font-family:'Mulish',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--ink);background:var(--cream);font-size:15px;line-height:1.6;}
+  .mtw-fb *{box-sizing:border-box;}
+  .mtw-fb a{color:inherit;text-decoration:none;}
+  .mtw-fb img{max-width:100%;display:block;}
+  .mtw-fb__crumb{max-width:1300px;margin:0 auto;padding:22px 40px 0;font-size:12px;letter-spacing:.04em;color:var(--stone);}
+  .mtw-fb__crumb a:hover{color:var(--ink);}
+  .mtw-fb__crumb .sep{margin:0 10px;opacity:.5;}
+  .mtw-fb__crumb .current{color:var(--ink);font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:14px;}
+  .mtw-fb__hero{text-align:center;padding:56px 40px 48px;}
+  .mtw-fb__hero .eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--stone);font-weight:500;margin:0 0 16px;}
+  .mtw-fb__hero h1{font-family:'Cormorant Garamond',Georgia,serif;font-size:60px;font-weight:500;line-height:1.02;letter-spacing:-.015em;margin:0 0 22px;color:var(--ink);}
+  .mtw-fb__hero h1 em{font-style:italic;}
+  .mtw-fb__hero p{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:19px;color:var(--stone);max-width:620px;margin:0 auto;line-height:1.55;text-wrap:pretty;}
+  .mtw-fb__rail{display:flex;justify-content:center;gap:28px;padding:20px 40px;border-top:.5px solid var(--rule);border-bottom:.5px solid var(--rule);background:var(--cream);flex-wrap:wrap;}
+  .mtw-fb__rail button{background:none;border:none;font-family:inherit;font-size:13px;color:var(--stone);letter-spacing:.04em;padding:6px 4px;cursor:pointer;border-bottom:1.5px solid transparent;transition:color 160ms ease,border-color 160ms ease;}
+  .mtw-fb__rail button:hover{color:var(--ink);}
+  .mtw-fb__rail button.active{color:var(--ink);border-color:var(--ink);font-weight:500;}
+  .mtw-fb__grid-sec{max-width:1300px;margin:0 auto;padding:56px 40px 96px;}
+  .mtw-fb__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+  .mtw-fb__card{display:flex;flex-direction:column;background:var(--warm-white);border:.5px solid var(--rule);overflow:hidden;position:relative;transition:transform 240ms ease,box-shadow 240ms ease;}
+  .mtw-fb__card:hover{transform:translateY(-3px);box-shadow:0 14px 32px rgba(44,44,42,.08);}
+  .mtw-fb__img{aspect-ratio:5/4;background:var(--card-bg);overflow:hidden;position:relative;}
+  .mtw-fb__img img{width:100%;height:100%;object-fit:cover;transition:transform 560ms ease;}
+  .mtw-fb__card:hover .mtw-fb__img img{transform:scale(1.04);}
+  .mtw-fb__img.placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-family:'Cormorant Garamond',Georgia,serif;background:linear-gradient(135deg,var(--card-bg) 0%,var(--cream) 100%);}
+  .mtw-fb__img.placeholder .glyph{font-style:italic;font-size:38px;color:var(--stone);opacity:.4;line-height:1;}
+  .mtw-fb__img.placeholder .note{font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--stone);font-style:normal;font-family:'Mulish',sans-serif;font-weight:600;opacity:.7;}
+  .mtw-fb__body{padding:18px 22px 22px;background:var(--warm-white);border-top:.5px solid var(--rule);}
+  .mtw-fb__name{font-family:'Cormorant Garamond',Georgia,serif;font-size:22px;font-weight:500;line-height:1.15;margin:0 0 4px;letter-spacing:-.005em;color:var(--ink);}
+  .mtw-fb__name em{font-style:italic;}
+  .mtw-fb__place{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--stone);font-weight:600;margin:0;}
+  .mtw-fb__cta{background:var(--card-bg);text-align:center;padding:96px 40px;border-top:.5px solid var(--rule);}
+  .mtw-fb__cta-in{max-width:600px;margin:0 auto;}
+  .mtw-fb__cta-eyebrow{font-size:10.5px;letter-spacing:.32em;text-transform:uppercase;color:var(--stone);font-weight:500;margin:0 0 22px;}
+  .mtw-fb__cta h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:44px;font-weight:500;line-height:1.08;letter-spacing:-.012em;margin:0 0 18px;}
+  .mtw-fb__cta h2 em{font-style:italic;}
+  .mtw-fb__cta p{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:18px;color:var(--stone);max-width:480px;margin:0 auto 34px;line-height:1.55;}
+  .mtw-fb__cta-actions{display:inline-flex;flex-direction:column;align-items:center;gap:14px;}
+  .mtw-fb__btn{display:inline-flex;align-items:center;gap:12px;padding:16px 32px;background:var(--ink);color:var(--cream);font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;border-radius:2px;transition:background 160ms ease,transform 160ms ease;font-family:'Mulish',sans-serif;}
+  .mtw-fb__btn:hover{background:var(--forest);transform:translateY(-1px);}
+  .mtw-fb__btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;}
+  .mtw-fb__aside{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:13px;color:var(--stone);margin:0;}
+  .mtw-fb__aside a{color:var(--ink);border-bottom:.5px solid var(--rule-strong);padding-bottom:1px;font-style:normal;font-family:'Mulish',sans-serif;font-size:12px;letter-spacing:.08em;}
+  .mtw-fb__aside a:hover{color:var(--forest);border-color:var(--forest);}
+  @media (max-width:1024px){.mtw-fb__grid{grid-template-columns:repeat(2,1fr);}.mtw-fb__hero h1{font-size:48px;}}
+  @media (max-width:720px){
+    .mtw-fb__crumb{padding:16px 20px 0;}
+    .mtw-fb__hero{padding:36px 24px 28px;}
+    .mtw-fb__hero h1{font-size:32px;line-height:1.08;margin-bottom:18px;}
+    .mtw-fb__hero p{font-size:15.5px;}
+    .mtw-fb__rail{gap:16px;padding:14px 16px;overflow-x:auto;justify-content:flex-start;}
+    .mtw-fb__rail button{white-space:nowrap;}
+    .mtw-fb__grid-sec{padding:36px 20px 56px;}
+    .mtw-fb__grid{grid-template-columns:1fr;gap:18px;}
+    .mtw-fb__body{padding:14px 16px 16px;}
+    .mtw-fb__name{font-size:20px;}
+    .mtw-fb__cta{padding:72px 24px 76px;}
+    .mtw-fb__cta h2{font-size:30px;}
+    .mtw-fb__cta p{font-size:16px;}
+  }
+</style>
+
+<nav class="mtw-fb__crumb" aria-label="Breadcrumb">
+  <a href="/">Home</a><span class="sep">·</span><a href="/collections">Shop</a><span class="sep">·</span><span class="current">Featured Brands</span>
+</nav>
+
+<section class="mtw-fb__hero">
+  <p class="eyebrow">Featured Brands</p>
+  <h1>Heirloom makers <em>we know by name.</em></h1>
+  <p>Family workshops, women's cooperatives, and small studios from a handful of towns around the world. We pick the line, we know the maker, we keep the relationship.</p>
+</section>
+
+<div class="mtw-fb__rail" id="mtwfbRail" role="tablist" aria-label="Filter brands by region">
+  <button class="active" data-filter="all" role="tab" aria-selected="true">All brands</button>
+  <button data-filter="europe" role="tab" aria-selected="false">Europe</button>
+  <button data-filter="americas" role="tab" aria-selected="false">Americas</button>
+  <button data-filter="asia-pacific" role="tab" aria-selected="false">Asia &amp; Pacific</button>
+  <button data-filter="fair-trade" role="tab" aria-selected="false">Fair-trade cooperative</button>
+</div>
+
+<section class="mtw-fb__grid-sec">
+  <div class="mtw-fb__grid">
+
+    <a href="/collections/ambrosius-fairies" class="mtw-fb__card" data-region="europe"><div class="mtw-fb__img placeholder"><span class="glyph">A</span><span class="note">Image coming soon</span></div><div class="mtw-fb__body"><h3 class="mtw-fb__name">Ambrosius <em>Fairies</em></h3><p class="mtw-fb__place">Cluj-Napoca · Romania · est. 1996</p></div></a>
+
+    <a href="/collections/atelier-des-peupliers" class="mtw-fb__card" data-region="europe"><div class="mtw-fb__img placeholder"><span class="glyph">A</span><span class="note">Image coming soon</span></div><div class="mtw-fb__body"><h3 class="mtw-fb__name">Atelier des <em>Peupliers</em></h3><p class="mtw-fb__place">Vosges · France · est. 1988</p></div></a>
+
+    <a href="/collections/baghera" class="mtw-fb__card" data-region="europe"><div class="mtw-fb__img placeholder"><span class="glyph">B</span><span class="note">Image coming soon</span></div><div class="mtw-fb__body"><h3 class="mtw-fb__name">Baghera</h3><p class="mtw-fb__place">Versailles · France · est. 1999</p></div></a>
+
+    <a href="/collections/bajo" class="mtw-fb__card" data-region="europe"><div class="mtw-fb__img placeholder"><span class="glyph">B</span><span class="note">Image coming soon</span></div><div class="mtw-fb__body"><h3 class="mtw-fb__name">Bajo</h3><p class="mtw-fb__place">Kraków · Poland · est. 1993</p></div></a>
+
+    <a href="/collections/bannor-toys" class="mtw-fb__card" data-region="americas"><div class="mtw-fb__img placeholder"><span class="glyph">B</span><span class="note">Image coming soon</span></div><div class="mtw-fb__body"><h3 class="mtw-fb__name">Bannor <em>Toys</em></h3><p class="mtw-fb__place">Iowa · USA · est. 2011</p></div></a>
+
+    <a href="/collections/bauspiel" class="mtw-fb__card" data-region="europe"><div class="mtw-fb__img placeholder"><span class="glyph">B</span><span class="note">Image coming soon</span></div><div class="mtw-fb__body"><h3 class="mtw-fb__name">Bauspiel</h3><p class="mtw-fb__place">Augsburg · Germany · est. 1985</p></div></a>
+
+    <a href="/collections/bumbu-toys" class="mtw-fb__card" data-region="europe"><div class="mtw-fb__img placeholder"><span class="glyph">B</span><span class="note">Image coming soon</span></div><div class="mtw-fb__body"><h3 class="mtw-fb__name">Bumbu</h3><p class="mtw-fb__place">Bran · Romania · est. 2018</p></div></a>
+
+    <a href="/collections/button-and-bug" class="mtw-fb__card" data-region="americas"><div class="mtw-fb__img placeholder"><span class="glyph">B</span><span class="note">Image coming soon</span></div><div class="mtw-fb__body"><h3 class="mtw-fb__name">Button <em>&amp; Bug</em></h3><p class="mtw-fb__place">Chicago, Illinois · USA · est. 2021</p></div></a>
+
+    <a href="/collections/drewart" class="mtw-fb__card" data-region="europe"><div class="mtw-fb__img placeholder"><span class="glyph">D</span><span class="note">Image coming soon</span></div><div class="mtw-fb__body"><h3 class="mtw-fb__name">Drewart</h3><p class="mtw-fb__place">Strzelce Górne · Poland · est. 1982</p></div></a>
+
+    <a href="/collections/fagus" class="mtw-fb__card" data-region="europe"><div class="mtw-fb__img placeholder"><span class="glyph">F</span><span class="note">Image coming soon</span></div><div class="mtw-fb__body"><h3 class="mtw-fb__name">Fagus</h3><p class="mtw-fb__place">Borken · Germany · est. 1982</p></div></a>
+
+    <a href="/collections/fairyshadow" class="mtw-fb__card" data-region="americas"><div class="mtw-fb__img placeholder"><span class="glyph">F</span><span class="note">Image coming soon</span></div><div class="mtw-fb__body"><h3 class="mtw-fb__name">Fairyshadow</h3><p class="mtw-fb__place">Sonoma County, California · USA · est. 2009</p></div></a>
+
+    <a href="/collections" class="mtw-fb__card" data-region="americas fair-trade"><div class="mtw-fb__img placeholder"><span class="glyph">G</span><span class="note">Image coming soon</span></div><div class="mtw-fb__body"><h3 class="mtw-fb__name">Ganapati <em>Crafts Co.</em></h3><p class="mtw-fb__place">Florida · USA + Kathmandu, Nepal · est. 2019</p></div></a>
+
+    <a href="/collections" class="mtw-fb__card" data-region="americas fair-trade"><div class="mtw-fb__img placeholder"><span class="glyph">G</span><span class="note">Image coming soon</span></div><div class="mtw-fb__body"><h3 class="mtw-fb__name">Global Goods <em>Partners</em></h3><p class="mtw-fb__place">New York City, NY · USA · est. 2005</p></div></a>
+
+    <a href="/collections/grapat" class="mtw-fb__card" data-region="europe"><div class="mtw-fb__img placeholder"><span class="glyph">G</span><span class="note">Image coming soon</span></div><div class="mtw-fb__body"><h3 class="mtw-fb__name">Grapat</h3><p class="mtw-fb__place">Catalonia · Spain · est. 2015</p></div></a>
+
+    <a href="/collections" class="mtw-fb__card" data-region="europe"><div class="mtw-fb__img placeholder"><span class="glyph">G</span><span class="note">Image coming soon</span></div><div class="mtw-fb__body"><h3 class="mtw-fb__name">Gry <em>&amp; Sif</em></h3><p class="mtw-fb__place">Denmark · est. 2001</p></div></a>
+
+    <a href="/collections/gus-mabel" class="mtw-fb__card" data-region="americas"><div class="mtw-fb__img placeholder"><span class="glyph">G</span><span class="note">Image coming soon</span></div><div class="mtw-fb__body"><h3 class="mtw-fb__name">Gus <em>+ Mabel</em></h3><p class="mtw-fb__place">Sydney · Australia · est. 2023</p></div></a>
+
+    <a href="/collections" class="mtw-fb__card" data-region="europe"><div class="mtw-fb__img placeholder"><span class="glyph">H</span><span class="note">Image coming soon</span></div><div class="mtw-fb__body"><h3 class="mtw-fb__name">HABA</h3><p class="mtw-fb__place">Bad Rodach · Germany · est. 1938</p></div></a>
+
+    <a href="/collections" class="mtw-fb__card" data-region="asia-pacific"><div class="mtw-fb__img placeholder"><span class="glyph">H</span><span class="note">Image coming soon</span></div><div class="mtw-fb__body"><h3 class="mtw-fb__name">Himalayan <em>Felt Co</em></h3><p class="mtw-fb__place">Victoria · Australia · est. 2004</p></div></a>
+
+    <a href="/collections" class="mtw-fb__card" data-region="asia-pacific fair-trade"><div class="mtw-fb__img placeholder"><span class="glyph">K</span><span class="note">Image coming soon</span></div><div class="mtw-fb__body"><h3 class="mtw-fb__name">Kahiniwalla <em>x Pebble</em></h3><p class="mtw-fb__place">Columbus, Ohio · USA · est. 2004</p></div></a>
+
+    <a href="/collections/magic-wood" class="mtw-fb__card" data-region="europe"><div class="mtw-fb__img placeholder"><span class="glyph">M</span><span class="note">Image coming soon</span></div><div class="mtw-fb__body"><h3 class="mtw-fb__name">Magic <em>Wood</em></h3><p class="mtw-fb__place">Zielona Góra · Poland · est. 2005</p></div></a>
+
+    <a href="/collections/mushie" class="mtw-fb__card" data-region="europe americas"><div class="mtw-fb__img placeholder"><span class="glyph">M</span><span class="note">Image coming soon</span></div><div class="mtw-fb__body"><h3 class="mtw-fb__name">Mushie</h3><p class="mtw-fb__place">Houston, Texas · USA · est. 2018</p></div></a>
+
+    <a href="/collections/papoose-toys" class="mtw-fb__card" data-region="asia-pacific fair-trade"><div class="mtw-fb__img placeholder"><span class="glyph">P</span><span class="note">Image coming soon</span></div><div class="mtw-fb__body"><h3 class="mtw-fb__name">Papoose <em>Toys</em></h3><p class="mtw-fb__place">Melbourne · Australia · est. 1991</p></div></a>
+
+    <a href="/collections/plan-toys" class="mtw-fb__card" data-region="asia-pacific"><div class="mtw-fb__img placeholder"><span class="glyph">P</span><span class="note">Image coming soon</span></div><div class="mtw-fb__body"><h3 class="mtw-fb__name">Plan <em>Toys</em></h3><p class="mtw-fb__place">Trang · Thailand · est. 1981</p></div></a>
+
+    <a href="/collections/sabo-concept" class="mtw-fb__card" data-region="europe"><div class="mtw-fb__img placeholder"><span class="glyph">S</span><span class="note">Image coming soon</span></div><div class="mtw-fb__body"><h3 class="mtw-fb__name">SABO <em>concept</em></h3><p class="mtw-fb__place">Poltava · Ukraine · est. 2016</p></div></a>
+
+    <a href="/collections/tara-treasures" class="mtw-fb__card" data-region="asia-pacific fair-trade"><div class="mtw-fb__img placeholder"><span class="glyph">T</span><span class="note">Image coming soon</span></div><div class="mtw-fb__body"><h3 class="mtw-fb__name">Tara <em>Treasures</em></h3><p class="mtw-fb__place">Melbourne · Australia · est. 2009</p></div></a>
+
+    <a href="/collections/tender-leaf" class="mtw-fb__card" data-region="europe"><div class="mtw-fb__img placeholder"><span class="glyph">T</span><span class="note">Image coming soon</span></div><div class="mtw-fb__body"><h3 class="mtw-fb__name">Tender <em>Leaf Toys</em></h3><p class="mtw-fb__place">United Kingdom · est. 2015</p></div></a>
+
+    <a href="/collections/tiny-fox-hole" class="mtw-fb__card" data-region="europe"><div class="mtw-fb__img placeholder"><span class="glyph">T</span><span class="note">Image coming soon</span></div><div class="mtw-fb__body"><h3 class="mtw-fb__name">Tiny <em>Fox Hole</em></h3><p class="mtw-fb__place">London · United Kingdom · est. 2019</p></div></a>
+
+    <a href="/collections/toverlux" class="mtw-fb__card" data-region="europe"><div class="mtw-fb__img placeholder"><span class="glyph">T</span><span class="note">Image coming soon</span></div><div class="mtw-fb__body"><h3 class="mtw-fb__name">Toverlux</h3><p class="mtw-fb__place">Naarden · Netherlands · est. 2021</p></div></a>
+
+    <a href="/collections/wild-mountain-child" class="mtw-fb__card" data-region="americas"><div class="mtw-fb__img placeholder"><span class="glyph">W</span><span class="note">Image coming soon</span></div><div class="mtw-fb__body"><h3 class="mtw-fb__name">Wild Mountain <em>Child</em></h3><p class="mtw-fb__place">Blue Mountains, NSW · Australia · est. 2020</p></div></a>
+
+    <a href="/collections/wonderheart" class="mtw-fb__card" data-region="americas"><div class="mtw-fb__img placeholder"><span class="glyph">W</span><span class="note">Image coming soon</span></div><div class="mtw-fb__body"><h3 class="mtw-fb__name">Wonderheart</h3><p class="mtw-fb__place">USA</p></div></a>
+
+  </div>
+</section>
+
+<section class="mtw-fb__cta">
+  <div class="mtw-fb__cta-in">
+    <p class="mtw-fb__cta-eyebrow">An invitation</p>
+    <h2>Know a maker we should <em>carry?</em></h2>
+    <p>We work with small batches, family workshops, and women's cooperatives. If you make something we should know about, or you've found one we should, tell us.</p>
+    <div class="mtw-fb__cta-actions">
+      <a href="mailto:hello@mytoywagon.com?subject=Introduce%20a%20maker" class="mtw-fb__btn">Introduce a maker <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <p class="mtw-fb__aside">Or <a href="mailto:hello@mytoywagon.com?subject=A%20maker%20you%20should%20know">send us a name</a>. We read every note.</p>
+    </div>
+  </div>
+</section>
+
+</div>
+<script>
+(function(){
+  var root=document.currentScript.previousElementSibling;
+  if(!root)return;
+  var rail=root.querySelector('#mtwfbRail');
+  if(!rail)return;
+  var cards=root.querySelectorAll('.mtw-fb__card');
+  rail.addEventListener('click',function(e){
+    var btn=e.target.closest('button[data-filter]');
+    if(!btn)return;
+    rail.querySelectorAll('button').forEach(function(b){
+      b.classList.toggle('active',b===btn);
+      b.setAttribute('aria-selected',b===btn?'true':'false');
+    });
+    var filter=btn.dataset.filter;
+    cards.forEach(function(c){
+      var regions=(c.dataset.region||'').split(' ');
+      c.style.display=(filter==='all'||regions.indexOf(filter)>-1)?'':'none';
+    });
+  });
+})();
+</script>
