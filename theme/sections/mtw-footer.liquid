@@ -1,0 +1,365 @@
+{%- comment -%}
+  MTW Footer — heirloom-band, brand block + newsletter, link columns,
+  optional Google rating badge, payments, legal. Responsive: desktop
+  grid collapses to a mobile accordion at <=720px. Namespaced .mtwft
+  so it cannot collide with Impulse. Wired by footer-group.json
+  (section type "mtw-footer"); settings below match the saved keys.
+{%- endcomment -%}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+{%- liquid
+  assign tel = section.settings.phone | replace: '.', '' | replace: '-', '' | replace: ' ', '' | replace: '(', '' | replace: ')', ''
+  assign logo_mark = 'MyToyWagon_logomark_lightbg_transparent.png' | file_url
+-%}
+
+{%- style -%}
+  .mtwft{--cream:#F5F0E5;--warm-white:#FFFCF7;--ink:#2C2C2A;--forest:#3B6D11;--amber:#854F0B;--stone:#5F5E5A;--card-bg:#EDE3CD;--rule:rgba(44,44,42,.12);--rule-strong:rgba(44,44,42,.22);background:var(--cream);font-family:'Mulish',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--ink);font-size:15px;}
+  .mtwft *{box-sizing:border-box;}
+  .mtwft a{color:inherit;text-decoration:none;}
+  .mtwft img{max-width:100%;display:block;}
+  .mtwft button{font-family:inherit;cursor:pointer;}
+  .mtwft__d{border-top:.5px solid var(--rule);}
+  .mtwft__in{max-width:1440px;margin:0 auto;padding:72px 40px 28px;}
+  .mtwft__band{text-align:center;padding:0 0 56px;border-bottom:.5px solid var(--rule);margin-bottom:56px;}
+  .mtwft__band h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:30px;font-weight:500;letter-spacing:-.008em;line-height:1.15;color:var(--ink);margin:0 0 8px;}
+  .mtwft__band h2 em{font-style:italic;color:var(--forest);}
+  .mtwft__band p{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:16px;color:var(--stone);max-width:560px;margin:0 auto;line-height:1.5;}
+  .mtwft__top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:56px;padding-bottom:48px;border-bottom:.5px solid var(--rule);}
+  .mtwft__logo{display:block;width:218px;height:218px;background-color:var(--ink);-webkit-mask:url("{{ logo_mark }}") left center/contain no-repeat;mask:url("{{ logo_mark }}") left center/contain no-repeat;margin-bottom:24px;}
+  .mtwft__tag{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:16px;color:var(--stone);margin:0 0 18px;max-width:320px;line-height:1.5;}
+  .mtwft__loc{font-size:13.5px;color:var(--ink);line-height:1.6;margin:0 0 18px;}
+  .mtwft__loc strong{font-weight:500;}
+  .mtwft__nl{margin:4px 0 22px;padding-top:22px;border-top:.5px solid var(--rule);max-width:340px;}
+  .mtwft__nl h4{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:18px;font-weight:500;color:var(--ink);margin:0 0 6px;}
+  .mtwft__nl p{font-size:13px;line-height:1.55;color:var(--stone);margin:0 0 12px;}
+  .mtwft__nl form{display:grid;grid-template-columns:1fr auto;gap:8px;}
+  .mtwft__nl input{height:40px;padding:0 12px;background:var(--warm-white);border:.5px solid var(--rule-strong);border-radius:2px;font-family:inherit;font-size:13.5px;color:var(--ink);outline:none;}
+  .mtwft__nl input::placeholder{color:var(--stone);}
+  .mtwft__nl button{height:40px;padding:0 18px;background:var(--ink);color:var(--cream);border:none;border-radius:2px;font-size:10.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;}
+  .mtwft__nl button:hover{background:var(--forest);}
+  .mtwft__nl-perk{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:12.5px;color:var(--stone);margin:8px 0 0;}
+  .mtwft__nl-ok{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:13.5px;color:var(--forest);margin:8px 0 0;}
+  .mtwft__contact{font-size:13.5px;line-height:1.7;color:var(--ink);margin-bottom:18px;}
+  .mtwft__contact a{color:var(--ink);font-weight:500;display:block;}
+  .mtwft__contact a:hover{color:var(--forest);}
+  .mtwft__social{display:flex;gap:12px;}
+  .mtwft__social a{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;border:.5px solid var(--rule-strong);color:var(--stone);transition:background 180ms ease,color 180ms ease,border-color 180ms ease;}
+  .mtwft__social a:hover{background:var(--ink);color:var(--cream);border-color:var(--ink);}
+  .mtwft__social svg{width:15px;height:15px;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;fill:none;}
+  .mtwft__col h4{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:18px;font-weight:500;color:var(--ink);margin:0 0 18px;}
+  .mtwft__col ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px;}
+  .mtwft__col li{font-size:13.5px;color:var(--ink);}
+  .mtwft__col a:hover{color:var(--forest);}
+  .mtwft__badge{display:flex;justify-content:center;align-items:center;gap:14px;padding:24px 0;border-bottom:.5px solid var(--rule);}
+  .mtwft__mid{display:flex;justify-content:space-between;align-items:center;padding:24px 0;border-bottom:.5px solid var(--rule);gap:24px;flex-wrap:wrap;}
+  .mtwft__pay-label{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:13.5px;color:var(--stone);}
+  .mtwft__pay{display:flex;align-items:center;flex-wrap:wrap;}
+  .mtwft__chip{display:inline-block;padding:0 14px 0 0;margin-right:14px;border-right:.5px solid var(--rule);font-size:12px;color:var(--ink);letter-spacing:.06em;font-weight:500;line-height:1.2;}
+  .mtwft__chip:last-child{border-right:none;margin-right:0;}
+  .mtwft__bottom{display:flex;justify-content:space-between;align-items:center;padding-top:22px;gap:16px;flex-wrap:wrap;}
+  .mtwft__copy{font-size:12px;color:var(--stone);}
+  .mtwft__copy em{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:13.5px;color:var(--ink);margin-right:10px;}
+  .mtwft__legal{display:flex;gap:22px;align-items:center;}
+  .mtwft__legal a{font-size:12px;color:var(--stone);}
+  .mtwft__legal a:hover{color:var(--ink);}
+
+  .mtwft__m{display:none;}
+  .mtwft__m-in{padding:32px 24px 24px;}
+  .mtwft__m-band{text-align:center;padding:0 8px 24px;border-bottom:.5px solid var(--rule);margin-bottom:20px;}
+  .mtwft__m-band h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:24px;font-weight:500;margin:0 0 6px;line-height:1.2;color:var(--ink);}
+  .mtwft__m-band h2 em{font-style:italic;color:var(--forest);}
+  .mtwft__m-band p{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:14px;color:var(--stone);margin:0;line-height:1.45;}
+  .mtwft__m-nl{margin-bottom:32px;padding-bottom:32px;border-bottom:.5px solid var(--rule);text-align:center;}
+  .mtwft__m-nl h4{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:18px;font-weight:500;margin:0 0 6px;color:var(--ink);}
+  .mtwft__m-nl p{font-size:13px;color:var(--stone);margin:0 0 14px;line-height:1.5;}
+  .mtwft__m-nl form{display:grid;grid-template-columns:1fr;gap:8px;}
+  .mtwft__m-nl input{height:46px;padding:0 14px;background:var(--warm-white);border:.5px solid var(--rule-strong);border-radius:2px;font-family:inherit;font-size:14px;color:var(--ink);outline:none;text-align:center;}
+  .mtwft__m-nl button{height:46px;background:var(--ink);color:var(--cream);border:none;border-radius:2px;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;}
+  .mtwft__m-brand{text-align:center;margin-bottom:20px;padding-bottom:20px;border-bottom:.5px solid var(--rule);}
+  .mtwft__m-brand .mtwft__logo{width:180px;height:180px;-webkit-mask-position:center;mask-position:center;margin:0 auto 4px;}
+  .mtwft__m-brand .mtwft__tag{text-align:center;margin:0 auto 10px;max-width:280px;}
+  .mtwft__m-brand .mtwft__loc{text-align:center;margin:0 auto;}
+  .mtwft__m-brand .mtwft__social{justify-content:center;margin-top:14px;}
+  .mtwft__acc{border-bottom:.5px solid var(--rule);}
+  .mtwft__acc summary{display:flex;justify-content:space-between;align-items:center;padding:18px 4px;font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:18px;font-weight:500;cursor:pointer;list-style:none;color:var(--ink);}
+  .mtwft__acc summary::-webkit-details-marker{display:none;}
+  .mtwft__acc summary::after{content:"";width:8px;height:8px;border-right:1.5px solid var(--stone);border-bottom:1.5px solid var(--stone);transform:rotate(45deg);transition:transform 240ms ease;margin-right:4px;margin-top:-3px;}
+  .mtwft__acc[open] summary::after{transform:rotate(-135deg);margin-top:3px;}
+  .mtwft__acc ul{list-style:none;margin:0;padding:0 4px 18px;display:flex;flex-direction:column;gap:14px;}
+  .mtwft__acc li{font-size:15px;color:var(--ink);}
+  .mtwft__m-contact{text-align:center;padding:40px 8px 32px;border-bottom:.5px solid var(--rule);}
+  .mtwft__m-contact h4{font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--stone);font-weight:600;margin:0 0 16px;}
+  .mtwft__m-contact a{display:block;font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:19px;font-weight:500;color:var(--ink);padding:4px 0;line-height:1.3;}
+  .mtwft__m-contact a:hover{color:var(--forest);}
+  .mtwft__m-contact .small{font-size:11.5px;color:var(--stone);margin-top:14px;letter-spacing:.16em;text-transform:uppercase;font-weight:500;}
+  .mtwft__m-pay{padding:28px 8px 24px;border-bottom:.5px solid var(--rule);text-align:center;}
+  .mtwft__m-pay-label{display:block;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--stone);font-weight:600;margin-bottom:12px;}
+  .mtwft__m-pay .mtwft__pay{justify-content:center;gap:14px;flex-wrap:wrap;display:flex;}
+  .mtwft__m-pay .mtwft__chip{font-size:11px;padding:0;margin:0;border-right:none;letter-spacing:.08em;color:var(--stone);font-weight:500;}
+  .mtwft__m-bottom{padding:28px 8px 36px;text-align:center;}
+  .mtwft__m-bottom em{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:14px;color:var(--stone);display:block;margin-bottom:14px;}
+  .mtwft__m-copy{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);font-weight:500;display:block;margin-bottom:18px;}
+  .mtwft__m-legal{display:flex;justify-content:center;gap:22px;flex-wrap:wrap;}
+  .mtwft__m-legal a{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--stone);font-weight:500;}
+  .mtwft__m-legal a:hover{color:var(--ink);}
+
+  @media (max-width:720px){
+    .mtwft__d{display:none;}
+    .mtwft__m{display:block;}
+  }
+{%- endstyle -%}
+
+<div class="mtwft">
+
+  <footer class="mtwft__d" role="contentinfo">
+    <div class="mtwft__in">
+
+      <div class="mtwft__band">
+        <h2>Heirloom is <em>sustainability.</em></h2>
+        <p>Toys played with for a decade are toys not bought, broken, and replaced.</p>
+      </div>
+
+      <div class="mtwft__top">
+
+        <div class="mtwft__brand">
+          <a href="{{ routes.root_url }}" aria-label="{{ shop.name | escape }}"><span class="mtwft__logo" role="img" aria-label="{{ shop.name | escape }}"></span></a>
+            {%- if section.settings.tagline != blank -%}<p class="mtwft__tag">{{ section.settings.tagline }}</p>{%- endif -%}
+          <p class="mtwft__loc">
+            {%- if section.settings.location != blank -%}<strong>{{ section.settings.location }}</strong><br>{%- endif -%}
+            {{ section.settings.hours }}
+          </p>
+
+          <div class="mtwft__nl">
+            <h4>Stay close.</h4>
+            <p>New arrivals, restocks, and a few thoughts on heirloom play. No spam, ever.</p>
+            {%- form 'customer' -%}
+              {%- if form.posted_successfully? -%}
+                <p class="mtwft__nl-ok">Thank you. You're on the list.</p>
+              {%- else -%}
+                <input type="hidden" name="contact[tags]" value="newsletter">
+                <input type="email" name="contact[email]" placeholder="you@email.com" required aria-label="Email">
+                <button type="submit" name="commit">Sign up</button>
+              {%- endif -%}
+            {%- endform -%}
+            <p class="mtwft__nl-perk">Welcome offer · $10 off your first order of $75 or more.</p>
+          </div>
+
+          <div class="mtwft__contact">
+            {%- if section.settings.email != blank -%}<a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a>{%- endif -%}
+            {%- if section.settings.phone != blank -%}<a href="tel:+1{{ tel }}">{{ section.settings.phone }}</a>{%- endif -%}
+          </div>
+
+          {%- if section.settings.instagram != blank or section.settings.pinterest != blank or section.settings.youtube != blank or section.settings.tiktok != blank -%}
+            <div class="mtwft__social">
+              {%- if section.settings.instagram != blank -%}<a href="{{ section.settings.instagram }}" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg></a>{%- endif -%}
+              {%- if section.settings.pinterest != blank -%}<a href="{{ section.settings.pinterest }}" aria-label="Pinterest"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M11 8c-2 .5-3.5 2.5-3 4.5.3 1.3 1.5 1.6 1.5.5 0-1 .5-2 1.5-2.5 1.5-.8 3.5 0 4 1.5.5 2-.5 4-2.5 4-1 0-1.5-.5-1.3-1.5L12 11"/><path d="M11 13.5 9.5 19"/></svg></a>{%- endif -%}
+              {%- if section.settings.youtube != blank -%}<a href="{{ section.settings.youtube }}" aria-label="YouTube"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="3"/><path d="M10 9.5v5l4.5-2.5z" fill="currentColor"/></svg></a>{%- endif -%}
+              {%- if section.settings.tiktok != blank -%}<a href="{{ section.settings.tiktok }}" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M14 4v10.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 4c0 2 1.5 4 4 4"/></svg></a>{%- endif -%}
+            </div>
+          {%- endif -%}
+        </div>
+
+        <div class="mtwft__col">
+          <h4>Shop</h4>
+          <ul>
+            <li><a href="/pages/shop-by-age">Shop by Age</a></li>
+            <li><a href="/collections/all">Shop by Category</a></li>
+            <li><a href="/pages/featured-brands">Featured Brands</a></li>
+            <li><a href="/collections/new-arrivals">New</a></li>
+            <li><a href="/collections/pre-order">Pre-Order</a></li>
+            <li><a href="/collections/sale">Sale</a></li>
+            <li><a href="/products/my-toy-wagon-digital-gift-card">Gift cards</a></li>
+          </ul>
+        </div>
+
+        <div class="mtwft__col">
+          <h4>Customer care</h4>
+          <ul>
+            <li><a href="/pages/shipping">Shipping</a></li>
+            <li><a href="/pages/returns">Returns</a></li>
+            <li><a href="/pages/rewards">Rewards</a></li>
+            <li><a href="/pages/wishlist">Wishlist</a></li>
+            <li><a href="/pages/faq">FAQs</a></li>
+          </ul>
+        </div>
+
+        <div class="mtwft__col">
+          <h4>About</h4>
+          <ul>
+            <li><a href="/pages/our-story">Our story</a></li>
+            <li><a href="/blogs/news">The blog</a></li>
+            <li><a href="/pages/reviews">Customer reviews</a></li>
+            <li><a href="/pages/educator-program">Educator program</a></li>
+            <li><a href="/pages/collaboration">Collaboration</a></li>
+            <li><a href="/pages/accessibility">Accessibility</a></li>
+          </ul>
+        </div>
+      </div>
+
+      {%- if section.settings.show_badge -%}
+        <div class="mtwft__badge">
+          <g:ratingbadge merchant_id="370063513" position="INLINE"></g:ratingbadge>
+        </div>
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+      {%- endif -%}
+
+      <div class="mtwft__mid">
+        <span class="mtwft__pay-label">We accept</span>
+        <div class="mtwft__pay">
+          <span class="mtwft__chip">Visa</span><span class="mtwft__chip">Mastercard</span><span class="mtwft__chip">Amex</span><span class="mtwft__chip">Discover</span><span class="mtwft__chip">Diners</span><span class="mtwft__chip">Apple&nbsp;Pay</span><span class="mtwft__chip">Google&nbsp;Pay</span><span class="mtwft__chip">PayPal</span><span class="mtwft__chip">Shop&nbsp;Pay</span>
+        </div>
+      </div>
+
+      <div class="mtwft__bottom">
+        <span class="mtwft__copy">
+          {%- if section.settings.bottom_tagline != blank -%}<em>{{ section.settings.bottom_tagline }}</em>{%- endif -%}
+          &copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. {{ section.settings.copyright_suffix }}
+        </span>
+        <div class="mtwft__legal">
+          <a href="/policies/privacy-policy">Privacy policy</a>
+          <a href="/policies/terms-of-service">Terms of service</a>
+          <a href="/pages/accessibility">Accessibility</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <footer class="mtwft__m" role="contentinfo">
+    <div class="mtwft__m-in">
+
+      <div class="mtwft__m-band">
+        <h2>Heirloom is <em>sustainability.</em></h2>
+        <p>Played with for a decade, not replaced.</p>
+      </div>
+
+      <div class="mtwft__m-nl">
+        <h4>Stay close.</h4>
+        <p class="mtwft__nl-perk" style="margin:0 0 10px;">Welcome offer · $10 off your first order of $75 or more.</p>
+        <p>New arrivals, restocks, and a few thoughts on heirloom play. No spam, ever.</p>
+        {%- form 'customer' -%}
+          {%- if form.posted_successfully? -%}
+            <p class="mtwft__nl-ok">Thank you. You're on the list.</p>
+          {%- else -%}
+            <input type="hidden" name="contact[tags]" value="newsletter">
+            <input type="email" name="contact[email]" placeholder="you@email.com" required aria-label="Email">
+            <button type="submit" name="commit">Sign up</button>
+          {%- endif -%}
+        {%- endform -%}
+      </div>
+
+      <div class="mtwft__m-brand">
+        <a href="{{ routes.root_url }}" aria-label="{{ shop.name | escape }}"><span class="mtwft__logo" role="img" aria-label="{{ shop.name | escape }}"></span></a>
+        {%- if section.settings.tagline != blank -%}<p class="mtwft__tag">{{ section.settings.tagline }}</p>{%- endif -%}
+        <p class="mtwft__loc">
+          {%- if section.settings.location != blank -%}<strong>{{ section.settings.location }}</strong><br>{%- endif -%}
+          {{ section.settings.hours }}
+        </p>
+        {%- if section.settings.instagram != blank or section.settings.pinterest != blank or section.settings.youtube != blank or section.settings.tiktok != blank -%}
+          <div class="mtwft__social">
+            {%- if section.settings.instagram != blank -%}<a href="{{ section.settings.instagram }}" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg></a>{%- endif -%}
+            {%- if section.settings.pinterest != blank -%}<a href="{{ section.settings.pinterest }}" aria-label="Pinterest"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M11 8c-2 .5-3.5 2.5-3 4.5.3 1.3 1.5 1.6 1.5.5 0-1 .5-2 1.5-2.5 1.5-.8 3.5 0 4 1.5.5 2-.5 4-2.5 4-1 0-1.5-.5-1.3-1.5L12 11"/><path d="M11 13.5 9.5 19"/></svg></a>{%- endif -%}
+            {%- if section.settings.youtube != blank -%}<a href="{{ section.settings.youtube }}" aria-label="YouTube"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="3"/><path d="M10 9.5v5l4.5-2.5z" fill="currentColor"/></svg></a>{%- endif -%}
+            {%- if section.settings.tiktok != blank -%}<a href="{{ section.settings.tiktok }}" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M14 4v10.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 4c0 2 1.5 4 4 4"/></svg></a>{%- endif -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      <details class="mtwft__acc">
+        <summary>Shop</summary>
+        <ul>
+          <li><a href="/pages/shop-by-age">Shop by Age</a></li>
+          <li><a href="/collections/all">Shop by Category</a></li>
+          <li><a href="/pages/featured-brands">Featured Brands</a></li>
+          <li><a href="/collections/new-arrivals">New</a></li>
+          <li><a href="/collections/pre-order">Pre-Order</a></li>
+          <li><a href="/collections/sale">Sale</a></li>
+          <li><a href="/products/my-toy-wagon-digital-gift-card">Gift cards</a></li>
+        </ul>
+      </details>
+
+      <details class="mtwft__acc">
+        <summary>Customer care</summary>
+        <ul>
+          <li><a href="/pages/shipping">Shipping</a></li>
+          <li><a href="/pages/returns">Returns</a></li>
+          <li><a href="/pages/rewards">Rewards</a></li>
+          <li><a href="/pages/wishlist">Wishlist</a></li>
+          <li><a href="/pages/faq">FAQs</a></li>
+        </ul>
+      </details>
+
+      <details class="mtwft__acc">
+        <summary>About</summary>
+        <ul>
+          <li><a href="/pages/our-story">Our story</a></li>
+          <li><a href="/blogs/news">The blog</a></li>
+          <li><a href="/pages/reviews">Customer reviews</a></li>
+          <li><a href="/pages/educator-program">Educator program</a></li>
+          <li><a href="/pages/collaboration">Collaboration</a></li>
+          <li><a href="/pages/accessibility">Accessibility</a></li>
+        </ul>
+      </details>
+
+      <div class="mtwft__m-contact">
+        <h4>Talk to us</h4>
+        {%- if section.settings.email != blank -%}<a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a>{%- endif -%}
+        {%- if section.settings.phone != blank -%}<a href="tel:+1{{ tel }}">{{ section.settings.phone }}</a>{%- endif -%}
+        <p class="small">{{ section.settings.hours }}</p>
+      </div>
+
+      {%- if section.settings.show_badge -%}
+        <div class="mtwft__badge">
+          <g:ratingbadge merchant_id="370063513" position="INLINE"></g:ratingbadge>
+        </div>
+      {%- endif -%}
+
+      <div class="mtwft__m-pay">
+        <span class="mtwft__m-pay-label">We accept</span>
+        <div class="mtwft__pay">
+          <span class="mtwft__chip">Visa</span><span class="mtwft__chip">Mastercard</span><span class="mtwft__chip">Amex</span><span class="mtwft__chip">Apple&nbsp;Pay</span><span class="mtwft__chip">Shop&nbsp;Pay</span><span class="mtwft__chip">PayPal</span>
+        </div>
+      </div>
+
+      <div class="mtwft__m-bottom">
+        {%- if section.settings.bottom_tagline != blank -%}<em>{{ section.settings.bottom_tagline }}</em>{%- endif -%}
+        <span class="mtwft__m-copy">&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}</span>
+        <div class="mtwft__m-legal">
+          <a href="/policies/privacy-policy">Privacy</a>
+          <a href="/policies/terms-of-service">Terms</a>
+          <a href="/pages/accessibility">Accessibility</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+{% schema %}
+{
+  "name": "MTW Footer",
+  "settings": [
+    { "type": "text", "id": "tagline", "label": "Brand tagline", "default": "Heirloom toys, curated by hand. A family-owned boutique, online since 2020." },
+    { "type": "text", "id": "location", "label": "Location", "default": "Los Angeles, California" },
+    { "type": "text", "id": "hours", "label": "Hours", "default": "Mon to Fri, 9 am to 5 pm PT" },
+    { "type": "text", "id": "email", "label": "Contact email", "default": "contact@mytoywagon.com" },
+    { "type": "text", "id": "phone", "label": "Phone", "default": "626.841.0421" },
+    { "type": "header", "content": "Social (leave blank to hide)" },
+    { "type": "url", "id": "instagram", "label": "Instagram URL" },
+    { "type": "url", "id": "pinterest", "label": "Pinterest URL" },
+    { "type": "url", "id": "youtube", "label": "YouTube URL" },
+    { "type": "url", "id": "tiktok", "label": "TikTok URL" },
+    { "type": "header", "content": "Trust badge" },
+    { "type": "checkbox", "id": "show_badge", "label": "Show Google rating badge", "default": false },
+    { "type": "text", "id": "badge_title", "label": "Badge title (unused with Google badge)" },
+    { "type": "text", "id": "badge_sub", "label": "Badge subtitle (unused with Google badge)" },
+    { "type": "header", "content": "Bottom bar" },
+    { "type": "text", "id": "bottom_tagline", "label": "Bottom tagline", "default": "Heirloom toys, curated by hand." },
+    { "type": "text", "id": "copyright_suffix", "label": "Copyright suffix", "default": "All rights reserved." }
+  ],
+  "blocks": [],
+  "presets": [{ "name": "MTW Footer" }]
+}
+{% endschema %}
