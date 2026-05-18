@@ -1,0 +1,402 @@
+/* MTW Fast PDP component CSS. Every selector scoped to
+   [data-mtw-pdp="fast-v1"] so it cannot collide with the
+   Impulse 9.0 theme. Demo toggle stripped for production. */
+[data-mtw-pdp="fast-v1"] .ff-page { background: var(--cream);
+  min-height: 100vh;
+  font-size: 15px;
+  color: var(--ink); }
+[data-mtw-pdp="fast-v1"] .ff-crumbs { max-width: 1180px;
+  margin: 0 auto;
+  padding: 18px 40px 0;
+  font-size: 12.5px;
+  color: var(--stone);
+  letter-spacing: 0.02em; }
+[data-mtw-pdp="fast-v1"] .ff-crumbs ol { list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0 8px; }
+[data-mtw-pdp="fast-v1"] .ff-crumbs li { line-height: 1.5; }
+[data-mtw-pdp="fast-v1"] .ff-crumbs a { color: var(--stone);
+  text-decoration: none;
+  transition: color 160ms ease; }
+[data-mtw-pdp="fast-v1"] .ff-crumbs a:hover { color: var(--ink); }
+[data-mtw-pdp="fast-v1"] .ff-crumbs li[aria-current="page"] { color: var(--ink);
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 14px; }
+[data-mtw-pdp="fast-v1"] .ff-crumb-sep { opacity: 0.4; }
+[data-mtw-pdp="fast-v1"] .ff-top { max-width: 1180px;
+  margin: 0 auto;
+  padding: 32px 40px 48px;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 56px;
+  align-items: start; }
+[data-mtw-pdp="fast-v1"] .ff-gallery { display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 14px;
+  position: sticky;
+  top: 24px; }
+[data-mtw-pdp="fast-v1"] .ff-thumbs { display: flex; flex-direction: column; gap: 8px; }
+[data-mtw-pdp="fast-v1"] .ff-thumb { aspect-ratio: 1/1;
+  background: var(--warm-white);
+  border: 0.5px solid var(--rule);
+  border-radius: 2px;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative; }
+[data-mtw-pdp="fast-v1"] .ff-thumb.active { border-color: var(--ink); border-width: 1px; }
+[data-mtw-pdp="fast-v1"] .ff-thumb img { width: 100%; height: 100%; object-fit: cover; }
+[data-mtw-pdp="fast-v1"] .ff-thumb-label { position: absolute;
+  inset: auto 0 0 0;
+  background: rgba(44,44,42,0.85);
+  color: var(--cream);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 600;
+  text-align: center;
+  padding: 3px 0 4px;
+  font-family: 'Mulish', sans-serif; }
+[data-mtw-pdp="fast-v1"] .ff-main { aspect-ratio: 4/5;
+  background: var(--warm-white);
+  border: 0.5px solid var(--rule);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative; }
+[data-mtw-pdp="fast-v1"] .ff-main img { width: 100%; height: 100%; object-fit: cover; }
+[data-mtw-pdp="fast-v1"] .ff-main-badge { position: absolute;
+  top: 16px;
+  left: 16px;
+  background: var(--warm-white);
+  border: 0.5px solid var(--rule);
+  padding: 6px 12px;
+  border-radius: 2px;
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px; }
+[data-mtw-pdp="fast-v1"] .ff-main-badge .badge-num { font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--stone); }
+[data-mtw-pdp="fast-v1"] .ff-maker { font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--amber);
+  font-weight: 600;
+  margin: 0 0 12px; }
+[data-mtw-pdp="fast-v1"] .ff-title { font-family: 'Cormorant Garamond', serif;
+  font-size: 42px;
+  font-weight: 500;
+  line-height: 1.04;
+  letter-spacing: -0.012em;
+  margin: 0 0 14px;
+  text-wrap: balance; }
+[data-mtw-pdp="fast-v1"] .ff-rating { display: flex; align-items: center; gap: 10px;
+  margin-bottom: 18px;
+  font-size: 13px; color: var(--stone); }
+[data-mtw-pdp="fast-v1"] .ff-rating .stars { color: var(--amber); font-size: 15px; letter-spacing: 1.5px; }
+[data-mtw-pdp="fast-v1"] .ff-rating a { color: var(--stone);
+  border-bottom: 0.5px solid var(--rule-strong);
+  padding-bottom: 1px; }
+[data-mtw-pdp="fast-v1"] .ff-rating a:hover { color: var(--ink); }
+[data-mtw-pdp="fast-v1"] .ff-price { font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 38px;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1;
+  letter-spacing: -0.01em;
+  margin-bottom: 6px; }
+[data-mtw-pdp="fast-v1"] .ff-tax { font-size: 12.5px;
+  color: var(--stone);
+  margin-bottom: 22px; }
+[data-mtw-pdp="fast-v1"] .ff-status { display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 2px;
+  margin-bottom: 22px;
+  font-size: 13.5px;
+  line-height: 1.45; }
+[data-mtw-pdp="fast-v1"] .ff-status.in-stock { background: var(--forest-tint);
+  border-left: 3px solid var(--forest); }
+[data-mtw-pdp="fast-v1"] .ff-status.pre-order { background: var(--amber-tint);
+  border-left: 3px solid var(--amber); }
+[data-mtw-pdp="fast-v1"] .ff-status.partner { background: var(--stone-tint);
+  border-left: 3px solid var(--stone); }
+[data-mtw-pdp="fast-v1"] .ff-status .dot { margin-top: 4px; }
+[data-mtw-pdp="fast-v1"] .ff-status strong { display: block;
+  font-weight: 600;
+  margin-bottom: 2px; }
+[data-mtw-pdp="fast-v1"] .ff-status.in-stock strong { color: var(--forest); }
+[data-mtw-pdp="fast-v1"] .ff-status.pre-order strong { color: var(--amber); }
+[data-mtw-pdp="fast-v1"] .ff-status.partner strong { color: var(--stone); }
+[data-mtw-pdp="fast-v1"] .ff-status p { margin: 0; color: var(--ink); font-size: 13px; }
+[data-mtw-pdp="fast-v1"] .ff-blurb { font-size: 16px;
+  line-height: 1.7;
+  color: var(--ink);
+  margin: 0 0 24px;
+  text-wrap: pretty; }
+[data-mtw-pdp="fast-v1"] .ff-glance-row { display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px 24px;
+  padding: 18px 0;
+  border-top: 0.5px solid var(--rule);
+  border-bottom: 0.5px solid var(--rule);
+  margin-bottom: 26px; }
+[data-mtw-pdp="fast-v1"] .ff-glance-row > div { display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 12px;
+  align-items: start;
+  font-size: 13px; }
+[data-mtw-pdp="fast-v1"] .ff-glance-row dt, [data-mtw-pdp="fast-v1"] .ff-glance-row .gk { font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--stone);
+  line-height: 1.45; }
+[data-mtw-pdp="fast-v1"] .ff-glance-row dd, [data-mtw-pdp="fast-v1"] .ff-glance-row .gv { margin: 0;
+  color: var(--ink);
+  line-height: 1.45; }
+[data-mtw-pdp="fast-v1"] .ff-glance-row .gv-multi { display: flex;
+  flex-direction: column;
+  gap: 4px; }
+[data-mtw-pdp="fast-v1"] .ff-glance-row .gv-multi .gv-line { display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 8px;
+  align-items: baseline;
+  line-height: 1.35;
+  font-size: 13px; }
+[data-mtw-pdp="fast-v1"] .ff-glance-row .gv-multi .gv-tag { font-size: 9.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--forest);
+  font-weight: 600;
+  font-family: 'Mulish', sans-serif; }
+[data-mtw-pdp="fast-v1"] .ff-glance-row .gv-scale { display: inline;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: var(--stone);
+  font-size: 12.5px;
+  margin-left: 2px; }
+[data-mtw-pdp="fast-v1"] .ff-give-line { display: grid;
+  grid-template-columns: 32px 1fr;
+  gap: 14px;
+  align-items: center;
+  padding: 14px 0 4px;
+  margin-top: 4px;
+  border-top: 0.5px dashed var(--rule);
+  text-decoration: none;
+  color: inherit; }
+[data-mtw-pdp="fast-v1"] .ff-give-icon { width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--forest-tint);
+  color: var(--forest);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center; }
+[data-mtw-pdp="fast-v1"] .ff-give-icon svg { width: 18px; height: 18px; }
+[data-mtw-pdp="fast-v1"] .ff-give-text { display: flex; flex-direction: column; gap: 3px; }
+[data-mtw-pdp="fast-v1"] .ff-give-text strong { font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.25; }
+[data-mtw-pdp="fast-v1"] .ff-give-text > span:last-child { font-size: 11.5px;
+  color: var(--stone);
+  line-height: 1.5; }
+[data-mtw-pdp="fast-v1"] .ff-give-arrow { font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--forest);
+  font-weight: 600;
+  margin-left: 4px;
+  white-space: nowrap; }
+[data-mtw-pdp="fast-v1"] .ff-warning { display: grid;
+  grid-template-columns: 32px 1fr;
+  gap: 12px;
+  align-items: start;
+  padding: 12px 14px;
+  background: var(--warm-white);
+  border: 0.5px solid rgba(133, 79, 11, 0.5);
+  border-left: 3px solid var(--amber);
+  border-radius: 2px;
+  margin-bottom: 22px; }
+[data-mtw-pdp="fast-v1"] .ff-warning-icon { width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--amber);
+  color: var(--cream);
+  font-size: 16px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 2px; }
+[data-mtw-pdp="fast-v1"] .ff-warning-text strong { display: block;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 4px;
+  line-height: 1.2; }
+[data-mtw-pdp="fast-v1"] .ff-warning-text span { font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--ink);
+  display: block; }
+[data-mtw-pdp="fast-v1"] .ff-reviews-empty { margin-bottom: 56px; }
+[data-mtw-pdp="fast-v1"] .ff-reviews-empty-card { background: var(--cream);
+  border: 0.5px solid var(--rule);
+  border-radius: 2px;
+  padding: 48px 32px;
+  text-align: center; }
+[data-mtw-pdp="fast-v1"] .ff-reviews-empty-icon { width: 56px;
+  height: 56px;
+  margin: 0 auto 16px;
+  color: var(--amber);
+  opacity: 0.6; }
+[data-mtw-pdp="fast-v1"] .ff-reviews-empty-icon svg { width: 100%; height: 100%; }
+[data-mtw-pdp="fast-v1"] .ff-reviews-empty-title { font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.008em;
+  margin: 0 0 8px;
+  color: var(--ink); }
+[data-mtw-pdp="fast-v1"] .ff-reviews-empty-title em { font-style: italic; }
+[data-mtw-pdp="fast-v1"] .ff-reviews-empty-body { font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--stone);
+  max-width: 380px;
+  margin: 0 auto 24px;
+  text-wrap: pretty; }
+[data-mtw-pdp="fast-v1"] .ff-reviews-empty-cta { display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 24px;
+  background: var(--ink);
+  color: var(--cream);
+  border: none;
+  border-radius: 2px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 160ms ease; }
+[data-mtw-pdp="fast-v1"] .ff-reviews-empty-cta:hover { background: var(--forest); }
+[data-mtw-pdp="fast-v1"] .ff-add-row { display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 10px;
+  margin-bottom: 10px; }
+[data-mtw-pdp="fast-v1"] .ff-qty { display: flex; align-items: center;
+  border: 0.5px solid var(--rule-strong);
+  border-radius: 2px;
+  background: var(--warm-white);
+  height: 50px; }
+[data-mtw-pdp="fast-v1"] .ff-qty button { width: 32px; height: 50px; border: none; background: none;
+  font-size: 17px; cursor: pointer; color: var(--ink); }
+[data-mtw-pdp="fast-v1"] .ff-qty input { width: 36px; height: 50px; border: none; background: none;
+  text-align: center; font-family: inherit; font-size: 14.5px; font-weight: 500; }
+[data-mtw-pdp="fast-v1"] .ff-btn { display: inline-flex; align-items: center; justify-content: center;
+  padding: 0 28px; height: 50px;
+  font-size: 13px; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  border-radius: 2px;
+  border: 0.5px solid transparent;
+  cursor: pointer;
+  font-family: inherit;
+  background: none;
+  transition: background 160ms ease; }
+[data-mtw-pdp="fast-v1"] .ff-btn-primary { background: var(--ink); color: var(--cream); width: 100%; }
+[data-mtw-pdp="fast-v1"] .ff-btn-primary:hover { background: var(--forest); }
+[data-mtw-pdp="fast-v1"] .ff-btn-buy { background: #5A31F4;
+  color: #FFFFFF;
+  width: 100%;
+  height: 50px;
+  margin-bottom: 10px;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  font-weight: 600;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; }
+[data-mtw-pdp="fast-v1"] .ff-btn-buy:hover { background: #4B23DD; }
+[data-mtw-pdp="fast-v1"] .ff-btn-buy .shop-pay-logo { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px; }
+[data-mtw-pdp="fast-v1"] .ff-btn-buy .shop-pay-logo svg { width: 16px;
+  height: 16px;
+  fill: currentColor; }
+[data-mtw-pdp="fast-v1"] .ff-btn-applepay { background: #000000;
+  color: #FFFFFF;
+  width: 100%;
+  height: 50px;
+  margin-bottom: 8px;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  transition: background 160ms ease; }
+[data-mtw-pdp="fast-v1"] .ff-btn-applepay:hover { background: #1a1a1a; }
+[data-mtw-pdp="fast-v1"] .ff-btn-applepay-mark { display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 500; }
+[data-mtw-pdp="fast-v1"] .ff-btn-applepay-mark svg { width: 16px; height: 19px; fill: currentColor; }
+[data-mtw-pdp="fast-v1"] .ff-more-pay { display: block;
+  text-align: center;
+  font-size: 11.5px;
+  letter-spacing: 0.04em;
+  color: var(--stone);
+  margin-bottom: 22px;
+  border-bottom: 0.5px solid var(--rule-strong);
+  padding-bottom: 2px;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto; }
+[data-mtw-pdp="fast-v1"] .ff-more-pay:hover { color: var(--ink); }
+[data-mtw-pdp="fast-v1"] .ff-trust { display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  padding: 18px 0 4px;
+  border-top: 0.5px solid var(--rule);
+  font-size: 11.5px;
+  color: var(--stone); }
+[data-mtw-pdp="fast-v1"] .ff-trust > div { display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 4px;
+  line-height: 1.35;
+  padding: 0 4px; }

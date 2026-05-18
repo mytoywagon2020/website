@@ -1,0 +1,560 @@
+{%- comment -%}
+  MTW Fast PDP (fast-v1). One-pager product template, rollout-ready.
+  Everything scoped under [data-mtw-pdp="fast-v1"] so it never collides
+  with the Impulse 9.0 theme. Reads the catalog's real metafields:
+  prefers the planned details.*/safety.*/vendor.* namespace, falls back
+  to the existing custom.*/fulfillment.* namespace that Matrixify
+  populated, then to product.description so a page is never empty.
+  No hardcoded reviews. Reviews come from Judge.me (real data) and
+  Judge.me owns rating rich-results, so we never emit a fake or empty
+  aggregateRating. Three fulfillment states + low-stock + sold-out
+  (Klaviyo back-in-stock). Demo toggle and educational strips stripped.
+{%- endcomment -%}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+{{ 'pdp-formats-base.css' | asset_url | stylesheet_tag }}
+{{ 'pdp-fast-1.css' | asset_url | stylesheet_tag }}
+{{ 'pdp-fast-2.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign cur = product.selected_or_first_available_variant
+
+  # ---- Fulfillment state ----
+  assign ff = product.metafields.fulfillment.type | default: ''
+  assign partner_mf = product.metafields.shipping.from_partner_warehouse
+  assign preorder_est = product.metafields.preorder.ship_estimate | default: product.metafields.fulfillment.ship_date
+  assign in_pre_collection = false
+  for pc in product.collections
+    if pc.handle == section.settings.preorder_collection
+      assign in_pre_collection = true
+    endif
+  endfor
+
+  assign state = 'in_stock'
+  if partner_mf == true or ff == 'partner_warehouse'
+    assign state = 'partner'
+  elsif preorder_est != blank or ff == 'pre_order' or in_pre_collection
+    assign state = 'pre_order'
+  elsif product.available == false
+    assign state = 'sold_out'
+  endif
+
+  # ---- Low-stock count ----
+  assign stock_count = product.metafields.inventory.tracked_stock_count | default: 0
+  if stock_count == 0 and cur.inventory_management != blank and cur.inventory_policy == 'deny'
+    assign stock_count = cur.inventory_quantity
+  endif
+
+  # ---- Copy fields, new namespace preferred ----
+  assign hero_blurb = product.metafields.details.hero_blurb | default: product.metafields.custom.hero_intro
+  assign why_lede = product.metafields.details.why_lede | default: product.metafields.custom.why_youll_love
+  assign maker_blurb = product.metafields.vendor.short_blurb | default: product.metafields.custom.maker_story
+  assign maker_img = product.metafields.vendor.profile_image | default: product.metafields.custom.maker_image
+
+  # ---- At-a-glance cells ----
+  assign g_age = product.metafields.details.age_recommendations_short | default: product.metafields.details.age_recommendations
+  if g_age == blank and product.metafields.custom.age_band.value != blank
+    assign g_age = product.metafields.custom.age_band.value | join: ', '
+  endif
+  assign g_material = product.metafields.details.material_short
+  assign g_includes = product.metafields.details.includes_short
+  assign g_size = product.metafields.details.size_short
+  assign g_certified = product.metafields.details.certifications | default: product.metafields.custom.certifications
+  assign origin_designed = product.metafields.details.origin_designed
+  assign origin_made = product.metafields.details.origin_made
+  assign flex_label = product.metafields.details.flex_label
+  assign flex_value = product.metafields.details.flex_value
+
+  assign has_glance = false
+  if g_age != blank or g_material != blank or g_includes != blank or g_size != blank or g_certified != blank or origin_designed != blank or flex_label != blank
+    assign has_glance = true
+  endif
+  assign glance_fallback = product.metafields.custom.at_a_glance
+
+  # ---- Choking hazard (conditional, never hardcoded) ----
+  assign small_parts = product.metafields.safety.small_parts_warning
+
+  # ---- Breadcrumb collection ----
+  assign crumb_col = product.collections.first
+  for c in product.collections
+    if c.handle != 'all' and c.handle != section.settings.preorder_collection
+      assign crumb_col = c
+      break
+    endif
+  endfor
+-%}
+
+{%- capture schema_images -%}
+  {%- for image in product.images limit: 8 -%}
+    "{{ image | image_url: width: 1400 | prepend: 'https:' }}"{%- unless forloop.last -%},{%- endunless -%}
+  {%- endfor -%}
+{%- endcapture -%}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Product",
+      "@id": {{ product.url | prepend: shop.url | append: '#product' | json }},
+      "name": {{ product.title | json }},
+      "description": {{ product.description | strip_html | truncate: 480 | json }},
+      "sku": {{ cur.sku | default: product.id | json }},
+      "url": {{ product.url | prepend: shop.url | json }},
+      {%- if schema_images contains '"' %}
+      "image": [ {{ schema_images }} ],
+      {%- endif %}
+      "brand": { "@type": "Brand", "name": {{ product.vendor | json }} },
+      "offers": {
+        "@type": "Offer",
+        "url": {{ product.url | prepend: shop.url | json }},
+        "priceCurrency": {{ cart.currency.iso_code | json }},
+        "price": "{{ cur.price | divided_by: 100.0 }}",
+        "availability": "https://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}",
+        "itemCondition": "https://schema.org/NewCondition",
+        "seller": {
+          "@type": "Organization",
+          "name": "My Toy Wagon",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Los Angeles",
+            "addressRegion": "CA",
+            "addressCountry": "US"
+          }
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "US",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+          "merchantReturnDays": 30,
+          "returnMethod": "https://schema.org/ReturnByMail",
+          "returnFees": "https://schema.org/FreeReturn"
+        }
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": {{ shop.url | json }} },
+        { "@type": "ListItem", "position": 2, "name": "Shop all", "item": {{ '/collections/all' | prepend: shop.url | json }} }{% if crumb_col %},
+        { "@type": "ListItem", "position": 3, "name": {{ crumb_col.title | json }}, "item": {{ crumb_col.url | prepend: shop.url | json }} },
+        { "@type": "ListItem", "position": 4, "name": {{ product.title | json }} }{% else %},
+        { "@type": "ListItem", "position": 3, "name": {{ product.title | json }} }{% endif %}
+      ]
+    }
+  ]
+}
+</script>
+
+<div class="ff-page" data-mtw-pdp="fast-v1">
+
+  <!-- Sticky buy bar -->
+  <div class="ff-sticky" data-ff-sticky aria-hidden="true">
+    <div class="ff-sticky-inner">
+      <div class="ff-sticky-thumb">{%- if product.featured_image -%}<img src="{{ product.featured_image | image_url: width: 120 }}" alt="">{%- endif -%}</div>
+      <div class="ff-sticky-text">
+        {%- if product.vendor != blank -%}<div class="ff-sticky-maker">{{ product.vendor }}</div>{%- endif -%}
+        <div class="ff-sticky-name">{{ product.title }}</div>
+      </div>
+      <span class="ff-sticky-price" data-ff-sticky-price>{{ cur.price | money }}</span>
+      <button type="button" class="ff-sticky-cta" data-ff-sticky-cta>{% if state == 'pre_order' %}Pre-order{% elsif state == 'sold_out' %}Notify me{% else %}Add to cart{% endif %}</button>
+    </div>
+  </div>
+
+  <nav class="ff-crumbs" aria-label="Breadcrumb">
+    <ol>
+      <li><a href="{{ routes.root_url }}">Home</a></li>
+      <li aria-hidden="true" class="ff-crumb-sep">·</li>
+      <li><a href="{{ routes.all_products_collection_url | default: '/collections/all' }}">Shop all</a></li>
+      {%- if crumb_col -%}
+        <li aria-hidden="true" class="ff-crumb-sep">·</li>
+        <li><a href="{{ crumb_col.url }}">{{ crumb_col.title }}</a></li>
+      {%- endif -%}
+      <li aria-hidden="true" class="ff-crumb-sep">·</li>
+      <li aria-current="page">{{ product.title }}</li>
+    </ol>
+  </nav>
+
+  <section class="ff-top" data-ff-top>
+
+    <div class="ff-gallery">
+      <div class="ff-thumbs">
+        {%- for image in product.images limit: 6 -%}
+          <div class="ff-thumb {% if forloop.first %}active{% endif %}" data-ff-thumb="{{ image | image_url: width: 1100 }}">
+            <img src="{{ image | image_url: width: 160 }}" alt="{{ image.alt | default: product.title | append: ' · view ' | append: forloop.index | escape }}" loading="lazy">
+          </div>
+        {%- endfor -%}
+      </div>
+      <div class="ff-main">
+        {%- if product.featured_image -%}
+          <img data-ff-main src="{{ product.featured_image | image_url: width: 1100 }}" alt="{{ product.featured_image.alt | default: product.title | escape }}" width="1100" height="1375">
+        {%- endif -%}
+      </div>
+    </div>
+
+    <div class="ff-buy">
+      {%- if product.vendor != blank -%}<p class="ff-maker">{{ product.vendor }}</p>{%- endif -%}
+      <h1 class="ff-title">{{ product.title }}</h1>
+
+      <div class="ff-rating">
+        <div class="jdgm-widget jdgm-preview-badge" data-id="{{ product.id }}" data-template="index"></div>
+      </div>
+
+      <div class="ff-price" data-ff-price>
+        {%- if product.compare_at_price > product.price -%}<s style="opacity:.55;font-size:.7em;">{{ product.compare_at_price | money }}</s> {%- endif -%}
+        {{ cur.price | money }}
+      </div>
+      <p class="ff-tax">Free U.S. shipping at $150. <a href="/pages/shipping" style="border-bottom:0.5px solid var(--rule-strong);padding-bottom:1px;">Calculated at checkout.</a></p>
+
+      {%- case state -%}
+        {%- when 'pre_order' -%}
+          <div class="ff-status pre-order">
+            <span class="dot amber" aria-hidden="true"></span>
+            <div>
+              <strong>Pre-order open</strong>
+              <p>{% if preorder_est != blank %}{{ preorder_est }}. {% endif %}We will email you the moment it ships.</p>
+            </div>
+          </div>
+        {%- when 'partner' -%}
+          <div class="ff-status partner">
+            <span class="dot stone" aria-hidden="true"></span>
+            <div>
+              <strong>Ships from our partner warehouse</strong>
+              <p>1 to 4 business days from our partner warehouse. Returns and questions still come to My Toy Wagon directly.</p>
+            </div>
+          </div>
+        {%- when 'sold_out' -%}
+          <div class="ff-status partner">
+            <span class="dot stone" aria-hidden="true"></span>
+            <div>
+              <strong>Sold out</strong>
+              <p>This one is between batches. Leave your email below and we will tell you the moment it is back.</p>
+            </div>
+          </div>
+        {%- else -%}
+          <div class="ff-status in-stock">
+            <span class="dot forest" aria-hidden="true"></span>
+            <div>
+              <strong>In stock, ready to ship</strong>
+              <p>Leaves our Los Angeles warehouse within 1 to 3 business days.{% if stock_count > 0 and stock_count <= 3 %} Only {{ stock_count }} left at our LA warehouse.{% endif %}</p>
+            </div>
+          </div>
+      {%- endcase -%}
+
+      {%- if hero_blurb != blank -%}
+        <div class="ff-blurb rte">{{ hero_blurb }}</div>
+      {%- elsif product.description != blank -%}
+        <div class="ff-blurb rte">{{ product.description | strip_html | truncate: 320 }}</div>
+      {%- endif -%}
+
+      {%- if has_glance -%}
+        <div class="ff-glance-row">
+          {%- if g_age != blank -%}<div><span class="gk">Age</span><span class="gv">{{ g_age }}</span></div>{%- endif -%}
+          {%- if g_material != blank -%}<div><span class="gk">Material</span><span class="gv">{{ g_material }}</span></div>{%- endif -%}
+          {%- if g_includes != blank -%}<div><span class="gk">Includes</span><span class="gv">{{ g_includes }}</span></div>{%- endif -%}
+          {%- if g_size != blank -%}<div><span class="gk">Size</span><span class="gv">{{ g_size }}</span></div>{%- endif -%}
+          {%- if g_certified != blank -%}<div><span class="gk">Certified</span><span class="gv">{{ g_certified }}</span></div>{%- endif -%}
+          {%- if flex_label != blank and flex_value != blank -%}
+            <div><span class="gk">{{ flex_label }}</span><span class="gv">{{ flex_value }}</span></div>
+          {%- elsif origin_designed != blank -%}
+            {%- if origin_made != blank and origin_made == origin_designed -%}
+              <div><span class="gk">Origin</span><span class="gv">{{ origin_designed }}</span></div>
+            {%- elsif origin_made != blank -%}
+              <div>
+                <span class="gk">Origin</span>
+                <span class="gv gv-multi">
+                  <span class="gv-line"><span class="gv-tag">Designed</span>{{ origin_designed }}</span>
+                  <span class="gv-line"><span class="gv-tag">Made</span>{{ origin_made }}</span>
+                </span>
+              </div>
+            {%- else -%}
+              <div>
+                <span class="gk">Origin</span>
+                <span class="gv gv-multi">
+                  <span class="gv-line"><span class="gv-tag">Designed</span>{{ origin_designed }}</span>
+                </span>
+              </div>
+            {%- endif -%}
+          {%- endif -%}
+        </div>
+      {%- elsif glance_fallback != blank -%}
+        <div class="ff-glance-row" style="grid-template-columns:1fr;">
+          <div style="display:block;"><span class="gk" style="display:block;margin-bottom:6px;">At a glance</span><span class="gv rte">{{ glance_fallback }}</span></div>
+        </div>
+      {%- endif -%}
+
+      {%- if small_parts == true -%}
+        <div class="ff-warning" role="alert">
+          <span class="ff-warning-icon" aria-hidden="true">!</span>
+          <div class="ff-warning-text">
+            <strong>Warning · Choking hazard</strong>
+            <span>Small parts. Not for children under 3 years.</span>
+          </div>
+        </div>
+      {%- endif -%}
+
+      {%- if state == 'sold_out' -%}
+        <form class="ff-notify" data-ff-bis data-variant-id="{{ cur.id }}">
+          <div class="ff-add-row" style="grid-template-columns:1fr auto;">
+            <input type="email" name="email" placeholder="you@email.com" required
+              style="height:50px;border:0.5px solid var(--rule-strong);background:var(--warm-white);border-radius:2px;padding:0 14px;font-family:inherit;font-size:14px;color:var(--ink);">
+            <button type="submit" class="ff-btn ff-btn-primary" style="width:auto;padding:0 24px;">Notify me when back</button>
+          </div>
+          <p class="ff-tax" data-ff-bis-msg style="margin:10px 0 22px;">We will email you the moment it is back. No marketing.</p>
+        </form>
+      {%- else -%}
+        {%- form 'product', product, id: 'ff-pform', novalidate: 'novalidate' -%}
+          {%- unless product.has_only_default_variant -%}
+            {%- for option in product.options_with_values -%}
+              <div class="ff-vgroup" style="margin-bottom:14px;">
+                <div class="ff-maker" style="margin-bottom:8px;">{{ option.name }}</div>
+                <div data-ff-optgroup="{{ forloop.index0 }}" style="display:flex;flex-wrap:wrap;gap:8px;">
+                  {%- for value in option.values -%}
+                    <label style="display:inline-flex;align-items:center;height:40px;padding:0 16px;border:0.5px solid {% if option.selected_value == value %}var(--ink){% else %}var(--rule-strong){% endif %};border-radius:2px;cursor:pointer;font-size:13px;background:{% if option.selected_value == value %}var(--cream){% else %}var(--warm-white){% endif %};">
+                      <input type="radio" name="ff-opt-{{ forloop.parentloop.index0 }}" value="{{ value | escape }}" {% if option.selected_value == value %}checked{% endif %} data-ff-opt="{{ forloop.parentloop.index0 }}" style="position:absolute;opacity:0;width:0;height:0;">
+                      {{ value }}
+                    </label>
+                  {%- endfor -%}
+                </div>
+              </div>
+            {%- endfor -%}
+          {%- endunless -%}
+          <input type="hidden" name="id" data-ff-vid value="{{ cur.id }}">
+
+          <div class="ff-add-row">
+            <div class="ff-qty">
+              <button type="button" data-ff-qm aria-label="Decrease quantity">−</button>
+              <input name="quantity" value="1" data-ff-qty inputmode="numeric" aria-label="Quantity">
+              <button type="button" data-ff-qp aria-label="Increase quantity">+</button>
+            </div>
+            <button type="submit" class="ff-btn ff-btn-primary" data-ff-add {% unless product.available %}disabled{% endunless %}>
+              {%- if state == 'pre_order' -%}Pre-order · {{ cur.price | money }}{%- else -%}Add to cart · {{ cur.price | money }}{%- endif -%}
+            </button>
+          </div>
+          {%- if product.available and state != 'pre_order' -%}
+            <div data-ff-dynamic-checkout>{{ form | payment_button }}</div>
+          {%- endif -%}
+          <a href="/cart" class="ff-more-pay">More payment options</a>
+        {%- endform -%}
+      {%- endif -%}
+
+      <div class="ff-trust">
+        <div>
+          <div class="ff-trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" style="width:42px;height:42px;color:var(--amber);"><path d="M3 7h13l5 5v5h-3"/><path d="M14 17H8"/><circle cx="6" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg></div>
+          <strong>Free U.S. shipping</strong>
+          <span class="ff-trust-sub">Orders $150+, lower 48 only</span>
+        </div>
+        <div>
+          <div class="ff-trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" style="width:42px;height:42px;color:var(--amber);"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg></div>
+          <strong>30-day returns</strong>
+          <span class="ff-trust-sub">If the toy isn't right</span>
+        </div>
+        <div>
+          <div class="ff-trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" style="width:42px;height:42px;color:var(--amber);"><path d="M4 7h16v13H4z"/><path d="M4 7l8 5 8-5"/><path d="M9 7V4h6v3"/></svg></div>
+          <strong>Packed with care</strong>
+          <span class="ff-trust-sub">By hand, from Los Angeles</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ff-below">
+    <div class="ff-below-inner">
+
+      {%- if why_lede != blank
+        or product.metafields.details.why_section_1 != blank
+        or product.metafields.details.why_section_2 != blank
+        or product.metafields.details.why_section_3 != blank -%}
+        <section class="ff-why">
+          <h2>Why <em>it stays.</em></h2>
+          {%- if why_lede != blank -%}<div class="ff-why-lede rte">{{ why_lede }}</div>{%- endif -%}
+          {%- for n in (1..3) -%}
+            {%- assign t_key = 'why_section_' | append: n | append: '_title' -%}
+            {%- assign b_key = 'why_section_' | append: n -%}
+            {%- assign w_title = product.metafields.details[t_key] -%}
+            {%- assign w_body = product.metafields.details[b_key] -%}
+            {%- if w_title != blank and w_body != blank -%}
+              <h3>{{ w_title }}</h3>
+              <div class="rte">{{ w_body }}</div>
+            {%- endif -%}
+          {%- endfor -%}
+        </section>
+      {%- endif -%}
+
+      <section class="ff-reviews" id="reviews">
+        <div class="ff-reviews-head" style="grid-template-columns:1fr;">
+          <h2 style="font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:500;margin:0;letter-spacing:-0.008em;">What families <em style="font-style:italic;">found.</em></h2>
+        </div>
+        <div class="jdgm-widget jdgm-review-widget" data-id="{{ product.id }}" data-product-title="{{ product.title | escape }}"></div>
+      </section>
+
+      <div class="ff-details">
+        {%- liquid
+          assign acc_materials = product.metafields.details.materials | default: product.metafields.custom.materials_and_construction
+          assign acc_ways = product.metafields.details.ways_to_play | default: product.metafields.custom.ways_to_play
+          assign acc_skills = product.metafields.details.skills_built | default: product.metafields.custom.skills_it_builds
+          assign acc_age = product.metafields.details.age_recommendations
+          assign acc_safety = product.metafields.details.safety
+          assign acc_care = product.metafields.details.care_storage | default: product.metafields.custom.care_and_storage
+          assign acc_includes = product.metafields.details.includes | default: product.metafields.custom.includes_set_contents
+          assign acc_faq = product.metafields.details.faq | default: product.metafields.custom.faq
+          assign first_done = false
+        -%}
+        {%- if acc_materials != blank -%}<details class="ff-details-item" open><summary class="ff-details-sum">Materials &amp; construction</summary><div class="ff-details-body rte">{{ acc_materials }}</div></details>{%- assign first_done = true -%}{%- endif -%}
+        {%- if acc_ways != blank -%}<details class="ff-details-item" {% unless first_done %}open{% assign first_done = true %}{% endunless %}><summary class="ff-details-sum">Ways to play</summary><div class="ff-details-body rte">{{ acc_ways }}</div></details>{%- endif -%}
+        {%- if acc_skills != blank -%}<details class="ff-details-item"><summary class="ff-details-sum">Skills it builds</summary><div class="ff-details-body rte">{{ acc_skills }}</div></details>{%- endif -%}
+        {%- if acc_includes != blank -%}<details class="ff-details-item"><summary class="ff-details-sum">Includes / set contents</summary><div class="ff-details-body rte">{{ acc_includes }}</div></details>{%- endif -%}
+        {%- if acc_age != blank -%}<details class="ff-details-item"><summary class="ff-details-sum">Age recommendations</summary><div class="ff-details-body rte">{{ acc_age }}</div></details>{%- endif -%}
+        {%- if acc_safety != blank -%}<details class="ff-details-item"><summary class="ff-details-sum">Safety</summary><div class="ff-details-body rte">{{ acc_safety }}</div></details>{%- endif -%}
+        {%- if acc_care != blank -%}<details class="ff-details-item"><summary class="ff-details-sum">Care &amp; storage</summary><div class="ff-details-body rte">{{ acc_care }}</div></details>{%- endif -%}
+        {%- if section.settings.shipping_text != blank -%}<details class="ff-details-item"><summary class="ff-details-sum">Shipping &amp; returns</summary><div class="ff-details-body rte">{{ section.settings.shipping_text }}{{ section.settings.returns_text }}</div></details>{%- endif -%}
+        {%- if acc_faq != blank -%}<details class="ff-details-item"><summary class="ff-details-sum">FAQs</summary><div class="ff-details-body rte">{{ acc_faq }}</div></details>{%- endif -%}
+      </div>
+
+      {%- if maker_blurb != blank -%}
+        <a href="{% if product.vendor != blank %}{{ product.vendor | url_for_vendor }}{% else %}#{% endif %}" class="ff-maker-line">
+          {%- if maker_img != blank -%}
+            <div class="ff-maker-line-img">{{ maker_img | image_url: width: 200 | image_tag: loading: 'lazy', alt: product.vendor }}</div>
+          {%- endif -%}
+          <div class="ff-maker-line-text">
+            <strong>{{ product.vendor }}</strong>
+            {{ maker_blurb | strip_html }}
+          </div>
+          {%- if product.vendor != blank -%}<span>Browse all {{ product.vendor }} →</span>{%- endif -%}
+        </a>
+      {%- endif -%}
+
+    </div>
+  </section>
+</div>
+
+<script>
+(function(){
+  var root = document.querySelector('[data-mtw-pdp="fast-v1"]');
+  if(!root) return;
+
+  // Gallery thumb switcher
+  var main = root.querySelector('[data-ff-main]');
+  root.querySelectorAll('[data-ff-thumb]').forEach(function(t){
+    t.addEventListener('click', function(){
+      root.querySelectorAll('.ff-thumb').forEach(function(x){ x.classList.remove('active'); });
+      t.classList.add('active');
+      if(main) main.src = t.getAttribute('data-ff-thumb');
+    });
+  });
+
+  // Quantity stepper
+  var qty = root.querySelector('[data-ff-qty]');
+  var qm = root.querySelector('[data-ff-qm]'), qp = root.querySelector('[data-ff-qp]');
+  if(qm) qm.addEventListener('click', function(){ var n = parseInt(qty.value,10)||1; if(n>1) qty.value = n-1; });
+  if(qp) qp.addEventListener('click', function(){ var n = parseInt(qty.value,10)||1; qty.value = n+1; });
+
+  // Variant resolution
+  var variants = {{ product.variants | json }};
+  var optCount = {{ product.options.size }};
+  var vid = root.querySelector('[data-ff-vid]');
+  var addBtn = root.querySelector('[data-ff-add]');
+  var priceEl = root.querySelector('[data-ff-price]');
+  var sPrice = root.querySelector('[data-ff-sticky-price]');
+  function money(c){ try { return '$' + (c/100).toLocaleString(undefined,{minimumFractionDigits:2}); } catch(e){ return '$' + (c/100); } }
+  function selectedOpts(){
+    var o = [];
+    for(var i=0;i<optCount;i++){
+      var r = root.querySelector('input[data-ff-opt="'+i+'"]:checked');
+      o.push(r ? r.value : null);
+    }
+    return o;
+  }
+  function resolve(){
+    if(!variants || !variants.length) return;
+    var o = selectedOpts();
+    var v = variants.find(function(x){ return x.options.every(function(val,i){ return o[i]==null || val==o[i]; }); });
+    if(!v) v = variants[0];
+    if(vid) vid.value = v.id;
+    if(priceEl) priceEl.innerHTML = (v.compare_at_price && v.compare_at_price > v.price ? '<s style="opacity:.55;font-size:.7em;">'+money(v.compare_at_price)+'</s> ' : '') + money(v.price);
+    if(sPrice) sPrice.textContent = money(v.price);
+    if(addBtn){
+      var label = addBtn.textContent.split('·')[0].trim();
+      if(v.available){ addBtn.removeAttribute('disabled'); addBtn.textContent = label + ' · ' + money(v.price); }
+      else { addBtn.setAttribute('disabled','disabled'); addBtn.textContent = 'Sold out'; }
+    }
+  }
+  root.querySelectorAll('input[data-ff-opt]').forEach(function(inp){
+    inp.addEventListener('change', function(){
+      var g = inp.closest('[data-ff-optgroup]');
+      if(g) g.querySelectorAll('label').forEach(function(l){ l.style.borderColor = 'var(--rule-strong)'; l.style.background = 'var(--warm-white)'; });
+      var lab = inp.closest('label');
+      if(lab){ lab.style.borderColor = 'var(--ink)'; lab.style.background = 'var(--cream)'; }
+      resolve();
+    });
+  });
+  resolve();
+
+  // Sticky bar with failsafe
+  var sticky = root.querySelector('[data-ff-sticky]');
+  var topRegion = root.querySelector('[data-ff-top]');
+  var form = document.getElementById('ff-pform');
+  var stickyCta = root.querySelector('[data-ff-sticky-cta]');
+  if(stickyCta) stickyCta.addEventListener('click', function(){
+    if(addBtn && !addBtn.hasAttribute('disabled') && form){ form.requestSubmit ? form.requestSubmit(addBtn) : form.submit(); }
+    else { window.scrollTo({ top:0, behavior:'smooth' }); }
+  });
+  if(sticky && topRegion){
+    if('IntersectionObserver' in window){
+      var io = new IntersectionObserver(function(e){ sticky.classList.toggle('show', !e[0].isIntersecting); }, { rootMargin:'-60px 0px 0px 0px' });
+      io.observe(topRegion);
+    } else {
+      window.addEventListener('scroll', function(){
+        var r = topRegion.getBoundingClientRect();
+        sticky.classList.toggle('show', r.bottom < 0);
+      }, { passive:true });
+    }
+  } else if(sticky) {
+    console.warn('[mtw-fast-pdp] sticky trigger not found; sticky bar disabled');
+  }
+
+  // Sold-out: Klaviyo back-in-stock (real client API, public key SZm3nN)
+  var bis = root.querySelector('[data-ff-bis]');
+  if(bis){
+    bis.addEventListener('submit', function(ev){
+      ev.preventDefault();
+      var msg = bis.querySelector('[data-ff-bis-msg]');
+      var email = bis.querySelector('input[name="email"]').value;
+      var variantId = bis.getAttribute('data-variant-id');
+      if(msg) msg.textContent = 'Adding you to the list…';
+      fetch('https://a.klaviyo.com/client/back-in-stock-subscriptions/?company_id=SZm3nN', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'revision': '2024-10-15' },
+        body: JSON.stringify({
+          data: {
+            type: 'back-in-stock-subscription',
+            attributes: {
+              profile: { data: { type: 'profile', attributes: { email: email } } },
+              channels: ['EMAIL']
+            },
+            relationships: { variant: { data: { type: 'catalog-variant', id: '$shopify:::$default:::' + variantId } } }
+          }
+        })
+      }).then(function(r){
+        if(msg) msg.textContent = (r.ok || r.status === 202) ? 'You are on the list. We will email you the moment it is back.' : 'Something went wrong. Please try again.';
+        if(r.ok || r.status === 202) bis.querySelector('input[name="email"]').value = '';
+      }).catch(function(){
+        if(msg) msg.textContent = 'Something went wrong. Please try again.';
+      });
+    });
+  }
+})();
+</script>
+
+{% schema %}
+{
+  "name": "MTW Fast PDP",
+  "settings": [
+    { "type": "text", "id": "preorder_collection", "label": "Pre-order collection handle", "default": "pre-order" },
+    { "type": "richtext", "id": "shipping_text", "label": "Shipping copy (accordion)", "default": "<p>Free U.S. shipping at the $150 subtotal. Standard shipping is $9.95 in the contiguous U.S. Ships within 1 to 3 business days from our Los Angeles warehouse. Orders shipped from our partner warehouses process within 1 to 4 business days.</p>" },
+    { "type": "richtext", "id": "returns_text", "label": "Returns copy (accordion)", "default": "<p>Returns accepted for 30 days from delivery. If the toy isn't right, send it back. Free returns on damaged or defective items.</p>" }
+  ]
+}
+{% endschema %}

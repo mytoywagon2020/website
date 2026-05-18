@@ -1,0 +1,22 @@
+/* MTW PDP base tokens + primitives. Scoped to the Fast PDP
+   wrapper so nothing leaks into the Impulse theme. */
+[data-mtw-pdp="fast-v1"] {
+--cream: #F5F0E5;
+  --warm-white: #FFFCF7;
+  --ink: #2C2C2A;
+  --forest: #3B6D11;
+  --amber: #854F0B;
+  --stone: #5F5E5A;
+  --card-bg: #EDE3CD;
+  --rule: rgba(44, 44, 42, 0.12);
+  --rule-strong: rgba(44, 44, 42, 0.22);
+  --forest-tint: rgba(59, 109, 17, 0.07);
+  --amber-tint: rgba(133, 79, 11, 0.08);
+  --stone-tint: rgba(95, 94, 90, 0.08);
+}
+
+[data-mtw-pdp="fast-v1"] .dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%;
+  flex-shrink: 0; vertical-align: middle; }
+[data-mtw-pdp="fast-v1"] .dot.forest { background: var(--forest); box-shadow: 0 0 0 3px rgba(59,109,17,0.18); }
+[data-mtw-pdp="fast-v1"] .dot.amber { background: var(--amber);  box-shadow: 0 0 0 3px rgba(133,79,11,0.18); }
+[data-mtw-pdp="fast-v1"] .dot.stone { background: var(--stone);  box-shadow: 0 0 0 3px rgba(95,94,90,0.18); }
