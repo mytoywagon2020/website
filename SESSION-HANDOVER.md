@@ -158,3 +158,44 @@ Theme state still volatile — **always re-check `themes{ role }` before any pus
 - Per-collection story content via metafields for `mtw-collection`; optional Shop-by-Age/Featured-Brands as editable theme sections.
 - Judge.me floating tab (owner, app settings).
 - Owner to publish 9.0 when ready (then API theme writes are blocked — use admin code editor / duplicate→publish).
+
+---
+
+## Matrixify batch fix queue (flagged 2026-05-18, fix in next bulk import)
+
+Concrete catalog DATA errors found while building the Fast PDP. These are
+Matrixify import problems, NOT theme bugs. The Fast PDP renders them faithfully;
+the data is wrong. Fix via an Update-mode Matrixify sheet keyed by Handle.
+
+1. **`custom.age_band` is wrong on (at least) some products.**
+   - Example: *Coralwhim Cove Felt Playmat* (`title:Coralwhim Cove Felt Playmat`,
+     product_id 6130247434410) has `custom.age_band = ["0–12 mo","1","18 mo"]`
+     but its own description says **"Recommended Age: 3+"**.
+   - Effect: the PDP age chips render "Under 1 yr / 18 months / 1" — factually
+     wrong and a child-safety/brand issue (handover §16 P14).
+   - Action: audit `custom.age_band` across the catalog against each product's
+     stated recommended age; correct in bulk. Likely a systemic Matrixify
+     default/mismapping, so expect many SKUs affected.
+
+2. **Pre-order signal only lives in the SEO title, not a structured field.**
+   - Example: same product's `global.title_tag` = "Pre-Order Coralwhim Cove
+     Felt Playmat | My Toy Wagon", but there is **no** `fulfillment.type` /
+     `preorder.ship_estimate` metafield and it is not in the `pre-order`
+     collection. So the Fast PDP status block defaults to "In stock" (wrong).
+   - Action: for every product that is actually pre-order, populate a
+     structured signal the PDP reads — either `fulfillment.type = pre_order`
+     (+ optional `preorder.ship_estimate`) or add it to the `pre-order`
+     collection. Do not rely on the SEO title string.
+
+3. **Content metafields are empty catalog-wide (expected, handover §16 P11).**
+   - Most SKUs have none of `details.*` / `custom.materials_and_construction`
+     / `ways_to_play` / `hero_intro` / `why_youll_love` / `faq` / `maker_story`,
+     so PDP sections correctly collapse. This is the phased metafield
+     population job, not a bug. Pilot ~20 high-traffic SKUs first.
+
+### Trust-icon assets still missing
+The reference trust artwork (`assets/trust-shipping-mark.png` wagon,
+`trust-30day-returns.svg`, `trust-packed-with-care.svg`, handover §11/§18
+"reuse from homepage") is NOT in the 9.0 theme and was never uploaded.
+Fast PDP currently uses placeholder line SVGs in the correct 130×130 box.
+Need the real image files (or the homepage filenames) to match the design.
