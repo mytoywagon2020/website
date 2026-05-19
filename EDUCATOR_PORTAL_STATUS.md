@@ -271,6 +271,28 @@ To preview a draft page: Shopify admin > Online Store > Pages > open the
 page > View (adds a preview token so the draft renders). To see it with
 the new gated template, also be previewing staging theme 145914462378.
 
+## 11. Ecosystem catalog (Phase A outcome, 2026-05-19)
+
+Artifact: `catalog/EDUCATOR_CATALOG_MAP.md` / `.json` (commit f28f4bd).
+
+- The print catalog is a curated editorial showcase: **8 ecosystems, 25
+  hero/bundle cards**, not a product database. Online build is therefore
+  small and tractable; "more expansive" is deliberate expansion.
+- **No prices anywhere in the catalog.** Correction: the earlier
+  "printed educator price = commitment" pre-mortem risk was based on a
+  misread CSS class and is largely void. Catalog has zero dollar figures.
+- Catalog SKUs are internal `MTW-` curation codes, NOT live Shopify
+  SKUs (0/3 sample match). Cards must be linked to live products by
+  brand + concept curation, not SKU. Several cards are intentional
+  multi-product bundles. This curation is the one hard dependency before
+  card links work; full 25-card brand/title mapping is the Phase A.5
+  follow-up.
+- Catalog color system is real and per-ecosystem (eco-* accent tokens:
+  Nature #5A7A5A, Woodland #2D5C3A, Small World #7A5C8A, Fairy Villages
+  #C97A8A, STEAM #7A5E3A, Dramatic Play #8B6840, Creative Arts #4E7A7A,
+  over warm cream/ink). The prototype must use these exact tokens, not
+  invented palettes. Sensory Play token to confirm.
+
 ## 9. Running log
 
 - 2026-05-18: Duplicated live theme to staging `145914462378`. Verified
