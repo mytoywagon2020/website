@@ -369,23 +369,37 @@ margin, log the reason on the draft order):**
   policy or shown on the site; lives only in the quote. Rides the
   existing staff-mediated draft-order flow, no system change.
 
-## 13. Phase B prototype: Fairy Villages (2026-05-19)
+## 13. Phase B prototype: Fairy Villages - CINEMATIC re-cut (2026-05-19)
 
-- Template `templates/page.educator-catalog.liquid` on UNPUBLISHED
-  staging theme 145914462378 (bespoke, public/indexable, FV palette
-  --fv #C97A8A / --fv-soft #E3B6C0 over cream/ink, Cormorant + Mulish).
-- Page `gid://shopify/Page/115676577962`, handle `educator-fairy-villages`,
-  templateSuffix `educator-catalog`, isPublished false (invisible).
-- Grounded verbatim from the print catalog; no prices ("Educator
-  pricing is provided on your quote"); CTAs to /pages/new-quote and
-  /pages/educator-program. Verified independently via Admin API.
-- Preview: admin > Themes > 145914462378 > Preview, then Pages > Fairy
-  Villages > View; or `/pages/educator-fairy-villages?preview_theme_id=145914462378`.
-- Open before sign-off: (a) Purple Flower / Pink Flower Fairy House had
-  no image (typographic placeholder cards) - supply images; (b) maker
-  attribution decision pending (credit cooperative/Tara Treasures vs
-  house brand) - exact wording owed by owner; (c) repo mirror is the
-  agent's working copy, canonical is the deployed theme file/page.
+First prototype was rejected by owner as "prosaic" (cream page, one pink
+accent, thumbnails). Rebuilt image-first and full-bleed using the print
+catalog's OWN photography.
+
+- 12 photos extracted from the catalog FV section; 8 used images uploaded
+  to Shopify Files as `mtw-ecosystem-fairy-villages-00/01/02/03/04/05/07/11`
+  (CDN-hosted, READY).
+- Theme file `templates/page.educator-catalog.liquid` on UNPUBLISHED
+  staging theme 145914462378, 6413 bytes: `{% layout none %}`, cinematic
+  CSS (deep wine/ink gradients, blossom + gilt, Cormorant + Mulish,
+  full-bleed scenes), robots index,follow, renders `{{ page.content }}`.
+- Page `gid://shopify/Page/115676577962` handle `educator-fairy-villages`,
+  templateSuffix `educator-catalog`, isPublished **false** (invisible).
+  Body = cinematic sections with CDN images and real product links.
+  Independently verified via Admin API.
+- Real links: Mushroom -> mushroom-house-with-carrot-garden; Pink ->
+  pink-fairy-blossom-house; Lilac -> lilac-fairy-blossom-house; Rainbow
+  Shimmer -> felt-rainbow-fairy-home-and-mat; folk ->
+  mini-rainbow-wooden-gnome-set; CTAs -> /pages/new-quote and
+  /pages/educator-program. No dead links.
+- Review artifact: `catalog/fairy-villages-cinematic.html` (approved,
+  self-contained). Old prosaic build: `catalog/fairy-villages-preview.html`.
+- Preview: admin > Themes > 145914462378 > Customize > Pages > Fairy
+  Villages.
+- Open before sign-off: (a) fv05 "Rainbow Blossom Home and Mat" has no
+  verified product, links to /pages/new-quote (flagged, not invented);
+  (b) maker attribution still pending (none shown, page sells the world);
+  (c) other 7 ecosystems not built - replicate this pattern on approval;
+  (d) repo files are mirrors, canonical is the deployed theme/page.
 
 ## 9. Running log
 
@@ -421,3 +435,9 @@ margin, log the reason on the draft order):**
   separate from the Elk Grove company contact
   (Customer/8984220303530, $22,777.39, 4 orders). Not actioned; awaiting
   owner decision (assign as contact vs merge vs leave).
+- 2026-05-19: Phase B Fairy Villages prototype rejected as prosaic, then
+  re-cut cinematically from the catalog's own 12 photographs (8 uploaded
+  to Shopify Files), ported to staging as an invisible draft with real
+  product links, independently verified (section 13). Awaiting owner
+  reaction; on approval, replicate the pattern across the other 7
+  ecosystems.
