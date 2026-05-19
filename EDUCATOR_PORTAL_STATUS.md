@@ -342,6 +342,33 @@ Dependency: the drift report needs the card->product registry, which
 needs Phase A.5 (curate the 25 cards to real product handles, since
 catalog SKUs are internal MTW codes that do not resolve).
 
+## 14. Educator pricing posture + quote concession playbook (standing policy, owner-agreed 2026-05-19)
+
+**Posture:** value-led. No published educator discount, no fixed tier
+model. The catalog is price-free; price resolves on the quote. Compete on
+terms, service, curation, and ethics. Keep pricing discretionary and
+unpublished. This stands until win/loss data shows price is the real loss
+reason; revisit only then.
+
+**Concession playbook (illustrative, never a posted schedule; decide on
+margin, log the reason on the draft order):**
+- Price moves, sparingly: order-size courtesy (none under ~$2k, small
+  $2-10k, negotiated above); competitive match on overlapping items only;
+  bundle priced under sum of parts; one-time first-order goodwill (not
+  repeated on reorders).
+- Value instead of price (preferred): free consolidated multi-classroom
+  shipping; sole-source letters, W-9/COI turnaround, standards-mapping
+  sheet; dedicated contact and priority stock allocation; loaner/sample
+  credited on order; seamless tax-exempt handling.
+- Terms/structure (cash-flow, not margin): Net 60 by approval instead of
+  a price cut; split shipment/billing for fiscal-year or grant windows;
+  hold the quarter's price for fall fulfillment (quote validity as the
+  concession).
+- Guardrails: reps may grant value-adds and small courtesies; anything
+  past a set threshold needs owner sign-off; never written as standing
+  policy or shown on the site; lives only in the quote. Rides the
+  existing staff-mediated draft-order flow, no system change.
+
 ## 13. Phase B prototype: Fairy Villages (2026-05-19)
 
 - Template `templates/page.educator-catalog.liquid` on UNPUBLISHED
