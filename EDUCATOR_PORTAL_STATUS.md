@@ -369,37 +369,46 @@ margin, log the reason on the draft order):**
   policy or shown on the site; lives only in the quote. Rides the
   existing staff-mediated draft-order flow, no system change.
 
-## 13. Phase B prototype: Fairy Villages - CINEMATIC re-cut (2026-05-19)
+## 13. Phase B prototype: Fairy Villages - FINAL v3 (2026-05-19)
 
-First prototype was rejected by owner as "prosaic" (cream page, one pink
-accent, thumbnails). Rebuilt image-first and full-bleed using the print
-catalog's OWN photography.
+First prototype rejected as "prosaic"; a cinematic re-cut followed; then
+the owner supplied an approved Claude-design layout (v3) which is now the
+deployed template. v3 is content-clean (no em-dashes, complete sentences,
+American English) and palette-tokenized so it scales to the other 7
+ecosystems by swapping color variables.
 
-- 12 photos extracted from the catalog FV section; 8 used images uploaded
-  to Shopify Files as `mtw-ecosystem-fairy-villages-00/01/02/03/04/05/07/11`
-  (CDN-hosted, READY).
 - Theme file `templates/page.educator-catalog.liquid` on UNPUBLISHED
-  staging theme 145914462378, 6413 bytes: `{% layout none %}`, cinematic
-  CSS (deep wine/ink gradients, blossom + gilt, Cormorant + Mulish,
-  full-bleed scenes), robots index,follow, renders `{{ page.content }}`.
+  staging theme 145914462378 (~20.5 KB): `{% layout none %}`,
+  `{{ content_for_header }}`, robots index,follow, full v3 `<style>` +
+  img-slot override, renders `{{ page.content }}`.
 - Page `gid://shopify/Page/115676577962` handle `educator-fairy-villages`,
   templateSuffix `educator-catalog`, isPublished **false** (invisible).
-  Body = cinematic sections with CDN images and real product links.
-  Independently verified via Admin API.
-- Real links: Mushroom -> mushroom-house-with-carrot-garden; Pink ->
-  pink-fairy-blossom-house; Lilac -> lilac-fairy-blossom-house; Rainbow
-  Shimmer -> felt-rainbow-fairy-home-and-mat; folk ->
-  mini-rainbow-wooden-gnome-set; CTAs -> /pages/new-quote and
-  /pages/educator-program. No dead links.
-- Review artifact: `catalog/fairy-villages-cinematic.html` (approved,
-  self-contained). Old prosaic build: `catalog/fairy-villages-preview.html`.
-- Preview: admin > Themes > 145914462378 > Customize > Pages > Fairy
-  Villages.
-- Open before sign-off: (a) fv05 "Rainbow Blossom Home and Mat" has no
-  verified product, links to /pages/new-quote (flagged, not invented);
-  (b) maker attribution still pending (none shown, page sells the world);
-  (c) other 7 ecosystems not built - replicate this pattern on approval;
-  (d) repo files are mirrors, canonical is the deployed theme/page.
+  Independently verified via Admin API (page + theme both unpublished).
+- 12 catalog photos extracted; the used ones are on Shopify Files as
+  `mtw-ecosystem-fairy-villages-00..11`. **Owner-confirmed final image
+  map:** hero=fv11, Mushroom feature=fv00, Card1 Pink Blossom=fv01,
+  Card2 Lilac=fv02, Card3 Rainbow Shimmer=fv03, Card4 Rainbow Home=fv04,
+  Card5 Butterfly Fairy House=fv05. Applied and verified (per-card scoped,
+  alt text matched).
+- Gallery is now catalog-true: Pink Blossom, Lilac Blossom, Rainbow
+  Shimmer, Rainbow Home, Butterfly Fairy House (Purple/Pink Flower
+  removed - they were never in the catalog).
+- Links: Pink->pink-fairy-blossom-house, Lilac->lilac-fairy-blossom-house,
+  Rainbow Shimmer->felt-rainbow-fairy-home-and-mat, Rainbow Home->
+  /pages/new-quote (no distinct product), Butterfly->butterfly-fairy-house,
+  Mushroom->mushroom-house-with-carrot-garden, folk->
+  mini-rainbow-wooden-gnome-set, CTAs->/pages/new-quote &
+  /pages/educator-program.
+- Source/review artifacts in repo: `catalog/fairy-villages-design-v3.html`
+  (baseline marker), `fv-image-index.html` (the 12-photo index used to
+  lock the map), prior `fairy-villages-cinematic.html`.
+- Open: (a) Rainbow Home link defaults to the quote page - confirm or
+  give a product; (b) maker attribution still neutral/pending;
+  (c) interstitial + bottom-hero scenes still use fv01 (Pink Blossom) -
+  a single-home photo under a "one village" caption; polish item, owner
+  to supply a village/collection shot or accept; (d) other 7 ecosystems
+  not built - replicate this v3 pattern on approval; (e) repo files are
+  mirrors, canonical is the deployed theme/page.
 
 ## 9. Running log
 
