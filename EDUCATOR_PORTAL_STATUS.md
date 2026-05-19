@@ -175,6 +175,25 @@ new customer accounts). No page handles were hardcoded as apply targets.
   it requires explicit owner sign-off on price list and Net terms before
   any mutation. Not actioned.
 
+### Owner decisions 2026-05-19 (Layer A)
+
+- **Educator pricing: DEFERRED by owner.** Market is volatile; tiered
+  pricing cannot be promised. Do NOT configure a discount price list or a
+  B2B pricing catalog. Operating model stays staff-mediated: educators
+  checkout to draft orders, staff apply pricing manually. Revisit when the
+  owner sets a policy.
+- **Payment terms: keep existing as-is, adopt a terms ladder as policy.**
+  Ladder: Prepaid or Due-on-receipt for the first order or any unverified
+  account; Net 30 once verified (default for educator accounts); Net 60 by
+  explicit approval for large orders (>= $10K trigger) or established
+  district buyers with a PO on file and clean history. Elk Grove correctly
+  stays Net 60 (large district buyer). Guardrails: require a PO for any Net
+  terms, per-account credit ceiling, Net 60 is an approval step not a
+  default, deposit for very large custom/heirloom orders. Policy only, no
+  mutation; applied per account going forward.
+- Net effect: Layer A plumbing is ready; pricing intentionally on hold;
+  staff-mediated draft-order flow (option C) is the live model.
+
 ## 6. Open questions (need answers before Phase 2 build)
 
 1. RESOLVED: B2B is native Shopify via Markets, no third-party app,
