@@ -93,8 +93,16 @@ via draft orders.
 - [x] Duplicate live theme to unpublished staging (`145914462378`).
 - [x] Closed-portal gate added to `templates/page.educator-portal.liquid`
       on staging (see section 5).
-- [ ] Finish and stage the static funnel pages (catalog, educator program
-      and apply, ordering-for-schools, vendor-profile, procurement guide).
+- [x] Static funnel pages built/finished as UNPUBLISHED drafts from the
+      `designs/` source (see section 10): schools, vendor-profile,
+      procurement-guide. All `templateSuffix: educator-portal`,
+      `isPublished: false`, assets mapped to Shopify CDN, content rules
+      enforced (American English, no em-dash, no exclamation).
+- [ ] Catalog editorial page (catalog-back-matter) — not yet built.
+- [ ] Live published pages (educator-program, educator-register,
+      educator-login, school-affiliate) — currently OPEN and ungated on
+      live until the staging theme is published. Decide whether to refresh
+      their content (a live change, needs explicit go-ahead) or leave.
 - [ ] Preview pass on staging, then you publish.
 
 ### Phase 2 (engine decided: native Shopify B2B)
@@ -186,6 +194,28 @@ new customer accounts). No page handles were hardcoded as apply targets.
   cannot be pulled by filter; verify by known product ID, or paginate all
   products reading `templateSuffix`, or use ShopifyQL.
 
+## 10. Phase 1 static pages (built 2026-05-19, all UNPUBLISHED drafts)
+
+| Page | Handle | Page ID | State |
+|---|---|---|---|
+| Ordering for Schools | schools | gid://shopify/Page/115575914666 | draft, educator-portal |
+| Vendor Profile | vendor-profile | gid://shopify/Page/115576045738 | draft, educator-portal |
+| Procurement Guide | procurement-guide | gid://shopify/Page/115575947434 | draft, educator-portal |
+
+Built from `designs/ordering-for-schools.html`, `designs/vendor-profile.html`,
+`designs/procurement-guide.html`. Assets rewritten to
+`https://mytoywagon.com/cdn/shop/files/<renamed>` per the asset manifest.
+Sensitive business identifiers kept email-request-only as the design
+intends (vendor-profile). Internal links pointed at Shopify paths.
+Procurement guide keeps its 5-page printable layout and print button.
+These are public funnel pages (not in the gate's closed-handle list), so
+when published they render openly and stay indexable. They are invisible
+now because they are unpublished drafts.
+
+To preview a draft page: Shopify admin > Online Store > Pages > open the
+page > View (adds a preview token so the draft renders). To see it with
+the new gated template, also be previewing staging theme 145914462378.
+
 ## 9. Running log
 
 - 2026-05-18: Duplicated live theme to staging `145914462378`. Verified
@@ -198,3 +228,8 @@ new customer accounts). No page handles were hardcoded as apply targets.
   present, identical to live); the error came from a stale attempt during
   processing or from opening an older incomplete educator theme. Verified
   no Fast PDP regression and the Felt Farm canary is intact.
+- 2026-05-19: Ran the Fast PDP sub-$250 pilot (see FAST_PDP_ROLLOUT.md):
+  27 bestseller-cohort products enriched and verified live, 3 held
+  (pre-order, Collective, premium). Built Phase 1 static pages as
+  unpublished drafts: schools, vendor-profile, procurement-guide
+  (section 10). Live published educator pages left untouched.
