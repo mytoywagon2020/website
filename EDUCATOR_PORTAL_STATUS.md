@@ -55,31 +55,34 @@ self-contained portal files on top.
 
 ---
 
-## 3. Verified Shopify configuration (read from the Admin API 2026-05-18)
+## 3. Verified Shopify configuration (Admin API 2026-05-18, owner-confirmed 2026-05-19)
 
-- **Plan: "Shopify" (not Plus).** `shopifyPlus: false`. Full native B2B
-  (companies + B2B catalogs + native payment terms + Customer Account UI
-  Extensions) is **not** the engine here.
+- **Plan: "Shopify" (Grow). `shopifyPlus: false`, but native Shopify B2B
+  IS available on this plan via Shopify Markets.** Owner-confirmed: the
+  B2B is native Shopify (no third-party app), it comes with the plan
+  through Shopify Markets, and the plan allows **up to 3 catalogs**.
+- **Engine for Phase 2 is therefore native Shopify B2B** (Markets +
+  Catalog + price list + Companies), within the 3-catalog cap.
 - **Educator pricing data already exists:** an enabled **"Educators"
-  market** (`gid://shopify/Market/32754958506`), an **"Educator Catalog"**
-  market catalog (`gid://shopify/MarketCatalog/64883065002`), and a USD
-  **"Educators Market" price list**
-  (`gid://shopify/PriceList/24074289322`).
-- **The Educators market has no web presence** (`webPresence: null`).
-  Educator pricing is configured but not deliverable through any storefront
-  path yet. Closing that delivery gap is the real Phase 2 problem, not the
-  pricing math.
-- **2 B2B companies exist** despite the non-Plus plan. This almost
-  certainly means a B2B/wholesale app created them. The API token is denied
-  access to `appInstallations`, so the app name must be confirmed in admin
-  (Settings > Apps).
-- You created a B2B catalog with all products and no customization
+  market** (`gid://shopify/Market/32754958506`), the **"Educator"** market
+  catalog (`gid://shopify/MarketCatalog/64883065002`), and a USD
+  **"Educators Market" price list** (`gid://shopify/PriceList/24074289322`).
+  Owner set the Educator catalog to all products, no customization
   ("Step 1").
+- **The Educators market has no web presence** (`webPresence: null`).
+  Pricing is configured but not yet deliverable through a storefront path.
+  Wiring that delivery (signed-in approved educator sees educator pricing)
+  is the core Phase 2 task, not the pricing math.
+- **2 B2B companies exist** and are native Shopify B2B (no third-party
+  app). RESOLVED: earlier "which B2B app" question is closed.
 
-**Conflict with repo docs:** `README.md` and `SHOPIFY_NOTES.md` assume
-full native Plus B2B. That assumption is contradicted by the verified plan.
-Treat those docs as design intent, not the platform plan, until Phase 2 is
-decided.
+**Repo docs:** `SHOPIFY_NOTES.md` and `README.md` describe a Plus-native
+B2B build. With native B2B available on Grow (3-catalog cap), most of that
+guidance applies again, with two caveats to verify in admin: (a) the
+3-catalog limit constrains the pricing-tier design to at most 3 tiers,
+and (b) confirm which native B2B sub-features Grow includes (payment-terms
+templates, customer-built draft orders) versus what must be staff-driven
+via draft orders.
 
 ---
 
@@ -94,17 +97,20 @@ decided.
       and apply, ordering-for-schools, vendor-profile, procurement guide).
 - [ ] Preview pass on staging, then you publish.
 
-### Phase 2 (blocked on platform decision)
+### Phase 2 (engine decided: native Shopify B2B)
 
-Dynamic, account-bound pieces: educator dashboard, tiered educator pricing
-on the PDP, quote to draft order, PO upload, document vault, Net-30.
+Dynamic, account-bound pieces: educator dashboard, tiered educator pricing,
+quote to draft order, PO upload, document vault, Net-30.
 
-Recommended engine on the "Shopify" plan: the **quote / draft-order
-model**. Approved educator submits a request, a **draft order** is created,
-staff applies the Educator price list (or matching discount) plus Net-30
-payment terms and a PO number, then sends the invoice. `draftOrderCreate`
-and `paymentTermsCreate` work on this plan with no Plus and no app. This
-matches `designs/new-quote.html`.
+Engine: **native Shopify B2B via Markets** (Companies + the "Educator"
+catalog + "Educators Market" price list), within the **3-catalog cap** so
+at most 3 pricing tiers. Approved educator signs in, is attached to a
+Company so the Educator catalog pricing applies on the storefront. The
+quote-to-PO flow uses **draft orders** (`draftOrderCreate`) with Net-30
+payment terms and a PO number, matching `designs/new-quote.html`. To do
+before build: confirm in admin whether Grow includes native payment-terms
+templates and customer-built draft orders, or whether those steps are
+staff-driven.
 
 ---
 
@@ -134,15 +140,17 @@ new customer accounts). No page handles were hardcoded as apply targets.
 
 ## 6. Open questions (need answers before Phase 2 build)
 
-1. **Which B2B / wholesale app is installed?** Source of the 2 companies
-   and possibly a second pricing-delivery path. Claude cannot read it
-   (API denies `appInstallations`). Check Settings > Apps.
-2. **`MTW_Website_16.zip`** (uploaded, not yet read): full source to
+1. RESOLVED: B2B is native Shopify via Markets, no third-party app,
+   3-catalog cap, catalog named "Educator".
+2. Does Grow include native B2B **payment-terms templates** and
+   **customer-built draft orders**, or are those staff-driven via draft
+   orders? Confirm in admin before Phase 2.
+3. **`MTW_Website_16.zip`** (uploaded, not yet read): full source to
    deploy, or reference comps? Decides whether Phase 1 static pages are
    "wire up existing assets" or "rebuild from mockups".
-3. Calendly URL for "Schedule a call" (placeholder `#` in mockups).
-4. Vendor-form upload destination (email to accounting@, or storage).
-5. Number of educator pricing tiers at launch.
+4. Calendly URL for "Schedule a call" (placeholder `#` in mockups).
+5. Vendor-form upload destination (email to accounting@, or storage).
+6. Educator pricing tiers at launch (max 3 due to catalog cap).
 
 ---
 
@@ -159,10 +167,34 @@ new customer accounts). No page handles were hardcoded as apply targets.
 
 ---
 
-## 8. Running log
+## 8. Fast PDP API rollout status (verified 2026-05-19)
+
+- **Infrastructure: done and stable.** Fast PDP section, template, and CSS
+  are deployed. The default `templates/product.json` was restored; the
+  catalog renders on the proven default PDP. No sitewide regression: the
+  most-recently-updated products all carry `templateSuffix` null/empty
+  (default), not skeleton.
+- **Canary: live and verified.** "Felt Farm Animals Toys, Set of 10"
+  (`gid://shopify/Product/8017008394410`) is on `templateSuffix: fast-pdp`
+  with enriched metafields and clean SEO. The pipeline works end to end.
+- **Broad rollout: not yet executed.** The owner-approved 300-product
+  bestseller cohort has not been run as a batch. Premium items (>= $250),
+  e.g. Drewart and Bauspiel drafts, await an explicit "approve premium".
+- **Tooling caveat:** this Shopify MCP ignores `template_suffix:` (and
+  likely tag) query filters in both `productsCount` and the `products`
+  connection (a bogus suffix returns all 8,148). Exact rollout counts
+  cannot be pulled by filter; verify by known product ID, or paginate all
+  products reading `templateSuffix`, or use ShopifyQL.
+
+## 9. Running log
 
 - 2026-05-18: Duplicated live theme to staging `145914462378`. Verified
-  Shopify config via Admin API (plan Shopify, not Plus; Educators market
-  and price list exist but no web presence; 2 companies; appInstallations
-  access denied). Deployed the closed-portal gate to
+  Shopify config via Admin API. Deployed the closed-portal gate to
   `templates/page.educator-portal.liquid` on staging. Created this record.
+- 2026-05-19: Owner confirmed native Shopify B2B via Markets on the Grow
+  plan, no third-party app, 3-catalog cap, catalog "Educator". Updated
+  sections 3, 4, 6. Diagnosed the preview error: staging `145914462378` is
+  complete and valid (layout/theme.liquid and config/settings_schema.json
+  present, identical to live); the error came from a stale attempt during
+  processing or from opening an older incomplete educator theme. Verified
+  no Fast PDP regression and the Felt Farm canary is intact.
