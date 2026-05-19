@@ -287,6 +287,19 @@ Artifact: `catalog/EDUCATOR_CATALOG_MAP.md` / `.json` (commit f28f4bd).
   multi-product bundles. This curation is the one hard dependency before
   card links work; full 25-card brand/title mapping is the Phase A.5
   follow-up.
+- Unbundled depth: the 25 cards sit over **~224 unique internal product
+  codes** (2 are size/variant suffixes, so ~222 distinct products). Per
+  ecosystem: Creative Arts 57, Dramatic Play 46, STEAM 44, Small World
+  22, Sensory Play 15, Woodland 14, Fairy Villages 12, Nature Play 8,
+  plus 6 "NT" codes (likely a Nature sub-bucket, unconfirmed). Scope
+  implication: the Phase A.5 card->product registry is ~224 items, not
+  25. Smallest/cleanest prototype candidates: Nature Play (8), Fairy
+  Villages (12), Woodland (14). Heaviest: Creative Arts (57) - do not
+  prototype first.
+- Visibility decision (owner-confirmed): the **catalog is public**
+  (lead magnet, indexed) and the **quote/dashboard/pricing is gated**.
+  This matches the deployed gate (closed handles = dashboard/quote;
+  catalog/marketing open).
 - Catalog color system is real and per-ecosystem (eco-* accent tokens:
   Nature #5A7A5A, Woodland #2D5C3A, Small World #7A5C8A, Fairy Villages
   #C97A8A, STEAM #7A5E3A, Dramatic Play #8B6840, Creative Arts #4E7A7A,
