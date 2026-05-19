@@ -219,7 +219,7 @@ new customer accounts). No page handles were hardcoded as apply targets.
 | Procurement Guide | procurement-guide | gid://shopify/Page/115575947434 | draft, educator-portal |
 | Educator Catalog (ch 6-9) | educator-catalog-guide | gid://shopify/Page/115675136170 | draft, educator-portal |
 | New Quote | new-quote | gid://shopify/Page/115675660458 | draft, educator-portal (Phase 2 visual; mailto submit, no Admin API) |
-| Educator Dashboard | educator-dashboard | (build in progress) | draft, educator-portal (Phase 2 visual) |
+| Educator Dashboard | educator-dashboard | gid://shopify/Page/115675693226 | draft, educator-portal (Phase 2 visual; dynamic regions neutralized to sample data with disclaimer) |
 
 Built from `designs/ordering-for-schools.html`, `designs/vendor-profile.html`,
 `designs/procurement-guide.html`. Assets rewritten to
@@ -260,3 +260,12 @@ the new gated template, also be previewing staging theme 145914462378.
   with honest non-committal copy and no Admin API wiring. Architecture
   fork (native B2B accounts vs app vs staff-mediated) documented, not yet
   chosen.
+- 2026-05-19: educator-dashboard Phase 2 visual draft built
+  (gid://shopify/Page/115675693226), dynamic regions shown as neutral
+  sample data with an active-account disclaimer. Open follow-ups: unmapped
+  asset bauspiel-flower-sparkling-stones.webp; Calendly URL still a
+  placeholder. DATA ISSUE found: duplicate "Erin Kim" customer
+  (gid Customer/9695041716394, ~$17,827.85, 1 order, no company link)
+  separate from the Elk Grove company contact
+  (Customer/8984220303530, $22,777.39, 4 orders). Not actioned; awaiting
+  owner decision (assign as contact vs merge vs leave).
