@@ -1,0 +1,5 @@
+# Agent working scratch files (transient page/theme body dumps, not deliverables)
+_page_body.json
+_*.json
+_*.tmp
+*.scratch
