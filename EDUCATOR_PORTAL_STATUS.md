@@ -293,6 +293,42 @@ Artifact: `catalog/EDUCATOR_CATALOG_MAP.md` / `.json` (commit f28f4bd).
   over warm cream/ink). The prototype must use these exact tokens, not
   invented palettes. Sensory Play token to confirm.
 
+## 12. Pricing & anti-staleness policy (owner-agreed 2026-05-19)
+
+**Pricing/quote validity (agreed):**
+- Catalog stays evergreen and price-free (never print prices).
+- Price lives on the dated quote/draft order with a hold window. Summer
+  quotes are firm for fall fulfillment if the PO arrives within the
+  window. Recommended window: 60 days, or seasonal ("quotes issued
+  May-Aug honored for fall fulfillment if PO by Sept 30"). Catalog's
+  "held 30 days" line to be updated to match.
+- Internal base price list reviewed monthly (1st). Repricing affects
+  only NEW quotes; already-issued quotes honored at quoted price until
+  expiry. Volatility/escalation clause for out-of-window or large/long
+  lead orders; deposit on very large heirloom orders (per Net ladder).
+- Staff-mediated, no Shopify system change needed.
+
+**Anti-staleness system:**
+1. Evergreen by design: catalog cards carry no price and no stock claims;
+   they describe the world/pedagogy (stable), not transient specifics.
+2. Single source of truth: cards link to live PDPs; never duplicate
+   product data. `catalog/EDUCATOR_CATALOG_MAP.json` is the card->product
+   registry; all checks run against it.
+3. Scheduled drift report: a recurring job walks the registry and flags
+   any card whose linked product is missing, unpublished, renamed
+   (404), out of stock, or (for bundles) has a dead member. Catches
+   drift before a school does.
+4. Stock absorbed by the quote: never assert availability in the
+   catalog; "stock confirmed on every quote" is the mechanism.
+5. Print vs online: print editions are versioned with a sunset note and
+   QR codes point only to stable handles, never rot-prone deep URLs.
+6. Ownership cadence: weekly automated drift report, monthly price-base
+   review, quarterly content/photography re-curation.
+
+Dependency: the drift report needs the card->product registry, which
+needs Phase A.5 (curate the 25 cards to real product handles, since
+catalog SKUs are internal MTW codes that do not resolve).
+
 ## 9. Running log
 
 - 2026-05-18: Duplicated live theme to staging `145914462378`. Verified
