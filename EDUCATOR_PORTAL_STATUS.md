@@ -117,10 +117,20 @@ catalog + "Educators Market" price list), within the **3-catalog cap** so
 at most 3 pricing tiers. Approved educator signs in, is attached to a
 Company so the Educator catalog pricing applies on the storefront. The
 quote-to-PO flow uses **draft orders** (`draftOrderCreate`) with Net-30
-payment terms and a PO number, matching `designs/new-quote.html`. To do
-before build: confirm in admin whether Grow includes native payment-terms
-templates and customer-built draft orders, or whether those steps are
-staff-driven.
+payment terms and a PO number, matching `designs/new-quote.html`.
+Confirmed available (see section 6.2).
+
+**Architecture decision still open (the real Phase 2 fork):** Shopify does
+not render Liquid inside page body content, so the dashboard and quote
+builder cannot show real customer/quote/order data as draft *pages*. The
+draft pages built now are faithful visual/flow scaffolds with honest copy
+(quote submit is a mailto request; staff create the draft order with the
+Educator price list and Net 30). Making them truly dynamic requires one
+of: (A) the native B2B signed-in customer-account experience plus native
+quotes/draft orders, (B) a Shopify app or app-proxy backend, or (C) keep
+the staff-mediated request flow as v1 (zero custom code, works today).
+Recommended: ship C now, layer A as the native B2B customer accounts are
+configured. No commerce write path is wired until this is chosen.
 
 ---
 
@@ -152,9 +162,13 @@ new customer accounts). No page handles were hardcoded as apply targets.
 
 1. RESOLVED: B2B is native Shopify via Markets, no third-party app,
    3-catalog cap, catalog named "Educator".
-2. Does Grow include native B2B **payment-terms templates** and
-   **customer-built draft orders**, or are those staff-driven via draft
-   orders? Confirm in admin before Phase 2.
+2. RESOLVED (verified 2026-05-19 via Admin API): native payment-terms
+   templates exist (Net 7/15/30/45/60/90, Due on receipt, Due on
+   fulfillment, Fixed). Companies are real and transacting (Elk Grove
+   Elementary School, 1 contact, 1 location, $22,624.35 spent). Draft
+   orders work (existing #D2). Phase 2 engine confirmed: native B2B
+   Company + Educator catalog/price list for pricing, plus draft orders
+   with Net 30 (PaymentTermsTemplate id 4) for quote-to-PO.
 3. **`MTW_Website_16.zip`** (uploaded, not yet read): full source to
    deploy, or reference comps? Decides whether Phase 1 static pages are
    "wire up existing assets" or "rebuild from mockups".
@@ -204,6 +218,8 @@ new customer accounts). No page handles were hardcoded as apply targets.
 | Vendor Profile | vendor-profile | gid://shopify/Page/115576045738 | draft, educator-portal |
 | Procurement Guide | procurement-guide | gid://shopify/Page/115575947434 | draft, educator-portal |
 | Educator Catalog (ch 6-9) | educator-catalog-guide | gid://shopify/Page/115675136170 | draft, educator-portal |
+| New Quote | new-quote | gid://shopify/Page/115675660458 | draft, educator-portal (Phase 2 visual; mailto submit, no Admin API) |
+| Educator Dashboard | educator-dashboard | (build in progress) | draft, educator-portal (Phase 2 visual) |
 
 Built from `designs/ordering-for-schools.html`, `designs/vendor-profile.html`,
 `designs/procurement-guide.html`. Assets rewritten to
@@ -236,3 +252,11 @@ the new gated template, also be previewing staging theme 145914462378.
   (pre-order, Collective, premium). Built Phase 1 static pages as
   unpublished drafts: schools, vendor-profile, procurement-guide
   (section 10). Live published educator pages left untouched.
+- 2026-05-19: Phase 1 catalog editorial page drafted
+  (educator-catalog-guide). Owner approved Phase 1 and made some manual
+  edits (do not overwrite). Moved to Phase 2: confirmed native B2B
+  capability (payment terms incl Net 30, real spending Company, draft
+  orders). Built Phase 2 visual drafts new-quote and educator-dashboard
+  with honest non-committal copy and no Admin API wiring. Architecture
+  fork (native B2B accounts vs app vs staff-mediated) documented, not yet
+  chosen.
