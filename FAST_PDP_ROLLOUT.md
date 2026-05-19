@@ -115,3 +115,21 @@ re-query, zero userErrors.
   developmental toys.
 - After sign-off: clear the 3 holds (mine pre-order ETA; Collective
   copy; approve premium) and ramp the next cohort increment.
+
+## Binding content standard (owner-mandated 2026-05-19)
+
+- The assistant writes Fast PDP content **directly, by hand, no
+  sub-agents.** Delegation of this work is not permitted; ask the owner
+  before delegating anything.
+- **Specificity is mandatory.** Every named component, flavor, size,
+  material, and distinctive detail in the product's own description must
+  survive into the enriched copy. Generic substitution of specifics is a
+  failure (the first pilot pass flattened these and is being redone).
+- Grounded only in the product's real description, tags, images; never
+  invent. American English, complete sentences, no em-dashes, no
+  exclamation marks. Mirror the Felt Farm canary metafield schema.
+- Corrected exemplar: Felt Ice Cream Set
+  (gid://shopify/Product/8022482583722), redone 2026-05-19 to this bar.
+- Redo plan: the assistant personally rewrites the remaining 26 pilot
+  products in verified increments, posting the live link each time for
+  owner spot-check.
