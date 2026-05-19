@@ -342,6 +342,24 @@ Dependency: the drift report needs the card->product registry, which
 needs Phase A.5 (curate the 25 cards to real product handles, since
 catalog SKUs are internal MTW codes that do not resolve).
 
+## 13. Phase B prototype: Fairy Villages (2026-05-19)
+
+- Template `templates/page.educator-catalog.liquid` on UNPUBLISHED
+  staging theme 145914462378 (bespoke, public/indexable, FV palette
+  --fv #C97A8A / --fv-soft #E3B6C0 over cream/ink, Cormorant + Mulish).
+- Page `gid://shopify/Page/115676577962`, handle `educator-fairy-villages`,
+  templateSuffix `educator-catalog`, isPublished false (invisible).
+- Grounded verbatim from the print catalog; no prices ("Educator
+  pricing is provided on your quote"); CTAs to /pages/new-quote and
+  /pages/educator-program. Verified independently via Admin API.
+- Preview: admin > Themes > 145914462378 > Preview, then Pages > Fairy
+  Villages > View; or `/pages/educator-fairy-villages?preview_theme_id=145914462378`.
+- Open before sign-off: (a) Purple Flower / Pink Flower Fairy House had
+  no image (typographic placeholder cards) - supply images; (b) maker
+  attribution decision pending (credit cooperative/Tara Treasures vs
+  house brand) - exact wording owed by owner; (c) repo mirror is the
+  agent's working copy, canonical is the deployed theme file/page.
+
 ## 9. Running log
 
 - 2026-05-18: Duplicated live theme to staging `145914462378`. Verified
