@@ -158,6 +158,23 @@ new customer accounts). No page handles were hardcoded as apply targets.
 
 ---
 
+## 6b. Layer A finding (verified 2026-05-19)
+
+- Customer merge: NOT possible via this API token (`read_customer_merge`
+  scope denied). The duplicate Erin Kim must be merged in Shopify admin
+  (Customers > merge, keep `emaudlin@egusd.net` / Elk Grove / $22,777.39).
+- Elk Grove Elementary School company: 1 location
+  (CompanyLocation/1567097002), `checkoutToDraft: true`, payment terms
+  **Net 60**, and **catalogs: [] (none assigned)**. Root cause of "pricing
+  configured but not delivered": no B2B catalog/price list is attached to
+  educator company locations, so signed-in educators get no automatic
+  educator pricing. Pricing is currently manual on draft orders.
+- Layer A core action = create/assign a B2B companyLocation catalog with
+  the educator price list and publish it to educator company locations
+  (counts against the 3-catalog cap). This changes real buyer pricing, so
+  it requires explicit owner sign-off on price list and Net terms before
+  any mutation. Not actioned.
+
 ## 6. Open questions (need answers before Phase 2 build)
 
 1. RESOLVED: B2B is native Shopify via Markets, no third-party app,
