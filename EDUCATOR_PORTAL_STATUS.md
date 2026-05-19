@@ -98,7 +98,9 @@ via draft orders.
       procurement-guide. All `templateSuffix: educator-portal`,
       `isPublished: false`, assets mapped to Shopify CDN, content rules
       enforced (American English, no em-dash, no exclamation).
-- [ ] Catalog editorial page (catalog-back-matter) — not yet built.
+- [x] Catalog editorial page (catalog-back-matter) built as draft
+      `educator-catalog-guide` with QR targets wired to the live
+      educator-program and procurement-guide pages.
 - [ ] Live published pages (educator-program, educator-register,
       educator-login, school-affiliate) — currently OPEN and ungated on
       live until the staging theme is published. Decide whether to refresh
@@ -201,6 +203,7 @@ new customer accounts). No page handles were hardcoded as apply targets.
 | Ordering for Schools | schools | gid://shopify/Page/115575914666 | draft, educator-portal |
 | Vendor Profile | vendor-profile | gid://shopify/Page/115576045738 | draft, educator-portal |
 | Procurement Guide | procurement-guide | gid://shopify/Page/115575947434 | draft, educator-portal |
+| Educator Catalog (ch 6-9) | educator-catalog-guide | gid://shopify/Page/115675136170 | draft, educator-portal |
 
 Built from `designs/ordering-for-schools.html`, `designs/vendor-profile.html`,
 `designs/procurement-guide.html`. Assets rewritten to
