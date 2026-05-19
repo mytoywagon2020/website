@@ -381,9 +381,12 @@ ecosystems by swapping color variables.
   staging theme 145914462378 (~20.5 KB): `{% layout none %}`,
   `{{ content_for_header }}`, robots index,follow, full v3 `<style>` +
   img-slot override, renders `{{ page.content }}`.
-- Page `gid://shopify/Page/115676577962` handle `educator-fairy-villages`,
+- Page `gid://shopify/Page/115690406058` handle `educator-fairy-villages`,
   templateSuffix `educator-catalog`, isPublished **false** (invisible).
   Independently verified via Admin API (page + theme both unpublished).
+  NOTE: the original page (115676577962) was deleted by the owner on
+  2026-05-19 and recreated from the saved v3 + confirmed image map;
+  new id is 115690406058. Theme template was never affected.
 - 12 catalog photos extracted; the used ones are on Shopify Files as
   `mtw-ecosystem-fairy-villages-00..11`. **Owner-confirmed final image
   map:** hero=fv11, Mushroom feature=fv00, Card1 Pink Blossom=fv01,
@@ -444,6 +447,12 @@ ecosystems by swapping color variables.
   separate from the Elk Grove company contact
   (Customer/8984220303530, $22,777.39, 4 orders). Not actioned; awaiting
   owner decision (assign as contact vs merge vs leave).
+- 2026-05-19: Fairy Villages finalized on v3 design with the owner's
+  confirmed image map (hero fv11, Mushroom fv00, cards fv01-fv05),
+  catalog-true gallery (Pink Blossom, Lilac, Rainbow Shimmer, Rainbow
+  Home, Butterfly). Owner deleted the page; recreated from saved v3 +
+  map as a fresh draft (new id 115690406058), independently verified
+  invisible. Theme template untouched throughout.
 - 2026-05-19: Phase B Fairy Villages prototype rejected as prosaic, then
   re-cut cinematically from the catalog's own 12 photographs (8 uploaded
   to Shopify Files), ported to staging as an invisible draft with real
