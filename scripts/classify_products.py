@@ -46,7 +46,7 @@ TITLE_RULES = [
     ("Counting, Numbers & Letters", ["abacus","math ","mathematics","counting cube"]),
     ("Games", ["matching tile","matching pairs"]),
     ("Stacking & Sorting", ["matryoshka","nesting doll"]),
-    ("Dollhouse Furniture & Room Sets", ["dollhouse furniture","doll's house furniture","dolls house furniture","room set"," bathroom"," bedroom","living room","dining room"]),
+    ("Dollhouse Furniture & Room Sets", ["dollhouse furniture","doll's house furniture","dolls house furniture","room set"," bathroom"," bedroom","living room","dining room","high chair","rocking chair","coat rack","modern table","round table","table & chair","table and chair","plan toys chair"]),
     ("Small World Figures & People", ["dog walker"]),
     ("Walkers", ["walker"]),
     ("Lacing & Threading", ["lacing","tie-up","tie up","lace-up","lace up","tying","threading","dressing frame","button board","buckle board"]),
