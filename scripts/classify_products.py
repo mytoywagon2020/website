@@ -19,7 +19,7 @@ CANON = {
     "Painting & Drawing","Play Dough & Tools","Other Crafts","Handwork",
     "Dolls","Doll Accessories","Dollhouses","Dollhouse Furniture & Room Sets",
     "Waldorf Dolls","Waldorf Home","Waldorf Birthday","Playsilks","Fairies & Gnomes",
-    "Early Learning","Musical Instruments","STEM Toys","Counting, Numbers & Letters","Cameras","Lacing & Threading",
+    "Early Learning","Musical Instruments","STEM Toys","Counting, Numbers & Letters","Cameras","Lacing & Threading","Bird Call Sets",
     "Rattles & Grasping Toys","Teethers","Loveys","Blankets & Swaddles","Mobiles",
     "Cloth & First Books","Plush Baby Toys","Push & Pull-Along","Bath Play",
     "Games","Puzzles","Books",
@@ -115,6 +115,10 @@ COLLECTION_PRIORITY = [
     ("felt-play-mats-and-playscapes","Small World Play"),("playscapes-fairy-houses-castles-playmats","Small World Play"),("small-world-play","Small World Play"),
 ]
 
+# Brands where every item is one category; checked before title rules.
+BRAND_OVERRIDE = {
+    "Quelle est Belle":"Bird Call Sets",
+}
 BRAND_DEFAULT = {
     "Loog Guitars":"Musical Instruments","Loog":"Musical Instruments",
     "Connetix":"Magnetic Tiles","Connetix Tiles":"Magnetic Tiles",
@@ -141,6 +145,8 @@ def classify(p, colls):
         if any(k in title for k in ["blanket doll","comforter","nuckel"]): return "Loveys","nanchen+lovey","high"
         if "soft toy" in title: return "Stuffed Animals","nanchen+soft toy","high"
         return "Waldorf Dolls","nanchen default","high"
+    if vendor in BRAND_OVERRIDE:
+        return BRAND_OVERRIDE[vendor], f"brand-override:{vendor}", "high"
     for cat, kws in TITLE_RULES:
         for kw in kws:
             if kw in title:
