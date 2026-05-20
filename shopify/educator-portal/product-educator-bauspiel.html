@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bauspiel Color Track — Educator Edition | My Toy Wagon</title>
+<meta name="description" content="A hand-crafted German construction system for sensory, mathematical, and architectural play. Educator pricing, classroom bundles, and pedagogical notes for Reggio, Montessori, and Waldorf settings.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#F5F0E5;--warm-white:#FFFCF7;--ink:#2C2C2A;--forest:#3B6D11;--amber:#854F0B;--stone:#5F5E5A;--card-bg:#EDE3CD;--rule:rgba(44,44,42,0.12);--rule-strong:rgba(44,44,42,0.22);}
+*{box-sizing:border-box;}html,body{margin:0;padding:0;scroll-behavior:smooth;}
+body{font-family:'Mulish',sans-serif;color:var(--ink);background:var(--cream);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+img{max-width:100%;display:block;}a{color:inherit;text-decoration:none;}
+.label{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--stone);font-weight:500;}
+.topbar{background:var(--ink);color:var(--cream);padding:10px 40px;display:flex;justify-content:space-between;align-items:center;font-size:12px;letter-spacing:0.06em;}
+.topbar .acct{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;letter-spacing:0;}
+header.nav{border-bottom:0.5px solid var(--rule);background:var(--cream);position:sticky;top:0;z-index:50;}
+.nav-inner{max-width:1440px;margin:0 auto;padding:16px 40px;display:flex;justify-content:space-between;align-items:center;gap:32px;}
+.logo{display:inline-flex;align-items:center;gap:14px;line-height:1;}
+.logo-mark{width:80px;height:80px;background-color:var(--ink);-webkit-mask:url('assets/logo-mark.png') center/contain no-repeat;mask:url('assets/logo-mark.png') center/contain no-repeat;}
+.logo-text{font-family:'Cormorant Garamond',serif;font-size:18px;letter-spacing:0.24em;text-transform:uppercase;}
+.logo small{display:block;font-size:8.5px;letter-spacing:0.22em;text-transform:uppercase;color:var(--stone);margin-top:6px;font-weight:500;}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 24px;font-size:12.5px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;border-radius:2px;border:0.5px solid transparent;cursor:pointer;font-family:inherit;}
+.btn-primary{background:var(--ink);color:var(--cream);}.btn-primary:hover{background:var(--forest);}
+.btn-ghost{background:none;border-color:var(--rule-strong);color:var(--ink);}.btn-ghost:hover{border-color:var(--ink);}
+
+.crumbs{max-width:1440px;margin:0 auto;padding:24px 40px 0;font-size:12px;color:var(--stone);letter-spacing:0.04em;}
+.crumbs .sep{margin:0 8px;opacity:0.5;}
+
+.pdp{max-width:1440px;margin:0 auto;padding:32px 40px 64px;display:grid;grid-template-columns:1.1fr 1fr;gap:80px;align-items:start;}
+.gallery{position:sticky;top:120px;}
+.main-image{aspect-ratio:1/1;background:var(--warm-white);border:0.5px solid var(--rule);border-radius:2px;overflow:hidden;position:relative;}
+.main-image img{width:100%;height:100%;object-fit:cover;}
+.gallery-badge{position:absolute;top:18px;left:18px;background:var(--warm-white);border:0.5px solid var(--rule);padding:7px 14px;border-radius:2px;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;font-weight:500;color:var(--forest);}
+.thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px;}
+.thumb{aspect-ratio:1/1;background:var(--warm-white);border:0.5px solid var(--rule);border-radius:2px;overflow:hidden;cursor:pointer;}
+.thumb img{width:100%;height:100%;object-fit:cover;}
+.thumb.active{border:1px solid var(--ink);}
+
+.meta-col{padding-top:4px;}
+.meta-maker{font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:var(--amber);font-weight:600;margin-bottom:14px;}
+.meta-title{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:500;line-height:1.02;letter-spacing:-0.012em;margin:0 0 12px;}
+.educator-flag{display:inline-flex;align-items:center;gap:8px;background:rgba(59,109,17,0.08);color:var(--forest);padding:6px 12px;border-radius:2px;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;margin-bottom:18px;}
+.developmental-window{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;color:var(--ink);line-height:1.5;margin:0 0 24px;padding:16px 20px;background:var(--card-bg);border-radius:2px;}
+.developmental-window strong{display:block;font-family:'Mulish',sans-serif;font-style:normal;font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--stone);margin-bottom:6px;font-weight:600;}
+
+.pricing-tier{margin-bottom:24px;padding:24px 26px;background:var(--warm-white);border:0.5px solid var(--rule);border-radius:2px;}
+.pricing-tier-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px;}
+.pricing-tier-head .lbl{font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--forest);font-weight:600;}
+.pricing-tier-head .retail{font-size:13px;color:var(--stone);text-decoration:line-through;}
+.pricing-tier-rows{display:flex;flex-direction:column;gap:8px;}
+.pricing-row{display:flex;justify-content:space-between;align-items:baseline;font-size:14.5px;padding:8px 0;border-bottom:0.5px solid var(--rule);}
+.pricing-row:last-child{border-bottom:none;}
+.pricing-row .qty{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:var(--ink);}
+.pricing-row .price{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;color:var(--ink);font-weight:500;}
+.pricing-row .each{font-size:12px;color:var(--stone);}
+
+.add-row{display:grid;grid-template-columns:120px 1fr;gap:12px;margin-bottom:16px;}
+.qty-input{display:inline-flex;border:0.5px solid var(--rule-strong);background:var(--warm-white);height:54px;}
+.qty-input button{width:36px;border:none;background:none;font-size:18px;cursor:pointer;}
+.qty-input input{width:48px;border:none;background:none;text-align:center;font-family:inherit;font-size:15px;font-weight:500;}
+.btn-add{width:100%;height:54px;font-size:13.5px;}
+.btn-quote{width:100%;height:54px;font-size:13px;margin-bottom:24px;}
+
+.trust-mini{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:18px 0;border-top:0.5px solid var(--rule);border-bottom:0.5px solid var(--rule);font-size:12.5px;line-height:1.45;}
+.trust-mini strong{display:block;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;font-weight:500;margin-bottom:2px;}
+
+/* Pedagogy band */
+.pedagogy{background:var(--card-bg);padding:80px 40px;}
+.pedagogy-inner{max-width:1000px;margin:0 auto;}
+.pedagogy .label{display:block;margin-bottom:18px;text-align:center;}
+.pedagogy h2{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:500;line-height:1.05;margin:0 0 36px;text-align:center;letter-spacing:-0.008em;}
+.pedagogy h2 em{font-style:italic;}
+.pedagogy-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;}
+.pedagogy-card{background:var(--warm-white);border:0.5px solid var(--rule);border-radius:2px;padding:28px 30px;}
+.pedagogy-card .approach{font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--amber);font-weight:600;margin-bottom:12px;display:block;}
+.pedagogy-card h3{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;font-weight:500;margin:0 0 12px;line-height:1.25;}
+.pedagogy-card p{font-size:14.5px;line-height:1.7;color:var(--ink);margin:0;}
+
+/* Developmental ladder */
+.ladder{max-width:1000px;margin:0 auto;padding:80px 40px;}
+.ladder-head{text-align:center;margin-bottom:48px;}
+.ladder-head h2{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:500;line-height:1.05;margin:0 0 14px;letter-spacing:-0.005em;}
+.ladder-head h2 em{font-style:italic;}
+.ladder-head p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;color:var(--stone);max-width:560px;margin:0 auto;line-height:1.5;}
+.ladder-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:20px;position:relative;}
+.ladder-grid::before{content:"";position:absolute;top:46px;left:8%;right:8%;height:0.5px;background:var(--rule-strong);z-index:0;}
+.ladder-step{position:relative;z-index:1;text-align:center;}
+.ladder-age{width:92px;height:92px;border-radius:50%;background:var(--warm-white);border:0.5px solid var(--rule-strong);display:inline-flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;color:var(--ink);margin-bottom:18px;flex-direction:column;line-height:1.1;}
+.ladder-age .age-num{font-size:24px;}
+.ladder-age .age-unit{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;font-style:normal;font-family:'Mulish',sans-serif;color:var(--stone);font-weight:500;margin-top:2px;}
+.ladder-step h4{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:500;margin:0 0 8px;line-height:1.2;}
+.ladder-step p{font-size:13px;color:var(--stone);line-height:1.55;margin:0;max-width:160px;margin-left:auto;margin-right:auto;}
+
+/* Bundles */
+.bundles{max-width:1440px;margin:0 auto;padding:80px 40px;}
+.bundles-head{text-align:center;margin-bottom:48px;}
+.bundles-head h2{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:500;line-height:1.05;margin:0 0 14px;letter-spacing:-0.008em;}
+.bundles-head h2 em{font-style:italic;}
+.bundles-head p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;color:var(--stone);max-width:580px;margin:0 auto;line-height:1.5;}
+.bundles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.bundle-card{background:var(--warm-white);border:0.5px solid var(--rule);border-radius:2px;padding:32px 32px 28px;display:flex;flex-direction:column;}
+.bundle-card.featured{background:var(--card-bg);border-color:var(--ink);}
+.bundle-tag{display:inline-block;font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--forest);font-weight:600;margin-bottom:14px;}
+.bundle-tag.featured-tag{color:var(--amber);}
+.bundle-card h3{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:500;line-height:1.1;margin:0 0 12px;letter-spacing:-0.005em;}
+.bundle-card h3 em{font-style:italic;}
+.bundle-card p{font-size:14px;line-height:1.65;color:var(--ink);margin:0 0 18px;}
+.bundle-includes{font-size:13px;line-height:1.7;color:var(--stone);margin:0 0 24px;flex:1;}
+.bundle-includes li{padding:5px 0 5px 18px;position:relative;list-style:none;}
+.bundle-includes li::before{content:"";position:absolute;left:0;top:13px;width:10px;height:0.5px;background:var(--forest);}
+.bundle-includes ul{margin:0;padding:0;}
+.bundle-pricing{padding-top:18px;border-top:0.5px solid var(--rule);display:flex;justify-content:space-between;align-items:baseline;margin-bottom:18px;}
+.bundle-price{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:28px;color:var(--ink);font-weight:500;}
+.bundle-save{font-size:11.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--forest);font-weight:600;}
+
+/* Ecosystem (pair with / build on) */
+.ecosystem{background:var(--warm-white);padding:80px 40px;border-top:0.5px solid var(--rule);}
+.ecosystem-inner{max-width:1440px;margin:0 auto;}
+.ecosystem-head{margin-bottom:40px;}
+.ecosystem-head h2{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:500;line-height:1.05;margin:0 0 12px;letter-spacing:-0.005em;}
+.ecosystem-head h2 em{font-style:italic;}
+.ecosystem-head p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;color:var(--stone);max-width:600px;margin:0;line-height:1.5;}
+.ecosystem-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+.eco-card{cursor:pointer;}
+.eco-img{aspect-ratio:1/1;background:var(--cream);border:0.5px solid var(--rule);border-radius:2px;overflow:hidden;margin-bottom:12px;}
+.eco-img img{width:100%;height:100%;object-fit:cover;}
+.eco-role{font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--amber);font-weight:600;margin-bottom:4px;}
+.eco-name{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;font-weight:500;margin:0 0 4px;}
+.eco-meta{display:flex;justify-content:space-between;font-size:12.5px;color:var(--stone);}
+
+/* Body content */
+.body-content{max-width:780px;margin:0 auto;padding:80px 40px;}
+.body-content section{border-top:0.5px solid var(--rule);padding:48px 0;}
+.body-content section:first-of-type{border-top:none;padding-top:0;}
+.body-content h2{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:500;line-height:1.05;margin:0 0 20px;letter-spacing:-0.005em;}
+.body-content h2 em{font-style:italic;}
+.body-content p{font-size:17px;line-height:1.78;margin:0 0 16px;text-wrap:pretty;}
+.body-content .pull{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;line-height:1.45;padding-left:18px;border-left:2px solid var(--forest);margin:24px 0;color:var(--ink);}
+
+/* Glance card */
+.glance{background:var(--card-bg);border-radius:2px;padding:32px 36px;margin:0 0 48px;}
+.glance .label{display:block;margin-bottom:18px;}
+.glance dl{margin:0;display:grid;grid-template-columns:140px 1fr;gap:14px 28px;}
+.glance dt{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--stone);font-size:15.5px;}
+.glance dd{margin:0;font-size:15px;line-height:1.65;}
+
+/* Quote builder CTA */
+.quote-cta{background:var(--ink);color:var(--cream);}
+.quote-cta-inner{max-width:900px;margin:0 auto;padding:72px 40px;text-align:center;}
+.quote-cta .label{color:rgba(245,240,229,0.55);display:block;margin-bottom:18px;}
+.quote-cta h2{font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:500;line-height:1.05;margin:0 0 16px;letter-spacing:-0.008em;}
+.quote-cta h2 em{font-style:italic;}
+.quote-cta p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:19px;color:rgba(245,240,229,0.85);max-width:560px;margin:0 auto 28px;line-height:1.5;}
+.quote-cta .btn-primary{background:var(--cream);color:var(--ink);}.quote-cta .btn-primary:hover{background:var(--warm-white);}
+
+footer{background:var(--cream);border-top:0.5px solid var(--rule);}
+.foot-bottom-band{max-width:1440px;margin:0 auto;padding:28px 40px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--stone);letter-spacing:0.04em;flex-wrap:wrap;gap:12px;}
+
+@media (max-width:1000px){
+  .pdp{grid-template-columns:1fr;}.gallery{position:static;}
+  .pedagogy-grid,.bundles-grid,.ecosystem-grid{grid-template-columns:1fr;}
+  .ladder-grid{grid-template-columns:repeat(2,1fr);}.ladder-grid::before{display:none;}
+}
+</style>
+</head>
+<body data-screen-label="Educator PDP">
+
+<div class="topbar">
+  <span><a href="catalog.html">← Back to catalog</a></span>
+  <span class="acct">Signed in as <strong>Sarah Chen, Maple Tree Montessori</strong> · Net-30 · <a href="educator-dashboard.html">Dashboard</a></span>
+</div>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="educator-dashboard.html" class="logo">
+      <span class="logo-mark" aria-hidden="true"></span>
+      <span class="logo-text">My Toy Wagon<small>Educator Portal</small></span>
+    </a>
+    <a href="educator-dashboard.html" class="btn btn-ghost">View dashboard</a>
+  </div>
+</header>
+
+<nav class="crumbs">
+  <a href="educator-dashboard.html">Dashboard</a><span class="sep">·</span><a href="#">Educator Catalog</a><span class="sep">·</span><a href="#">Construction systems</a><span class="sep">·</span><span style="color:var(--ink);">Bauspiel Color Track</span>
+</nav>
+
+<section class="pdp">
+  <div class="gallery">
+    <div class="main-image">
+      <span class="gallery-badge">In stock · 14 units</span>
+      <img src="assets/best-bauspiel-color-track.png" alt="Bauspiel Color Track">
+    </div>
+    <div class="thumbs">
+      <div class="thumb active"><img src="assets/best-bauspiel-color-track.png" alt=""></div>
+      <div class="thumb"><img src="assets/bauspiel-lucent-tower.png" alt=""></div>
+      <div class="thumb"><img src="assets/brand-bauspiel-color-track.webp" alt=""></div>
+      <div class="thumb"><img src="assets/brand-bauspiel-optical.png" alt=""></div>
+    </div>
+  </div>
+
+  <div class="meta-col">
+    <p class="meta-maker"><a href="#">Bauspiel · Hand-crafted in Germany since 1985</a></p>
+    <h1 class="meta-title">Color Track, 45-piece set</h1>
+    <span class="educator-flag">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12l10 5 10-5"/><path d="M2 7l10 5 10-5L12 2 2 7z"/></svg>
+      Educator pricing applied
+    </span>
+
+    <div class="developmental-window">
+      <strong>Developmental window</strong>
+      Open-ended; the materials scale from 30 months through age 10. Younger children explore color, weight, and balance; older children build pattern, sequence, and architecture.
+    </div>
+
+    <div class="pricing-tier">
+      <div class="pricing-tier-head">
+        <span class="lbl">Educator pricing</span>
+        <span class="retail">Retail $245</span>
+      </div>
+      <div class="pricing-tier-rows">
+        <div class="pricing-row"><span class="qty">1 unit</span><span class="each">$208 each</span><span class="price">$208</span></div>
+        <div class="pricing-row"><span class="qty">2–4 units</span><span class="each">$196 each</span><span class="price">−$12</span></div>
+        <div class="pricing-row"><span class="qty">5+ units (classroom)</span><span class="each">$184 each</span><span class="price">−$24</span></div>
+      </div>
+    </div>
+
+    <div class="add-row">
+      <div class="qty-input">
+        <button>−</button><input type="text" value="1"><button>+</button>
+      </div>
+      <button class="btn btn-primary btn-add">Add to quote</button>
+    </div>
+    <button class="btn btn-ghost btn-quote">Save for later</button>
+
+    <div class="trust-mini">
+      <div><strong>Net-30 invoicing</strong>Approved on your account</div>
+      <div><strong>Free shipping</strong>On classroom orders</div>
+      <div><strong>Replacement parts</strong>Available for every wooden set</div>
+    </div>
+  </div>
+</section>
+
+<!-- PEDAGOGY -->
+<section class="pedagogy">
+  <div class="pedagogy-inner">
+    <span class="label">In your classroom</span>
+    <h2>One material, three <em>approaches</em>.</h2>
+    <div class="pedagogy-grid">
+      <div class="pedagogy-card">
+        <span class="approach">Reggio</span>
+        <h3>An invitation, not a lesson.</h3>
+        <p>Lay the 45 pieces in the tray on a low surface. Add a basket of natural materials — acorns, river stones, dried citrus — and watch what emerges. The Color Track's open palette and weighted geometry invite the hundred languages of children.</p>
+      </div>
+      <div class="pedagogy-card">
+        <span class="approach">Montessori</span>
+        <h3>A prepared environment.</h3>
+        <p>Stored on a Montessori shelf in its tray, the Color Track works as a sensorial extension. It introduces color grading, weight discrimination, and spatial sequencing, building toward the geometric solids and pink tower work in Casa.</p>
+      </div>
+      <div class="pedagogy-card">
+        <span class="approach">Waldorf</span>
+        <h3>A material that ages well.</h3>
+        <p>European hardwood, hand-painted with non-toxic stains, finished with beeswax. The Color Track lives in a Waldorf classroom for ten to fifteen years and develops the grain children remember from their own childhood.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEVELOPMENTAL LADDER -->
+<section class="ladder">
+  <div class="ladder-head">
+    <h2>How the material <em>scales</em>.</h2>
+    <p>Five windows of use, observed in classrooms and homeschool settings over the last decade.</p>
+  </div>
+  <div class="ladder-grid">
+    <div class="ladder-step">
+      <div class="ladder-age"><span class="age-num">30m</span><span class="age-unit">months</span></div>
+      <h4>Heft and color.</h4>
+      <p>Children lift, group, and line the pieces in a single row.</p>
+    </div>
+    <div class="ladder-step">
+      <div class="ladder-age"><span class="age-num">4</span><span class="age-unit">years</span></div>
+      <h4>Pattern.</h4>
+      <p>Repeating sequence, ABAB, then ABBABB. Color and size matching.</p>
+    </div>
+    <div class="ladder-step">
+      <div class="ladder-age"><span class="age-num">6</span><span class="age-unit">years</span></div>
+      <h4>Architecture.</h4>
+      <p>Towers, arches, bridges. Beginning structural reasoning.</p>
+    </div>
+    <div class="ladder-step">
+      <div class="ladder-age"><span class="age-num">8</span><span class="age-unit">years</span></div>
+      <h4>Math, made physical.</h4>
+      <p>Fractions, area, volume, balance equations across a fulcrum.</p>
+    </div>
+    <div class="ladder-step">
+      <div class="ladder-age"><span class="age-num">10</span><span class="age-unit">years</span></div>
+      <h4>Design.</h4>
+      <p>Modular city plans, light-table compositions, story-architecture.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BUNDLES -->
+<section class="bundles">
+  <div class="bundles-head">
+    <h2>Built into <em>working sets</em>.</h2>
+    <p>Three bundles, each composed for a specific setting. Save 12 to 22 percent over individual ordering.</p>
+  </div>
+  <div class="bundles-grid">
+    <div class="bundle-card">
+      <span class="bundle-tag">Homeschool · ages 4–7</span>
+      <h3>The Family <em>Set</em>.</h3>
+      <p>A complete construction starter for one or two children at home. Color Track plus light-play materials and a soft cotton storage bag.</p>
+      <ul class="bundle-includes">
+        <li>Bauspiel Color Track, 45 pieces</li>
+        <li>Bauspiel Lucent Cubes, set of 20</li>
+        <li>Reflective Play Mirror Inlay</li>
+        <li>Cotton storage bag</li>
+      </ul>
+      <div class="bundle-pricing">
+        <span class="bundle-price">$294</span>
+        <span class="bundle-save">Save $44</span>
+      </div>
+      <button class="btn btn-ghost" style="width:100%;">Add bundle to quote</button>
+    </div>
+
+    <div class="bundle-card featured">
+      <span class="bundle-tag featured-tag">Classroom · ages 3–8 · most ordered</span>
+      <h3>The Classroom <em>Set</em>.</h3>
+      <p>Four Color Tracks plus the Lucent Cubes 100-set and an alder loose-parts tray. Built for a 14-child classroom with two-to-three children at the construction station at a time.</p>
+      <ul class="bundle-includes">
+        <li>Bauspiel Color Track × 4 sets</li>
+        <li>Bauspiel Lucent Cubes, set of 100</li>
+        <li>Alder loose-parts tray</li>
+        <li>Replacement-parts kit</li>
+        <li>30-minute curation call with our team</li>
+      </ul>
+      <div class="bundle-pricing">
+        <span class="bundle-price">$1,120</span>
+        <span class="bundle-save">Save $244</span>
+      </div>
+      <button class="btn btn-primary" style="width:100%;">Add bundle to quote</button>
+    </div>
+
+    <div class="bundle-card">
+      <span class="bundle-tag">Occupational therapy · ages 4–9</span>
+      <h3>The Therapy <em>Set</em>.</h3>
+      <p>Composed with two pediatric OTs for fine-motor, bilateral coordination, and visual-perceptual work. Smaller scale, weighted variety.</p>
+      <ul class="bundle-includes">
+        <li>Bauspiel Color Track, 45 pieces</li>
+        <li>X-Blocks half set</li>
+        <li>Tactile sorting tray</li>
+        <li>Activity card deck (OT-designed)</li>
+      </ul>
+      <div class="bundle-pricing">
+        <span class="bundle-price">$386</span>
+        <span class="bundle-save">Save $58</span>
+      </div>
+      <button class="btn btn-ghost" style="width:100%;">Add bundle to quote</button>
+    </div>
+  </div>
+</section>
+
+<!-- ECOSYSTEM (cross-sell) -->
+<section class="ecosystem">
+  <div class="ecosystem-inner">
+    <div class="ecosystem-head">
+      <h2>Lives <em>with</em>.</h2>
+      <p>The Color Track does not arrive in isolation. These are the materials we see used alongside it most often in classrooms and homes.</p>
+    </div>
+    <div class="ecosystem-grid">
+      <a href="#" class="eco-card">
+        <div class="eco-img"><img src="assets/bauspiel-lucent-tower.png" alt="Bauspiel Lucent Cubes"></div>
+        <p class="eco-role">Build on</p>
+        <h3 class="eco-name">Lucent Cubes, set of 100</h3>
+        <div class="eco-meta"><span>Bauspiel</span><span>From $184</span></div>
+      </a>
+      <a href="#" class="eco-card">
+        <div class="eco-img"><img src="assets/heirloom-bumbu-green-oak.webp" alt="Bumbu Green Oak"></div>
+        <p class="eco-role">Story partner</p>
+        <h3 class="eco-name">Green Oak Tree</h3>
+        <div class="eco-meta"><span>Bumbu</span><span>From $124</span></div>
+      </a>
+      <a href="#" class="eco-card">
+        <div class="eco-img"><img src="assets/cat-animals.webp" alt="Bumbu Fawn"></div>
+        <p class="eco-role">Small-world inhabitants</p>
+        <h3 class="eco-name">Wooden Fawn</h3>
+        <div class="eco-meta"><span>Bumbu</span><span>From $22</span></div>
+      </a>
+      <a href="#" class="eco-card">
+        <div class="eco-img"><img src="assets/cat-felt-mats-farm.webp" alt="Felt farm playmat"></div>
+        <p class="eco-role">Ground for narrative play</p>
+        <h3 class="eco-name">Large Felt Farm Mat</h3>
+        <div class="eco-meta"><span>Tara Treasures</span><span>From $114</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- BODY CONTENT -->
+<div class="body-content">
+  <section>
+    <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;line-height:1.6;color:var(--ink);">A set of 45 hand-painted hardwood blocks in graduated rainbow color, cut and assembled in the Bauspiel workshop in Bavaria. The pieces nest in an alder tray that doubles as a low-table surface, a shelf, or a transport.</p>
+  </section>
+
+  <section>
+    <h2>Why it earns shelf <em>space</em>.</h2>
+    <p>Construction systems crowd out one another quickly in a classroom. The Color Track has stayed on shelves we visit because of one detail: each piece is heavier than children expect. The weight slows building down, makes children deliberate about placement, and produces longer attention episodes than lighter blocks.</p>
+    <p>Educators have told us, in interviews and in writing, that they pair the Color Track with whatever else is on the shelf — Grimm's, magnatiles, magnetic tiles — and the Bauspiel pieces are the ones the children return to for sustained work.</p>
+    <p class="pull">"Children select Bauspiel for the longest construction sessions of the year. Twenty to forty minutes is typical."<br><small style="font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--stone);font-family:'Mulish',sans-serif;font-style:normal;display:block;margin-top:8px;">Reggio educator · Pacific Northwest preschool</small></p>
+  </section>
+
+  <div class="glance">
+    <span class="label">At a glance</span>
+    <dl>
+      <dt>Material</dt><dd>European beech and maple, water-based non-toxic stain, beeswax finish.</dd>
+      <dt>Origin</dt><dd>Hand-crafted in the Bauspiel workshop in Bavaria, Germany, since 1985.</dd>
+      <dt>Set contents</dt><dd>45 hand-painted geometric blocks in graduated rainbow color, alder wood storage tray.</dd>
+      <dt>Tray dimensions</dt><dd>16 × 16 × 2 inches (40 × 40 × 5 cm). Fits a low Montessori shelf.</dd>
+      <dt>Developmental window</dt><dd>30 months through age 10. Scales across approximately seven years of use.</dd>
+      <dt>Safety</dt><dd>EN 71 certified. CPSIA compliant. Heavy metal-free pigments.</dd>
+      <dt>Care</dt><dd>Spot clean with a damp cloth. Re-wax annually with beeswax balm. Replacement pieces available.</dd>
+    </dl>
+  </div>
+
+  <section>
+    <h2>Notes for <em>orderers</em>.</h2>
+    <p><strong>For a 14-child classroom</strong>, we recommend a minimum of four sets, ideally combined with the Lucent Cubes 100-set on a separate shelf. The Classroom Bundle is composed precisely for this configuration.</p>
+    <p><strong>For homeschool</strong>, one set is sufficient for one or two children. Pair with the Lucent Cubes set of 20 for color-on-light work.</p>
+    <p><strong>For occupational therapy</strong>, the Therapy Bundle includes the half-set X-Blocks, which work bilateral-coordination tasks (left hand placing weight, right hand placing weight).</p>
+    <p><strong>Replacement parts.</strong> A loose piece or two over a decade is normal. Email us with the piece number; we keep inventory specifically for replacement.</p>
+  </section>
+</div>
+
+<!-- QUOTE CTA -->
+<section class="quote-cta">
+  <div class="quote-cta-inner">
+    <span class="label">Build your quote</span>
+    <h2>Add this and others to a <em>quote</em>, then send.</h2>
+    <p>Save items to a draft quote, add notes for your administrator, attach to a PO, and we will respond with an invoice within one business day.</p>
+    <a href="educator-dashboard.html" class="btn btn-primary">Open quote builder</a>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-bottom-band">
+    <span>My Toy Wagon Educator Portal · Signed in as Sarah Chen</span>
+    <div class="foot-bottom-links">
+      <a href="educator-dashboard.html">Dashboard</a>
+      <a href="catalog.html">Catalog</a>
+      <a href="/cdn-cgi/l/email-protection#7e1d11100a1f1d0a3e13070a1107091f191110501d1113">Buyer</a>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Educator Dashboard — My Toy Wagon</title>
+<meta name="description" content="Educator account dashboard: Educator catalog, quotes, purchase orders, tax documents, and shipping.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#F5F0E5;--warm-white:#FFFCF7;--ink:#2C2C2A;--forest:#3B6D11;--amber:#854F0B;--stone:#5F5E5A;--card-bg:#EDE3CD;--rule:rgba(44,44,42,0.12);--rule-strong:rgba(44,44,42,0.22);}
+*{box-sizing:border-box;}html,body{margin:0;padding:0;}
+body{font-family:'Mulish',sans-serif;color:var(--ink);background:var(--cream);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+img{max-width:100%;display:block;}a{color:inherit;text-decoration:none;}
+.label{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--stone);font-weight:500;}
+
+/* Top bar */
+.topbar{background:var(--ink);color:var(--cream);padding:10px 40px;display:flex;justify-content:space-between;align-items:center;font-size:12px;letter-spacing:0.06em;}
+.topbar a:hover{color:rgba(245,240,229,0.7);}
+.topbar .acct{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;letter-spacing:0;}
+.topbar .acct strong{font-weight:500;}
+
+/* Nav */
+header.nav{border-bottom:0.5px solid var(--rule);background:var(--cream);position:sticky;top:0;z-index:50;}
+.nav-inner{max-width:1440px;margin:0 auto;padding:16px 40px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:32px;}
+.nav-left,.nav-right{display:flex;align-items:center;gap:24px;}.nav-right{justify-content:flex-end;}
+.nav-link{font-size:13.5px;font-weight:500;letter-spacing:0.02em;padding:4px 0;}
+.nav-link.active{color:var(--forest);}
+.logo{display:inline-flex;align-items:center;gap:14px;line-height:1;}
+.logo-mark{width:80px;height:80px;background-color:var(--ink);-webkit-mask:url('assets/logo-mark.png') center/contain no-repeat;mask:url('assets/logo-mark.png') center/contain no-repeat;flex-shrink:0;}
+.logo-text{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400;letter-spacing:0.24em;text-transform:uppercase;line-height:1;color:var(--ink);white-space:nowrap;}
+.logo small{display:block;font-family:'Mulish',sans-serif;font-style:normal;font-size:8.5px;letter-spacing:0.22em;text-transform:uppercase;color:var(--stone);margin-top:6px;font-weight:500;white-space:nowrap;}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;font-size:12px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;border-radius:2px;border:0.5px solid transparent;cursor:pointer;font-family:inherit;}
+.btn-primary{background:var(--ink);color:var(--cream);border:none;}.btn-primary:hover{background:var(--forest);}
+.btn-ghost{background:none;border-color:var(--rule-strong);color:var(--ink);}.btn-ghost:hover{border-color:var(--ink);}
+
+/* Layout */
+.dash{max-width:1440px;margin:0 auto;padding:40px 40px 80px;display:grid;grid-template-columns:240px 1fr;gap:48px;align-items:start;}
+.sidebar{position:sticky;top:104px;}
+.sidebar h3{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;font-weight:500;margin:0 0 18px;color:var(--ink);}
+.sidebar nav{display:flex;flex-direction:column;gap:2px;}
+.sidebar a{padding:11px 16px;font-size:13.5px;border-radius:2px;color:var(--ink);font-weight:500;border-left:2px solid transparent;}
+.sidebar a:hover{background:var(--warm-white);}
+.sidebar a.active{background:var(--card-bg);border-left-color:var(--forest);}
+.sidebar a .count{float:right;color:var(--stone);font-weight:400;font-size:12px;}
+.sidebar-divider{height:0.5px;background:var(--rule);margin:18px 0;}
+.sidebar-help{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:var(--stone);line-height:1.5;padding:14px 16px;background:var(--warm-white);border-radius:2px;}
+.sidebar-help a{display:inline;padding:0;color:var(--ink);border-bottom:0.5px solid var(--rule-strong);}
+
+.main{min-width:0;}
+.welcome{margin-bottom:48px;}
+.welcome .label{display:block;margin-bottom:14px;}
+.welcome h1{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:500;line-height:1;letter-spacing:-0.012em;margin:0 0 12px;}
+.welcome h1 em{font-style:italic;}
+.welcome .dek{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;color:var(--stone);margin:0;}
+
+/* Status cards */
+.status-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:48px;}
+.status-card{background:var(--warm-white);border:0.5px solid var(--rule);border-radius:2px;padding:20px 22px;}
+.status-card .lbl{font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--stone);font-weight:500;margin-bottom:6px;display:block;}
+.status-card .val{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:28px;line-height:1;color:var(--ink);margin-bottom:4px;}
+.status-card .hint{font-size:11.5px;color:var(--stone);}
+
+/* Section */
+.section{margin-bottom:64px;}
+.section-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:24px;gap:16px;flex-wrap:wrap;}
+.section-head h2{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:500;line-height:1;letter-spacing:-0.005em;margin:0;}
+.section-head h2 em{font-style:italic;}
+.section-head a{font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--stone);border-bottom:0.5px solid var(--rule-strong);padding-bottom:3px;font-weight:500;}
+.section-head a:hover{color:var(--ink);border-color:var(--ink);}
+
+/* Quotes table */
+.quotes{background:var(--warm-white);border:0.5px solid var(--rule);border-radius:2px;overflow:hidden;}
+.quote-row{display:grid;grid-template-columns:120px 1fr 110px 130px 110px 120px;gap:20px;padding:16px 24px;border-bottom:0.5px solid var(--rule);align-items:center;}
+.quote-row:last-child{border-bottom:none;}
+.quote-row.header{background:var(--card-bg);font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;font-weight:500;color:var(--stone);}
+.quote-num{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;color:var(--ink);}
+.quote-desc{font-size:14px;line-height:1.45;}
+.quote-desc .quote-date{display:block;font-size:11.5px;color:var(--stone);margin-top:2px;font-family:'Cormorant Garamond',serif;font-style:italic;}
+.quote-items{font-size:13.5px;color:var(--stone);}
+.quote-total{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;color:var(--ink);}
+.quote-status{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;padding:5px 10px;border-radius:2px;display:inline-block;}
+.quote-status.submitted{background:rgba(95,94,90,0.18);color:var(--ink);}
+.quote-status.draft{background:rgba(95,94,90,0.12);color:var(--stone);}
+.quote-status.review{background:rgba(133,79,11,0.12);color:var(--amber);}
+.quote-status.on-hold{background:rgba(133,79,11,0.2);color:var(--amber);}
+.quote-status.approved{background:rgba(59,109,17,0.12);color:var(--forest);}
+.quote-status.po-received{background:rgba(133,79,11,0.18);color:var(--amber);}
+.quote-status.shipped{background:rgba(59,109,17,0.16);color:var(--forest);}
+.quote-status.invoiced{background:rgba(44,44,42,0.1);color:var(--ink);}
+.quote-status.paid{background:rgba(59,109,17,0.22);color:var(--forest);}
+.quote-status.past-due{background:rgba(180,40,40,0.15);color:#A12B2B;}
+.quote-status.fulfilled{background:rgba(59,109,17,0.18);color:var(--forest);}
+.quote-status.closed{background:rgba(95,94,90,0.18);color:var(--stone);}
+.quote-sla{display:block;margin-top:4px;font-size:10.5px;color:var(--stone);font-family:'Cormorant Garamond',serif;font-style:italic;letter-spacing:0;text-transform:none;font-weight:400;}
+.quote-actions{display:flex;gap:8px;}
+.action-btn{font-size:11px;letter-spacing:0.06em;padding:6px 10px;border:0.5px solid var(--rule-strong);border-radius:2px;background:var(--cream);color:var(--ink);cursor:pointer;font-family:inherit;}
+.action-btn:hover{border-color:var(--ink);}
+.action-btn.primary{background:var(--ink);color:var(--cream);border-color:var(--ink);}
+
+/* Documents grid */
+.docs-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+.doc-card{background:var(--warm-white);border:0.5px solid var(--rule);border-radius:2px;padding:24px 26px;}
+.doc-card h3{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;font-weight:500;margin:0 0 6px;letter-spacing:-0.005em;color:var(--ink);}
+.doc-card .doc-desc{font-size:13.5px;color:var(--stone);line-height:1.55;margin:0 0 16px;}
+.doc-status{display:inline-block;font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;font-weight:600;margin-bottom:10px;}
+.doc-status.uploaded{color:var(--forest);}
+.doc-status.missing{color:var(--amber);}
+.doc-card .uploaded-info{font-size:12.5px;color:var(--ink);margin-bottom:14px;}
+.doc-card .uploaded-info span{display:block;color:var(--stone);font-size:11.5px;font-family:'Cormorant Garamond',serif;font-style:italic;}
+.upload-zone{border:0.5px dashed var(--rule-strong);border-radius:2px;padding:18px 16px;text-align:center;cursor:pointer;transition:border-color 160ms ease;background:var(--cream);}
+.upload-zone:hover{border-color:var(--ink);}
+.upload-zone .uz-label{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:var(--ink);margin-bottom:4px;}
+.upload-zone .uz-sub{font-size:11.5px;color:var(--stone);letter-spacing:0.04em;}
+
+/* PO upload */
+.po-card{background:var(--card-bg);border-radius:2px;padding:32px 36px;display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:center;}
+.po-card h3{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:500;margin:0 0 10px;letter-spacing:-0.005em;}
+.po-card h3 em{font-style:italic;}
+.po-card p{font-size:14.5px;color:var(--ink);line-height:1.65;margin:0 0 14px;}
+.po-card .po-fields{display:flex;flex-direction:column;gap:10px;}
+.po-card input{padding:12px 14px;border:0.5px solid var(--rule-strong);background:var(--warm-white);font-family:inherit;font-size:13.5px;border-radius:2px;}
+.po-upload-zone{background:var(--warm-white);border:0.5px dashed var(--rule-strong);padding:24px;text-align:center;border-radius:2px;cursor:pointer;}
+.po-upload-zone .uz-label{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;color:var(--ink);margin-bottom:6px;}
+.po-upload-zone .uz-sub{font-size:11.5px;color:var(--stone);}
+
+/* Catalog teaser */
+.catalog-teaser{background:var(--warm-white);border:0.5px solid var(--rule);border-radius:2px;padding:36px 40px;display:grid;grid-template-columns:1.4fr 1fr;gap:40px;align-items:center;}
+.catalog-teaser .label{display:block;margin-bottom:14px;}
+.catalog-teaser h3{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:500;line-height:1.05;margin:0 0 14px;letter-spacing:-0.005em;}
+.catalog-teaser h3 em{font-style:italic;}
+.catalog-teaser p{font-size:14.5px;line-height:1.65;color:var(--ink);margin:0 0 20px;}
+.catalog-actions{display:flex;gap:12px;flex-wrap:wrap;}
+.catalog-teaser-img{aspect-ratio:4/5;background:var(--card-bg);border-radius:2px;overflow:hidden;}
+.catalog-teaser-img img{width:100%;height:100%;object-fit:cover;}
+
+/* Shipping reminder */
+.shipping-note{background:rgba(133,79,11,0.08);border-left:2px solid var(--amber);padding:16px 22px;font-size:13.5px;color:var(--ink);line-height:1.6;border-radius:0 2px 2px 0;margin-bottom:32px;}
+.shipping-note strong{font-weight:500;}
+
+footer{background:var(--ink);color:var(--cream);}
+.foot-bottom-band{max-width:1440px;margin:0 auto;padding:24px 40px;display:flex;justify-content:space-between;align-items:center;font-size:11.5px;color:rgba(245,240,229,0.65);letter-spacing:0.04em;flex-wrap:wrap;gap:12px;}
+.foot-bottom-band a:hover{color:var(--cream);}
+.foot-bottom-band .foot-bottom-links{display:flex;gap:22px;}
+
+@media (max-width:1000px){.dash{grid-template-columns:1fr;}.sidebar{position:static;}.status-grid{grid-template-columns:repeat(2,1fr);}.quote-row{grid-template-columns:1fr;gap:6px;}.docs-grid,.po-card,.catalog-teaser{grid-template-columns:1fr;}}
+</style>
+</head>
+<body data-screen-label="Educator Dashboard">
+
+<!-- Top bar (logged-in indicator) -->
+<div class="topbar">
+  <span><a href="MTW Homepage v3.html">← Back to the shop</a></span>
+  <span class="acct">Signed in as <strong>Sarah Chen, Maple Tree Montessori</strong> &nbsp;·&nbsp; <a href="#">Sign out</a></span>
+</div>
+
+<header class="nav">
+  <div class="nav-inner">
+    <nav class="nav-left">
+      <a href="#" class="nav-link active">Dashboard</a>
+      <a href="educators.html" class="nav-link">Educator Catalog</a>
+      <a href="#" class="nav-link">Quotes</a>
+      <a href="#" class="nav-link">Orders</a>
+    </nav>
+    <a href="educator.html" class="logo">
+      <span class="logo-mark" aria-hidden="true"></span>
+      <span class="logo-text">My Toy Wagon<small>Educator Portal</small></span>
+    </a>
+    <div class="nav-right">
+      <a href="#" class="btn btn-ghost">New quote</a>
+    </div>
+  </div>
+</header>
+
+<div class="dash">
+
+  <aside class="sidebar">
+    <h3>Account</h3>
+    <nav>
+      <a href="#" class="active">Dashboard</a>
+      <a href="educators.html">Educator Catalog</a>
+      <a href="#">Quotes <span class="count">3</span></a>
+      <a href="#">Purchase orders <span class="count">2</span></a>
+      <a href="#">Invoices &amp; payments</a>
+      <a href="#">Order history</a>
+      <a href="#">Documents</a>
+      <a href="#">Shipping addresses</a>
+      <a href="#">Team members</a>
+      <a href="#">Account settings</a>
+    </nav>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-help">
+      <strong style="display:block;font-family:'Mulish',sans-serif;font-style:normal;font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--stone);font-weight:600;margin-bottom:10px;">Your account specialist</strong>
+      <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;color:var(--ink);line-height:1.4;margin-bottom:4px;">Irfana Iqbal</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;color:var(--stone);line-height:1.5;margin-bottom:14px;">Replies within one business day.<br/>626.841.0421</div>
+      Schedule a 20-minute call. We'll review your quote, answer procurement questions, or help you plan a classroom order.
+      <a href="#" style="display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:11px 16px;background:var(--ink);color:var(--cream);border-radius:2px;font-family:'Mulish',sans-serif;font-style:normal;font-size:11.5px;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;text-decoration:none;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Schedule a call
+      </a>
+      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;color:var(--stone);line-height:1.5;margin:14px 0 0;">Or <a href="/cdn-cgi/l/email-protection#f99a96978d989a8db994808d96808e989e9697d79a9694" style="color:var(--ink);border-bottom:0.5px solid var(--rule-strong);">email our team</a> · 626.841.0421</p>
+    </div>
+  </aside>
+
+  <main class="main">
+
+    <div class="welcome">
+      <span class="label">Educator account</span>
+      <h1>Welcome back, <em>Sarah</em>.</h1>
+      <p class="dek">A small snapshot of your account, your open quotes, and where to go next.</p>
+    </div>
+
+    <!-- Status cards -->
+    <div class="status-grid">
+      <div class="status-card">
+        <span class="lbl">Account terms</span>
+        <div class="val">Net-30</div>
+        <span class="hint">Approved · Mar 2026</span>
+      </div>
+      <div class="status-card">
+        <span class="lbl">Open quotes</span>
+        <div class="val">3</div>
+        <span class="hint">$2,460 pending</span>
+      </div>
+      <div class="status-card">
+        <span class="lbl">Orders YTD</span>
+        <div class="val">14</div>
+        <span class="hint">$8,915 total</span>
+      </div>
+      <div class="status-card">
+        <span class="lbl">Documents</span>
+        <div class="val">3 of 3</div>
+        <span class="hint">All current</span>
+      </div>
+    </div>
+
+    <!-- Catalog teaser -->
+    <section class="section">
+      <div class="catalog-teaser">
+        <div>
+          <span class="label">Educator Catalog</span>
+          <h3>Browse the <em>Educator catalog</em>.</h3>
+          <p>The full My Toy Wagon catalog, available on purchase orders with Net-30 invoicing and tax-exempt processing. Every product the same price as our retail shop, with concierge curation for classroom-scale orders.</p>
+          <div class="catalog-actions">
+            <a href="educators.html" class="btn btn-primary">Open the Educator catalog</a>
+            <a href="#" class="btn btn-ghost">Download PDF catalog</a>
+          </div>
+        </div>
+        <div class="catalog-teaser-img">
+          <img src="assets/bauspiel-flower-sparkling-stones.webp" alt="Bauspiel Flower Sparkling Stones — 60-piece wooden set with jeweled flower inlays">
+        </div>
+      </div>
+    </section>
+
+    <!-- Open quotes -->
+    <section class="section">
+      <div class="section-head">
+        <h2>Open <em>quotes</em>.</h2>
+        <a href="#">See all quotes →</a>
+      </div>
+      <div class="shipping-note">
+        <strong>How quotes become orders.</strong>
+        <p style="margin:8px 0 14px;">A <em>draft</em> is a hold — pricing locked, stock reserved, nothing ships. An <em>order</em> is a commitment — the PO is in, the warehouse picks, the invoice is generated.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0 0 14px;">
+          <div style="background:rgba(0,0,0,0.04);border-radius:2px;padding:12px 14px;">
+            <strong style="display:block;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--stone);margin-bottom:6px;">Draft (quote)</strong>
+            <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14.5px;color:var(--ink);line-height:1.5;">Cancel any time. No cost. Useful if district approval falls through.</span>
+          </div>
+          <div style="background:rgba(0,0,0,0.04);border-radius:2px;padding:12px 14px;">
+            <strong style="display:block;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--stone);margin-bottom:6px;">Order (PO confirmed)</strong>
+            <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14.5px;color:var(--ink);line-height:1.5;">Cancellation after fulfillment is subject to a 15% restocking fee.</span>
+          </div>
+        </div>
+        <p style="margin:0;">We hold quotes as drafts until your PO arrives, then convert to an order. Net-30 customers with a clean payment history can request earlier conversion — the PO follows as documentation. Shipping is added at conversion.</p>
+      </div>
+      <div class="quotes">
+        <div class="quote-row header">
+          <span>Quote #</span>
+          <span>Description</span>
+          <span>Items</span>
+          <span>Subtotal</span>
+          <span>Status</span>
+          <span></span>
+        </div>
+        <div class="quote-row">
+          <span class="quote-num">Q-2026-014</span>
+          <div class="quote-desc">Spring sensory restock<span class="quote-date">Created May 8, 2026</span></div>
+          <span class="quote-items">12 SKUs</span>
+          <span class="quote-total">$1,248</span>
+          <span><span class="quote-status review">Awaiting approval</span><span class="quote-sla">Reply expected by Tue, May 20</span></span>
+          <div class="quote-actions">
+            <a href="#" class="action-btn">View</a>
+          </div>
+        </div>
+        <div class="quote-row">
+          <span class="quote-num">Q-2026-013</span>
+          <div class="quote-desc">Bumbu Toys, Q3 order<span class="quote-date">Created May 2, 2026 · PO 2026-FBC-441 received May 11</span></div>
+          <span class="quote-items">8 SKUs</span>
+          <span class="quote-total">$786</span>
+          <span><span class="quote-status shipped">Shipped</span><span class="quote-sla">Tracking 1Z 9999 · ETA May 22</span></span>
+          <div class="quote-actions">
+            <a href="#" class="action-btn">Track</a>
+            <a href="#" class="action-btn">Invoice</a>
+          </div>
+        </div>
+        <div class="quote-row">
+          <span class="quote-num">Q-2026-011</span>
+          <div class="quote-desc">Bauspiel block restock<span class="quote-date">Invoiced May 5 · Due Jun 4</span></div>
+          <span class="quote-items">3 SKUs</span>
+          <span class="quote-total">$412</span>
+          <span><span class="quote-status invoiced">Invoiced</span><span class="quote-sla">Net-30 due in 18 days</span></span>
+          <div class="quote-actions">
+            <a href="#" class="action-btn">Invoice</a>
+            <a href="#" class="action-btn primary">Pay now</a>
+          </div>
+        </div>
+        <div class="quote-row">
+          <span class="quote-num">Q-2026-012</span>
+          <div class="quote-desc">Felt mats &amp; playscapes<span class="quote-date">Created Apr 28, 2026</span></div>
+          <span class="quote-items">4 SKUs</span>
+          <span class="quote-total">$426</span>
+          <span><span class="quote-status draft">Draft</span></span>
+          <div class="quote-actions">
+            <a href="#" class="action-btn">Edit</a>
+            <a href="#" class="action-btn">Submit</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Purchase order upload -->
+    <section class="section">
+      <div class="section-head">
+        <h2>Submit a <em>purchase order</em>.</h2>
+        <a href="#">See all POs →</a>
+      </div>
+      <div class="po-card">
+        <div>
+          <h3>Submit a <em>PO</em>.</h3>
+          <p>Upload your school or district's purchase order. We accept a single PO matched to one quote, a blanket PO across multiple quotes, or a quote split across multiple POs (Title I, classroom budget, district funds).</p>
+          <div class="po-fields">
+            <input type="text" placeholder="PO number">
+            <input type="text" placeholder="PO issue date">
+            <select style="padding:12px 14px;border:0.5px solid var(--rule-strong);background:var(--warm-white);font-family:inherit;font-size:13.5px;border-radius:2px;color:var(--ink);">
+              <option>Match to: a single quote</option>
+              <option>Match to: multiple quotes (blanket PO)</option>
+              <option>Match to: portion of a quote (split funding)</option>
+            </select>
+            <input type="text" placeholder="Quote(s) to match (Q-2026-…)">
+            <select style="padding:12px 14px;border:0.5px solid var(--rule-strong);background:var(--warm-white);font-family:inherit;font-size:13.5px;border-radius:2px;color:var(--ink);">
+              <option>Ship to: Maple Tree Montessori · 1820 Oak St, Pasadena</option>
+              <option>Ship to: Pasadena USD Receiving · 351 S Hudson Ave</option>
+              <option>Add a new shipping address…</option>
+            </select>
+            <input type="text" placeholder="Special instructions (delivery window, dock, attn:)">
+          </div>
+        </div>
+        <label class="po-upload-zone" for="po-file">
+          <div class="uz-label">Drop PO file here or click to browse</div>
+          <div class="uz-sub">PDF, DOC, or image · up to 10 MB</div>
+          <input type="file" id="po-file" hidden accept=".pdf,.doc,.docx,.png,.jpg">
+        </label>
+      </div>
+    </section>
+
+    <!-- Documents -->
+    <section class="section">
+      <div class="section-head">
+        <h2>Tax &amp; <em>documents</em>.</h2>
+        <a href="#">Document policy →</a>
+      </div>
+      <div class="docs-grid">
+        <div class="doc-card">
+          <span class="doc-status uploaded">Uploaded</span>
+          <h3>Tax-exempt certificate</h3>
+          <p class="doc-desc">Required for tax-exempt purchases. State-issued certificate or 501(c)(3) determination letter.</p>
+          <div class="uploaded-info">tax-exempt-cert-CA-2026.pdf<span>Uploaded Mar 14, 2026 · Expires Mar 2029</span></div>
+          <label class="upload-zone" for="doc-tax">
+            <div class="uz-label">Replace document</div>
+            <div class="uz-sub">PDF up to 10 MB</div>
+            <input type="file" id="doc-tax" hidden>
+          </label>
+        </div>
+        <div class="doc-card">
+          <span class="doc-status uploaded">Uploaded</span>
+          <h3>W-9 form</h3>
+          <p class="doc-desc">For payment processing on POs and Net-30 invoices.</p>
+          <div class="uploaded-info">w9-maple-tree-montessori.pdf<span>Uploaded Mar 14, 2026</span></div>
+          <label class="upload-zone" for="doc-w9">
+            <div class="uz-label">Replace document</div>
+            <div class="uz-sub">PDF up to 10 MB</div>
+            <input type="file" id="doc-w9" hidden>
+          </label>
+        </div>
+        <div class="doc-card">
+          <span class="doc-status uploaded">Uploaded</span>
+          <h3>Resale certificate</h3>
+          <p class="doc-desc">If your program resells educational materials to families.</p>
+          <div class="uploaded-info">resale-cert-CA.pdf<span>Uploaded Mar 14, 2026</span></div>
+          <label class="upload-zone" for="doc-resale">
+            <div class="uz-label">Replace document</div>
+            <div class="uz-sub">PDF up to 10 MB</div>
+            <input type="file" id="doc-resale" hidden>
+          </label>
+        </div>
+        <div class="doc-card">
+          <span class="doc-status missing">Optional</span>
+          <h3>Insurance certificate</h3>
+          <p class="doc-desc">Optional. Required only for orders shipping to a district loading dock or warehouse.</p>
+          <div class="uploaded-info" style="color:var(--stone);">Not yet uploaded</div>
+          <label class="upload-zone" for="doc-ins">
+            <div class="uz-label">Upload document</div>
+            <div class="uz-sub">PDF up to 10 MB</div>
+            <input type="file" id="doc-ins" hidden>
+          </label>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  <div class="foot-bottom-band">
+    <span>My Toy Wagon Educator Portal · Signed in as Sarah Chen</span>
+    <div class="foot-bottom-links">
+      <a href="#">Account help</a>
+      <a href="/cdn-cgi/l/email-protection#dab9b5b4aebbb9ae9ab7a3aeb5a3adbbbdb5b4f4b9b5b7">Contact our team</a>
+      <a href="MTW Homepage v3.html">Public shop</a>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

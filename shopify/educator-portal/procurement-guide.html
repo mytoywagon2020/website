@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Procurement Guide — My Toy Wagon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#F5F0E5;--warm-white:#FFFCF7;--ink:#2C2C2A;--forest:#3B6D11;--amber:#854F0B;--stone:#5F5E5A;--card-bg:#EDE3CD;--rule:rgba(44,44,42,0.18);--rule-strong:rgba(44,44,42,0.32);}
+*{box-sizing:border-box;}html,body{margin:0;padding:0;}
+body{font-family:'Mulish',sans-serif;color:var(--ink);background:#d8d3c8;font-size:11pt;line-height:1.55;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;border-bottom:0.5px solid var(--rule-strong);}
+
+/* Toolbar (screen only) */
+.toolbar{position:sticky;top:0;z-index:50;background:var(--ink);color:var(--cream);padding:10px 24px;display:flex;justify-content:space-between;align-items:center;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;}
+.toolbar a{color:var(--cream);border-bottom:none;font-weight:500;}
+.toolbar .acts{display:flex;gap:18px;align-items:center;}
+.toolbar button{background:none;border:0.5px solid rgba(245,240,229,0.4);color:var(--cream);padding:7px 14px;font-family:inherit;font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;border-radius:2px;cursor:pointer;font-weight:500;}
+.toolbar button:hover{background:rgba(245,240,229,0.08);}
+
+/* Page (letter, 8.5×11in) */
+.page{width:8.5in;min-height:11in;background:var(--warm-white);margin:32px auto;padding:0.75in 0.85in 0.75in;box-shadow:0 6px 30px rgba(0,0,0,0.15);position:relative;page-break-after:always;}
+.page:last-child{page-break-after:auto;}
+
+/* Page header / footer */
+.page-head{display:flex;justify-content:space-between;align-items:center;padding-bottom:14pt;margin-bottom:32pt;border-bottom:0.5px solid var(--rule);font-size:9pt;letter-spacing:0.14em;text-transform:uppercase;color:var(--stone);font-weight:500;}
+.page-head .brand{font-family:'Cormorant Garamond',serif;font-size:11pt;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink);font-weight:500;display:flex;align-items:center;gap:10pt;}
+.page-head .brand::before{content:"";display:inline-block;width:26pt;height:26pt;background-color:var(--ink);-webkit-mask:url('assets/logo-mark.png') center/contain no-repeat;mask:url('assets/logo-mark.png') center/contain no-repeat;flex-shrink:0;}
+.cover .page-head .brand::before{display:none;}
+.page-foot{position:absolute;left:0.85in;right:0.85in;bottom:0.5in;display:flex;justify-content:space-between;font-size:8.5pt;letter-spacing:0.12em;color:var(--stone);text-transform:uppercase;font-weight:500;padding-top:10pt;border-top:0.5px solid var(--rule);}
+
+/* Typography */
+.label{font-size:8.5pt;letter-spacing:0.18em;text-transform:uppercase;color:var(--stone);font-weight:600;}
+h1.cover-h1{font-family:'Cormorant Garamond',serif;font-size:54pt;font-weight:500;line-height:1;letter-spacing:-0.012em;margin:28pt 0 14pt;text-wrap:balance;}
+h1.cover-h1 em{font-style:italic;}
+h2{font-family:'Cormorant Garamond',serif;font-size:26pt;font-weight:500;line-height:1.05;letter-spacing:-0.008em;margin:0 0 12pt;text-wrap:balance;}
+h2 em{font-style:italic;}
+h3{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14pt;font-weight:500;letter-spacing:-0.005em;margin:0 0 6pt;}
+p{margin:0 0 11pt;text-wrap:pretty;}
+.lede{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14pt;color:var(--ink);line-height:1.45;margin-bottom:20pt;text-wrap:balance;max-width:5.5in;}
+
+/* Cover */
+.cover .cover-meta{display:flex;justify-content:space-between;align-items:flex-end;margin-top:auto;padding-top:80pt;}
+.cover-meta-block{font-size:9pt;line-height:1.6;letter-spacing:0.04em;color:var(--stone);}
+.cover-meta-block strong{display:block;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:11pt;color:var(--ink);font-weight:500;letter-spacing:0;margin-bottom:2pt;}
+.cover-divider{height:0.5px;background:var(--rule);margin:18pt 0 32pt;}
+
+/* Letter intro */
+.letter{font-size:11pt;line-height:1.7;max-width:5.4in;}
+.letter p{margin-bottom:12pt;}
+.letter .signoff{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14pt;color:var(--ink);margin-top:24pt;line-height:1.3;}
+.letter .signrole{font-size:9pt;letter-spacing:0.06em;color:var(--stone);}
+
+/* Steps */
+.steps{display:grid;grid-template-columns:48pt 1fr;gap:14pt 18pt;margin:0 0 22pt;}
+.steps .num{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:30pt;color:var(--forest);line-height:1;}
+.steps .body{padding-top:6pt;}
+.steps h3{margin-bottom:4pt;}
+.steps p{font-size:10pt;margin:0;line-height:1.6;}
+
+/* Two-column */
+.cols{column-count:2;column-gap:28pt;}
+.cols p{margin-bottom:8pt;font-size:10pt;line-height:1.6;}
+
+/* Notes grid (procurement notes) */
+.notes-grid{display:grid;grid-template-columns:1fr 1fr;gap:14pt 22pt;margin-top:6pt;}
+.notes-grid h3{font-size:12pt;margin-bottom:3pt;}
+.notes-grid p{font-size:9.5pt;line-height:1.55;margin:0;}
+.notes-grid .note{padding:11pt 0 11pt;border-top:0.5px solid var(--rule);}
+.notes-grid .note.span2{grid-column:1/-1;}
+
+/* Specs / payment table */
+.specs{border-top:0.5px solid var(--ink);border-bottom:0.5px solid var(--rule);margin:0 0 22pt;}
+.specs-row{display:grid;grid-template-columns:1.3fr 2.2fr;padding:10pt 0;border-bottom:0.5px solid var(--rule);align-items:start;}
+.specs-row:last-child{border-bottom:none;}
+.specs-key{font-size:9pt;letter-spacing:0.14em;text-transform:uppercase;color:var(--stone);font-weight:600;padding-right:14pt;}
+.specs-val{font-size:10.5pt;line-height:1.55;}
+.specs-val strong{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:12pt;display:block;margin-bottom:2pt;}
+
+/* Contacts */
+.contacts{display:grid;grid-template-columns:1fr 1fr;gap:14pt 28pt;border-top:0.5px solid var(--ink);padding-top:20pt;}
+.contact{border-bottom:0.5px solid var(--rule);padding-bottom:14pt;}
+.contact h3{margin-bottom:6pt;font-size:13pt;}
+.contact .addr{font-size:10pt;line-height:1.6;color:var(--ink);}
+.contact .addr em{font-style:italic;color:var(--stone);font-family:'Cormorant Garamond',serif;font-size:11pt;}
+.contact-divider{grid-column:1/-1;height:0.5px;background:var(--ink);margin:6pt 0;}
+
+/* Pull quote (cover bottom) */
+.pull{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18pt;color:var(--ink);line-height:1.4;max-width:5.6in;border-top:0.5px solid var(--rule);padding-top:24pt;margin-top:28pt;}
+
+/* Tag for cover */
+.cover-tag{display:inline-block;font-size:9pt;letter-spacing:0.2em;text-transform:uppercase;color:var(--stone);font-weight:600;border:0.5px solid var(--rule);padding:6pt 12pt;border-radius:2px;}
+
+/* Print */
+@media print{
+  body{background:#fff;}
+  .toolbar{display:none;}
+  .page{margin:0;box-shadow:none;width:100%;min-height:auto;padding:0.75in 0.85in;}
+  .page-foot{position:fixed;}
+}
+@page{size:letter;margin:0;}
+</style>
+</head>
+<body data-screen-label="Procurement Guide">
+
+<div class="toolbar">
+  <a href="ordering-for-schools.html">← Back to schools page</a>
+  <div class="acts">
+    <span>Procurement Guide · 5 pages</span>
+    <button onclick="window.print();">Print or save as PDF</button>
+  </div>
+</div>
+
+<!-- PAGE 1 — Cover -->
+<article class="page cover">
+  <div class="page-head">
+    <span class="brand">My Toy Wagon</span>
+    <span>Procurement Guide · 2026</span>
+  </div>
+
+  <span class="cover-tag">For accounts-payable teams</span>
+  <div style="display:flex;align-items:center;gap:18pt;margin:24pt 0 14pt;">
+    <span style="display:inline-block;width:88pt;height:88pt;background-color:var(--ink);-webkit-mask:url('assets/logo-mark.png') center/contain no-repeat;mask:url('assets/logo-mark.png') center/contain no-repeat;flex-shrink:0;"></span>
+    <div style="font-family:'Cormorant Garamond',serif;font-size:22pt;line-height:1;letter-spacing:0.18em;text-transform:uppercase;font-weight:500;color:var(--ink);">My Toy Wagon<div style="font-family:'Mulish',sans-serif;font-size:8.5pt;letter-spacing:0.22em;color:var(--stone);font-weight:500;margin-top:6pt;text-transform:uppercase;">Heirloom toys, since 2020</div></div>
+  </div>
+  <h1 class="cover-h1" style="margin-top:14pt;">Procurement, <em>plainly stated</em>.</h1>
+  <p class="lede" style="font-size:16pt;max-width:5.8in;">A short guide to ordering from My Toy Wagon for schools, libraries, therapy practices, and homeschool co-ops. Written for your AP and procurement teams, in plain language, with no jargon.</p>
+
+  <div class="cover-divider"></div>
+
+  <p class="pull" style="margin-top:0;padding-top:0;border:none;">"We believe the best classrooms smell like wood, feel like wool, and sound like children absorbed in play."</p>
+
+  <div class="cover-meta">
+    <div class="cover-meta-block">
+      <strong>My Toy Wagon, LLC</strong>
+      37 W Huntington Drive<br>Arcadia, California 91007<br>
+      Tax ID 87-3421098 · DUNS 117 8492 30
+    </div>
+    <div class="cover-meta-block" style="text-align:right;">
+      <strong>Issue date</strong>
+      January 2026<br>
+      Pricing held 30 days from quote<br>
+      Document version 4.1
+    </div>
+  </div>
+
+  <div class="page-foot">
+    <span>Procurement Guide 2026</span>
+    <span>Page 1 of 5 · Cover</span>
+  </div>
+</article>
+
+<!-- PAGE 2 — Welcome letter -->
+<article class="page">
+  <div class="page-head">
+    <span class="brand">My Toy Wagon</span>
+    <span>A welcome letter</span>
+  </div>
+
+  <span class="label">A letter to your purchasing team</span>
+  <h2 style="margin-top:14pt;">Welcome, <em>and a few words</em>.</h2>
+
+  <div class="letter">
+    <p>If you are reading this, your school or organization is preparing to issue a purchase order to our shop, and we want to make that as straightforward as possible.</p>
+    <p>My Toy Wagon is a small family-run business in Arcadia, California, online since 2020. We serve schools, libraries, therapy practices, and homeschool co-ops with the same natural wooden and felt toys we send to homes —lt toys we send to homes — wood, wool, hand-stitched, hand-painted, built to last a decade of classroom use.</p>
+    <p>Our procurement process is intentionally short. Most school orders move from quote to confirmed PO in three to five business days. We complete your district's vendor form within one business day of receipt. We accept tax-exempt certificates from all fifty states. We bill Net-30 by default, with Net-60 available for larger orders.</p>
+    <p>The pages that follow lay out the full process, payment terms, ordering options, and a list of procurement notes — the questions schools tend to ask after a quote has been issued and before a purchase order is signed.</p>
+    <p>If your team has a question that is not answered here, please write to us. We answer every procurement inquiry within one business day.</p>
+
+    <p class="signoff">Irfana &amp; Rashid Patel</p>
+    <p class="signrole">Founders, My Toy Wagon</p>
+  </div>
+
+  <div class="page-foot">
+    <span>Procurement Guide 2026</span>
+    <span>Page 2 of 5 · Welcome</span>
+  </div>
+</article>
+
+<!-- PAGE 3 — Process & payment -->
+<article class="page">
+  <div class="page-head">
+    <span class="brand">My Toy Wagon</span>
+    <span>Process &amp; payment</span>
+  </div>
+
+  <span class="label">How an order moves through our shop</span>
+  <h2 style="margin-top:14pt;">From quote, <em>to PO, to delivery</em>.</h2>
+
+  <div class="steps">
+    <div class="num">01</div>
+    <div class="body">
+      <h3>Educator account</h3>
+      <p>Apply at mytoywagon.com/educator. Verification takes 1–2 business days. Once approved, your account sees educator pricing across the full catalog, plus access to the Educator Portal for quotes and order history.</p>
+    </div>
+    <div class="num">02</div>
+    <div class="body">
+      <h3>Build a quote</h3>
+      <p>Use the in-portal quote builder, or email <a href="/cdn-cgi/l/email-protection#8de8e9f8eeecf9e2fffecde0f4f9e2f4faeceae2e3a3eee2e0"><span class="__cf_email__" data-cfemail="f59091809694819a8786b5988c819a8c8294929a9bdb969a98">[email&#160;protected]</span></a>. Every quote we send confirms current stock on every line, includes itemized educator pricing, and lists shipping (or "shipping calculated at PO"). Quoted pricing is held for 30 calendar days.</p>
+    </div>
+    <div class="num">03</div>
+    <div class="body">
+      <h3>Submit a purchase order</h3>
+      <p>Reference the quote number on your PO. Email to <a href="/cdn-cgi/l/email-protection#90f1f3f3ffe5fee4f9fef7d0fde9e4ffe9e7f1f7fffebef3fffd"><span class="__cf_email__" data-cfemail="07666464687269736e6960476a7e73687e70666068692964686a">[email&#160;protected]</span></a>. We confirm receipt within one business day, with PO acknowledgment for your AP records.</p>
+    </div>
+    <div class="num">04</div>
+    <div class="body">
+      <h3>Fulfillment &amp; invoicing</h3>
+      <p>Pick-and-pack begins within two business days. Most orders ship within five business days; large orders ship within two to three weeks. The invoice is issued at shipment, with terms (Net-30 or Net-60) as agreed at quote.</p>
+    </div>
+  </div>
+
+  <span class="label" style="display:block;margin:18pt 0 10pt;">Payment terms &amp; accepted methods</span>
+  <div class="specs">
+    <div class="specs-row">
+      <div class="specs-key">Default terms</div>
+      <div class="specs-val"><strong>Net-30 from invoice date</strong>Available to all verified schools and licensed therapists.</div>
+    </div>
+    <div class="specs-row">
+      <div class="specs-key">Extended terms</div>
+      <div class="specs-val"><strong>Net-60, available on request</strong>For larger or recurring orders. Net-60 is our maximum; extensions are reviewed case by case based on need — email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a2c3c1c1cdd7ccd6cbccc5e2cfdbd6cddbd5c3c5cdcc8cc1cdcf">[email&#160;protected]</a> with your situation.</div>
+    </div>
+    <div class="specs-row">
+      <div class="specs-key">Accepted payment</div>
+      <div class="specs-val">School / district check · Purchase order (Net invoicing) · ACH transfer · Major credit cards</div>
+    </div>
+    <div class="specs-row">
+      <div class="specs-key">Tax-exempt</div>
+      <div class="specs-val">We accept tax-exempt certificates from all 50 states. Once on file, sales tax is waived on every future invoice automatically.</div>
+    </div>
+  </div>
+
+  <div class="page-foot">
+    <span>Procurement Guide 2026</span>
+    <span>Page 3 of 5 · Process &amp; payment</span>
+  </div>
+</article>
+
+<!-- PAGE 4 — Procurement notes -->
+<article class="page">
+  <div class="page-head">
+    <span class="brand">My Toy Wagon</span>
+    <span>Procurement notes</span>
+  </div>
+
+  <span class="label">Answers to the questions schools ask</span>
+  <h2 style="margin-top:14pt;">Procurement notes, <em>plainly stated</em>.</h2>
+  <p class="lede" style="font-size:11.5pt;max-width:5.8in;">Answers to the questions schools tend to ask after a quote has been issued and before a purchase order has been signed.</p>
+
+  <div class="notes-grid">
+    <div class="note">
+      <h3>Stock confirmed on every quote.</h3>
+      <p>Every quote we send confirms current inventory on every line item. If anything is short, we flag it before you submit a PO.</p>
+    </div>
+    <div class="note">
+      <h3>Pricing held for 30 days.</h3>
+      <p>Quoted pricing is honored for 30 calendar days from quote date. Plenty of time for district approval and PO issuance.</p>
+    </div>
+    <div class="note">
+      <h3>If something goes out of stock.</h3>
+      <p>If a quoted item becomes unavailable between quote and PO, we will substitute with your written approval or remove it from the order.</p>
+    </div>
+    <div class="note">
+      <h3>Vendor forms, one business day.</h3>
+      <p>Send your district's vendor onboarding form to <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="056466666a706b716c6b6245687c716a7c7264626a6b2b666a68">[email&#160;protected]</a> and we will return it completed within one business day.</p>
+    </div>
+    <div class="note">
+      <h3>Ship to multiple classrooms.</h3>
+      <p>Drop-ship to multiple classroom addresses on one PO. We do this regularly. Email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="36535243555742594445765b4f42594f41575159581855595b">[email&#160;protected]</a> for a coordinated quote.</p>
+    </div>
+    <div class="note">
+      <h3>Sole-source letters, on request.</h3>
+      <p>For districts that require a non-competitive-bid justification (Tara Treasures, Bauspiel, and other genuinely unique brands), we write the letter within two business days.</p>
+    </div>
+    <div class="note">
+      <h3>Sustainability, on the record.</h3>
+      <p>Tara Treasures is Fair Trade USA Certified. Bauspiel and Drewart use FSC-certified European hardwood. Most of our line is OEKO-TEX or GOTS certified.</p>
+    </div>
+    <div class="note">
+      <h3>Cancellations after fulfillment.</h3>
+      <p>PO cancelled after pick-and-pack has begun is subject to a 15% restocking fee plus return shipping. Cancellations before fulfillment are free.</p>
+    </div>
+    <div class="note span2" style="border-bottom:0.5px solid var(--rule);">
+      <h3>References from served schools.</h3>
+      <p>Available on request. Email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="91f4f5e4f2f0e5fee3e2d1fce8e5fee8e6f0f6feffbff2fefc">[email&#160;protected]</a> and we will share institution references appropriate to your size and program type.</p>
+    </div>
+  </div>
+
+  <div class="page-foot">
+    <span>Procurement Guide 2026</span>
+    <span>Page 4 of 5 · Procurement notes</span>
+  </div>
+</article>
+
+<!-- PAGE 5 — Contacts -->
+<article class="page">
+  <div class="page-head">
+    <span class="brand">My Toy Wagon</span>
+    <span>Contacts</span>
+  </div>
+
+  <span class="label">Who to write, for what</span>
+  <h2 style="margin-top:14pt;">Specialized contacts, <em>so your team writes the right inbox</em>.</h2>
+  <p class="lede" style="font-size:11.5pt;max-width:5.8in;">We route procurement inquiries to the right team based on subject. Use the right address and you will hear back within one business day.</p>
+
+  <div class="contacts">
+    <div class="contact">
+      <h3>Educator orders &amp; quotes</h3>
+      <div class="addr">
+        <em>For quote-building, classroom orders, and curriculum-aligned procurement.</em><br><br>
+        <a href="/cdn-cgi/l/email-protection#234647564042574c5150634e5a574c5a5442444c4d0d404c4e"><span class="__cf_email__" data-cfemail="1a7f7e6f797b6e7568695a77636e75636d7b7d757434797577">[email&#160;protected]</span></a><br>
+        626.841.0421 · Monday–Friday, 9–5 PT
+      </div>
+    </div>
+    <div class="contact">
+      <h3>Accounting &amp; vendor forms</h3>
+      <div class="addr">
+        <em>For W-9, vendor onboarding forms, COI requests, remit-to information, and invoice questions.</em><br><br>
+        <a href="/cdn-cgi/l/email-protection#c7a6a4a4a8b2a9b3aea9a087aabeb3a8beb0a6a0a8a9e9a4a8aa"><span class="__cf_email__" data-cfemail="1a7b7979756f746e73747d5a77636e75636d7b7d757434797577">[email&#160;protected]</span></a><br>
+        626.841.0421 ext. 2
+      </div>
+    </div>
+    <div class="contact">
+      <h3>General inquiries</h3>
+      <div class="addr">
+        <em>For everything else — retail orders, returns, product questions, press, partnerships.</em><br><br>
+        <a href="/cdn-cgi/l/email-protection#b5d6dadbc1d4d6c1f5d8ccc1daccc2d4d2dadb9bd6dad8"><span class="__cf_email__" data-cfemail="b2d1dddcc6d3d1c6f2dfcbc6ddcbc5d3d5dddc9cd1dddf">[email&#160;protected]</span></a><br>
+        626.841.0421
+      </div>
+    </div>
+    <div class="contact">
+      <h3>Mailing address</h3>
+      <div class="addr">
+        <em>For checks, vendor onboarding paperwork, and remit-to records.</em><br><br>
+        My Toy Wagon, LLC<br>
+        37 W Huntington Drive<br>Arcadia, California 91007
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:32pt;padding:18pt 22pt;background:var(--card-bg);border-radius:2px;">
+    <h3 style="margin-bottom:6pt;">Schedule a 20-minute call.</h3>
+    <p style="font-size:10pt;margin:0;line-height:1.6;">For coordinated orders, district-wide procurement, or curriculum partnerships, we are happy to talk. Book a call at mytoywagon.com/educator-dashboard, or write to <a href="/cdn-cgi/l/email-protection#0c6968796f6d78637e7f4c61757863757b6d6b6362226f6361"><span class="__cf_email__" data-cfemail="d9bcbdacbab8adb6abaa99b4a0adb6a0aeb8beb6b7f7bab6b4">[email&#160;protected]</span></a> and we will arrange a time.</p>
+  </div>
+
+  <p style="margin-top:24pt;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13pt;color:var(--stone);text-align:center;">— Thank you for reading. We look forward to working with you. —</p>
+
+  <div class="page-foot">
+    <span>Procurement Guide 2026 · Document v4.1</span>
+    <span>Page 5 of 5 · Contacts</span>
+  </div>
+</article>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

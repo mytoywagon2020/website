@@ -1,0 +1,4592 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<!-- SEO STRATEGY ============================================================
+     This page is the EDITORIAL surface (school-buyer keywords).
+     The Shopify-auto collection page lives at /collections/small-world
+     (product-search keywords). They don't compete because:
+       1. Different URLs (/pages/educator-small-world vs /collections/small-world)
+       2. Different titles, descriptions, H1s
+       3. Different target keywords
+       4. Each has its own canonical pointing to itself
+     ========================================================================= -->
+<title>Small World &amp; Storytelling for Schools &middot; My Toy Wagon Educator Catalog</title>
+<meta name="description" content="Hand-felted play mats, habitat puppets, and circle-time story sets for Pre-K to Grade 2 literacy classrooms. Hand-made in Nepal. Net-30 invoicing, tax-exempt orders, and approved-vendor accounts for schools.">
+<link rel="canonical" href="https://mytoywagon.com/pages/educator-small-world" />
+
+<!-- Open Graph (social shares: Facebook, LinkedIn) -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Small World &amp; Storytelling for Schools &middot; My Toy Wagon Educator Catalog" />
+<meta property="og:description" content="Hand-felted play mats, habitat puppets, and circle-time story sets for Pre-K to Grade 2 literacy classrooms. Net-30 and tax-exempt for approved schools." />
+<meta property="og:url" content="https://mytoywagon.com/pages/educator-small-world" />
+<meta property="og:image" content="https://mytoywagon.com/assets/og-small-world.jpg" />
+<meta property="og:site_name" content="My Toy Wagon" />
+
+<!-- Twitter card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Small World &amp; Storytelling for Schools &middot; My Toy Wagon Educator Catalog" />
+<meta name="twitter:description" content="Hand-felted play mats, habitat puppets, and circle-time story sets for Pre-K to Grade 2 literacy classrooms. Net-30 and tax-exempt for approved schools." />
+
+<!-- Structured data: BreadcrumbList for educator portal hierarchy.
+     Tells Google: Home > Educator Catalog > Small World & Storytelling.
+     This is the editorial breadcrumb; the Shopify collection page has its own. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://mytoywagon.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Educator Catalog", "item": "https://mytoywagon.com/pages/educators"},
+    {"@type": "ListItem", "position": 3, "name": "Small World & Storytelling"}
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Mulish:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+/* =================================================================
+   MY TOY WAGON, ECOSYSTEM CATALOG TEMPLATE
+   Current preset: SMALL WORLD & STORYTELLING (Section 04)
+   To retheme for another ecosystem, swap the ECOSYSTEM TOKENS block
+   below + the CATALOG const at the bottom. Every component downstream
+   reads from tokens.
+   ================================================================= */
+
+/* ----------------------------- TOKENS ---------------------------- */
+:root{
+  /* BRAND CHASSIS, shared with retail homepage. Do not vary. */
+  --cream:        #F5F0E5;   /* brand cream, neutral-warm */
+  --warm-white:   #FFFCF7;   /* card surface over cream */
+  --card-bg:      #EDE3CD;   /* warm beige card surface */
+  --ink:          #2C2C2A;   /* brand ink, neutral warm grey */
+  --ink-soft:     #44423E;   /* softer ink for body */
+  --stone:        #5F5E5A;   /* muted brand grey */
+  --muted:        #5F5E5A;   /* alias for back-compat */
+  --forest:       #3B6D11;   /* brand primary accent (verified, micro) */
+  --amber:        #854F0B;   /* brand secondary accent (wagon badge) */
+  --gilt:         #C9A96E;
+  --gilt-pale:    #E8D5A8;
+
+  /* ECOSYSTEM PALETTE, swap these per ecosystem. Carries mood. */
+  --accent:       #7A5C8A;   /* plum, primary signature */
+  --accent-soft:  #B8A3C2;   /* lavender soft */
+  --accent-pale:  #E5DBE9;   /* pale lilac, background tint */
+  --accent-deep:  #5A3F70;   /* deep plum, type emphasis */
+  --alt:          #D4A36B;   /* warm gold, secondary */
+  --alt-deep:     #8A6230;   /* burnt amber */
+  --hue-3:        #6B8FA8;   /* dusk blue, tertiary */
+  --hue-3-deep:   #3A5060;   /* deep slate */
+
+  /* mood gradient, ecosystem signature, used on cover + bottom hero */
+  --mood-a:       #B8A3C2;   /* lavender start */
+  --mood-b:       #7A5C8A;   /* plum */
+  --mood-c:       #5A3F70;   /* deep plum */
+  --mood-d:       #D4A36B;   /* warm gold */
+  --mood-e:       #6B8FA8;   /* dusk blue end */
+
+  /* meta strings (referenced via ::before content where needed) */
+  --rule:         rgba(44,44,42,.12);   /* brand hairline */
+  --rule-soft:    rgba(44,44,42,.06);
+  --rule-strong:  rgba(44,44,42,.22);   /* visible divider */
+
+  /* type */
+  --serif:        "Cormorant Garamond", "Garamond", Georgia, serif;
+  --sans:         "Mulish", "Helvetica Neue", system-ui, sans-serif;
+  --mono:         "Mulish", "Helvetica Neue", system-ui, sans-serif;
+}
+
+/* ----------------------------- BASE ------------------------------ */
+*, *::before, *::after{ box-sizing:border-box; margin:0; padding:0; }
+html{ scroll-behavior:smooth; }
+body{
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+  text-wrap: pretty;
+}
+img{ display:block; max-width:100%; }
+a{ color:inherit; }
+::selection{ background: var(--accent); color: var(--cream); }
+
+.serif{ font-family: var(--serif); }
+.it{ font-style: italic; }
+.eyebrow{
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+}
+.label{
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+.meta{
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: .06em;
+}
+.rule-hair{ display:block; width:100%; height:1px; background: var(--rule-soft); border:0; }
+.rule{ display:block; width:100%; height:1px; background: var(--rule); border:0; }
+
+/* ----------------------- IMAGE-SLOT SYSTEM ----------------------- */
+/* Tiles fill in for photography. Each tile is a tinted, softly-
+   textured surface with a monospace corner tag that briefs the
+   photographer on what should go here. Role-based tones (.t-primary,
+   .t-soft, .t-pale, .t-deep, .t-alt, .t-alt-deep, .t-cream, .t-ink,
+   .t-mood) so that a token-swap reskins every tile at once. */
+.tile{
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--accent-pale);
+}
+.tile::before{
+  content:"";
+  position: absolute; inset:0;
+  background:
+    radial-gradient(120% 80% at 20% 18%, rgba(255,255,255,.35), rgba(255,255,255,0) 60%),
+    radial-gradient(120% 80% at 85% 90%, rgba(44,26,14,.18), rgba(44,26,14,0) 55%),
+    repeating-linear-gradient(135deg, rgba(255,255,255,.06) 0 1px, rgba(255,255,255,0) 1px 14px),
+    repeating-linear-gradient(45deg, rgba(44,26,14,.04) 0 1px, rgba(44,26,14,0) 1px 22px);
+  pointer-events: none; z-index:1;
+}
+.tile::after{
+  content:"";
+  position: absolute; inset:0;
+  background: radial-gradient(58% 48% at 50% 50%, rgba(255,255,255,0) 60%, rgba(44,26,14,.10) 100%);
+  pointer-events: none; z-index:1;
+}
+.tile .tag{
+  position:absolute; left:14px; top:14px;
+  z-index:3;
+  font-family: var(--mono);
+  font-size:10px;
+  letter-spacing:.04em;
+  line-height: 1.45;
+  color: rgba(44,26,14,.78);
+  background: rgba(250,246,237,.82);
+  border: 1px solid rgba(44,26,14,.15);
+  padding: 6px 10px;
+  max-width: calc(100% - 28px);
+  backdrop-filter: blur(1px) saturate(120%);
+}
+.tile .tag.dark{
+  color: rgba(250,246,237,.92);
+  background: rgba(44,26,14,.45);
+  border-color: rgba(250,246,237,.22);
+}
+.tile .corner{
+  position:absolute; width:14px; height:14px;
+  border: 1px solid rgba(44,26,14,.4);
+  z-index:2;
+}
+.tile.dark .corner{ border-color: rgba(250,246,237,.55); }
+.tile .corner.tl{ top:0; left:0;  border-right:0; border-bottom:0; }
+.tile .corner.tr{ top:0; right:0; border-left:0;  border-bottom:0; }
+.tile .corner.bl{ bottom:0; left:0;  border-right:0; border-top:0; }
+.tile .corner.br{ bottom:0; right:0; border-left:0;  border-top:0; }
+
+/* Role-based tones (token-driven, swap once and the page reskins) */
+.t-primary  { background: linear-gradient(160deg, var(--accent-soft) 0%, var(--accent) 60%, var(--accent-deep) 100%); }
+.t-soft     { background: linear-gradient(160deg, color-mix(in oklab, var(--accent-soft) 70%, white) 0%, var(--accent-soft) 60%, var(--accent) 100%); }
+.t-pale     { background: linear-gradient(155deg, color-mix(in oklab, var(--accent-pale) 80%, white) 0%, var(--accent-pale) 60%, var(--accent-soft) 100%); }
+.t-deep     { background: linear-gradient(170deg, var(--accent) 0%, var(--accent-deep) 70%, color-mix(in oklab, var(--accent-deep) 60%, #000) 100%); }
+.t-alt      { background: linear-gradient(155deg, color-mix(in oklab, var(--alt) 80%, white) 0%, var(--alt) 55%, var(--alt-deep) 100%); }
+.t-alt-deep { background: linear-gradient(180deg, var(--alt) 0%, var(--alt-deep) 65%, color-mix(in oklab, var(--alt-deep) 50%, #000) 100%); }
+.t-cream    { background: linear-gradient(155deg, var(--cream) 0%, var(--card-bg) 60%, var(--gilt-pale) 100%); }
+.t-ink      { background: linear-gradient(170deg, #44423E 0%, var(--ink) 60%, #1A1A18 100%); }
+.t-hue3     { background: linear-gradient(160deg, color-mix(in oklab, var(--hue-3) 75%, white) 0%, var(--hue-3) 55%, var(--hue-3-deep) 100%); }
+.t-hue3-deep{ background: linear-gradient(170deg, var(--hue-3) 0%, var(--hue-3-deep) 65%, color-mix(in oklab, var(--hue-3-deep) 50%, #000) 100%); }
+.t-gilt     { background: linear-gradient(155deg, var(--gilt-pale) 0%, var(--gilt) 60%, color-mix(in oklab, var(--gilt) 50%, #000) 100%); }
+.t-mood     {
+  background:
+    radial-gradient(60% 90% at 50% 100%, rgba(255,255,255,0) 30%, rgba(255,255,255,.16) 60%, rgba(255,255,255,0) 82%),
+    linear-gradient(170deg,
+      var(--mood-a) 0%,
+      var(--mood-b) 28%,
+      var(--mood-c) 52%,
+      var(--mood-d) 78%,
+      var(--mood-e) 100%);
+}
+
+/* ----------------------- NAV (sticky, brand-styled, retail pattern) ----------------------- */
+.nav{
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  padding: 18px clamp(20px, 4vw, 44px);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 32px;
+  background: var(--cream);
+  border-bottom: 0.5px solid var(--rule);
+  transition: background .25s ease, padding .25s ease;
+}
+.nav.scrolled{
+  background: rgba(245,240,229,.96);
+  backdrop-filter: saturate(140%) blur(8px);
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+.nav__search{
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 22px;
+  background: var(--warm-white);
+  border: 0.5px solid var(--rule-strong);
+  border-radius: 999px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 14.5px;
+  color: var(--stone);
+  cursor: text;
+  width: 100%;
+  max-width: 380px;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.nav__search:hover{ border-color: var(--ink); box-shadow: 0 1px 12px rgba(44,44,42,.06); }
+.nav__search svg{ width: 16px; height: 16px; stroke: var(--ink); stroke-width: 1.6; fill: none; flex-shrink: 0; }
+.nav__logo{
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--ink);
+  line-height: 1;
+  justify-self: center;
+}
+.nav__logo .mark{
+  height: 78px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+  flex-shrink: 0;
+  transition: height .25s ease;
+}
+.nav.scrolled .nav__logo .mark{ height: 54px; }
+.nav__logo .text{ display: none; }
+.nav__actions{
+  justify-self: end;
+  display: inline-flex;
+  align-items: center;
+  gap: 24px;
+}
+.nav__action{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: .02em;
+  color: var(--ink);
+  text-decoration: none;
+  padding: 4px 0;
+  transition: color .2s ease;
+}
+.nav__action:hover{ color: var(--forest); }
+.nav__action svg{ width: 17px; height: 17px; stroke: currentColor; stroke-width: 1.4; fill: none; flex-shrink: 0; }
+.nav__action .pill{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px; height: 18px;
+  padding: 0 5px;
+  background: var(--forest);
+  color: var(--cream);
+  border-radius: 9px;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+/* ----------------------- PROMO STRIP (editorial breadcrumb) ----------------------- */
+.promo-strip{
+  background: var(--card-bg);
+  border-bottom: 0.5px solid var(--rule);
+  text-align: center;
+  padding: 12px clamp(16px, 4vw, 40px);
+  font-family: var(--sans);
+  font-style: normal;
+  font-size: 13px;
+  letter-spacing: .02em;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+.promo-strip .vol{ color: var(--accent-deep); font-weight: 600; }
+.promo-strip .sep{ display: inline-block; width: 3px; height: 3px; border-radius: 50%; background: var(--rule-strong); vertical-align: middle; margin: 0 14px; }
+.promo-strip strong{ color: var(--ink); font-weight: 600; font-style: normal; font-family: var(--sans); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; margin-right: 8px; }
+
+/* ----------------------- SUBNAV (slim ecosystem stepper + in-page jumps) ----------------------- */
+.subnav{
+  background: var(--cream);
+  border-bottom: 0.5px solid var(--rule);
+  padding: 14px clamp(20px, 4vw, 44px);
+}
+.subnav-inner{
+  max-width: 1440px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 24px;
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: .04em;
+}
+.subnav .back{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color .2s ease;
+}
+.subnav .back:hover{ color: var(--forest); }
+.subnav .back::before{
+  content: "";
+  display: inline-block;
+  width: 7px; height: 7px;
+  border-top: 1px solid currentColor;
+  border-left: 1px solid currentColor;
+  transform: rotate(-45deg);
+}
+.subnav .stepper{
+  display: inline-flex; align-items: center; gap: 18px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--ink);
+}
+.subnav .stepper a{
+  color: var(--stone);
+  text-decoration: none;
+  transition: color .2s ease;
+}
+.subnav .stepper a:hover{ color: var(--ink); }
+.subnav .stepper .current{
+  color: var(--accent-deep);
+  font-weight: 500;
+}
+.subnav .stepper .sep{ color: var(--rule-strong); font-style: normal; }
+.subnav .jumps{
+  display: inline-flex; align-items: center; gap: 22px;
+  justify-content: flex-end;
+}
+.subnav .jumps a{
+  color: var(--ink-soft);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color .2s ease;
+}
+.subnav .jumps a:hover{ color: var(--forest); }
+
+@media (max-width: 1080px){
+  .nav{ grid-template-columns: auto 1fr auto; gap: 16px; padding: 14px 20px; }
+  .nav__search{ display: none; }
+  .nav__logo{ justify-self: start; }
+  .nav__action .label{ display: none; }
+  .subnav-inner{ grid-template-columns: auto 1fr; gap: 14px; }
+  .subnav .jumps{ display: none; }
+  .subnav .stepper{ overflow-x: auto; scrollbar-width: none; white-space: nowrap; flex-wrap: nowrap; }
+  .subnav .stepper::-webkit-scrollbar{ display: none; }
+}
+
+/* ----------------------- BRAND BARS + DNA ----------------------- */
+.utility{
+  background: var(--ink);
+  color: var(--cream);
+  font-size: 12px;
+  letter-spacing: .06em;
+}
+.utility-inner{
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 11px clamp(20px, 5vw, 44px);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 24px;
+}
+.utility-left{ color: rgba(245,240,229,.75); display: flex; align-items: center; gap: 20px; }
+.utility-left a{ color: inherit; text-decoration: none; transition: color .2s ease; }
+.utility-left a:hover{ color: var(--cream); }
+.utility-left .phone{ display: inline-flex; align-items: center; gap: 8px; }
+.utility-left .phone svg{ width: 12px; height: 12px; stroke: currentColor; stroke-width: 1.4; fill: none; }
+.utility-center{
+  text-align: center;
+  font-family: var(--sans);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12.5px;
+  letter-spacing: .04em;
+  color: var(--cream);
+  line-height: 1.5;
+  position: relative;
+  min-height: 1.5em;
+}
+.utility-center .slide{
+  display: block;
+  opacity: 0;
+  position: absolute;
+  inset: 0;
+  transition: opacity .5s ease;
+  pointer-events: none;
+}
+.utility-center .slide.is-active{
+  opacity: 1;
+  position: relative;
+  pointer-events: auto;
+}
+.utility-center em{ color: color-mix(in oklab, var(--accent-soft) 80%, white); font-style: normal; font-weight: 600; }
+.utility-right{
+  color: rgba(245,240,229,.75);
+  display: flex; align-items: center; justify-content: flex-end; gap: 20px;
+}
+.utility-right a{ color: inherit; text-decoration: none; transition: color .2s ease; }
+.utility-right a:hover{ color: var(--cream); }
+.utility-right .pipe{ color: rgba(245,240,229,.25); }
+
+/* Inverse soft strip, mirrors the homepage's "For educators" strip */
+.families-soft{
+  background: var(--cream);
+  border-bottom: 0.5px solid var(--rule);
+}
+.families-soft-inner{
+  max-width: 1340px;
+  margin: 0 auto;
+  padding: 22px clamp(20px, 5vw, 56px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.families-soft-text{
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 17px;
+  color: var(--ink);
+  line-height: 1.4;
+  max-width: 640px;
+}
+.families-soft-text strong{
+  display: block;
+  font-style: normal;
+  font-weight: 500;
+  font-family: var(--sans);
+  font-size: 10.5px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--stone);
+  margin-bottom: 4px;
+}
+.families-soft-cta{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 0.5px solid var(--rule-strong);
+  padding-bottom: 4px;
+  flex-shrink: 0;
+  transition: color .2s ease, border-color .2s ease;
+}
+.families-soft-cta:hover{ color: var(--forest); border-color: var(--forest); }
+
+/* Wagon badge, the brand's amber rotated pill */
+.wagon-badge{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 14px;
+  background: var(--amber);
+  color: var(--cream);
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: .04em;
+  border-radius: 2px;
+  border: 0.5px dashed rgba(245,240,229,.55);
+  box-shadow: 0 2px 6px rgba(44,44,42,.18);
+  white-space: nowrap;
+  transform: rotate(-3deg);
+}
+.wagon-badge.flat{ transform: none; }
+
+/* Numbered block-num (brand pattern: "01 / The Anchor") */
+.block-num{
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 15px;
+  color: var(--stone);
+  letter-spacing: 0;
+  margin: 0 0 14px;
+  display: block;
+}
+.block-num .dot{ color: var(--accent); }
+
+/* Verified buyer disc, forest green, brand micro-DNA */
+.verified-disc{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--sans);
+  font-size: 10.5px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--forest);
+}
+.verified-disc svg{ width: 12px; height: 12px; flex-shrink: 0; }
+
+/* Image fill, drop real photos into placeholder tiles.
+   `.has-photo` hides the gradient texture and corner brackets.
+   `cover` mode (default): photo fills the tile, cropped to fit.
+   `contained` mode: photo sits inside the tile on its tinted gradient
+   backdrop, never stretched edge-to-edge. Use this for product portraits
+   from a catalog studio shoot, not lifestyle photography. */
+.tile.has-photo::before,
+.tile.has-photo::after{ display: none; }
+.tile.has-photo > .tag,
+.tile.has-photo > .corner{ display: none; }
+.tile.has-photo > img{
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  z-index: 0;
+}
+.tile.has-photo.contained > img{
+  object-fit: contain;
+  padding: 8% 10%;
+  z-index: 2;
+  filter: drop-shadow(0 18px 36px rgba(44,44,42,.18));
+}
+.tile.has-photo .credit{
+  position: absolute;
+  right: 12px; bottom: 12px;
+  z-index: 3;
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: .08em;
+  color: rgba(44,44,42,.55);
+  background: rgba(245,240,229,.78);
+  padding: 4px 7px;
+  border: 0.5px solid rgba(44,44,42,.15);
+  text-transform: uppercase;
+}
+.tile.dark.has-photo .credit{
+  color: rgba(245,240,229,.85);
+  background: rgba(44,44,42,.45);
+  border-color: rgba(245,240,229,.2);
+}
+
+/* ----------------------- QUICK FACTS (thin, scannable, above-fold) ----------------------- */
+.quick-facts{
+  background: var(--cream);
+  border-bottom: 0.5px solid var(--rule);
+  border-top: 0.5px solid var(--rule);
+}
+.quick-facts-inner{
+  max-width: 1340px;
+  margin: 0 auto;
+  padding: 14px clamp(16px, 4vw, 56px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  flex-wrap: wrap;
+}
+.qf-chip-stat{
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 11.5px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ink);
+  padding: 6px 22px;
+  position: relative;
+  white-space: nowrap;
+}
+.qf-chip-stat + .qf-chip-stat::before{
+  content: "·";
+  position: absolute;
+  left: 0;
+  color: var(--rule-strong);
+  font-weight: 400;
+}
+@media (max-width: 880px){
+  .quick-facts-inner{
+    justify-content: flex-start;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    scrollbar-width: none;
+  }
+  .quick-facts-inner::-webkit-scrollbar{ display: none; }
+  .qf-chip-stat{ font-size: 10.5px; padding: 6px 16px; flex-shrink: 0; }
+}
+
+/* ----------------------- BOM (kit bill-of-materials) ----------------------- */
+.bom{
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 0 0 24px;
+  border-top: 0.5px solid var(--rule);
+}
+.bom-row{
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px 16px;
+  align-items: baseline;
+  padding: 12px 0;
+  border-bottom: 0.5px solid var(--rule);
+}
+.bom-item{
+  font-family: var(--serif);
+  font-size: 16px;
+  line-height: 1.35;
+  color: var(--ink);
+}
+.bom-item .sku-tba{
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--stone);
+  background: var(--warm-white);
+  border: 0.5px dashed var(--rule-strong);
+  padding: 2px 6px;
+  margin-right: 8px;
+  vertical-align: 2px;
+}
+.bom-meta{
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .04em;
+  color: var(--stone);
+  text-align: right;
+  white-space: nowrap;
+}
+.bom-foot{
+  display: flex; align-items: baseline; justify-content: space-between;
+  padding-top: 14px;
+  font-family: var(--sans);
+  font-size: 11.5px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+.bom-foot .label{ color: var(--stone); }
+.bom-foot .v{ color: var(--ink); font-weight: 600; }
+
+/* ----------------------- B2B PRICE BLOCK (gallery cards + general) ----------------------- */
+.price-block{
+  display: inline-flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+/* ----------------------- ADD TO CART (per product card) ----------------------- */
+.price{
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1;
+  color: var(--ink) !important;
+  margin: 12px 0 0;
+  letter-spacing: -.005em;
+}
+.price small{
+  font-family: var(--sans);
+  font-style: normal;
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--stone);
+  font-weight: 500;
+}
+.add-row{
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 12px;
+}
+.add-btn{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--cream);
+  background: var(--ink);
+  border: 1px solid var(--ink);
+  border-radius: 2px;
+  padding: 10px 16px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background .2s ease, border-color .2s ease;
+}
+.add-btn:hover{ background: var(--forest); border-color: var(--forest); }
+.add-btn.plain{
+  background: transparent; color: var(--ink);
+}
+.add-btn.plain:hover{ background: var(--ink); color: var(--cream); }
+.add-btn .plus{
+  display: inline-block;
+  width: 9px; height: 9px;
+  position: relative;
+}
+.add-btn .plus::before,
+.add-btn .plus::after{
+  content: ""; position: absolute; background: currentColor;
+}
+.add-btn .plus::before{ left: 0; right: 0; top: 50%; height: 1px; transform: translateY(-50%); }
+.add-btn .plus::after{ top: 0; bottom: 0; left: 50%; width: 1px; transform: translateX(-50%); }
+.view-pdp{
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--stone);
+  text-decoration: none;
+  border-bottom: 0.5px solid var(--rule-strong);
+  padding-bottom: 2px;
+  transition: color .2s ease, border-color .2s ease;
+}
+.view-pdp:hover{ color: var(--ink); border-color: var(--ink); }
+.stock-pill{
+  font-family: var(--sans);
+  font-size: 10.5px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--forest);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.stock-pill::before{
+  content: ""; display: inline-block;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--forest);
+}
+
+/* Kit price-line override */
+.kit .price-line{
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 1;
+  color: var(--ink);
+  letter-spacing: -.005em;
+  font-style: normal;
+  text-transform: none;
+  margin: 0 0 6px;
+  padding-top: 0;
+  border-top: 0;
+}
+.kit .price-line .msrp{
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .04em;
+  color: var(--stone);
+  text-decoration: line-through;
+  margin-left: 10px;
+}
+.kit .price-note{
+  font-family: var(--sans);
+  font-size: 10.5px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--stone);
+  margin: 0 0 22px;
+  padding-bottom: 18px;
+  border-bottom: 0.5px solid var(--rule-strong);
+  display: block;
+}
+.kit .add-row{ margin-top: 18px; }
+
+/* ----------------------- CART + ACCOUNT (utility bar + nav) ----------------------- */
+.signed-in{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--cream);
+}
+.signed-in .dot-active{
+  display: inline-block;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--forest);
+  box-shadow: 0 0 0 2px rgba(59,109,17,.25);
+}
+.signed-in .role{
+  font-family: var(--sans);
+  font-style: normal;
+  font-size: 10px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: rgba(245,240,229,.55);
+  margin-left: 8px;
+}
+
+.nav__actions{
+  justify-self: end;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+.nav__cart{
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: .04em;
+  color: var(--ink);
+  text-decoration: none;
+  padding: 11px 16px;
+  border: 0.5px solid var(--rule-strong);
+  border-radius: 2px;
+  transition: border-color .2s ease;
+}
+.nav__cart:hover{ border-color: var(--ink); }
+.nav__cart-count{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px; height: 18px;
+  padding: 0 5px;
+  background: var(--forest);
+  color: var(--cream);
+  border-radius: 9px;
+  font-size: 10.5px;
+  font-weight: 600;
+}
+
+/* ----------------------- HOW IT WORKS (friction-reduction strip) ----------------------- */
+.how-it-works{
+  background: var(--card-bg);
+  border-top: 0.5px solid var(--rule);
+  border-bottom: 0.5px solid var(--rule);
+}
+.how-it-works-inner{
+  max-width: 1340px;
+  margin: 0 auto;
+  padding: 56px clamp(20px, 5vw, 56px);
+}
+.how-head{
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: 56px;
+  align-items: end;
+  margin-bottom: 36px;
+  padding-bottom: 28px;
+  border-bottom: 0.5px solid var(--rule);
+}
+.how-head .eyebrow{ color: var(--accent-deep); margin-bottom: 18px; display: inline-block; }
+.how-head h3{
+  margin: 0;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(28px, 3.2vw, 42px);
+  line-height: 1.05;
+  letter-spacing: -.005em;
+}
+.how-head h3 .it{ color: var(--accent-deep); }
+.how-head p{
+  margin: 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  max-width: 42ch;
+}
+.steps{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+.step{
+  padding: 0 32px 0 0;
+  border-right: 0.5px solid var(--rule);
+}
+.step:last-child{ border-right: 0; padding-right: 0; }
+.step:nth-child(n+2){ padding-left: 32px; }
+.step .num{
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 38px;
+  line-height: 1;
+  color: var(--accent-deep);
+  margin-bottom: 16px;
+  display: block;
+}
+.step h4{
+  margin: 0 0 10px;
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 1.2;
+  letter-spacing: -.005em;
+  color: var(--ink);
+}
+.step p{
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  max-width: 36ch;
+}
+.step .more{
+  margin-top: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 0.5px solid var(--ink);
+  padding-bottom: 3px;
+  transition: color .2s ease, border-color .2s ease;
+}
+.step .more:hover{ color: var(--forest); border-color: var(--forest); }
+@media (max-width: 1080px){
+  .how-head{ grid-template-columns: 1fr; gap: 24px; }
+  .steps{ grid-template-columns: 1fr; gap: 28px; }
+  .step{ border-right: 0; border-bottom: 0.5px solid var(--rule); padding: 0 0 24px 0 !important; }
+  .step:last-child{ border-bottom: 0; padding-bottom: 0 !important; }
+}
+.price-policy{
+  background: var(--card-bg);
+  border-top: 0.5px solid var(--rule);
+  border-bottom: 0.5px solid var(--rule);
+  text-align: center;
+  padding: 12px 16px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+.price-policy strong{ color: var(--ink); font-weight: 600; }
+
+/* ----------------------- STRUCTURED QUOTE FORM ----------------------- */
+.quote-form{ background: var(--card-bg); }
+.quote-form .wrap{
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(40px, 6vw, 80px);
+  align-items: start;
+}
+.quote-form .col-intro h2{
+  margin: 18px 0 24px;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(36px, 4.6vw, 64px);
+  line-height: 1.02;
+  letter-spacing: -.008em;
+}
+.quote-form .col-intro h2 .it{ color: var(--accent-deep); }
+.quote-form .col-intro p{
+  margin: 0 0 18px;
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  max-width: 42ch;
+}
+.quote-form .col-intro .promise{
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 0.5px solid var(--rule);
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  line-height: 1.8;
+}
+
+/* Human-touch block: "Replied to by a human" + Schedule a call */
+.human-touch{
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 0.5px solid var(--rule);
+  display: grid;
+  gap: 22px;
+}
+.human-touch .ht-card{
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+.human-touch .ht-card svg{
+  width: 24px;
+  height: 24px;
+  stroke: var(--accent-deep);
+  fill: none;
+  stroke-width: 1.4;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+.human-touch .ht-body strong{
+  display: block;
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 19px;
+  color: var(--ink);
+  line-height: 1.3;
+  margin-bottom: 6px;
+  letter-spacing: -.005em;
+}
+.human-touch .ht-body p{
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+.human-touch .ht-body .ht-link{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 0.5px solid var(--ink);
+  padding-bottom: 3px;
+  transition: color .2s ease, border-color .2s ease;
+}
+.human-touch .ht-body .ht-link:hover{ color: var(--forest); border-color: var(--forest); }
+.human-touch .ht-call{
+  margin-top: 6px;
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: .04em;
+  color: var(--ink-soft);
+}
+.human-touch .ht-call a{ color: var(--ink); font-weight: 500; text-decoration: none; border-bottom: 0.5px solid var(--rule-strong); padding-bottom: 1px; }
+.human-touch .ht-call a:hover{ border-color: var(--ink); }
+.qf-form{ display: grid; gap: 22px 24px; grid-template-columns: 1fr 1fr; }
+.qf-row{ display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.qf-row.full{ grid-column: 1 / -1; }
+.qf-row label{
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+.qf-row label .req{ color: var(--accent-deep); margin-left: 4px; }
+.qf-row input[type="text"],
+.qf-row input[type="email"],
+.qf-row input[type="tel"],
+.qf-row select,
+.qf-row textarea{
+  font-family: var(--sans);
+  font-size: 15px;
+  color: var(--ink);
+  background: var(--warm-white);
+  border: 0.5px solid var(--rule-strong);
+  border-radius: 2px;
+  padding: 13px 16px;
+  outline: none;
+  transition: border-color .2s ease;
+  width: 100%;
+}
+.qf-row input:focus,
+.qf-row select:focus,
+.qf-row textarea:focus{ border-color: var(--ink); }
+.qf-row textarea{ min-height: 100px; resize: vertical; }
+.qf-row select{
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath fill='none' stroke='%232C2C2A' stroke-width='1.2' d='M3 5l3 3 3-3'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 38px;
+}
+.qf-chips{ display: flex; flex-wrap: wrap; gap: 8px; }
+.qf-chip{
+  position: relative;
+  display: inline-flex; align-items: center;
+  padding: 10px 16px;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: .04em;
+  color: var(--ink);
+  background: var(--warm-white);
+  border: 0.5px solid var(--rule-strong);
+  border-radius: 999px;
+  cursor: pointer;
+  user-select: none;
+  transition: background .15s ease, color .15s ease, border-color .15s ease;
+}
+.qf-chip input{ position: absolute; opacity: 0; pointer-events: none; }
+.qf-chip:has(input:checked){ background: var(--ink); color: var(--cream); border-color: var(--ink); }
+.qf-submit-row{
+  grid-column: 1 / -1;
+  display: flex; flex-wrap: wrap; align-items: center; gap: 20px 28px;
+  padding-top: 16px;
+  border-top: 0.5px solid var(--rule);
+}
+.qf-submit-row .note{
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 15px;
+  color: var(--ink-soft);
+  max-width: 38ch;
+  line-height: 1.45;
+}
+@media (max-width: 1080px){
+  .quote-form .wrap{ grid-template-columns: 1fr; }
+  .qf-form{ grid-template-columns: 1fr; }
+}
+
+/* ----------------------- KLAVIYO SIGNUP STRIP ----------------------- */
+.klaviyo-strip{
+  background: var(--card-bg);
+  border-top: 0.5px solid var(--rule);
+  border-bottom: 0.5px solid var(--rule);
+}
+.klaviyo-strip-inner{
+  max-width: 1340px;
+  margin: 0 auto;
+  padding: clamp(48px, 6vw, 72px) clamp(20px, 5vw, 56px);
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(36px, 5vw, 64px);
+  align-items: center;
+}
+.klaviyo-strip h3{
+  margin: 14px 0 0;
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(28px, 3.2vw, 40px);
+  line-height: 1.05;
+  letter-spacing: -.005em;
+  color: var(--ink);
+}
+.klaviyo-strip h3 em{ font-style: italic; color: var(--accent-deep); }
+.klaviyo-strip .lede{
+  margin: 14px 0 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  max-width: 50ch;
+}
+.klaviyo-strip .lede ul{
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 6px;
+}
+.klaviyo-strip .lede li{
+  font-family: var(--sans);
+  font-style: normal;
+  font-size: 13px;
+  letter-spacing: .04em;
+  color: var(--ink);
+  padding-left: 20px;
+  position: relative;
+}
+.klaviyo-strip .lede li::before{
+  content: "";
+  position: absolute;
+  left: 0; top: 11px;
+  width: 10px; height: 1px;
+  background: var(--accent);
+}
+.klaviyo-form{
+  background: var(--warm-white);
+  border: 0.5px solid var(--rule-strong);
+  border-radius: 2px;
+  padding: 28px 32px;
+}
+.klaviyo-form-row{
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.klaviyo-form-row .field{
+  display: flex; flex-direction: column; gap: 6px;
+}
+.klaviyo-form-row label{
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 10.5px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+.klaviyo-form-row input,
+.klaviyo-form-row select{
+  font-family: var(--sans);
+  font-size: 14.5px;
+  color: var(--ink);
+  background: var(--cream);
+  border: 0.5px solid var(--rule-strong);
+  border-radius: 2px;
+  padding: 12px 14px;
+  outline: none;
+  transition: border-color .2s ease;
+  width: 100%;
+}
+.klaviyo-form-row input:focus,
+.klaviyo-form-row select:focus{ border-color: var(--ink); }
+.klaviyo-form-row select{ appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath fill='none' stroke='%232C2C2A' stroke-width='1.2' d='M3 5l3 3 3-3'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 38px; }
+.klaviyo-form-submit{
+  margin-top: 18px;
+  display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+}
+.klaviyo-form-submit button{
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  background: var(--ink);
+  color: var(--cream);
+  border: 1px solid var(--ink);
+  border-radius: 2px;
+  padding: 13px 24px;
+  cursor: pointer;
+  transition: background .2s ease, border-color .2s ease;
+}
+.klaviyo-form-submit button:hover{ background: var(--forest); border-color: var(--forest); }
+.klaviyo-form-submit .note{
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 13px;
+  color: var(--stone);
+  line-height: 1.45;
+  max-width: 36ch;
+}
+@media (max-width: 1080px){
+  .klaviyo-strip-inner{ grid-template-columns: 1fr; gap: 32px; }
+}
+footer .cols .downloads li{
+  font-family: var(--sans);
+  font-style: normal;
+  font-size: 13px;
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+footer .cols .downloads a{
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  text-decoration: none;
+  color: rgba(250,246,237,.86);
+  padding: 4px 0;
+  transition: color .2s ease;
+}
+footer .cols .downloads a:hover{ color: color-mix(in oklab, var(--accent-soft) 80%, white); }
+footer .cols .downloads a::after{
+  content: attr(data-ext);
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: .12em;
+  color: rgba(250,246,237,.5);
+  border: 0.5px solid rgba(250,246,237,.25);
+  padding: 2px 5px;
+  margin-left: 2px;
+}
+.botanical{
+  display: block;
+  --is-bg: transparent;
+  --is-border: 1px dashed rgba(133, 79, 11, 0.32);
+  --is-radius: 0;
+  --is-placeholder-color: var(--amber);
+  opacity: .9;
+}
+.botanical.intro-orn{
+  width: 88px;
+  height: 116px;
+  margin: 0 0 26px;
+}
+.botanical.closing-orn{
+  width: 96px;
+  height: 128px;
+  margin: 0 auto 28px;
+}
+
+/* ----------------------- OUTFIT YOUR CLASSROOM ----------------------- */
+.outfit{
+  background: var(--cream);
+  padding: clamp(56px, 8vw, 92px) 0;
+  position: relative;
+}
+.outfit .head{
+  max-width: 1340px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 56px) 56px;
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: 64px;
+  align-items: end;
+  border-bottom: 0.5px solid var(--rule);
+}
+.outfit .head h2{
+  margin: 0;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(40px, 5.4vw, 88px);
+  line-height: 1.0;
+  letter-spacing: -.008em;
+  color: var(--ink);
+}
+.outfit .head h2 .it{ color: var(--accent-deep); }
+.outfit .head .right p{
+  margin: 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 20px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  max-width: 42ch;
+}
+.outfit .head .right .meta{
+  margin-top: 18px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: .08em;
+  color: var(--stone);
+}
+.outfit .kits{
+  max-width: 1340px;
+  margin: 64px auto 0;
+  padding: 0 clamp(20px, 5vw, 56px);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+.outfit .kit{
+  background: var(--card-bg);
+  border: 0.5px solid var(--rule);
+  border-radius: 2px;
+  padding: 40px 34px 32px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform .25s ease, border-color .25s ease;
+}
+.outfit .kit:hover{ transform: translateY(-3px); border-color: var(--rule-strong); }
+.outfit .kit.featured{
+  background: var(--accent-pale);
+  border-color: color-mix(in oklab, var(--accent-soft) 80%, transparent);
+}
+.outfit .kit .pill{
+  position: absolute;
+  top: -12px;
+  right: 24px;
+}
+.outfit .kit .tier{
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--stone);
+  margin-bottom: 16px;
+}
+.outfit .kit h3{
+  margin: 0 0 6px;
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 1.1;
+  letter-spacing: -.005em;
+  color: var(--ink);
+}
+.outfit .kit .sub{
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 17px;
+  color: var(--accent-deep);
+  line-height: 1.4;
+}
+.outfit .kit .hair{
+  width: 40px; height: 1px;
+  background: var(--ink);
+  opacity: .3;
+  margin: 24px 0 22px;
+}
+.outfit .kit .desc{
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: var(--ink-soft);
+  margin: 0 0 22px;
+  max-width: 38ch;
+}
+.outfit .kit ul.contains{
+  list-style: none;
+  margin: 0 0 28px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+.outfit .kit ul.contains li{
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 16px;
+  line-height: 1.45;
+  color: var(--ink);
+  padding-left: 18px;
+  position: relative;
+}
+.outfit .kit ul.contains li::before{
+  content: "";
+  position: absolute;
+  left: 0; top: 11px;
+  width: 9px; height: 1px;
+  background: var(--accent);
+}
+.outfit .kit .price-line{
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--stone);
+  margin-bottom: 18px;
+  padding-top: 18px;
+  border-top: 0.5px solid var(--rule-strong);
+}
+.outfit .kit .kit-cta{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  padding-bottom: 4px;
+  border-bottom: 0.5px solid var(--ink);
+  align-self: flex-start;
+  transition: color .2s ease, border-color .2s ease;
+}
+.outfit .kit .kit-cta:hover{ color: var(--forest); border-color: var(--forest); }
+.outfit .kit.featured .kit-cta{ color: var(--accent-deep); border-color: var(--accent-deep); }
+.outfit .kit.featured .kit-cta:hover{ color: var(--ink); border-color: var(--ink); }
+
+.outfit .note{
+  max-width: 1340px;
+  margin: 56px auto 0;
+  padding: 0 clamp(20px, 5vw, 56px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.outfit .note .left{
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 17px;
+  color: var(--ink-soft);
+  max-width: 56ch;
+}
+.outfit .note .right{
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+@media (max-width: 1080px){
+  .outfit .head{ grid-template-columns: 1fr; gap: 32px; }
+  .outfit .note{ flex-direction: column; align-items: flex-start; }
+}
+
+/* ----------------------- CONTAINER ----------------------- */
+.wrap{ max-width: 1340px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 56px); }
+.wrap-wide{ max-width: 1500px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 56px); }
+.gut{   padding-top: clamp(56px, 8vw, 92px); padding-bottom: clamp(56px, 8vw, 92px); }
+.gut-sm{ padding-top: clamp(40px, 5vw, 64px);  padding-bottom: clamp(40px, 5vw, 64px); }
+
+/* ============================== COVER ============================== */
+.cover{
+  position: relative;
+  height: min(100vh, 920px);
+  min-height: 680px;
+  overflow: hidden;
+  isolation: isolate;
+}
+.cover .bg{ position:absolute; inset:0; z-index:0; }
+.cover .veil{
+  position:absolute; inset:0; z-index:1; pointer-events:none;
+  background:
+    linear-gradient(180deg, rgba(44,26,14,.04) 0%, rgba(44,26,14,0) 35%, rgba(44,26,14,0) 58%, rgba(44,26,14,.55) 100%),
+    linear-gradient(180deg, rgba(159,79,97,.18) 0%, rgba(159,79,97,0) 50%);
+}
+.cover .frame{
+  position:absolute; inset:28px; z-index:2; pointer-events:none;
+  border: 1px solid rgba(250,246,237,.32);
+}
+.cover .head{
+  position: absolute;
+  top: 92px; left: clamp(28px, 5vw, 56px); right: clamp(28px, 5vw, 56px);
+  z-index: 3;
+  display: flex; justify-content: space-between; align-items: flex-start;
+  color: var(--cream);
+}
+.cover .head .vol{ text-align:right; }
+.cover .head .vol .num{
+  font-family: var(--serif); font-style: italic;
+  font-size: 38px; line-height: 1;
+}
+.cover h1{
+  position:absolute;
+  left: clamp(28px, 5vw, 56px);
+  right: clamp(28px, 5vw, 56px);
+  bottom: 132px;
+  z-index: 3;
+  margin: 0;
+  font-family: var(--serif);
+  font-weight: 400;
+  color: var(--cream);
+  font-size: clamp(56px, 10vw, 168px);
+  line-height: .92;
+  letter-spacing: -.012em;
+  text-shadow: 0 1px 28px rgba(0,0,0,.2);
+}
+.cover h1 .it{
+  display: block;
+  font-style: italic;
+  color: color-mix(in oklab, var(--accent-soft) 80%, white);
+}
+.cover .footer{
+  position:absolute;
+  left: clamp(28px, 5vw, 56px);
+  right: clamp(28px, 5vw, 56px);
+  bottom: 48px;
+  z-index: 3;
+  color: var(--cream);
+  display: flex; justify-content: space-between; align-items: flex-end; gap: 24px;
+}
+.cover .audience{ max-width: 540px; }
+.cover .audience .label{ color: rgba(250,246,237,.7); }
+.cover .audience p{
+  margin-top: 8px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 22px;
+  line-height: 1.4;
+  color: var(--cream);
+}
+.cover .scroll{
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: .14em;
+  color: rgba(250,246,237,.85);
+  text-align:right;
+}
+.cover .scroll .dot{
+  display:inline-block; width:6px; height:6px; border-radius:50%;
+  background: var(--cream); margin-left: 10px; vertical-align: middle;
+  animation: pulse 2.4s ease-in-out infinite;
+}
+@keyframes pulse{ 0%,100%{ opacity:.35 } 50%{ opacity:1 } }
+
+/* ============================== ANCHOR ============================== */
+.anchor{
+  background: var(--cream);
+  border-top: 1px solid var(--rule-soft);
+  border-bottom: 1px solid var(--rule-soft);
+  position: relative;
+}
+.anchor .wrap{
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: 80px;
+  align-items: center;
+}
+.anchor .vol-numeral{
+  position: absolute;
+  right: clamp(20px, 5vw, 56px);
+  top: -30px;
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--accent-soft);
+  font-size: clamp(120px, 16vw, 220px);
+  line-height: .8;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+.anchor h2{
+  margin: 0;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(40px, 5.8vw, 96px);
+  line-height: 1.02;
+  letter-spacing: -.008em;
+  position: relative; z-index: 1;
+}
+.anchor h2 .it{ color: var(--accent-deep); }
+.anchor h2 .quote-open,
+.anchor h2 .quote-close{
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--accent);
+  font-size: 1.2em;
+  line-height: 0;
+  position: relative;
+  top: .08em;
+}
+.anchor .side{
+  display: flex; flex-direction: column; gap: 22px;
+  border-left: 1px solid var(--rule-soft);
+  padding-left: 44px;
+}
+.anchor .side .eyebrow{ color: var(--ink-soft); }
+.anchor .side p{
+  margin: 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 21px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
+/* ============================== EDITORIAL INTRO ============================== */
+.intro{ background: var(--card-bg); }
+.intro .wrap{
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: 72px;
+  align-items: stretch;
+}
+.intro .col-img{ }
+.intro .col-img .tile{ height: 100%; min-height: 420px; }
+.intro .col-txt{
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 12px 0;
+}
+.intro .col-txt .eyebrow{ color: var(--accent-deep); margin-bottom: 28px; }
+.intro .col-txt h3{
+  margin: 0 0 36px;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(32px, 3.8vw, 56px);
+  line-height: 1.08;
+  letter-spacing: -.004em;
+}
+.intro .col-txt h3 .it{ color: var(--accent-deep); }
+.intro .body{
+  font-size: 17.5px;
+  line-height: 1.78;
+  max-width: 56ch;
+}
+.intro .body p{ margin: 0 0 18px; }
+.intro .body .dropcap{
+  float: left;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 92px;
+  line-height: .78;
+  color: var(--accent);
+  padding: 8px 14px 0 0;
+}
+.intro .body .triplet{
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--ink);
+  font-size: 19px;
+  line-height: 1.55;
+}
+.intro .pillars{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 44px;
+  padding-top: 28px;
+  border-top: 1px solid var(--rule-soft);
+}
+.intro .pillars .p .label{ color: var(--accent-deep); display:block; margin-bottom: 8px; }
+.intro .pillars .p p{
+  margin: 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 17px;
+  line-height: 1.45;
+  color: var(--ink-soft);
+}
+
+/* ============================== FEATURE STAGE ============================== */
+.stage{
+  position: relative;
+  height: 64vh;
+  min-height: 540px;
+  max-height: 800px;
+  color: var(--cream);
+  overflow: hidden;
+}
+.stage .bg{ position: absolute; inset: 0; z-index: 0; }
+.stage .veil{
+  position: absolute; inset: 0; z-index: 1;
+  background:
+    linear-gradient(90deg, rgba(20,10,6,.55) 0%, rgba(20,10,6,0) 48%),
+    linear-gradient(180deg, rgba(20,10,6,.16) 0%, rgba(20,10,6,0) 32%, rgba(20,10,6,.6) 100%);
+}
+.stage .content{
+  position: relative; z-index: 2;
+  height: 100%;
+  padding: clamp(56px, 8vh, 100px) clamp(28px, 5vw, 80px);
+  display: grid; grid-template-rows: auto 1fr auto; gap: 24px;
+}
+.stage .top{ display:flex; justify-content: space-between; align-items: flex-start; gap: 24px; }
+.stage .top .eyebrow{ color: var(--accent-soft); }
+.stage .top .right{ text-align: right; }
+.stage .top .right .label{ color: rgba(250,246,237,.62); }
+.stage .top .right .name{ font-family: var(--serif); font-style: italic; font-size: 17px; margin-top: 6px; }
+.stage .mid{ align-self: end; max-width: 980px; }
+.stage h2{
+  margin: 0;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(56px, 7.6vw, 128px);
+  line-height: .94;
+  letter-spacing: -.012em;
+}
+.stage h2 .it{
+  display: block;
+  font-style: italic;
+  color: color-mix(in oklab, var(--accent-soft) 85%, white);
+}
+.stage .lede{
+  margin: 28px 0 0;
+  max-width: 640px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 22px;
+  line-height: 1.5;
+  color: rgba(250,246,237,.88);
+}
+.stage .bot{ display: flex; align-items: flex-end; justify-content: flex-start; }
+
+/* ----------- Button ----------- */
+.btn{
+  display:inline-flex; align-items:center; gap:14px;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 12.5px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  background: var(--cream);
+  color: var(--ink);
+  border: 1px solid var(--cream);
+  border-radius: 2px;
+  padding: 16px 28px;
+  text-decoration: none;
+  transition: background .25s ease, color .25s ease, border-color .25s ease;
+}
+.btn:hover{ background: var(--accent); border-color: var(--accent); color: var(--cream); }
+.btn .arrow{
+  display:inline-block; width: 22px; height: 1px; background: currentColor; position: relative;
+}
+.btn .arrow::after{
+  content:""; position: absolute; right: 0; top: -3px;
+  width: 7px; height: 7px;
+  border-top: 1px solid currentColor; border-right: 1px solid currentColor; transform: rotate(45deg);
+}
+.btn.ink{ background: var(--ink); color: var(--cream); border-color: var(--ink); }
+.btn.ink:hover{ background: var(--accent-deep); border-color: var(--accent-deep); color: var(--cream); }
+.btn.ghost{ background: transparent; color: var(--cream); border-color: rgba(250,246,237,.5); }
+.btn.ghost:hover{ background: var(--cream); color: var(--ink); border-color: var(--cream); }
+
+/* ============================== FEATURE SPLIT (CONTENTS) ============================== */
+.split{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--accent-pale);
+  min-height: 72vh;
+}
+.split .img-side{ position: relative; min-height: 480px; }
+.split .img-side .tile{ position: absolute; inset: 0; }
+.split .img-side::after{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background: linear-gradient(to right, transparent 60%, color-mix(in oklab, var(--accent) 25%, transparent));
+}
+.split .content{
+  padding: clamp(56px, 8vw, 120px) clamp(36px, 6vw, 96px);
+  display: flex; flex-direction: column; justify-content: center;
+  position: relative;
+}
+.split .content::before{
+  content:""; position:absolute; top: 44px; right: 44px;
+  width: 48px; height: 48px;
+  border-top: 1px solid var(--gilt); border-right: 1px solid var(--gilt);
+  opacity: .55;
+}
+.split .content .eyebrow{ color: var(--accent-deep); margin-bottom: 24px; }
+.split .content h3{
+  margin: 0;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(30px, 3.6vw, 52px);
+  line-height: 1.1;
+  letter-spacing: -.005em;
+}
+.split .content .sub{
+  margin-top: 6px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 18px;
+  color: var(--accent-deep);
+}
+.split .content .hair{
+  width: 56px; height: 1px; background: var(--accent);
+  opacity: .5; margin: 32px 0;
+}
+.split .content .desc{
+  font-family: var(--serif);
+  font-size: clamp(17px, 1.4vw, 19px);
+  line-height: 1.78;
+  color: var(--ink-soft);
+  max-width: 56ch;
+}
+.split .content .contents-list{
+  list-style: none; padding: 0; margin: 28px 0 0;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px 28px;
+}
+.split .content .contents-list li{
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--ink);
+  padding-left: 20px;
+  position: relative;
+}
+.split .content .contents-list li::before{
+  content: ""; position: absolute; left: 0; top: 12px;
+  width: 10px; height: 1px; background: var(--accent);
+}
+.split .content .craft{
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  margin-top: 36px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(159,79,97,.22);
+}
+.split .content .craft .label{ color: var(--muted); display:block; margin-bottom: 8px; font-size: 10.5px; }
+.split .content .craft .v{
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 17px;
+  line-height: 1.45;
+  color: var(--ink);
+}
+.split .content .craft .v.plain{ font-family: var(--sans); font-style: normal; font-size: 13px; color: var(--ink-soft); line-height: 1.55; }
+.split .content .testimony{
+  margin-top: 36px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(159,79,97,.22);
+}
+.split .content .testimony .quote{
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(19px, 1.6vw, 22px);
+  line-height: 1.5;
+  color: var(--ink);
+  max-width: 56ch;
+}
+.split .content .testimony .attr{
+  margin-top: 18px;
+  display: flex; align-items: center; gap: 14px;
+}
+.split .content .testimony .attr .dash{ display:inline-block; width: 36px; height: 1px; background: var(--accent); }
+.split .content .testimony .attr .name{
+  font-family: var(--sans);
+  font-size: 11.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-soft);
+}
+.split .content .testimony .attr .name b{ color: var(--ink); font-weight: 700; }
+.split .content .ctas{ margin-top: 40px; display: flex; flex-wrap: wrap; gap: 16px 22px; align-items: center; }
+.split .content .ctas .price{
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 16px;
+  color: var(--ink-soft);
+}
+.split .content .ctas .btn{ background: var(--ink); color: var(--cream); border-color: var(--ink); }
+.split .content .ctas .btn:hover{ background: var(--accent-deep); border-color: var(--accent-deep); }
+
+/* Pairs with, cross-sell block inside Feature Split */
+.pairs-with{
+  margin-top: 28px;
+  padding-top: 22px;
+  border-top: 0.5px solid var(--rule);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 16px 18px;
+  align-items: center;
+}
+.pairs-with .label{
+  grid-column: 1 / -1;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--accent-deep);
+  margin-bottom: 4px;
+}
+.pairs-with .pair-thumb{
+  width: 88px; height: 88px;
+  background: var(--accent-pale);
+  border-radius: 2px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pairs-with .pair-thumb img{ width: 100%; height: 100%; object-fit: contain; padding: 6px; }
+.pairs-with .pair-body{ display: flex; flex-direction: column; gap: 4px; }
+.pairs-with .pair-body h4{
+  margin: 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 19px;
+  line-height: 1.25;
+  letter-spacing: -.005em;
+  color: var(--ink);
+}
+.pairs-with .pair-body p{
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+.pairs-with .pair-body .pair-meta{
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--ink);
+}
+.pairs-with .pair-body .pair-meta strong{ font-weight: 600; margin-right: 8px; }
+.pairs-with .pair-body .pair-action{
+  margin-top: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 11.5px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 0.5px solid var(--ink);
+  padding-bottom: 2px;
+  align-self: flex-start;
+}
+.pairs-with .pair-body .pair-action:hover{ color: var(--forest); border-color: var(--forest); }
+
+/* ============================== DETAIL SPREAD ============================== */
+.spread{
+  background: var(--ink);
+  color: var(--cream);
+  padding: clamp(72px, 10vw, 120px) clamp(28px, 5vw, 80px);
+}
+.spread .row{
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+  gap: 72px;
+  align-items: start;
+}
+.spread h3{
+  margin: 0;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(30px, 3.6vw, 52px);
+  line-height: 1.05;
+}
+.spread h3 .it{ color: color-mix(in oklab, var(--accent-soft) 80%, white); }
+.spread .head .eyebrow{ color: var(--accent-soft); margin-bottom: 22px; }
+.spread .head p.sub{
+  margin-top: 22px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 19px;
+  line-height: 1.55;
+  color: rgba(250,246,237,.66);
+  max-width: 38ch;
+}
+.spread .crops{
+  display: grid;
+  grid-template-columns: 1.3fr .9fr .9fr;
+  grid-auto-rows: 220px;
+  gap: 16px;
+}
+.spread .crops .tile{ width: 100%; height: 100%; }
+.spread .learn{
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid rgba(250,246,237,.2);
+  border-bottom: 1px solid rgba(250,246,237,.2);
+}
+.spread .learn .l{
+  padding: 24px 22px;
+  border-right: 1px solid rgba(250,246,237,.12);
+}
+.spread .learn .l:last-child{ border-right: 0; }
+.spread .learn .num{
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 28px;
+  line-height: 1;
+  color: color-mix(in oklab, var(--accent-soft) 80%, white);
+  margin-bottom: 14px;
+}
+.spread .learn .name{
+  font-family: var(--serif);
+  font-size: 22px;
+  line-height: 1.15;
+}
+.spread .learn .desc{
+  margin-top: 8px;
+  font-size: 13px;
+  color: rgba(250,246,237,.66);
+  line-height: 1.55;
+}
+
+/* ============================== GALLERY ============================== */
+.gallery{
+  background: linear-gradient(180deg, var(--cream) 0%, var(--accent-pale) 100%);
+  position: relative;
+  overflow: hidden;
+}
+.gallery .head{
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: 72px;
+  align-items: end;
+  padding-bottom: 56px;
+  border-bottom: 1px solid var(--rule-soft);
+}
+.gallery .head .eyebrow{ color: var(--accent-deep); margin-bottom: 22px; display:inline-block; }
+.gallery .head h2{
+  margin: 0;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(44px, 6vw, 96px);
+  line-height: .98;
+  letter-spacing: -.008em;
+}
+.gallery .head h2 .it{ color: var(--accent-deep); }
+.gallery .head .right p{
+  margin: 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 21px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  max-width: 40ch;
+}
+.gallery .head .index{
+  margin-top: 18px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: .08em;
+  color: var(--ink-soft);
+}
+.homes{
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 24px;
+}
+.home{ position: relative; }
+.home .tile-wrap{
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 2px;
+  aspect-ratio: 4 / 5;
+}
+.home .tile-wrap .tile{ width: 100%; height: 100%; min-height: 0; }
+.home .tile-wrap .overlay{
+  position: absolute; inset: 0; z-index: 4; pointer-events: none;
+  background: linear-gradient(to top, rgba(44,26,14,.65) 0%, rgba(44,26,14,0) 45%);
+  opacity: 0;
+  transition: opacity .35s ease;
+}
+.home .tile-wrap .float-name{
+  position: absolute; left: 22px; right: 22px; bottom: 22px; z-index: 5;
+  font-family: var(--serif);
+  font-size: 22px;
+  line-height: 1.15;
+  color: var(--cream);
+  text-shadow: 0 1px 12px rgba(0,0,0,.35);
+  transform: translateY(8px);
+  opacity: 0;
+  transition: opacity .35s ease, transform .35s ease;
+}
+.home:hover .tile-wrap .overlay{ opacity: 1; }
+.home:hover .tile-wrap .float-name{ opacity: 1; transform: translateY(0); }
+.home .cap{
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.home .cap .no{
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 14px;
+  line-height: 1;
+  color: var(--accent-deep);
+}
+.home .cap .name{
+  font-family: var(--serif);
+  font-size: 22px;
+  line-height: 1.15;
+  letter-spacing: -.004em;
+  color: var(--ink);
+  margin-top: 2px;
+}
+.home .cap .desc{
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  margin: 6px 0 4px;
+}
+.home .cap .price{
+  font-size: 22px;
+  margin: 6px 0 0;
+}
+.home .cap .stock-pill{
+  align-self: flex-start;
+  margin: 2px 0;
+}
+.home .cap .add-row{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+.home .cap .add-btn{ flex-shrink: 0; padding: 9px 14px; font-size: 10.5px; }
+.home .cap .view-pdp{ font-size: 10.5px; white-space: nowrap; }
+
+/* Footer alignment, pushes SKU + price + add-row to the bottom of every
+   card so they line up horizontally across the grid row even when desc
+   lengths vary. The .meta SKU line is the footer starter and absorbs
+   the vertical slack via margin-top:auto. Subtle hairline divides the
+   editorial description from the procurement footer. */
+.home{ display: flex; flex-direction: column; height: 100%; }
+.home .cap{ flex: 1 1 auto; }
+.home .cap > .meta{
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 0.5px solid var(--rule);
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 10.5px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--stone);
+  display: block;
+}
+.home .cap .price{
+  grid-column: 2;
+  margin-top: 4px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: .08em;
+  color: var(--accent-deep);
+}
+.home .cap .tags{
+  grid-column: 2;
+  display:flex; flex-wrap: wrap; gap: 8px;
+}
+.home .cap .tags .t{
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--accent-deep);
+  padding: 4px 9px;
+  border: 1px solid color-mix(in oklab, var(--accent-deep) 35%, transparent);
+  border-radius: 2px;
+}
+
+/* legacy size-X classes are no-ops now, all gallery cards uniform */
+.home.size-hero,
+.home.size-tall,
+.home.size-std,
+.home.size-wide{ grid-column: span 1; }
+.home.size-hero .tile-wrap .tile,
+.home.size-tall .tile-wrap .tile,
+.home.size-std .tile-wrap .tile,
+.home.size-wide .tile-wrap .tile{ height: 100%; min-height: 0; }
+
+/* ----------------------- REVIEWS (from the classrooms) ----------------------- */
+.reviews-section{
+  background: var(--cream);
+}
+.reviews-section .reviews-head{
+  text-align: center;
+  margin-bottom: 56px;
+}
+.reviews-section .reviews-head .eyebrow{
+  color: var(--accent-deep);
+  display: inline-block;
+  margin-bottom: 18px;
+}
+.reviews-section .reviews-head h2{
+  margin: 0 0 18px;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(40px, 5vw, 72px);
+  line-height: 1.02;
+  letter-spacing: -.008em;
+}
+.reviews-section .reviews-head h2 em{ font-style: italic; color: var(--accent-deep); }
+.reviews-section .rating-summary{
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--ink-soft);
+  letter-spacing: .04em;
+}
+.reviews-section .rating-summary .stars{
+  color: var(--amber);
+  font-size: 16px;
+  letter-spacing: 2px;
+}
+.reviews-section .reviews-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+.reviews-section .review{
+  background: var(--warm-white);
+  border: 0.5px solid var(--rule);
+  border-radius: 2px;
+  padding: 28px 30px;
+  display: flex;
+  flex-direction: column;
+}
+.reviews-section .review .stars{
+  color: var(--amber);
+  font-size: 14px;
+  letter-spacing: 1px;
+  margin-bottom: 18px;
+}
+.reviews-section .review h3{
+  margin: 0 0 16px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(20px, 1.8vw, 22px);
+  line-height: 1.25;
+  letter-spacing: -.005em;
+  color: var(--ink);
+}
+.reviews-section .review p{
+  margin: 0 0 18px;
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: var(--ink-soft);
+  flex: 1;
+}
+.reviews-section .review .who{
+  margin: 0;
+  padding-top: 16px;
+  border-top: 0.5px solid var(--rule);
+  font-family: var(--sans);
+  font-size: 12.5px;
+  color: var(--stone);
+  line-height: 1.45;
+}
+.reviews-section .review .who strong{ color: var(--ink); font-weight: 600; }
+.reviews-section .see-all{
+  margin-top: 44px;
+  text-align: center;
+}
+.reviews-section .see-all a{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 12.5px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  padding-bottom: 4px;
+  border-bottom: 0.5px solid var(--ink);
+  transition: color .2s ease, border-color .2s ease;
+}
+.reviews-section .see-all a:hover{ color: var(--forest); border-color: var(--forest); }
+@media (max-width: 1080px){
+  .reviews-section .reviews-grid{ grid-template-columns: 1fr; gap: 18px; }
+}
+
+/* Reviews carousel, generic, MTW-wide educator reviews.
+   Swap from .reviews-grid (static 3-up) to a snap-scroll track with
+   prev/next arrows and pagination dots. Cards reuse .review styles. */
+.reviews-section .reviews-carousel{
+  position: relative;
+  margin: 0 -8px;
+}
+.reviews-section .rc-track{
+  display: flex;
+  gap: 22px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 8px;
+  padding: 6px 8px 18px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.reviews-section .rc-track::-webkit-scrollbar{ display: none; }
+.reviews-section .rc-track .review{
+  flex: 0 0 calc((100% - 44px) / 3);
+  scroll-snap-align: start;
+  min-width: 280px;
+  margin: 0;
+}
+.reviews-section .rc-nav{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px; height: 44px;
+  background: var(--warm-white);
+  border: 0.5px solid var(--rule-strong);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--serif);
+  font-size: 16px;
+  color: var(--ink);
+  z-index: 2;
+  box-shadow: 0 2px 12px rgba(44,44,42,.06);
+  transition: background .2s ease, border-color .2s ease, color .2s ease, opacity .2s ease;
+}
+.reviews-section .rc-nav:hover{ background: var(--ink); color: var(--cream); border-color: var(--ink); }
+.reviews-section .rc-nav:disabled{ opacity: .25; cursor: default; }
+.reviews-section .rc-nav:disabled:hover{ background: var(--warm-white); color: var(--ink); border-color: var(--rule-strong); }
+.reviews-section .rc-nav.prev{ left: -22px; }
+.reviews-section .rc-nav.next{ right: -22px; }
+.reviews-section .rc-nav svg{ width: 14px; height: 14px; stroke: currentColor; stroke-width: 1.6; fill: none; }
+.reviews-section .rc-dots{
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 24px;
+}
+.reviews-section .rc-dots button{
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--rule-strong);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background .25s ease, width .25s ease, border-radius .25s ease;
+}
+.reviews-section .rc-dots button.is-active{
+  background: var(--accent-deep);
+  width: 22px;
+  border-radius: 3px;
+}
+@media (max-width: 1080px){
+  .reviews-section .rc-track .review{ flex: 0 0 86%; }
+  .reviews-section .rc-nav{ display: none; }
+}
+.collection-bridge{
+  margin-top: 72px;
+  padding: 36px 0 0;
+  border-top: 0.5px solid var(--rule-strong);
+  text-align: center;
+}
+.collection-bridge p{
+  margin: 0 auto 18px;
+  max-width: 56ch;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 19px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+.collection-bridge p strong{
+  font-style: normal;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 10.5px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--ink);
+  display: block;
+  margin-bottom: 10px;
+}
+.collection-bridge .bridge-cta{
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 12.5px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--cream);
+  background: var(--ink);
+  border: 1px solid var(--ink);
+  border-radius: 2px;
+  padding: 16px 28px;
+  text-decoration: none;
+  transition: background .2s ease, border-color .2s ease;
+}
+.collection-bridge .bridge-cta:hover{ background: var(--accent-deep); border-color: var(--accent-deep); }
+.collection-bridge .bridge-cta::after{
+  content: ""; width: 8px; height: 8px;
+  border-top: 1px solid currentColor;
+  border-right: 1px solid currentColor;
+  transform: rotate(45deg);
+  display: inline-block;
+}
+
+.gallery .quote-strip{
+  margin-top: 110px;
+  padding: 56px 0;
+  border-top: 1px solid var(--rule-soft);
+  border-bottom: 1px solid var(--rule-soft);
+  text-align: center;
+}
+.gallery .quote-strip p{
+  margin: 0 auto;
+  max-width: 32ch;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(24px, 2.6vw, 36px);
+  line-height: 1.35;
+  color: var(--ink);
+}
+
+/* ============================== COMPANIONS ============================== */
+.companions{
+  position: relative;
+  overflow: hidden;
+  color: var(--cream);
+  background: var(--hue-3-deep);
+}
+.companions::after{
+  content:""; position:absolute; left:0; right:0; bottom:0; height: 3px; z-index: 2;
+  background: linear-gradient(to right, var(--accent) 0%, var(--alt) 50%, var(--hue-3) 100%);
+  opacity: .55;
+}
+.companions .wrap{
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 6fr);
+  gap: 80px;
+  align-items: center;
+}
+.companions .col-img .tile{ height: 460px; }
+.companions .col-txt .eyebrow{ color: color-mix(in oklab, var(--accent-soft) 80%, white); }
+.companions h2{
+  margin: 22px 0 0;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(44px, 5.8vw, 92px);
+  line-height: .98;
+  letter-spacing: -.01em;
+}
+.companions h2 .it{ color: color-mix(in oklab, var(--accent-soft) 85%, white); }
+.companions p.lede{
+  margin: 28px 0 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 22px;
+  line-height: 1.55;
+  color: rgba(250,246,237,.84);
+  max-width: 38ch;
+}
+.companions .folk{
+  margin-top: 48px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+.companions .folk .f{
+  display: flex;
+  flex-direction: column;
+}
+.companions .folk .f .tile{
+  position: relative;
+  aspect-ratio: 1 / 1.1;
+  width: 100%;
+}
+.companions .folk .f .name{
+  position: static;
+  margin: 12px 0 0;
+  text-shadow: none;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 18px;
+  color: var(--cream);
+  line-height: 1.2;
+  text-align: left;
+  display: block;
+}
+.companions .folk .folk-row{
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.companions .folk .folk-price{
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 18px;
+  color: var(--cream);
+  line-height: 1;
+}
+.companions .folk .folk-price small{
+  font-family: var(--sans);
+  font-style: normal;
+  font-size: 9px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: rgba(245,240,229,.55);
+  margin-left: 6px;
+}
+.companions .folk .add-btn.icon{
+  padding: 7px 10px;
+  background: transparent;
+  border: 1px solid rgba(245,240,229,.4);
+  color: var(--cream);
+}
+.companions .folk .add-btn.icon:hover{
+  background: var(--cream); color: var(--ink); border-color: var(--cream);
+}
+.companions .folk .add-btn.icon .plus{ width: 11px; height: 11px; }
+.companions .price-line{
+  margin-top: 36px;
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: color-mix(in oklab, var(--accent-soft) 70%, white);
+}
+
+/* ============================== BOTTOM HERO ============================== */
+.bottom-hero{
+  position: relative;
+  height: 80vh;
+  min-height: 520px;
+  max-height: 920px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+.bottom-hero .bg{ position: absolute; inset: 0; z-index: 0; }
+.bottom-hero .veil{
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: linear-gradient(to bottom, rgba(44,26,14,.02) 0%, rgba(44,26,14,.4) 65%, rgba(44,26,14,.85) 100%);
+}
+.bottom-hero .content{
+  position: relative; z-index: 2;
+  width: 100%;
+  padding: 0 clamp(28px, 5vw, 80px) 80px;
+  text-align: center;
+}
+.bottom-hero h3{
+  margin: 0 auto;
+  max-width: 22ch;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-style: italic;
+  font-size: clamp(36px, 5vw, 80px);
+  line-height: 1.1;
+  letter-spacing: -.005em;
+  color: var(--cream);
+  text-shadow: 0 1px 28px rgba(0,0,0,.3);
+}
+
+/* ============================== CLOSING ============================== */
+.closing{
+  background:
+    linear-gradient(180deg, var(--cream) 0%, var(--accent-pale) 60%, var(--accent-soft) 100%);
+  color: var(--ink);
+  position: relative;
+  overflow: hidden;
+}
+.closing::before{
+  content:""; position: absolute;
+  top: 0; left: 50%; transform: translateX(-50%);
+  width: 1px; height: 80px;
+  background: var(--accent); opacity: .45;
+}
+.closing .wrap{ text-align: center; position: relative; z-index: 2; }
+.closing .eyebrow{ color: var(--accent-deep); }
+.closing h2{
+  margin: 36px auto 0;
+  max-width: 22ch;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(44px, 6.4vw, 104px);
+  line-height: 1.02;
+  letter-spacing: -.01em;
+}
+.closing h2 .it{ color: var(--accent-deep); }
+.closing .price{
+  margin: 56px auto 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 22px;
+  color: var(--ink-soft);
+}
+.closing .cta{ margin-top: 28px; }
+.closing .signoff{
+  margin-top: 100px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 24px;
+  padding-top: 28px;
+  border-top: 1px solid var(--rule-soft);
+}
+.closing .signoff .left,
+.closing .signoff .right{
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: .1em;
+  color: var(--ink-soft);
+}
+.closing .signoff .right{ text-align: right; }
+.closing .signoff .center{
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 15px;
+  color: var(--ink-soft);
+}
+
+/* ============================== FOOTER ============================== */
+footer{
+  background: var(--ink);
+  color: var(--cream);
+  padding: 64px clamp(28px, 5vw, 56px);
+}
+footer .wrap{
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+  gap: 48px;
+  max-width: 1340px; margin: 0 auto; padding: 0;
+}
+footer .left .foot-mark{
+  display: block;
+  width: 110px;
+  height: auto;
+  margin-bottom: 18px;
+}
+footer .left p{
+  margin-top: 14px;
+  max-width: 46ch;
+  color: rgba(250,246,237,.7);
+  font-size: 14px; line-height: 1.65;
+}
+footer .left .foot-contact{
+  margin-top: 22px;
+  padding-top: 20px;
+  border-top: 0.5px solid rgba(250,246,237,.18);
+  font-family: var(--sans);
+  font-size: 13px;
+  line-height: 1.7;
+  color: rgba(250,246,237,.86);
+}
+footer .left .foot-contact a{
+  color: inherit;
+  text-decoration: none;
+  display: block;
+  transition: color .2s ease;
+}
+footer .left .foot-contact a:hover{ color: color-mix(in oklab, var(--accent-soft) 80%, white); }
+footer .left .foot-contact .hours{
+  display: block;
+  margin-top: 8px;
+  color: rgba(250,246,237,.55);
+  font-size: 12px;
+}
+footer .left .foot-social{
+  margin-top: 22px;
+  display: flex;
+  gap: 10px;
+}
+footer .left .foot-social a{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px; height: 36px;
+  border: 0.5px solid rgba(250,246,237,.32);
+  border-radius: 50%;
+  color: rgba(250,246,237,.85);
+  transition: background .2s ease, color .2s ease, border-color .2s ease;
+}
+footer .left .foot-social a:hover{
+  background: var(--cream);
+  color: var(--ink);
+  border-color: var(--cream);
+}
+footer .left .foot-social svg{ width: 16px; height: 16px; stroke: currentColor; stroke-width: 1.4; fill: none; }
+footer .left .retail-link{
+  margin: 22px 0 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: rgba(250,246,237,.6);
+}
+footer .left .retail-link a{
+  color: rgba(250,246,237,.88);
+  text-decoration: none;
+  border-bottom: 0.5px solid rgba(250,246,237,.32);
+  padding-bottom: 1px;
+  transition: color .2s ease, border-color .2s ease;
+}
+footer .left .retail-link a:hover{
+  color: var(--cream);
+  border-color: var(--cream);
+}
+
+/* Pay methods row */
+footer .foot-mid{
+  max-width: 1340px; margin: 40px auto 0;
+  padding-top: 24px;
+  border-top: 0.5px solid rgba(250,246,237,.18);
+  display: flex; align-items: center; gap: 20px;
+  flex-wrap: wrap;
+}
+footer .foot-mid .pay-label{
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 14px;
+  color: rgba(250,246,237,.6);
+  flex-shrink: 0;
+}
+footer .pay-methods{ display: flex; flex-wrap: wrap; align-items: center; gap: 0; }
+footer .pay-chip{
+  display: inline-block;
+  padding: 0 14px 0 0;
+  margin-right: 14px;
+  border-right: 0.5px solid rgba(250,246,237,.18);
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(250,246,237,.65);
+  white-space: nowrap;
+}
+footer .pay-chip:last-child{ border-right: 0; margin-right: 0; padding-right: 0; }
+footer .pay-chip.po{ color: var(--cream); font-weight: 600; }
+footer .cols{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; }
+footer .cols h6{
+  margin: 0 0 14px;
+  font-family: var(--sans); font-weight: 600;
+  font-size: 11px; letter-spacing: .22em; text-transform: uppercase;
+  color: rgba(250,246,237,.5);
+}
+footer .cols ul{ list-style: none; margin: 0; padding: 0; }
+footer .cols li{
+  font-family: var(--sans);
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: rgba(250,246,237,.86);
+  margin-bottom: 6px;
+}
+footer .cols .catalog-list li{
+  padding-left: 2.6em;
+  text-indent: -2.6em;
+}
+footer .cols li a{
+  text-decoration: none;
+  color: inherit;
+  transition: color .2s ease;
+}
+footer .cols li a:hover{ color: color-mix(in oklab, var(--accent-soft) 80%, white); }
+footer .legal{
+  max-width: 1340px; margin: 32px auto 0;
+  padding-top: 22px;
+  border-top: 0.5px solid rgba(250,246,237,.14);
+  display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+  font-family: var(--sans);
+  font-size: 11.5px;
+  letter-spacing: .04em;
+  color: rgba(250,246,237,.55);
+}
+footer .legal .legal-links{ display: flex; gap: 22px; flex-wrap: wrap; }
+footer .legal .legal-links a{ color: inherit; text-decoration: none; transition: color .2s ease; }
+footer .legal .legal-links a:hover{ color: var(--cream); }
+
+/* ============================== RESPONSIVE ============================== */
+@media (max-width: 1080px){
+  .anchor .wrap,
+  .intro .wrap,
+  .companions .wrap,
+  .gallery .head{
+    grid-template-columns: 1fr; gap: 44px;
+  }
+  .anchor .side{
+    border-left: 0; padding-left: 0;
+    border-top: 1px solid var(--rule-soft); padding-top: 28px;
+  }
+  .intro .pillars{ grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  .stage .content{ padding: 56px 28px; }
+  .split{ grid-template-columns: 1fr; }
+  .split .img-side{ min-height: 360px; }
+  .split .img-side::after{ display: none; }
+  .split .content::before{ display: none; }
+  .split .content .contents-list{ grid-template-columns: 1fr; }
+  .spread{ padding: 72px 28px; }
+  .spread .row{ grid-template-columns: 1fr; gap: 36px; }
+  .spread .crops{ grid-template-columns: 1fr 1fr; grid-auto-rows: 200px; }
+  .spread .learn{ grid-template-columns: 1fr 1fr; }
+  .spread .learn .l{ border-bottom: 1px solid rgba(250,246,237,.12); }
+  .spread .learn .l:nth-child(2){ border-right: 0; }
+  .homes{ grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .home.size-hero, .home.size-tall, .home.size-std, .home.size-wide{
+    grid-column: span 1;
+  }
+  .companions .col-img .tile{ height: 540px; }
+  footer .wrap{ grid-template-columns: 1fr; }
+}
+@media (max-width: 640px){
+  body{ font-size: 16px; }
+  .nav{ grid-template-columns: 1fr auto; padding: 12px 18px; }
+  .nav__center{ display: none; }
+  .cover{ height: 88vh; min-height: 600px; }
+  .cover .frame{ inset: 14px; }
+  .cover .head{ top: 72px; left: 24px; right: 24px; }
+  .cover h1{ left: 24px; right: 24px; bottom: 112px; }
+  .cover .footer{ left: 24px; right: 24px; bottom: 28px; flex-direction: column; align-items: flex-start; gap: 16px; }
+  .anchor, .intro, .gallery, .companions, .closing{ }
+  .stage .top{ flex-direction: column; }
+  .stage .top .right{ text-align: left; }
+  .intro .pillars{ grid-template-columns: 1fr; }
+  .split .content .craft{ grid-template-columns: 1fr; }
+  .spread .crops{ grid-template-columns: 1fr; }
+  .spread .learn{ grid-template-columns: 1fr; }
+  .spread .learn .l{ border-right: 0 !important; }
+  .homes{ grid-template-columns: 1fr 1fr; }
+  .companions .folk{ grid-template-columns: repeat(2, 1fr); }
+  .closing .signoff{ grid-template-columns: 1fr; text-align: center; }
+  .closing .signoff .right{ text-align: center; }
+  footer .cols{ grid-template-columns: 1fr 1fr; gap: 24px; }
+}
+
+/* "Ships separately" pill, auto-injected by data-long-lead JS at the bottom of the page.
+   Tag any product card (.home), kit (.kit), or featured split with data-long-lead="true"
+   to show a small pill that signals the item has its own ship timeline. */
+.ships-separately-pill{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 11px;
+  margin: 8px 8px 0 0;
+  background: color-mix(in oklab, var(--amber, #854F0B) 10%, var(--cream, #F5F0E5));
+  color: var(--amber, #854F0B);
+  border: 0.5px solid color-mix(in oklab, var(--amber, #854F0B) 30%, transparent);
+  border-radius: 999px;
+  font-family: var(--sans, system-ui), sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.ships-separately-pill::before{
+  content: "";
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--amber, #854F0B);
+  flex-shrink: 0;
+}
+
+
+/* Pillar/eyebrow + body alignment, fixes uneven row heights when eyebrow
+   text wraps to 2 lines on some pillars but not others. Sets a minimum height
+   on the eyebrow so all 4 pillar bodies start at the same y-position. */
+.pillars .p{ display: flex; flex-direction: column; gap: 12px; }
+.pillars .p .label{
+  min-height: 2.4em;
+  display: flex;
+  align-items: flex-start;
+  line-height: 1.25;
+}
+.pillars .p p{ margin: 0; }
+
+
+/* Layout alternation, editorial rhythm.
+   .split.image-right flips the standard split so content-left, image-right.
+   Apply to Featured 2 (Letter Tracing) and Featured 3 (My Forest Floor) on
+   Sensory Play, and to Featured 2 on Woodland and Small World, for rhythm. */
+.split.image-right{ direction: rtl; }
+.split.image-right > *{ direction: ltr; }
+@media (max-width: 980px){ .split.image-right{ direction: ltr; } }
+
+/* Section divider, magazine TOC-entry style.
+   Used between major editorial sections to mark transition. */
+.section-divider{
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 36px clamp(20px, 5vw, 56px) 0;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 24px;
+  align-items: center;
+}
+.section-divider .num{
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--accent-deep);
+  letter-spacing: .04em;
+}
+.section-divider .line{
+  height: 0.5px;
+  background: var(--rule-strong);
+}
+.section-divider .label{
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+
+
+/* =================================================================
+   LAYOUT ROTATION SYSTEM
+   Three split variants (Featured Product) and three gallery
+   variants (Collection Grid), applied in a fixed alternating
+   pattern across each section page so no two adjacent blocks
+   share the same geometry. Editorial rhythm without bespoke
+   per-section markup.
+   
+   SPLIT VARIANTS (Featured Product):
+     .split            — default: image-left, content-right
+     .split.image-right — mirror: image-right, content-left
+     .split.stage      — stacked: full-width image, content centered below
+   
+   GALLERY VARIANTS (Collection Grid):
+     .gallery          — default: 5-card grid with hero/tall/std
+     .gallery.even     — 5 equal columns, no hero sizing
+     .gallery.strip    — 3 across hero row + 2 across detail row
+   
+   ROTATION PER SECTION PAGE:
+     Featured 1 (Hero)    → default split
+     Gallery 1            → default gallery (hero+4)
+     Featured 2           → .image-right
+     Gallery 2            → .even
+     Featured 3 (if any)  → .stage
+     Gallery 3 (if any)   → .strip
+   ================================================================= */
+
+/* Variant B — Mirror split: content-left, image-right.
+   Uses CSS grid order property; text direction unchanged. */
+.split.image-right .img-side{ order: 2; }
+.split.image-right .content{ order: 1; }
+
+/* Variant C — Stage split: full-width image hero, content centered beneath.
+   Different visual rhythm from the side-by-side splits. */
+.split.stage{
+  display: block !important;
+  padding: 0 0 clamp(56px, 7vw, 96px);
+}
+.split.stage .img-side{
+  width: 100%;
+  height: auto;
+  padding: 0;
+}
+.split.stage .img-side .tile{
+  width: 100%;
+  aspect-ratio: 16 / 7;
+  height: auto;
+}
+.split.stage .content{
+  max-width: 920px;
+  margin: clamp(40px, 5vw, 64px) auto 0;
+  padding: 0 clamp(20px, 5vw, 56px);
+}
+
+/* Variant Y — Even gallery: 5 equal columns, override hero/tall/std sizing.
+   Reads as a "collection" rather than a featured spread. */
+.gallery.even .homes{ grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 18px; }
+.gallery.even .home.size-hero,
+.gallery.even .home.size-tall,
+.gallery.even .home.size-std{ grid-column: auto; }
+.gallery.even .home .tile-wrap{ aspect-ratio: 3 / 4; }
+.gallery.even .home .tile-wrap .tile{ height: 100%; }
+@media (max-width: 1080px){ .gallery.even .homes{ grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 720px){ .gallery.even .homes{ grid-template-columns: repeat(2, 1fr); } }
+
+/* Variant Z — Strip gallery: 3 hero across the top, 2 wide detail below.
+   Magazine "feature spread" geometry. */
+.gallery.strip .homes{ grid-template-columns: repeat(6, 1fr); gap: 18px; }
+.gallery.strip .home:nth-child(1),
+.gallery.strip .home:nth-child(2),
+.gallery.strip .home:nth-child(3){ grid-column: span 2; }
+.gallery.strip .home:nth-child(4),
+.gallery.strip .home:nth-child(5){ grid-column: span 3; }
+.gallery.strip .home:nth-child(4) .tile-wrap,
+.gallery.strip .home:nth-child(5) .tile-wrap{ aspect-ratio: 16 / 9; }
+@media (max-width: 1080px){
+  .gallery.strip .homes{ grid-template-columns: repeat(2, 1fr); }
+  .gallery.strip .home:nth-child(1),
+  .gallery.strip .home:nth-child(2),
+  .gallery.strip .home:nth-child(3),
+  .gallery.strip .home:nth-child(4),
+  .gallery.strip .home:nth-child(5){ grid-column: auto; }
+}
+
+
+/* Row alignment, gallery cards.
+   Stretches every card in a row to match the tallest, then floats the
+   procurement footer (SKU, price, add-to-cart row) to card bottom so
+   they land at a single horizontal line across the row. */
+.gallery .homes{ grid-auto-rows: 1fr; align-items: stretch; }
+.gallery .home{ height: 100%; }
+.gallery .home .cap{ flex: 1 1 auto; display: flex; flex-direction: column; }
+.gallery .home .cap > .meta{ margin-top: auto; }
+.gallery .home .cap .price + .add-row,
+.gallery .home .cap .add-row{ margin-top: auto; }
+
+/* Even variant, equal columns so the row-stretch effect is most visible. */
+.gallery.even .homes{ grid-auto-rows: 1fr; }
+.gallery.even .home{ height: 100%; }
+
+/* Strip variant, two-row pattern. Stretch within each row. */
+.gallery.strip .homes{ grid-auto-rows: 1fr; }
+.gallery.strip .home{ height: 100%; }
+
+
+/* Standards row — sits below the .craft 3-cell block on Featured Product splits.
+   Holds curriculum/standards alignment codes (CCSS, NGSS, EYFS, etc.) as
+   small chip-pills. Kept separate from .craft to avoid cramming long codes
+   into the 3-column grid and to keep the row alignment crisp. */
+.split .content .standards-row{
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--rule);
+  display: grid;
+  grid-template-columns: minmax(140px, auto) 1fr;
+  gap: 24px;
+  align-items: start;
+}
+.split .content .standards-row .label{
+  color: var(--muted);
+  font-size: 10.5px;
+  letter-spacing: .18em;
+  display: block;
+  padding-top: 6px;
+}
+.split .content .standards-row .codes{
+  display: flex; flex-wrap: wrap; gap: 8px;
+}
+.split .content .standards-row .code{
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  color: var(--accent-deep);
+  padding: 6px 12px;
+  background: color-mix(in oklab, var(--accent-deep) 6%, transparent);
+  border: 0.5px solid color-mix(in oklab, var(--accent-deep) 28%, transparent);
+  border-radius: 999px;
+  white-space: nowrap;
+}
+@media (max-width: 720px){
+  .split .content .standards-row{ grid-template-columns: 1fr; gap: 12px; }
+  .split .content .standards-row .label{ padding-top: 0; }
+}
+
+
+/* Pull-quote, drops a large serif italic line between sections.
+   Pulled from catalog body copy to connect the reader to the ecosystem.
+   Centered, generous margin, hairline rule above and below. */
+.pull-quote{
+  background: var(--cream);
+  padding: clamp(56px, 7vw, 96px) clamp(20px, 5vw, 56px);
+  text-align: center;
+  border-top: 0.5px solid var(--rule);
+  border-bottom: 0.5px solid var(--rule);
+}
+.pull-quote blockquote{
+  max-width: 56ch;
+  margin: 0 auto;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(22px, 2.8vw, 32px);
+  line-height: 1.25;
+  color: var(--ink);
+  letter-spacing: -.008em;
+}
+.pull-quote blockquote em{ color: var(--accent-deep); font-style: italic; }
+.pull-quote cite{
+  display: block;
+  margin-top: 28px;
+  font-family: var(--sans);
+  font-style: normal;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+
+
+/* Caption variety, editorial. Apply explicitly via markup.
+   Use <div class="cap stripped"> for less-important products (variants, accents).
+   Use <div class="cap expanded"> for products that warrant editorial breath. */
+.gallery .home .cap.stripped .desc{ display: none; }
+.gallery .home .cap.stripped{ padding-bottom: 16px; }
+.gallery .home .cap.expanded::before{
+  content: "";
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: var(--accent);
+  opacity: .6;
+  margin: 10px 0 12px;
+}
+.gallery .home .cap.expanded .desc{
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+
+/* Section 04 — Small World & Storytelling personality
+   Narrative, italic-forward, literary density. */
+.gallery h2 .it, .split .content h3 .it, .intro h3 .it { font-weight: 500; }
+.split .content .desc{ font-family: var(--serif); font-style: italic; font-weight: 300; font-size: clamp(17px, 1.5vw, 19px); line-height: 1.55; }
+.gallery .home .name{ font-style: italic; font-weight: 400; }
+
+
+/* Section divider, mobile fallback. Long labels should stack vertically. */
+@media (max-width: 720px){
+  .section-divider{
+    grid-template-columns: auto 1fr;
+    gap: 16px;
+  }
+  .section-divider .line{ display: block; }
+  .section-divider .label{
+    grid-column: 1 / -1;
+    margin-top: -4px;
+  }
+}
+
+</style>
+</head>
+<body>
+
+<!-- =========================== UTILITY BAR =========================== -->
+<div class="utility">
+  <div class="utility-inner">
+    <div class="utility-left">
+      <a href="tel:6268410421" class="phone"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4a2 2 0 0 1 2-2h2l2 5-2 1a11 11 0 0 0 5 5l1-2 5 2v2a2 2 0 0 1-2 2A16 16 0 0 1 5 4Z"/></svg>(626) 841-0421</a>
+      <a href="#">Track an order</a>
+    </div>
+    <div class="utility-center">
+      <span class="slide is-active">Net-30, tax-exempt, and approved-vendor accounts for schools.</span>
+      <span class="slide">Every reply from a real human, within one business day.</span>
+      <span class="slide">Pre-paid orders ship first. Window closes when the bench fills.</span>
+    </div>
+    <div class="utility-right">
+      <a href="educator.html">Apply for an account</a>
+      <a href="educator.html">Sign in</a>
+    </div>
+  </div>
+</div>
+
+<!-- =========================== PROMO STRIP (pre-order window) =========================== -->
+<div class="promo-strip">
+  <strong>Fall booking</strong>
+  Limited production &middot; POs by <span class="vol">July 15</span> for September arrival
+  <span class="sep"></span>
+  Pre-paid orders ship first. Window closes when the bench fills.
+</div>
+
+<!-- =========================== NAV (search · logo · actions) =========================== -->
+<nav class="nav" id="nav">
+  <div class="nav__search" aria-label="Search">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <span>Search the educator catalog</span>
+  </div>
+  <a href="#" class="nav__logo">
+    <img src="{{ 'mtw-logo-full.png' | asset_url }}" alt="My Toy Wagon, Los Angeles, California, est. 2020" class="mark"/>
+  </a>
+  <div class="nav__actions">
+    <a href="educator-dashboard.html" class="nav__action" aria-label="Account">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20a8 8 0 0 1 16 0"/></svg>
+      <span class="label">Account</span>
+    </a>
+    <a href="new-quote.html" class="nav__action" aria-label="Quote builder">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="14" height="16" rx="1"/><path d="M9 9h6M9 13h6M9 17h4"/></svg>
+      <span class="label">Quote</span>
+      <span class="pill" id="quoteCount">0</span>
+    </a>
+  </div>
+</nav>
+
+<!-- =========================== SUBNAV (catalog stepper + page jumps) =========================== -->
+<div class="subnav">
+  <div class="subnav-inner">
+    <a href="educator-dashboard.html" class="back">The Catalog</a>
+    <div class="stepper" id="ecosystemStepper">
+      <a class="prev" href="#"></a>
+      <span class="sep">/</span>
+      <span class="current"></span>
+      <span class="sep">/</span>
+      <a class="next" href="#"></a>
+    </div>
+    <div class="jumps">
+      <a href="#homes">The Homes</a>
+      <a href="#kits">Outfit a Classroom</a>
+      <a href="new-quote.html">Quote builder</a>
+    </div>
+  </div>
+</div>
+
+<!-- =========================== COVER =========================== -->
+<section class="cover" data-screen-label="01 Cover">
+  <div class="bg tile t-mood">
+    <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+    <span class="tag dark">[ COVER PHOTO &nbsp;&middot;&nbsp; full-bleed atmospheric: child's hands arranging hand-felted animals on Papoose Forest Caves play mat, moss-covered cave entrance, free-standing chimney, dappled morning light. Mirrors the catalog opener (pg.&nbsp;23). ]</span>
+  </div>
+  <div class="veil"></div>
+
+  <div class="head">
+    <div>
+      <span class="wagon-badge">For Educators</span>
+    </div>
+    <div class="vol">
+      <div class="meta" style="color: rgba(250,246,237,.7);">SECTION</div>
+      <div class="num"><span data-fill="volume">04</span></div>
+    </div>
+  </div>
+
+  <h1>Small World <span class="it">&amp; Storytelling</span></h1>
+
+  <div class="footer">
+    <div class="audience">
+      <span class="label">Section Four &nbsp;&middot;&nbsp; Ages 3 to 8</span>
+      <p>Small hands, vast worlds. The stories children need to tell can&rsquo;t always wait for words. Hand-felted habitat mats, finger-puppet collections, and circle-time song sets, the literacy corner built for the body before the head.</p>
+    </div>
+  </div>
+</section>
+
+<!-- =========================== QUICK FACTS =========================== -->
+<!-- BEGIN PARTIAL: ecosystem-quick-facts (per-ecosystem facts; not shared) -->
+<section class="quick-facts" data-screen-label="02 Quick Facts">
+  <div class="quick-facts-inner">
+    <span class="qf-chip-stat">Pre-K to Grade 2</span>
+    <span class="qf-chip-stat">Hand-felted 100% wool</span>
+    <span class="qf-chip-stat">OEKO-TEX&reg; 100 &amp; GOTS</span>
+    <span class="qf-chip-stat">Fair Trade USA&trade;</span>
+    <span class="qf-chip-stat">Made in Nepal</span>
+    <span class="qf-chip-stat">Net-30 &amp; tax-exempt</span>
+  </div>
+</section>
+<!-- END PARTIAL: ecosystem-quick-facts -->
+
+<!-- =========================== SLOW GOODS BAND =========================== -->
+<section style="background: var(--cream); border-bottom: 0.5px solid var(--rule); text-align: center; padding: 56px clamp(20px, 5vw, 56px);">
+  <p style="margin: 0 auto; max-width: 68ch; font-family: var(--serif); font-style: italic; font-size: clamp(22px, 2.4vw, 30px); line-height: 1.4; color: var(--ink); letter-spacing: -.005em;">Hand-felted in the Kathmandu valley, hand-stitched on Tara Treasures linen. <span style="color: var(--accent-deep);">Slow goods, on purpose.</span></p>
+  <p style="margin: 22px auto 0; max-width: 62ch; font-family: var(--sans); font-size: 16px; line-height: 1.65; color: var(--ink-soft);">Every habitat, puppet, and story set in Small World is needle-felted by hand by Papoose, Himalayan Felt Co., and Tara Treasures workshops, OEKO-TEX&reg;-certified wool, non-toxic dyes, Fair Trade USA&trade;. The dimensional cave mats and three-dimensional puppets take three to four weeks; we accept a limited number of classroom orders each season. Reserve early.</p>
+  <p style="margin: 24px auto 0; max-width: 62ch; font-family: var(--sans); font-size: 14.5px; line-height: 1.6; color: var(--forest); font-weight: 600; letter-spacing: .02em;">For every classroom order, we share a meal with families served by the Los Angeles Regional Food Bank.</p>
+</section>
+
+<!-- =========================== EDITORIAL INTRO =========================== -->
+<section class="intro gut" data-screen-label="03 Editorial Intro">
+  <div class="wrap">
+    <div class="col-img">
+      <div class="tile t-hue3">
+        <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+        <span class="tag">[ EDITORIAL ESSAY &nbsp;&middot;&nbsp; lifestyle: small hands moving a felt fox across the Coralwhim Cove mat, finger puppets gathered at the edge, library reading-corner softly out of focus. Overhead three-quarter, warm side-light. ]</span>
+      </div>
+    </div>
+    <div class="col-txt">
+      <span class="eyebrow">Essay One &nbsp;&middot;&nbsp; What a Small World Holds</span>
+      <h3>A child has a story <span class="it">long before</span> she has the words.</h3>
+
+      <div class="body">
+        <p><span class="dropcap">B</span>efore a child writes a sentence, she stages one. She walks a felt fox into the mossy cave, flies a butterfly across the lily pond as she mimics flying, lifts the Gruffalo into the wood and out again. Small World is the toolkit for that staging: hand-felted habitat mats that hold a scene, finger puppets sized for small hands, and circle-time story sets that turn a familiar rhyme into something a body can do. No screens. No instructions. Just landscape, character, and the long, generous space between them.</p>
+      </div>
+
+      <div class="pillars">
+        <div class="p"><span class="label">Narrative Play</span><p>The story before the word.</p></div>
+        <div class="p"><span class="label">Habitat Studies</span><p>Reef, meadow, forest, pond, one mat at a time.</p></div>
+        <div class="p"><span class="label">Oral Language</span><p>Songs, rhymes, retelling, vocabulary.</p></div>
+        <div class="p"><span class="label">Literacy &middot; Pre-K to Grade 2</span><p>Library story corners, Reggio piazzas.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================== FEATURED PRODUCT (Hero: Forest Caves Play Mat) =========================== -->
+<section class="split" data-screen-label="04 Hero Product">
+  <div class="img-side">
+    <div class="tile t-soft contained">
+      <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+      <span class="tag">[ HERO PRODUCT &nbsp;&middot;&nbsp; THE FOREST CAVES PLAY MAT, three-dimensional felted-wool landscape with a lift-up cave on the left, free-standing chimney on the right, moss-covered entrance, woodland tones; styled with a child's hand reaching for a felt fox at the cave mouth. Mirrors catalog pg.&nbsp;24 hero. ]</span>
+    </div>
+  </div>
+  <div class="content">
+    <span class="eyebrow" style="color: var(--accent-deep);">Papoose &nbsp;&middot;&nbsp; Featured</span>
+    <h3>The Forest Caves <span class="it">Play Mat.</span></h3>
+    <div class="sub">Hand-felted wool. Three-dimensional landscape. Storage in the cave hollow.</div>
+    <span class="hair" aria-hidden="true"></span>
+
+    <p class="desc">A felted landscape that rises off the table: a moss-covered cave you can lift open, a free-standing chimney at the other end, woodland tones that invite layering with animals, loose parts, and storytelling figures. Rare tactile depth for a small-world mat, the cave hides; the chimney smokes; cleanup becomes part of the play because the storage lives inside the hollow.</p>
+
+    <ul class="contents-list">
+      <li>One hand-felted forest-floor play mat with three-dimensional terrain.</li>
+      <li>One lift-up cave with moss-covered entrance and integrated storage.</li>
+      <li>One free-standing felted chimney for the cabin scene.</li>
+      <li>Hand-felted wool, dimensional, no two alike.</li>
+    </ul>
+
+    <div class="craft">
+      <div>
+        <span class="label">Material</span>
+        <span class="v">Hand-felted 100% wool, dimensional.</span>
+      </div>
+      <div>
+        <span class="label">Provenance</span>
+        <span class="v">Hand-felted in Nepal &middot; Fair Trade USA&trade;.</span>
+      </div>
+      <div>
+        <span class="label">SKU &nbsp;&middot;&nbsp; OEKO-TEX&reg; 100 &middot; GOTS</span>
+        <span class="stock-pill">MTW-SW-FCV &nbsp;&middot;&nbsp; Ages 3+</span>
+      </div>
+    </div>
+
+    <div class="testimony">
+      <p class="quote">&ldquo;The lift-up cave was an instant favorite. The threes will spend a whole morning hiding bears, foxes, and the gruffalo in there and forgetting where they put them. The dimensionality changes the play.&rdquo;</p>
+      <div class="attr">
+        <span class="dash"></span>
+        <span class="name"><b>Eliza M.</b> &nbsp;&middot;&nbsp; Atelierista &middot; Verified Buyer</span>
+      </div>
+    </div>
+
+    <!-- PRICE: MTW-SW-FCV -->
+    <span class="price">$148</span>
+    <div class="add-row">
+      <button class="add-btn" type="button" data-sku="MTW-SW-FCV"><span class="plus"></span>Add to cart</button>
+      <a href="#" class="view-pdp">View product details &rarr;</a>
+    </div>
+
+    <div class="pairs-with">
+      <span class="label">Extend the play</span>
+      <div class="pair-thumb tile t-alt">
+        <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+      </div>
+      <div class="pair-body">
+        <h4>The Complete Felt Habitats &nbsp;&middot;&nbsp; MTW-SW-FB5</h4>
+        <p>The Forest Caves Play Mat alongside five immersive felt habitats, Tiny Tale Terrains, Fairy Streamlet, Featherfloat Pond, Coralwhim Cove, and Wispy Waters Way, for layered small-world storytelling.</p>
+        <span class="pair-meta"><strong>$360</strong>Bundle &nbsp;&middot;&nbsp; five habitats &nbsp;&middot;&nbsp; saves $40</span>
+        <a href="#habitats" class="pair-action">See the habitats &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider">
+  <span class="num">02</span>
+  <span class="line"></span>
+  <span class="label">Felt Habitats &middot; Gus + Mabel</span>
+</div>
+
+<!-- =========================== GALLERY 1: FELT HABITATS =========================== -->
+<section class="gallery gut" id="habitats" data-screen-label="05 Felt Habitats">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <span class="eyebrow">Editorial Two &nbsp;&middot;&nbsp; Gus + Mabel &middot; Felt Habitats</span>
+        <h2>Felt <span class="it">habitats.</span></h2>
+      </div>
+      <div class="right">
+        <p>Hand-felted habitat mats for layered small-world play. Each landscape is the blank canvas for the figures, puppets, and stories that follow. Lay one out, set figures down, change the world with a fold.</p>
+        <p style="margin-top: 18px; font-family: var(--sans); font-size: 13.5px; line-height: 1.6; color: var(--ink); font-weight: 500;">All hand-felted in Nepal. OEKO-TEX&reg; 100 &middot; GOTS &middot; Fair Trade USA&trade;.</p>
+        <div class="index">TERRAINS &nbsp;&middot;&nbsp; STREAMLET &nbsp;&middot;&nbsp; POND &nbsp;&middot;&nbsp; COVE &nbsp;&middot;&nbsp; LAKESHORE</div>
+      </div>
+    </div>
+
+    <div class="homes">
+      <!-- 01 Tiny Tale Terrains (hero cell) -->
+      <article class="home size-hero">
+        <div class="tile-wrap">
+          <div class="tile t-hue3">
+            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+            <span class="tag">[ HABITAT N&deg;01 &nbsp;&middot;&nbsp; TINY TALE TERRAINS, four large felted-wool biome canvases stacked or arrayed: Grasses (green), Waters (blue), Desert (sand), Snow (white). Blank-canvas foundation. Mirrors catalog pg.&nbsp;25 cell 00. ]</span>
+          </div>
+          <div class="overlay"></div>
+          <div class="float-name">Tiny Tale Terrains</div>
+        </div>
+        <div class="cap expanded">
+          <span class="no">01</span>
+          <span class="name">Tiny Tale Terrains</span>
+          <span class="desc">Four large felted-wool biome canvases, Grasses, Waters, Desert, and Snow. The blank-canvas foundation for small-world play. Set down any figures; build any story.</span>
+          <span class="meta">MTW-SW-TTT &nbsp;&middot;&nbsp; Set of 4 mats</span>
+          <!-- PRICE: MTW-SW-TTT -->
+          <span class="price">$168</span>
+          <div class="add-row">
+            <button class="add-btn" type="button" data-sku="MTW-SW-TTT"><span class="plus"></span>Add to cart</button>
+            <a href="#" class="view-pdp">View product &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 02 Fairy Streamlet (tall) -->
+      <article class="home size-tall">
+        <div class="tile-wrap">
+          <div class="tile t-alt">
+            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+            <span class="tag">[ HABITAT N&deg;02 &nbsp;&middot;&nbsp; FAIRY STREAMLET, stepping stones across a winding woodland stream, framed by toadstools and forget-me-nots. Mirrors catalog pg.&nbsp;25 cell 01. ]</span>
+          </div>
+          <div class="overlay"></div>
+          <div class="float-name">Fairy Streamlet</div>
+        </div>
+        <div class="cap">
+          <span class="no">02</span>
+          <span class="name">Fairy Streamlet</span>
+          <span class="desc">Stepping stones across a winding woodland stream, framed by toadstools and forget-me-nots. Pairs naturally with Wonderheart Little Folk and Bumbu woodland animals.</span>
+          <span class="meta">MTW-SW-FST &nbsp;&middot;&nbsp; Single mat</span>
+          <!-- PRICE: MTW-SW-FST -->
+          <span class="price">$58</span>
+          <div class="add-row">
+            <button class="add-btn" type="button" data-sku="MTW-SW-FST"><span class="plus"></span>Add to cart</button>
+            <a href="#" class="view-pdp">View product &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 03 Featherfloat Pond -->
+      <article class="home size-std">
+        <div class="tile-wrap">
+          <div class="tile t-hue3-deep dark">
+            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+            <span class="tag">[ HABITAT N&deg;03 &nbsp;&middot;&nbsp; FEATHERFLOAT POND, reeds, pebbles, glassy pond edge, gentle habitat for duck families and small waterfowl. Mirrors catalog pg.&nbsp;25 cell 02. ]</span>
+          </div>
+          <div class="overlay"></div>
+          <div class="float-name">Featherfloat Pond</div>
+        </div>
+        <div class="cap">
+          <span class="no">03</span>
+          <span class="name">Featherfloat Pond</span>
+          <span class="desc">Reeds, pebbles, and a glassy pond edge, a gentle habitat for duck families and small waterfowl. The home for the Five Little Ducks puppet set.</span>
+          <span class="meta">MTW-SW-FPP &nbsp;&middot;&nbsp; Single mat</span>
+          <!-- PRICE: MTW-SW-FPP -->
+          <span class="price">$58</span>
+          <div class="add-row">
+            <button class="add-btn" type="button" data-sku="MTW-SW-FPP"><span class="plus"></span>Add to cart</button>
+            <a href="#" class="view-pdp">View product &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 04 Coralwhim Cove -->
+      <article class="home size-std">
+        <div class="tile-wrap">
+          <div class="tile t-primary">
+            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+            <span class="tag">[ HABITAT N&deg;04 &nbsp;&middot;&nbsp; CORALWHIM COVE, tide-pool inspired habitat for ocean creatures, shells, underwater storytelling. Mirrors catalog pg.&nbsp;25 cell 03. ]</span>
+          </div>
+          <div class="overlay"></div>
+          <div class="float-name">Coralwhim Cove</div>
+        </div>
+        <div class="cap">
+          <span class="no">04</span>
+          <span class="name">Coralwhim Cove</span>
+          <span class="desc">A tide-pool inspired habitat for ocean creatures, shells, and underwater storytelling. Pairs naturally with the Coral Reef puppet set.</span>
+          <span class="meta">MTW-SW-CCV &nbsp;&middot;&nbsp; Single mat</span>
+          <!-- PRICE: MTW-SW-CCV -->
+          <span class="price">$58</span>
+          <div class="add-row">
+            <button class="add-btn" type="button" data-sku="MTW-SW-CCV"><span class="plus"></span>Add to cart</button>
+            <a href="#" class="view-pdp">View product &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 05 Wispy Waters Way -->
+      <article class="home size-std">
+        <div class="tile-wrap">
+          <div class="tile t-cream">
+            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+            <span class="tag">[ HABITAT N&deg;05 &nbsp;&middot;&nbsp; WISPY WATERS WAY, quiet lakeshore fringed with pebbles and white daisies, open-ended landscape for gentle play. Mirrors catalog pg.&nbsp;25 cell 04. ]</span>
+          </div>
+          <div class="overlay"></div>
+          <div class="float-name">Wispy Waters Way</div>
+        </div>
+        <div class="cap">
+          <span class="no">05</span>
+          <span class="name">Wispy Waters Way</span>
+          <span class="desc">A quiet lakeshore fringed with pebbles and white daisies. An open-ended landscape for gentle play and small water creatures.</span>
+          <span class="meta">MTW-SW-WWW &nbsp;&middot;&nbsp; Single mat</span>
+          <!-- PRICE: MTW-SW-WWW -->
+          <span class="price">$58</span>
+          <div class="add-row">
+            <button class="add-btn" type="button" data-sku="MTW-SW-WWW"><span class="plus"></span>Add to cart</button>
+            <a href="#" class="view-pdp">View product &rarr;</a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="collection-bridge">
+      <p>
+        <strong>The Complete Felt Habitats &nbsp;&middot;&nbsp; MTW-SW-FB5</strong>
+        All five immersive felt habitats, Tiny Tale Terrains, Fairy Streamlet, Featherfloat Pond, Coralwhim Cove, and Wispy Waters Way, bundled for small-world storytelling and sensory landscape play. Saves $40 over single mats.
+      </p>
+      <a href="#quote" class="bridge-cta">Add the Habitats Set, $360</a>
+    </div>
+  </div>
+</section>
+
+<!-- =========================== STORY WORLDS (p.26 dual-feature) =========================== -->
+<!-- Mirrors catalog pg. 26, two half-features: Garden of the Moon + Hobbit Hollow. -->
+<section class="gallery gut" id="story-worlds" data-screen-label="06 Story Worlds" style="background: color-mix(in oklab, var(--accent-pale) 50%, var(--cream));">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <span class="eyebrow">Editorial Three &nbsp;&middot;&nbsp; Himalayan Felt Co. &amp; Papoose &middot; Narrative Landscapes</span>
+        <h2>Story <span class="it">worlds.</span></h2>
+      </div>
+      <div class="right">
+        <p>Two richly staged environments for imaginative storytelling, wonder, and small-world narrative play. Each one is a single mat that teaches contrast, time, and the quiet poetry of opposites.</p>
+        <p style="margin-top: 18px; font-family: var(--sans); font-size: 13.5px; line-height: 1.6; color: var(--ink); font-weight: 500;">Hand-felted wool &middot; Azo-free dyes &middot; CE / EN71 &middot; Made in Nepal.</p>
+        <div class="index">GARDEN OF THE MOON &nbsp;&middot;&nbsp; HOBBIT HOLLOW + GNOMES</div>
+      </div>
+    </div>
+
+    <div class="homes" style="grid-template-columns: 1fr 1fr;">
+      <!-- 01 Garden of the Moon -->
+      <article class="home size-hero">
+        <div class="tile-wrap">
+          <div class="tile t-alt-deep dark">
+            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+            <span class="tag">[ STORY WORLD N&deg;01 &nbsp;&middot;&nbsp; GARDEN OF THE MOON, large felt mat split into night-sky and daytime garden halves, with flowers, stones, and celestial elements. Mirrors catalog pg.&nbsp;26 left feature. ]</span>
+          </div>
+          <div class="overlay"></div>
+          <div class="float-name">Garden of the Moon</div>
+        </div>
+        <div class="cap">
+          <span class="no">01</span>
+          <span class="name">Garden of the Moon</span>
+          <span class="desc">Night on one side, day on the other. Stars above stones, flowers under sun. A single mat that teaches contrast, time, and the quiet poetry of opposites, designed for small figures, imagined journeys, and stories that shift from daylight to moonrise.</span>
+          <span class="meta">MTW-SW-GOM &nbsp;&middot;&nbsp; 33.5&Prime; &times; 21.7&Prime;</span>
+          <!-- PRICE: MTW-SW-GOM -->
+          <span class="price">$138</span>
+          <div class="add-row">
+            <button class="add-btn" type="button" data-sku="MTW-SW-GOM"><span class="plus"></span>Add to cart</button>
+            <a href="#" class="view-pdp">View product &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 02 Hobbit Hollow + Gnomes -->
+      <article class="home size-hero">
+        <div class="tile-wrap">
+          <div class="tile t-hue3">
+            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+            <span class="tag">[ STORY WORLD N&deg;02 &nbsp;&middot;&nbsp; HOBBIT HOLLOW + GNOMES, moss-covered green felt dome with golden-yellow arched entrance, four Papoose gnomes, a brown hedgehog, red-and-white toadstools, and crocheted pink, red, white, and yellow flowers across the mossy ground. Mirrors catalog pg.&nbsp;26 right feature. ]</span>
+          </div>
+          <div class="overlay"></div>
+          <div class="float-name">Hobbit Hollow + Gnomes</div>
+        </div>
+        <div class="cap">
+          <span class="no">02</span>
+          <span class="name">Hobbit Hollow + Gnomes</span>
+          <span class="desc">A cozy hillside shelter bundled with four hand-felted Papoose gnomes for storytelling, small-world scenes, and imagined journeys. Children cast their own characters, name their own heroes, and walk their own paths through the woods.</span>
+          <span class="meta">MTW-SW-HHB &nbsp;&middot;&nbsp; Hollow 7.9 &times; 7.9 &times; 11.8&Prime; &middot; 15.7&Prime; mat</span>
+          <!-- PRICE: MTW-SW-HHB -->
+          <span class="price">$168</span>
+          <div class="add-row">
+            <button class="add-btn" type="button" data-sku="MTW-SW-HHB"><span class="plus"></span>Add to cart</button>
+            <a href="#" class="view-pdp">View product &rarr;</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="pull-quote" data-screen-label="Pull-Quote">
+  <blockquote>
+    Small hands, vast worlds. The stories children need to tell <em>cannot always wait for words.</em>
+  </blockquote>
+  <cite>From the 2026 Spring Edit, page 23</cite>
+</section>
+
+<div class="section-divider">
+  <span class="num">04</span>
+  <span class="line"></span>
+  <span class="label">Story Bundles &middot; Tara Treasures</span>
+</div>
+
+<!-- =========================== FEATURED PRODUCT 2 (p.27 The Gruffalo Bundle) =========================== -->
+<section class="split stage" data-screen-label="07 The Gruffalo Bundle" style="background: var(--cream);">
+  <div class="img-side">
+    <div class="tile t-soft contained">
+      <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+      <span class="tag">[ FEATURED PRODUCT 2 &nbsp;&middot;&nbsp; THE GRUFFALO BUNDLE, Gruffalo and mouse finger puppets on wooden stands in front of the English hardcover of The Gruffalo, with a felt tree, owl, fox, and moss-covered forest elements on a green-and-yellow felt mat. Mirrors catalog pg.&nbsp;27 hero. ]</span>
+    </div>
+  </div>
+  <div class="content">
+    <span class="eyebrow" style="color: var(--accent-deep);">Tara Treasures &nbsp;&middot;&nbsp; Story Bundle</span>
+    <h3>The Gruffalo <span class="it">Bundle.</span></h3>
+    <div class="sub">Playscape mat. Five finger puppets. The hardcover book.</div>
+    <span class="hair" aria-hidden="true"></span>
+
+    <p class="desc">A deep dark wood brought into the classroom through felt landscapes, finger puppets, and story re-enactment. The Playscape Mat with its boulder fox-den, winding stream, and felt tree, paired with five hand-felted finger puppets on wooden rods and the hardcover storybook by Julia Donaldson. The complete literacy unit in one carton.</p>
+
+    <ul class="contents-list">
+      <li>One Gruffalo Playscape Mat, 31.5&Prime; &times; 20.5&Prime;, felt fox-den boulder, winding stream, and tree.</li>
+      <li>Five hand-felted finger puppets, Gruffalo, mouse, fox, owl, snake.</li>
+      <li>Five wooden puppet rods for free-standing display.</li>
+      <li>One hardcover copy of <em>The Gruffalo</em> by Julia Donaldson, illustrated by Axel Scheffler.</li>
+    </ul>
+
+    <div class="craft">
+      <div>
+        <span class="label">Material</span>
+        <span class="v">Hand-felted wool, hardcover book.</span>
+      </div>
+      <div>
+        <span class="label">Provenance</span>
+        <span class="v">Hand-felted in Nepal &middot; OEKO-TEX &middot; Fair Trade USA&trade;.</span>
+      </div>
+      <div>
+        <span class="label">SKU &nbsp;&middot;&nbsp; Ages</span>
+        <span class="stock-pill">MTW-SW-GRF &nbsp;&middot;&nbsp; Ages 3&ndash;8</span>
+      </div>
+    </div>
+
+    <div class="testimony">
+      <p class="quote">&ldquo;The Playscape Mat gets unrolled at the start of each Gruffalo unit and stays in the literacy corner for the whole week. The children retell, re-cast, and re-stage every day, we&rsquo;ve never seen narrative recall this strong.&rdquo;</p>
+      <div class="attr">
+        <span class="dash"></span>
+        <span class="name"><b>Verified educator buyer</b> &nbsp;&middot;&nbsp; Pre-K literacy lead</span>
+      </div>
+    </div>
+
+    <!-- PRICE: MTW-SW-GRF -->
+    <span class="price">$148</span>
+    <div class="add-row">
+      <button class="add-btn" type="button" data-sku="MTW-SW-GRF"><span class="plus"></span>Add to cart</button>
+      <a href="#" class="view-pdp">View product details &rarr;</a>
+    </div>
+
+    <div class="pairs-with">
+      <span class="label">Continue the story</span>
+      <div class="pair-thumb tile t-alt contained">
+        <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+      </div>
+      <div class="pair-body">
+        <h4>More story bundles &middot; Sold separately</h4>
+        <p><em>The Gruffalo&rsquo;s Child</em> 2-puppet set with rods and hardcover &middot; <em>Room on the Broom</em> 6-puppet set &middot; <em>Three Little Pigs</em> with hardcover &middot; <em>Old MacDonald Had a Farm</em> (see Circle Time gallery, below).</p>
+        <span class="pair-meta"><strong>From $58</strong>Per story set &middot; Hand-felted in Nepal</span>
+        <a href="#circle-time" class="pair-action">See Circle Time puppets &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================== GALLERY 2: NATURAL WORLD PUPPETS (p.28) =========================== -->
+<section class="gallery even gut" id="natural-world" data-screen-label="08 Natural World Puppets">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <span class="eyebrow">Editorial Four &nbsp;&middot;&nbsp; Tara Treasures &middot; Science &amp; Nature Puppets</span>
+        <h2>Puppets <span class="it">for the natural world.</span></h2>
+      </div>
+      <div class="right">
+        <p>Finger puppets and felt creatures invite children into oceans, forests, skies, and gardens through storytelling, sensory play, and imagined encounters with the natural world.</p>
+        <p style="margin-top: 18px; font-family: var(--sans); font-size: 13.5px; line-height: 1.6; color: var(--ink); font-weight: 500;">All hand-felted in Nepal. OEKO-TEX&reg; 100 &middot; GOTS &middot; Fair Trade USA&trade;.</p>
+        <div class="index">INSECTS &nbsp;&middot;&nbsp; REEF &nbsp;&middot;&nbsp; POLAR &nbsp;&middot;&nbsp; BUTTERFLIES &nbsp;&middot;&nbsp; BIRDS</div>
+      </div>
+    </div>
+
+    <div class="homes">
+      <!-- 01 Ingenious Insects -->
+      <article class="home size-hero">
+        <div class="tile-wrap">
+          <div class="tile t-hue3">
+            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+            <span class="tag">[ PUPPET N&deg;01 &nbsp;&middot;&nbsp; INGENIOUS INSECTS, hardcover book by Sarah Allen with five hand-felted insect finger puppets arranged around it on a cream backdrop: swallowtail butterfly, rhinoceros beetle, green caterpillar, pale-green moth, red-and-black ground beetle. Mirrors catalog pg.&nbsp;28 cell 00. ]</span>
+          </div>
+          <div class="overlay"></div>
+          <div class="float-name">Ingenious Insects</div>
+        </div>
+        <div class="cap">
+          <span class="no">01</span>
+          <span class="name">Ingenious Insects</span>
+          <span class="desc">Felt insects and a companion hardcover for spring garden observation, meadow exploration, and tiny-world discovery. Five finger puppets plus the book.</span>
+          <span class="meta">MTW-SW-ING &nbsp;&middot;&nbsp; Set + Book</span>
+          <!-- PRICE: MTW-SW-ING -->
+          <span class="price">$78</span>
+          <div class="add-row">
+            <button class="add-btn" type="button" data-sku="MTW-SW-ING"><span class="plus"></span>Add to cart</button>
+            <a href="#" class="view-pdp">View product &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 02 Coral Reef -->
+      <article class="home size-tall">
+        <div class="tile-wrap">
+          <div class="tile t-hue3-deep dark">
+            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+            <span class="tag">[ PUPPET N&deg;02 &nbsp;&middot;&nbsp; CORAL REEF &middot; UNDER THE SEA, gray white-spotted stingray with long whip-like tail at top, orange-and-white clownfish, cobalt-blue starfish, royal-blue tang fish with yellow tail, olive-green sea turtle with cream-spotted shell. Mirrors catalog pg.&nbsp;28 cell 01. ]</span>
+          </div>
+          <div class="overlay"></div>
+          <div class="float-name">Coral Reef &middot; Under the Sea</div>
+        </div>
+        <div class="cap">
+          <span class="no">02</span>
+          <span class="name">Coral Reef &middot; Under the Sea</span>
+          <span class="desc">Reef creatures for tide-pool stories, underwater journeys, and sea-life small worlds. Pairs with the Coralwhim Cove habitat mat from Gallery 1.</span>
+          <span class="meta">MTW-SW-CRL &nbsp;&middot;&nbsp; Set of 5</span>
+          <!-- PRICE: MTW-SW-CRL -->
+          <span class="price">$58</span>
+          <div class="add-row">
+            <button class="add-btn" type="button" data-sku="MTW-SW-CRL"><span class="plus"></span>Add to cart</button>
+            <a href="#" class="view-pdp">View product &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 03 Polar Animals -->
+      <article class="home size-std">
+        <div class="tile-wrap">
+          <div class="tile t-cream">
+            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+            <span class="tag">[ PUPPET N&deg;03 &nbsp;&middot;&nbsp; POLAR ANIMALS, brown moose with cream antlers, white arctic hare, black-and-white penguin with orange beak and scarf, white polar bear, gray walrus with cream tusks, on a wooden five-peg display stand. Mirrors catalog pg.&nbsp;28 cell 02. ]</span>
+          </div>
+          <div class="overlay"></div>
+          <div class="float-name">Polar Animals</div>
+        </div>
+        <div class="cap">
+          <span class="no">03</span>
+          <span class="name">Polar Animals &middot; Arctic &amp; Antarctic</span>
+          <span class="desc">Arctic and Antarctic creatures for icy worlds, frozen-shore stories, and cold-weather small-world play. Five finger puppets on a five-peg wooden stand.</span>
+          <span class="meta">MTW-SW-POL &nbsp;&middot;&nbsp; Set of 5</span>
+          <!-- PRICE: MTW-SW-POL -->
+          <span class="price">$58</span>
+          <div class="add-row">
+            <button class="add-btn" type="button" data-sku="MTW-SW-POL"><span class="plus"></span>Add to cart</button>
+            <a href="#" class="view-pdp">View product &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 04 Butterfly Puppet Set -->
+      <article class="home size-std">
+        <div class="tile-wrap">
+          <div class="tile t-alt">
+            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+            <span class="tag">[ PUPPET N&deg;04 &nbsp;&middot;&nbsp; BUTTERFLY PUPPET SET, five hand-felted butterfly species on a cream backdrop: black Cairns Birdwing with orange-rimmed white-and-yellow wing markings, vibrant blue Ulysses with deep black border, red Cattleheart with yellow tips, yellow Common Brimstone, Monarch with orange wings and white-spotted black borders. Mirrors catalog pg.&nbsp;28 cell 03. ]</span>
+          </div>
+          <div class="overlay"></div>
+          <div class="float-name">Butterfly Puppet Set</div>
+        </div>
+        <div class="cap expanded">
+          <span class="no">04</span>
+          <span class="name">Butterfly Puppet Set</span>
+          <span class="desc">Five butterfly species for garden scenes, migration stories, and meadow small-world play. The puppet set the lily-pond scene was made for.</span>
+          <span class="meta">MTW-SW-BFY &nbsp;&middot;&nbsp; Set of 5</span>
+          <!-- PRICE: MTW-SW-BFY -->
+          <span class="price">$58</span>
+          <div class="add-row">
+            <button class="add-btn" type="button" data-sku="MTW-SW-BFY"><span class="plus"></span>Add to cart</button>
+            <a href="#" class="view-pdp">View product &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 05 Australiana Birds -->
+      <article class="home size-std">
+        <div class="tile-wrap">
+          <div class="tile t-gilt">
+            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+            <span class="tag">[ PUPPET N&deg;05 &nbsp;&middot;&nbsp; AUSTRALIANA BIRDS, five hand-felted Australian native birds on a cream backdrop: black cockatoo with gray crest, Australian King-Parrot with deep red body and royal-blue tail, Superb Fairy-wren with bright blue head mask, Pink Robin with black back and magenta-pink breast, Australian Pelican with white body and peach beak. Mirrors catalog pg.&nbsp;28 cell 04. ]</span>
+          </div>
+          <div class="overlay"></div>
+          <div class="float-name">Australiana Birds</div>
+        </div>
+        <div class="cap">
+          <span class="no">05</span>
+          <span class="name">Australiana Birds</span>
+          <span class="desc">Five Australian native birds for habitat stories, sound and movement play, and small-world journeys across a continent.</span>
+          <span class="meta">MTW-SW-AUB &nbsp;&middot;&nbsp; Set of 5</span>
+          <!-- PRICE: MTW-SW-AUB -->
+          <span class="price">$58</span>
+          <div class="add-row">
+            <button class="add-btn" type="button" data-sku="MTW-SW-AUB"><span class="plus"></span>Add to cart</button>
+            <a href="#" class="view-pdp">View product &rarr;</a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="collection-bridge">
+      <p>
+        <strong>The Natural World Set &nbsp;&middot;&nbsp; MTW-SW-NWS</strong>
+        All five puppet sets, Insects, Reef, Polar, Butterflies, and Birds, bundled with a 5-peg puppet stand for layered habitat and natural-world play.
+      </p>
+      <a href="#outfit" class="bridge-cta">See the Natural World Set &middot; bundle below</a>
+    </div>
+  </div>
+</section>
+
+<!-- =========================== GALLERY 3: CIRCLE TIME PUPPETS (p.29) =========================== -->
+<section class="gallery even gut" id="circle-time" data-screen-label="09 Circle Time Puppets" style="background: color-mix(in oklab, var(--accent-pale) 50%, var(--cream));">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <span class="eyebrow">Editorial Five &nbsp;&middot;&nbsp; Tara Treasures &middot; Counting &amp; Songs</span>
+        <h2>Circle time, <span class="it">in your hands.</span></h2>
+      </div>
+      <div class="right">
+        <p>Counting songs and nursery rhymes live in the body before they live in the head. These familiar fingerplays invite children to move, repeat, sing, and tell stories together.</p>
+        <p style="margin-top: 18px; font-family: var(--sans); font-size: 13.5px; line-height: 1.6; color: var(--ink); font-weight: 500;">All hand-felted in Nepal. OEKO-TEX&reg; 100 &middot; GOTS &middot; Fair Trade USA&trade;.</p>
+        <div class="index">SPIDER &nbsp;&middot;&nbsp; FARM &nbsp;&middot;&nbsp; MONKEYS &nbsp;&middot;&nbsp; DUCKS &nbsp;&middot;&nbsp; FROGS</div>
+      </div>
+    </div>
+
+    <div class="homes">
+      <!-- 01 Itsy Bitsy Spider -->
+      <article class="home size-hero">
+        <div class="tile-wrap">
+          <div class="tile t-cream">
+            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+            <span class="tag">[ SONG N&deg;01 &nbsp;&middot;&nbsp; ITSY BITSY SPIDER, hand-felted gray spider with smiling face and embroidered legs, a white felt raincloud with five teardrop-shaped raindrops dangling on cream threads, and a smiling sun with golden-yellow center and red flame-edged rays, on a cream backdrop. Mirrors catalog pg.&nbsp;29 cell 00. ]</span>
+          </div>
+          <div class="overlay"></div>
+          <div class="float-name">Itsy Bitsy Spider</div>
+        </div>
+        <div class="cap">
+          <span class="no">01</span>
+          <span class="name">Itsy Bitsy Spider</span>
+          <span class="desc">Spider, raincloud, and sun for acting out the classic rhyme through gesture, song, and weather play.</span>
+          <span class="meta">MTW-SW-IBS &nbsp;&middot;&nbsp; 3-piece set</span>
+          <!-- PRICE: MTW-SW-IBS -->
+          <span class="price">$48</span>
+          <div class="add-row">
+            <button class="add-btn" type="button" data-sku="MTW-SW-IBS"><span class="plus"></span>Add to cart</button>
+            <a href="#" class="view-pdp">View product &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 02 Old MacDonald -->
+      <article class="home size-tall">
+        <div class="tile-wrap">
+          <div class="tile t-gilt">
+            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+            <span class="tag">[ SONG N&deg;02 &nbsp;&middot;&nbsp; OLD MACDONALD FARM ANIMALS, hand-felted farmer figure with brown beard and curly hair, blue overalls and orange long-sleeved shirt, alongside four animal puppets: a black-spotted white cow, a gray dog with cream snout, a yellow duckling with orange beak, and a pink pig. Mirrors catalog pg.&nbsp;29 cell 01. ]</span>
+          </div>
+          <div class="overlay"></div>
+          <div class="float-name">Old MacDonald Farm Animals</div>
+        </div>
+        <div class="cap">
+          <span class="no">02</span>
+          <span class="name">Old MacDonald Farm Animals</span>
+          <span class="desc">Farm animals for barnyard storytelling, sound play, and the familiar verses every child sings.</span>
+          <span class="meta">MTW-SW-OMD &nbsp;&middot;&nbsp; 5-piece set</span>
+          <!-- PRICE: MTW-SW-OMD -->
+          <span class="price">$58</span>
+          <div class="add-row">
+            <button class="add-btn" type="button" data-sku="MTW-SW-OMD"><span class="plus"></span>Add to cart</button>
+            <a href="#" class="view-pdp">View product &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 03 Five Little Monkeys -->
+      <article class="home size-std">
+        <div class="tile-wrap">
+          <div class="tile t-primary">
+            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+            <span class="tag">[ SONG N&deg;03 &nbsp;&middot;&nbsp; FIVE LITTLE MONKEYS, five hand-felted brown monkey finger puppets with cream bellies numbered 1&ndash;5 (red, orange, green, blue, purple) plus a Mama monkey in pink dress with phone, and a Doctor monkey in white coat with stethoscope. Mirrors catalog pg.&nbsp;29 cell 02. ]</span>
+          </div>
+          <div class="overlay"></div>
+          <div class="float-name">Five Little Monkeys</div>
+        </div>
+        <div class="cap">
+          <span class="no">03</span>
+          <span class="name">Five Little Monkeys</span>
+          <span class="desc">Five monkeys, a bed, and a doctor for counting-down songs, dramatic retelling, and the energy of jumping play.</span>
+          <span class="meta">MTW-SW-FLM &nbsp;&middot;&nbsp; 7-piece set</span>
+          <!-- PRICE: MTW-SW-FLM -->
+          <span class="price">$68</span>
+          <div class="add-row">
+            <button class="add-btn" type="button" data-sku="MTW-SW-FLM"><span class="plus"></span>Add to cart</button>
+            <a href="#" class="view-pdp">View product &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 04 Five Little Ducks -->
+      <article class="home size-std">
+        <div class="tile-wrap">
+          <div class="tile t-hue3">
+            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+            <span class="tag">[ SONG N&deg;04 &nbsp;&middot;&nbsp; FIVE LITTLE DUCKS, white mother duck with closed eyes and orange beak above five yellow duckling puppets each with orange wings numbered 1&ndash;5, six puppets total on cream backdrop. Mirrors catalog pg.&nbsp;29 cell 03. ]</span>
+          </div>
+          <div class="overlay"></div>
+          <div class="float-name">Five Little Ducks</div>
+        </div>
+        <div class="cap">
+          <span class="no">04</span>
+          <span class="name">Five Little Ducks</span>
+          <span class="desc">Mother duck and five ducklings for the familiar song, call-and-response play, and gentle number storytelling. The puppet set the Featherfloat Pond was made for.</span>
+          <span class="meta">MTW-SW-FLD &nbsp;&middot;&nbsp; 6-piece set</span>
+          <!-- PRICE: MTW-SW-FLD -->
+          <span class="price">$58</span>
+          <div class="add-row">
+            <button class="add-btn" type="button" data-sku="MTW-SW-FLD"><span class="plus"></span>Add to cart</button>
+            <a href="#" class="view-pdp">View product &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 05 Five Little Speckled Frogs -->
+      <article class="home size-std">
+        <div class="tile-wrap">
+          <div class="tile t-hue3-deep dark">
+            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+            <span class="tag">[ SONG N&deg;05 &nbsp;&middot;&nbsp; FIVE LITTLE SPECKLED FROGS, five green felt frog puppets numbered 1&ndash;5 (red, orange, purple, dark teal, blue) on a wooden five-peg stand, with a brown felt log puppet-bag embroidered with small flowers and leaves. Mirrors catalog pg.&nbsp;29 cell 04. ]</span>
+          </div>
+          <div class="overlay"></div>
+          <div class="float-name">Five Little Speckled Frogs</div>
+        </div>
+        <div class="cap">
+          <span class="no">05</span>
+          <span class="name">Five Little Speckled Frogs</span>
+          <span class="desc">Five frogs balance on a log, ready for counting songs, splashing games, and circle-time storytelling. Comes with a felt log puppet-bag.</span>
+          <span class="meta">MTW-SW-FLF &nbsp;&middot;&nbsp; 5-piece set + log</span>
+          <!-- PRICE: MTW-SW-FLF -->
+          <span class="price">$58</span>
+          <div class="add-row">
+            <button class="add-btn" type="button" data-sku="MTW-SW-FLF"><span class="plus"></span>Add to cart</button>
+            <a href="#" class="view-pdp">View product &rarr;</a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="collection-bridge">
+      <p>
+        <strong>The Songs &amp; Stories Set &nbsp;&middot;&nbsp; MTW-SW-SSS</strong>
+        Five song and counting puppet sets, Spider, MacDonald, Monkeys, Ducks, Frogs, bundled for circle time, fingerplay, and embodied storytelling.
+      </p>
+      <a href="#outfit" class="bridge-cta">See the Songs &amp; Stories Set &middot; bundle below</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- =========================== OUTFIT YOUR CLASSROOM =========================== -->
+<section class="outfit" id="outfit" data-screen-label="10 Outfit Your Classroom">
+  <div class="head">
+    <div>
+      <p class="block-num">10 <span class="dot">/</span> The whole world</p>
+      <h2>Outfit your classroom <span class="it">in one quote.</span></h2>
+    </div>
+    <div class="right">
+      <p>Schools buy Small World as catalog sets, not as single pieces. The three purchase-order-ready sets below are the same ones in our 2026 Spring Catalog. Each is priced as a package on your quote.</p>
+      <div class="meta">CATALOG SETS &nbsp;&middot;&nbsp; NET-30 &nbsp;&middot;&nbsp; TAX-EXEMPT &nbsp;&middot;&nbsp; ONE-ON-ONE CURATION</div>
+    </div>
+  </div>
+
+  <div class="kits" style="grid-template-columns: repeat(3, minmax(0, 1fr));">
+    <article class="kit">
+      <p class="tier">Felt Habitats &nbsp;&middot;&nbsp; MTW-SW-FB5</p>
+      <h3>The Complete Felt Habitats.</h3>
+      <p class="sub">All five Gus + Mabel mats.</p>
+      <span class="hair" aria-hidden="true"></span>
+      <!-- PRICE: MTW-SW-FB5 -->
+      <p class="price-line">$360</p>
+      <span class="price-note">Hand-felted &middot; ships within 3 weeks &middot; Net-30 available &middot; saves $40</span>
+      <p class="desc">Five immersive felt habitats for small-world storytelling and sensory landscape play. From the 2026 Spring Catalog, p.&nbsp;25.</p>
+      <ul class="contains">
+        <li>Tiny Tale Terrains, MTW-SW-TTT</li>
+        <li>Fairy Streamlet, MTW-SW-FST</li>
+        <li>Featherfloat Pond, MTW-SW-FPP</li>
+        <li>Coralwhim Cove, MTW-SW-CCV</li>
+        <li>Wispy Waters Way, MTW-SW-WWW</li>
+      </ul>
+      <div class="add-row">
+        <button class="add-btn" type="button" data-sku="MTW-SW-FB5"><span class="plus"></span>Add set to cart</button>
+        <a href="#quote" class="view-pdp" data-kit="felt-habitats">Request a quote</a>
+      </div>
+    </article>
+
+    <article class="kit featured">
+      <span class="pill"><span class="wagon-badge">Catalog set</span></span>
+      <p class="tier">Natural World Collection &nbsp;&middot;&nbsp; MTW-SW-NWS</p>
+      <h3>The Natural World Set.</h3>
+      <p class="sub">Five puppet sets + stand.</p>
+      <span class="hair" aria-hidden="true"></span>
+      <!-- PRICE: MTW-SW-NWS -->
+      <p class="price-line">$278</p>
+      <span class="price-note">Hand-felted &middot; ships within 3 weeks &middot; Net-30 available &middot; saves $32</span>
+      <p class="desc">Five Tara Treasures puppet sets for oceans, forests, skies, and gardens, with a 5-peg puppet stand. From the 2026 Spring Catalog, p.&nbsp;28.</p>
+      <ul class="contains">
+        <li>Ingenious Insects, MTW-SW-ING</li>
+        <li>Coral Reef &middot; Under the Sea, MTW-SW-CRL</li>
+        <li>Polar Animals, MTW-SW-POL</li>
+        <li>Butterfly Puppet Set, MTW-SW-BFY</li>
+        <li>Australiana Birds, MTW-SW-AUB</li>
+        <li>5-peg puppet stand included.</li>
+      </ul>
+      <div class="add-row">
+        <button class="add-btn" type="button" data-sku="MTW-SW-NWS"><span class="plus"></span>Add set to cart</button>
+        <a href="#quote" class="view-pdp" data-kit="natural-world">Request a quote</a>
+      </div>
+    </article>
+
+    <article class="kit">
+      <p class="tier">Songs &amp; Stories &nbsp;&middot;&nbsp; MTW-SW-SSS</p>
+      <h3>The Songs &amp; Stories Set.</h3>
+      <p class="sub">Five circle-time puppet sets.</p>
+      <span class="hair" aria-hidden="true"></span>
+      <!-- PRICE: MTW-SW-SSS -->
+      <p class="price-line">$268</p>
+      <span class="price-note">Hand-felted &middot; ships within 3 weeks &middot; Net-30 available &middot; saves $22</span>
+      <p class="desc">Five song and counting puppet sets for circle time, fingerplay, and embodied storytelling. From the 2026 Spring Catalog, p.&nbsp;29.</p>
+      <ul class="contains">
+        <li>Itsy Bitsy Spider, MTW-SW-IBS</li>
+        <li>Old MacDonald Farm Animals, MTW-SW-OMD</li>
+        <li>Five Little Monkeys, MTW-SW-FLM</li>
+        <li>Five Little Ducks, MTW-SW-FLD</li>
+        <li>Five Little Speckled Frogs, MTW-SW-FLF</li>
+      </ul>
+      <div class="add-row">
+        <button class="add-btn" type="button" data-sku="MTW-SW-SSS"><span class="plus"></span>Add set to cart</button>
+        <a href="#quote" class="view-pdp" data-kit="songs-stories">Request a quote</a>
+      </div>
+    </article>
+  </div>
+
+  <!-- Educator combo strip (NOT a catalog SKU) -->
+  <div style="margin: 36px clamp(20px, 5vw, 56px) 0; padding: 28px clamp(20px, 4vw, 36px); background: var(--cream); border: 0.5px solid var(--rule-strong); border-radius: 4px; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(24px, 3vw, 40px); align-items: center;">
+    <div>
+      <span class="eyebrow" style="color: var(--accent-deep);">Educator Program &nbsp;&middot;&nbsp; Custom Combo</span>
+      <h3 style="margin: 14px 0 0; font-family: var(--serif); font-weight: 400; font-size: clamp(24px, 2.6vw, 32px); line-height: 1.15; color: var(--ink); letter-spacing: -.005em;">The Whole Storytelling Corner, <span style="font-style: italic; color: var(--accent-deep);">on one PO.</span></h3>
+    </div>
+    <div>
+      <p style="margin: 0 0 14px; font-family: var(--sans); font-size: 15px; line-height: 1.6; color: var(--ink-soft);">A custom educator combo of catalog SKUs, <strong style="color: var(--ink); font-weight: 600;">The Forest Caves Play Mat (MTW-SW-FCV)</strong>, <strong style="color: var(--ink); font-weight: 600;">The Complete Felt Habitats (MTW-SW-FB5)</strong>, <strong style="color: var(--ink); font-weight: 600;">The Natural World Set (MTW-SW-NWS)</strong>, and <strong style="color: var(--ink); font-weight: 600;">The Songs &amp; Stories Set (MTW-SW-SSS)</strong>. Not a single SKU; requested at quote and billed on one PO with a small package discount. Items ship as they're ready, most within 3 to 4 weeks, longer-lead pieces on their own timeline. The Gruffalo Bundle and Story Worlds (Garden of the Moon + Hobbit Hollow) are regularly added at quote.</p>
+      <a href="#quote" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; background: var(--ink); color: var(--cream); text-decoration: none; font-family: var(--sans); font-size: 13px; font-weight: 500; letter-spacing: .04em; border-radius: 999px;">Request the combo quote &rarr;</a>
+    </div>
+  </div>
+
+  <div class="note">
+    <p class="left">All three catalog sets are billed on a single purchase order. Most items ship together within 3 to 4 weeks; longer-lead pieces ship separately on their own timeline. Net-30 and tax-exempt orders welcome. The Gruffalo Bundle (MTW-SW-GRF, $148) and the Story Worlds pair (MTW-SW-GOM + MTW-SW-HHB) are sold separately but are regularly added at quote with a small discount.</p>
+    <p class="left" style="margin-top: 10px; font-family: var(--serif); font-style: italic; font-size: 14px; color: var(--stone); line-height: 1.55;">Longer-lead pieces include Magic Wood, Drewart, and select Bumbu sets. Ask your account rep for current timing.</p>
+    <div class="right">
+      <span class="verified-disc">
+        <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="6" cy="6" r="6" fill="#3B6D11"/><path d="M3.5 6.2l1.6 1.6L8.5 4.5" stroke="#F5F0E5" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Net-30 &amp; tax-exempt
+      </span>
+    </div>
+  </div>
+</section>
+
+
+<!-- =========================== QUOTE FORM =========================== -->
+<section class="quote-form gut" id="quote" data-screen-label="12 Quote Form">
+  <div class="wrap">
+    <div class="col-intro">
+      <span class="wagon-badge">A note from us</span>
+      <h2>Or tell us about <span class="it">your classroom.</span></h2>
+      <p>For custom mixes, district orders, or just a kit consultation, write to us directly. We are Irfana and Rashid, the founders, and a small team at our Los Angeles workshop. A specialist will reply with a kit recommendation, a line-item quote, and an estimated ship date.</p>
+      <p>Most schools hear back within one business day.</p>
+      <div class="human-touch">
+        <div class="ht-card">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20a8 8 0 0 1 16 0"/></svg>
+          <div class="ht-body">
+            <strong>Replied to by a human.</strong>
+            <p>Every reply comes from Irfana, Rashid, or a member of our small team. Never a bot, never a ticket queue. Within one business day.</p>
+          </div>
+        </div>
+        <div class="ht-card">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="1"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+          <div class="ht-body">
+            <strong>Or schedule a call.</strong>
+            <p>For first-time school accounts, district planning, or a walkthrough of the catalog. Twenty minutes on the phone with someone who knows the workshop.</p>
+            <a href="#" class="ht-link">Book a 20-minute call &rarr;</a>
+            <div class="ht-call">Or call us direct &middot; <a href="tel:6268410421">(626) 841-0421</a> &middot; Mon to Fri, 9am to 5pm Pacific</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <form class="qf-form" id="quoteForm" onsubmit="event.preventDefault(); alert('Thanks. A specialist will be in touch within one business day.');">
+
+      <div class="qf-row">
+        <label for="qf-name">Your name <span class="req">*</span></label>
+        <input type="text" id="qf-name" name="name" required autocomplete="name"/>
+      </div>
+
+      <div class="qf-row">
+        <label for="qf-role">Role <span class="req">*</span></label>
+        <select id="qf-role" name="role" required>
+          <option value="">Select a role</option>
+          <option>Educator</option>
+          <option>Director or Head of School</option>
+          <option>Procurement Officer</option>
+          <option>Therapist</option>
+          <option>Homeschool Parent</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="qf-row">
+        <label for="qf-school">School or organization <span class="req">*</span></label>
+        <input type="text" id="qf-school" name="school" required/>
+      </div>
+
+      <div class="qf-row">
+        <label for="qf-email">Email <span class="req">*</span></label>
+        <input type="email" id="qf-email" name="email" required autocomplete="email"/>
+      </div>
+
+      <div class="qf-row">
+        <label for="qf-classrooms">Number of classrooms</label>
+        <select id="qf-classrooms" name="classrooms">
+          <option value="">Select a range</option>
+          <option>1 classroom</option>
+          <option>2 to 4 classrooms</option>
+          <option>5 to 9 classrooms</option>
+          <option>10 or more classrooms</option>
+          <option>District-wide</option>
+        </select>
+      </div>
+
+      <div class="qf-row">
+        <label for="qf-budget">Budget range</label>
+        <select id="qf-budget" name="budget">
+          <option value="">Select a range</option>
+          <option>Under $1,000</option>
+          <option>$1,000 to $5,000</option>
+          <option>$5,000 to $15,000</option>
+          <option>$15,000 to $50,000</option>
+          <option>$50,000 or more</option>
+          <option>Just exploring</option>
+        </select>
+      </div>
+
+      <div class="qf-row full">
+        <label>Which kit are you interested in?</label>
+        <div class="qf-chips" role="radiogroup">
+          <label class="qf-chip"><input type="radio" name="kit" value="felt-habitats"/>The Complete Felt Habitats &middot; MTW-SW-FB5</label>
+          <label class="qf-chip"><input type="radio" name="kit" value="natural-world"/>The Natural World Set &middot; MTW-SW-NWS</label>
+          <label class="qf-chip"><input type="radio" name="kit" value="songs-stories"/>The Songs &amp; Stories Set &middot; MTW-SW-SSS</label>
+          <label class="qf-chip"><input type="radio" name="kit" value="custom"/>A custom mix</label>
+          <label class="qf-chip"><input type="radio" name="kit" value="exploring"/>Just exploring</label>
+        </div>
+      </div>
+
+      <div class="qf-row full">
+        <label>Ecosystems of interest</label>
+        <div class="qf-chips">
+          <label class="qf-chip"><input type="checkbox" name="ecosystems" value="sensory-play"/>01 &middot; Sensory Play</label>
+          <label class="qf-chip"><input type="checkbox" name="ecosystems" value="nature-play"/>02 &middot; Nature Play</label>
+          <label class="qf-chip"><input type="checkbox" name="ecosystems" value="woodland"/>03 &middot; Woodland Habitats</label>
+          <label class="qf-chip"><input type="checkbox" name="ecosystems" value="small-world" checked/>04 &middot; Small World &amp; Storytelling</label>
+          <label class="qf-chip"><input type="checkbox" name="ecosystems" value="fairy-villages"/>05 &middot; Fairy Villages</label>
+          <label class="qf-chip"><input type="checkbox" name="ecosystems" value="steam"/>06 &middot; STEAM &middot; Wonder &amp; Investigation</label>
+          <label class="qf-chip"><input type="checkbox" name="ecosystems" value="dramatic-play"/>07 &middot; Dramatic Play</label>
+          <label class="qf-chip"><input type="checkbox" name="ecosystems" value="creative-arts"/>08 &middot; Creative Arts</label>
+        </div>
+      </div>
+
+      <div class="qf-row full">
+        <label>Timeline</label>
+        <div class="qf-chips" role="radiogroup">
+          <label class="qf-chip"><input type="radio" name="timeline" value="this-quarter"/>This quarter</label>
+          <label class="qf-chip"><input type="radio" name="timeline" value="next-quarter"/>Next quarter</label>
+          <label class="qf-chip"><input type="radio" name="timeline" value="next-year" checked/>Next school year</label>
+          <label class="qf-chip"><input type="radio" name="timeline" value="exploring"/>Just exploring</label>
+        </div>
+      </div>
+
+      <div class="qf-row full">
+        <label for="qf-notes">Notes</label>
+        <textarea id="qf-notes" name="notes" placeholder="Anything we should know. Special programs, allergies, accessibility, existing materials, language preferences."></textarea>
+      </div>
+
+      <div class="qf-submit-row">
+        <button type="submit" class="btn ink">Request an educator quote <span class="arrow"></span></button>
+        <p class="note">By submitting, you agree to be contacted about your quote. We will not share your information.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+
+
+<!-- =========================== EDUCATOR HUB BRIDGE =========================== -->
+<!-- Reviews, "How educator orders work," and the "Stay close to the seasons"
+     Klaviyo signup live on the educator catalog landing (educators.html) now,
+     not on each of the 8 section pages. This small strip points to them. -->
+<section data-screen-label="Educator Hub Bridge" style="background: var(--cream); border-top: 0.5px solid var(--rule); padding: 56px clamp(20px, 5vw, 56px);">
+  <div style="max-width: 920px; margin: 0 auto; text-align: center;">
+    <span class="eyebrow" style="color: var(--forest); display: inline-block; margin-bottom: 18px;">From the Educator Catalog</span>
+    <p style="margin: 0 auto 22px; max-width: 56ch; font-family: var(--serif); font-style: italic; font-size: clamp(20px, 2vw, 26px); line-height: 1.45; color: var(--ink); letter-spacing: -.005em;">Educator reviews, how orders work, and the Educator Letter all live on the catalog landing, once for every volume.</p>
+    <a href="educators.html" style="display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; background: var(--ink); color: var(--cream); text-decoration: none; font-family: var(--sans); font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; border-radius: 999px;">Visit the Educator Catalog &rarr;</a>
+  </div>
+</section>
+
+<!-- =========================== FOOTER =========================== -->
+<footer>
+  <div class="wrap">
+    <div class="left">
+      <img src="{{ 'mtw-wagon-only.png' | asset_url }}" alt="My Toy Wagon" class="foot-mark"/>
+      <p>Natural toys made for years of small hands. A small family shop in Los Angeles, online since 2020.</p>
+
+      <div class="foot-contact">
+        <a href="mailto:educators@mytoywagon.com">educators@mytoywagon.com</a>
+        <a href="tel:6268410421">(626) 841-0421</a>
+        <span class="hours">Mon to Fri, 9 am to 5 pm PT</span>
+        <span class="hours">37 W Huntington Drive, Arcadia, CA 91007</span>
+      </div>
+
+      <div class="foot-social">
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg></a>
+        <a href="#" aria-label="Pinterest"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M11 8c-2 .5-3.5 2.5-3 4.5.3 1.3 1.5 1.6 1.5.5 0-1 .5-2 1.5-2.5 1.5-.8 3.5 0 4 1.5.5 2-.5 4-2.5 4-1 0-1.5-.5-1.3-1.5L12 11"/><path d="M11 13.5 9.5 19"/></svg></a>
+        <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="3"/><path d="M10 9.5v5l4.5-2.5z" fill="currentColor"/></svg></a>
+        <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M14 4v10.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 4c0 2 1.5 4 4 4"/></svg></a>
+      </div>
+
+      <p class="retail-link">Shopping for home? <a href="https://mytoywagon.com">Browse the full retail shop &rarr;</a></p>
+    </div>
+    <div class="cols">
+      <div>
+        <h6>The Catalog</h6>
+        <ul class="catalog-list">
+          <li><a href="sensory-play.html">01 &middot; Sensory Play</a></li>
+          <li><a href="nature-play.html">02 &middot; Nature Play</a></li>
+          <li><a href="woodland.html">03 &middot; Woodland Habitats</a></li>
+          <li><a href="small-world.html">04 &middot; Small World &amp; Storytelling</a></li>
+          <li><a href="fairy-villages.html">05 &middot; Fairy Villages</a></li>
+          <li><a href="steam.html">06 &middot; STEAM</a></li>
+          <li><a href="dramatic-play.html">07 &middot; Dramatic Play</a></li>
+          <li><a href="creative-arts.html">08 &middot; Creative Arts</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h6>Educator Program</h6>
+        <ul>
+          <li><a href="new-quote.html">Start a new quote</a></li>
+          <li><a href="educator-dashboard.html">Educator dashboard</a></li>
+          <li><a href="educator.html">Apply for an account</a></li>
+          <li><a href="school-affiliate.html">School affiliate</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h6>Resources</h6>
+        <ul class="downloads">
+          <li><a href="vendor-profile.html">Vendor profile</a></li>
+          <li><a href="procurement-guide.html">Procurement guide</a></li>
+          <li><a href="ordering-for-schools.html">Ordering for schools</a></li>
+          <li><a href="#" data-ext="XLSX">SKU list and prices</a></li>
+          <li><a href="#" data-ext="PDF">Catalog spread</a></li>
+          <li><a href="#" data-ext="PDF">Materials and safety</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="foot-mid">
+    <span class="pay-label">We accept</span>
+    <div class="pay-methods">
+      <span class="pay-chip po">Purchase orders</span>
+      <span class="pay-chip">Net-30</span>
+      <span class="pay-chip">Tax-exempt</span>
+      <span class="pay-chip">Visa</span>
+      <span class="pay-chip">Mastercard</span>
+      <span class="pay-chip">Amex</span>
+      <span class="pay-chip">Discover</span>
+      <span class="pay-chip">Apple&nbsp;Pay</span>
+      <span class="pay-chip">Google&nbsp;Pay</span>
+      <span class="pay-chip">PayPal</span>
+      <span class="pay-chip">Shop&nbsp;Pay</span>
+    </div>
+  </div>
+
+  <div class="legal">
+    <span>© 2026 My Toy Wagon &nbsp;·&nbsp; Educator Catalog</span>
+    <div class="legal-links">
+      <a href="#">Privacy policy</a>
+      <a href="#">Terms of service</a>
+      <a href="#">Accessibility</a>
+      <a href="#">Returns &amp; shipping</a>
+    </div>
+  </div>
+</footer>
+
+<script src="image-slot.js"></script>
+<script>
+  /* =================================================================
+     CATALOG VARS, single source of truth for ecosystem strings.
+     To reskin for another ecosystem, edit ONLY this block.
+     A Shopify template can override these via Liquid:
+       const CATALOG = { volume: "{{ page.metafields.catalog.volume }}", ... };
+     ================================================================= */
+  const CATALOG = {
+    volume:       "04",
+    ecosystem:    "Small World &amp; Storytelling",
+    "ecosystem-uc": "SMALL WORLD &amp; STORYTELLING"
+  };
+
+  // Ordered list of all 8 ecosystems. To reskin for another ecosystem,
+  // change CATALOG.volume above and the subnav stepper auto-updates.
+  const ECOSYSTEMS = [
+    { vol: "01", slug: "sensory-play",  name: "Sensory Play" },
+    { vol: "02", slug: "nature-play",   name: "Nature Play" },
+    { vol: "03", slug: "woodland",      name: "Woodland" },
+    { vol: "04", slug: "small-world",   name: "Small World" },
+    { vol: "05", slug: "fairy-villages",name: "Fairy Villages" },
+    { vol: "06", slug: "steam",         name: "STEAM" },
+    { vol: "07", slug: "dramatic-play", name: "Dramatic Play" },
+    { vol: "08", slug: "creative-arts", name: "Creative Arts" }
+  ];
+
+  // Populate the subnav stepper based on current volume.
+  (function(){
+    var i = ECOSYSTEMS.findIndex(function(e){ return e.vol === CATALOG.volume; });
+    if (i === -1) return;
+    var prevEl = document.querySelector('#ecosystemStepper .prev');
+    var curEl  = document.querySelector('#ecosystemStepper .current');
+    var nextEl = document.querySelector('#ecosystemStepper .next');
+    if (curEl) curEl.textContent = CATALOG.volume + ' \u00b7 ' + CATALOG.ecosystem;
+    if (i > 0 && prevEl) {
+      var p = ECOSYSTEMS[i-1];
+      prevEl.textContent = p.vol + ' \u00b7 ' + p.name;
+      prevEl.href = p.slug + '.html';
+    } else if (prevEl) {
+      prevEl.style.display = 'none';
+      var sep = prevEl.nextElementSibling;
+      if (sep && sep.classList.contains('sep')) sep.style.display = 'none';
+    }
+    if (i < ECOSYSTEMS.length - 1 && nextEl) {
+      var n = ECOSYSTEMS[i+1];
+      nextEl.textContent = n.vol + ' \u00b7 ' + n.name;
+      nextEl.href = n.slug + '.html';
+    } else if (nextEl) {
+      nextEl.style.display = 'none';
+      var sep2 = nextEl.previousElementSibling;
+      if (sep2 && sep2.classList.contains('sep')) sep2.style.display = 'none';
+    }
+  })();
+  document.querySelectorAll('[data-fill]').forEach(function(el){
+    var key = el.dataset.fill;
+    if (CATALOG.hasOwnProperty(key)) el.textContent = CATALOG[key];
+  });
+
+  // Nav: solid background after scroll
+  (function(){
+    var nav = document.getElementById('nav');
+    if(!nav) return;
+    var onScroll = function(){
+      if(window.scrollY > 60){ nav.classList.add('scrolled'); }
+      else { nav.classList.remove('scrolled'); }
+    };
+    window.addEventListener('scroll', onScroll, {passive:true});
+    onScroll();
+  })();
+
+  // Add-to-cart: increment the cart count badge in the nav.
+  // For Shopify port: replace this with a real fetch to /cart/add.js and
+  // re-render the cart count from {{ cart.item_count }} on response.
+  (function(){
+    var count = 0;
+    var badge = document.getElementById('cartCount');
+    var flash = null;
+    function ensureFlash(){
+      if (flash) return flash;
+      flash = document.createElement('div');
+      flash.className = 'cart-flash';
+      document.body.appendChild(flash);
+      return flash;
+    }
+    document.querySelectorAll('.add-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        count += 1;
+        if (badge) badge.textContent = count;
+        var sku = btn.getAttribute('data-sku') || 'item';
+        var fl = ensureFlash();
+        fl.innerHTML = '<span class="added">Added to cart.</span> <span>' + sku.replace(/-/g,' ') + '</span>';
+        fl.classList.add('show');
+        clearTimeout(window.__cartFlashT);
+        window.__cartFlashT = setTimeout(function(){ fl.classList.remove('show'); }, 2400);
+      });
+    });
+  })();
+
+  // Rotating utility-bar announcement (3 messages, ~5s each).
+  (function(){
+    var slides = document.querySelectorAll('.utility-center .slide');
+    if (slides.length < 2) return;
+    var i = 0;
+    setInterval(function(){
+      slides[i].classList.remove('is-active');
+      i = (i + 1) % slides.length;
+      slides[i].classList.add('is-active');
+    }, 5000);
+  })();
+
+  // Reviews carousel. Generic horizontal-scroll snap track with
+  // arrow buttons and pagination dots. Number of dots equals the
+  // number of "pages", page width = visible track width. We compute
+  // page count from track scrollWidth / clientWidth so it adapts to
+  // breakpoints automatically.
+  (function(){
+    document.querySelectorAll('[data-reviews-carousel]').forEach(function(carousel){
+      var track = carousel.querySelector('.rc-track');
+      var prev  = carousel.querySelector('.rc-nav.prev');
+      var next  = carousel.querySelector('.rc-nav.next');
+      var dotsHost = carousel.querySelector('.rc-dots');
+      if (!track) return;
+
+      function pageCount(){
+        return Math.max(1, Math.ceil(track.scrollWidth / track.clientWidth));
+      }
+      function currentPage(){
+        return Math.round(track.scrollLeft / track.clientWidth);
+      }
+      function buildDots(){
+        if (!dotsHost) return;
+        var count = pageCount();
+        dotsHost.innerHTML = '';
+        for (var i = 0; i < count; i++){
+          var b = document.createElement('button');
+          b.type = 'button';
+          b.setAttribute('role', 'tab');
+          b.setAttribute('aria-label', 'Go to reviews page ' + (i + 1));
+          (function(idx){
+            b.addEventListener('click', function(){
+              track.scrollTo({ left: idx * track.clientWidth, behavior: 'smooth' });
+            });
+          })(i);
+          dotsHost.appendChild(b);
+        }
+        syncDots();
+      }
+      function syncDots(){
+        if (!dotsHost) return;
+        var p = currentPage();
+        Array.prototype.forEach.call(dotsHost.children, function(d, i){
+          d.classList.toggle('is-active', i === p);
+        });
+      }
+      function syncNav(){
+        if (prev) prev.disabled = track.scrollLeft <= 2;
+        if (next) next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 2;
+      }
+      function scrollByPage(dir){
+        track.scrollBy({ left: dir * track.clientWidth, behavior: 'smooth' });
+      }
+
+      if (prev) prev.addEventListener('click', function(){ scrollByPage(-1); });
+      if (next) next.addEventListener('click', function(){ scrollByPage(1); });
+      track.addEventListener('scroll', function(){ syncDots(); syncNav(); }, { passive: true });
+      window.addEventListener('resize', function(){ buildDots(); syncNav(); });
+
+      buildDots();
+      syncNav();
+    });
+  })();
+
+  // Long-lead pill, auto-tags any element with data-long-lead="true" with a
+  // "Ships separately" pill. Wire SKUs as they're added to the slow-ship list
+  // by adding data-long-lead="true" to the .home / .kit / .split card.
+  (function(){
+    document.querySelectorAll('[data-long-lead="true"]').forEach(function(card){
+      if (card.querySelector('.ships-separately-pill')) return;
+      var pill = document.createElement('span');
+      pill.className = 'ships-separately-pill';
+      pill.textContent = 'Ships separately';
+      var anchor = card.querySelector('.add-row, .add-btn, .price-line, .price');
+      if (anchor) anchor.parentNode.insertBefore(pill, anchor);
+      else card.appendChild(pill);
+    });
+  })();
+</script>
+
+</body>
+</html>

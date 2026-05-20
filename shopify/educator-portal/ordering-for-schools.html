@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ordering for Schools — My Toy Wagon</title>
+<meta name="description" content="A guide for schools, therapists, and homeschool buyers. Procurement, POs, tax-exempt purchasing, and the ordering process.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#F5F0E5;--warm-white:#FFFCF7;--ink:#2C2C2A;--forest:#3B6D11;--amber:#854F0B;--stone:#5F5E5A;--card-bg:#EDE3CD;--rule:rgba(44,44,42,0.12);--rule-strong:rgba(44,44,42,0.22);}
+*{box-sizing:border-box;}html,body{margin:0;padding:0;}
+body{font-family:'Mulish',sans-serif;color:var(--ink);background:var(--cream);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+.label{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--stone);font-weight:500;}
+.utility{background:var(--ink);color:var(--cream);padding:9px 40px;text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;}
+header.nav{border-bottom:0.5px solid var(--rule);background:var(--cream);position:sticky;top:0;z-index:50;}
+.nav-inner{max-width:1440px;margin:0 auto;padding:16px 40px;display:flex;justify-content:space-between;align-items:center;}
+.logo{display:inline-flex;align-items:center;gap:14px;}
+.logo-mark{width:80px;height:80px;background-color:var(--ink);-webkit-mask:url('assets/logo-mark.png') center/contain no-repeat;mask:url('assets/logo-mark.png') center/contain no-repeat;}
+.logo-text{font-family:'Cormorant Garamond',serif;font-size:18px;letter-spacing:0.24em;text-transform:uppercase;}
+.logo small{display:block;font-size:8.5px;letter-spacing:0.22em;text-transform:uppercase;color:var(--stone);margin-top:6px;font-weight:500;}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 26px;font-size:12.5px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;border-radius:2px;border:0.5px solid transparent;cursor:pointer;font-family:inherit;}
+.btn-primary{background:var(--ink);color:var(--cream);}.btn-primary:hover{background:var(--forest);}
+.btn-ghost{background:none;border-color:var(--rule-strong);color:var(--ink);}.btn-ghost:hover{border-color:var(--ink);}
+.back-link{display:inline-flex;align-items:center;gap:10px;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--stone);font-weight:500;}
+.back-link::before{content:"";width:16px;height:1px;background:currentColor;}
+
+/* Cover with story banner */
+.cover{position:relative;padding:100px 40px 96px;text-align:center;background:var(--card-bg);overflow:hidden;border-bottom:0.5px solid var(--rule);}
+.cover-inner{max-width:880px;margin:0 auto;position:relative;z-index:2;}
+.cover .back-link{margin-bottom:32px;}
+.cover .label{display:block;margin-bottom:22px;}
+.cover h1{font-family:'Cormorant Garamond',serif;font-size:80px;font-weight:500;line-height:1;letter-spacing:-0.014em;margin:0 0 32px;text-wrap:balance;}
+.cover h1 em{font-style:italic;}
+.story-quote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:24px;color:var(--ink);line-height:1.5;max-width:680px;margin:0 auto;padding:24px 36px;border-top:0.5px solid var(--rule-strong);border-bottom:0.5px solid var(--rule-strong);}
+
+/* Story intro */
+.intro{max-width:780px;margin:0 auto;padding:88px 40px;}
+.intro p{font-size:18px;line-height:1.78;margin:0 0 22px;}
+.intro p:first-of-type::first-letter{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:72px;line-height:0.85;float:left;padding:8px 14px 0 0;font-weight:500;}
+
+/* PDF download band */
+.pdf-band{background:var(--ink);color:var(--cream);padding:64px 40px;}
+.pdf-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr;gap:64px;align-items:center;}
+.pdf-text .label{color:rgba(245,240,229,0.55);display:block;margin-bottom:16px;}
+.pdf-text h2{font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:500;line-height:1.05;margin:0 0 16px;letter-spacing:-0.008em;}
+.pdf-text h2 em{font-style:italic;}
+.pdf-text p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;color:rgba(245,240,229,0.85);line-height:1.5;margin:0 0 24px;}
+.pdf-actions{display:flex;flex-direction:column;gap:14px;}
+.pdf-actions .btn-primary{background:var(--cream);color:var(--ink);}
+.pdf-actions .btn-primary:hover{background:var(--warm-white);}
+.pdf-actions .btn-ghost{border-color:rgba(245,240,229,0.4);color:var(--cream);}
+.pdf-actions .btn-ghost:hover{border-color:var(--cream);}
+.upload-zone{border:1px dashed rgba(245,240,229,0.4);border-radius:2px;padding:36px 24px;text-align:center;background:rgba(255,255,255,0.04);transition:border-color 200ms ease;cursor:pointer;}
+.upload-zone:hover{border-color:var(--cream);}
+.upload-zone .uz-icon{margin-bottom:12px;color:rgba(245,240,229,0.6);}
+.upload-zone .uz-icon svg{width:36px;height:36px;}
+.upload-zone .uz-label{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:19px;color:var(--cream);margin-bottom:6px;}
+.upload-zone .uz-sub{font-size:11.5px;letter-spacing:0.08em;color:rgba(245,240,229,0.6);}
+
+/* Steps */
+.steps-section{max-width:1100px;margin:0 auto;padding:80px 40px;}
+.steps-head{text-align:center;margin-bottom:56px;}
+.steps-head h2{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:500;line-height:1.05;margin:0 0 14px;letter-spacing:-0.008em;}
+.steps-head h2 em{font-style:italic;}
+.steps-head p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;color:var(--stone);max-width:540px;margin:0 auto;line-height:1.5;}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;position:relative;}
+.steps::before{content:"";position:absolute;top:36px;left:12%;right:12%;height:0.5px;background:var(--rule-strong);z-index:0;}
+.step{position:relative;z-index:1;text-align:center;}
+.step-num{width:72px;height:72px;border-radius:50%;background:var(--cream);border:0.5px solid var(--rule-strong);display:inline-flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:30px;color:var(--ink);margin-bottom:20px;}
+.step h3{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;line-height:1.2;margin:0 0 10px;letter-spacing:-0.005em;}
+.step p{font-size:14px;color:var(--stone);line-height:1.6;margin:0;max-width:220px;margin-left:auto;margin-right:auto;}
+
+/* Procurement info */
+.procurement{background:var(--warm-white);padding:80px 40px;border-top:0.5px solid var(--rule);}
+.proc-inner{max-width:1100px;margin:0 auto;}
+.proc-head{text-align:center;margin-bottom:48px;}
+.proc-head h2{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:500;line-height:1.05;margin:0 0 14px;letter-spacing:-0.008em;}
+.proc-head h2 em{font-style:italic;}
+.proc-head p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;color:var(--stone);max-width:520px;margin:0 auto;line-height:1.5;}
+.proc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
+.proc-card{background:var(--cream);border:0.5px solid var(--rule);border-radius:2px;padding:32px 36px;}
+.proc-card .num{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:var(--stone);margin-bottom:14px;display:block;}
+.proc-card h3{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:500;margin:0 0 14px;line-height:1.2;letter-spacing:-0.005em;}
+.proc-card h3 em{font-style:italic;}
+.proc-card p{font-size:14.5px;line-height:1.7;margin:0 0 12px;}
+.proc-card ul{margin:8px 0;padding-left:20px;font-size:14px;line-height:1.7;color:var(--ink);}
+.proc-card li{margin-bottom:4px;}
+.proc-card strong{font-weight:600;}
+
+/* Resources */
+.resources{max-width:1100px;margin:0 auto;padding:80px 40px;}
+.resources-head{margin-bottom:36px;}
+.resources-head h2{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:500;line-height:1.05;margin:0 0 14px;letter-spacing:-0.005em;}
+.resources-head h2 em{font-style:italic;}
+.resources-list{background:var(--warm-white);border:0.5px solid var(--rule);border-radius:2px;}
+.resource-row{display:flex;justify-content:space-between;align-items:center;padding:20px 28px;border-bottom:0.5px solid var(--rule);gap:18px;}
+.resource-row:last-child{border-bottom:none;}
+.resource-meta h4{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:19px;font-weight:500;margin:0 0 4px;line-height:1.25;}
+.resource-meta p{font-size:13px;color:var(--stone);margin:0;}
+.resource-actions{display:flex;gap:8px;flex-shrink:0;}
+.action-btn{font-size:11px;letter-spacing:0.06em;padding:9px 14px;border:0.5px solid var(--rule-strong);border-radius:2px;background:var(--cream);color:var(--ink);cursor:pointer;font-family:inherit;text-transform:uppercase;font-weight:600;letter-spacing:0.1em;}
+.action-btn.primary{background:var(--ink);color:var(--cream);border-color:var(--ink);}
+
+/* Close */
+.close-band{background:var(--card-bg);padding:72px 40px;text-align:center;}
+.close-band .label{display:block;margin-bottom:18px;}
+.close-band h2{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:500;line-height:1.05;margin:0 0 16px;letter-spacing:-0.008em;}
+.close-band h2 em{font-style:italic;}
+.close-band p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;color:var(--stone);max-width:540px;margin:0 auto 24px;line-height:1.5;}
+
+footer{background:var(--cream);border-top:0.5px solid var(--rule);}
+.foot-bottom-band{max-width:1440px;margin:0 auto;padding:28px 40px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--stone);letter-spacing:0.04em;}
+.foot-bottom-band em{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:var(--ink);margin-right:10px;}
+.foot-bottom-band .foot-bottom-links{display:flex;gap:22px;}
+
+@media (max-width:900px){.cover h1{font-size:54px;}.pdf-inner,.steps,.proc-grid{grid-template-columns:1fr;gap:36px;}.steps::before{display:none;}}
+</style>
+</head>
+<body data-screen-label="Ordering for Schools">
+
+<div class="utility">For schools, libraries, therapists, and homeschool families.</div>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="MTW Homepage v3.html" class="logo">
+      <span class="logo-mark" aria-hidden="true"></span>
+      <span class="logo-text">My Toy Wagon<small>Ordering for Schools</small></span>
+    </a>
+    <div style="display:flex;gap:12px;">
+      <a href="catalog.html" class="btn btn-ghost">Catalog</a>
+      <a href="educator.html" class="btn btn-primary">Educator program</a>
+    </div>
+  </div>
+</header>
+
+<section class="cover">
+  <div class="cover-inner">
+    <a href="MTW Homepage v3.html" class="back-link">Back to the shop</a>
+    <span class="label">Ordering for Schools</span>
+    <h1>Procurement for the <em>classroom</em>.</h1>
+    <p class="story-quote">"We believe the best classrooms smell like wood, feel like wool, and sound like children absorbed in play."</p>
+  </div>
+</section>
+
+<!-- Procurement still-life -->
+<section style="background:var(--cream);padding:24px 40px 0;">
+  <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1.1fr;gap:64px;align-items:center;">
+    <div style="aspect-ratio:4/5;background:var(--card-bg);border-radius:2px;overflow:hidden;border:0.5px solid var(--rule);">
+      <img src="assets/procurement-specimen-cabinet.webp" alt="A wooden specimen cabinet with cork-stopped glass bottles holding dried botanicals, ferns, and minerals" style="width:100%;height:100%;object-fit:cover;object-position:center center;display:block;">
+    </div>
+    <div>
+      <span class="label" style="display:block;margin-bottom:18px;">On collecting, on cataloging</span>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:500;line-height:1.05;margin:0 0 22px;letter-spacing:-0.008em;text-wrap:balance;">A small cabinet, <em>carefully kept</em>.</h2>
+      <p style="font-size:16.5px;line-height:1.78;color:var(--ink);margin:0 0 16px;max-width:480px;">Procurement, like a child's specimen cabinet, is a quiet practice of cataloging. Each cork-stoppered bottle holds one thing, carefully labeled, ready when the season asks for it.</p>
+      <p style="font-size:16.5px;line-height:1.78;color:var(--ink);margin:0;max-width:480px;">We try to bring the same care to the paperwork. A W-9 in its right place. A tax-exempt certificate on file. A PO matched to its quote. Small acts of order, in service of larger ones.</p>
+    </div>
+  </div>
+</section>
+</section>
+
+<section class="intro">
+  <p>Most school-supply catalogs read like spreadsheets. We are trying to read like a letter.</p>
+  <p>My Toy Wagon serves schools, libraries, therapy practices, and homeschool co-ops with the same natural wooden and felt toys we send to homes — wood, wool, hand-stitched, hand-painted, built to outlast a school year and most of the children who passed through that classroom. This page is the procurement side of the conversation: the paperwork, the payment terms, and the path from interested to ordered.</p>
+  <p>Start by downloading the procurement guide. It is a PDF written for your accounts-payable team. If you already have a vendor form for us to complete, drop it in the box below and we will return it within one business day.</p>
+</section>
+
+<section class="pdf-band">
+  <div class="pdf-inner">
+    <div class="pdf-text">
+      <span class="label">Procurement guide</span>
+      <h2>Ordering for <em>schools</em>, in one PDF.</h2>
+      <p>Everything your administrator needs: business information, tax-exempt purchasing, payment terms, ordering options, and shipping details. Five pages, written for accounts-payable teams.</p>
+      <div class="pdf-actions">
+        <a href="#" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download procurement guide (PDF, 5 pages)
+        </a>
+        <a href="/cdn-cgi/l/email-protection#b1d4d5c4d2d0c5dec3c2f1dcc8c5dec8c6d0d6dedf9fd2dedc8ec2c4d3dbd4d2c58ce1c3ded2c4c3d4dcd4dfc5948381c0c4d4c2c5d8dedfc2" class="btn btn-ghost">Or email our procurement team</a>
+      </div>
+    </div>
+    <label class="upload-zone" for="vendor-form-upload">
+      <div class="uz-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+      </div>
+      <div class="uz-label">Drag your vendor form here, or click to upload</div>
+      <div class="uz-sub">PDF, DOC, or DOCX · We complete and return within 1 business day</div>
+      <input type="file" id="vendor-form-upload" hidden accept=".pdf,.doc,.docx">
+      <a href="/cdn-cgi/l/email-protection#523331313d273c263b3c35123f2b263d2b2533353d3c7c313d3f6d212730383731266f04373c363d20776062343d203f776062263d776062313d3f223e37263774303d362b6f1a373e3e3d776011776213776213023e37332137776062343b3c3677606233262633313a37367760623d272077606224373c363d207760623d3c303d3320363b3c35776062343d203f7c77606205377760623e3d3d39776062343d2025332036776062263d776062203731373b243b3c357760623b26776062313d3f223e37263736776062253b263a3b3c776062637760623027213b3c37212177606236332b7c77621377621301313a3d3d3e776062776014776062163b2126203b3126776113776062776213113d3c26333126776113776062776213003733213d3c776062776014776062021d776062313d3c26372a26776113776062776213776213063a333c397760622b3d277c" style="display:inline-block;margin-top:14px;padding:8px 16px;font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(245,240,229,0.85);border:0.5px solid rgba(245,240,229,0.4);border-radius:2px;font-weight:600;">Or email your form to us</a>
+    </label>
+  </div>
+</section>
+
+<section class="steps-section">
+  <div class="steps-head">
+    <h2>From interested to <em>ordered</em>, in four steps.</h2>
+    <p>Most school orders move from inquiry to delivery in two to four weeks.</p>
+  </div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">i.</div>
+      <h3>Apply for an Educator account.</h3>
+      <p>Apply at our Educator Program page. Approval is usually same-day, never longer than two business days.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">ii.</div>
+      <h3>Build a quote.</h3>
+      <p>Browse the B2B catalog with educator pricing. Save items to a draft, add notes, and submit.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">iii.</div>
+      <h3>We invoice.</h3>
+      <p>We review your quote, adjust if needed, and send a formal invoice with PO matching.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">iv.</div>
+      <h3>You pay, we ship.</h3>
+      <p>Pay by PO, check, ACH, or card. We ship from our LA warehouse, with tracking emailed the day it leaves.</p>
+    </div>
+  </div>
+</section>
+
+<section class="procurement">
+  <div class="proc-inner">
+    <div class="proc-head">
+      <h2>For your accounts-payable <em>team</em>.</h2>
+      <p>The procurement details most schools and districts need on file.</p>
+    </div>
+    <div class="proc-grid">
+      <div class="proc-card">
+        <span class="num">i.</span>
+        <h3>Payment terms <em>we accept</em></h3>
+        <p>We work with how schools actually pay.</p>
+        <ul>
+          <li>Purchase orders (Net-30 default)</li>
+          <li>Net-60 invoicing for larger orders</li>
+          <li>School and district checks</li>
+          <li>ACH bank transfer</li>
+          <li>Wire transfer (international)</li>
+          <li>Credit card (Visa, Mastercard, Amex, Discover)</li>
+        </ul>
+      </div>
+      <div class="proc-card">
+        <span class="num">ii.</span>
+        <h3>Tax-exempt <em>purchasing</em></h3>
+        <p>Once you upload your tax-exempt certificate, sales tax is removed from all future invoices.</p>
+        <ul>
+          <li>State-issued certificate, or</li>
+          <li>501(c)(3) determination letter</li>
+          <li>Re-uploaded every 3 years or when state requires</li>
+        </ul>
+        <p>Required for tax-exempt status; otherwise sales tax is added per California regulations.</p>
+      </div>
+      <div class="proc-card">
+        <span class="num">iii.</span>
+        <h3>Documents <em>on file</em></h3>
+        <p>Most schools require these from us. All are available on request.</p>
+        <ul>
+          <li>W-9 (signed and dated)</li>
+          <li>California seller's permit (CDTFA-issued license number)</li>
+          <li>Resale certificate (signed form for tax-exempt resale purchases)</li>
+          <li>Certificate of insurance</li>
+          <li>Business license</li>
+          <li>Custom vendor forms (we complete and return)</li>
+        </ul>
+        <p>See our <a href="vendor-profile.html" style="border-bottom:0.5px solid var(--rule-strong);">vendor profile</a> page for downloads and email-request options.</p>
+      </div>
+      <div class="proc-card">
+        <span class="num">iv.</span>
+        <h3>Shipping <em>to schools</em></h3>
+        <p>We ship to schools, classrooms, district warehouses, and loading docks.</p>
+        <ul>
+          <li>Shipping is quoted per order, based on size and destination</li>
+          <li>Standard ground shipping for most orders</li>
+          <li>Drop-shipping to multiple classroom addresses available</li>
+          <li>Insurance certificate available for loading-dock deliveries</li>
+        </ul>
+        <p>For district-wide orders shipping to a central warehouse, email us first for a coordinated quote.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Procurement notes -->
+<section style="background:var(--card-bg);padding:80px 40px;border-top:0.5px solid var(--rule);">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:48px;">
+      <span class="label" style="display:block;margin-bottom:14px;">Procurement notes</span>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:500;line-height:1.05;margin:0 0 12px;letter-spacing:-0.008em;">The fine print, <em>plainly stated</em>.</h2>
+      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;color:var(--stone);max-width:540px;margin:0 auto;line-height:1.5;">Answers to the questions schools ask after a quote and before a PO.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:20px;">
+      <div style="background:var(--warm-white);border:0.5px solid var(--rule);border-radius:2px;padding:24px 28px;">
+        <h3 style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:21px;font-weight:500;margin:0 0 10px;letter-spacing:-0.005em;">Stock confirmed on every quote.</h3>
+        <p style="font-size:14.5px;line-height:1.7;color:var(--ink);margin:0;">Every quote we send confirms current inventory on every line item. If anything is short, we flag it before you submit a PO.</p>
+      </div>
+      <div style="background:var(--warm-white);border:0.5px solid var(--rule);border-radius:2px;padding:24px 28px;">
+        <h3 style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:21px;font-weight:500;margin:0 0 10px;letter-spacing:-0.005em;">Pricing held for 30 days.</h3>
+        <p style="font-size:14.5px;line-height:1.7;color:var(--ink);margin:0;">Quoted pricing is honored for 30 calendar days from the quote date. Plenty of time for district approval and PO issuance.</p>
+      </div>
+      <div style="background:var(--warm-white);border:0.5px solid var(--rule);border-radius:2px;padding:24px 28px;">
+        <h3 style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:21px;font-weight:500;margin:0 0 10px;letter-spacing:-0.005em;">If something goes out of stock.</h3>
+        <p style="font-size:14.5px;line-height:1.7;color:var(--ink);margin:0;">If a quoted item becomes unavailable between quote and PO, we will substitute with your written approval or remove it from the order.</p>
+      </div>
+      <div style="background:var(--warm-white);border:0.5px solid var(--rule);border-radius:2px;padding:24px 28px;">
+        <h3 style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:21px;font-weight:500;margin:0 0 10px;letter-spacing:-0.005em;">Ship to multiple classrooms.</h3>
+        <p style="font-size:14.5px;line-height:1.7;color:var(--ink);margin:0;">Drop-ship to multiple classroom addresses on one PO. We do this regularly. <a href="/cdn-cgi/l/email-protection#345150415755405b464774594d405b4d4355535b5a1a575b590b4741565e51574009794158405d195550504651474711060447575c5b5b5811060445415b4051" style="border-bottom:0.5px solid var(--rule-strong);">Email for a coordinated quote</a>.</p>
+      </div>
+      <div style="background:var(--warm-white);border:0.5px solid var(--rule);border-radius:2px;padding:24px 28px;">
+        <h3 style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:21px;font-weight:500;margin:0 0 10px;letter-spacing:-0.005em;">Sole-source letters, on request.</h3>
+        <p style="font-size:14.5px;line-height:1.7;color:var(--ink);margin:0;">For districts that require a non-competitive-bid justification (Tara Treasures, Bauspiel, and other genuinely unique brands), we write the letter within 2 business days.</p>
+      </div>
+      <div style="background:var(--warm-white);border:0.5px solid var(--rule);border-radius:2px;padding:24px 28px;">
+        <h3 style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:21px;font-weight:500;margin:0 0 10px;letter-spacing:-0.005em;">Tax-exempt, all 50 states.</h3>
+        <p style="font-size:14.5px;line-height:1.7;color:var(--ink);margin:0;">We accept tax-exempt certificates from any state. Once on file, sales tax is waived on every future invoice automatically.</p>
+      </div>
+      <div style="background:var(--warm-white);border:0.5px solid var(--rule);border-radius:2px;padding:24px 28px;">
+        <h3 style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:21px;font-weight:500;margin:0 0 10px;letter-spacing:-0.005em;">Sustainability, on the record.</h3>
+        <p style="font-size:14.5px;line-height:1.7;color:var(--ink);margin:0;">For green-school questionnaires: Tara Treasures is Fair Trade USA Certified, Bauspiel and Drewart use FSC-certified European hardwood, and most of our line is OEKO-TEX or GOTS certified.</p>
+      </div>
+      <div style="background:var(--warm-white);border:0.5px solid var(--rule);border-radius:2px;padding:24px 28px;">
+        <h3 style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:21px;font-weight:500;margin:0 0 10px;letter-spacing:-0.005em;">Cancellations after fulfillment.</h3>
+        <p style="font-size:14.5px;line-height:1.7;color:var(--ink);margin:0;">PO cancelled after pick-and-pack has begun is subject to a 15% restocking fee plus return shipping. Cancellations before fulfillment are free.</p>
+      </div>
+      <div style="background:var(--warm-white);border:0.5px solid var(--rule);border-radius:2px;padding:24px 28px;grid-column:1/-1;">
+        <h3 style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:21px;font-weight:500;margin:0 0 10px;letter-spacing:-0.005em;">Payment terms.</h3>
+        <p style="font-size:14.5px;line-height:1.7;color:var(--ink);margin:0;">Net-30 is our default. Net-60 available for larger or recurring orders. Net-60 is our maximum; extensions are reviewed case by case, based on need — <a href="/cdn-cgi/l/email-protection#402123232f352e34292e27002d39342f393721272f2e6e232f2d7f3335222a2523347d053834252e2425246572703021392d252e346572703425322d3365727032253135253334" style="border-bottom:0.5px solid var(--rule-strong);">email accounting</a> with your situation.</p>
+      </div>
+    </div>
+    <p style="text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:var(--stone);margin:32px 0 0;letter-spacing:0.02em;">References from currently-served schools available on request.</p>
+  </div>
+</section>
+
+<section class="resources">
+  <div class="resources-head">
+    <h2>Downloadable <em>resources</em>.</h2>
+    <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;color:var(--stone);">Procurement documents and forms, available for your accounts-payable team.</p>
+  </div>
+  <div class="resources-list">
+    <div class="resource-row">
+      <div class="resource-meta">
+        <h4>Procurement guide</h4>
+        <p>Full guide for schools, 5 pages</p>
+      </div>
+      <div class="resource-actions">
+        <a href="#" class="action-btn primary">Download PDF</a>
+      </div>
+    </div>
+    <div class="resource-row">
+      <div class="resource-meta">
+        <h4>Quote request form</h4>
+        <p>For administrators submitting on behalf of a teacher</p>
+      </div>
+      <div class="resource-actions">
+        <a href="#" class="action-btn primary">Download PDF</a>
+      </div>
+    </div>
+    <div class="resource-row">
+      <div class="resource-meta">
+        <h4>W-9</h4>
+        <p>Signed, dated, sent on request</p>
+      </div>
+      <div class="resource-actions">
+        <a href="/cdn-cgi/l/email-protection#09686a6a667c677d60676e4964707d66707e686e6667276a6664367a7c6b636c6a7d345e24302c3b397b6c787c6c7a7d" class="action-btn primary">Email request</a>
+      </div>
+    </div>
+    <div class="resource-row">
+      <div class="resource-meta">
+        <h4>Business license &amp; resale certificate</h4>
+        <p>City of Arcadia · California State Board of Equalization</p>
+      </div>
+      <div class="resource-actions">
+        <a href="vendor-profile.html" class="action-btn">View profile</a>
+        <a href="#" class="action-btn primary">Download PDFs</a>
+      </div>
+    </div>
+    <div class="resource-row">
+      <div class="resource-meta">
+        <h4>Certificate of insurance</h4>
+        <p>General liability coverage, for loading-dock deliveries</p>
+      </div>
+      <div class="resource-actions">
+        <a href="/cdn-cgi/l/email-protection#3c5d5f5f5349524855525b7c51454853454b5d5b5352125f5351034f495e56595f48017f594e48555a555f5d4859190e0c535a190e0c55524f494e5d525f59190e0c4e594d49594f48" class="action-btn primary">Email request</a>
+      </div>
+    </div>
+    <div class="resource-row">
+      <div class="resource-meta">
+        <h4>Catalog (PDF)</h4>
+        <p>Spring/Summer 2026 · Print-ready for sharing with your team</p>
+      </div>
+      <div class="resource-actions">
+        <a href="catalog.html" class="action-btn">View online</a>
+        <a href="#" class="action-btn primary">Download PDF</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="close-band">
+  <span class="label">Need to talk</span>
+  <h2>Email or call our <em>buyer</em>.</h2>
+  <p>For coordinated orders, custom quotes, district-wide procurement, or curriculum partnerships, we are happy to talk.</p>
+  <div style="display:inline-flex;gap:12px;flex-wrap:wrap;justify-content:center;">
+    <a href="/cdn-cgi/l/email-protection#741110011715001b060734190d001b0d0315131b1a5a171b194b0701161e1117004927171c1b1b185146441b0610110651464405011107001d1b1a" class="btn btn-primary">Email <span class="__cf_email__" data-cfemail="1b7e7f6e787a6f7469685b76626f74626c7a7c747535787476">[email&#160;protected]</span></a>
+    <a href="tel:6268410421" class="btn btn-ghost">Call 626.841.0421</a>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-bottom-band">
+    <span><em>Natural toys, curated by hand.</em>© 2026 My Toy Wagon LLC. All rights reserved.</span>
+    <div class="foot-bottom-links">
+      <a href="MTW Homepage v3.html">Back to the shop</a>
+      <a href="educator.html">Educator</a>
+      <a href="vendor-profile.html">Vendor profile</a>
+      <a href="catalog.html">Catalog</a>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>
