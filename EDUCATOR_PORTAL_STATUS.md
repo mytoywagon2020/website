@@ -459,3 +459,34 @@ ecosystems by swapping color variables.
   product links, independently verified (section 13). Awaiting owner
   reaction; on approval, replicate the pattern across the other 7
   ecosystems.
+
+## 15. Ecosystem section pages deployed (2026-05-20)
+
+Irfana's polished section-page chassis (the `.cover/.subnav/.split/.gallery`
+design with merge-choreography polish already baked in: noindex,
+breadcrumb, section dividers, pull-quotes, cap.expanded, layout variants,
+"All rights reserved") deployed to staging theme 145914462378 as per-page
+`{% layout none %}` templates + draft pages (all isPublished false):
+
+| Section | Page handle | Page id | Template |
+|---|---|---|---|
+| Sensory Play | educator-sensory-play | 115719241898 | page.educator-sensory-play.liquid |
+| Nature Play | educator-nature-play | 115720061098 | page.educator-nature-play.liquid |
+| Woodland | educator-woodland | 115720093866 | page.educator-woodland.liquid |
+| Small World | educator-small-world | 115720126634 | page.educator-small-world.liquid |
+
+- Internal `.html` links rewritten to `/pages/...`; breadcrumb "Educator
+  Catalog" -> /pages/educators (auth-walled landing), educator.html ->
+  /pages/educator-program (apply).
+- `noindex` kept on all section pages by owner decision (auth-walled;
+  the public lead magnet is the separate catalog file at /pages/catalog).
+- Images: chassis uses image-slot.js placeholders + asset_url logos;
+  slots empty until owner adds images to Files.
+- Deployed via staged upload (files ~157-172 KB). Source HTML in the
+  uploads bundle, not committed to repo (repo `designs/` is the older
+  educator-portal set).
+- OPEN: Fairy Villages still on the earlier Claude-design chassis (has
+  real hero image); decide whether to swap to the section chassis v3 for
+  consistency. STEAM, Dramatic Play, Creative Arts not built (cross-links
+  404 until then). Catalog landing page /pages/educators not built; old
+  "educators" PO page still occupies that handle.
