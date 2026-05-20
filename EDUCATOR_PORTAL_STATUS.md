@@ -490,3 +490,23 @@ breadcrumb, section dividers, pull-quotes, cap.expanded, layout variants,
   consistency. STEAM, Dramatic Play, Creative Arts not built (cross-links
   404 until then). Catalog landing page /pages/educators not built; old
   "educators" PO page still occupies that handle.
+
+## 16. Catalog landing + Fairy Villages swap (2026-05-20)
+
+- **/pages/educators** (catalog landing) deployed: template
+  `page.educators.liquid` on staging theme + page `educators`
+  (id 115729760426, templateSuffix `educators`, isPublished false).
+  Eight volume cards link to the deployed `/pages/educator-*` sections.
+- **Old "Purchase Order" page** (id 97152532650) renamed handle to
+  `educators-po-legacy` and unpublished, freeing the `educators` handle.
+- **Fairy Villages swapped to v3 chassis**: page 115690406058 now
+  templateSuffix `educator-fairy-villages` (template page.educator-fairy-villages.liquid),
+  consistent with the other sections. Earlier Claude-design template
+  `page.educator-catalog.liquid` is now orphaned (no page uses it; safe
+  to delete later). The generated hero image is no longer shown; re-add
+  via Files when ready.
+
+Educator catalog set now on staging (all drafts, noindex, image slots
+empty): educators (landing), educator-sensory-play, educator-nature-play,
+educator-woodland, educator-small-world, educator-fairy-villages.
+Remaining: STEAM, Dramatic Play, Creative Arts (owner sending).
