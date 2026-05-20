@@ -6,9 +6,9 @@
 
 <!-- SEO STRATEGY ============================================================
      This page is the EDITORIAL surface (school-buyer keywords).
-     The Shopify-auto collection page lives at /collections/woodland
+     The Shopify-auto collection page lives at /collections/nature-play
      (product-search keywords). They don't compete because:
-       1. Different URLs (/pages/educator-woodland vs /collections/woodland)
+       1. Different URLs (/pages/educator-nature-play vs /collections/nature-play)
        2. Different titles, descriptions, H1s
        3. Different target keywords
        4. Each has its own canonical pointing to itself
@@ -31,7 +31,7 @@
 <meta name="twitter:description" content="Gus + Mabel Busy Bee Trays, nature loose parts, and hand-carved tools for Pre-K to Grade 2 classrooms. Net-30 and tax-exempt for approved schools." />
 
 <!-- Structured data: BreadcrumbList for educator portal hierarchy.
-     Tells Google: Home > Educator Catalog > Woodland Habitats.
+     Tells Google: Home > Educator Catalog > Nature Play.
      This is the editorial breadcrumb; the Shopify collection page has its own. -->
 <script type="application/ld+json">
 {
@@ -3225,11 +3225,30 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 }
 
 
-/* Section 03 — Woodland Habitats personality
-   Slow, contemplative, wide breath. More vertical air. */
-.gallery { padding-top: clamp(80px, 9vw, 120px); padding-bottom: clamp(80px, 9vw, 120px); }
-.split .content h3, .gallery h2, .intro h3 { font-weight: 400; letter-spacing: 0; }
-.split .content { padding-top: clamp(72px, 9vw, 132px) !important; padding-bottom: clamp(72px, 9vw, 132px) !important; }
+/* Section 02 — Nature Play personality
+   A botanical, garden-bench voice: open and growing, italic-led product
+   names, a sage hairline under section heads. Subtle, like the others. */
+.gallery h2 .it,
+.split .content h3 .it,
+.intro h3 .it { font-style: italic; }
+.gallery .head h2,
+.intro .col-txt h3 { font-weight: 400; letter-spacing: -.004em; }
+.gallery .head .eyebrow,
+.intro .col-txt .eyebrow {
+  position: relative;
+}
+.gallery .head .eyebrow::after,
+.intro .col-txt .eyebrow::after {
+  content: "";
+  display: block;
+  width: 30px;
+  height: 1px;
+  background: var(--accent);
+  opacity: .5;
+  margin-top: 10px;
+}
+/* Gallery card names lean botanical-italic on this section. */
+.gallery .home .cap .name { font-style: italic; }
 
 
 /* Section divider, mobile fallback. Long labels should stack vertically. */
@@ -3310,8 +3329,9 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       <a class="next" href="#"></a>
     </div>
     <div class="jumps">
-      <a href="#homes">The Homes</a>
-      <a href="#kits">Outfit a Classroom</a>
+      <a href="#homes">Loose Parts</a>
+      <a href="#tools">Nature Tools</a>
+      <a href="#outfit">Outfit a Classroom</a>
       <a href="new-quote.html">Quote builder</a>
     </div>
   </div>
@@ -3339,8 +3359,8 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 
   <div class="footer">
     <div class="audience">
-      <span class="label">Section Two &nbsp;&middot;&nbsp; Ages 3 to 8</span>
-      <p>The garden has always been the best classroom. These are the tools that bring it inside. Gus + Mabel Busy Bee Trays, hand-felted nature loose parts, and hand-finished Papoose teak tools, open-ended nature play a child can pour, sort, and arrange for a whole term.</p>
+      <span class="label">Section Two &nbsp;&middot;&nbsp; Pre-K to Grade 2</span>
+      <p>The garden has always been the best classroom. These are the tools that bring it inside. The Gus + Mabel Busy Bee Tray, hand-felted nature loose parts, and hand-finished Papoose teak tools, open-ended nature play a child can pour, sort, and arrange for a whole term.</p>
     </div>
   </div>
 </section>
@@ -3349,12 +3369,12 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 <!-- BEGIN PARTIAL: ecosystem-quick-facts (per-ecosystem facts; not shared) -->
 <section class="quick-facts" data-screen-label="02 Quick Facts">
   <div class="quick-facts-inner">
-    <span class="qf-chip-stat">Pre-K to Grade 3</span>
-    <span class="qf-chip-stat">FSC-certified hardwoods</span>
-    <span class="qf-chip-stat">Water-based paints &amp; organic oils</span>
-    <span class="qf-chip-stat">Hand-felted 100% AU/NZ wool</span>
+    <span class="qf-chip-stat">Ages 3 to 8</span>
+    <span class="qf-chip-stat">Hand-felted wool &middot; Nepal</span>
+    <span class="qf-chip-stat">SVLK teak &middot; Indonesia</span>
+    <span class="qf-chip-stat">FSC-certified Doussie &middot; Vietnam</span>
+    <span class="qf-chip-stat">GOTS &middot; OEKO-TEX &middot; Fair Trade</span>
     <span class="qf-chip-stat">CE / EN71 safety-tested</span>
-    <span class="qf-chip-stat">Made in Romania &amp; Nepal</span>
     <span class="qf-chip-stat">Net-30 &amp; tax-exempt</span>
   </div>
 </section>
@@ -3362,8 +3382,8 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 
 <!-- =========================== SLOW GOODS BAND =========================== -->
 <section style="background: var(--cream); border-bottom: 0.5px solid var(--rule); text-align: center; padding: 56px clamp(20px, 5vw, 56px);">
-  <p style="margin: 0 auto; max-width: 68ch; font-family: var(--serif); font-style: italic; font-size: clamp(22px, 2.4vw, 30px); line-height: 1.4; color: var(--ink); letter-spacing: -.005em;">Hand-carved in a Carpathian workshop, hand-felted in the Kathmandu valley. <span style="color: var(--accent-deep);">Slow goods, on purpose.</span></p>
-  <p style="margin: 22px auto 0; max-width: 62ch; font-family: var(--sans); font-size: 16px; line-height: 1.65; color: var(--ink-soft);">Every Bumbu animal and tree is carved from FSC-certified maple and basswood by a family workshop in Romania, painted by hand with water-based paint and finished with organic oils. The Papoose Seasonal Trees are needle-felted in Nepal on raw driftwood trunks, no two alike. We accept a limited number of classroom orders each season, so the work stays true. Reserve early.</p>
+  <p style="margin: 0 auto; max-width: 68ch; font-family: var(--serif); font-style: italic; font-size: clamp(22px, 2.4vw, 30px); line-height: 1.4; color: var(--ink); letter-spacing: -.005em;">Hand-felted in the Kathmandu valley, hand-finished in teak workshops. <span style="color: var(--accent-deep);">Slow goods, on purpose.</span></p>
+  <p style="margin: 22px auto 0; max-width: 62ch; font-family: var(--sans); font-size: 16px; line-height: 1.65; color: var(--ink-soft);">The Papoose felt loose parts are hand-felted from wool in Nepal under Fair Trade conditions; the Tara Treasures pieces are GOTS-certified. The teak nature tools are hand-finished from SVLK teak in Indonesia. The Wild Mountain Child tools are carved from FSC-certified Doussie in Vietnam. We accept a limited number of classroom orders each season, so the work stays true. Reserve early.</p>
   <p style="margin: 24px auto 0; max-width: 62ch; font-family: var(--sans); font-size: 14.5px; line-height: 1.6; color: var(--forest); font-weight: 600; letter-spacing: .02em;">For every classroom order, we share a meal with families served by the Los Angeles Regional Food Bank.</p>
 </section>
 
@@ -3373,78 +3393,81 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
     <div class="col-img">
       <div class="tile t-hue3">
         <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-        <span class="tag">[ EDITORIAL ESSAY &nbsp;&middot;&nbsp; lifestyle: a child's hands arranging a Bumbu fox family beneath two Bumbu birch trees on a felted forest mat. Overhead three-quarter, warm side-light, classroom shelf softly out of focus behind. ]</span>
+        <span class="tag">[ EDITORIAL ESSAY &nbsp;&middot;&nbsp; lifestyle: a child's hands sorting felt acorns and pebbles into teak nesting bowls on a nature table, fresh-cut botanicals at the edge. Overhead three-quarter, warm side-light, classroom shelf softly out of focus behind. ]</span>
       </div>
     </div>
     <div class="col-txt">
-      <span class="eyebrow">Essay One &nbsp;&middot;&nbsp; What a Woodland Is</span>
-      <h3>A real forest, made small. <span class="it">A small world</span> a child can walk into.</h3>
+      <span class="eyebrow">Essay One &nbsp;&middot;&nbsp; What Nature Play Is</span>
+      <h3>The garden, brought inside. <span class="it">Open-ended tools</span> for the nature table.</h3>
 
       <div class="body">
-        <p><span class="dropcap">T</span>he Woodland is built from real species. The deer family is a stag, a doe, and three fawns, one standing, one eating, one curled and sleeping. The trees are an oak, two birches, two firs, two acacias, two willows. Each is carved from a single piece of hardwood, painted by hand, finished with the kind of oil you can hold against a baby's cheek. There are no batteries. There are no instructions. The forest is the instructions.</p>
+        <p><span class="dropcap">F</span>ill the Busy Bee Tray with water on Monday and float petals and pebbles. Swap in the Sixth Insert on Friday and it becomes six sorting wells for acorns, seed pods, and dried citrus. Add the Papoose teak scoops, the coconut sieve, the felt daisies and acorns, and a tray becomes a term's worth of provocations. There are no batteries. There are no instructions. The materials are the instructions.</p>
       </div>
 
       <div class="pillars">
-        <div class="p"><span class="label">Habitat Studies</span><p>Real species, real proportions, real relationships.</p></div>
-        <div class="p"><span class="label">Narrative Play</span><p>Family hierarchy, caregiving, the long quiet story.</p></div>
-        <div class="p"><span class="label">Seasonal Awareness</span><p>Spring lime, summer moss, autumn rust, winter bare.</p></div>
-        <div class="p"><span class="label">NGSS &middot; K&ndash;2</span><p>Life cycles, life science, place-based learning.</p></div>
+        <div class="p"><span class="label">Loose-Parts Play</span><p>Sorting, counting, transferring, arranging, no fixed outcome.</p></div>
+        <div class="p"><span class="label">Practical Life</span><p>Scooping, pouring, pincer grip, the slow rhythm of the work.</p></div>
+        <div class="p"><span class="label">Outdoor Learning</span><p>From garden to nature table to mud kitchen and back.</p></div>
+        <div class="p"><span class="label">NGSS &middot; K&ndash;2</span><p>Life science, classification, place-based observation.</p></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- =========================== FEATURED PRODUCT (Hero: Deer Family) =========================== -->
+<!-- =========================== FEATURED PRODUCT (Hero: Busy Bee Tray) =========================== -->
+<!-- Featured hero, Gus + Mabel Busy Bee Tray (MTW-NP-BBT). Catalog pg. 14.
+     No price in the catalog source, so the price line is intentionally omitted.
+     Owner-requested line: comes packaged in a stunning box, ready to gift. -->
 <section class="split" data-screen-label="04 Hero Product">
   <div class="img-side">
     <div class="tile t-soft contained">
       <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-      <span class="tag">[ HERO PRODUCT &nbsp;&middot;&nbsp; THE DEER FAMILY, clean five-piece flat-lay on linen: antlered stag, standing doe, standing fawn, resting fawn, eating fawn. Studio light, soft blue-grey sky drop. Mirrors catalog pg.&nbsp;19 hero. ]</span>
+      <span class="tag">[ HERO PRODUCT &nbsp;&middot;&nbsp; BUSY BEE TRAY, outdoors with the Reflective Play Mirror Inlay fitted, surface covered with hibiscus, bougainvillea, orchid, and marigold blossoms beside a child in a tie-dye dress. Studio-warm side-light. Mirrors catalog pg.&nbsp;14 hero. ]</span>
     </div>
   </div>
   <div class="content">
-    <span class="eyebrow" style="color: var(--accent-deep);">Bumbu &nbsp;&middot;&nbsp; Featured</span>
-    <h3>The Deer <span class="it">Family.</span></h3>
-    <div class="sub">Hand-carved hardwood. Five pieces. A full morning of stories.</div>
+    <span class="eyebrow" style="color: var(--accent-deep);">Gus + Mabel &nbsp;&middot;&nbsp; Featured</span>
+    <h3>Busy <span class="it">Bee Tray.</span></h3>
+    <div class="sub">Four interchangeable inserts. One tray, a term's worth of provocations.</div>
     <span class="hair" aria-hidden="true"></span>
 
-    <p class="desc">The stag keeps watch from the ridge while the doe and her fawns graze in the clearing below. One fawn lies curled and sleeping, another nibbles nearby, and a third stands alert at the edge. Five pieces, hand-carved from FSC-certified maple, painted by hand with realistic fawn spotting, finished with organic oils. The figures stand free; the relationships do the rest.</p>
+    <p class="desc">Fill it with water on Monday and float petals and pebbles. Swap in the Sixth Insert on Friday and it becomes six sorting wells for acorns, seed pods, and dried citrus. The embossed Australian flora and fauna base invites tracing and rubbing, and the Reflective Mirror insert scaffolds symmetry study and self-recognition. The waterproof eco-composite moves between outdoor garden, indoor nature table, and small-group water station. It comes packaged in a stunning box, ready to gift.</p>
 
     <ul class="contents-list">
-      <li>One antlered stag, watchful on the ridge.</li>
-      <li>One standing doe, the centre of the family.</li>
-      <li>One standing fawn, alert at the edge of the clearing.</li>
-      <li>One resting fawn, curled and sleeping.</li>
-      <li>One eating fawn, nibbling at the grass.</li>
+      <li>The tray and cover.</li>
+      <li>A reflective mirror insert.</li>
+      <li>One sorting insert, Halves, Quarter, or Sixth.</li>
+      <li>Embossed Australian flora and fauna base texture.</li>
     </ul>
 
     <div class="craft">
       <div>
         <span class="label">Material</span>
-        <span class="v">FSC-certified maple, organic oils.</span>
+        <span class="v">Eco-composite plant-fiber, food-safe, weather-resistant.</span>
       </div>
       <div>
         <span class="label">Provenance</span>
-        <span class="v">Hand-carved in Romania.</span>
+        <span class="v">Made in China.</span>
       </div>
       <div>
-        <span class="label">SKU &nbsp;&middot;&nbsp; CE / EN71</span>
-        <span class="stock-pill">MTW-WD-DEER &nbsp;&middot;&nbsp; Ages 3+</span>
+        <span class="label">SKU &nbsp;&middot;&nbsp; Small group 2 to 4</span>
+        <span class="stock-pill">MTW-NP-BBT &nbsp;&middot;&nbsp; Ages 3+</span>
       </div>
     </div>
 
-    <div class="testimony">
-      <p class="quote">&ldquo;We&rsquo;re slowly adding to our collection of deer and really love the different options of poses, they really help with storytelling.&rdquo;</p>
-      <div class="attr">
-        <span class="dash"></span>
-        <span class="name"><b>Megan S.</b> &nbsp;&middot;&nbsp; Verified Buyer</span>
+    <div class="standards-row">
+      <span class="label">Learning connections</span>
+      <div class="codes">
+        <span class="code">Natural Sciences</span>
+        <span class="code">Early Classification</span>
+        <span class="code">Outdoor Learning</span>
+        <span class="code">NGSS &middot; K-2 Life Science</span>
+        <span class="code">Montessori &middot; Practical Life</span>
       </div>
     </div>
 
-    <!-- PRICE: MTW-WD-DEER -->
-    <span class="price">$92</span>
     <div class="add-row">
-      <button class="add-btn" type="button" data-sku="MTW-WD-DEER"><span class="plus"></span>Add to cart</button>
+      <button class="add-btn" type="button" data-sku="MTW-NP-BBT"><span class="plus"></span>Add to cart</button>
       <a href="#" class="view-pdp">View product details &rarr;</a>
     </div>
 
@@ -3454,10 +3477,10 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
         <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
       </div>
       <div class="pair-body">
-        <h4>The Woodland Family Set &nbsp;&middot;&nbsp; MTW-WD-WFS</h4>
-        <p>The Deer Family alongside four more, Squirrel, Raccoon, Brown Bear, Fox, and Hedgehog, for layered storytelling and habitat play.</p>
-        <span class="pair-meta"><strong>$398</strong>Bundle &nbsp;&middot;&nbsp; five families &nbsp;&middot;&nbsp; saves $42</span>
-        <a href="#families" class="pair-action">See the family set &rarr;</a>
+        <h4>Papoose Nature Tools &nbsp;&middot;&nbsp; MTW-NP-NTS</h4>
+        <p>Teak scoops, the coconut sieve, and pincer-grip tongs to work the tray, transferring acorns, seed pods, and seasonal loose parts between wells.</p>
+        <span class="pair-meta">Loose-parts station &middot; see the tools below</span>
+        <a href="#tools" class="pair-action">See the nature tools &rarr;</a>
       </div>
     </div>
   </div>
@@ -3466,140 +3489,132 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 <div class="section-divider">
   <span class="num">02</span>
   <span class="line"></span>
-  <span class="label">Woodland Families &middot; Bumbu</span>
+  <span class="label">Nature Loose Parts &middot; Tara Treasures &amp; Papoose</span>
 </div>
 
-<!-- =========================== GALLERY 1: WOODLAND FAMILIES =========================== -->
-<section class="gallery gut" id="families" data-screen-label="05 Woodland Families">
+<!-- =========================== GALLERY 1: NATURE LOOSE PARTS =========================== -->
+<!-- Felt loose parts, catalog pg. 15. SKUs use the catalog's MTW-NT codes verbatim.
+     No prices in the catalog source, so the price line is omitted on each card. -->
+<section class="gallery gut" id="homes" data-screen-label="05 Nature Loose Parts">
   <div class="wrap">
     <div class="head">
       <div>
-        <span class="eyebrow">Editorial Two &nbsp;&middot;&nbsp; Bumbu &middot; Families</span>
-        <h2>Woodland <span class="it">families.</span></h2>
+        <span class="eyebrow">Seasonal Collection &nbsp;&middot;&nbsp; Spring</span>
+        <h2>Nature <span class="it">loose parts.</span></h2>
       </div>
       <div class="right">
-        <p>Hand-carved Bumbu family sets for storytelling, small-world scenes, and relationship-centered play. Each family invites children to name relationships, build a habitat, and tell a woodland story.</p>
-        <p style="margin-top: 18px; font-family: var(--sans); font-size: 13.5px; line-height: 1.6; color: var(--ink); font-weight: 500;">All five hand-carved in Romania. FSC-certified maple (Fox in basswood). EN71 safety-tested.</p>
-        <div class="index">SQUIRREL &nbsp;&middot;&nbsp; RACCOON &nbsp;&middot;&nbsp; BROWN BEAR &nbsp;&middot;&nbsp; FOX &nbsp;&middot;&nbsp; HEDGEHOG</div>
+        <p>Felt loose parts for the classroom nature shelf or seasonal table. Daisies in white or lilac, acorns in oak-green or earth tones, mushrooms in forest-green. Each set invites sorting, counting, and small-world storytelling.</p>
+        <p style="margin-top: 18px; font-family: var(--sans); font-size: 13.5px; line-height: 1.6; color: var(--ink); font-weight: 500;">All hand-felted in Nepal under Fair Trade. Tara Treasures items are GOTS-certified; Papoose follows Fair Trade conditions. OEKO-TEX 100.</p>
+        <div class="index">DAISIES &nbsp;&middot;&nbsp; MUSHROOMS &nbsp;&middot;&nbsp; ACORNS &nbsp;&middot;&nbsp; EARTH ACORNS</div>
       </div>
     </div>
 
     <div class="homes">
-      <!-- 01 Squirrel Family (hero cell) -->
+      <!-- 01 Daisy Flowers White (hero cell) -->
       <article class="home size-hero">
         <div class="tile-wrap">
-          <div class="tile t-hue3-deep dark">
+          <div class="tile t-pale">
             <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-            <span class="tag">[ FAMILY N&deg;01 &nbsp;&middot;&nbsp; SQUIRREL FAMILY, two hand-painted Bumbu squirrels on a lichen-streaked stepping stone, three Bumbu pines in the back, polyhedron rock in foreground. Mirrors catalog pg.&nbsp;20 cell 00. ]</span>
+            <span class="tag">[ LOOSE PART N&deg;01 &nbsp;&middot;&nbsp; DAISY FLOWERS WHITE, five white felt daisy flowers with yellow centers on a soft pink surface. Mirrors catalog pg.&nbsp;15 cell 00. ]</span>
           </div>
           <div class="overlay"></div>
-          <div class="float-name">Squirrel Family</div>
+          <div class="float-name">Daisy Flowers &middot; White</div>
         </div>
         <div class="cap expanded">
           <span class="no">01</span>
-          <span class="name">Squirrel Family</span>
-          <span class="desc">Two hand-painted squirrels pause beside smooth river stones beneath the forest canopy. One mid-leap with a long flowing tail, one upright with a bushy tail and pointed ears.</span>
-          <span class="meta">MTW-WD-SQF</span>
-          <!-- PRICE: MTW-WD-SQF -->
-          <span class="price">$48</span>
+          <span class="name">Daisy Flowers &middot; White</span>
+          <span class="desc">For meadow provocations, flower arranging, and spring nature trays. Five hand-felted daisies with soft yellow centers.</span>
+          <span class="meta">MTW-NT-DSY-W</span>
           <div class="add-row">
-            <button class="add-btn" type="button" data-sku="MTW-WD-SQF"><span class="plus"></span>Add to cart</button>
+            <button class="add-btn" type="button" data-sku="MTW-NT-DSY-W"><span class="plus"></span>Add to cart</button>
             <a href="#" class="view-pdp">View product &rarr;</a>
           </div>
         </div>
       </article>
 
-      <!-- 02 Raccoon Family (tall) -->
+      <!-- 02 Daisy Flowers Lilac (tall) -->
       <article class="home size-tall">
         <div class="tile-wrap">
-          <div class="tile t-hue3">
+          <div class="tile t-soft">
             <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-            <span class="tag">[ FAMILY N&deg;02 &nbsp;&middot;&nbsp; RACCOON FAMILY, hand-carved raccoon family with their carved climbing tree, a complete small-world set. Mirrors catalog pg.&nbsp;20 cell 01. ]</span>
+            <span class="tag">[ LOOSE PART N&deg;02 &nbsp;&middot;&nbsp; DAISY FLOWERS LILAC, five lilac felt daisy flowers with yellow centers on a white surface. Mirrors catalog pg.&nbsp;15 cell 01. ]</span>
           </div>
           <div class="overlay"></div>
-          <div class="float-name">Raccoon Family</div>
+          <div class="float-name">Daisy Flowers &middot; Lilac</div>
         </div>
         <div class="cap">
           <span class="no">02</span>
-          <span class="name">Raccoon Family</span>
-          <span class="desc">A raccoon family gathers beneath their woodland climbing tree. Includes the carved tree as part of the set.</span>
-          <span class="meta">MTW-WD-RCCN</span>
-          <!-- PRICE: MTW-WD-RCCN -->
-          <span class="price">$74</span>
+          <span class="name">Daisy Flowers &middot; Lilac</span>
+          <span class="desc">A second spring palette, soft violet for color sorting and seasonal shelves.</span>
+          <span class="meta">MTW-NT-DSY-L</span>
           <div class="add-row">
-            <button class="add-btn" type="button" data-sku="MTW-WD-RCCN"><span class="plus"></span>Add to cart</button>
+            <button class="add-btn" type="button" data-sku="MTW-NT-DSY-L"><span class="plus"></span>Add to cart</button>
             <a href="#" class="view-pdp">View product &rarr;</a>
           </div>
         </div>
       </article>
 
-      <!-- 03 Brown Bear Family -->
+      <!-- 03 Mushrooms Green -->
       <article class="home size-std">
         <div class="tile-wrap">
-          <div class="tile t-ink dark">
+          <div class="tile t-deep dark">
             <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-            <span class="tag">[ FAMILY N&deg;03 &nbsp;&middot;&nbsp; BROWN BEAR FAMILY, mother bear with two small cubs in darker stain. Mirrors catalog pg.&nbsp;20 cell 02. ]</span>
+            <span class="tag">[ LOOSE PART N&deg;03 &nbsp;&middot;&nbsp; MUSHROOMS GREEN, five forest-green felt mushrooms with white polka dots and ivory stems. Mirrors catalog pg.&nbsp;15 cell 03. ]</span>
           </div>
           <div class="overlay"></div>
-          <div class="float-name">Brown Bear Family</div>
+          <div class="float-name">Mushrooms &middot; Green</div>
         </div>
         <div class="cap">
           <span class="no">03</span>
-          <span class="name">Brown Bear Family</span>
-          <span class="desc">Mother bear and her two curious cubs, the heart of the deep woods. Darker stain, with realistic scale between parent and young.</span>
-          <span class="meta">MTW-WD-BEAR</span>
-          <!-- PRICE: MTW-WD-BEAR -->
-          <span class="price">$68</span>
+          <span class="name">Mushrooms &middot; Green</span>
+          <span class="desc">Storytelling anchors for fairy provocations, forest play, and nature tables. Five felt mushrooms with white polka dots.</span>
+          <span class="meta">MTW-NT-MSH-G</span>
           <div class="add-row">
-            <button class="add-btn" type="button" data-sku="MTW-WD-BEAR"><span class="plus"></span>Add to cart</button>
+            <button class="add-btn" type="button" data-sku="MTW-NT-MSH-G"><span class="plus"></span>Add to cart</button>
             <a href="#" class="view-pdp">View product &rarr;</a>
           </div>
         </div>
       </article>
 
-      <!-- 04 Fox Family -->
+      <!-- 04 Acorns Oak Green -->
       <article class="home size-std">
         <div class="tile-wrap">
-          <div class="tile t-gilt">
+          <div class="tile t-primary">
             <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-            <span class="tag">[ FAMILY N&deg;04 &nbsp;&middot;&nbsp; FOX FAMILY, orange fox parents and two kits with white chests and black paw tips, on linen flatlay. Mirrors catalog pg.&nbsp;20 cell 03. ]</span>
+            <span class="tag">[ LOOSE PART N&deg;04 &nbsp;&middot;&nbsp; ACORNS OAK GREEN, five felt acorns with olive-green bodies and blush brown caps. Mirrors catalog pg.&nbsp;15 cell 02. ]</span>
           </div>
           <div class="overlay"></div>
-          <div class="float-name">Fox Family</div>
+          <div class="float-name">Acorns &middot; Oak Green</div>
         </div>
         <div class="cap">
           <span class="no">04</span>
-          <span class="name">Fox Family</span>
-          <span class="desc">Three foxes rest quietly together at the edge of the woods. Orange parents and two small kits with white chests and black paw tips. Carved from basswood.</span>
-          <span class="meta">MTW-WD-FOX</span>
-          <!-- PRICE: MTW-WD-FOX -->
-          <span class="price">$62</span>
+          <span class="name">Acorns &middot; Oak Green</span>
+          <span class="desc">Counting, sorting, small-world stashing. Fresh-spring green, not autumn brown. Five hand-felted acorns.</span>
+          <span class="meta">MTW-NT-ACN-G</span>
           <div class="add-row">
-            <button class="add-btn" type="button" data-sku="MTW-WD-FOX"><span class="plus"></span>Add to cart</button>
+            <button class="add-btn" type="button" data-sku="MTW-NT-ACN-G"><span class="plus"></span>Add to cart</button>
             <a href="#" class="view-pdp">View product &rarr;</a>
           </div>
         </div>
       </article>
 
-      <!-- 05 Hedgehog Family -->
+      <!-- 05 Earth Acorns -->
       <article class="home size-std">
         <div class="tile-wrap">
-          <div class="tile t-alt">
+          <div class="tile t-cream">
             <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-            <span class="tag">[ FAMILY N&deg;05 &nbsp;&middot;&nbsp; HEDGEHOG FAMILY, four hedgehogs, three stacked, one beside a purple crocus. Springtime garden scene. Mirrors catalog pg.&nbsp;20 cell 04. ]</span>
+            <span class="tag">[ LOOSE PART N&deg;05 &nbsp;&middot;&nbsp; EARTH ACORNS, seven hand-felted wool acorns in muted earth tones with hand-crocheted natural-twine caps and small wooden stems, in a loose cluster on cream. Mirrors catalog pg.&nbsp;15 cell 04. ]</span>
           </div>
           <div class="overlay"></div>
-          <div class="float-name">Hedgehog Family</div>
+          <div class="float-name">Earth Acorns</div>
         </div>
         <div class="cap">
           <span class="no">05</span>
-          <span class="name">Hedgehog Family</span>
-          <span class="desc">A hedgehog parent and babies wander through a spring garden path. Four figures, the family stacks together for travel.</span>
-          <span class="meta">MTW-WD-HDG</span>
-          <!-- PRICE: MTW-WD-HDG -->
-          <span class="price">$58</span>
+          <span class="name">Earth Acorns</span>
+          <span class="desc">Seven hand-felted wool acorns in muted earth tones with crocheted twine caps, for sorting, counting, and the seasonal nature table.</span>
+          <span class="meta">MTW-NT-ACE</span>
           <div class="add-row">
-            <button class="add-btn" type="button" data-sku="MTW-WD-HDG"><span class="plus"></span>Add to cart</button>
+            <button class="add-btn" type="button" data-sku="MTW-NT-ACE"><span class="plus"></span>Add to cart</button>
             <a href="#" class="view-pdp">View product &rarr;</a>
           </div>
         </div>
@@ -3608,158 +3623,150 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 
     <div class="collection-bridge">
       <p>
-        <strong>The Woodland Family Set &nbsp;&middot;&nbsp; MTW-WD-WFS</strong>
-        All five animal families, Squirrel, Raccoon, Brown Bear, Fox, and Hedgehog, bundled for layered storytelling and habitat play. Saves $42 over single sets.
+        <strong>The Spring Set &nbsp;&middot;&nbsp; MTW-NT-SPR</strong>
+        Felt daisies, mushrooms, acorns, and earth acorns, bundled for the spring nature table. Buy as a set.
       </p>
-      <a href="#quote" class="bridge-cta">Add the Family Set, $398</a>
+      <a href="#quote" class="bridge-cta">Request the Spring Set</a>
     </div>
   </div>
 </section>
 
 <section class="pull-quote" data-screen-label="Pull-Quote">
   <blockquote>
-    Every child knows the forest is alive. <em>These pieces agree.</em>
+    The garden has always been the best classroom. <em>These are the tools that bring it inside.</em>
   </blockquote>
-  <cite>From the 2026 Spring Edit, page 18</cite>
+  <cite>From the 2026 Spring Edit, page 13</cite>
 </section>
 
 <div class="section-divider">
   <span class="num">04</span>
   <span class="line"></span>
-  <span class="label">Woodland Trees &middot; Bumbu</span>
+  <span class="label">Nature Tools &middot; Papoose</span>
 </div>
 
-<!-- =========================== GALLERY 2: WOODLAND TREES =========================== -->
-<section class="gallery even gut" id="trees" data-screen-label="06 Woodland Trees" style="background: color-mix(in oklab, var(--accent-pale) 50%, var(--cream));">
+<!-- =========================== GALLERY 2: NATURE TOOLS =========================== -->
+<!-- Papoose teak nature tools, catalog pg. 16. SKUs verbatim from the catalog.
+     No prices in the catalog source, so each card omits the price line. -->
+<section class="gallery even gut" id="tools" data-screen-label="06 Nature Tools" style="background: color-mix(in oklab, var(--accent-pale) 50%, var(--cream));">
   <div class="wrap">
     <div class="head">
       <div>
-        <span class="eyebrow">Editorial Three &nbsp;&middot;&nbsp; Bumbu &middot; Trees</span>
-        <h2>Woodland <span class="it">trees.</span></h2>
+        <span class="eyebrow">Papoose &nbsp;&middot;&nbsp; Collection</span>
+        <h2>Nature <span class="it">tools.</span></h2>
       </div>
       <div class="right">
-        <p>Five hand-carved woodland trees inspired by real forest species, oak, birch, fir, acacia, and willow, invite children to build habitats, mark seasons, and tell small-world stories.</p>
-        <p style="margin-top: 18px; font-family: var(--sans); font-size: 13.5px; line-height: 1.6; color: var(--ink); font-weight: 500;">All five hand-carved in Romania. FSC-certified maple, basswood, and birch. EN71 safety-tested.</p>
-        <div class="index">OAK &nbsp;&middot;&nbsp; BIRCH &nbsp;&middot;&nbsp; FIR &nbsp;&middot;&nbsp; ACACIA &nbsp;&middot;&nbsp; WILLOW</div>
+        <p>Hand-finished teak scoops, coconut vessels, and pincer-grip tongs, open-ended nature tools that move between sand table, mud kitchen, and loose-parts station.</p>
+        <p style="margin-top: 18px; font-family: var(--sans); font-size: 13.5px; line-height: 1.6; color: var(--ink); font-weight: 500;">All Papoose teak nature tools. SVLK teak, Fair Trade conditions. CE / EN71 safety-tested. Made in Indonesia.</p>
+        <div class="index">NESTING BOWLS &nbsp;&middot;&nbsp; TONGS &nbsp;&middot;&nbsp; SPOON SET &nbsp;&middot;&nbsp; COCONUT SIEVE &nbsp;&middot;&nbsp; SLOTTED SPOON</div>
       </div>
     </div>
 
     <div class="homes">
-      <!-- 01 Green Oak (hero cell) -->
+      <!-- 01 Baby Nesting Bowls (hero cell) -->
       <article class="home size-hero">
         <div class="tile-wrap">
-          <div class="tile t-hue3">
+          <div class="tile t-gilt">
             <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-            <span class="tag">[ TREE N&deg;01 &nbsp;&middot;&nbsp; GREEN OAK, wide-canopy hand-carved oak with layered green canopy and textured bark, standing alone on linen. Mirrors catalog pg.&nbsp;21 cell 00. ]</span>
+            <span class="tag">[ TOOL N&deg;01 &nbsp;&middot;&nbsp; BABY NESTING BOWLS, three graduated teak bowls on warm cream linen, the largest with river stones and wooden beads, the medium with acorns and pinecones, the smallest with sea glass and wooden buttons. Mirrors catalog pg.&nbsp;16 cell 00. ]</span>
           </div>
           <div class="overlay"></div>
-          <div class="float-name">Green Oak</div>
+          <div class="float-name">Baby Nesting Bowls</div>
         </div>
         <div class="cap expanded">
           <span class="no">01</span>
-          <span class="name">Green Oak</span>
-          <span class="desc">A wide-canopy oak tree for forest clearings, woodland animals, and gathering scenes. Layered green canopy on textured bark. Carved from FSC-certified maple.</span>
-          <span class="meta">MTW-WD-OAK &nbsp;&middot;&nbsp; Single</span>
-          <!-- PRICE: MTW-WD-OAK -->
-          <span class="price">$58</span>
+          <span class="name">Baby Nesting Bowls</span>
+          <span class="desc">Three graduated teak bowls that nest inside one another, for ordering by size, volume, and capacity, or for staging loose parts as an invitation to play.</span>
+          <span class="meta">MTW-NP-BNB</span>
           <div class="add-row">
-            <button class="add-btn" type="button" data-sku="MTW-WD-OAK"><span class="plus"></span>Add to cart</button>
+            <button class="add-btn" type="button" data-sku="MTW-NP-BNB"><span class="plus"></span>Add to cart</button>
             <a href="#" class="view-pdp">View product &rarr;</a>
           </div>
         </div>
       </article>
 
-      <!-- 02 Birch (tall) -->
+      <!-- 02 Tongs (tall) -->
       <article class="home size-tall">
         <div class="tile-wrap">
           <div class="tile t-cream">
             <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-            <span class="tag">[ TREE N&deg;02 &nbsp;&middot;&nbsp; BIRCH SET OF TWO, two birches with white bark, black markings, and lime-green layered canopies, side by side on green grass bases. Mirrors catalog pg.&nbsp;21 cell 01. ]</span>
+            <span class="tag">[ TOOL N&deg;02 &nbsp;&middot;&nbsp; TONGS, long pincer-grip teak tongs on a pale maple table with three smooth river stones to the right. Clean overhead, soft natural light. Mirrors catalog pg.&nbsp;16 cell 02. ]</span>
           </div>
           <div class="overlay"></div>
-          <div class="float-name">Birch &middot; Set of Two</div>
+          <div class="float-name">Tongs</div>
         </div>
         <div class="cap">
           <span class="no">02</span>
-          <span class="name">Birch &middot; Set of Two</span>
-          <span class="desc">Two slender birches for woodland paths and quiet forest edges. White bark with black markings, lime-green layered canopies.</span>
-          <span class="meta">MTW-WD-BRCH &nbsp;&middot;&nbsp; Set of two</span>
-          <!-- PRICE: MTW-WD-BRCH -->
-          <span class="price">$72</span>
+          <span class="name">Tongs</span>
+          <span class="desc">Pincer-grip practice disguised as play, transferring acorns, seed pods, and loose parts between bowls.</span>
+          <span class="meta">MTW-NP-TNG</span>
           <div class="add-row">
-            <button class="add-btn" type="button" data-sku="MTW-WD-BRCH"><span class="plus"></span>Add to cart</button>
+            <button class="add-btn" type="button" data-sku="MTW-NP-TNG"><span class="plus"></span>Add to cart</button>
             <a href="#" class="view-pdp">View product &rarr;</a>
           </div>
         </div>
       </article>
 
-      <!-- 03 Fir -->
-      <article class="home size-std">
-        <div class="tile-wrap">
-          <div class="tile t-hue3-deep dark">
-            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-            <span class="tag">[ TREE N&deg;03 &nbsp;&middot;&nbsp; FIR SET OF TWO, two evergreen carved firs with layered needle detail in graduated sizes. Mirrors catalog pg.&nbsp;21 cell 02. ]</span>
-          </div>
-          <div class="overlay"></div>
-          <div class="float-name">Fir &middot; Set of Two</div>
-        </div>
-        <div class="cap">
-          <span class="no">03</span>
-          <span class="name">Fir &middot; Set of Two</span>
-          <span class="desc">Evergreen firs for winter forests, mountain scenes, and year-round small worlds. Layered needle detail in two graduated sizes.</span>
-          <span class="meta">MTW-WD-FIR &nbsp;&middot;&nbsp; Set of two</span>
-          <!-- PRICE: MTW-WD-FIR -->
-          <span class="price">$72</span>
-          <div class="add-row">
-            <button class="add-btn" type="button" data-sku="MTW-WD-FIR"><span class="plus"></span>Add to cart</button>
-            <a href="#" class="view-pdp">View product &rarr;</a>
-          </div>
-        </div>
-      </article>
-
-      <!-- 04 Acacia -->
-      <article class="home size-std">
-        <div class="tile-wrap">
-          <div class="tile t-gilt">
-            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-            <span class="tag">[ TREE N&deg;04 &nbsp;&middot;&nbsp; ACACIA SET OF TWO, two flat-crowned acacias with lime canopies in graduated sizes. Mirrors catalog pg.&nbsp;21 cell 03. ]</span>
-          </div>
-          <div class="overlay"></div>
-          <div class="float-name">Acacia &middot; Set of Two</div>
-        </div>
-        <div class="cap">
-          <span class="no">04</span>
-          <span class="name">Acacia &middot; Set of Two</span>
-          <span class="desc">Flat-crowned acacias for savanna scenes and grassland habitat play. Two graduated sizes with lime canopies.</span>
-          <span class="meta">MTW-WD-ACCA &nbsp;&middot;&nbsp; Set of two</span>
-          <!-- PRICE: MTW-WD-ACCA -->
-          <span class="price">$72</span>
-          <div class="add-row">
-            <button class="add-btn" type="button" data-sku="MTW-WD-ACCA"><span class="plus"></span>Add to cart</button>
-            <a href="#" class="view-pdp">View product &rarr;</a>
-          </div>
-        </div>
-      </article>
-
-      <!-- 05 Willow -->
+      <!-- 03 Spoon Set -->
       <article class="home size-std">
         <div class="tile-wrap">
           <div class="tile t-alt">
             <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-            <span class="tag">[ TREE N&deg;05 &nbsp;&middot;&nbsp; WILLOW SET OF TWO, cascading sage-green canopies on a green felted base. The riverbank tree. Mirrors catalog pg.&nbsp;21 cell 04. ]</span>
+            <span class="tag">[ TOOL N&deg;03 &nbsp;&middot;&nbsp; SPOON SET, eight hand-finished teak spoons in assorted capacities, arranged in a fan with dried lavender stems on cream. Mirrors catalog pg.&nbsp;16 cell 03. ]</span>
           </div>
           <div class="overlay"></div>
-          <div class="float-name">Willow &middot; Set of Two</div>
+          <div class="float-name">Spoon Set</div>
+        </div>
+        <div class="cap">
+          <span class="no">03</span>
+          <span class="name">Spoon Set</span>
+          <span class="desc">Eight hand-finished teak spoons in assorted capacities, for scooping, pouring, transferring, and measuring.</span>
+          <span class="meta">MTW-NP-SPS</span>
+          <div class="add-row">
+            <button class="add-btn" type="button" data-sku="MTW-NP-SPS"><span class="plus"></span>Add to cart</button>
+            <a href="#" class="view-pdp">View product &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 04 Mini Coconut Sieve -->
+      <article class="home size-std">
+        <div class="tile-wrap">
+          <div class="tile t-hue3-deep dark">
+            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+            <span class="tag">[ TOOL N&deg;04 &nbsp;&middot;&nbsp; MINI COCONUT SIEVE, halved coconut shell with hand-drilled perforations and teak handle, beside a child sorting loose parts in a wooden tray. Mirrors catalog pg.&nbsp;16 cell 04. ]</span>
+          </div>
+          <div class="overlay"></div>
+          <div class="float-name">Mini Coconut Sieve</div>
+        </div>
+        <div class="cap">
+          <span class="no">04</span>
+          <span class="name">Mini Coconut Sieve</span>
+          <span class="desc">Halved coconut shells, hand-perforated, natural sieves for dry rice, sand, water, and seasonal fills.</span>
+          <span class="meta">MTW-NP-MCS</span>
+          <div class="add-row">
+            <button class="add-btn" type="button" data-sku="MTW-NP-MCS"><span class="plus"></span>Add to cart</button>
+            <a href="#" class="view-pdp">View product &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 05 Teak Slotted Spoon -->
+      <article class="home size-std">
+        <div class="tile-wrap">
+          <div class="tile t-soft">
+            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+            <span class="tag">[ TOOL N&deg;05 &nbsp;&middot;&nbsp; TEAK SLOTTED SPOON, hand-finished teak ladle with a wide round perforated bowl and long slim handle, resting on a cream cable-knit wool surface. Mirrors catalog pg.&nbsp;16 cell 05. ]</span>
+          </div>
+          <div class="overlay"></div>
+          <div class="float-name">Teak Slotted Spoon</div>
         </div>
         <div class="cap">
           <span class="no">05</span>
-          <span class="name">Willow &middot; Set of Two</span>
-          <span class="desc">Soft cascading canopies in muted sage. The riverbank tree, for waterway and wetland small-world scenes.</span>
-          <span class="meta">MTW-WD-WLLO &nbsp;&middot;&nbsp; Set of two</span>
-          <!-- PRICE: MTW-WD-WLLO -->
-          <span class="price">$72</span>
+          <span class="name">Teak Slotted Spoon</span>
+          <span class="desc">Hand-finished teak with a perforated bowl, for sifting, scooping, and the slow rhythm of loose-parts work.</span>
+          <span class="meta">MTW-NP-PSS</span>
           <div class="add-row">
-            <button class="add-btn" type="button" data-sku="MTW-WD-WLLO"><span class="plus"></span>Add to cart</button>
+            <button class="add-btn" type="button" data-sku="MTW-NP-PSS"><span class="plus"></span>Add to cart</button>
             <a href="#" class="view-pdp">View product &rarr;</a>
           </div>
         </div>
@@ -3768,93 +3775,96 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 
     <div class="collection-bridge">
       <p>
-        <strong>The Woodland Tree Set &nbsp;&middot;&nbsp; MTW-WD-FFS</strong>
-        All five tree forms, Oak, Birch, Fir, Acacia, and Willow, bundled for layered habitat and small-world play. Saves $36 over single sets.
+        <strong>The Nature Tools Set &nbsp;&middot;&nbsp; MTW-NP-NTS</strong>
+        Bowls, tongs, spoon set, coconut sieve, and slotted spoon, bundled for the loose-parts station. Buy as a set.
       </p>
-      <a href="#quote" class="bridge-cta">Add the Tree Set, $310</a>
+      <a href="#quote" class="bridge-cta">Request the Nature Tools Set</a>
     </div>
   </div>
 </section>
 
-<!-- =========================== FEATURED PRODUCT 2 (Papoose Seasonal Trees) =========================== -->
-<section class="split stage" data-screen-label="07 Papoose Seasonal Trees" style="background: var(--cream);">
+<!-- =========================== FEATURED PRODUCT 2 (Wild Mountain Child · The Everything Play Bundle) =========================== -->
+<!-- Featured 2, Wild Mountain Child The Everything Play Bundle. Catalog pg. 17.
+     SKU is MTW-SP-WMC-EPB verbatim from the catalog (brand cross-listed under the
+     SP section code in the source). No price in the catalog, so it is omitted. -->
+<section class="split stage" data-screen-label="07 The Everything Play Bundle" style="background: var(--cream);">
   <div class="img-side">
     <div class="tile t-soft contained">
       <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-      <span class="tag">[ FEATURED PRODUCT 2 &nbsp;&middot;&nbsp; PAPOOSE SEASONAL TREES, spring-lime trio at front in graduated sizes, with autumn rust and winter bare-branch trios staggered behind. Raw driftwood trunks. Mirrors catalog pg.&nbsp;22 hero. ]</span>
+      <span class="tag">[ FEATURED PRODUCT 2 &nbsp;&middot;&nbsp; THE EVERYTHING PLAY BUNDLE, Wild Mountain Child hand-carved wooden tools, sunflower-shaped spoons, mushroom-stamped spoon, heart, leaf, bowl, and crescent moon, on a dark mossy tree stump in the forest, surrounded by ferns and acorns. Mirrors catalog pg.&nbsp;17 hero. ]</span>
     </div>
   </div>
   <div class="content">
-    <span class="eyebrow" style="color: var(--accent-deep);">Papoose &nbsp;&middot;&nbsp; Featured</span>
-    <h3>Seasonal <span class="it">Trees.</span></h3>
-    <div class="sub">Hand-felted wool on driftwood. Twelve trees. Four seasons.</div>
+    <span class="eyebrow" style="color: var(--accent-deep);">Wild Mountain Child &nbsp;&middot;&nbsp; Featured</span>
+    <h3>The Everything <span class="it">Play Bundle.</span></h3>
+    <div class="sub">Fourteen hand-carved pieces. Open-ended tools that grow with the child.</div>
     <span class="hair" aria-hidden="true"></span>
 
-    <p class="desc">Seasonal trees that shift from spring lime to summer moss to autumn rust to winter bare. Hand-felted wool canopies on raw driftwood trunks, natural variation means no two trees are alike. Four complete sets in graduated sizes, one for each turn of the year, that invite children to mark seasons on the nature table and across the small-world floor.</p>
+    <p class="desc">Set out a tray of lentils, a bowl of acorns, and the whole bundle. Watch a four-year-old become a chef, an archaeologist, and a potion-maker in under ten minutes. Fourteen hand-carved pieces, spoons, strainers, bowls, and a dish set, each sized for small hands so the smooth carved finish develops a proper grip. The tools transfer between sand table, mud kitchen, and loose-parts station, and last through multiple cohorts.</p>
 
     <ul class="contents-list">
-      <li>Three spring trees in fresh lime and new-leaf green.</li>
-      <li>Three summer trees in deep moss and forest tones.</li>
-      <li>Three autumn trees in rust, gold, and burnt orange.</li>
-      <li>Three winter trees, bare branches on driftwood trunks.</li>
-      <li>Twelve trees total, in three graduated sizes per season.</li>
+      <li>Fourteen hand-carved pieces in all.</li>
+      <li>Spoons and strainers for scooping and sifting.</li>
+      <li>Carved bowls for holding and pouring.</li>
+      <li>A dish set for the mud kitchen and the play tray.</li>
     </ul>
 
     <div class="craft">
       <div>
         <span class="label">Material</span>
-        <span class="v">100% AU/NZ wool felt, driftwood trunks.</span>
+        <span class="v">FSC-certified Doussie, food-grade vegetable oil or wax finish.</span>
       </div>
       <div>
         <span class="label">Provenance</span>
-        <span class="v">Hand-felted in Nepal &middot; Fair Trade USA&trade;.</span>
+        <span class="v">Made in Vietnam &middot; Fair Trade &middot; BSCI.</span>
       </div>
       <div>
-        <span class="label">SKU &nbsp;&middot;&nbsp; Non-toxic dyes</span>
-        <span class="stock-pill">MTW-WD-PST &nbsp;&middot;&nbsp; Ages 3+</span>
+        <span class="label">SKU &nbsp;&middot;&nbsp; Individual or small group</span>
+        <span class="stock-pill">MTW-SP-WMC-EPB &nbsp;&middot;&nbsp; Ages 3 to 7</span>
       </div>
     </div>
 
-    <div class="testimony">
-      <p class="quote">&ldquo;These trees bring to life any small world set up. The children in our center love them and the color they bring to their lands for their toy animals.&rdquo;</p>
-      <div class="attr">
-        <span class="dash"></span>
-        <span class="name"><b>Rebecca T.</b> &nbsp;&middot;&nbsp; Childcare Center &middot; Verified Buyer</span>
+    <div class="standards-row">
+      <span class="label">Learning connections</span>
+      <div class="codes">
+        <span class="code">Language and Literacy</span>
+        <span class="code">Imaginative Play</span>
+        <span class="code">Social-emotional Learning</span>
+        <span class="code">Fine Motor Development</span>
+        <span class="code">Creative Expression</span>
       </div>
     </div>
 
-    <!-- PRICE: MTW-WD-PST -->
-    <span class="price">$184</span>
     <div class="add-row">
-      <button class="add-btn" type="button" data-sku="MTW-WD-PST"><span class="plus"></span>Add to cart</button>
+      <button class="add-btn" type="button" data-sku="MTW-SP-WMC-EPB"><span class="plus"></span>Add to cart</button>
       <a href="#" class="view-pdp">View product details &rarr;</a>
     </div>
 
     <div class="pairs-with">
-      <span class="label">Pairs with Papoose Seasonal Trees</span>
-      <div class="pair-thumb tile t-hue3 contained">
+      <span class="label">Extend the play</span>
+      <div class="pair-thumb tile t-pale contained">
         <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
       </div>
       <div class="pair-body">
-        <h4>Bumbu Woodland Families &amp; Trees</h4>
-        <p>The four seasons of the Papoose Seasonal Trees pair naturally with the Bumbu animal families and hand-carved trees above, turn the small-world floor through the year.</p>
-        <span class="pair-meta"><strong>$398 + $310</strong>Whole Woodland &middot; see bundle below</span>
-        <a href="#outfit" class="pair-action">See the Whole Woodland &rarr;</a>
+        <h4>Nature Loose Parts &amp; Nature Tools</h4>
+        <p>The carved tools work the felt daisies, acorns, and mushrooms above, and pair with the Papoose teak nesting bowls and sieve at the loose-parts station.</p>
+        <span class="pair-meta">Loose materials &middot; see the collections above</span>
+        <a href="#homes" class="pair-action">See the loose parts &rarr;</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- =========================== TINY FOLK BRIDGE (cross-collection to Fairy Villages) =========================== -->
-<section data-screen-label="08 Tiny Folk Bridge" style="background: var(--cream); border-top: 0.5px solid var(--rule); border-bottom: 0.5px solid var(--rule); padding: 64px clamp(20px, 5vw, 56px);">
+<!-- =========================== WOODLAND BRIDGE (cross-collection to Woodland Habitats) =========================== -->
+<section data-screen-label="08 Woodland Bridge" style="background: var(--cream); border-top: 0.5px solid var(--rule); border-bottom: 0.5px solid var(--rule); padding: 64px clamp(20px, 5vw, 56px);">
   <div style="max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(28px, 4vw, 56px); align-items: center;">
     <div>
-      <span class="eyebrow" style="color: var(--accent-deep);">A note on Tiny Folk</span>
-      <h3 style="margin: 16px 0 0; font-family: var(--serif); font-weight: 400; font-size: clamp(28px, 3.2vw, 42px); line-height: 1.1; color: var(--ink); letter-spacing: -.01em;">The woodland is the <span style="font-style: italic; color: var(--accent-deep);">forest itself.</span> The people who live in it have their own volume.</h3>
+      <span class="eyebrow" style="color: var(--accent-deep);">A note on the forest</span>
+      <h3 style="margin: 16px 0 0; font-family: var(--serif); font-weight: 400; font-size: clamp(28px, 3.2vw, 42px); line-height: 1.1; color: var(--ink); letter-spacing: -.01em;">The nature table is <span style="font-style: italic; color: var(--accent-deep);">the doorway.</span> The forest itself has its own volume.</h3>
     </div>
     <div>
-      <p style="margin: 0 0 18px; font-family: var(--sans); font-size: 16px; line-height: 1.65; color: var(--ink-soft);">Children always ask, who lives here? Wonderheart Little Folk, rainbow and pastel gnomes, flower children, fairy doors, and wishing wells, live a volume away in <strong style="color: var(--ink); font-weight: 600;">Section Five, Fairy Villages</strong>. They move into the Bumbu woodland naturally: a fox family at the edge of the clearing, a gnome family at the doorstep of the felted toadstool. One small world.</p>
-      <a href="Fairy Villages v3.html" style="display: inline-flex; align-items: center; gap: 8px; padding: 14px 24px; background: var(--ink); color: var(--cream); text-decoration: none; font-family: var(--sans); font-size: 13px; font-weight: 500; letter-spacing: .04em; border-radius: 999px; transition: background .2s ease;">See Section 05 &middot; Fairy Villages &rarr;</a>
+      <p style="margin: 0 0 18px; font-family: var(--sans); font-size: 16px; line-height: 1.65; color: var(--ink-soft);">Once the felt acorns and teak bowls are out, children start asking who lives here. The Papoose Seasonal Trees, the Bumbu hand-carved animal families, and the woodland trees live a volume on, in <strong style="color: var(--ink); font-weight: 600;">Section Three, Woodland Habitats</strong>. They move onto the nature table naturally: a felted toadstool beside the carved fox, a seed pod in a teak bowl. One small world.</p>
+      <a href="Woodland v3.html" style="display: inline-flex; align-items: center; gap: 8px; padding: 14px 24px; background: var(--ink); color: var(--cream); text-decoration: none; font-family: var(--sans); font-size: 13px; font-weight: 500; letter-spacing: .04em; border-radius: 999px; transition: background .2s ease;">See Section 03 &middot; Woodland Habitats &rarr;</a>
     </div>
   </div>
 </section>
@@ -3864,58 +3874,52 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 <section class="outfit" id="outfit" data-screen-label="10 Outfit Your Classroom">
   <div class="head">
     <div>
-      <p class="block-num">07 <span class="dot">/</span> The whole woodland</p>
+      <p class="block-num">07 <span class="dot">/</span> The whole nature table</p>
       <h2>Outfit your classroom <span class="it">in one quote.</span></h2>
     </div>
     <div class="right">
-      <p>Schools buy the woodland as catalog sets, not as single pieces. The two purchase-order-ready sets below are the same ones in our 2026 Spring Catalog. Each is priced as a package on your quote.</p>
+      <p>Schools buy Nature Play as catalog sets, not as single pieces. The two purchase-order-ready sets below are the same ones in our 2026 Spring Catalog. Each is priced as a package on your quote.</p>
       <div class="meta">CATALOG SETS &nbsp;&middot;&nbsp; NET-30 &nbsp;&middot;&nbsp; TAX-EXEMPT &nbsp;&middot;&nbsp; ONE-ON-ONE CURATION</div>
     </div>
   </div>
 
   <div class="kits">
     <article class="kit">
-      <p class="tier">Woodland Families &nbsp;&middot;&nbsp; MTW-WD-WFS</p>
-      <h3>The Woodland Family Set.</h3>
-      <p class="sub">All five Bumbu animal families.</p>
+      <p class="tier">Nature Loose Parts &nbsp;&middot;&nbsp; MTW-NT-SPR</p>
+      <h3>The Spring Set.</h3>
+      <p class="sub">Felt daisies, mushrooms, and acorns.</p>
       <span class="hair" aria-hidden="true"></span>
-      <!-- PRICE: MTW-WD-WFS -->
-      <p class="price-line">$398</p>
-      <span class="price-note">Hand-carved &middot; ships within 3 weeks &middot; Net-30 available &middot; saves $42</span>
-      <p class="desc">The five hand-carved Bumbu animal families, bundled for layered storytelling and habitat play. From the 2026 Spring Catalog, p.&nbsp;20. The Deer Family hero is sold separately (MTW-WD-DEER).</p>
+      <p class="desc">The felt loose parts for the spring nature table, bundled for sorting, counting, and seasonal arranging. From the 2026 Spring Catalog, p.&nbsp;15. Hand-felted in Nepal under Fair Trade.</p>
       <ul class="contains">
-        <li>Squirrel Family, MTW-WD-SQF</li>
-        <li>Raccoon Family with tree, MTW-WD-RCCN</li>
-        <li>Brown Bear Family, MTW-WD-BEAR</li>
-        <li>Fox Family, MTW-WD-FOX</li>
-        <li>Hedgehog Family, MTW-WD-HDG</li>
+        <li>Daisy Flowers &middot; White, MTW-NT-DSY-W</li>
+        <li>Daisy Flowers &middot; Lilac, MTW-NT-DSY-L</li>
+        <li>Mushrooms &middot; Green, MTW-NT-MSH-G</li>
+        <li>Acorns &middot; Oak Green, MTW-NT-ACN-G</li>
+        <li>Earth Acorns, MTW-NT-ACE</li>
       </ul>
       <div class="add-row">
-        <button class="add-btn" type="button" data-sku="MTW-WD-WFS"><span class="plus"></span>Add set to cart</button>
-        <a href="#quote" class="view-pdp" data-kit="family-set">Request a quote</a>
+        <button class="add-btn" type="button" data-sku="MTW-NT-SPR"><span class="plus"></span>Add set to cart</button>
+        <a href="#quote" class="view-pdp" data-kit="spring-set">Request a quote</a>
       </div>
     </article>
 
     <article class="kit featured">
       <span class="pill"><span class="wagon-badge">Catalog set</span></span>
-      <p class="tier">Woodland Trees &nbsp;&middot;&nbsp; MTW-WD-FFS</p>
-      <h3>The Woodland Tree Set.</h3>
-      <p class="sub">All five Bumbu tree forms.</p>
+      <p class="tier">Nature Tools &nbsp;&middot;&nbsp; MTW-NP-NTS</p>
+      <h3>The Nature Tools Set.</h3>
+      <p class="sub">The full Papoose teak tool kit.</p>
       <span class="hair" aria-hidden="true"></span>
-      <!-- PRICE: MTW-WD-FFS -->
-      <p class="price-line">$310</p>
-      <span class="price-note">Hand-carved &middot; ships within 3 weeks &middot; Net-30 available &middot; saves $36</span>
-      <p class="desc">All five Bumbu tree forms for layered habitat and small-world play, the complete woodland ecosystem set, from the 2026 Spring Catalog, p.&nbsp;21. Builds a forest scene around the Family Set.</p>
+      <p class="desc">The hand-finished teak nature tools, bundled for the loose-parts station, sand table, and mud kitchen. From the 2026 Spring Catalog, p.&nbsp;16. SVLK teak, made in Indonesia.</p>
       <ul class="contains">
-        <li>Green Oak, MTW-WD-OAK</li>
-        <li>Birch &middot; Set of Two, MTW-WD-BRCH</li>
-        <li>Fir &middot; Set of Two, MTW-WD-FIR</li>
-        <li>Acacia &middot; Set of Two, MTW-WD-ACCA</li>
-        <li>Willow &middot; Set of Two, MTW-WD-WLLO</li>
+        <li>Baby Nesting Bowls, MTW-NP-BNB</li>
+        <li>Tongs, MTW-NP-TNG</li>
+        <li>Spoon Set, MTW-NP-SPS</li>
+        <li>Mini Coconut Sieve, MTW-NP-MCS</li>
+        <li>Teak Slotted Spoon, MTW-NP-PSS</li>
       </ul>
       <div class="add-row">
-        <button class="add-btn" type="button" data-sku="MTW-WD-FFS"><span class="plus"></span>Add set to cart</button>
-        <a href="#quote" class="view-pdp" data-kit="tree-set">Request a quote</a>
+        <button class="add-btn" type="button" data-sku="MTW-NP-NTS"><span class="plus"></span>Add set to cart</button>
+        <a href="#quote" class="view-pdp" data-kit="nature-tools-set">Request a quote</a>
       </div>
     </article>
   </div>
@@ -3924,17 +3928,17 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
   <div style="margin: 36px clamp(20px, 5vw, 56px) 0; padding: 28px clamp(20px, 4vw, 36px); background: var(--cream); border: 0.5px solid var(--rule-strong); border-radius: 4px; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(24px, 3vw, 40px); align-items: center;">
     <div>
       <span class="eyebrow" style="color: var(--accent-deep);">Educator Program &nbsp;&middot;&nbsp; Custom Combo</span>
-      <h3 style="margin: 14px 0 0; font-family: var(--serif); font-weight: 400; font-size: clamp(24px, 2.6vw, 32px); line-height: 1.15; color: var(--ink); letter-spacing: -.005em;">The Whole Woodland, <span style="font-style: italic; color: var(--accent-deep);">on one PO.</span></h3>
+      <h3 style="margin: 14px 0 0; font-family: var(--serif); font-weight: 400; font-size: clamp(24px, 2.6vw, 32px); line-height: 1.15; color: var(--ink); letter-spacing: -.005em;">The Whole Nature Table, <span style="font-style: italic; color: var(--accent-deep);">on one PO.</span></h3>
     </div>
     <div>
-      <p style="margin: 0 0 14px; font-family: var(--sans); font-size: 15px; line-height: 1.6; color: var(--ink-soft);">A custom educator combo of three real catalog SKUs, <strong style="color: var(--ink); font-weight: 600;">The Woodland Family Set (MTW-WD-WFS)</strong>, <strong style="color: var(--ink); font-weight: 600;">The Woodland Tree Set (MTW-WD-FFS)</strong>, and <strong style="color: var(--ink); font-weight: 600;">Papoose Seasonal Trees (MTW-WD-PST)</strong>. Not a single SKU; requested at quote and billed on one PO with a small package discount. Items ship as they're ready, most within 3 to 4 weeks, longer-lead pieces on their own timeline. The Deer Family hero is regularly added at quote, too.</p>
+      <p style="margin: 0 0 14px; font-family: var(--sans); font-size: 15px; line-height: 1.6; color: var(--ink-soft);">A custom educator combo of real catalog SKUs, <strong style="color: var(--ink); font-weight: 600;">The Spring Set (MTW-NT-SPR)</strong>, <strong style="color: var(--ink); font-weight: 600;">The Nature Tools Set (MTW-NP-NTS)</strong>, and the <strong style="color: var(--ink); font-weight: 600;">Busy Bee Tray (MTW-NP-BBT)</strong>. Not a single SKU; requested at quote and billed on one PO with a small package discount. Items ship as they're ready, most within 3 to 4 weeks, longer-lead pieces on their own timeline. The Everything Play Bundle (MTW-SP-WMC-EPB) is regularly added at quote, too.</p>
       <a href="#quote" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; background: var(--ink); color: var(--cream); text-decoration: none; font-family: var(--sans); font-size: 13px; font-weight: 500; letter-spacing: .04em; border-radius: 999px;">Request the combo quote &rarr;</a>
     </div>
   </div>
 
   <div class="note">
-    <p class="left">Both catalog sets are billed on a single purchase order. Most items ship together within 3 to 4 weeks; longer-lead pieces ship separately on their own timeline. Net-30 and tax-exempt orders welcome. The single Deer Family hero (MTW-WD-DEER, $92) is sold separately but is regularly added at quote with a small discount.</p>
-    <p class="left" style="margin-top: 10px; font-family: var(--serif); font-style: italic; font-size: 14px; color: var(--stone); line-height: 1.55;">Longer-lead pieces include Magic Wood, Drewart, and select Bumbu sets. Ask your account rep for current timing.</p>
+    <p class="left">Both catalog sets are billed on a single purchase order. Most items ship together within 3 to 4 weeks; longer-lead pieces ship separately on their own timeline. Net-30 and tax-exempt orders welcome. The Busy Bee Tray (MTW-NP-BBT) and The Everything Play Bundle (MTW-SP-WMC-EPB) are sold separately but are regularly added at quote with a small discount.</p>
+    <p class="left" style="margin-top: 10px; font-family: var(--serif); font-style: italic; font-size: 14px; color: var(--stone); line-height: 1.55;">Hand-felted and hand-finished pieces are made to order, so some items ship on their own timeline. Ask your account rep for current timing.</p>
     <div class="right">
       <span class="verified-disc">
         <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="6" cy="6" r="6" fill="#3B6D11"/><path d="M3.5 6.2l1.6 1.6L8.5 4.5" stroke="#F5F0E5" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -4031,8 +4035,8 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       <div class="qf-row full">
         <label>Which kit are you interested in?</label>
         <div class="qf-chips" role="radiogroup">
-          <label class="qf-chip"><input type="radio" name="kit" value="family-set"/>The Woodland Family Set &middot; MTW-WD-WFS</label>
-          <label class="qf-chip"><input type="radio" name="kit" value="whole-woodland"/>The Whole Woodland &middot; MTW-WD-WHL</label>
+          <label class="qf-chip"><input type="radio" name="kit" value="spring-set"/>The Spring Set &middot; MTW-NT-SPR</label>
+          <label class="qf-chip"><input type="radio" name="kit" value="nature-tools-set"/>The Nature Tools Set &middot; MTW-NP-NTS</label>
           <label class="qf-chip"><input type="radio" name="kit" value="custom"/>A custom mix</label>
           <label class="qf-chip"><input type="radio" name="kit" value="exploring"/>Just exploring</label>
         </div>
@@ -4042,8 +4046,8 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
         <label>Ecosystems of interest</label>
         <div class="qf-chips">
           <label class="qf-chip"><input type="checkbox" name="ecosystems" value="sensory-play"/>01 &middot; Sensory Play</label>
-          <label class="qf-chip"><input type="checkbox" name="ecosystems" value="nature-play"/>02 &middot; Nature Play</label>
-          <label class="qf-chip"><input type="checkbox" name="ecosystems" value="woodland" checked/>03 &middot; Woodland Habitats</label>
+          <label class="qf-chip"><input type="checkbox" name="ecosystems" value="nature-play" checked/>02 &middot; Nature Play</label>
+          <label class="qf-chip"><input type="checkbox" name="ecosystems" value="woodland"/>03 &middot; Woodland Habitats</label>
           <label class="qf-chip"><input type="checkbox" name="ecosystems" value="small-world"/>04 &middot; Small World &amp; Storytelling</label>
           <label class="qf-chip"><input type="checkbox" name="ecosystems" value="fairy-villages"/>05 &middot; Fairy Villages</label>
           <label class="qf-chip"><input type="checkbox" name="ecosystems" value="steam"/>06 &middot; STEAM &middot; Wonder &amp; Investigation</label>
@@ -4187,9 +4191,9 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
        const CATALOG = { volume: "{{ page.metafields.catalog.volume }}", ... };
      ================================================================= */
   const CATALOG = {
-    volume:       "03",
-    ecosystem:    "Woodland Habitats",
-    "ecosystem-uc": "WOODLAND HABITATS"
+    volume:       "02",
+    ecosystem:    "Nature Play",
+    "ecosystem-uc": "NATURE PLAY"
   };
 
   // Ordered list of all 8 ecosystems. To reskin for another ecosystem,
