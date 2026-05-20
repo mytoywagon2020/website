@@ -13,22 +13,22 @@
        3. Different target keywords
        4. Each has its own canonical pointing to itself
      ========================================================================= -->
-<title>The Woodland Habitats for Schools &middot; My Toy Wagon Educator Catalog</title>
-<meta name="description" content="Bumbu hand-carved animal families and trees, plus Papoose hand-felted Seasonal Trees, for Pre-K to Grade 3 classrooms. Made in Romania and Nepal. FSC-certified hardwoods, EN71 safety-tested. Net-30 invoicing, tax-exempt orders, and approved-vendor accounts for schools.">
-<link rel="canonical" href="https://mytoywagon.com/pages/educator-woodland" />
+<title>Nature Play for Schools &middot; My Toy Wagon Educator Catalog</title>
+<meta name="description" content="Gus + Mabel Busy Bee Trays, nature loose parts, and hand-carved Wild Mountain Child tools for Pre-K to Grade 2 classrooms. Open-ended nature and sensory play aligned to NGSS K-LS1-1 and K-ESS3-1. Net-30 invoicing, tax-exempt orders, and approved-vendor accounts for schools.">
+<link rel="canonical" href="https://mytoywagon.com/pages/educator-nature-play" />
 
 <!-- Open Graph (social shares: Facebook, LinkedIn) -->
 <meta property="og:type" content="website" />
-<meta property="og:title" content="The Woodland Habitats for Schools &middot; My Toy Wagon Educator Catalog" />
-<meta property="og:description" content="Bumbu hand-carved animal families and trees, plus Papoose Seasonal Trees, for Pre-K to Grade 3 classrooms. Net-30 and tax-exempt for approved schools." />
-<meta property="og:url" content="https://mytoywagon.com/pages/educator-woodland" />
-<meta property="og:image" content="https://mytoywagon.com/assets/og-woodland.jpg" />
+<meta property="og:title" content="Nature Play for Schools &middot; My Toy Wagon Educator Catalog" />
+<meta property="og:description" content="Gus + Mabel Busy Bee Trays, nature loose parts, and hand-carved tools for Pre-K to Grade 2 classrooms. Net-30 and tax-exempt for approved schools." />
+<meta property="og:url" content="https://mytoywagon.com/pages/educator-nature-play" />
+<meta property="og:image" content="https://mytoywagon.com/assets/og-nature-play.jpg" />
 <meta property="og:site_name" content="My Toy Wagon" />
 
 <!-- Twitter card -->
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="The Woodland Habitats for Schools &middot; My Toy Wagon Educator Catalog" />
-<meta name="twitter:description" content="Bumbu hand-carved animal families and trees, plus Papoose Seasonal Trees, for Pre-K to Grade 3 classrooms. Net-30 and tax-exempt for approved schools." />
+<meta name="twitter:title" content="Nature Play for Schools &middot; My Toy Wagon Educator Catalog" />
+<meta name="twitter:description" content="Gus + Mabel Busy Bee Trays, nature loose parts, and hand-carved tools for Pre-K to Grade 2 classrooms. Net-30 and tax-exempt for approved schools." />
 
 <!-- Structured data: BreadcrumbList for educator portal hierarchy.
      Tells Google: Home > Educator Catalog > Woodland Habitats.
@@ -40,7 +40,7 @@
   "itemListElement": [
     {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://mytoywagon.com/"},
     {"@type": "ListItem", "position": 2, "name": "Educator Catalog", "item": "https://mytoywagon.com/pages/educators"},
-    {"@type": "ListItem", "position": 3, "name": "Woodland Habitats"}
+    {"@type": "ListItem", "position": 3, "name": "Nature Play"}
   ]
 }
 </script>
@@ -50,7 +50,7 @@
 <style>
 /* =================================================================
    MY TOY WAGON, ECOSYSTEM CATALOG TEMPLATE
-   Current preset: WOODLAND HABITATS (Section 03)
+   Current preset: NATURE PLAY (Section 02)
    To retheme for another ecosystem, swap the ECOSYSTEM TOKENS block
    below + the CATALOG const at the bottom. Every component downstream
    reads from tokens.
@@ -72,21 +72,22 @@
   --gilt-pale:    #E8D5A8;
 
   /* ECOSYSTEM PALETTE, swap these per ecosystem. Carries mood. */
-  --accent:       #2D5C3A;   /* forest green, primary signature */
-  --accent-soft:  #8FA896;   /* sage soft */
-  --accent-pale:  #DCE5D6;   /* pale moss, background tint */
-  --accent-deep:  #1B3E26;   /* deep forest, type emphasis */
-  --alt:          #B89060;   /* autumn gilt, secondary */
+  /* Section 02 Nature Play, sage signature */
+  --accent:       #6B8C3A;   /* sage green, primary signature */
+  --accent-soft:  #A8BD86;   /* soft sage */
+  --accent-pale:  #E7EDD9;   /* pale sage, background tint */
+  --accent-deep:  #3F5520;   /* deep olive-sage, type emphasis */
+  --alt:          #B89060;   /* honey gilt, secondary */
   --alt-deep:     #7A5A2E;   /* deep oak */
-  --hue-3:        #C97A4A;   /* rust foxtail, tertiary */
+  --hue-3:        #C97A4A;   /* warm clay, tertiary */
   --hue-3-deep:   #5C3A24;   /* deep bark */
 
   /* mood gradient, ecosystem signature, used on cover + bottom hero */
-  --mood-a:       #8FA896;   /* sage start */
-  --mood-b:       #6B8C5A;
+  --mood-a:       #A8BD86;   /* soft sage start */
+  --mood-b:       #6B8C3A;   /* sage */
   --mood-c:       #C9A96E;   /* gilt mid */
-  --mood-d:       #C97A4A;   /* rust */
-  --mood-e:       #2D5C3A;   /* forest end */
+  --mood-d:       #C97A4A;   /* clay */
+  --mood-e:       #3F5520;   /* deep sage end */
 
   /* meta strings (referenced via ::before content where needed) */
   --rule:         rgba(44,44,42,.12);   /* brand hairline */
@@ -3320,7 +3321,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 <section class="cover" data-screen-label="01 Cover">
   <div class="bg tile t-mood">
     <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-    <span class="tag dark">[ COVER PHOTO &nbsp;&middot;&nbsp; full-bleed atmospheric: a Bumbu hand-carved deer family in a forest clearing beneath a yellow-green birch canopy. Stag on the ridge, doe and three fawns grazing below. Late-afternoon side-light, shallow depth of field. Mirrors the catalog opener (pg.&nbsp;18). ]</span>
+    <span class="tag dark">[ COVER PHOTO &nbsp;&middot;&nbsp; full-bleed atmospheric: a child's feet in a water-filled Gus + Mabel Busy Bee Tray outdoors, surface scattered with hibiscus, bougainvillea, and marigold blossoms and smooth pebbles. Late-afternoon side-light, shallow depth of field. Mirrors the catalog opener (pg.&nbsp;13). ]</span>
   </div>
   <div class="veil"></div>
 
@@ -3330,16 +3331,16 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
     </div>
     <div class="vol">
       <div class="meta" style="color: rgba(250,246,237,.7);">SECTION</div>
-      <div class="num"><span data-fill="volume">03</span></div>
+      <div class="num"><span data-fill="volume">02</span></div>
     </div>
   </div>
 
-  <h1>Woodland<span class="it">Habitats</span></h1>
+  <h1>Nature<span class="it">Play</span></h1>
 
   <div class="footer">
     <div class="audience">
-      <span class="label">Section Three &nbsp;&middot;&nbsp; Ages 3 to 8</span>
-      <p>Every child knows the forest is alive. These pieces agree. Hand-carved Bumbu animal families, hand-carved Bumbu trees, and hand-felted Papoose seasonal trees, the woodland built as a small world a child can walk into.</p>
+      <span class="label">Section Two &nbsp;&middot;&nbsp; Ages 3 to 8</span>
+      <p>The garden has always been the best classroom. These are the tools that bring it inside. Gus + Mabel Busy Bee Trays, hand-felted nature loose parts, and hand-finished Papoose teak tools, open-ended nature play a child can pour, sort, and arrange for a whole term.</p>
     </div>
   </div>
 </section>
