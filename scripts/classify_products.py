@@ -62,7 +62,7 @@ TITLE_RULES = [
     ("Play Food", ["play food","felt food","wooden food","grocer","play cake","ice cream set"]),
     ("Kitchen & House Play", ["kitchen","tea set","teapot","tea cup","cookware","pots and pans","cleaning set","market stand","cash register","baking set"]),
     ("Dollhouses", ["dollhouse","doll house","dolls house"]),
-    ("Woodland Homes & Fairy Houses", ["tree house","treehouse","fairy house","fairy castle","fairy door","mushroom house","gnome home"," castle","village set","fairy garden"]),
+    ("Woodland Homes & Fairy Houses", ["tree house","treehouse","fairy house","fairy castle","fairy door","mushroom house","gnome home","gnome house"," castle","village set","fairy garden","fairy pod","sleeping pod"," pod ","play pod","fairy home"]),
     ("Trees & Landscapes", [" tree","trees"," shrub"," bush"," forest"," hedge","landscape","nature table","stump","toadstool"]),
     ("Fairies & Gnomes", ["gnome","fairy","pixie"," elf","peg doll","peg people","flower child","root child","tomte"]),
     ("Stuffed Animals", ["stuffed animal","plush","soft toy","cuddly toy","softie","stuffie"]),
