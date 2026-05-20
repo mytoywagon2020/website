@@ -59,17 +59,24 @@ footer harden · `a3afc13` add template + wire · `ac826d5` mirror to git.
 
 ## 3. Where we stopped — open items / next session
 
-### A. Metafield content fill (phased, to protect SEO)
-- **Progress: ~26 of a 100-product target done.** We left off at 26; the goal is
-  to finish the first **100** products.
-- Confirmed filled: Gus + Mabel Busy Bee
-  (`gid://shopify/Product/8390716424362`, 21 metafields written) is one of them.
-- Remaining products need `details.*` / `custom.*` / `fulfillment.*` populated
-  **from the product descriptions, in a high-converting way.**
-- Do this in **phases / waves**, not all at once — owner's directive, to avoid a
-  disruptive Google re-crawl.
-- **Next session: resume at product #27 and work toward 100.** (TODO: keep a
-  running list of which 26 are done so we don't redo them — see resume checklist.)
+### A. Metafield content fill — 300 products via API, vet-gated
+- **STATUS: PAUSED (intentionally).** Owner paused this mid-run to focus on the
+  website / educator portal build. Not abandoned — resume when the portal work
+  reaches a stopping point.
+- **Scope: 300 products**, metafields written **through the Shopify API**
+  (`metafieldsSet`), generated **from each product's description in a
+  high-converting way.**
+- **Workflow with owner: vetting gate.** Claude generates the metafield content
+  and **shares a sample batch (2, or up to ~26) for the owner to vet/approve
+  before it is applied** across the rest. Do not bulk-write all 300 unvetted.
+- Phased / in waves, not all at once — owner's directive, to avoid a disruptive
+  Google re-crawl.
+- Confirmed reference example already written: Gus + Mabel Busy Bee
+  (`gid://shopify/Product/8390716424362`, 21 metafields).
+- Metafield namespaces: `details.*` / `custom.*` / `fulfillment.*` (the PDP reads
+  `details.*`, falls back to `custom.*`, then `product.description`).
+- **Next session:** confirm how many of the 300 are already written, then
+  continue generating the next vet batch for owner approval.
 
 ### B. Matrixify batch fixes (queued)
 - **`age_band` is wrong on many products.** Concrete example: a product whose
@@ -96,9 +103,9 @@ footer harden · `a3afc13` add template + wire · `ac826d5` mirror to git.
 
 ## 4. Quick resume checklist
 1. Re-check theme role: is 9.0 MAIN or UNPUBLISHED? (Decides API vs admin editor.)
-2. Resume the metafield fill at **product #27, target 100** (§3A). First
-   reconcile which ~26 are already done (query products that already have
-   `details.*` set) so none are redone.
+2. Resume the **300-product** metafield fill (§3A): query which products already
+   have `details.*` written, then generate the next **vet batch (2 or ~26)** for
+   owner approval before applying broadly.
 3. Build the Matrixify Update sheet for `age_band` + pre-order metafields (§3B).
 4. Source or drop the third trust icon (§3C).
 5. Visual QA on desktop + mobile (§3D).
