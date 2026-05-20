@@ -26,7 +26,7 @@ CANON = {
     "Games","Puzzles","Books",
     "Outdoor Toys","Riding & Climbing Toys","Sand & Water Play","Tents & Teepees",
     "Small World Play","Trees & Landscapes","Small World Figures & People",
-    "Woodland Homes & Fairy Houses",
+    "Woodland Homes & Fairy Houses","Play Mats & Playscapes",
     "Garlands & Bunting","Wall Decor","Lighting","Rugs","Baskets & Storage",
     "Growth Charts","Kids Furniture",
     "Ornaments & Stockings","Sensory & Loose Parts","Nature Play",
@@ -73,7 +73,8 @@ TITLE_RULES = [
     ("Kitchen & House Play", ["kitchen","tea set","teapot","tea cup","cookware","pots and pans","cleaning set","baking set"]),
     ("Role Play", ["hairdresser","hair dresser","salon","beauty set","doctor","vet set","veterinary","dentist","medical kit","tool set","tool bench","workbench","workshop","repair set","post office","fire station","first aid"]),
     ("Dollhouses", ["dollhouse","doll house","dolls house"]),
-    ("Small World Play", ["playmat","play mat","playscape","play scape","playset","play set","library","play scene"]),
+    ("Play Mats & Playscapes", ["playmat","play mat","playscape","play scape"]),
+    ("Small World Play", ["playset","play set","library","play scene"]),
     ("Woodland Homes & Fairy Houses", ["tree house","treehouse","fairy house","fairy castle","fairy door","mushroom house","gnome home","gnome house","village set","fairy garden","fairy pod","sleeping pod"," pod ","play pod","fairy home"]),
     ("Trees & Landscapes", [" tree","trees"," shrub"," bush"," forest"," hedge","landscape","nature table","stump","toadstool"]),
     ("Fairies & Gnomes", ["gnome","fairy","pixie"," elf","peg doll","peg people","flower child","root child","tomte"]),
@@ -123,7 +124,7 @@ COLLECTION_PRIORITY = [
     ("growth-chart","Keepsakes"),
     ("sensory-discovery","Sensory & Loose Parts"),
     ("build-and-construct","Building Blocks"),
-    ("felt-play-mats-and-playscapes","Small World Play"),("playscapes-fairy-houses-castles-playmats","Small World Play"),("small-world-play","Small World Play"),
+    ("felt-play-mats-and-playscapes","Play Mats & Playscapes"),("playscapes-fairy-houses-castles-playmats","Play Mats & Playscapes"),("small-world-play","Small World Play"),
 ]
 
 # Brands where every item is one category; checked before title rules.
