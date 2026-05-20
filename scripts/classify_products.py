@@ -44,7 +44,7 @@ TITLE_RULES = [
     ("Wall Decor", ["poster","wall art","wall hanging","wall decal","art print","wall sticker","tapestry","banner"," print","prints"]),
     ("Marble & Ball Runs", ["marble run","ball run","ball track","marble tree","marble tower","ball drop"]),
     ("Magnetic Tiles", ["magnetic tile","magna-tile","magnatile","magna tile","connetix","magnetic building"]),
-    ("Stacking & Sorting", ["stacker","stacking","shape sorter","sorting","ring stack","nesting"]),
+    ("Stacking & Sorting", ["stacker","stacking","shape sorter","sorter","sorting","ring stack","nesting"]),
     ("Teethers", ["teether","teething"]),
     ("Loveys", ["lovey","lovie","comforter","blanket doll","nuckel","schmusetuch","cuddle cloth","security blanket","snuggler"]),
     ("Rattles & Grasping Toys", ["rattle","grasping","clutching"]),
