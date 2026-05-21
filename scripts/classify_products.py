@@ -1,0 +1,304 @@
+#!/usr/bin/env python3
+"""First-pass product_type classifier for My Toy Wagon.
+
+Reads the bulk product export (JSONL, products with nested collections) and
+proposes a canonical product_type for each product using, in priority order:
+already-canonical, the Nanchen brand rule, title keywords, collection
+membership, brand defaults, then a small-world fallback. Outputs a review CSV.
+Nothing is written to Shopify here.
+"""
+import json, csv, re
+
+SRC = "_work/products.jsonl"
+OUT = "_work/classification.csv"
+
+CANON = {
+    "Building Blocks","Magnetic Tiles","Marble & Ball Runs","Stacking & Sorting",
+    "Kitchen & House Play","Play Food","Stuffed Animals","Wooden Animals",
+    "Cars, Trucks & Trains","Dress-ups & Costumes","Finger Puppets & Accessories",
+    "Painting & Drawing","Play Dough & Tools","Other Crafts","Handwork","Weaving & Fibre Arts","Stamps","Gift Cards",
+    "Dolls","Doll Accessories","Dollhouses","Dollhouse Furniture & Room Sets",
+    "Waldorf Dolls","Waldorf Home","Waldorf Birthday","Playsilks","Fairies & Gnomes",
+    "Early Learning","Musical Instruments","STEM Toys","Counting, Numbers & Letters","Cameras","Lacing & Threading","Bird Call Sets",
+    "Spinning Tops","Kaleidoscopes","Keepsakes","Shops & Market Play","Role Play",
+    "Rattles & Grasping Toys","Teethers","Loveys","Blankets & Swaddles","Mobiles",
+    "Cloth & First Books","Plush Baby Toys","Push & Pull-Along","Walkers","Bath Play",
+    "Games","Puzzles","Books",
+    "Outdoor Toys","Riding & Climbing Toys","Sand & Water Play","Tents & Teepees",
+    "Small World Play","Trees & Landscapes","Small World Figures & People",
+    "Woodland Homes & Fairy Houses","Play Mats & Playscapes","Felt Flowers & Foliage",
+    "Garlands & Bunting","Wall Decor","Lighting","Rugs","Baskets & Storage","Purses & Bags",
+    "Growth Charts","Kids Furniture",
+    "Ornaments & Stockings","Sensory & Loose Parts","Nature Play","Mindfulness & Wellbeing",
+}
+
+TITLE_RULES = [
+    ("Gift Cards", ["gift card","e-gift","egift"]),
+    ("Cars, Trucks & Trains", ["car with book"]),
+    ("Books", [" book","board book","picture book","storybook","book of"]),
+    ("Cameras", ["camera","camcorder"]),
+    ("Kaleidoscopes", ["kaleidoscope"]),
+    ("Spinning Tops", ["spinning top","spin top","whipping top"]),
+    ("Keepsakes", ["tooth box","tooth fairy box","tooth pillow","keepsake","memory box","first curl","first tooth","milestone box"]),
+    ("STEM Toys", ["lucent","light table","light panel","gears set","circuit","microscope","magnifier","translucent cube","lifecycle","life cycle","life-cycle","anatomy","museum","specimen","fossil","robot","coding"]),
+    ("Mindfulness & Wellbeing", ["affirmation","mindful","mindfulness","gratitude"," feelings","social-emotional","calm down","breathing","worry monster","self-esteem","emotions"]),
+    ("Sensory & Loose Parts", ["loose parts"]),
+    ("Counting, Numbers & Letters", ["abacus","math ","mathematics","counting cube"]),
+    ("Games", ["matching tile","matching pairs"]),
+    ("Stacking & Sorting", ["matryoshka","nesting doll"]),
+    ("Dollhouse Furniture & Room Sets", ["dollhouse furniture","doll's house furniture","dolls house furniture","room set"," bathroom"," bedroom","living room","dining room","high chair","rocking chair","coat rack","modern table","round table","table & chair","table and chair","plan toys chair"]),
+    ("Small World Figures & People", ["dog walker"]),
+    ("Walkers", ["walker"]),
+    ("Fairies & Gnomes", ["garden gnome","gnome girl","gnome boy","gnome with","fairy with","seed baby","bee baby","flower baby","honeybee baby","star baby","blossom baby","root baby","acorn baby","sun baby","snow baby","seedling baby","seed pod","nature baby","root child","flower child"]),
+    ("Lacing & Threading", ["lacing","tie-up","tie up","lace-up","lace up","tying","threading","dressing frame","button board","buckle board"]),
+    ("Early Learning", ["ring slide","object permanence","posting box","post box","coin box","busy board","activity cube","push button","activity clock","learning clock","teaching clock"]),
+    ("Puzzles", ["puzzle","jigsaw"]),
+    ("Wall Decor", ["poster","wall art","wall hanging","wall decal","art print","wall sticker","tapestry","banner"," print","prints"]),
+    ("Marble & Ball Runs", ["marble run","ball run","ball track","track set","run elements","kullerbu","marble tree","marble tower","ball drop","ball rolling","rolling ball"]),
+    ("Magnetic Tiles", ["magnetic tile","magna-tile","magnatile","magna tile","connetix","magnetic building"]),
+    ("Stacking & Sorting", ["stacker","stacking","shape sorter","sorter","sorting","ring stack","nesting"]),
+    ("Teethers", ["teether","teething"]),
+    ("Loveys", ["lovey","lovie","comforter","blanket doll","nuckel","schmusetuch","cuddle cloth","security blanket","snuggler"]),
+    ("Rattles & Grasping Toys", ["rattle","grasping","clutching"]),
+    ("Plush Baby Toys", ["discovery pillow","activity pillow","pram toy","stroller toy","baby gym","activity spiral","sensory ball"]),
+    ("Finger Puppets & Accessories", ["puppet","puppet rod","rod set"]),
+    ("Play Dough & Tools", ["play dough","playdough","play-dough","dough cutter","dough tool","modelling beeswax","modeling beeswax","eco cutter","eco-cutter","cookie cutter","biscuit cutter","eco-dough","eco dough"]),
+    ("Painting & Drawing", ["crayon","watercolor","watercolour"," paint","paints","painting","chalk","coloring","colouring"," marker","easel","drawing","doodle","sketch","pastels","pencil","colored pencil","coloured pencil","creative board"]),
+    ("Weaving & Fibre Arts", ["weaving"," loom","knitting","sewing kit","needle felt","felting kit","embroidery","cross stitch","spinning wheel"]),
+    ("Stamps", ["stamp set","stamper","wooden stamp","ink pad","stamp kit"," stamps","rubber stamp"]),
+    ("Other Crafts", ["craft kit","sticker","flower press","paper kit","paper craft"]),
+    ("Ornaments & Stockings", ["ornament","stocking","advent","bauble","gingerbread collection"]),
+    ("Garlands & Bunting", ["garland","bunting","wreath","pennant"]),
+    ("Lighting", ["night light","nightlight","night-light"," lamp","lantern","fairy lights","wall light"]),
+    ("Playsilks", ["playsilk","play silk","play-silk","silk cloth","wondercloth","canopy silk"]),
+    ("Mobiles", ["baby mobile","crib mobile","cot mobile","hanging mobile","pram mobile","nursery mobile"]),
+    ("Baskets & Storage", ["basket","storage bin","toy bin","hamper"]),
+    ("Blankets & Swaddles", ["swaddle","baby blanket"," blanket"," quilt","duvet"]),
+    ("Musical Instruments", ["guitar","xylophone"," drum","piano","kalimba","glockenspiel","tambourine","maraca","ukulele","banjo","harmonica","castanet","rainmaker"," flute","whistle"]),
+    ("Books", [" book","board book","picture book","storybook"]),
+    ("Waldorf Birthday", ["birthday crown","birthday ring","birthday garland","celebration ring"]),
+    ("Dress-ups & Costumes", ["costume","dress up","dress-up","dressup"," wand","magic wand","sword","shield"," cape"," wings","fairy wings"," mask","tutu"," crown"," tiara","apron","superhero","toy axe","wooden axe","crossbow","bow and arrow","archery"]),
+    ("Tents & Teepees", ["teepee","tipi"," tent","play tent","canopy"]),
+    ("Riding & Climbing Toys", ["scooter","balance bike","tricycle"," trike","ride-on","ride on","rocker","rocking horse","rocking pegasus","rocking unicorn","rocking animal","hobby horse","pikler","climbing","balance board","wobble board","see saw","seesaw","push bike"]),
+    ("Sand & Water Play", ["sand toy","beach toy","water play","sand mold","pool toy"]),
+    ("Bath Play", ["bath toy","bath time","bath book"]),
+    ("Cars, Trucks & Trains", [" car ","truck","train","vehicle","digger","excavator"," plane","airplane"," boat"," tractor","camper","bulldozer","fire engine","locomotive","racer","wagon","crane","garbage","forklift","cargo ship","container ship","steamship"]),
+    ("Outdoor Toys", ["gardening","garden kit","garden set","garden tool","kite","bug catcher","watering can","pocket knife","whittling","bird feeder","sandbox","compass","binoculars","magnifying glass","slingshot","croquet"]),
+    ("Play Food", ["play food","felt food","wooden food","grocer","ice cream","apple pie","cherry pie","pumpkin pie","pecan pie","wooden pie","felt pie","pie slice","pot pie","mince pie","meat pie","cupcake","cookie","donut","doughnut","pizza","sushi","waffle","pancake","muffin","croissant","macaron","pretzel","bagel","sandwich","popsicle"," cake","fruit","vegetable","veggie","egg carton","biscuit","candy corn","eclair","chocolate","charcuterie","cheese board","grazing"]),
+    ("Shops & Market Play", ["cash register","market stand","market stall","shopping cart","play money","grocery store","checkout","farm stand","fruit stand","ice cream cart","lemonade stand","playstand","play stand","playshop","play shop","shop counter"]),
+    ("Kitchen & House Play", ["kitchen","tea set","teapot","tea cup","cookware","pots and pans","baking set"]),
+    ("Role Play", ["hairdresser","hair dresser","salon","beauty set","makeup","make up set","make-up","doctor","vet set","veterinary","dentist","medical kit","chef set","cleaning set","tool set","tool belt","tool bench","workbench","workshop","repair set","carpenter","motor mechanic","auto mechanic","car mechanic","post office","fire station","fire fighter","firefighter","first aid","chainsaw","toy saw","toy drill","hammer set","tool kit","dj mixer","dj set","detective","spy kit","secret agent","shave set","shaving","pet care","vlogger","my first phone","toy phone","play phone","cell phone","play center","play centre"]),
+    ("Dollhouses", ["dollhouse","doll house","dolls house"]),
+    ("Play Mats & Playscapes", ["playmat","play mat","playscape","play scape",r"re:\bmats?\b","felt mat","felt habitat","habitat"]),
+    ("Small World Play", ["playset","play set","library","play scene"]),
+    ("Purses & Bags", ["treehouse bag","house bag"]),
+    ("Woodland Homes & Fairy Houses", ["tree house","treehouse","fairy house","fairy castle","fairy door","mushroom house","gnome home","gnome house","village set","fairy garden","fairy pod","sleeping pod","play pod"," home"," house"]),
+    ("Trees & Landscapes", [" tree","trees"," shrub"," bush","hedgerow","landscape","nature table","stump","cliff"," lake"," pond"," cave","grotto","river","waterfall"," rocks"]),
+    ("Building Blocks", ["fairytale castle","fairytale building","fairytale tower","fairytale window","fairy tower"]),
+    ("Fairies & Gnomes", ["gnome","fairy","pixie"," elf","peg doll","peg people","flower child","root child","tomte","seed baby","bee baby","flower baby","honeybee baby","star baby","blossom baby","root baby","acorn baby","sun baby","snow baby","seedling baby","seed pod","nature baby"]),
+    ("Small World Figures & People", ["figurine","shepherd","knight","villager","peg person","little friend","nativity","family member","farm family","heroes"]),
+    ("Felt Flowers & Foliage", ["felt flower","flowers"," flower ","bouquet","foliage","felt fern","felt plant","wildflower"]),
+    ("Stuffed Animals", ["stuffed animal","plush","soft toy","cuddly toy","softie","stuffie","knit ","knitted","crochet","amigurumi"]),
+    ("Purses & Bags", ["purse","coin purse","play purse","toadstool bag","skull bag","trick-or-treat","trick or treat","treat bag","hunt bag","caldron bag","cauldron bag","farmhouse bag"]),
+    ("Building Blocks", ["alphabet block","abc block","letter block","number block"]),
+    ("Counting, Numbers & Letters", ["counting","abacus","number","alphabet","letters"," math","spelling","phonics"]),
+    ("Building Blocks", ["building block","building box","building set","construction set","wooden block","block set"," blocks","unit block","arch block","brick set","castle set","castle blocks"]),
+    ("Dolls", ["doll"]),
+    ("Cloth & First Books", ["cloth book","soft book","fabric book","quiet book"]),
+    ("Push & Pull-Along", ["pull along","pull-along","push along","push toy","pull toy"]),
+    ("Games", ["board game","memory game","matching game","domino","gominoes","card game","skittles","bowling","ring toss"]),
+]
+
+# Clean category collections, most specific first. First membership hit wins.
+COLLECTION_PRIORITY = [
+    ("marble-and-ball-runs","Marble & Ball Runs"),
+    ("magnetic-tiles","Magnetic Tiles"),("connetix","Magnetic Tiles"),("magnetic-play","Magnetic Tiles"),
+    ("teethers-and-clutching-toys","Teethers"),
+    ("rattles","Rattles & Grasping Toys"),("grasping-toys-1","Rattles & Grasping Toys"),
+    ("mobiles","Mobiles"),
+    ("puppet-sets","Finger Puppets & Accessories"),
+    ("dough-cutters","Play Dough & Tools"),("eco-cutter™","Play Dough & Tools"),("play-dough-and-accessories","Play Dough & Tools"),("land-of-dough","Play Dough & Tools"),
+    ("crayons","Painting & Drawing"),("paints","Painting & Drawing"),("crayon-rocks","Painting & Drawing"),("doodling","Painting & Drawing"),("easel","Painting & Drawing"),("wooden-art-easels","Painting & Drawing"),
+    ("hobby-horse-collection","Riding & Climbing Toys"),("ride-on-toys-and-accessories","Riding & Climbing Toys"),("scooters","Riding & Climbing Toys"),
+    ("tents-and-teepees","Tents & Teepees"),
+    ("ornaments-and-stockings","Ornaments & Stockings"),
+    ("garlands_and_wreaths","Garlands & Bunting"),
+    ("bolga-baskets","Baskets & Storage"),("desert-rose-baskets","Baskets & Storage"),("baskets","Baskets & Storage"),
+    ("little-lights","Lighting"),
+    ("soft-and-quiet-books","Cloth & First Books"),
+    ("wall-decor-artwork-banners-decals-posters-prints-and-hangings","Wall Decor"),
+    ("counting-and-math-toys","Counting, Numbers & Letters"),("alphabet-toys","Counting, Numbers & Letters"),("learning-cards-and-tiles","Counting, Numbers & Letters"),
+    ("waldorf-crowns","Waldorf Birthday"),
+    ("costumes-and-dress-up","Dress-ups & Costumes"),("dress-up-and-costumes","Dress-ups & Costumes"),
+    ("woodland-homes-and-fairy-houses","Woodland Homes & Fairy Houses"),("houses-buildings-and-towns","Woodland Homes & Fairy Houses"),("treehouses-and-accessories","Woodland Homes & Fairy Houses"),
+    ("trees-and-more-trees","Trees & Landscapes"),
+    ("model-cars","Cars, Trucks & Trains"),("wooden-transportation-toys","Cars, Trucks & Trains"),
+    ("puzzle-michele-wilson","Puzzles"),("puzzles","Puzzles"),
+    ("stacking-toys","Stacking & Sorting"),
+    ("play-food","Play Food"),
+    ("kitchenware","Kitchen & House Play"),("kitchen-play","Kitchen & House Play"),
+    ("cuddly-toys","Stuffed Animals"),
+    ("ambrosius-fairies","Fairies & Gnomes"),("painted-peg-dolls","Fairies & Gnomes"),("gnomes-fairies-princes-peg-dolls","Fairies & Gnomes"),("fairies-and-gnomes","Fairies & Gnomes"),
+    ("dolls-and-accessories","Dolls"),
+    ("wooden-animals","Wooden Animals"),
+    ("musical-toys","Musical Instruments"),("loog-guitars","Musical Instruments"),
+    ("kaleidoscopes","Kaleidoscopes"),
+    ("growth-chart","Keepsakes"),
+    ("emotional-intelligence","Mindfulness & Wellbeing"),("mindfulness","Mindfulness & Wellbeing"),
+    ("sensory-discovery","Sensory & Loose Parts"),
+    ("build-and-construct","Building Blocks"),
+    ("felt-flowers-and-plants","Felt Flowers & Foliage"),
+    ("felt-play-mats-and-playscapes","Play Mats & Playscapes"),("playscapes-fairy-houses-castles-playmats","Play Mats & Playscapes"),
+]
+
+# Brands where every item is one category; checked before title rules.
+BRAND_OVERRIDE = {
+    "Quelle est Belle":"Bird Call Sets",
+    "Grapat":"Sensory & Loose Parts",
+    "Ambrosius Fairies":"Fairies & Gnomes",
+    "Candylab":"Cars, Trucks & Trains","Candylab Toys":"Cars, Trucks & Trains",
+}
+BRAND_DEFAULT = {
+    "Loog Guitars":"Musical Instruments","Loog":"Musical Instruments",
+    "Connetix":"Magnetic Tiles","Connetix Tiles":"Magnetic Tiles",
+    "Little Lights":"Lighting","Little Lights US":"Lighting",
+    "Sarah's Silks":"Playsilks",
+    "Candylab":"Cars, Trucks & Trains","Candylab Toys":"Cars, Trucks & Trains",
+    "Eco-Cutter":"Play Dough & Tools","Eco Cutter":"Play Dough & Tools","Land of Dough":"Play Dough & Tools",
+    "MesaSilla":"Kids Furniture","MesaSilla USA":"Kids Furniture","Milton & Goose":"Kids Furniture",
+    "Mader Kreiselmanufaktur":"Spinning Tops",
+    "Sew Heart Felt":"Small World Figures & People",
+    "Slumberkins":"Mindfulness & Wellbeing","Mindful And Co Kids USA":"Mindfulness & Wellbeing",
+    "IMYOGI":"Mindfulness & Wellbeing",
+}
+SMALLWORLD_BRANDS = {"Bumbu Toys","Holztiger","Papoose Toys","Tara Treasures",
+                     "Fairyshadow","Brin d'Ours","Atelier des Peupliers"}
+
+# Fallback: exact legacy product_type values (lowercased) -> canonical, applied
+# only when no stronger rule matched. Clears recognizable junk left after the
+# main pass; genuinely ambiguous values (Cushion, Toys, Gift Sets) are omitted
+# on purpose so a human assigns them.
+LEGACY_TYPE_MAP = {
+    "stuffed toy":"Stuffed Animals","plush toys":"Stuffed Animals","warming plush toys":"Stuffed Animals",
+    "wintery plush toys":"Stuffed Animals","flippy friends":"Stuffed Animals","cuddle bunnies":"Stuffed Animals",
+    "security blankie":"Loveys","security blankies":"Loveys",
+    "wallpaper":"Wall Decor",
+    "crinkle toys":"Plush Baby Toys","plush baby":"Plush Baby Toys","baby & toddler":"Plush Baby Toys",
+    "baby toys & activity equipment":"Plush Baby Toys","suction spinner toy":"Plush Baby Toys",
+    "soft blocks":"Building Blocks","connect building toy set":"Building Blocks",
+    "doll":"Dolls","dolls":"Dolls",
+    "mobile":"Mobiles",
+    "track sets":"Cars, Trucks & Trains","road & track tape":"Cars, Trucks & Trains",
+    "furniture":"Kids Furniture","kid chair":"Kids Furniture",
+    "playful planting":"Nature Play","seed starter":"Nature Play","indoor garden kit":"Nature Play",
+    "bath":"Bath Play","bath toys":"Bath Play",
+    "musical":"Musical Instruments",
+    "alphabet toys":"Counting, Numbers & Letters",
+    "sorting & stacking toys":"Stacking & Sorting",
+    "milestone cards":"Keepsakes","milestone":"Keepsakes",
+    "play tents & tunnels":"Tents & Teepees",
+    "organizer":"Baskets & Storage",
+    "science & exploration sets":"STEM Toys","terra kids":"STEM Toys",
+    "art cards":"Early Learning","stroller toys":"Early Learning",
+    "tool":"Bird Call Sets",
+}
+FALLBACK_TITLE = [
+    ("Growth Charts", ["growth chart"]),
+    ("Mobiles", ["music mobile","celestial mobile"]),
+    ("Purses & Bags", ["backpack","suitcase","duffle","diaper bag","luggage tag","toiletry kit"]),
+]
+
+
+def classify(p, colls):
+    title = (p.get("title") or "").lower()
+    vendor = (p.get("vendor") or "").strip()
+    cur = (p.get("productType") or "").strip()
+    tags = [t.lower() for t in (p.get("tags") or [])]
+    waldorf = "waldorf" in " ".join(tags) or "waldorf" in title
+
+    if cur in CANON:
+        return cur, "already canonical", "keep"
+    if vendor.lower().startswith("nanchen"):
+        if "rattle" in title: return "Rattles & Grasping Toys","nanchen+rattle","high"
+        if any(k in title for k in ["blanket doll","comforter","nuckel"]): return "Loveys","nanchen+lovey","high"
+        if "soft toy" in title: return "Stuffed Animals","nanchen+soft toy","high"
+        return "Waldorf Dolls","nanchen default","high"
+    if vendor in BRAND_OVERRIDE:
+        return BRAND_OVERRIDE[vendor], f"brand-override:{vendor}", "high"
+    for cat, kws in TITLE_RULES:
+        for kw in kws:
+            hit = re.search(kw[3:], title) if kw.startswith("re:") else (kw in title)
+            if hit:
+                label = kw[3:] if kw.startswith("re:") else kw.strip()
+                if cat == "Dolls" and waldorf:
+                    return "Waldorf Dolls", f"title:{label}+waldorf", "high"
+                return cat, f"title:{label}", "high"
+    cset = colls.get(p["id"], set())
+    for handle, cat in COLLECTION_PRIORITY:
+        if handle in cset:
+            conf = "low" if cat == "Small World Play" else "medium"
+            return cat, f"collection:{handle}", conf
+    if vendor in BRAND_DEFAULT:
+        return BRAND_DEFAULT[vendor], f"brand:{vendor}", "medium"
+    if vendor in SMALLWORLD_BRANDS:
+        return "Small World Play", f"brand-fallback:{vendor}", "low"
+    lc = cur.lower()
+    if lc.startswith("bags >") or lc in ("backpack", "toddler backpack"):
+        return "Purses & Bags", f"legacy:{cur}", "low"
+    if lc in LEGACY_TYPE_MAP:
+        return LEGACY_TYPE_MAP[lc], f"legacy:{cur}", "low"
+    for cat, kws in FALLBACK_TITLE:
+        for kw in kws:
+            if kw in title:
+                return cat, f"fallback-title:{kw}", "low"
+    return "", "no match", "review"
+
+def main():
+    products = {}
+    colls = {}
+    with open(SRC) as f:
+        for line in f:
+            line=line.strip()
+            if not line: continue
+            o = json.loads(line)
+            if "__parentId" in o:
+                colls.setdefault(o["__parentId"], set()).add(o.get("handle"))
+            else:
+                products[o["id"]] = o
+    rows=[]; conf_counts={"keep":0,"high":0,"medium":0,"low":0,"review":0}; cat_counts={}
+    for pid,p in products.items():
+        proposed,reason,conf = classify(p, colls)
+        rows.append({"handle":p.get("handle",""),"title":p.get("title",""),"vendor":p.get("vendor",""),
+                     "status":p.get("status",""),"current_type":p.get("productType",""),
+                     "proposed_type":proposed,"reason":reason,"confidence":conf})
+        conf_counts[conf]+=1
+        if conf!="keep": cat_counts[proposed or "(none)"]=cat_counts.get(proposed or "(none)",0)+1
+    with open(OUT,"w",newline="") as f:
+        w=csv.DictWriter(f,fieldnames=["handle","title","vendor","status","current_type","proposed_type","reason","confidence"])
+        w.writeheader(); w.writerows(rows)
+    flds=["handle","title","vendor","status","current_type","proposed_type","reason","confidence"]
+    act=[r for r in rows if r["status"]=="ACTIVE"]
+    with open("_work/classification_active.csv","w",newline="") as f:
+        w=csv.DictWriter(f,fieldnames=flds); w.writeheader(); w.writerows(act)
+    with open("_work/active_review.csv","w",newline="") as f:
+        w=csv.DictWriter(f,fieldnames=flds); w.writeheader()
+        w.writerows([r for r in act if r["confidence"] in ("low","review")])
+    active = [r for r in rows if r["status"]=="ACTIVE"]
+    a_conf={"keep":0,"high":0,"medium":0,"low":0,"review":0}
+    for r in active: a_conf[r["confidence"]]+=1
+    a_weak=[r for r in active if r["confidence"] in ("low","review")]
+    print(f"Total products: {len(products)}  (ACTIVE: {len(active)}, DRAFT/other: {len(products)-len(active)})")
+    print("ALL by confidence:", conf_counts)
+    print("ACTIVE by confidence:", a_conf)
+    print(f"ACTIVE weak group (low+review): {len(a_weak)}")
+    aw={}
+    for r in a_weak: aw[r['reason']]=aw.get(r['reason'],0)+1
+    print("  ACTIVE weak by reason:")
+    for reason,n in sorted(aw.items(), key=lambda x:-x[1])[:12]:
+        print(f"    {n:5d}  {reason}")
+    print("\nProposed categories (new assignments only, all statuses):")
+    for cat,n in sorted(cat_counts.items(), key=lambda x:-x[1]):
+        print(f"  {n:5d}  {cat}")
+
+if __name__=="__main__":
+    main()

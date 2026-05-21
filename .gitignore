@@ -1,0 +1,6 @@
+# Transient working data: bulk exports and generated classification CSVs
+_work/
+
+# Python bytecode cache
+__pycache__/
+*.pyc
