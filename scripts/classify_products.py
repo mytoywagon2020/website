@@ -174,6 +174,41 @@ BRAND_DEFAULT = {
 SMALLWORLD_BRANDS = {"Bumbu Toys","Holztiger","Papoose Toys","Tara Treasures",
                      "Fairyshadow","Brin d'Ours","Atelier des Peupliers"}
 
+# Fallback: exact legacy product_type values (lowercased) -> canonical, applied
+# only when no stronger rule matched. Clears recognizable junk left after the
+# main pass; genuinely ambiguous values (Cushion, Toys, Gift Sets) are omitted
+# on purpose so a human assigns them.
+LEGACY_TYPE_MAP = {
+    "stuffed toy":"Stuffed Animals","plush toys":"Stuffed Animals","warming plush toys":"Stuffed Animals",
+    "wintery plush toys":"Stuffed Animals","flippy friends":"Stuffed Animals","cuddle bunnies":"Stuffed Animals",
+    "security blankie":"Loveys","security blankies":"Loveys",
+    "wallpaper":"Wall Decor",
+    "crinkle toys":"Plush Baby Toys","plush baby":"Plush Baby Toys","baby & toddler":"Plush Baby Toys",
+    "baby toys & activity equipment":"Plush Baby Toys","suction spinner toy":"Plush Baby Toys",
+    "soft blocks":"Building Blocks","connect building toy set":"Building Blocks",
+    "doll":"Dolls","dolls":"Dolls",
+    "mobile":"Mobiles",
+    "track sets":"Cars, Trucks & Trains","road & track tape":"Cars, Trucks & Trains",
+    "furniture":"Kids Furniture","kid chair":"Kids Furniture",
+    "playful planting":"Nature Play","seed starter":"Nature Play","indoor garden kit":"Nature Play",
+    "bath":"Bath Play","bath toys":"Bath Play",
+    "musical":"Musical Instruments",
+    "alphabet toys":"Counting, Numbers & Letters",
+    "sorting & stacking toys":"Stacking & Sorting",
+    "milestone cards":"Keepsakes","milestone":"Keepsakes",
+    "play tents & tunnels":"Tents & Teepees",
+    "organizer":"Baskets & Storage",
+    "science & exploration sets":"STEM Toys","terra kids":"STEM Toys",
+    "art cards":"Early Learning","stroller toys":"Early Learning",
+    "tool":"Bird Call Sets",
+}
+FALLBACK_TITLE = [
+    ("Growth Charts", ["growth chart"]),
+    ("Mobiles", ["music mobile","celestial mobile"]),
+    ("Purses & Bags", ["backpack","suitcase","duffle","diaper bag","luggage tag","toiletry kit"]),
+]
+
+
 def classify(p, colls):
     title = (p.get("title") or "").lower()
     vendor = (p.get("vendor") or "").strip()
@@ -207,6 +242,15 @@ def classify(p, colls):
         return BRAND_DEFAULT[vendor], f"brand:{vendor}", "medium"
     if vendor in SMALLWORLD_BRANDS:
         return "Small World Play", f"brand-fallback:{vendor}", "low"
+    lc = cur.lower()
+    if lc.startswith("bags >") or lc in ("backpack", "toddler backpack"):
+        return "Purses & Bags", f"legacy:{cur}", "low"
+    if lc in LEGACY_TYPE_MAP:
+        return LEGACY_TYPE_MAP[lc], f"legacy:{cur}", "low"
+    for cat, kws in FALLBACK_TITLE:
+        for kw in kws:
+            if kw in title:
+                return cat, f"fallback-title:{kw}", "low"
     return "", "no match", "review"
 
 def main():
