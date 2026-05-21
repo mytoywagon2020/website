@@ -155,7 +155,8 @@ COLLECTION_PRIORITY = [
 BRAND_OVERRIDE = {
     "Quelle est Belle":"Bird Call Sets",
     "Grapat":"Sensory & Loose Parts",
-    "Ambrosius":"Fairies & Gnomes",
+    "Ambrosius Fairies":"Fairies & Gnomes",
+    "Candylab":"Cars, Trucks & Trains","Candylab Toys":"Cars, Trucks & Trains",
 }
 BRAND_DEFAULT = {
     "Loog Guitars":"Musical Instruments","Loog":"Musical Instruments",
