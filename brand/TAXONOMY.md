@@ -122,6 +122,26 @@ The Playroom Collection · Made in the USA · Spring Nature Table
 - Riding & Climbing Toys (ride-ons and hobby horses)
 - Swings & Hammocks
 
+## Department grouping (storefront filter)
+
+Stored as the `custom.department` product metafield (single line text). It is the
+primary storefront filter in Search & Discovery, sitting above `product_type`.
+One department per product, derived from its `product_type`. Eleven buckets:
+
+- **Blocks & Building:** Building Blocks, Magnetic Tiles, Marble & Ball Runs, Stacking & Sorting
+- **Pretend Play:** Kitchen & House Play, Play Food, Shops & Market Play, Role Play, Dress-ups & Costumes, Cameras, Purses & Bags, Tents & Teepees, Finger Puppets & Accessories, Cars Trucks & Trains, Stuffed Animals
+- **Small World:** Wooden Animals, Small World Play, Small World Figures & People, Trees & Landscapes, Woodland Homes & Fairy Houses, Play Mats & Playscapes
+- **Arts & Crafts:** Painting & Drawing, Play Dough & Tools, Handwork, Weaving & Fibre Arts, Other Crafts, Stamps, Lacing & Threading
+- **Dolls & Dollhouses:** Dolls, Doll Accessories, Dollhouses, Dollhouse Furniture & Room Sets
+- **Waldorf Essentials:** Waldorf Dolls, Waldorf Home, Waldorf Birthday, Playsilks, Fairies & Gnomes, Felt Flowers & Foliage, Nature Play, Bird Call Sets
+- **Developmental Toys:** Early Learning, Counting Numbers & Letters, STEM Toys, Musical Instruments, Kaleidoscopes, Spinning Tops, Sensory & Loose Parts, Mindfulness & Wellbeing
+- **Baby:** Rattles & Grasping Toys, Teethers, Loveys, Blankets & Swaddles, Plush Baby Toys, Cloth & First Books, Mobiles, Push & Pull-Along, Walkers
+- **Games & Puzzles:** Books, Games, Puzzles
+- **Active Play:** Outdoor Toys, Riding & Climbing Toys, Sand & Water Play, Bath Play
+- **Home & Decor:** Wall Decor, Garlands & Bunting, Lighting, Rugs, Baskets & Storage, Kids Furniture, Growth Charts, Keepsakes, Ornaments & Stockings
+
+Gift Cards get no department.
+
 ## Naming notes
 
 - "Stuffed Animals" names the form, not the material. Natural-fiber soft animals
