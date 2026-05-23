@@ -1,0 +1,701 @@
+{%- comment -%}
+  MTW Fast PDP (fast-v1). One-pager product template, rollout-ready.
+  Everything scoped under [data-mtw-pdp="fast-v1"] so it never collides
+  with the Impulse 9.0 theme. Reads the catalog's real metafields:
+  prefers the planned details.*/safety.*/vendor.* namespace, falls back
+  to the existing custom.*/fulfillment.* namespace that Matrixify
+  populated, then to product.description so a page is never empty.
+  No hardcoded reviews. Reviews come from Judge.me (real data) and
+  Judge.me owns rating rich-results, so we never emit a fake or empty
+  aggregateRating. Three fulfillment states + low-stock + sold-out
+  (Klaviyo back-in-stock). Demo toggle and educational strips stripped.
+{%- endcomment -%}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+{{ 'pdp-formats-base.css' | asset_url | stylesheet_tag }}
+{{ 'pdp-fast-1.css' | asset_url | stylesheet_tag }}
+{{ 'pdp-fast-2.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign cur = product.selected_or_first_available_variant
+
+  # ---- Fulfillment state ----
+  assign ff = product.metafields.fulfillment.type | default: ''
+  assign partner_mf = product.metafields.shipping.from_partner_warehouse
+  assign preorder_est = product.metafields.preorder.ship_estimate | default: product.metafields.fulfillment.ship_date
+  assign in_pre_collection = false
+  for pc in product.collections
+    if pc.handle == section.settings.preorder_collection
+      assign in_pre_collection = true
+    endif
+  endfor
+
+  assign state = 'in_stock'
+  if partner_mf == true or ff == 'partner_warehouse'
+    assign state = 'partner'
+  elsif preorder_est != blank or ff == 'pre_order' or in_pre_collection
+    assign state = 'pre_order'
+  elsif product.available == false
+    assign state = 'sold_out'
+  endif
+
+  # ---- Low-stock count ----
+  assign stock_count = product.metafields.inventory.tracked_stock_count | default: 0
+  if stock_count == 0 and cur.inventory_management != blank and cur.inventory_policy == 'deny'
+    assign stock_count = cur.inventory_quantity
+  endif
+
+  # ---- Copy fields, new namespace preferred ----
+  capture mtw_hero_rt
+    if product.metafields.details.hero_blurb != blank
+      echo product.metafields.details.hero_blurb | metafield_tag
+    endif
+  endcapture
+  assign mtw_hero_rt_txt = mtw_hero_rt | strip_html | strip
+  if mtw_hero_rt_txt != blank
+    assign hero_blurb = mtw_hero_rt
+  elsif product.metafields.custom.hero_blurb != blank
+    assign hero_blurb = product.metafields.custom.hero_blurb
+  else
+    assign hero_blurb = product.metafields.custom.hero_intro
+  endif
+  capture mtw_why_rt
+    if product.metafields.details.why_lede != blank
+      echo product.metafields.details.why_lede | metafield_tag
+    endif
+  endcapture
+  assign mtw_why_rt_txt = mtw_why_rt | strip_html | strip
+  if mtw_why_rt_txt != blank
+    assign why_lede = mtw_why_rt
+  elsif product.metafields.custom.why_lede != blank
+    assign why_lede = product.metafields.custom.why_lede
+  else
+    assign why_lede = product.metafields.custom.why_youll_love
+  endif
+  assign maker_blurb = product.metafields.vendor.short_blurb | default: product.metafields.custom.maker_story
+  assign maker_img = product.metafields.vendor.profile_image | default: product.metafields.custom.maker_image
+
+  # ---- At-a-glance cells ----
+  assign g_age = product.metafields.details.age_recommendations_short | default: product.metafields.details.age_recommendations
+  if g_age == blank and product.metafields.custom.age_band.value != blank
+    assign ab_yrs = ''
+    for ab_t in product.metafields.custom.age_band.value
+      unless ab_t == '0–12 mo' or ab_t == '18 mo'
+        assign ab_yrs = ab_yrs | append: ab_t | append: ','
+      endunless
+    endfor
+    assign ab_yarr = ab_yrs | split: ','
+    if ab_yarr.size > 1
+      assign g_age = ab_yarr.first | append: ' to ' | append: ab_yarr.last | append: ' years'
+    elsif ab_yarr.size == 1
+      assign g_age = ab_yarr.first | append: ' years'
+    else
+      assign g_age = product.metafields.custom.age_band.value | join: ', '
+    endif
+  endif
+  assign g_material = product.metafields.details.material_short | default: product.metafields.custom.material_short
+  assign g_includes = product.metafields.details.includes_short | default: product.metafields.custom.includes_short
+  assign g_size = product.metafields.details.size_short | default: product.metafields.custom.size_short
+  assign g_certified = product.metafields.details.certifications | default: product.metafields.custom.certifications
+  assign origin_designed = product.metafields.details.origin_designed | default: product.metafields.custom.origin_designed
+  assign origin_made = product.metafields.details.origin_made | default: product.metafields.custom.origin_made
+  assign flex_label = product.metafields.details.flex_label
+  assign flex_value = product.metafields.details.flex_value
+  assign pairs_with = product.metafields.details.pairs_with | default: product.metafields.custom.pairs_with
+  assign pairs_with_url = product.metafields.details.pairs_with_url | default: product.metafields.custom.pairs_with_url
+
+  assign has_glance = false
+  if g_age != blank or g_material != blank or g_includes != blank or g_size != blank or g_certified != blank or origin_designed != blank or flex_label != blank or pairs_with != blank or product.metafields.details.positioning != blank
+    assign has_glance = true
+  endif
+  assign glance_fallback = product.metafields.custom.at_a_glance
+
+  # ---- Choking hazard (conditional, never hardcoded) ----
+  assign small_parts = product.metafields.safety.small_parts_warning | default: product.metafields.custom.small_parts_warning
+
+  # ---- Breadcrumb collection ----
+  assign deny = ',all,all-products,100,gifts-under-30,gifts-under-50,gifts-under-75,sale,seasonal-sale,no-discounts,promotional-collection,discount-collection,rewards,new-arrivals,popular-picks,customer-favorites,heirloom-favorites,bestsellers,mtw-exclusives,pre-order,0-12-months,6-months,1-year,18-months,2-years,3-years,4-years,4-6-years,5-years,8-years,age-1-3-years,age-3-5-years,age-5-8-years,a-to-b,c-to-g,d-to-g,h-to-k,h-to-o,l-to-o,p-to-q,p-to-s,s-to-t,t-to-u,v-to-z,holidays,easter-collection,halloween,valentines-collection,back-to-school,spring-collection,summer-collection,autumn-collection,winter-collection,ornaments-and-stockings,stocking-stuffers,'
+  assign rank = 'felt-play-mats-and-playscapes,playscapes-fairy-houses-castles-playmats,woodland-homes-and-fairy-houses,treehouses-and-accessories,felt-playsets,felt-flowers-and-plants,trees-and-more-trees,sensory-discovery,magnetic-tiles,magnetic-play,marble-and-ball-runs,build-and-construct,stacking-toys,puzzles,counting-and-math-toys,alphabet-toys,learning-cards-and-tiles,emotional-intelligence,mindfulness,early-learning-toys,wooden-transportation-toys,car-tracks-road-sets,toy-cars-vehicles,model-cars,ride-on-toys-and-accessories,play-food,play-dough-and-accessories,dough-cutters,crayons,paints,doodling,rattles,teethers-and-clutching-toys,mobiles,soft-and-quiet-books,dolls-and-accessories,dinosaurs,fairies-and-gnomes,pretend-play,puppet-sets,costumes-and-dress-up,musical-toys,kaleidoscopes,tents-and-teepees,baskets,nature-play,world-of-felt,arts-crafts,baby-toys,cuddly-toys,educational-play,kitchen-play,nursery-and-playroom,outdoor-play,small-world-play,wooden-toys' | split: ','
+  assign crumb_col = nil
+  if collection and collection.handle != blank
+    assign ckey = ',' | append: collection.handle | append: ','
+    unless deny contains ckey
+      assign crumb_col = collection
+    endunless
+  endif
+  unless crumb_col
+    assign ov = product.metafields.details.breadcrumb_collection
+    if ov != blank
+      assign ovc = collections[ov]
+      if ovc.handle != blank
+        assign crumb_col = ovc
+      endif
+    endif
+  endunless
+  unless crumb_col
+    assign phandles = ','
+    for c in product.collections
+      assign phandles = phandles | append: c.handle | append: ','
+    endfor
+    for h in rank
+      assign hk = ',' | append: h | append: ','
+      if phandles contains hk
+        assign crumb_col = collections[h]
+        break
+      endif
+    endfor
+  endunless
+  unless crumb_col
+    for c in product.collections
+      assign hkey = ',' | append: c.handle | append: ','
+      unless deny contains hkey
+        if c.handle != section.settings.preorder_collection
+          assign crumb_col = c
+          break
+        endif
+      endunless
+    endfor
+  endunless
+  unless crumb_col
+    assign crumb_col = product.collections.first
+  endunless
+  assign vendor_handle = product.vendor | handle
+  assign vcol = collections[vendor_handle]
+  if vcol.url != blank
+    assign vendor_url = vcol.url
+  else
+    assign vendor_url = product.vendor | url_for_vendor
+  endif
+-%}
+
+{%- capture schema_images -%}
+  {%- for image in product.images limit: 8 -%}
+    "{{ image | image_url: width: 1400 | prepend: 'https:' }}"{%- unless forloop.last -%},{%- endunless -%}
+  {%- endfor -%}
+{%- endcapture -%}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Product",
+      "@id": {{ product.url | prepend: shop.url | append: '#product' | json }},
+      "name": {{ product.title | json }},
+      "description": {{ product.description | strip_html | truncate: 480 | json }},
+      "sku": {{ cur.sku | default: product.id | json }},
+      "url": {{ product.url | prepend: shop.url | json }},
+      {%- if schema_images contains '"' %}
+      "image": [ {{ schema_images }} ],
+      {%- endif %}
+      "brand": { "@type": "Brand", "name": {{ product.vendor | json }} },
+      "offers": {
+        "@type": "Offer",
+        "url": {{ product.url | prepend: shop.url | json }},
+        "priceCurrency": {{ cart.currency.iso_code | json }},
+        "price": "{{ cur.price | divided_by: 100.0 }}",
+        "availability": "https://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}",
+        "itemCondition": "https://schema.org/NewCondition",
+        "seller": {
+          "@type": "Organization",
+          "name": "My Toy Wagon",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Los Angeles",
+            "addressRegion": "CA",
+            "addressCountry": "US"
+          }
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "US",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+          "merchantReturnDays": 30,
+          "returnMethod": "https://schema.org/ReturnByMail",
+          "returnFees": "https://schema.org/FreeReturn"
+        }
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": {{ shop.url | json }} }{% if crumb_col %},
+        { "@type": "ListItem", "position": 2, "name": {{ crumb_col.title | json }}, "item": {{ crumb_col.url | prepend: shop.url | json }} },
+        { "@type": "ListItem", "position": 3, "name": {{ product.title | json }} }{% else %},
+        { "@type": "ListItem", "position": 2, "name": {{ product.title | json }} }{% endif %}
+      ]
+    }
+  ]
+}
+</script>
+
+<div data-mtw-pdp="fast-v1"><div class="ff-page">
+
+  <!-- Sticky buy bar -->
+  <div class="ff-sticky" data-ff-sticky aria-hidden="true">
+    <div class="ff-sticky-inner">
+      <div class="ff-sticky-thumb">{%- if product.featured_image -%}<img src="{{ product.featured_image | image_url: width: 120 }}" alt="">{%- endif -%}</div>
+      <div class="ff-sticky-text">
+        {%- if product.vendor != blank -%}<div class="ff-sticky-maker"><a href="{{ vendor_url }}" style="color:inherit;text-decoration:none;">{{ product.vendor }}</a></div>{%- endif -%}
+        <div class="ff-sticky-name">{{ product.title }}</div>
+      </div>
+      <span class="ff-sticky-price" data-ff-sticky-price>{{ cur.price | money }}</span>
+      <button type="button" class="ff-sticky-cta" data-ff-sticky-cta>{% if state == 'pre_order' %}Pre-order{% elsif state == 'sold_out' %}Notify me{% else %}Add to cart{% endif %}</button>
+    </div>
+  </div>
+
+  <section class="ff-top" data-ff-top>
+
+    <div class="ff-gallery">
+      <div class="ff-thumbs">
+        {%- for image in product.images limit: 6 -%}
+          <div class="ff-thumb {% if forloop.first %}active{% endif %}" data-ff-thumb="{{ image | image_url: width: 1100 }}">
+            <img src="{{ image | image_url: width: 160 }}" alt="{{ image.alt | default: product.title | append: ' · view ' | append: forloop.index | escape }}" loading="lazy">
+          </div>
+        {%- endfor -%}
+      </div>
+      <div class="ff-main">
+        {%- if product.featured_image -%}
+          <img data-ff-main src="{{ product.featured_image | image_url: width: 1100 }}" alt="{{ product.featured_image.alt | default: product.title | escape }}" width="1100" height="1375">
+        {%- endif -%}
+      </div>
+    </div>
+
+    <div class="ff-buy">
+      <nav class="ff-crumbs" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="{{ routes.root_url }}">Home</a></li>
+          {%- if crumb_col -%}
+            <li aria-hidden="true" class="ff-crumb-sep">/</li>
+            <li><a href="{{ crumb_col.url }}">{{ crumb_col.title }}</a></li>
+          {%- endif -%}
+        </ol>
+      </nav>
+      {%- if product.vendor != blank -%}<p class="ff-maker"><a href="{{ vendor_url }}">{{ product.vendor }}</a></p>{%- endif -%}
+      <h1 class="ff-title">{{ product.title }}</h1>
+
+      <div class="ff-rating">
+        <div class="jdgm-widget jdgm-preview-badge" data-id="{{ product.id }}" data-template="index"></div>
+      </div>
+
+      <div class="ff-price" data-ff-price>
+        {%- if product.compare_at_price > product.price -%}<s style="opacity:.55;font-size:.7em;">{{ product.compare_at_price | money }}</s> {%- endif -%}
+        {{ cur.price | money }}
+      </div>
+      <p class="ff-tax"><a href="/pages/shipping" style="border-bottom:0.5px solid var(--rule-strong);padding-bottom:1px;">Shipping and tax calculated at checkout.</a></p>
+
+      {%- case state -%}
+        {%- when 'pre_order' -%}
+          <div class="ff-status pre-order">
+            <span class="dot amber" aria-hidden="true"></span>
+            <div>
+              <strong>Pre-order open</strong>
+              <p>{% if preorder_est != blank %}{{ preorder_est }}. {% endif %}We will email you the moment it ships.</p>
+            </div>
+          </div>
+        {%- when 'partner' -%}
+          <div class="ff-status partner">
+            <span class="dot stone" aria-hidden="true"></span>
+            <div>
+              <strong>Ships from our partner warehouse</strong>
+              <p>2 to 4 business days from our partner warehouse. Returns and questions still come to My Toy Wagon directly.</p>
+            </div>
+          </div>
+        {%- when 'sold_out' -%}
+          <div class="ff-status partner">
+            <span class="dot stone" aria-hidden="true"></span>
+            <div>
+              <strong>Sold out</strong>
+              <p>This one is between batches. Leave your email below and we will tell you the moment it is back.</p>
+            </div>
+          </div>
+        {%- else -%}
+          <div class="ff-status in-stock">
+            <span class="dot forest" aria-hidden="true"></span>
+            <div>
+              <strong>In stock, ready to ship</strong>
+              <p>Leaves our Los Angeles warehouse within 1 to 3 business days.</p>
+              {%- if stock_count > 0 and stock_count <= 3 -%}<p class="ff-lowstock">Only {{ stock_count }} left. Order soon.</p>{%- endif -%}
+            </div>
+          </div>
+      {%- endcase -%}
+
+      {%- if hero_blurb != blank -%}
+        <div class="ff-blurb rte">{{ hero_blurb }}</div>
+      {%- elsif product.description != blank -%}
+        <div class="ff-blurb rte">{{ product.description | strip_html | truncatewords: 55, "…" }}</div>
+      {%- endif -%}
+
+      {%- if has_glance -%}
+        <div class="ff-glance-row">
+          {%- if g_material != blank -%}<div class="ff-g-material"><span class="gk">Material</span><span class="gv">{{ g_material }}</span></div>{%- endif -%}
+          {%- if g_includes != blank -%}<div class="ff-g-includes"><span class="gk">Includes</span><span class="gv">{{ g_includes }}</span></div>{%- endif -%}
+          {%- if g_size != blank -%}<div class="ff-g-size"><span class="gk">Size</span><span class="gv">{{ g_size }}</span></div>{%- endif -%}
+          {%- if g_certified != blank -%}<div class="ff-g-cert"><span class="gk">Certified</span><span class="gv">{{ g_certified }}</span></div>{%- endif -%}
+          {%- if pairs_with != blank -%}<div class="ff-g-pair"><span class="gk">Pair with</span><span class="gv">{%- if pairs_with_url != blank -%}<a href="{{ pairs_with_url }}" class="gv-link">{{ pairs_with }}</a>{%- else -%}{{ pairs_with }}{%- endif -%}</span></div>{%- endif -%}
+          {%- assign mtw_pos = product.metafields.details.positioning -%}
+          {%- if mtw_pos != blank -%}<div class="ff-glance-ethos"><span class="gk">Ethically made</span><span class="gv">{{ mtw_pos }}</span></div>{%- endif -%}
+          {%- if flex_label != blank and flex_value != blank -%}
+            <div><span class="gk">{{ flex_label }}</span><span class="gv">{{ flex_value }}</span></div>
+          {%- elsif origin_designed != blank -%}
+            {%- if origin_made != blank and origin_made == origin_designed -%}
+              <div class="ff-glance-origin"><span class="gk">Origin</span><span class="gv">{{ origin_designed }}</span></div>
+            {%- elsif origin_made != blank -%}
+              <div class="ff-glance-origin">
+                <span class="gk">Origin</span>
+                <span class="gv gv-multi">
+                  <span class="gv-line"><span class="gv-tag">Designed</span>{{ origin_designed }}</span>
+                  <span class="gv-line"><span class="gv-tag">Made</span>{{ origin_made }}</span>
+                </span>
+              </div>
+            {%- else -%}
+              <div class="ff-glance-origin">
+                <span class="gk">Origin</span>
+                <span class="gv gv-multi">
+                  <span class="gv-line"><span class="gv-tag">Designed</span>{{ origin_designed }}</span>
+                </span>
+              </div>
+            {%- endif -%}
+          {%- endif -%}
+        </div>
+      {%- elsif glance_fallback != blank -%}
+        <div class="ff-glance-row" style="grid-template-columns:1fr;">
+          <div style="display:block;"><span class="gk" style="display:block;margin-bottom:6px;">At a glance</span><span class="gv rte">{{ glance_fallback }}</span></div>
+        </div>
+      {%- endif -%}
+
+      {%- assign age_rec = product.metafields.details.age_recommendations -%}
+      {%- if age_rec != blank -%}
+        {%- capture age_raw -%}{{ age_rec | metafield_tag }}{%- endcapture -%}
+        {%- assign age_clean = age_raw | strip_html | strip -%}
+        {%- assign age_list = age_clean | split: ',' -%}
+        {%- if age_clean != blank and age_list.size > 0 -%}
+          <section class="ff-age-rec">
+            <p class="ff-age-rec-eyebrow">Age Recommendations</p>
+            <div class="ff-age-circles" aria-label="Recommended ages, in years">
+              {%- for age in age_list -%}{%- assign age_v = age | strip -%}{%- if age_v != blank -%}<span class="ff-age-circle{% if forloop.first or forloop.last %} endpoint{% endif %}">{{ age_v }}</span>{%- endif -%}{%- endfor -%}
+            </div>
+            {%- capture mtw_ac -%}{% if product.metafields.details.age_caption != blank %}{{ product.metafields.details.age_caption | metafield_tag }}{% endif %}{%- endcapture -%}{%- assign mtw_ac_txt = mtw_ac | strip_html | strip -%}<p class="ff-age-caption">{%- if mtw_ac_txt != blank -%}{{ mtw_ac_txt }}{%- else -%}Recommended ages, in years. Sorted by the developmental window this toy opens, so it lands in the right season.{%- endif -%}</p>
+          </section>
+        {%- endif -%}
+      {%- endif -%}
+
+      {%- if small_parts == true -%}
+        <div class="ff-warning" role="alert">
+          <span class="ff-warning-icon" aria-hidden="true">!</span>
+          <div class="ff-warning-text">
+            <strong>Warning · Choking hazard</strong>
+            <span>Small parts. Not for children under 3 years.</span>
+          </div>
+        </div>
+      {%- endif -%}
+
+      {%- if state == 'sold_out' -%}
+        <form class="ff-notify" data-ff-bis data-variant-id="{{ cur.id }}">
+          <div class="ff-add-row" style="grid-template-columns:1fr auto;">
+            <input type="email" name="email" placeholder="you@email.com" required
+              style="height:50px;border:0.5px solid var(--rule-strong);background:var(--warm-white);border-radius:2px;padding:0 14px;font-family:inherit;font-size:14px;color:var(--ink);">
+            <button type="submit" class="ff-btn ff-btn-primary" style="width:auto;padding:0 24px;">Notify me when back</button>
+          </div>
+          <p class="ff-tax" data-ff-bis-msg style="margin:10px 0 22px;">We will email you the moment it is back. No marketing.</p>
+        </form>
+      {%- else -%}
+        {%- form 'product', product, id: 'ff-pform', novalidate: 'novalidate' -%}
+          {%- unless product.has_only_default_variant -%}
+            {%- for option in product.options_with_values -%}
+              <div class="ff-vgroup" style="margin-bottom:14px;">
+                <div class="ff-maker" style="margin-bottom:8px;">{{ option.name }}</div>
+                <div data-ff-optgroup="{{ forloop.index0 }}" style="display:flex;flex-wrap:wrap;gap:8px;">
+                  {%- for value in option.values -%}
+                    <label style="display:inline-flex;align-items:center;height:40px;padding:0 16px;border:0.5px solid {% if option.selected_value == value %}var(--ink){% else %}var(--rule-strong){% endif %};border-radius:2px;cursor:pointer;font-size:13px;background:{% if option.selected_value == value %}var(--cream){% else %}var(--warm-white){% endif %};">
+                      <input type="radio" name="ff-opt-{{ forloop.parentloop.index0 }}" value="{{ value | escape }}" {% if option.selected_value == value %}checked{% endif %} data-ff-opt="{{ forloop.parentloop.index0 }}" style="position:absolute;opacity:0;width:0;height:0;">
+                      {{ value }}
+                    </label>
+                  {%- endfor -%}
+                </div>
+              </div>
+            {%- endfor -%}
+          {%- endunless -%}
+          <input type="hidden" name="id" data-ff-vid value="{{ cur.id }}">
+
+          <div class="ff-add-row">
+            <div class="ff-qty">
+              <button type="button" data-ff-qm aria-label="Decrease quantity">−</button>
+              <input name="quantity" value="1" data-ff-qty inputmode="numeric" aria-label="Quantity">
+              <button type="button" data-ff-qp aria-label="Increase quantity">+</button>
+            </div>
+            <button type="submit" class="ff-btn ff-btn-primary" data-ff-add {% unless product.available %}disabled{% endunless %}>
+              {%- if state == 'pre_order' -%}Pre-order · {{ cur.price | money }}{%- else -%}Add to cart · {{ cur.price | money }}{%- endif -%}
+            </button>
+          </div>
+          {%- if product.available and state != 'pre_order' -%}
+            <div data-ff-dynamic-checkout>{{ form | payment_button }}</div>
+          {%- endif -%}
+        {%- endform -%}
+      {%- endif -%}
+
+      <div class="ff-trust">
+        <div>
+          <div class="ff-trust-icon"><span class="wagon-badge">free shipping</span><img src="https://cdn.shopify.com/s/files/1/0522/0882/8586/files/trust-shipping-mark_4d4aaf62-0e6f-4183-8d98-a9d39d5f8afc.png?v=1779096521" alt="" loading="lazy"></div>
+          <strong>Free U.S. shipping</strong>
+          <span class="ff-trust-sub">Orders $150+, lower 48 only</span>
+        </div>
+        <div>
+          <div class="ff-trust-icon"><img src="https://cdn.shopify.com/s/files/1/0522/0882/8586/files/trust-30day-returns_ac792554-a496-44ad-8c9a-520597a9f2fd.svg?v=1778976879" alt="" loading="lazy"></div>
+          <strong>30-day returns</strong>
+          <span class="ff-trust-sub">If the toy isn't right</span>
+        </div>
+        <div>
+          <div class="ff-trust-icon"><img src="https://cdn.shopify.com/s/files/1/0522/0882/8586/files/trust-packed-with-care_b78212fb-2a35-4437-9f18-73d0ff148e2a.svg?v=1778976874" alt="" loading="lazy"></div>
+          <strong>Packed with care</strong>
+          {%- if state == 'partner' -%}<span class="ff-trust-sub">Shipped from our partner warehouse</span>{%- else -%}<span class="ff-trust-sub">Carefully packed for the journey</span>{%- endif -%}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ff-below">
+    <div class="ff-below-inner">
+
+      {%- if why_lede != blank
+        or product.metafields.details.why_section_1 != blank
+        or product.metafields.details.why_section_2 != blank
+        or product.metafields.details.why_section_3 != blank
+        or product.metafields.custom.why_1 != blank
+        or product.metafields.custom.why_2 != blank
+        or product.metafields.custom.why_3 != blank -%}
+        <section class="ff-why">
+          <h2>Why <em>it lasts.</em></h2>
+          {%- if why_lede != blank -%}<div class="ff-why-lede rte">{{ why_lede }}</div>{%- endif -%}
+          {%- for n in (1..3) -%}
+            {%- assign t_key = 'why_section_' | append: n | append: '_title' -%}
+            {%- assign b_key = 'why_section_' | append: n -%}
+            {%- assign ct_key = 'why_' | append: n | append: '_title' -%}
+            {%- assign cb_key = 'why_' | append: n -%}
+            {%- assign w_title = product.metafields.details[t_key] | default: product.metafields.custom[ct_key] -%}
+            {%- assign wm_body = product.metafields.details[b_key] -%}
+            {%- assign wc_body = product.metafields.custom[cb_key] -%}
+            {%- if w_title != blank and wm_body != blank -%}
+              <h3>{{ w_title }}</h3>
+              <div class="rte">{{ wm_body | metafield_tag }}</div>
+            {%- elsif w_title != blank and wc_body != blank -%}
+              <h3>{{ w_title }}</h3>
+              <div class="rte">{{ wc_body }}</div>
+            {%- endif -%}
+          {%- endfor -%}
+        </section>
+      {%- endif -%}
+
+      {%- assign aud_parent = product.metafields.details.audience_parent -%}
+      {%- assign aud_educator = product.metafields.details.audience_educator -%}
+      {%- assign aud_gift = product.metafields.details.audience_gift_giver -%}
+      {%- if aud_parent != blank or aud_educator != blank or aud_gift != blank -%}
+        <section class="ff-audience-section">
+          <p class="ff-audience-eyebrow">Who it's for</p>
+          <div class="ff-audience">
+            {%- if aud_parent != blank -%}<div class="ff-aud"><div class="ff-aud-eyebrow">For the parent</div><div class="ff-aud-body">{{ aud_parent | metafield_tag }}</div></div>{%- endif -%}
+            {%- if aud_educator != blank -%}<div class="ff-aud"><div class="ff-aud-eyebrow">For the educator</div><div class="ff-aud-body">{{ aud_educator | metafield_tag }}</div></div>{%- endif -%}
+            {%- if aud_gift != blank -%}<div class="ff-aud"><div class="ff-aud-eyebrow">For the gift-giver</div><div class="ff-aud-body">{{ aud_gift | metafield_tag }}</div></div>{%- endif -%}
+          </div>
+        </section>
+      {%- endif -%}
+
+      {%- assign review_count = product.metafields.reviews.rating_count | default: 0 | plus: 0 -%}
+      {%- if review_count > 0 -%}
+        <section class="ff-reviews" id="reviews">
+          <div class="ff-reviews-head" style="grid-template-columns:1fr;">
+            <h2 style="font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:500;margin:0;letter-spacing:-0.008em;">What families <em style="font-style:italic;">found.</em></h2>
+          </div>
+          <div class="jdgm-widget jdgm-review-widget" data-id="{{ product.id }}" data-product-title="{{ product.title | escape }}"></div>
+        </section>
+      {%- else -%}
+        <section class="ff-reviews-empty" id="reviews">
+          <div class="ff-reviews-empty-card">
+            <h3 class="ff-reviews-empty-title">Be the <em>first</em> to review.</h3>
+            <p class="ff-reviews-empty-body">No reviews yet. Have you brought it home? Tell the next family what you found.</p>
+            <div class="jdgm-widget jdgm-review-widget" data-id="{{ product.id }}" data-product-title="{{ product.title | escape }}"></div>
+          </div>
+        </section>
+      {%- endif -%}
+
+      <div class="ff-details">
+        {%- liquid
+          assign m_materials = product.metafields.details.materials
+          assign c_materials = product.metafields.custom.materials_and_construction
+          assign m_ways = product.metafields.details.ways_to_play
+          assign c_ways = product.metafields.custom.ways_to_play
+          assign m_skills = product.metafields.details.skills_built
+          assign c_skills = product.metafields.custom.skills_it_builds
+          assign m_includes = product.metafields.details.includes
+          assign c_includes = product.metafields.custom.includes_set_contents
+          assign m_age = product.metafields.details.age_recommendations_long
+          assign age_band = product.metafields.custom.age_band.value
+          assign has_age_band = false
+          if age_band != blank and age_band.size > 0
+            assign has_age_band = true
+          endif
+          assign m_safety = product.metafields.details.safety
+          assign m_care = product.metafields.details.care_storage
+          assign c_care = product.metafields.custom.care_and_storage
+          assign m_faq = product.metafields.details.faq
+          assign c_faq = product.metafields.custom.faq
+          assign first_done = false
+        -%}
+        {%- capture mtw_details_raw -%}{% if m_materials != blank %}{{ m_materials | metafield_tag }}{% else %}{{ c_materials }}{% endif %}{% if m_ways != blank %}{{ m_ways | metafield_tag }}{% else %}{{ c_ways }}{% endif %}{% if m_skills != blank %}{{ m_skills | metafield_tag }}{% else %}{{ c_skills }}{% endif %}{% if m_includes != blank %}{{ m_includes | metafield_tag }}{% else %}{{ c_includes }}{% endif %}{%- endcapture -%}
+        {%- assign mtw_details_len = mtw_details_raw | strip_html | strip | size -%}
+        {%- if m_materials != blank or c_materials != blank or m_ways != blank or c_ways != blank or m_skills != blank or c_skills != blank or m_includes != blank or c_includes != blank -%}<details class="ff-details-item"{% if mtw_details_len <= 900 %} open{% endif %}><summary class="ff-details-sum">Details</summary><div class="ff-details-body rte">{%- if m_materials != blank or c_materials != blank -%}<p class="faq-q">Materials &amp; construction</p>{%- if m_materials != blank -%}{{ m_materials | metafield_tag }}{%- else -%}<p>{{ c_materials }}</p>{%- endif -%}{%- endif -%}{%- if m_ways != blank or c_ways != blank -%}<p class="faq-q">Ways to play</p>{%- if m_ways != blank -%}{{ m_ways | metafield_tag }}{%- else -%}<p>{{ c_ways }}</p>{%- endif -%}{%- endif -%}{%- if m_skills != blank or c_skills != blank -%}<p class="faq-q">Skills it builds</p>{%- if m_skills != blank -%}{{ m_skills | metafield_tag }}{%- else -%}<p>{{ c_skills }}</p>{%- endif -%}{%- endif -%}{%- if m_includes != blank or c_includes != blank -%}<p class="faq-q">Includes / set contents</p>{%- if m_includes != blank -%}{{ m_includes | metafield_tag }}{%- else -%}<p>{{ c_includes }}</p>{%- endif -%}{%- endif -%}</div></details>{%- endif -%}
+        {%- if m_age != blank or m_safety != blank -%}<details class="ff-details-item"><summary class="ff-details-sum">Age &amp; safety</summary><div class="ff-details-body rte">{%- if m_age != blank -%}<p class="faq-q">Age recommendations</p>{{ m_age | metafield_tag }}{%- endif -%}{%- if m_safety != blank -%}<p class="faq-q">Safety</p>{{ m_safety | metafield_tag }}{%- endif -%}</div></details>{%- endif -%}
+        {%- if m_care != blank or c_care != blank -%}<details class="ff-details-item"><summary class="ff-details-sum">Care &amp; storage</summary><div class="ff-details-body rte">{%- if m_care != blank -%}{{ m_care | metafield_tag }}{%- else -%}{{ c_care }}{%- endif -%}</div></details>{%- endif -%}
+        {%- if section.settings.shipping_text != blank -%}<details class="ff-details-item"><summary class="ff-details-sum">Shipping &amp; returns</summary><div class="ff-details-body rte">{{ section.settings.shipping_text }}{{ section.settings.returns_text }}</div></details>{%- endif -%}
+        {%- if m_faq != blank or c_faq != blank -%}<details class="ff-details-item"><summary class="ff-details-sum">FAQ</summary><div class="ff-details-body rte">{%- if m_faq != blank -%}{{ m_faq | metafield_tag }}{%- else -%}{{ c_faq }}{%- endif -%}</div></details>{%- endif -%}
+      </div>
+
+      {%- if maker_blurb != blank -%}
+        <a href="{% if product.vendor != blank %}{{ vendor_url }}{% else %}#{% endif %}" class="ff-maker-line"{% unless maker_img != blank %} style="grid-template-columns:1fr auto;"{% endunless %}>
+          {%- if maker_img != blank -%}
+            <div class="ff-maker-line-img">{{ maker_img | image_url: width: 200 | image_tag: loading: 'lazy', alt: product.vendor }}</div>
+          {%- endif -%}
+          <div class="ff-maker-line-text">
+            <strong>{{ product.vendor }}</strong>
+            {{ maker_blurb | strip_html }}
+          </div>
+          {%- if product.vendor != blank -%}<span>Browse all {{ product.vendor }} →</span>{%- endif -%}
+        </a>
+      {%- endif -%}
+
+    </div>
+  </section>
+</div></div>
+
+<script>
+(function(){
+  var root = document.querySelector('[data-mtw-pdp="fast-v1"]');
+  if(!root) return;
+
+  // Gallery thumb switcher
+  var main = root.querySelector('[data-ff-main]');
+  root.querySelectorAll('[data-ff-thumb]').forEach(function(t){
+    t.addEventListener('click', function(){
+      root.querySelectorAll('.ff-thumb').forEach(function(x){ x.classList.remove('active'); });
+      t.classList.add('active');
+      if(main) main.src = t.getAttribute('data-ff-thumb');
+    });
+  });
+
+  // Quantity stepper
+  var qty = root.querySelector('[data-ff-qty]');
+  var qm = root.querySelector('[data-ff-qm]'), qp = root.querySelector('[data-ff-qp]');
+  if(qm) qm.addEventListener('click', function(){ var n = parseInt(qty.value,10)||1; if(n>1) qty.value = n-1; });
+  if(qp) qp.addEventListener('click', function(){ var n = parseInt(qty.value,10)||1; qty.value = n+1; });
+
+  // Variant resolution
+  var variants = {{ product.variants | json }};
+  var optCount = {{ product.options.size }};
+  var vid = root.querySelector('[data-ff-vid]');
+  var addBtn = root.querySelector('[data-ff-add]');
+  var priceEl = root.querySelector('[data-ff-price]');
+  var sPrice = root.querySelector('[data-ff-sticky-price]');
+  function money(c){ try { return '$' + (c/100).toLocaleString(undefined,{minimumFractionDigits:2}); } catch(e){ return '$' + (c/100); } }
+  function selectedOpts(){
+    var o = [];
+    for(var i=0;i<optCount;i++){
+      var r = root.querySelector('input[data-ff-opt="'+i+'"]:checked');
+      o.push(r ? r.value : null);
+    }
+    return o;
+  }
+  function resolve(){
+    if(!variants || !variants.length) return;
+    var o = selectedOpts();
+    var v = variants.find(function(x){ return x.options.every(function(val,i){ return o[i]==null || val==o[i]; }); });
+    if(!v) v = variants[0];
+    if(vid) vid.value = v.id;
+    if(priceEl) priceEl.innerHTML = (v.compare_at_price && v.compare_at_price > v.price ? '<s style="opacity:.55;font-size:.7em;">'+money(v.compare_at_price)+'</s> ' : '') + money(v.price);
+    if(sPrice) sPrice.textContent = money(v.price);
+    if(addBtn){
+      var label = addBtn.textContent.split('·')[0].trim();
+      if(v.available){ addBtn.removeAttribute('disabled'); addBtn.textContent = label + ' · ' + money(v.price); }
+      else { addBtn.setAttribute('disabled','disabled'); addBtn.textContent = 'Sold out'; }
+    }
+  }
+  root.querySelectorAll('input[data-ff-opt]').forEach(function(inp){
+    inp.addEventListener('change', function(){
+      var g = inp.closest('[data-ff-optgroup]');
+      if(g) g.querySelectorAll('label').forEach(function(l){ l.style.borderColor = 'var(--rule-strong)'; l.style.background = 'var(--warm-white)'; });
+      var lab = inp.closest('label');
+      if(lab){ lab.style.borderColor = 'var(--ink)'; lab.style.background = 'var(--cream)'; }
+      resolve();
+    });
+  });
+  resolve();
+
+  // Sticky bar with failsafe
+  var sticky = root.querySelector('[data-ff-sticky]');
+  var topRegion = root.querySelector('[data-ff-top]');
+  var form = document.getElementById('ff-pform');
+  var stickyCta = root.querySelector('[data-ff-sticky-cta]');
+  if(stickyCta) stickyCta.addEventListener('click', function(){
+    if(addBtn && !addBtn.hasAttribute('disabled') && form){ form.requestSubmit ? form.requestSubmit(addBtn) : form.submit(); }
+    else { window.scrollTo({ top:0, behavior:'smooth' }); }
+  });
+  if(sticky && topRegion){
+    if('IntersectionObserver' in window){
+      var io = new IntersectionObserver(function(e){ sticky.classList.toggle('show', !e[0].isIntersecting); }, { rootMargin:'-60px 0px 0px 0px' });
+      io.observe(topRegion);
+    } else {
+      window.addEventListener('scroll', function(){
+        var r = topRegion.getBoundingClientRect();
+        sticky.classList.toggle('show', r.bottom < 0);
+      }, { passive:true });
+    }
+  } else if(sticky) {
+    console.warn('[mtw-fast-pdp] sticky trigger not found; sticky bar disabled');
+  }
+
+  // Sold-out: Klaviyo back-in-stock (real client API, public key SZm3nN)
+  var bis = root.querySelector('[data-ff-bis]');
+  if(bis){
+    bis.addEventListener('submit', function(ev){
+      ev.preventDefault();
+      var msg = bis.querySelector('[data-ff-bis-msg]');
+      var email = bis.querySelector('input[name="email"]').value;
+      var variantId = bis.getAttribute('data-variant-id');
+      if(msg) msg.textContent = 'Adding you to the list…';
+      fetch('https://a.klaviyo.com/client/back-in-stock-subscriptions/?company_id=SZm3nN', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'revision': '2024-10-15' },
+        body: JSON.stringify({
+          data: {
+            type: 'back-in-stock-subscription',
+            attributes: {
+              profile: { data: { type: 'profile', attributes: { email: email } } },
+              channels: ['EMAIL']
+            },
+            relationships: { variant: { data: { type: 'catalog-variant', id: '$shopify:::$default:::' + variantId } } }
+          }
+        })
+      }).then(function(r){
+        if(msg) msg.textContent = (r.ok || r.status === 202) ? 'You are on the list. We will email you the moment it is back.' : 'Something went wrong. Please try again.';
+        if(r.ok || r.status === 202) bis.querySelector('input[name="email"]').value = '';
+      }).catch(function(){
+        if(msg) msg.textContent = 'Something went wrong. Please try again.';
+      });
+    });
+  }
+})();
+</script>
+
+{% schema %}
+{
+  "name": "MTW Fast PDP",
+  "settings": [
+    { "type": "text", "id": "preorder_collection", "label": "Pre-order collection handle", "default": "pre-order" },
+    { "type": "richtext", "id": "shipping_text", "label": "Shipping copy (accordion)", "default": "<p><strong>Shipping</strong></p><p>In-stock items ship from LA in 1–3 business days, plus 1–6 in transit (contiguous U.S.).</p><ul><li>$9.95 standard, free on orders $150+ (after discounts, before tax)</li><li>Partner-warehouse items can take up to 2 weeks, check the product page</li><li>Pre-orders follow their own timeline; mixed orders ship together when the pre-order arrives</li><li>Local LA/OC delivery, Quick Ship, Hawaii/Alaska, and international at checkout</li></ul><p><a href=\"/pages/shipping\">See full shipping policy →</a></p>" },
+    { "type": "richtext", "id": "returns_text", "label": "Returns copy (accordion)", "default": "<p>Returns accepted for 30 days from delivery. If the toy isn't right, send it back. Free returns on damaged or defective items.</p>" }
+  ]
+}
+{% endschema %}
+
+
