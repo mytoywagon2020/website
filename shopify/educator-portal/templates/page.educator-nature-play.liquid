@@ -29,7 +29,6 @@
 
 <!-- Twitter card -->
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="https://mytoywagon.com/assets/og-nature-play.jpg" />
 <meta name="twitter:title" content="Nature Play for Schools &middot; My Toy Wagon Educator Catalog" />
 <meta name="twitter:description" content="Gus + Mabel Busy Bee Trays, nature loose parts, and hand-carved tools for Pre-K to Grade 2 classrooms. Net-30 and tax-exempt for approved schools." />
 
@@ -1714,7 +1713,7 @@ footer .cols .downloads a::after{
 .intro{ background: var(--card-bg); }
 .intro .wrap{
   display: grid;
-  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  grid-template-columns: minmax(0, 8fr) minmax(0, 4fr);
   gap: 72px;
   align-items: stretch;
 }
@@ -3307,6 +3306,104 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
   .breadcrumb .home-crumb{ display: none; }
 }
 
+/* ============================== SECTION-SCOPED OVERRIDES ============================== */
+/* Hero Product (Busy Bee Tray + mirror): source photo is 1100x1100 (1:1).
+   Default .split tile is taller, so cover-crop loses top + bottom flowers.
+   Force a 1:1 tile so the whole composition stays flush in frame. */
+[data-screen-label="04 Hero Product"]{
+  align-items: stretch !important;
+}
+[data-screen-label="04 Hero Product"] .img-side{
+  align-self: stretch !important;
+  background: transparent !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+}
+[data-screen-label="04 Hero Product"] .img-side::before,
+[data-screen-label="04 Hero Product"] .img-side::after{
+  display: none !important;
+}
+[data-screen-label="04 Hero Product"] .img-side .tile{
+  aspect-ratio: auto !important;
+  height: 100% !important;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  background: transparent !important;
+}
+[data-screen-label="04 Hero Product"] .img-side .tile img{
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  display: block !important;
+}
+[data-screen-label="04 Hero Product"] .img-side .tile::before,
+[data-screen-label="04 Hero Product"] .img-side .tile::after{
+  display: none !important;
+}
+
+/* The Everything Play Bundle (Featured Product 2): photo is a busy, low-key
+   forest-floor lifestyle shot. Overlay text gets lost on the dark wood +
+   ferns. Stack: full-bleed photo banner on top, content below on cream. */
+section[data-screen-label="08 The Everything Play Bundle"]{
+  display: block !important;
+  height: auto !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+}
+section[data-screen-label="08 The Everything Play Bundle"] .veil{ display: none !important; }
+section[data-screen-label="08 The Everything Play Bundle"] .img-side{
+  position: static !important;
+  width: 100% !important;
+  padding: 0 !important;
+  max-width: none !important;
+}
+section[data-screen-label="08 The Everything Play Bundle"] .img-side .tile{
+  position: static !important;
+  inset: auto !important;
+  width: 100% !important;
+  aspect-ratio: 16 / 9 !important;
+  height: auto !important;
+  border-radius: 0 !important;
+  background: var(--cream);
+}
+section[data-screen-label="08 The Everything Play Bundle"] .img-side .tile img{
+  object-fit: cover !important;
+  object-position: center !important;
+  width: 100% !important;
+  height: 100% !important;
+  display: block !important;
+}
+section[data-screen-label="08 The Everything Play Bundle"] .img-side::after,
+section[data-screen-label="08 The Everything Play Bundle"] .img-side .tile .corner{
+  display: none !important;
+}
+section[data-screen-label="08 The Everything Play Bundle"] .content{
+  display: block !important;
+  position: static !important;
+  height: auto !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  padding: clamp(48px, 6vw, 80px) clamp(28px, 5vw, 80px) clamp(40px, 5vw, 64px) !important;
+  max-width: 1100px;
+  margin: 0 auto !important;
+  color: var(--ink) !important;
+}
+section[data-screen-label="08 The Everything Play Bundle"] .content h2,
+section[data-screen-label="08 The Everything Play Bundle"] .content h3,
+section[data-screen-label="08 The Everything Play Bundle"] .content p,
+section[data-screen-label="08 The Everything Play Bundle"] .content li{
+  color: var(--ink) !important;
+}
+section[data-screen-label="08 The Everything Play Bundle"] .content .eyebrow{
+  color: var(--accent-deep) !important;
+}
+
 </style>
 </head>
 <body>
@@ -3364,7 +3461,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 <div class="subnav">
   <div class="subnav-inner">
     <nav class="breadcrumb" aria-label="Breadcrumb">
-      <a href="MTW Homepage v3.html" class="home-crumb">Home</a>
+      <a href="/" class="home-crumb">Home</a>
       <span class="sep" aria-hidden="true">/</span>
       <a href="/pages/educators">Educator Catalog</a>
       <span class="sep" aria-hidden="true">/</span>
@@ -3388,9 +3485,9 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 
 <!-- =========================== COVER =========================== -->
 <section class="cover" data-screen-label="01 Cover">
-  <div class="bg tile t-mood">
+  <div class="bg tile t-mood has-photo">
+    <img src=\"{{ 'np-cover-busy-bee-feet.webp' | asset_url }}\" style="object-position: center 85%;" alt="A child stands ankle-deep in water inside a Gus + Mabel Busy Bee Tray outdoors, the water scattered with hibiscus, nasturtium, and pansy blossoms, pebbles, and floating coconut bowls. Soft late-afternoon side-light."/>
     <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-    <span class="tag dark">[ COVER PHOTO &nbsp;&middot;&nbsp; full-bleed atmospheric: a child's feet in a water-filled Gus + Mabel Busy Bee Tray outdoors, surface scattered with hibiscus, bougainvillea, and marigold blossoms and smooth pebbles. Late-afternoon side-light, shallow depth of field. Mirrors the catalog opener (pg.&nbsp;13). ]</span>
   </div>
   <div class="veil"></div>
 
@@ -3437,13 +3534,13 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 <section class="intro gut" data-screen-label="03 Editorial Intro">
   <div class="wrap">
     <div class="col-img">
-      <div class="tile t-hue3">
+      <div class="tile t-hue3 has-photo">
+        <img src=\"{{ 'np-editorial-busy-bee-citrus.webp' | asset_url }}\" alt="A child in a soft sweater leans over a Gus + Mabel Busy Bee Tray, placing dried citrus slices among teak scoops, dried herbs, and pressed everlasting flowers."/>
         <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-        <span class="tag">[ EDITORIAL ESSAY &nbsp;&middot;&nbsp; lifestyle: a child's hands sorting felt acorns and pebbles into teak nesting bowls on a nature table, fresh-cut botanicals at the edge. Overhead three-quarter, warm side-light, classroom shelf softly out of focus behind. ]</span>
       </div>
     </div>
     <div class="col-txt">
-      <span class="eyebrow">What Nature Play Is</span>
+      <span class="eyebrow">03. What Nature Play Is</span>
       <h3>The garden, brought inside. <span class="it">Open-ended tools</span> for the nature table.</h3>
 
       <div class="body">
@@ -3466,9 +3563,10 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
      Owner-requested line: comes packaged in a stunning box, ready to gift. -->
 <section class="split" data-screen-label="04 Hero Product">
   <div class="img-side">
-    <div class="tile t-soft contained">
+    <div class="tile t-soft has-photo">
+      <img src=\"{{ 'np-hero-busy-bee-mirror.webp' | asset_url }}\" alt="A child's face is mirrored in the Gus + Mabel Busy Bee Tray fitted with the Reflective Play Mirror Inlay, surrounded by hibiscus, marigold, morning glory, and sunflower blossoms collected outdoors."/>
       <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-      <span class="tag">[ HERO PRODUCT &nbsp;&middot;&nbsp; BUSY BEE TRAY, outdoors with the Reflective Play Mirror Inlay fitted, surface covered with hibiscus, bougainvillea, orchid, and marigold blossoms beside a child in a tie-dye dress. Studio-warm side-light. Mirrors catalog pg.&nbsp;14 hero. ]</span>
+      <span class="tag">[ HERO PRODUCT &nbsp;&middot;&nbsp; BUSY BEE TRAY ]</span>
     </div>
   </div>
   <div class="content">
@@ -3530,7 +3628,6 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 </section>
 
 <div class="section-divider">
-  <span class="num">02</span>
   <span class="line"></span>
   <span class="label">Nature Loose Parts &middot; Tara Treasures &amp; Papoose</span>
 </div>
@@ -3542,56 +3639,58 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
   <div class="wrap">
     <div class="head">
       <div>
-        <span class="eyebrow">05. Seasonal Collection &nbsp;&middot;&nbsp; Spring</span>
+        <span class="eyebrow">05. Seasonal Collection &nbsp;&middot;&nbsp; Autumn</span>
         <h2>Nature <span class="it">loose parts.</span></h2>
       </div>
       <div class="right">
-        <p>Felt loose parts for the classroom nature shelf or seasonal table. Daisies in white or lilac, acorns in oak-green or earth tones, mushrooms in forest-green. Each set invites sorting, counting, and small-world storytelling.</p>
+        <p>Felt loose parts for the autumn nature shelf or back-to-school table. Mushrooms in red and brown, acorns in autumn tones, pinecones in evergreen and warm brown, and embroidered autumn leaves. Each set invites sorting, counting, and seasonal arranging, in colors that mark the season.</p>
         <p style="margin-top: 18px; font-family: var(--sans); font-size: 13px; line-height: 1.6; color: var(--ink); font-weight: 500;">All hand-felted in Nepal under Fair Trade. Tara Treasures items are GOTS-certified; Papoose follows Fair Trade conditions. OEKO-TEX 100.</p>
-        <div class="index">DAISIES &nbsp;&middot;&nbsp; MUSHROOMS &nbsp;&middot;&nbsp; ACORNS &nbsp;&middot;&nbsp; EARTH ACORNS</div>
+        <div class="index">FOREST MUSHROOMS &nbsp;&middot;&nbsp; FELT PUMPKINS &nbsp;&middot;&nbsp; FELT PINECONES &nbsp;&middot;&nbsp; AUTUMN LEAVES &nbsp;&middot;&nbsp; FELT ACORNS</div>
       </div>
     </div>
 
     <div class="homes">
-      <!-- 01 Daisy Flowers White (hero cell) -->
+      <!-- 01 Toadstool Mushrooms Red (hero cell) -->
       <article class="home size-hero">
         <div class="tile-wrap">
-          <div class="tile t-pale">
+          <div class="tile t-pale has-photo">
+            <img src=\"{{ 'np-forest-mushrooms.png' | asset_url }}\" alt="Tara Treasures Forest Mushrooms: a dozen hand-felted toadstools, half red and half brown, all with white polka dots and cream stems, scattered on a soft cream surface."/>
             <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-            <span class="tag">[ LOOSE PART N&deg;01 &nbsp;&middot;&nbsp; DAISY FLOWERS WHITE, five white felt daisy flowers with yellow centers on a soft pink surface. Mirrors catalog pg.&nbsp;15 cell 00. ]</span>
+            <span class="tag">[ LOOSE PART N&deg;01 &nbsp;&middot;&nbsp; FOREST MUSHROOMS &middot; RED AND BROWN ]</span>
           </div>
           <div class="overlay"></div>
-          <div class="float-name">Daisy Flowers &middot; White</div>
+          <div class="float-name">Forest Mushrooms &middot; Red and Brown</div>
         </div>
         <div class="cap expanded">
           <span class="no">01</span>
-          <span class="name">Daisy Flowers &middot; White</span>
-          <span class="desc">For meadow provocations, flower arranging, and spring nature trays. Five hand-felted daisies with soft yellow centers.</span>
-          <span class="meta">MTW-NT-DSY-W</span>
+          <span class="name">Forest Mushrooms &middot; Red and Brown</span>
+          <span class="desc">A combined set of hand-felted forest mushrooms for autumn provocations, woodland small worlds, and storytelling shelves. Five red toadstools and five chestnut-brown mushrooms.</span>
+          <span class="meta">MTW-NP-MSH</span>
           <div class="add-row">
-            <button class="add-btn" type="button" data-sku="MTW-NT-DSY-W"><span class="plus"></span>Add to cart</button>
+            <button class="add-btn" type="button" data-sku="MTW-NP-MSH"><span class="plus"></span>Add to cart</button>
             <a href="#" class="view-pdp">View product &rarr;</a>
           </div>
         </div>
       </article>
 
-      <!-- 02 Daisy Flowers Lilac (tall) -->
-      <article class="home size-tall">
+      <!-- 02 Wooden Pumpkins (tall) -->
+      <article class="home size-std">
         <div class="tile-wrap">
-          <div class="tile t-soft">
+          <div class="tile t-primary has-photo">
+            <img src=\"{{ 'np-autumn-leaves.webp' | asset_url }}\" alt="Tara Treasures Autumn Felt Leaves: four hand-embroidered felt leaves, oak, maple, birch, and chestnut, in rust, gold, and ochre tones."/>
             <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-            <span class="tag">[ LOOSE PART N&deg;02 &nbsp;&middot;&nbsp; DAISY FLOWERS LILAC, five lilac felt daisy flowers with yellow centers on a white surface. Mirrors catalog pg.&nbsp;15 cell 01. ]</span>
+            <span class="tag">[ LOOSE PART N&deg;02 &nbsp;&middot;&nbsp; AUTUMN LEAVES ]</span>
           </div>
           <div class="overlay"></div>
-          <div class="float-name">Daisy Flowers &middot; Lilac</div>
+          <div class="float-name">Autumn Leaves</div>
         </div>
         <div class="cap">
           <span class="no">02</span>
-          <span class="name">Daisy Flowers &middot; Lilac</span>
-          <span class="desc">A second spring palette, soft violet for color sorting and seasonal shelves.</span>
-          <span class="meta">MTW-NT-DSY-L</span>
+          <span class="name">Autumn Leaves</span>
+          <span class="desc">Four embroidered felt leaves, oak, maple, birch, and chestnut, for harvest provocations, color matching, and back-to-school art shelves.</span>
+          <span class="meta">MTW-NP-LVS-A</span>
           <div class="add-row">
-            <button class="add-btn" type="button" data-sku="MTW-NT-DSY-L"><span class="plus"></span>Add to cart</button>
+            <button class="add-btn" type="button" data-sku="MTW-NP-LVS-A"><span class="plus"></span>Add to cart</button>
             <a href="#" class="view-pdp">View product &rarr;</a>
           </div>
         </div>
@@ -3600,18 +3699,19 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       <!-- 03 Mushrooms Green -->
       <article class="home size-std">
         <div class="tile-wrap">
-          <div class="tile t-deep dark">
+          <div class="tile t-deep dark has-photo">
+            <img src=\"{{ 'np-pinecones.webp' | asset_url }}\" style="object-position: 35% 35%;" alt="Tara Treasures Felt Pinecones: three hand-felted wool pinecones in chestnut brown, mossy green, and soft peach, gathered on a warm-wood surface."/>
             <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-            <span class="tag">[ LOOSE PART N&deg;03 &nbsp;&middot;&nbsp; MUSHROOMS GREEN, five forest-green felt mushrooms with white polka dots and ivory stems. Mirrors catalog pg.&nbsp;15 cell 03. ]</span>
+            <span class="tag">[ LOOSE PART N&deg;03 &nbsp;&middot;&nbsp; FELT PINECONES ]</span>
           </div>
           <div class="overlay"></div>
-          <div class="float-name">Mushrooms &middot; Green</div>
+          <div class="float-name">Felt Pinecones</div>
         </div>
         <div class="cap">
           <span class="no">03</span>
-          <span class="name">Mushrooms &middot; Green</span>
-          <span class="desc">Storytelling anchors for fairy provocations, forest play, and nature tables. Five felt mushrooms with white polka dots.</span>
-          <span class="meta">MTW-NT-MSH-G</span>
+          <span class="name">Felt Pinecones</span>
+          <span class="desc">Hand-felted wool pinecones in evergreen and warm brown, for nature trays, sensory baskets, and autumn small-world play. Six pinecones per set.</span>
+          <span class="meta">MTW-NP-PNC</span>
           <div class="add-row">
             <button class="add-btn" type="button" data-sku="MTW-NT-MSH-G"><span class="plus"></span>Add to cart</button>
             <a href="#" class="view-pdp">View product &rarr;</a>
@@ -3620,22 +3720,23 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       </article>
 
       <!-- 04 Acorns Oak Green -->
-      <article class="home size-std">
+      <article class="home size-tall">
         <div class="tile-wrap">
-          <div class="tile t-primary">
+          <div class="tile t-soft has-photo">
+            <img src=\"{{ 'np-pumpkins-felt.webp' | asset_url }}\" alt="Tara Treasures Felt Pumpkins: four hand-felted orange pumpkins with green wool stems, gathered on a natural wood-slice round."/>
             <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-            <span class="tag">[ LOOSE PART N&deg;04 &nbsp;&middot;&nbsp; ACORNS OAK GREEN, five felt acorns with olive-green bodies and blush brown caps. Mirrors catalog pg.&nbsp;15 cell 02. ]</span>
+            <span class="tag">[ LOOSE PART N&deg;04 &nbsp;&middot;&nbsp; FELT PUMPKINS ]</span>
           </div>
           <div class="overlay"></div>
-          <div class="float-name">Acorns &middot; Oak Green</div>
+          <div class="float-name">Felt Pumpkins</div>
         </div>
         <div class="cap">
           <span class="no">04</span>
-          <span class="name">Acorns &middot; Oak Green</span>
-          <span class="desc">Counting, sorting, small-world stashing. Fresh-spring green, not autumn brown. Five hand-felted acorns.</span>
-          <span class="meta">MTW-NT-ACN-G</span>
+          <span class="name">Felt Pumpkins</span>
+          <span class="desc">Hand-felted pumpkins for counting trays, autumn nature shelves, and harvest provocations. Four felt pumpkins with embroidered green stems per set.</span>
+          <span class="meta">MTW-NP-PMP</span>
           <div class="add-row">
-            <button class="add-btn" type="button" data-sku="MTW-NT-ACN-G"><span class="plus"></span>Add to cart</button>
+            <button class="add-btn" type="button" data-sku="MTW-NP-PMP"><span class="plus"></span>Add to cart</button>
             <a href="#" class="view-pdp">View product &rarr;</a>
           </div>
         </div>
@@ -3644,20 +3745,21 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       <!-- 05 Earth Acorns -->
       <article class="home size-std">
         <div class="tile-wrap">
-          <div class="tile t-cream">
+          <div class="tile t-cream has-photo">
+            <img src=\"{{ 'np-felt-acorns.png' | asset_url }}\" alt="Tara Treasures Felt Acorns: a dozen hand-felted wool acorns in orange, chartreuse, and warm brown gathered on a natural wood-slice round."/>
             <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-            <span class="tag">[ LOOSE PART N&deg;05 &nbsp;&middot;&nbsp; EARTH ACORNS, seven hand-felted wool acorns in muted earth tones with hand-crocheted natural-twine caps and small wooden stems, in a loose cluster on cream. Mirrors catalog pg.&nbsp;15 cell 04. ]</span>
+            <span class="tag">[ LOOSE PART N&deg;05 &nbsp;&middot;&nbsp; FELT ACORNS &middot; ORANGE AND GREEN ]</span>
           </div>
           <div class="overlay"></div>
-          <div class="float-name">Earth Acorns</div>
+          <div class="float-name">Felt Acorns &middot; Orange and Green</div>
         </div>
         <div class="cap">
           <span class="no">05</span>
-          <span class="name">Earth Acorns</span>
-          <span class="desc">Seven hand-felted wool acorns in muted earth tones with crocheted twine caps, for sorting, counting, and the seasonal nature table.</span>
-          <span class="meta">MTW-NT-ACE</span>
+          <span class="name">Felt Acorns &middot; Orange and Green</span>
+          <span class="desc">A dozen hand-felted wool acorns in autumn orange, chartreuse green, and warm brown, for counting trays, nature baskets, and seasonal shelves.</span>
+          <span class="meta">MTW-NP-ACN</span>
           <div class="add-row">
-            <button class="add-btn" type="button" data-sku="MTW-NT-ACE"><span class="plus"></span>Add to cart</button>
+            <button class="add-btn" type="button" data-sku="MTW-NP-ACN"><span class="plus"></span>Add to cart</button>
             <a href="#" class="view-pdp">View product &rarr;</a>
           </div>
         </div>
@@ -3666,10 +3768,10 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 
     <div class="collection-bridge">
       <p>
-        <strong>The Spring Set &nbsp;&middot;&nbsp; MTW-NT-SPR</strong>
-        Felt daisies, mushrooms, acorns, and earth acorns, bundled for the spring nature table. Buy as a set.
+        <strong>The Autumn Set &nbsp;&middot;&nbsp; MTW-NP-AUT</strong>
+        Toadstools, pumpkins, leaves, and acorns, bundled for the back-to-school nature shelf. Buy as a set.
       </p>
-      <a href="#quote" class="bridge-cta">Request the Spring Set</a>
+      <a href="#quote" class="bridge-cta">Request the Autumn Set</a>
     </div>
   </div>
 </section>
@@ -3682,19 +3784,217 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 </section>
 
 <div class="section-divider">
-  <span class="num">04</span>
   <span class="line"></span>
   <span class="label">Nature Tools &middot; Papoose</span>
 </div>
 
-<!-- =========================== GALLERY 2: NATURE TOOLS =========================== -->
-<!-- Papoose teak nature tools, catalog pg. 16. SKUs verbatim from the catalog.
-     No prices in the catalog source, so each card omits the price line. -->
-<section class="gallery even gut" id="tools" data-screen-label="06 Nature Tools" style="background: color-mix(in oklab, var(--accent-pale) 50%, var(--cream));">
+
+
+<!-- =========================== AUTUMN FOLK (editorial bridge between felt and wood loose parts) =========================== -->
+<section class="autumn-folk" data-screen-label="05b Autumn Folk" style="background: var(--cream); padding: clamp(64px, 8vw, 112px) clamp(20px, 5vw, 56px); border-top: 0.5px solid var(--rule); border-bottom: 0.5px solid var(--rule);">
+  <div style="max-width: 1180px; margin: 0 auto;">
+
+    <div style="display: grid; grid-template-columns: minmax(0, 8fr) minmax(0, 4fr); gap: clamp(40px, 5vw, 80px); align-items: center;">
+
+      <!-- Hero photo: Leaf Babies lifestyle -->
+      <div style="position: relative;">
+        <div class="tile has-photo" style="aspect-ratio: 4 / 5; position: relative; overflow: hidden; border-radius: 2px;">
+          <img src=\"{{ 'np-leaf-babies-moon-basket.png' | asset_url }}\" alt="Papoose Leaf Babies: four hand-felted babies with different skin tones, swaddled in stitched autumn and lime maple leaves, nestled in a crescent-moon wicker basket filled with dried chamomile, gold stars, and pine cones on a soft mossy green surface." style="width: 100%; height: 100%; object-fit: cover; display: block;"/>
+          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+        </div>
+      </div>
+
+      <!-- Editorial text column -->
+      <div>
+        <span class="eyebrow" style="color: var(--accent-deep); display: inline-block; margin-bottom: 14px;">Autumn Folk</span>
+        <h2 style="margin: 0 0 22px; font-family: var(--serif); font-weight: 400; font-size: clamp(36px, 4.2vw, 60px); line-height: 1.05; color: var(--ink); letter-spacing: -.015em;">The nature shelf has <span style="font-style: italic; color: var(--accent-deep);">inhabitants.</span></h2>
+        <p style="margin: 0 0 28px; font-family: var(--sans); font-size: 16px; line-height: 1.65; color: var(--ink-soft);">The loose parts gather themselves into stories. Once a child sets out felt acorns and embroidered leaves, the small world wakes up. These hand-felted babies, swaddled in oak, maple, lime, and acorn caps, are the quiet inhabitants of that world. Each baby is felted in a different skin tone, so every child can find one that looks like them on the shelf, and the autumn nature table becomes a <em>place</em> a child knows.</p>
+
+        <!-- Two product chips side by side -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding-top: 24px; border-top: 0.5px solid var(--rule);">
+
+          <div>
+            <div style="aspect-ratio: 1 / 1; overflow: hidden; border-radius: 2px; margin-bottom: 12px;">
+              <img src=\"{{ 'np-acorn-babies-set.png' | asset_url }}\" alt="Papoose Acorn Babies: six hand-felted babies swaddled in oak-leaf wraps in cream, mushroom, slate-blue, gold, coral, and sage, lying on a bed of moss with scattered acorn caps and oak leaves." style="width: 100%; height: 100%; object-fit: cover; display: block;"/>
+            </div>
+            <span class="eyebrow" style="font-size: 10px; letter-spacing: .18em; color: var(--stone); display: block; margin-bottom: 4px;">Set of 6</span>
+            <h4 style="margin: 0 0 6px; font-family: var(--serif); font-weight: 500; font-size: 20px; line-height: 1.2; color: var(--ink);">Acorn Babies</h4>
+            <p style="margin: 0 0 10px; font-family: var(--sans); font-size: 13px; line-height: 1.5; color: var(--ink-soft);">Six felt babies in oak-leaf swaddles with woven acorn caps. For nature shelves, small-world story play, and quiet handling.</p>
+            <span style="display: inline-block; font-family: var(--mono); font-size: 11px; color: var(--ink); border: 0.5px solid var(--rule); padding: 4px 10px; border-radius: 999px;">MTW-NP-ACB</span>
+          </div>
+
+          <div>
+            <div style="aspect-ratio: 1 / 1; overflow: hidden; border-radius: 2px; margin-bottom: 12px;">
+              <img src=\"{{ 'np-leaf-babies-pinecones.png' | asset_url }}\" alt="Papoose Leaf Babies: four hand-felted babies in different skin tones, swaddled in stitched autumn and lime maple leaves, gathered among pinecones, fir branches, and air plants on a soft cream surface." style="width: 100%; height: 100%; object-fit: cover; display: block;"/>
+            </div>
+            <span class="eyebrow" style="font-size: 10px; letter-spacing: .18em; color: var(--stone); display: block; margin-bottom: 4px;">Set of 4</span>
+            <h4 style="margin: 0 0 6px; font-family: var(--serif); font-weight: 500; font-size: 20px; line-height: 1.2; color: var(--ink);">Leaf Babies</h4>
+            <p style="margin: 0 0 10px; font-family: var(--sans); font-size: 13px; line-height: 1.5; color: var(--ink-soft);">Four felt babies in stitched leaf swaddles, oak, maple, lime, and birch. Each a different species, for color matching and storytelling.</p>
+            <span style="display: inline-block; font-family: var(--mono); font-size: 11px; color: var(--ink); border: 0.5px solid var(--rule); padding: 4px 10px; border-radius: 999px;">MTW-NP-LFB</span>
+          </div>
+
+        </div>
+
+        <p style="margin: 24px 0 0; font-family: var(--sans); font-size: 12px; color: var(--stone); letter-spacing: .04em;">Papoose &middot; Hand-felted in Nepal &middot; Fair Trade USA</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- =========================== GALLERY 2 (Wood Loose Parts, Bumbu + Moonpicnic) =========================== -->
+<section class="gallery odd gut" id="wood-loose-parts" data-screen-label="06 Wood Loose Parts" style="background: color-mix(in oklab, var(--accent-deep) 5%, var(--cream));">
   <div class="wrap">
     <div class="head">
       <div>
-        <span class="eyebrow">06. Papoose &nbsp;&middot;&nbsp; Collection</span>
+        <span class="eyebrow">06. Wood Loose Parts</span>
+        <h2>Wood <span class="it">loose parts.</span></h2>
+      </div>
+      <div class="right">
+        <p>Hand-carved wood pieces for the autumn nature shelf and harvest small-world. Bumbu farm sets from Romania pair with Moonpicnic species and basket sets from Spain, in a palette of harvest oranges, forest greens, and weathered creams.</p>
+        <div class="index">PUMPKIN HARVEST &nbsp;&middot;&nbsp; TURKEY PAIR &nbsp;&middot;&nbsp; WOODLAND LEAVES &nbsp;&middot;&nbsp; FOREST MUSHROOMS &nbsp;&middot;&nbsp; BIRD EGGS</div>
+      </div>
+    </div>
+
+    <div class="homes">
+
+      <!-- 01 Pumpkin Harvest (hero cell) -->
+      <article class="home size-hero">
+        <div class="tile-wrap">
+          <div class="tile t-soft has-photo">
+            <img src=\"{{ 'np-bumbu-pumpkin-harvest.png' | asset_url }}\" alt="Bumbu Pumpkin Harvest: a cream gourd, a green pumpkin, a yellow squash, and a stacked trio of orange pumpkins arranged on a wooden surface against a soft turquoise backdrop."/>
+            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+            <span class="tag">[ WOOD N&deg;01 &nbsp;&middot;&nbsp; PUMPKIN HARVEST ]</span>
+          </div>
+          <div class="overlay"></div>
+          <div class="float-name">Pumpkin Harvest</div>
+        </div>
+        <div class="cap expanded">
+          <span class="no">01</span>
+          <span class="name">Pumpkin Harvest</span>
+          <span class="desc">A hand-carved wood bundle that combines the Bumbu Pumpkin Trio (cream, green, and yellow) with the Pumpkin Patch Set (stacked orange pumpkins). Together they make the harvest table’s full color range, for counting, stacking, and farm small-world play.</span>
+          <span class="meta">MTW-NP-HRV</span>
+          <div class="add-row">
+            <button class="add-btn" type="button" data-sku="MTW-NP-HRV"><span class="plus"></span>Add to cart</button>
+            <a href="#" class="view-pdp">View product &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 02 Turkey Pair (tall) -->
+      <article class="home size-tall">
+        <div class="tile-wrap">
+          <div class="tile t-soft has-photo">
+            <img src=\"{{ 'np-bumbu-turkey-pair.png' | asset_url }}\" alt="Bumbu Turkey Pair: a hand-carved tom turkey with a fanned painted tail beside a smaller hen, both on a wooden surface against a soft turquoise backdrop."/>
+            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+            <span class="tag">[ WOOD N&deg;02 &nbsp;&middot;&nbsp; TURKEY PAIR ]</span>
+          </div>
+          <div class="overlay"></div>
+          <div class="float-name">Turkey Pair</div>
+        </div>
+        <div class="cap">
+          <span class="no">02</span>
+          <span class="name">Turkey Pair</span>
+          <span class="desc">A hand-carved hen and tom turkey, sold as a pair, for harvest scenes, Thanksgiving storytelling, and farm small-world play.</span>
+          <span class="meta">MTW-NP-TKY</span>
+          <div class="add-row">
+            <button class="add-btn" type="button" data-sku="MTW-NP-TKY"><span class="plus"></span>Add to cart</button>
+            <a href="#" class="view-pdp">View product &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 03 Woodland Leaves (std) -->
+      <article class="home size-std">
+        <div class="tile-wrap">
+          <div class="tile t-cream has-photo">
+            <img src=\"{{ 'np-moonpicnic-leaves-styled.jpg' | asset_url }}\" alt="Moonpicnic Woodland Leaves: ten hand-painted wooden leaves in autumn and spring colors, named by species, Beech, Maple, Hawthorn, Gingko, Hazel, Alder, Willow, Sassafras, Common Lime, and Oak, set in a labeled kraft tray on dark wood."/>
+            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+            <span class="tag">[ WOOD N&deg;03 &nbsp;&middot;&nbsp; WOODLAND LEAVES ]</span>
+          </div>
+          <div class="overlay"></div>
+          <div class="float-name">Woodland Leaves</div>
+        </div>
+        <div class="cap">
+          <span class="no">03</span>
+          <span class="name">Woodland Leaves</span>
+          <span class="desc">Ten hand-painted wooden leaves named by species in the included kraft tray, a quiet introduction to botanical identification for the nature table.</span>
+          <span class="meta">MTW-NP-MNL</span>
+          <div class="add-row">
+            <button class="add-btn" type="button" data-sku="MTW-NP-MNL"><span class="plus"></span>Add to cart</button>
+            <a href="#" class="view-pdp">View product &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 04 Forest Mushrooms (tall) -->
+      <article class="home size-tall">
+        <div class="tile-wrap">
+          <div class="tile t-cream has-photo">
+            <img src=\"{{ 'np-moonpicnic-mushrooms.webp' | asset_url }}\" alt="Moonpicnic Forest Mushrooms: a dozen hand-carved wooden mushrooms in cream, brown, peach, and white-and-red cap variations, scattered beside a small wicker basket holding more mushrooms, pinecones, and autumn berries."/>
+            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+            <span class="tag">[ WOOD N&deg;04 &nbsp;&middot;&nbsp; FOREST MUSHROOMS ]</span>
+          </div>
+          <div class="overlay"></div>
+          <div class="float-name">Forest Mushrooms</div>
+        </div>
+        <div class="cap">
+          <span class="no">04</span>
+          <span class="name">Forest Mushrooms</span>
+          <span class="desc">A basket set of hand-carved wooden mushrooms in soft naturalistic colors, paired with felt details for foraging baskets, woodland small worlds, and seasonal shelves.</span>
+          <span class="meta">MTW-NP-MNM</span>
+          <div class="add-row">
+            <button class="add-btn" type="button" data-sku="MTW-NP-MNM"><span class="plus"></span>Add to cart</button>
+            <a href="#" class="view-pdp">View product &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 05 Bird Eggs (std) -->
+      <article class="home size-std">
+        <div class="tile-wrap">
+          <div class="tile t-cream has-photo">
+            <img src=\"{{ 'np-moonpicnic-eggs.webp' | asset_url }}\" alt="Moonpicnic A Dozen Bird Eggs: twelve hand-painted wooden eggs in speckled naturalistic colors with feathers scattered beside a small wicker basket holding more eggs, on a soft cream surface."/>
+            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+            <span class="tag">[ WOOD N&deg;05 &nbsp;&middot;&nbsp; A DOZEN BIRD EGGS ]</span>
+          </div>
+          <div class="overlay"></div>
+          <div class="float-name">A Dozen Bird Eggs</div>
+        </div>
+        <div class="cap">
+          <span class="no">05</span>
+          <span class="name">A Dozen Bird Eggs</span>
+          <span class="desc">Twelve hand-painted wooden eggs in speckled naturalistic colors, packaged with a wicker basket, an open-ended set for spring planning, color sorting, and nature-table arranging.</span>
+          <span class="meta">MTW-NP-MNE</span>
+          <div style="display: flex; align-items: center; gap: 10px; margin-top: 12px; padding-top: 12px; border-top: 0.5px solid var(--rule);">
+            <div style="width: 40px; height: 40px; border-radius: 2px; overflow: hidden; flex-shrink: 0;">
+              <img src=\"{{ 'np-felt-feathers.webp' | asset_url }}\" alt="Tara Treasures Felt Feathers: four hand-stitched felt feathers in olive, mint, dusty pink, and cream with embroidered veins." style="width: 100%; height: 100%; object-fit: cover; display: block;"/>
+            </div>
+            <div style="min-width: 0; flex: 1;">
+              <span style="display: block; font-family: var(--sans); font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: var(--stone); margin-bottom: 2px;">Pairs with</span>
+              <span style="display: block; font-family: var(--serif); font-style: italic; font-size: 14px; color: var(--ink); line-height: 1.3;">Felt Feathers <span style="font-family: var(--mono); font-style: normal; font-size: 10px; color: var(--stone); margin-left: 6px;">MTW-NP-FTH</span></span>
+            </div>
+          </div>
+          <div class="add-row">
+            <button class="add-btn" type="button" data-sku="MTW-NP-MNE"><span class="plus"></span>Add to cart</button>
+            <a href="#" class="view-pdp">View product &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- =========================== GALLERY 2: NATURE TOOLS =========================== -->
+<!-- Papoose teak nature tools, catalog pg. 16. SKUs verbatim from the catalog.
+     No prices in the catalog source, so each card omits the price line. -->
+<section class="gallery even gut" id="tools" data-screen-label="07 Nature Tools" style="background: color-mix(in oklab, var(--accent-pale) 50%, var(--cream));">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <span class="eyebrow">07. Papoose &nbsp;&middot;&nbsp; Collection</span>
         <h2>Nature <span class="it">tools.</span></h2>
       </div>
       <div class="right">
@@ -3708,9 +4008,10 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       <!-- 01 Baby Nesting Bowls (hero cell) -->
       <article class="home size-hero">
         <div class="tile-wrap">
-          <div class="tile t-gilt">
+          <div class="tile t-gilt has-photo">
+            <img src=\"{{ 'np-nesting-bowls.webp' | asset_url }}\" alt="Papoose Teak Nesting Bowls: three graduated teak bowls on warm cream linen, filled with river stones and beads, acorns and pinecones, and sea glass and wooden buttons."/>
             <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-            <span class="tag">[ TOOL N&deg;01 &nbsp;&middot;&nbsp; BABY NESTING BOWLS, three graduated teak bowls on warm cream linen, the largest with river stones and wooden beads, the medium with acorns and pinecones, the smallest with sea glass and wooden buttons. Mirrors catalog pg.&nbsp;16 cell 00. ]</span>
+            <span class="tag">[ TOOL N&deg;01 &nbsp;&middot;&nbsp; BABY NESTING BOWLS ]</span>
           </div>
           <div class="overlay"></div>
           <div class="float-name">Baby Nesting Bowls</div>
@@ -3730,9 +4031,10 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       <!-- 02 Tongs (tall) -->
       <article class="home size-tall">
         <div class="tile-wrap">
-          <div class="tile t-cream">
+          <div class="tile t-cream has-photo">
+            <img src=\"{{ 'np-teak-tongs.webp' | asset_url }}\" alt="Papoose teak tongs: long hand-finished pincer-grip tongs on warm maple, with three smooth river stones in sage, cream, and russet."/>
             <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-            <span class="tag">[ TOOL N&deg;02 &nbsp;&middot;&nbsp; TONGS, long pincer-grip teak tongs on a pale maple table with three smooth river stones to the right. Clean overhead, soft natural light. Mirrors catalog pg.&nbsp;16 cell 02. ]</span>
+            <span class="tag">[ TOOL N&deg;02 &nbsp;&middot;&nbsp; TONGS ]</span>
           </div>
           <div class="overlay"></div>
           <div class="float-name">Tongs</div>
@@ -3752,9 +4054,10 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       <!-- 03 Spoon Set -->
       <article class="home size-std">
         <div class="tile-wrap">
-          <div class="tile t-alt">
+          <div class="tile t-soft has-photo">
+            <img src=\"{{ 'np-spoon-set.webp' | asset_url }}\" alt="Papoose Teak Spoon Set: nine hand-finished teak spoons in varied sizes arrayed in a fan, fresh lavender sprigs between them on cream."/>
             <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-            <span class="tag">[ TOOL N&deg;03 &nbsp;&middot;&nbsp; SPOON SET, eight hand-finished teak spoons in assorted capacities, arranged in a fan with dried lavender stems on cream. Mirrors catalog pg.&nbsp;16 cell 03. ]</span>
+            <span class="tag">[ TOOL N&deg;03 &nbsp;&middot;&nbsp; SPOON SET ]</span>
           </div>
           <div class="overlay"></div>
           <div class="float-name">Spoon Set</div>
@@ -3774,9 +4077,10 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       <!-- 04 Mini Coconut Sieve -->
       <article class="home size-std">
         <div class="tile-wrap">
-          <div class="tile t-hue3-deep dark">
+          <div class="tile t-hue3 has-photo">
+            <img src=\"{{ 'np-coconut-sieve.webp' | asset_url }}\" alt="Papoose Mini Coconut Sieve: a halved coconut bowl with hand-drilled perforations and a long teak handle on weathered wood, beside a halved fresh coconut, scattered sea salt, and fresh waxflowers."/>
             <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-            <span class="tag">[ TOOL N&deg;04 &nbsp;&middot;&nbsp; MINI COCONUT SIEVE, halved coconut shell with hand-drilled perforations and teak handle, beside a child sorting loose parts in a wooden tray. Mirrors catalog pg.&nbsp;16 cell 04. ]</span>
+            <span class="tag">[ TOOL N&deg;04 &nbsp;&middot;&nbsp; MINI COCONUT SIEVE ]</span>
           </div>
           <div class="overlay"></div>
           <div class="float-name">Mini Coconut Sieve</div>
@@ -3796,9 +4100,10 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       <!-- 05 Teak Slotted Spoon -->
       <article class="home size-std">
         <div class="tile-wrap">
-          <div class="tile t-soft">
+          <div class="tile t-soft has-photo">
+            <img src=\"{{ 'np-slotted-spoon.png' | asset_url }}\" alt="Papoose Teak Slotted Spoon: a hand-finished teak ladle with a wide round perforated bowl and long slim handle, resting on a cream cable-knit wool surface beside a stoneware bowl and dried autumn leaves."/>
             <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-            <span class="tag">[ TOOL N&deg;05 &nbsp;&middot;&nbsp; TEAK SLOTTED SPOON, hand-finished teak ladle with a wide round perforated bowl and long slim handle, resting on a cream cable-knit wool surface. Mirrors catalog pg.&nbsp;16 cell 05. ]</span>
+            <span class="tag">[ TOOL N&deg;05 &nbsp;&middot;&nbsp; TEAK SLOTTED SPOON ]</span>
           </div>
           <div class="overlay"></div>
           <div class="float-name">Teak Slotted Spoon</div>
@@ -3828,17 +4133,18 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 
 <!-- =========================== FEATURED PRODUCT 2 (Wild Mountain Child · The Everything Play Bundle) =========================== -->
 <!-- Featured 2, Wild Mountain Child The Everything Play Bundle. Catalog pg. 17.
-     SKU is MTW-NP-WMC-EPB verbatim from the catalog (brand cross-listed under the
+     SKU is MTW-SP-WMC-EPB verbatim from the catalog (brand cross-listed under the
      SP section code in the source). No price in the catalog, so it is omitted. -->
-<section class="split stage" data-screen-label="07 The Everything Play Bundle" style="background: var(--cream);">
+<section class="split stage" data-screen-label="08 The Everything Play Bundle" style="background: var(--cream);">
   <div class="img-side">
-    <div class="tile t-soft contained">
+    <div class="tile t-soft has-photo">
+      <img src=\"{{ 'np-wmc-everything-bundle.webp' | asset_url }}\" alt="Wild Mountain Child Everything Play Bundle: hand-carved wooden tools, sunflower spoons, a mushroom-stamped spoon, a leaf bowl, a heart, and a crescent moon, arranged on a dark mossy tree stump in the forest, framed by ferns and acorns."/>
       <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-      <span class="tag">[ FEATURED PRODUCT 2 &nbsp;&middot;&nbsp; THE EVERYTHING PLAY BUNDLE, Wild Mountain Child hand-carved wooden tools, sunflower-shaped spoons, mushroom-stamped spoon, heart, leaf, bowl, and crescent moon, on a dark mossy tree stump in the forest, surrounded by ferns and acorns. Mirrors catalog pg.&nbsp;17 hero. ]</span>
+      <span class="tag">[ FEATURED PRODUCT 2 &nbsp;&middot;&nbsp; THE EVERYTHING PLAY BUNDLE ]</span>
     </div>
   </div>
   <div class="content">
-    <span class="eyebrow" style="color: var(--accent-deep);">07. Wild Mountain Child &nbsp;&middot;&nbsp; Featured</span>
+    <span class="eyebrow" style="color: var(--accent-deep);">08. Wild Mountain Child &nbsp;&middot;&nbsp; Featured</span>
     <h3>The Everything <span class="it">Play Bundle.</span></h3>
     <div class="sub">Fourteen hand-carved pieces. Open-ended tools that grow with the child.</div>
     <span class="hair" aria-hidden="true"></span>
@@ -3863,7 +4169,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       </div>
       <div>
         <span class="label">SKU &nbsp;&middot;&nbsp; Individual or small group</span>
-        <span class="stock-pill">MTW-NP-WMC-EPB &nbsp;&middot;&nbsp; Ages 3 to 7</span>
+        <span class="stock-pill">MTW-SP-WMC-EPB &nbsp;&middot;&nbsp; Ages 3 to 7</span>
       </div>
     </div>
 
@@ -3879,7 +4185,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
     </div>
 
     <div class="add-row">
-      <button class="add-btn" type="button" data-sku="MTW-NP-WMC-EPB"><span class="plus"></span>Add to cart</button>
+      <button class="add-btn" type="button" data-sku="MTW-SP-WMC-EPB"><span class="plus"></span>Add to cart</button>
       <a href="#" class="view-pdp">View product details &rarr;</a>
     </div>
 
@@ -3896,15 +4202,15 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 </section>
 
 <!-- =========================== WOODLAND BRIDGE (cross-collection to Woodland Habitats) =========================== -->
-<section data-screen-label="08 Woodland Bridge" style="background: var(--cream); border-top: 0.5px solid var(--rule); border-bottom: 0.5px solid var(--rule); padding: 64px clamp(20px, 5vw, 56px);">
+<section data-screen-label="09 Woodland Bridge" style="background: var(--cream); border-top: 0.5px solid var(--rule); border-bottom: 0.5px solid var(--rule); padding: 64px clamp(20px, 5vw, 56px);">
   <div style="max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(28px, 4vw, 56px); align-items: center;">
     <div>
-      <span class="eyebrow" style="color: var(--accent-deep);">08. A note on the forest</span>
+      <span class="eyebrow" style="color: var(--accent-deep);">09. A note on the forest</span>
       <h3 style="margin: 16px 0 0; font-family: var(--serif); font-weight: 400; font-size: clamp(28px, 3.2vw, 42px); line-height: 1.1; color: var(--ink); letter-spacing: -.01em;">The nature table is <span style="font-style: italic; color: var(--accent-deep);">the doorway.</span> The forest itself has its own volume.</h3>
     </div>
     <div>
-      <p style="margin: 0 0 18px; font-family: var(--sans); font-size: 16px; line-height: 1.65; color: var(--ink-soft);">Once the felt acorns and teak bowls are out, children start asking who lives here. The Papoose Seasonal Trees, the Bumbu hand-carved animal families, and the woodland trees live a volume on, in <strong style="color: var(--ink); font-weight: 600;">Section Three, Woodland Habitats</strong>. They move onto the nature table naturally: a felted toadstool beside the carved fox, a seed pod in a teak bowl. One small world.</p>
-      <a href="Woodland v3.html" style="display: inline-flex; align-items: center; gap: 8px; padding: 14px 24px; background: var(--ink); color: var(--cream); text-decoration: none; font-family: var(--sans); font-size: 13px; font-weight: 500; letter-spacing: .04em; border-radius: 999px; transition: background .2s ease;">See Section 03 &middot; Woodland &rarr;</a>
+      <p style="margin: 0 0 18px; font-family: var(--sans); font-size: 16px; line-height: 1.65; color: var(--ink-soft);">Once the felt acorns and teak bowls are out, children start asking who lives here. The Papoose Seasonal Trees, the Bumbu hand-carved animal families, and the woodland trees live a volume on, in <strong style="color: var(--ink); font-weight: 600;">Section Three, Woodland</strong>. They move onto the nature table naturally: a felted toadstool beside the carved fox, a seed pod in a teak bowl. One small world.</p>
+      <a href="/pages/educator-woodland" style="display: inline-flex; align-items: center; gap: 8px; padding: 14px 24px; background: var(--ink); color: var(--cream); text-decoration: none; font-family: var(--sans); font-size: 13px; font-weight: 500; letter-spacing: .04em; border-radius: 999px; transition: background .2s ease;">See Section 03 &middot; Woodland &rarr;</a>
     </div>
   </div>
 </section>
@@ -3914,7 +4220,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 <section class="outfit" id="outfit" data-screen-label="10 Outfit Your Classroom">
   <div class="head">
     <div>
-      <p class="block-num">07 <span class="dot">/</span> The whole nature table</p>
+      <p class="block-num">The whole nature table</p>
       <h2>Outfit your classroom <span class="it">in one quote.</span></h2>
     </div>
     <div class="right">
@@ -3925,21 +4231,21 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 
   <div class="kits">
     <article class="kit">
-      <p class="tier">Nature Loose Parts &nbsp;&middot;&nbsp; MTW-NT-SPR</p>
-      <h3>The Spring Set.</h3>
-      <p class="sub">Felt daisies, mushrooms, and acorns.</p>
+      <p class="tier">Nature Loose Parts &nbsp;&middot;&nbsp; MTW-NP-AUT</p>
+      <h3>The Autumn Set.</h3>
+      <p class="sub">Felt toadstools, leaves, and acorns.</p>
       <span class="hair" aria-hidden="true"></span>
-      <p class="desc">The felt loose parts for the spring nature table, bundled for sorting, counting, and seasonal arranging. From the 2026 Fall Edition, p.&nbsp;15. Hand-felted in Nepal under Fair Trade.</p>
+      <p class="desc">The felt loose parts for the autumn nature table, bundled for sorting, counting, and seasonal arranging. From the 2026 Fall Edition, p.&nbsp;15. Hand-felted in Nepal under Fair Trade.</p>
       <ul class="contains">
-        <li>Daisy Flowers &middot; White, MTW-NT-DSY-W</li>
-        <li>Daisy Flowers &middot; Lilac, MTW-NT-DSY-L</li>
-        <li>Mushrooms &middot; Green, MTW-NT-MSH-G</li>
-        <li>Acorns &middot; Oak Green, MTW-NT-ACN-G</li>
-        <li>Earth Acorns, MTW-NT-ACE</li>
+        <li>Forest Mushrooms &middot; Red and Brown, MTW-NP-MSH</li>
+        <li>Felt Pumpkins, MTW-NP-PMP</li>
+        <li>Felt Pinecones, MTW-NP-PNC</li>
+        <li>Autumn Leaves, MTW-NP-LVS-A</li>
+        <li>Felt Acorns &middot; Orange and Green, MTW-NP-ACN</li>
       </ul>
       <div class="add-row">
-        <button class="add-btn" type="button" data-sku="MTW-NT-SPR"><span class="plus"></span>Add set to cart</button>
-        <a href="#quote" class="view-pdp" data-kit="spring-set">Request a quote</a>
+        <button class="add-btn" type="button" data-sku="MTW-NP-AUT"><span class="plus"></span>Add set to cart</button>
+        <a href="#quote" class="view-pdp" data-kit="autumn-set">Request a quote</a>
       </div>
     </article>
 
@@ -3971,13 +4277,13 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       <h3 style="margin: 14px 0 0; font-family: var(--serif); font-weight: 400; font-size: clamp(24px, 2.6vw, 32px); line-height: 1.15; color: var(--ink); letter-spacing: -.005em;">The Whole Nature Table, <span style="font-style: italic; color: var(--accent-deep);">on one PO.</span></h3>
     </div>
     <div>
-      <p style="margin: 0 0 14px; font-family: var(--sans); font-size: 15px; line-height: 1.6; color: var(--ink-soft);">A custom educator combo of real catalog SKUs, <strong style="color: var(--ink); font-weight: 600;">The Spring Set (MTW-NT-SPR)</strong>, <strong style="color: var(--ink); font-weight: 600;">The Nature Tools Set (MTW-NP-NTS)</strong>, and the <strong style="color: var(--ink); font-weight: 600;">Busy Bee Tray (MTW-NP-BBT)</strong>. Not a single SKU; requested at quote and billed on one PO with a small package discount. Items ship as they're ready, most within 3 to 4 weeks, longer-lead pieces on their own timeline. The Everything Play Bundle (MTW-NP-WMC-EPB) is regularly added at quote, too.</p>
+      <p style="margin: 0 0 14px; font-family: var(--sans); font-size: 15px; line-height: 1.6; color: var(--ink-soft);">A custom educator combo of real catalog SKUs, <strong style="color: var(--ink); font-weight: 600;">The Autumn Set (MTW-NP-AUT)</strong>, <strong style="color: var(--ink); font-weight: 600;">The Nature Tools Set (MTW-NP-NTS)</strong>, and the <strong style="color: var(--ink); font-weight: 600;">Busy Bee Tray (MTW-NP-BBT)</strong>. Not a single SKU; requested at quote and billed on one PO with a small package discount. Items ship as they're ready, most within 3 to 4 weeks, longer-lead pieces on their own timeline. The Everything Play Bundle (MTW-SP-WMC-EPB) is regularly added at quote, too.</p>
       <a href="#quote" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; background: var(--ink); color: var(--cream); text-decoration: none; font-family: var(--sans); font-size: 13px; font-weight: 500; letter-spacing: .04em; border-radius: 999px;">Request the combo quote &rarr;</a>
     </div>
   </div>
 
   <div class="note">
-    <p class="left">Both catalog sets are billed on a single purchase order. Most items ship together within 3 to 4 weeks; longer-lead pieces ship separately on their own timeline. Net-30 and tax-exempt orders welcome. The Busy Bee Tray (MTW-NP-BBT) and The Everything Play Bundle (MTW-NP-WMC-EPB) are sold separately but are regularly added at quote with a small discount.</p>
+    <p class="left">Both catalog sets are billed on a single purchase order. Most items ship together within 3 to 4 weeks; longer-lead pieces ship separately on their own timeline. Net-30 and tax-exempt orders welcome. The Busy Bee Tray (MTW-NP-BBT) and The Everything Play Bundle (MTW-SP-WMC-EPB) are sold separately but are regularly added at quote with a small discount.</p>
     <p class="left" style="margin-top: 10px; font-family: var(--serif); font-style: italic; font-size: 14px; color: var(--stone); line-height: 1.55;">Hand-felted and hand-finished pieces are made to order, so some items ship on their own timeline. Ask your account rep for current timing.</p>
     <div class="right">
       <span class="verified-disc">
@@ -4075,7 +4381,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       <div class="qf-row full">
         <label>Which kit are you interested in?</label>
         <div class="qf-chips" role="radiogroup">
-          <label class="qf-chip"><input type="radio" name="kit" value="spring-set"/>The Spring Set &middot; MTW-NT-SPR</label>
+          <label class="qf-chip"><input type="radio" name="kit" value="autumn-set"/>The Autumn Set &middot; MTW-NP-AUT</label>
           <label class="qf-chip"><input type="radio" name="kit" value="nature-tools-set"/>The Nature Tools Set &middot; MTW-NP-NTS</label>
           <label class="qf-chip"><input type="radio" name="kit" value="custom"/>A custom mix</label>
           <label class="qf-chip"><input type="radio" name="kit" value="exploring"/>Just exploring</label>
@@ -4087,10 +4393,10 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
         <div class="qf-chips">
           <label class="qf-chip"><input type="checkbox" name="ecosystems" value="sensory-play"/>01 &middot; Sensory Play</label>
           <label class="qf-chip"><input type="checkbox" name="ecosystems" value="nature-play" checked/>02 &middot; Nature Play</label>
-          <label class="qf-chip"><input type="checkbox" name="ecosystems" value="woodland"/>03 &middot; Woodland</label>
+          <label class="qf-chip"><input type="checkbox" name="ecosystems" value="woodland"/>03 &middot; Woodland Habitats</label>
           <label class="qf-chip"><input type="checkbox" name="ecosystems" value="small-world"/>04 &middot; Small World &amp; Storytelling</label>
           <label class="qf-chip"><input type="checkbox" name="ecosystems" value="fairy-villages"/>05 &middot; Fairy Villages</label>
-          <label class="qf-chip"><input type="checkbox" name="ecosystems" value="steam"/>06 &middot; STEAM</label>
+          <label class="qf-chip"><input type="checkbox" name="ecosystems" value="steam"/>06 &middot; STEAM &middot; Wonder &amp; Investigation</label>
           <label class="qf-chip"><input type="checkbox" name="ecosystems" value="dramatic-play"/>07 &middot; Dramatic Play</label>
           <label class="qf-chip"><input type="checkbox" name="ecosystems" value="creative-arts"/>08 &middot; Creative Arts</label>
         </div>
@@ -4162,7 +4468,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
         <ul class="catalog-list">
           <li><a href="/pages/educator-sensory-play">01 &middot; Sensory Play</a></li>
           <li><a href="/pages/educator-nature-play">02 &middot; Nature Play</a></li>
-          <li><a href="/pages/educator-woodland">03 &middot; Woodland</a></li>
+          <li><a href="/pages/educator-woodland">03 &middot; Woodland Habitats</a></li>
           <li><a href="/pages/educator-small-world">04 &middot; Small World &amp; Storytelling</a></li>
           <li><a href="/pages/educator-fairy-villages">05 &middot; Fairy Villages</a></li>
           <li><a href="/pages/educator-steam">06 &middot; STEAM</a></li>
@@ -4228,7 +4534,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
      CATALOG VARS, single source of truth for ecosystem strings.
      To reskin for another ecosystem, edit ONLY this block.
      A Shopify template can override these via Liquid:
-       const CATALOG = { volume: "02", ecosystem: "Nature Play", makers: ["Gus + Mabel", "Papoose", "Wild Mountain Child"] };
+       const CATALOG = { volume: "{{ page.metafields.catalog.volume }}", ... };
      ================================================================= */
   const CATALOG = {
     volume:       "02",
