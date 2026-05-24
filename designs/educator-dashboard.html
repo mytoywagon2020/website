@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow"/>
+
 <title>Educator Dashboard — My Toy Wagon</title>
 <meta name="description" content="Educator account dashboard: Educator catalog, quotes, purchase orders, tax documents, and shipping.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,7 +30,7 @@ header.nav{border-bottom:0.5px solid var(--rule);background:var(--cream);positio
 .nav-link{font-size:13.5px;font-weight:500;letter-spacing:0.02em;padding:4px 0;}
 .nav-link.active{color:var(--forest);}
 .logo{display:inline-flex;align-items:center;gap:14px;line-height:1;}
-.logo-mark{width:80px;height:80px;background-color:var(--ink);-webkit-mask:url('assets/logo-mark.png') center/contain no-repeat;mask:url('assets/logo-mark.png') center/contain no-repeat;flex-shrink:0;}
+.logo-mark{width:80px;height:80px;background-color:var(--ink);-webkit-mask:url('{{ 'logo-mark.png' | asset_url }}') center/contain no-repeat;mask:url('{{ 'logo-mark.png' | asset_url }}') center/contain no-repeat;flex-shrink:0;}
 .logo-text{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400;letter-spacing:0.24em;text-transform:uppercase;line-height:1;color:var(--ink);white-space:nowrap;}
 .logo small{display:block;font-family:'Mulish',sans-serif;font-style:normal;font-size:8.5px;letter-spacing:0.22em;text-transform:uppercase;color:var(--stone);margin-top:6px;font-weight:500;white-space:nowrap;}
 .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;font-size:12px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;border-radius:2px;border:0.5px solid transparent;cursor:pointer;font-family:inherit;}
@@ -81,11 +83,19 @@ header.nav{border-bottom:0.5px solid var(--rule);background:var(--cream);positio
 .quote-items{font-size:13.5px;color:var(--stone);}
 .quote-total{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;color:var(--ink);}
 .quote-status{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;padding:5px 10px;border-radius:2px;display:inline-block;}
+.quote-status.submitted{background:rgba(95,94,90,0.18);color:var(--ink);}
 .quote-status.draft{background:rgba(95,94,90,0.12);color:var(--stone);}
 .quote-status.review{background:rgba(133,79,11,0.12);color:var(--amber);}
+.quote-status.on-hold{background:rgba(133,79,11,0.2);color:var(--amber);}
 .quote-status.approved{background:rgba(59,109,17,0.12);color:var(--forest);}
 .quote-status.po-received{background:rgba(133,79,11,0.18);color:var(--amber);}
+.quote-status.shipped{background:rgba(59,109,17,0.16);color:var(--forest);}
+.quote-status.invoiced{background:rgba(44,44,42,0.1);color:var(--ink);}
+.quote-status.paid{background:rgba(59,109,17,0.22);color:var(--forest);}
+.quote-status.past-due{background:rgba(180,40,40,0.15);color:#A12B2B;}
 .quote-status.fulfilled{background:rgba(59,109,17,0.18);color:var(--forest);}
+.quote-status.closed{background:rgba(95,94,90,0.18);color:var(--stone);}
+.quote-sla{display:block;margin-top:4px;font-size:10.5px;color:var(--stone);font-family:'Cormorant Garamond',serif;font-style:italic;letter-spacing:0;text-transform:none;font-weight:400;}
 .quote-actions{display:flex;gap:8px;}
 .action-btn{font-size:11px;letter-spacing:0.06em;padding:6px 10px;border:0.5px solid var(--rule-strong);border-radius:2px;background:var(--cream);color:var(--ink);cursor:pointer;font-family:inherit;}
 .action-btn:hover{border-color:var(--ink);}
@@ -151,7 +161,7 @@ footer{background:var(--ink);color:var(--cream);}
   <div class="nav-inner">
     <nav class="nav-left">
       <a href="#" class="nav-link active">Dashboard</a>
-      <a href="#" class="nav-link">Educator Catalog</a>
+      <a href="educators.html" class="nav-link">Educator Catalog</a>
       <a href="#" class="nav-link">Quotes</a>
       <a href="#" class="nav-link">Orders</a>
     </nav>
@@ -171,7 +181,7 @@ footer{background:var(--ink);color:var(--cream);}
     <h3>Account</h3>
     <nav>
       <a href="#" class="active">Dashboard</a>
-      <a href="#">Educator Catalog</a>
+      <a href="educators.html">Educator Catalog</a>
       <a href="#">Quotes <span class="count">3</span></a>
       <a href="#">Purchase orders <span class="count">2</span></a>
       <a href="#">Invoices &amp; payments</a>
@@ -183,13 +193,15 @@ footer{background:var(--ink);color:var(--cream);}
     </nav>
     <div class="sidebar-divider"></div>
     <div class="sidebar-help">
-      <strong style="display:block;font-family:'Mulish',sans-serif;font-style:normal;font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--stone);font-weight:600;margin-bottom:10px;">Talk to our team</strong>
+      <strong style="display:block;font-family:'Mulish',sans-serif;font-style:normal;font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--stone);font-weight:600;margin-bottom:10px;">Your account specialist</strong>
+      <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;color:var(--ink);line-height:1.4;margin-bottom:4px;">Irfana Iqbal</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;color:var(--stone);line-height:1.5;margin-bottom:14px;">Replies within one business day.<br/>626.841.0421</div>
       Schedule a 20-minute call. We'll review your quote, answer procurement questions, or help you plan a classroom order.
       <a href="#" style="display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:11px 16px;background:var(--ink);color:var(--cream);border-radius:2px;font-family:'Mulish',sans-serif;font-style:normal;font-size:11.5px;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;text-decoration:none;">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
         Schedule a call
       </a>
-      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;color:var(--stone);line-height:1.5;margin:14px 0 0;">Or <a href="mailto:contact@mytoywagon.com" style="color:var(--ink);border-bottom:0.5px solid var(--rule-strong);">email our team</a> · 626.841.0421</p>
+      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;color:var(--stone);line-height:1.5;margin:14px 0 0;">Or <a href="/cdn-cgi/l/email-protection#f99a96978d989a8db994808d96808e989e9697d79a9694" style="color:var(--ink);border-bottom:0.5px solid var(--rule-strong);">email our team</a> · 626.841.0421</p>
     </div>
   </aside>
 
@@ -230,15 +242,15 @@ footer{background:var(--ink);color:var(--cream);}
       <div class="catalog-teaser">
         <div>
           <span class="label">Educator Catalog</span>
-          <h3>Browse <em>educator pricing</em>.</h3>
-          <p>The full My Toy Wagon catalog at your educator price. Every product shows your discounted unit price, classroom-quantity breaks, and bulk options.</p>
+          <h3>Browse the <em>Educator catalog</em>.</h3>
+          <p>The full My Toy Wagon catalog, available on purchase orders with Net-30 invoicing and tax-exempt processing. Every product the same price as our retail shop, with concierge curation for classroom-scale orders.</p>
           <div class="catalog-actions">
-            <a href="#" class="btn btn-primary">Open the Educator catalog</a>
+            <a href="educators.html" class="btn btn-primary">Open the Educator catalog</a>
             <a href="#" class="btn btn-ghost">Download PDF catalog</a>
           </div>
         </div>
         <div class="catalog-teaser-img">
-          <img src="assets/bauspiel-flower-sparkling-stones.webp" alt="Bauspiel Flower Sparkling Stones — 60-piece wooden set with jeweled flower inlays">
+          <img src="{{ 'bauspiel-flower-sparkling-stones.webp' | asset_url }}" alt="Bauspiel Flower Sparkling Stones — 60-piece wooden set with jeweled flower inlays">
         </div>
       </div>
     </section>
@@ -278,19 +290,31 @@ footer{background:var(--ink);color:var(--cream);}
           <div class="quote-desc">Spring sensory restock<span class="quote-date">Created May 8, 2026</span></div>
           <span class="quote-items">12 SKUs</span>
           <span class="quote-total">$1,248</span>
-          <span><span class="quote-status review">Awaiting approval</span></span>
+          <span><span class="quote-status review">Awaiting approval</span><span class="quote-sla">Reply expected by Tue, May 20</span></span>
           <div class="quote-actions">
             <a href="#" class="action-btn">View</a>
           </div>
         </div>
         <div class="quote-row">
           <span class="quote-num">Q-2026-013</span>
-          <div class="quote-desc">Bumbu Toys, Q3 order<span class="quote-date">Created May 2, 2026</span></div>
+          <div class="quote-desc">Bumbu Toys, Q3 order<span class="quote-date">Created May 2, 2026 · PO 2026-FBC-441 received May 11</span></div>
           <span class="quote-items">8 SKUs</span>
           <span class="quote-total">$786</span>
-          <span><span class="quote-status po-received">PO received — converting to order</span></span>
+          <span><span class="quote-status shipped">Shipped</span><span class="quote-sla">Tracking 1Z 9999 · ETA May 22</span></span>
           <div class="quote-actions">
-            <a href="#" class="action-btn primary">View PO</a>
+            <a href="#" class="action-btn">Track</a>
+            <a href="#" class="action-btn">Invoice</a>
+          </div>
+        </div>
+        <div class="quote-row">
+          <span class="quote-num">Q-2026-011</span>
+          <div class="quote-desc">Bauspiel block restock<span class="quote-date">Invoiced May 5 · Due Jun 4</span></div>
+          <span class="quote-items">3 SKUs</span>
+          <span class="quote-total">$412</span>
+          <span><span class="quote-status invoiced">Invoiced</span><span class="quote-sla">Net-30 due in 18 days</span></span>
+          <div class="quote-actions">
+            <a href="#" class="action-btn">Invoice</a>
+            <a href="#" class="action-btn primary">Pay now</a>
           </div>
         </div>
         <div class="quote-row">
@@ -315,11 +339,23 @@ footer{background:var(--ink);color:var(--cream);}
       </div>
       <div class="po-card">
         <div>
-          <h3>Pay by <em>PO</em>.</h3>
-          <p>Once a quote is approved, upload your school or district's purchase order and we'll match it to the invoice. Net-30 terms apply automatically for verified accounts. Shipping will be added to the invoice once your order ships.</p>
+          <h3>Submit a <em>PO</em>.</h3>
+          <p>Upload your school or district's purchase order. We accept a single PO matched to one quote, a blanket PO across multiple quotes, or a quote split across multiple POs (Title I, classroom budget, district funds).</p>
           <div class="po-fields">
             <input type="text" placeholder="PO number">
-            <input type="text" placeholder="Match to quote (Q-2026-…)">
+            <input type="text" placeholder="PO issue date">
+            <select style="padding:12px 14px;border:0.5px solid var(--rule-strong);background:var(--warm-white);font-family:inherit;font-size:13.5px;border-radius:2px;color:var(--ink);">
+              <option>Match to: a single quote</option>
+              <option>Match to: multiple quotes (blanket PO)</option>
+              <option>Match to: portion of a quote (split funding)</option>
+            </select>
+            <input type="text" placeholder="Quote(s) to match (Q-2026-…)">
+            <select style="padding:12px 14px;border:0.5px solid var(--rule-strong);background:var(--warm-white);font-family:inherit;font-size:13.5px;border-radius:2px;color:var(--ink);">
+              <option>Ship to: Maple Tree Montessori · 1820 Oak St, Pasadena</option>
+              <option>Ship to: Pasadena USD Receiving · 351 S Hudson Ave</option>
+              <option>Add a new shipping address…</option>
+            </select>
+            <input type="text" placeholder="Special instructions (delivery window, dock, attn:)">
           </div>
         </div>
         <label class="po-upload-zone" for="po-file">
@@ -388,15 +424,16 @@ footer{background:var(--ink);color:var(--cream);}
 </div>
 
 <footer>
+  <div style="padding: 18px 40px; font-family: var(--sans), system-ui, sans-serif; font-size: 12px; color: var(--stone, #5F5E5A); text-align: center; border-top: 0.5px solid var(--rule, rgba(44,44,42,.12));">© 2026 My Toy Wagon &middot; Educator Portal &middot; All rights reserved</div>
   <div class="foot-bottom-band">
     <span>My Toy Wagon Educator Portal · Signed in as Sarah Chen</span>
     <div class="foot-bottom-links">
       <a href="#">Account help</a>
-      <a href="mailto:contact@mytoywagon.com">Contact our team</a>
+      <a href="/cdn-cgi/l/email-protection#dab9b5b4aebbb9ae9ab7a3aeb5a3adbbbdb5b4f4b9b5b7">Contact our team</a>
       <a href="MTW Homepage v3.html">Public shop</a>
     </div>
   </div>
 </footer>
 
-</body>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
 </html>

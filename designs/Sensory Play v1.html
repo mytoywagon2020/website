@@ -1,0 +1,4671 @@
+{% layout none %}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex,nofollow"/>
+
+<!-- SEO STRATEGY ============================================================
+     This page is the EDITORIAL surface (school-buyer keywords).
+     The Shopify-auto collection page lives at /collections/sensory-play
+     (product-search keywords). They don't compete because:
+       1. Different URLs (/pages/educator-sensory-play vs /collections/sensory-play)
+       2. Different titles, descriptions, H1s
+       3. Different target keywords
+       4. Each has its own canonical pointing to itself
+     ========================================================================= -->
+<title>Sensory Play for Schools &middot; My Toy Wagon Educator Catalog</title>
+<meta name="description" content="Hand-felted play mats, habitat puppets, and circle-time story sets for Pre-K to Grade 2 literacy classrooms. Hand-made in Nepal. Net-30 invoicing,...">
+<link rel="canonical" href="https://mytoywagon.com/pages/educator-sensory-play" />
+
+<!-- Open Graph (social shares: Facebook, LinkedIn) -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Sensory Play for Schools &middot; My Toy Wagon Educator Catalog" />
+<meta property="og:description" content="Hand-felted play mats, habitat puppets, and circle-time story sets for Pre-K to Grade 2 literacy classrooms. Net-30 and tax-exempt for approved schools." />
+<meta property="og:url" content="https://mytoywagon.com/pages/educator-sensory-play" />
+<meta property="og:image" content="https://mytoywagon.com/assets/og-sensory-play.jpg" />
+<meta property="og:site_name" content="My Toy Wagon" />
+
+<!-- Twitter card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Sensory Play for Schools &middot; My Toy Wagon Educator Catalog" />
+<meta name="twitter:description" content="Hand-felted play mats, habitat puppets, and circle-time story sets for Pre-K to Grade 2 literacy classrooms. Net-30 and tax-exempt for approved schools." />
+
+<!-- Structured data: BreadcrumbList for educator portal hierarchy.
+     Tells Google: Home > Educator Catalog > Sensory Play.
+     This is the editorial breadcrumb; the Shopify collection page has its own. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://mytoywagon.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Educator Catalog", "item": "https://mytoywagon.com/pages/educators"},
+    {"@type": "ListItem", "position": 3, "name": "Sensory Play"}
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Mulish:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+/* =================================================================
+   MY TOY WAGON, ECOSYSTEM CATALOG TEMPLATE
+   Current preset: SENSORY PLAY (Section 01)
+   To retheme for another ecosystem, swap the ECOSYSTEM TOKENS block
+   below + the CATALOG const at the bottom. Every component downstream
+   reads from tokens.
+   ================================================================= */
+
+/* ----------------------------- TOKENS ---------------------------- */
+:root{
+  /* BRAND CHASSIS, shared with retail homepage. Do not vary. */
+  --cream:        #F5F0E5;   /* brand cream, neutral-warm */
+  --warm-white:   #FFFCF7;   /* card surface over cream */
+  --card-bg:      #EDE3CD;   /* warm beige card surface */
+  --ink:          #2C2C2A;   /* brand ink, neutral warm grey */
+  --ink-soft:     #44423E;   /* softer ink for body */
+  --stone:        #5F5E5A;   /* muted brand grey */
+  --muted:        #5F5E5A;   /* alias for back-compat */
+  --forest:       #3B6D11;   /* brand primary accent (verified, micro) */
+  --amber:        #854F0B;   /* brand secondary accent (wagon badge) */
+  --gilt:         #C9A96E;
+  --gilt-pale:    #E8D5A8;
+
+  /* ECOSYSTEM PALETTE, swap these per ecosystem. Carries mood. */
+  --accent:       #3D7A6A;   /* teal-green, primary signature */
+  --accent-soft:  #8FB5A9;   /* sage-mint soft */
+  --accent-pale:  #DCE9E3;   /* pale mint, background tint */
+  --accent-deep:  #285644;   /* deep teal-forest, type emphasis */
+  --alt:          #C9A86E;   /* warm sand, secondary (maple/tray tones) */
+  --alt-deep:     #8B7340;   /* deep wheat */
+  --hue-3:        #9FB8D4;   /* soft sky blue, tertiary (rice/sensory) */
+  --hue-3-deep:   #5E7894;   /* slate blue */
+
+  /* mood gradient, ecosystem signature, used on cover + bottom hero */
+  --mood-a:       #8FB5A9;   /* sage start */
+  --mood-b:       #3D7A6A;   /* teal */
+  --mood-c:       #285644;   /* deep teal */
+  --mood-d:       #C9A86E;   /* warm sand */
+  --mood-e:       #9FB8D4;   /* sky blue end */
+
+  /* meta strings (referenced via ::before content where needed) */
+  --rule:         rgba(44,44,42,.12);   /* brand hairline */
+  --rule-soft:    rgba(44,44,42,.06);
+  --rule-strong:  rgba(44,44,42,.22);   /* visible divider */
+
+  /* type */
+  --serif:        "Cormorant Garamond", "Garamond", Georgia, serif;
+  --sans:         "Mulish", "Helvetica Neue", system-ui, sans-serif;
+  --mono:         ui-monospace, "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+}
+
+/* ----------------------------- BASE ------------------------------ */
+*, *::before, *::after{ box-sizing:border-box; margin:0; padding:0; }
+html{ scroll-behavior:smooth; }
+body{
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+  text-wrap: pretty;
+}
+img{ display:block; max-width:100%; }
+a{ color:inherit; }
+::selection{ background: var(--accent); color: var(--cream); }
+
+.serif{ font-family: var(--serif); }
+.it{ font-style: italic; }
+.eyebrow{
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+}
+.label{
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+.meta{
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .06em;
+}
+.rule-hair{ display:block; width:100%; height:1px; background: var(--rule-soft); border:0; }
+.rule{ display:block; width:100%; height:1px; background: var(--rule); border:0; }
+
+/* ----------------------- IMAGE-SLOT SYSTEM ----------------------- */
+/* Tiles fill in for photography. Each tile is a tinted, softly-
+   textured surface with a monospace corner tag that briefs the
+   photographer on what should go here. Role-based tones (.t-primary,
+   .t-soft, .t-pale, .t-deep, .t-alt, .t-alt-deep, .t-cream, .t-ink,
+   .t-mood) so that a token-swap reskins every tile at once. */
+.tile{
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--accent-pale);
+}
+.tile::before{
+  content:"";
+  position: absolute; inset:0;
+  background:
+    radial-gradient(120% 80% at 20% 18%, rgba(255,255,255,.35), rgba(255,255,255,0) 60%),
+    radial-gradient(120% 80% at 85% 90%, rgba(44,26,14,.18), rgba(44,26,14,0) 55%),
+    repeating-linear-gradient(135deg, rgba(255,255,255,.06) 0 1px, rgba(255,255,255,0) 1px 14px),
+    repeating-linear-gradient(45deg, rgba(44,26,14,.04) 0 1px, rgba(44,26,14,0) 1px 22px);
+  pointer-events: none; z-index:1;
+}
+.tile::after{
+  content:"";
+  position: absolute; inset:0;
+  background: radial-gradient(58% 48% at 50% 50%, rgba(255,255,255,0) 60%, rgba(44,26,14,.10) 100%);
+  pointer-events: none; z-index:1;
+}
+.tile .tag{
+  position:absolute; left:14px; top:14px;
+  z-index:3;
+  font-family: var(--mono);
+  font-size:10px;
+  letter-spacing:.04em;
+  line-height: 1.45;
+  color: rgba(44,26,14,.78);
+  background: rgba(250,246,237,.82);
+  border: 1px solid rgba(44,26,14,.15);
+  padding: 6px 10px;
+  max-width: calc(100% - 28px);
+  backdrop-filter: blur(1px) saturate(120%);
+}
+.tile .tag.dark{
+  color: rgba(250,246,237,.92);
+  background: rgba(44,26,14,.45);
+  border-color: rgba(250,246,237,.22);
+}
+.tile .corner{
+  position:absolute; width:14px; height:14px;
+  border: 1px solid rgba(44,26,14,.4);
+  z-index:2;
+}
+.tile.dark .corner{ border-color: rgba(250,246,237,.55); }
+.tile .corner.tl{ top:0; left:0;  border-right:0; border-bottom:0; }
+.tile .corner.tr{ top:0; right:0; border-left:0;  border-bottom:0; }
+.tile .corner.bl{ bottom:0; left:0;  border-right:0; border-top:0; }
+.tile .corner.br{ bottom:0; right:0; border-left:0;  border-top:0; }
+
+/* Role-based tones (token-driven, swap once and the page reskins) */
+.t-primary  { background: linear-gradient(160deg, var(--accent-soft) 0%, var(--accent) 60%, var(--accent-deep) 100%); }
+.t-soft     { background: linear-gradient(160deg, color-mix(in oklab, var(--accent-soft) 70%, white) 0%, var(--accent-soft) 60%, var(--accent) 100%); }
+.t-pale     { background: linear-gradient(155deg, color-mix(in oklab, var(--accent-pale) 80%, white) 0%, var(--accent-pale) 60%, var(--accent-soft) 100%); }
+.t-deep     { background: linear-gradient(170deg, var(--accent) 0%, var(--accent-deep) 70%, color-mix(in oklab, var(--accent-deep) 60%, #000) 100%); }
+.t-alt      { background: linear-gradient(155deg, color-mix(in oklab, var(--alt) 80%, white) 0%, var(--alt) 55%, var(--alt-deep) 100%); }
+.t-alt-deep { background: linear-gradient(180deg, var(--alt) 0%, var(--alt-deep) 65%, color-mix(in oklab, var(--alt-deep) 50%, #000) 100%); }
+.t-cream    { background: linear-gradient(155deg, var(--cream) 0%, var(--card-bg) 60%, var(--gilt-pale) 100%); }
+.t-ink      { background: linear-gradient(170deg, #44423E 0%, var(--ink) 60%, #1A1A18 100%); }
+.t-hue3     { background: linear-gradient(160deg, color-mix(in oklab, var(--hue-3) 75%, white) 0%, var(--hue-3) 55%, var(--hue-3-deep) 100%); }
+.t-hue3-deep{ background: linear-gradient(170deg, var(--hue-3) 0%, var(--hue-3-deep) 65%, color-mix(in oklab, var(--hue-3-deep) 50%, #000) 100%); }
+.t-gilt     { background: linear-gradient(155deg, var(--gilt-pale) 0%, var(--gilt) 60%, color-mix(in oklab, var(--gilt) 50%, #000) 100%); }
+.t-mood     {
+  background:
+    radial-gradient(60% 90% at 50% 100%, rgba(255,255,255,0) 30%, rgba(255,255,255,.16) 60%, rgba(255,255,255,0) 82%),
+    linear-gradient(170deg,
+      var(--mood-a) 0%,
+      var(--mood-b) 28%,
+      var(--mood-c) 52%,
+      var(--mood-d) 78%,
+      var(--mood-e) 100%);
+}
+
+/* ----------------------- NAV (sticky, brand-styled, retail pattern) ----------------------- */
+.nav{
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  padding: 18px clamp(20px, 4vw, 44px);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 32px;
+  background: var(--cream);
+  border-bottom: 0.5px solid var(--rule);
+  transition: background .25s ease, padding .25s ease;
+}
+.nav.scrolled{
+  background: rgba(245,240,229,.96);
+  backdrop-filter: saturate(140%) blur(8px);
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+.nav__search{
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 22px;
+  background: var(--warm-white);
+  border: 0.5px solid var(--rule-strong);
+  border-radius: 999px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--stone);
+  cursor: text;
+  width: 100%;
+  max-width: 380px;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.nav__search:hover{ border-color: var(--ink); box-shadow: 0 1px 12px rgba(44,44,42,.06); }
+.nav__search svg{ width: 16px; height: 16px; stroke: var(--ink); stroke-width: 1.6; fill: none; flex-shrink: 0; }
+.nav__logo{
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--ink);
+  line-height: 1;
+  justify-self: center;
+}
+.nav__logo .mark{
+  height: 78px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+  flex-shrink: 0;
+  transition: height .25s ease;
+}
+.nav.scrolled .nav__logo .mark{ height: 54px; }
+.nav__logo .text{ display: none; }
+.nav__actions{
+  justify-self: end;
+  display: inline-flex;
+  align-items: center;
+  gap: 24px;
+}
+.nav__action{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: .02em;
+  color: var(--ink);
+  text-decoration: none;
+  padding: 4px 0;
+  transition: color .2s ease;
+}
+.nav__action:hover{ color: var(--forest); }
+.nav__action svg{ width: 17px; height: 17px; stroke: currentColor; stroke-width: 1.4; fill: none; flex-shrink: 0; }
+.nav__action .pill{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px; height: 18px;
+  padding: 0 5px;
+  background: var(--forest);
+  color: var(--cream);
+  border-radius: 9px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+/* ----------------------- PROMO STRIP (editorial breadcrumb) ----------------------- */
+.promo-strip{
+  background: var(--card-bg);
+  border-bottom: 0.5px solid var(--rule);
+  text-align: center;
+  padding: 12px clamp(16px, 4vw, 40px);
+  font-family: var(--sans);
+  font-style: normal;
+  font-size: 13px;
+  letter-spacing: .02em;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+.promo-strip .vol{ color: var(--accent-deep); font-weight: 600; }
+.promo-strip .sep{ display: inline-block; width: 3px; height: 3px; border-radius: 50%; background: var(--rule-strong); vertical-align: middle; margin: 0 14px; }
+.promo-strip strong{ color: var(--ink); font-weight: 600; font-style: normal; font-family: var(--sans); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; margin-right: 8px; }
+
+/* ----------------------- SUBNAV (slim ecosystem stepper + in-page jumps) ----------------------- */
+.subnav{
+  background: var(--cream);
+  border-bottom: 0.5px solid var(--rule);
+  padding: 14px clamp(20px, 4vw, 44px);
+}
+.subnav-inner{
+  max-width: 1440px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 24px;
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: .04em;
+}
+.subnav .back{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color .2s ease;
+}
+.subnav .back:hover{ color: var(--forest); }
+.subnav .back::before{
+  content: "";
+  display: inline-block;
+  width: 7px; height: 7px;
+  border-top: 1px solid currentColor;
+  border-left: 1px solid currentColor;
+  transform: rotate(-45deg);
+}
+.subnav .stepper{
+  display: inline-flex; align-items: center; gap: 18px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--ink);
+}
+.subnav .stepper a{
+  color: var(--stone);
+  text-decoration: none;
+  transition: color .2s ease;
+}
+.subnav .stepper a:hover{ color: var(--ink); }
+.subnav .stepper .current{
+  color: var(--accent-deep);
+  font-weight: 500;
+}
+.subnav .stepper .sep{ color: var(--rule-strong); font-style: normal; }
+.subnav .jumps{
+  display: inline-flex; align-items: center; gap: 22px;
+  justify-content: flex-end;
+}
+.subnav .jumps a{
+  color: var(--ink-soft);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color .2s ease;
+}
+.subnav .jumps a:hover{ color: var(--forest); }
+
+@media (max-width: 1080px){
+  .nav{ grid-template-columns: auto 1fr auto; gap: 16px; padding: 14px 20px; }
+  .nav__search{ display: none; }
+  .nav__logo{ justify-self: start; }
+  .nav__action .label{ display: none; }
+  .subnav-inner{ grid-template-columns: auto 1fr; gap: 14px; }
+  .subnav .jumps{ display: none; }
+  .subnav .stepper{ overflow-x: auto; scrollbar-width: none; white-space: nowrap; flex-wrap: nowrap; }
+  .subnav .stepper::-webkit-scrollbar{ display: none; }
+}
+
+/* ----------------------- BRAND BARS + DNA ----------------------- */
+.utility{
+  background: var(--ink);
+  color: var(--cream);
+  font-size: 12px;
+  letter-spacing: .06em;
+}
+.utility-inner{
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 11px clamp(20px, 5vw, 44px);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 24px;
+}
+.utility-left{ color: rgba(245,240,229,.75); display: flex; align-items: center; gap: 20px; }
+.utility-left a{ color: inherit; text-decoration: none; transition: color .2s ease; }
+.utility-left a:hover{ color: var(--cream); }
+.utility-left .phone{ display: inline-flex; align-items: center; gap: 8px; }
+.utility-left .phone svg{ width: 12px; height: 12px; stroke: currentColor; stroke-width: 1.4; fill: none; }
+.utility-center{
+  text-align: center;
+  font-family: var(--sans);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: .04em;
+  color: var(--cream);
+  line-height: 1.5;
+  position: relative;
+  min-height: 1.5em;
+}
+.utility-center .slide{
+  display: block;
+  opacity: 0;
+  position: absolute;
+  inset: 0;
+  transition: opacity .5s ease;
+  pointer-events: none;
+}
+.utility-center .slide.is-active{
+  opacity: 1;
+  position: relative;
+  pointer-events: auto;
+}
+.utility-center em{ color: color-mix(in oklab, var(--accent-soft) 80%, white); font-style: normal; font-weight: 600; }
+.utility-right{
+  color: rgba(245,240,229,.75);
+  display: flex; align-items: center; justify-content: flex-end; gap: 20px;
+}
+.utility-right a{ color: inherit; text-decoration: none; transition: color .2s ease; }
+.utility-right a:hover{ color: var(--cream); }
+.utility-right .pipe{ color: rgba(245,240,229,.25); }
+
+/* Inverse soft strip, mirrors the homepage's "For educators" strip */
+.families-soft{
+  background: var(--cream);
+  border-bottom: 0.5px solid var(--rule);
+}
+.families-soft-inner{
+  max-width: 1340px;
+  margin: 0 auto;
+  padding: 22px clamp(20px, 5vw, 56px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.families-soft-text{
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 17px;
+  color: var(--ink);
+  line-height: 1.4;
+  max-width: 640px;
+}
+.families-soft-text strong{
+  display: block;
+  font-style: normal;
+  font-weight: 500;
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--stone);
+  margin-bottom: 4px;
+}
+.families-soft-cta{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 0.5px solid var(--rule-strong);
+  padding-bottom: 4px;
+  flex-shrink: 0;
+  transition: color .2s ease, border-color .2s ease;
+}
+.families-soft-cta:hover{ color: var(--forest); border-color: var(--forest); }
+
+/* Wagon badge, the brand's amber rotated pill */
+.wagon-badge{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 14px;
+  background: var(--amber);
+  color: var(--cream);
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: .04em;
+  border-radius: 2px;
+  border: 0.5px dashed rgba(245,240,229,.55);
+  box-shadow: 0 2px 6px rgba(44,44,42,.18);
+  white-space: nowrap;
+  transform: rotate(-3deg);
+}
+.wagon-badge.flat{ transform: none; }
+
+/* Numbered block-num (brand pattern: "01 / The Anchor") */
+.block-num{
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 15px;
+  color: var(--stone);
+  letter-spacing: 0;
+  margin: 0 0 14px;
+  display: block;
+}
+.block-num .dot{ color: var(--accent); }
+
+/* Verified buyer disc, forest green, brand micro-DNA */
+.verified-disc{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--forest);
+}
+.verified-disc svg{ width: 12px; height: 12px; flex-shrink: 0; }
+
+/* Image fill, drop real photos into placeholder tiles.
+   `.has-photo` hides the gradient texture and corner brackets.
+   `cover` mode (default): photo fills the tile, cropped to fit.
+   `contained` mode: photo sits inside the tile on its tinted gradient
+   backdrop, never stretched edge-to-edge. Use this for product portraits
+   from a catalog studio shoot, not lifestyle photography. */
+.tile.has-photo::before,
+.tile.has-photo::after{ display: none; }
+.tile.has-photo > .tag,
+.tile.has-photo > .corner{ display: none; }
+.tile.has-photo > img{
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  z-index: 0;
+}
+.tile.has-photo.contained > img{
+  object-fit: contain;
+  padding: 8% 10%;
+  z-index: 2;
+  filter: drop-shadow(0 18px 36px rgba(44,44,42,.18));
+}
+.tile.has-photo .credit{
+  position: absolute;
+  right: 12px; bottom: 12px;
+  z-index: 3;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .08em;
+  color: rgba(44,44,42,.55);
+  background: rgba(245,240,229,.78);
+  padding: 4px 7px;
+  border: 0.5px solid rgba(44,44,42,.15);
+  text-transform: uppercase;
+}
+.tile.dark.has-photo .credit{
+  color: rgba(245,240,229,.85);
+  background: rgba(44,44,42,.45);
+  border-color: rgba(245,240,229,.2);
+}
+
+/* ----------------------- QUICK FACTS (thin, scannable, above-fold) ----------------------- */
+.quick-facts{
+  background: var(--cream);
+  border-bottom: 0.5px solid var(--rule);
+  border-top: 0.5px solid var(--rule);
+}
+.quick-facts-inner{
+  max-width: 1340px;
+  margin: 0 auto;
+  padding: 14px clamp(16px, 4vw, 56px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  flex-wrap: wrap;
+}
+.qf-chip-stat{
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ink);
+  padding: 6px 22px;
+  position: relative;
+  white-space: nowrap;
+}
+.qf-chip-stat + .qf-chip-stat::before{
+  content: "·";
+  position: absolute;
+  left: 0;
+  color: var(--rule-strong);
+  font-weight: 400;
+}
+@media (max-width: 880px){
+  .quick-facts-inner{
+    justify-content: flex-start;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    scrollbar-width: none;
+  }
+  .quick-facts-inner::-webkit-scrollbar{ display: none; }
+  .qf-chip-stat{ font-size: 11px; padding: 6px 16px; flex-shrink: 0; }
+}
+
+/* ----------------------- BOM (kit bill-of-materials) ----------------------- */
+.bom{
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 0 0 24px;
+  border-top: 0.5px solid var(--rule);
+}
+.bom-row{
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px 16px;
+  align-items: baseline;
+  padding: 12px 0;
+  border-bottom: 0.5px solid var(--rule);
+}
+.bom-item{
+  font-family: var(--serif);
+  font-size: 16px;
+  line-height: 1.35;
+  color: var(--ink);
+}
+.bom-item .sku-tba{
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--stone);
+  background: var(--warm-white);
+  border: 0.5px dashed var(--rule-strong);
+  padding: 2px 6px;
+  margin-right: 8px;
+  vertical-align: 2px;
+}
+.bom-meta{
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .04em;
+  color: var(--stone);
+  text-align: right;
+  white-space: nowrap;
+}
+.bom-foot{
+  display: flex; align-items: baseline; justify-content: space-between;
+  padding-top: 14px;
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+.bom-foot .label{ color: var(--stone); }
+.bom-foot .v{ color: var(--ink); font-weight: 600; }
+
+/* ----------------------- B2B PRICE BLOCK (gallery cards + general) ----------------------- */
+.price-block{
+  display: inline-flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+/* ----------------------- ADD TO CART (per product card) ----------------------- */
+.price{
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1;
+  color: var(--ink) !important;
+  margin: 12px 0 0;
+  letter-spacing: -.005em;
+}
+.price small{
+  font-family: var(--sans);
+  font-style: normal;
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--stone);
+  font-weight: 500;
+}
+.add-row{
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 12px;
+}
+.add-btn{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--cream);
+  background: var(--ink);
+  border: 1px solid var(--ink);
+  border-radius: 2px;
+  padding: 10px 16px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background .2s ease, border-color .2s ease;
+}
+.add-btn:hover{ background: var(--forest); border-color: var(--forest); }
+.add-btn.plain{
+  background: transparent; color: var(--ink);
+}
+.add-btn.plain:hover{ background: var(--ink); color: var(--cream); }
+.add-btn .plus{
+  display: inline-block;
+  width: 9px; height: 9px;
+  position: relative;
+}
+.add-btn .plus::before,
+.add-btn .plus::after{
+  content: ""; position: absolute; background: currentColor;
+}
+.add-btn .plus::before{ left: 0; right: 0; top: 50%; height: 1px; transform: translateY(-50%); }
+.add-btn .plus::after{ top: 0; bottom: 0; left: 50%; width: 1px; transform: translateX(-50%); }
+.view-pdp{
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--stone);
+  text-decoration: none;
+  border-bottom: 0.5px solid var(--rule-strong);
+  padding-bottom: 2px;
+  transition: color .2s ease, border-color .2s ease;
+}
+.view-pdp:hover{ color: var(--ink); border-color: var(--ink); }
+.stock-pill{
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--forest);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.stock-pill::before{
+  content: ""; display: inline-block;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--forest);
+}
+
+/* Kit price-line override */
+.kit .price-line{
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 1;
+  color: var(--ink);
+  letter-spacing: -.005em;
+  font-style: normal;
+  text-transform: none;
+  margin: 0 0 6px;
+  padding-top: 0;
+  border-top: 0;
+}
+.kit .price-line .msrp{
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .04em;
+  color: var(--stone);
+  text-decoration: line-through;
+  margin-left: 10px;
+}
+.kit .price-note{
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--stone);
+  margin: 0 0 22px;
+  padding-bottom: 18px;
+  border-bottom: 0.5px solid var(--rule-strong);
+  display: block;
+}
+.kit .add-row{ margin-top: 18px; }
+
+/* ----------------------- CART + ACCOUNT (utility bar + nav) ----------------------- */
+.signed-in{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--cream);
+}
+.signed-in .dot-active{
+  display: inline-block;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--forest);
+  box-shadow: 0 0 0 2px rgba(59,109,17,.25);
+}
+.signed-in .role{
+  font-family: var(--sans);
+  font-style: normal;
+  font-size: 10px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: rgba(245,240,229,.55);
+  margin-left: 8px;
+}
+
+.nav__actions{
+  justify-self: end;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+.nav__cart{
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: .04em;
+  color: var(--ink);
+  text-decoration: none;
+  padding: 11px 16px;
+  border: 0.5px solid var(--rule-strong);
+  border-radius: 2px;
+  transition: border-color .2s ease;
+}
+.nav__cart:hover{ border-color: var(--ink); }
+.nav__cart-count{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px; height: 18px;
+  padding: 0 5px;
+  background: var(--forest);
+  color: var(--cream);
+  border-radius: 9px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* ----------------------- HOW IT WORKS (friction-reduction strip) ----------------------- */
+.how-it-works{
+  background: var(--card-bg);
+  border-top: 0.5px solid var(--rule);
+  border-bottom: 0.5px solid var(--rule);
+}
+.how-it-works-inner{
+  max-width: 1340px;
+  margin: 0 auto;
+  padding: 56px clamp(20px, 5vw, 56px);
+}
+.how-head{
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: 56px;
+  align-items: end;
+  margin-bottom: 36px;
+  padding-bottom: 28px;
+  border-bottom: 0.5px solid var(--rule);
+}
+.how-head .eyebrow{ color: var(--accent-deep); margin-bottom: 18px; display: inline-block; }
+.how-head h3{
+  margin: 0;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(28px, 3.2vw, 42px);
+  line-height: 1.05;
+  letter-spacing: -.005em;
+}
+.how-head h3 .it{ color: var(--accent-deep); }
+.how-head p{
+  margin: 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  max-width: 42ch;
+}
+.steps{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+.step{
+  padding: 0 32px 0 0;
+  border-right: 0.5px solid var(--rule);
+}
+.step:last-child{ border-right: 0; padding-right: 0; }
+.step:nth-child(n+2){ padding-left: 32px; }
+.step .num{
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 38px;
+  line-height: 1;
+  color: var(--accent-deep);
+  margin-bottom: 16px;
+  display: block;
+}
+.step h4{
+  margin: 0 0 10px;
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 1.2;
+  letter-spacing: -.005em;
+  color: var(--ink);
+}
+.step p{
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  max-width: 36ch;
+}
+.step .more{
+  margin-top: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 0.5px solid var(--ink);
+  padding-bottom: 3px;
+  transition: color .2s ease, border-color .2s ease;
+}
+.step .more:hover{ color: var(--forest); border-color: var(--forest); }
+@media (max-width: 1080px){
+  .how-head{ grid-template-columns: 1fr; gap: 24px; }
+  .steps{ grid-template-columns: 1fr; gap: 28px; }
+  .step{ border-right: 0; border-bottom: 0.5px solid var(--rule); padding: 0 0 24px 0 !important; }
+  .step:last-child{ border-bottom: 0; padding-bottom: 0 !important; }
+}
+.price-policy{
+  background: var(--card-bg);
+  border-top: 0.5px solid var(--rule);
+  border-bottom: 0.5px solid var(--rule);
+  text-align: center;
+  padding: 12px 16px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+.price-policy strong{ color: var(--ink); font-weight: 600; }
+
+/* ----------------------- STRUCTURED QUOTE FORM ----------------------- */
+.quote-form{ background: var(--card-bg); }
+.quote-form .wrap{
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(40px, 6vw, 80px);
+  align-items: start;
+}
+.quote-form .col-intro h2{
+  margin: 18px 0 24px;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(36px, 4.6vw, 64px);
+  line-height: 1.02;
+  letter-spacing: -.008em;
+}
+.quote-form .col-intro h2 .it{ color: var(--accent-deep); }
+.quote-form .col-intro p{
+  margin: 0 0 18px;
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  max-width: 42ch;
+}
+.quote-form .col-intro .promise{
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 0.5px solid var(--rule);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  line-height: 1.8;
+}
+
+/* Human-touch block: "Replied to by a human" + Schedule a call */
+.human-touch{
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 0.5px solid var(--rule);
+  display: grid;
+  gap: 22px;
+}
+.human-touch .ht-card{
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+.human-touch .ht-card svg{
+  width: 24px;
+  height: 24px;
+  stroke: var(--accent-deep);
+  fill: none;
+  stroke-width: 1.4;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+.human-touch .ht-body strong{
+  display: block;
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 19px;
+  color: var(--ink);
+  line-height: 1.3;
+  margin-bottom: 6px;
+  letter-spacing: -.005em;
+}
+.human-touch .ht-body p{
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+.human-touch .ht-body .ht-link{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 0.5px solid var(--ink);
+  padding-bottom: 3px;
+  transition: color .2s ease, border-color .2s ease;
+}
+.human-touch .ht-body .ht-link:hover{ color: var(--forest); border-color: var(--forest); }
+.human-touch .ht-call{
+  margin-top: 6px;
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: .04em;
+  color: var(--ink-soft);
+}
+.human-touch .ht-call a{ color: var(--ink); font-weight: 500; text-decoration: none; border-bottom: 0.5px solid var(--rule-strong); padding-bottom: 1px; }
+.human-touch .ht-call a:hover{ border-color: var(--ink); }
+.qf-form{ display: grid; gap: 22px 24px; grid-template-columns: 1fr 1fr; }
+.qf-row{ display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.qf-row.full{ grid-column: 1 / -1; }
+.qf-row label{
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+.qf-row label .req{ color: var(--accent-deep); margin-left: 4px; }
+.qf-row input[type="text"],
+.qf-row input[type="email"],
+.qf-row input[type="tel"],
+.qf-row select,
+.qf-row textarea{
+  font-family: var(--sans);
+  font-size: 15px;
+  color: var(--ink);
+  background: var(--warm-white);
+  border: 0.5px solid var(--rule-strong);
+  border-radius: 2px;
+  padding: 13px 16px;
+  outline: none;
+  transition: border-color .2s ease;
+  width: 100%;
+}
+.qf-row input:focus,
+.qf-row select:focus,
+.qf-row textarea:focus{ border-color: var(--ink); }
+.qf-row textarea{ min-height: 100px; resize: vertical; }
+.qf-row select{
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath fill='none' stroke='%232C2C2A' stroke-width='1.2' d='M3 5l3 3 3-3'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 38px;
+}
+.qf-chips{ display: flex; flex-wrap: wrap; gap: 8px; }
+.qf-chip{
+  position: relative;
+  display: inline-flex; align-items: center;
+  padding: 10px 16px;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: .04em;
+  color: var(--ink);
+  background: var(--warm-white);
+  border: 0.5px solid var(--rule-strong);
+  border-radius: 999px;
+  cursor: pointer;
+  user-select: none;
+  transition: background .15s ease, color .15s ease, border-color .15s ease;
+}
+.qf-chip input{ position: absolute; opacity: 0; pointer-events: none; }
+.qf-chip:has(input:checked){ background: var(--ink); color: var(--cream); border-color: var(--ink); }
+.qf-submit-row{
+  grid-column: 1 / -1;
+  display: flex; flex-wrap: wrap; align-items: center; gap: 20px 28px;
+  padding-top: 16px;
+  border-top: 0.5px solid var(--rule);
+}
+.qf-submit-row .note{
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 15px;
+  color: var(--ink-soft);
+  max-width: 38ch;
+  line-height: 1.45;
+}
+@media (max-width: 1080px){
+  .quote-form .wrap{ grid-template-columns: 1fr; }
+  .qf-form{ grid-template-columns: 1fr; }
+}
+
+/* ----------------------- KLAVIYO SIGNUP STRIP ----------------------- */
+.klaviyo-strip{
+  background: var(--card-bg);
+  border-top: 0.5px solid var(--rule);
+  border-bottom: 0.5px solid var(--rule);
+}
+.klaviyo-strip-inner{
+  max-width: 1340px;
+  margin: 0 auto;
+  padding: clamp(48px, 6vw, 72px) clamp(20px, 5vw, 56px);
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(36px, 5vw, 64px);
+  align-items: center;
+}
+.klaviyo-strip h3{
+  margin: 14px 0 0;
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(28px, 3.2vw, 40px);
+  line-height: 1.05;
+  letter-spacing: -.005em;
+  color: var(--ink);
+}
+.klaviyo-strip h3 em{ font-style: italic; color: var(--accent-deep); }
+.klaviyo-strip .lede{
+  margin: 14px 0 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  max-width: 50ch;
+}
+.klaviyo-strip .lede ul{
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 6px;
+}
+.klaviyo-strip .lede li{
+  font-family: var(--sans);
+  font-style: normal;
+  font-size: 13px;
+  letter-spacing: .04em;
+  color: var(--ink);
+  padding-left: 20px;
+  position: relative;
+}
+.klaviyo-strip .lede li::before{
+  content: "";
+  position: absolute;
+  left: 0; top: 11px;
+  width: 10px; height: 1px;
+  background: var(--accent);
+}
+.klaviyo-form{
+  background: var(--warm-white);
+  border: 0.5px solid var(--rule-strong);
+  border-radius: 2px;
+  padding: 28px 32px;
+}
+.klaviyo-form-row{
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.klaviyo-form-row .field{
+  display: flex; flex-direction: column; gap: 6px;
+}
+.klaviyo-form-row label{
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+.klaviyo-form-row input,
+.klaviyo-form-row select{
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--ink);
+  background: var(--cream);
+  border: 0.5px solid var(--rule-strong);
+  border-radius: 2px;
+  padding: 12px 14px;
+  outline: none;
+  transition: border-color .2s ease;
+  width: 100%;
+}
+.klaviyo-form-row input:focus,
+.klaviyo-form-row select:focus{ border-color: var(--ink); }
+.klaviyo-form-row select{ appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath fill='none' stroke='%232C2C2A' stroke-width='1.2' d='M3 5l3 3 3-3'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 38px; }
+.klaviyo-form-submit{
+  margin-top: 18px;
+  display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+}
+.klaviyo-form-submit button{
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  background: var(--ink);
+  color: var(--cream);
+  border: 1px solid var(--ink);
+  border-radius: 2px;
+  padding: 13px 24px;
+  cursor: pointer;
+  transition: background .2s ease, border-color .2s ease;
+}
+.klaviyo-form-submit button:hover{ background: var(--forest); border-color: var(--forest); }
+.klaviyo-form-submit .note{
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 13px;
+  color: var(--stone);
+  line-height: 1.45;
+  max-width: 36ch;
+}
+@media (max-width: 1080px){
+  .klaviyo-strip-inner{ grid-template-columns: 1fr; gap: 32px; }
+}
+footer .cols .downloads li{
+  font-family: var(--sans);
+  font-style: normal;
+  font-size: 13px;
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+footer .cols .downloads a{
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  text-decoration: none;
+  color: rgba(250,246,237,.86);
+  padding: 4px 0;
+  transition: color .2s ease;
+}
+footer .cols .downloads a:hover{ color: color-mix(in oklab, var(--accent-soft) 80%, white); }
+footer .cols .downloads a::after{
+  content: attr(data-ext);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .12em;
+  color: rgba(250,246,237,.5);
+  border: 0.5px solid rgba(250,246,237,.25);
+  padding: 2px 5px;
+  margin-left: 2px;
+}
+.botanical{
+  display: block;
+  --is-bg: transparent;
+  --is-border: 1px dashed rgba(133, 79, 11, 0.32);
+  --is-radius: 0;
+  --is-placeholder-color: var(--amber);
+  opacity: .9;
+}
+.botanical.intro-orn{
+  width: 88px;
+  height: 116px;
+  margin: 0 0 26px;
+}
+.botanical.closing-orn{
+  width: 96px;
+  height: 128px;
+  margin: 0 auto 28px;
+}
+
+/* ----------------------- OUTFIT YOUR CLASSROOM ----------------------- */
+.outfit{
+  background: var(--cream);
+  padding: clamp(56px, 8vw, 92px) 0;
+  position: relative;
+}
+.outfit .head{
+  max-width: 1340px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 56px) 56px;
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: 64px;
+  align-items: end;
+  border-bottom: 0.5px solid var(--rule);
+}
+.outfit .head h2{
+  margin: 0;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(40px, 5.4vw, 88px);
+  line-height: 1.0;
+  letter-spacing: -.008em;
+  color: var(--ink);
+}
+.outfit .head h2 .it{ color: var(--accent-deep); }
+.outfit .head .right p{
+  margin: 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 20px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  max-width: 42ch;
+}
+.outfit .head .right .meta{
+  margin-top: 18px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .08em;
+  color: var(--stone);
+}
+.outfit .kits{
+  max-width: 1340px;
+  margin: 64px auto 0;
+  padding: 0 clamp(20px, 5vw, 56px);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+.outfit .kit{
+  background: var(--card-bg);
+  border: 0.5px solid var(--rule);
+  border-radius: 2px;
+  padding: 40px 34px 32px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform .25s ease, border-color .25s ease;
+}
+.outfit .kit:hover{ transform: translateY(-3px); border-color: var(--rule-strong); }
+.outfit .kit.featured{
+  background: var(--accent-pale);
+  border-color: color-mix(in oklab, var(--accent-soft) 80%, transparent);
+}
+.outfit .kit .pill{
+  position: absolute;
+  top: -12px;
+  right: 24px;
+}
+.outfit .kit .tier{
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--stone);
+  margin-bottom: 16px;
+}
+.outfit .kit h3{
+  margin: 0 0 6px;
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 1.1;
+  letter-spacing: -.005em;
+  color: var(--ink);
+}
+.outfit .kit .sub{
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 17px;
+  color: var(--accent-deep);
+  line-height: 1.4;
+}
+.outfit .kit .hair{
+  width: 40px; height: 1px;
+  background: var(--ink);
+  opacity: .3;
+  margin: 24px 0 22px;
+}
+.outfit .kit .desc{
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--ink-soft);
+  margin: 0 0 22px;
+  max-width: 38ch;
+}
+.outfit .kit ul.contains{
+  list-style: none;
+  margin: 0 0 28px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+.outfit .kit ul.contains li{
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 16px;
+  line-height: 1.45;
+  color: var(--ink);
+  padding-left: 18px;
+  position: relative;
+}
+.outfit .kit ul.contains li::before{
+  content: "";
+  position: absolute;
+  left: 0; top: 11px;
+  width: 9px; height: 1px;
+  background: var(--accent);
+}
+.outfit .kit .price-line{
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--stone);
+  margin-bottom: 18px;
+  padding-top: 18px;
+  border-top: 0.5px solid var(--rule-strong);
+}
+.outfit .kit .kit-cta{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  padding-bottom: 4px;
+  border-bottom: 0.5px solid var(--ink);
+  align-self: flex-start;
+  transition: color .2s ease, border-color .2s ease;
+}
+.outfit .kit .kit-cta:hover{ color: var(--forest); border-color: var(--forest); }
+.outfit .kit.featured .kit-cta{ color: var(--accent-deep); border-color: var(--accent-deep); }
+.outfit .kit.featured .kit-cta:hover{ color: var(--ink); border-color: var(--ink); }
+
+.outfit .note{
+  max-width: 1340px;
+  margin: 56px auto 0;
+  padding: 0 clamp(20px, 5vw, 56px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.outfit .note .left{
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 17px;
+  color: var(--ink-soft);
+  max-width: 56ch;
+}
+.outfit .note .right{
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+@media (max-width: 1080px){
+  .outfit .head{ grid-template-columns: 1fr; gap: 32px; }
+  .outfit .note{ flex-direction: column; align-items: flex-start; }
+}
+
+/* ----------------------- CONTAINER ----------------------- */
+.wrap{ max-width: 1340px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 56px); }
+.wrap-wide{ max-width: 1500px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 56px); }
+.gut{   padding-top: clamp(56px, 8vw, 92px); padding-bottom: clamp(56px, 8vw, 92px); }
+.gut-sm{ padding-top: clamp(40px, 5vw, 64px);  padding-bottom: clamp(40px, 5vw, 64px); }
+
+/* ============================== COVER ============================== */
+.cover{
+  position: relative;
+  height: min(100vh, 920px);
+  min-height: 680px;
+  overflow: hidden;
+  isolation: isolate;
+}
+.cover .bg{ position:absolute; inset:0; z-index:0; }
+.cover .veil{
+  position:absolute; inset:0; z-index:1; pointer-events:none;
+  background:
+    linear-gradient(180deg, rgba(44,26,14,.04) 0%, rgba(44,26,14,0) 35%, rgba(44,26,14,0) 58%, rgba(44,26,14,.55) 100%),
+    linear-gradient(180deg, rgba(159,79,97,.18) 0%, rgba(159,79,97,0) 50%);
+}
+.cover .frame{
+  position:absolute; inset:28px; z-index:2; pointer-events:none;
+  border: 1px solid rgba(250,246,237,.32);
+}
+.cover .head{
+  position: absolute;
+  top: 92px; left: clamp(28px, 5vw, 56px); right: clamp(28px, 5vw, 56px);
+  z-index: 3;
+  display: flex; justify-content: space-between; align-items: flex-start;
+  color: var(--cream);
+}
+.cover .head .vol{ text-align:right; }
+.cover .head .vol .num{
+  font-family: var(--serif); font-style: italic;
+  font-size: clamp(48px, 5.6vw, 88px); line-height: 1;
+}
+.cover h1{
+  position:absolute;
+  left: clamp(28px, 5vw, 56px);
+  right: clamp(28px, 5vw, 56px);
+  bottom: 220px;
+  z-index: 3;
+  margin: 0;
+  font-family: var(--serif);
+  font-weight: 400;
+  color: var(--cream);
+  font-size: clamp(48px, 8vw, 132px);
+  line-height: .94;
+  letter-spacing: -.012em;
+  text-shadow: 0 1px 28px rgba(0,0,0,.2);
+}
+.cover h1 .it{
+  display: block;
+  font-style: italic;
+  color: color-mix(in oklab, var(--accent-soft) 80%, white);
+}
+.cover .footer{
+  position:absolute;
+  left: clamp(28px, 5vw, 56px);
+  right: clamp(28px, 5vw, 56px);
+  bottom: 48px;
+  z-index: 3;
+  color: var(--cream);
+  display: flex; justify-content: space-between; align-items: flex-end; gap: 24px;
+}
+.cover .audience{ max-width: 540px; }
+.cover .audience .label{ color: rgba(250,246,237,.7); }
+.cover .audience p{
+  margin-top: 8px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 22px;
+  line-height: 1.4;
+  color: var(--cream);
+}
+.cover .scroll{
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .14em;
+  color: rgba(250,246,237,.85);
+  text-align:right;
+}
+.cover .scroll .dot{
+  display:inline-block; width:6px; height:6px; border-radius:50%;
+  background: var(--cream); margin-left: 10px; vertical-align: middle;
+  animation: pulse 2.4s ease-in-out infinite;
+}
+@keyframes pulse{ 0%,100%{ opacity:.35 } 50%{ opacity:1 } }
+
+/* ============================== ANCHOR ============================== */
+.anchor{
+  background: var(--cream);
+  border-top: 1px solid var(--rule-soft);
+  border-bottom: 1px solid var(--rule-soft);
+  position: relative;
+}
+.anchor .wrap{
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: 80px;
+  align-items: center;
+}
+.anchor .vol-numeral{
+  position: absolute;
+  right: clamp(20px, 5vw, 56px);
+  top: -30px;
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--accent-soft);
+  font-size: clamp(120px, 16vw, 220px);
+  line-height: .8;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+.anchor h2{
+  margin: 0;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(40px, 5.8vw, 96px);
+  line-height: 1.02;
+  letter-spacing: -.008em;
+  position: relative; z-index: 1;
+}
+.anchor h2 .it{ color: var(--accent-deep); }
+.anchor h2 .quote-open,
+.anchor h2 .quote-close{
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--accent);
+  font-size: 1.2em;
+  line-height: 0;
+  position: relative;
+  top: .08em;
+}
+.anchor .side{
+  display: flex; flex-direction: column; gap: 22px;
+  border-left: 1px solid var(--rule-soft);
+  padding-left: 44px;
+}
+.anchor .side .eyebrow{ color: var(--ink-soft); }
+.anchor .side p{
+  margin: 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 21px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
+/* ============================== EDITORIAL INTRO ============================== */
+.intro{ background: var(--card-bg); }
+.intro .wrap{
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: 72px;
+  align-items: stretch;
+}
+.intro .col-img{ }
+.intro .col-img .tile{ height: 100%; min-height: 420px; }
+.intro .col-txt{
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 12px 0;
+}
+.intro .col-txt .eyebrow{ color: var(--accent-deep); margin-bottom: 28px; }
+.intro .col-txt h3{
+  margin: 0 0 36px;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(32px, 3.8vw, 56px);
+  line-height: 1.08;
+  letter-spacing: -.004em;
+}
+.intro .col-txt h3 .it{ color: var(--accent-deep); }
+.intro .body{
+  font-size: 17px;
+  line-height: 1.78;
+  max-width: 56ch;
+}
+.intro .body p{ margin: 0 0 18px; }
+.intro .body .dropcap{
+  float: left;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 92px;
+  line-height: .78;
+  color: var(--accent);
+  padding: 8px 14px 0 0;
+}
+.intro .body .triplet{
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--ink);
+  font-size: 19px;
+  line-height: 1.55;
+}
+.intro .pillars{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 44px;
+  padding-top: 28px;
+  border-top: 1px solid var(--rule-soft);
+}
+.intro .pillars .p .label{ color: var(--accent-deep); display:block; margin-bottom: 8px; }
+.intro .pillars .p p{
+  margin: 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 17px;
+  line-height: 1.45;
+  color: var(--ink-soft);
+}
+
+/* ============================== FEATURE STAGE ============================== */
+.stage{
+  position: relative;
+  height: 64vh;
+  min-height: 540px;
+  max-height: 800px;
+  color: var(--cream);
+  overflow: hidden;
+}
+.stage .bg{ position: absolute; inset: 0; z-index: 0; }
+.stage .veil{
+  position: absolute; inset: 0; z-index: 1;
+  background:
+    linear-gradient(90deg, rgba(20,10,6,.55) 0%, rgba(20,10,6,0) 48%),
+    linear-gradient(180deg, rgba(20,10,6,.16) 0%, rgba(20,10,6,0) 32%, rgba(20,10,6,.6) 100%);
+}
+.stage .content{
+  position: relative; z-index: 2;
+  height: 100%;
+  padding: clamp(56px, 8vh, 100px) clamp(28px, 5vw, 80px);
+  display: grid; grid-template-rows: auto 1fr auto; gap: 24px;
+}
+.stage .top{ display:flex; justify-content: space-between; align-items: flex-start; gap: 24px; }
+.stage .top .eyebrow{ color: var(--accent-soft); }
+.stage .top .right{ text-align: right; }
+.stage .top .right .label{ color: rgba(250,246,237,.62); }
+.stage .top .right .name{ font-family: var(--serif); font-style: italic; font-size: 17px; margin-top: 6px; }
+.stage .mid{ align-self: end; max-width: 980px; }
+.stage h2{
+  margin: 0;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(56px, 7.6vw, 128px);
+  line-height: .94;
+  letter-spacing: -.012em;
+}
+.stage h2 .it{
+  display: block;
+  font-style: italic;
+  color: color-mix(in oklab, var(--accent-soft) 85%, white);
+}
+.stage .lede{
+  margin: 28px 0 0;
+  max-width: 640px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 22px;
+  line-height: 1.5;
+  color: rgba(250,246,237,.88);
+}
+.stage .bot{ display: flex; align-items: flex-end; justify-content: flex-start; }
+
+/* ----------- Button ----------- */
+.btn{
+  display:inline-flex; align-items:center; gap:14px;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  background: var(--cream);
+  color: var(--ink);
+  border: 1px solid var(--cream);
+  border-radius: 2px;
+  padding: 16px 28px;
+  text-decoration: none;
+  transition: background .25s ease, color .25s ease, border-color .25s ease;
+}
+.btn:hover{ background: var(--accent); border-color: var(--accent); color: var(--cream); }
+.btn .arrow{
+  display:inline-block; width: 22px; height: 1px; background: currentColor; position: relative;
+}
+.btn .arrow::after{
+  content:""; position: absolute; right: 0; top: -3px;
+  width: 7px; height: 7px;
+  border-top: 1px solid currentColor; border-right: 1px solid currentColor; transform: rotate(45deg);
+}
+.btn.ink{ background: var(--ink); color: var(--cream); border-color: var(--ink); }
+.btn.ink:hover{ background: var(--accent-deep); border-color: var(--accent-deep); color: var(--cream); }
+.btn.ghost{ background: transparent; color: var(--cream); border-color: rgba(250,246,237,.5); }
+.btn.ghost:hover{ background: var(--cream); color: var(--ink); border-color: var(--cream); }
+
+/* ============================== FEATURE SPLIT (CONTENTS) ============================== */
+.split{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--accent-pale);
+  min-height: 72vh;
+}
+.split .img-side{ position: relative; min-height: 480px; }
+.split .img-side .tile{ position: absolute; inset: 0; }
+.split .img-side::after{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background: linear-gradient(to right, transparent 60%, color-mix(in oklab, var(--accent) 25%, transparent));
+}
+.split .content{
+  padding: clamp(56px, 8vw, 120px) clamp(36px, 6vw, 96px);
+  display: flex; flex-direction: column; justify-content: center;
+  position: relative;
+}
+.split .content::before{
+  content:""; position:absolute; top: 44px; right: 44px;
+  width: 48px; height: 48px;
+  border-top: 1px solid var(--gilt); border-right: 1px solid var(--gilt);
+  opacity: .55;
+}
+.split .content .eyebrow{ color: var(--accent-deep); margin-bottom: 24px; }
+.split .content h3{
+  margin: 0;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(30px, 3.6vw, 52px);
+  line-height: 1.1;
+  letter-spacing: -.005em;
+}
+.split .content .sub{
+  margin-top: 6px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 18px;
+  color: var(--accent-deep);
+}
+.split .content .hair{
+  width: 56px; height: 1px; background: var(--accent);
+  opacity: .5; margin: 32px 0;
+}
+.split .content .desc{
+  font-family: var(--serif);
+  font-size: clamp(17px, 1.4vw, 19px);
+  line-height: 1.78;
+  color: var(--ink-soft);
+  max-width: 56ch;
+}
+.split .content .contents-list{
+  list-style: none; padding: 0; margin: 28px 0 0;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px 28px;
+}
+.split .content .contents-list li{
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--ink);
+  padding-left: 20px;
+  position: relative;
+}
+.split .content .contents-list li::before{
+  content: ""; position: absolute; left: 0; top: 12px;
+  width: 10px; height: 1px; background: var(--accent);
+}
+.split .content .craft{
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  margin-top: 36px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(159,79,97,.22);
+}
+.split .content .craft .label{ color: var(--muted); display:block; margin-bottom: 8px; font-size: 11px; }
+.split .content .craft .v{
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 17px;
+  line-height: 1.45;
+  color: var(--ink);
+}
+.split .content .craft .v.plain{ font-family: var(--sans); font-style: normal; font-size: 13px; color: var(--ink-soft); line-height: 1.55; }
+.split .content .testimony{
+  margin-top: 36px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(159,79,97,.22);
+}
+.split .content .testimony .quote{
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(19px, 1.6vw, 22px);
+  line-height: 1.5;
+  color: var(--ink);
+  max-width: 56ch;
+}
+.split .content .testimony .attr{
+  margin-top: 18px;
+  display: flex; align-items: center; gap: 14px;
+}
+.split .content .testimony .attr .dash{ display:inline-block; width: 36px; height: 1px; background: var(--accent); }
+.split .content .testimony .attr .name{
+  font-family: var(--sans);
+  font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-soft);
+}
+.split .content .testimony .attr .name b{ color: var(--ink); font-weight: 700; }
+.split .content .ctas{ margin-top: 40px; display: flex; flex-wrap: wrap; gap: 16px 22px; align-items: center; }
+.split .content .ctas .price{
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 16px;
+  color: var(--ink-soft);
+}
+.split .content .ctas .btn{ background: var(--ink); color: var(--cream); border-color: var(--ink); }
+.split .content .ctas .btn:hover{ background: var(--accent-deep); border-color: var(--accent-deep); }
+
+/* Pairs with, cross-sell block inside Feature Split */
+.pairs-with{
+  margin-top: 28px;
+  padding-top: 22px;
+  border-top: 0.5px solid var(--rule);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 16px 18px;
+  align-items: center;
+}
+.pairs-with .label{
+  grid-column: 1 / -1;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+  padding: 4px 10px;
+  background: color-mix(in oklab, var(--accent) 8%, transparent);
+  border-left: 2px solid var(--accent);
+  display: inline-block;
+  width: auto;
+  justify-self: start;
+  border-radius: 0 2px 2px 0;
+}
+.pairs-with .pair-thumb{
+  width: 88px; height: 88px;
+  background: var(--accent-pale);
+  border-radius: 2px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pairs-with .pair-thumb img{ width: 100%; height: 100%; object-fit: contain; padding: 6px; }
+.pairs-with .pair-body{ display: flex; flex-direction: column; gap: 4px; }
+.pairs-with .pair-body h4{
+  margin: 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 19px;
+  line-height: 1.25;
+  letter-spacing: -.005em;
+  color: var(--ink);
+}
+.pairs-with .pair-body p{
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+.pairs-with .pair-body .pair-meta{
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--ink);
+}
+.pairs-with .pair-body .pair-meta strong{ font-weight: 600; margin-right: 8px; }
+.pairs-with .pair-body .pair-action{
+  margin-top: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 0.5px solid var(--ink);
+  padding-bottom: 2px;
+  align-self: flex-start;
+}
+.pairs-with .pair-body .pair-action:hover{ color: var(--forest); border-color: var(--forest); }
+
+/* ============================== DETAIL SPREAD ============================== */
+.spread{
+  background: var(--ink);
+  color: var(--cream);
+  padding: clamp(72px, 10vw, 120px) clamp(28px, 5vw, 80px);
+}
+.spread .row{
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+  gap: 72px;
+  align-items: start;
+}
+.spread h3{
+  margin: 0;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(30px, 3.6vw, 52px);
+  line-height: 1.05;
+}
+.spread h3 .it{ color: color-mix(in oklab, var(--accent-soft) 80%, white); }
+.spread .head .eyebrow{ color: var(--accent-soft); margin-bottom: 22px; }
+.spread .head p.sub{
+  margin-top: 22px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 19px;
+  line-height: 1.55;
+  color: rgba(250,246,237,.66);
+  max-width: 38ch;
+}
+.spread .crops{
+  display: grid;
+  grid-template-columns: 1.3fr .9fr .9fr;
+  grid-auto-rows: 220px;
+  gap: 16px;
+}
+.spread .crops .tile{ width: 100%; height: 100%; }
+.spread .learn{
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid rgba(250,246,237,.2);
+  border-bottom: 1px solid rgba(250,246,237,.2);
+}
+.spread .learn .l{
+  padding: 24px 22px;
+  border-right: 1px solid rgba(250,246,237,.12);
+}
+.spread .learn .l:last-child{ border-right: 0; }
+.spread .learn .num{
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 28px;
+  line-height: 1;
+  color: color-mix(in oklab, var(--accent-soft) 80%, white);
+  margin-bottom: 14px;
+}
+.spread .learn .name{
+  font-family: var(--serif);
+  font-size: 22px;
+  line-height: 1.15;
+}
+.spread .learn .desc{
+  margin-top: 8px;
+  font-size: 13px;
+  color: rgba(250,246,237,.66);
+  line-height: 1.55;
+}
+
+/* ============================== GALLERY ============================== */
+.gallery{
+  background: linear-gradient(180deg, var(--cream) 0%, var(--accent-pale) 100%);
+  position: relative;
+  overflow: hidden;
+}
+.gallery .head{
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: 72px;
+  align-items: end;
+  padding-bottom: 56px;
+  border-bottom: 1px solid var(--rule-soft);
+}
+.gallery .head .eyebrow{ color: var(--accent-deep); margin-bottom: 22px; display:inline-block; }
+.gallery .head h2{
+  margin: 0;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(44px, 6vw, 96px);
+  line-height: .98;
+  letter-spacing: -.008em;
+}
+.gallery .head h2 .it{ color: var(--accent-deep); }
+.gallery .head .right p{
+  margin: 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 21px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  max-width: 40ch;
+}
+.gallery .head .index{
+  margin-top: 18px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .08em;
+  color: var(--ink-soft);
+}
+.homes{
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 24px;
+}
+.home{ position: relative; }
+.home .tile-wrap{
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 2px;
+  aspect-ratio: 1 / 1;
+}
+.home .tile-wrap .tile{ width: 100%; height: 100%; min-height: 0; }
+.home .tile-wrap .overlay{
+  position: absolute; inset: 0; z-index: 4; pointer-events: none;
+  background: linear-gradient(to top, rgba(44,26,14,.65) 0%, rgba(44,26,14,0) 45%);
+  opacity: 0;
+  transition: opacity .35s ease;
+}
+.home .tile-wrap .float-name{
+  position: absolute; left: 22px; right: 22px; bottom: 22px; z-index: 5;
+  font-family: var(--serif);
+  font-size: 22px;
+  line-height: 1.15;
+  color: var(--cream);
+  text-shadow: 0 1px 12px rgba(0,0,0,.35);
+  transform: translateY(8px);
+  opacity: 0;
+  transition: opacity .35s ease, transform .35s ease;
+}
+.home:hover .tile-wrap .overlay{ opacity: 1; }
+.home:hover .tile-wrap .float-name{ opacity: 1; transform: translateY(0); }
+.home .cap{
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.home .cap .no{
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 14px;
+  line-height: 1;
+  color: var(--accent-deep);
+}
+.home .cap .name{
+  font-family: var(--serif);
+  font-size: 22px;
+  line-height: 1.15;
+  letter-spacing: -.004em;
+  color: var(--ink);
+  margin-top: 2px;
+}
+.home .cap .desc{
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  margin: 6px 0 4px;
+}
+.home .cap .price{
+  font-size: 22px;
+  margin: 6px 0 0;
+}
+.home .cap .stock-pill{
+  align-self: flex-start;
+  margin: 2px 0;
+}
+.home .cap .add-row{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+.home .cap .add-btn{ flex-shrink: 0; padding: 9px 14px; font-size: 11px; }
+.home .cap .view-pdp{ font-size: 11px; white-space: nowrap; }
+
+/* Footer alignment, pushes SKU + price + add-row to the bottom of every
+   card so they line up horizontally across the grid row even when desc
+   lengths vary. The .meta SKU line is the footer starter and absorbs
+   the vertical slack via margin-top:auto. Subtle hairline divides the
+   editorial description from the procurement footer. */
+.home{ display: flex; flex-direction: column; height: 100%; }
+.home .cap{ flex: 1 1 auto; }
+.home .cap > .meta{
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 0.5px solid var(--rule);
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--stone);
+  display: block;
+}
+.home .cap .price{
+  grid-column: 2;
+  margin-top: 4px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .08em;
+  color: var(--accent-deep);
+}
+.home .cap .tags{
+  grid-column: 2;
+  display:flex; flex-wrap: wrap; gap: 8px;
+}
+.home .cap .tags .t{
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--accent-deep);
+  padding: 4px 9px;
+  border: 1px solid color-mix(in oklab, var(--accent-deep) 35%, transparent);
+  border-radius: 2px;
+}
+
+/* legacy size-X classes are no-ops now, all gallery cards uniform */
+.home.size-hero,
+.home.size-tall,
+.home.size-std,
+.home.size-wide{ grid-column: span 1; }
+.home.size-hero .tile-wrap .tile,
+.home.size-tall .tile-wrap .tile,
+.home.size-std .tile-wrap .tile,
+.home.size-wide .tile-wrap .tile{ height: 100%; min-height: 0; }
+
+/* ----------------------- REVIEWS (from the classrooms) ----------------------- */
+.reviews-section{
+  background: var(--cream);
+}
+.reviews-section .reviews-head{
+  text-align: center;
+  margin-bottom: 56px;
+}
+.reviews-section .reviews-head .eyebrow{
+  color: var(--accent-deep);
+  display: inline-block;
+  margin-bottom: 18px;
+}
+.reviews-section .reviews-head h2{
+  margin: 0 0 18px;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(40px, 5vw, 72px);
+  line-height: 1.02;
+  letter-spacing: -.008em;
+}
+.reviews-section .reviews-head h2 em{ font-style: italic; color: var(--accent-deep); }
+.reviews-section .rating-summary{
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--ink-soft);
+  letter-spacing: .04em;
+}
+.reviews-section .rating-summary .stars{
+  color: var(--amber);
+  font-size: 16px;
+  letter-spacing: 2px;
+}
+.reviews-section .reviews-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+.reviews-section .review{
+  background: var(--warm-white);
+  border: 0.5px solid var(--rule);
+  border-radius: 2px;
+  padding: 28px 30px;
+  display: flex;
+  flex-direction: column;
+}
+.reviews-section .review .stars{
+  color: var(--amber);
+  font-size: 14px;
+  letter-spacing: 1px;
+  margin-bottom: 18px;
+}
+.reviews-section .review h3{
+  margin: 0 0 16px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(20px, 1.8vw, 22px);
+  line-height: 1.25;
+  letter-spacing: -.005em;
+  color: var(--ink);
+}
+.reviews-section .review p{
+  margin: 0 0 18px;
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--ink-soft);
+  flex: 1;
+}
+.reviews-section .review .who{
+  margin: 0;
+  padding-top: 16px;
+  border-top: 0.5px solid var(--rule);
+  font-family: var(--sans);
+  font-size: 12px;
+  color: var(--stone);
+  line-height: 1.45;
+}
+.reviews-section .review .who strong{ color: var(--ink); font-weight: 600; }
+.reviews-section .see-all{
+  margin-top: 44px;
+  text-align: center;
+}
+.reviews-section .see-all a{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  padding-bottom: 4px;
+  border-bottom: 0.5px solid var(--ink);
+  transition: color .2s ease, border-color .2s ease;
+}
+.reviews-section .see-all a:hover{ color: var(--forest); border-color: var(--forest); }
+@media (max-width: 1080px){
+  .reviews-section .reviews-grid{ grid-template-columns: 1fr; gap: 18px; }
+}
+
+/* Reviews carousel, generic, MTW-wide educator reviews.
+   Swap from .reviews-grid (static 3-up) to a snap-scroll track with
+   prev/next arrows and pagination dots. Cards reuse .review styles. */
+.reviews-section .reviews-carousel{
+  position: relative;
+  margin: 0 -8px;
+}
+.reviews-section .rc-track{
+  display: flex;
+  gap: 22px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 8px;
+  padding: 6px 8px 18px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.reviews-section .rc-track::-webkit-scrollbar{ display: none; }
+.reviews-section .rc-track .review{
+  flex: 0 0 calc((100% - 44px) / 3);
+  scroll-snap-align: start;
+  min-width: 280px;
+  margin: 0;
+}
+.reviews-section .rc-nav{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px; height: 44px;
+  background: var(--warm-white);
+  border: 0.5px solid var(--rule-strong);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--serif);
+  font-size: 16px;
+  color: var(--ink);
+  z-index: 2;
+  box-shadow: 0 2px 12px rgba(44,44,42,.06);
+  transition: background .2s ease, border-color .2s ease, color .2s ease, opacity .2s ease;
+}
+.reviews-section .rc-nav:hover{ background: var(--ink); color: var(--cream); border-color: var(--ink); }
+.reviews-section .rc-nav:disabled{ opacity: .25; cursor: default; }
+.reviews-section .rc-nav:disabled:hover{ background: var(--warm-white); color: var(--ink); border-color: var(--rule-strong); }
+.reviews-section .rc-nav.prev{ left: -22px; }
+.reviews-section .rc-nav.next{ right: -22px; }
+.reviews-section .rc-nav svg{ width: 14px; height: 14px; stroke: currentColor; stroke-width: 1.6; fill: none; }
+.reviews-section .rc-dots{
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 24px;
+}
+.reviews-section .rc-dots button{
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--rule-strong);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background .25s ease, width .25s ease, border-radius .25s ease;
+}
+.reviews-section .rc-dots button.is-active{
+  background: var(--accent-deep);
+  width: 22px;
+  border-radius: 3px;
+}
+@media (max-width: 1080px){
+  .reviews-section .rc-track .review{ flex: 0 0 86%; }
+  .reviews-section .rc-nav{ display: none; }
+}
+.collection-bridge{
+  margin-top: 72px;
+  padding: 36px 0 0;
+  border-top: 0.5px solid var(--rule-strong);
+  text-align: center;
+}
+.collection-bridge p{
+  margin: 0 auto 18px;
+  max-width: 56ch;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 19px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+.collection-bridge p strong{
+  font-style: normal;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--ink);
+  display: block;
+  margin-bottom: 10px;
+}
+.collection-bridge .bridge-cta{
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--cream);
+  background: var(--ink);
+  border: 1px solid var(--ink);
+  border-radius: 2px;
+  padding: 16px 28px;
+  text-decoration: none;
+  transition: background .2s ease, border-color .2s ease;
+}
+.collection-bridge .bridge-cta:hover{ background: var(--accent-deep); border-color: var(--accent-deep); }
+.collection-bridge .bridge-cta::after{
+  content: ""; width: 8px; height: 8px;
+  border-top: 1px solid currentColor;
+  border-right: 1px solid currentColor;
+  transform: rotate(45deg);
+  display: inline-block;
+}
+
+.gallery .quote-strip{
+  margin-top: 110px;
+  padding: 56px 0;
+  border-top: 1px solid var(--rule-soft);
+  border-bottom: 1px solid var(--rule-soft);
+  text-align: center;
+}
+.gallery .quote-strip p{
+  margin: 0 auto;
+  max-width: 32ch;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(24px, 2.6vw, 36px);
+  line-height: 1.35;
+  color: var(--ink);
+}
+
+/* ============================== COMPANIONS ============================== */
+.companions{
+  position: relative;
+  overflow: hidden;
+  color: var(--cream);
+  background: var(--hue-3-deep);
+}
+.companions::after{
+  content:""; position:absolute; left:0; right:0; bottom:0; height: 3px; z-index: 2;
+  background: linear-gradient(to right, var(--accent) 0%, var(--alt) 50%, var(--hue-3) 100%);
+  opacity: .55;
+}
+.companions .wrap{
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 6fr);
+  gap: 80px;
+  align-items: center;
+}
+.companions .col-img .tile{ height: 460px; }
+.companions .col-txt .eyebrow{ color: color-mix(in oklab, var(--accent-soft) 80%, white); }
+.companions h2{
+  margin: 22px 0 0;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(44px, 5.8vw, 92px);
+  line-height: .98;
+  letter-spacing: -.01em;
+}
+.companions h2 .it{ color: color-mix(in oklab, var(--accent-soft) 85%, white); }
+.companions p.lede{
+  margin: 28px 0 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 22px;
+  line-height: 1.55;
+  color: rgba(250,246,237,.84);
+  max-width: 38ch;
+}
+.companions .folk{
+  margin-top: 48px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+.companions .folk .f{
+  display: flex;
+  flex-direction: column;
+}
+.companions .folk .f .tile{
+  position: relative;
+  aspect-ratio: 1 / 1.1;
+  width: 100%;
+}
+.companions .folk .f .name{
+  position: static;
+  margin: 12px 0 0;
+  text-shadow: none;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 18px;
+  color: var(--cream);
+  line-height: 1.2;
+  text-align: left;
+  display: block;
+}
+.companions .folk .folk-row{
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.companions .folk .folk-price{
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 18px;
+  color: var(--cream);
+  line-height: 1;
+}
+.companions .folk .folk-price small{
+  font-family: var(--sans);
+  font-style: normal;
+  font-size: 9px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: rgba(245,240,229,.55);
+  margin-left: 6px;
+}
+.companions .folk .add-btn.icon{
+  padding: 7px 10px;
+  background: transparent;
+  border: 1px solid rgba(245,240,229,.4);
+  color: var(--cream);
+}
+.companions .folk .add-btn.icon:hover{
+  background: var(--cream); color: var(--ink); border-color: var(--cream);
+}
+.companions .folk .add-btn.icon .plus{ width: 11px; height: 11px; }
+.companions .price-line{
+  margin-top: 36px;
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: color-mix(in oklab, var(--accent-soft) 70%, white);
+}
+
+/* ============================== BOTTOM HERO ============================== */
+.bottom-hero{
+  position: relative;
+  height: 80vh;
+  min-height: 520px;
+  max-height: 920px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+.bottom-hero .bg{ position: absolute; inset: 0; z-index: 0; }
+.bottom-hero .veil{
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: linear-gradient(to bottom, rgba(44,26,14,.02) 0%, rgba(44,26,14,.4) 65%, rgba(44,26,14,.85) 100%);
+}
+.bottom-hero .content{
+  position: relative; z-index: 2;
+  width: 100%;
+  padding: 0 clamp(28px, 5vw, 80px) 80px;
+  text-align: center;
+}
+.bottom-hero h3{
+  margin: 0 auto;
+  max-width: 22ch;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-style: italic;
+  font-size: clamp(36px, 5vw, 80px);
+  line-height: 1.1;
+  letter-spacing: -.005em;
+  color: var(--cream);
+  text-shadow: 0 1px 28px rgba(0,0,0,.3);
+}
+
+/* ============================== CLOSING ============================== */
+.closing{
+  background:
+    linear-gradient(180deg, var(--cream) 0%, var(--accent-pale) 60%, var(--accent-soft) 100%);
+  color: var(--ink);
+  position: relative;
+  overflow: hidden;
+}
+.closing::before{
+  content:""; position: absolute;
+  top: 0; left: 50%; transform: translateX(-50%);
+  width: 1px; height: 80px;
+  background: var(--accent); opacity: .45;
+}
+.closing .wrap{ text-align: center; position: relative; z-index: 2; }
+.closing .eyebrow{ color: var(--accent-deep); }
+.closing h2{
+  margin: 36px auto 0;
+  max-width: 22ch;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(44px, 6.4vw, 104px);
+  line-height: 1.02;
+  letter-spacing: -.01em;
+}
+.closing h2 .it{ color: var(--accent-deep); }
+.closing .price{
+  margin: 56px auto 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 22px;
+  color: var(--ink-soft);
+}
+.closing .cta{ margin-top: 28px; }
+.closing .signoff{
+  margin-top: 100px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 24px;
+  padding-top: 28px;
+  border-top: 1px solid var(--rule-soft);
+}
+.closing .signoff .left,
+.closing .signoff .right{
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .1em;
+  color: var(--ink-soft);
+}
+.closing .signoff .right{ text-align: right; }
+.closing .signoff .center{
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 15px;
+  color: var(--ink-soft);
+}
+
+/* ============================== FOOTER ============================== */
+footer{
+  background: var(--ink);
+  color: var(--cream);
+  padding: 64px clamp(28px, 5vw, 56px);
+}
+footer .wrap{
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+  gap: 48px;
+  max-width: 1340px; margin: 0 auto; padding: 0;
+}
+footer .left .foot-mark{
+  display: block;
+  width: 110px;
+  height: auto;
+  margin-bottom: 18px;
+}
+footer .left p{
+  margin-top: 14px;
+  max-width: 46ch;
+  color: rgba(250,246,237,.7);
+  font-size: 14px; line-height: 1.65;
+}
+footer .left .foot-contact{
+  margin-top: 22px;
+  padding-top: 20px;
+  border-top: 0.5px solid rgba(250,246,237,.18);
+  font-family: var(--sans);
+  font-size: 13px;
+  line-height: 1.7;
+  color: rgba(250,246,237,.86);
+}
+footer .left .foot-contact a{
+  color: inherit;
+  text-decoration: none;
+  display: block;
+  transition: color .2s ease;
+}
+footer .left .foot-contact a:hover{ color: color-mix(in oklab, var(--accent-soft) 80%, white); }
+footer .left .foot-contact .hours{
+  display: block;
+  margin-top: 8px;
+  color: rgba(250,246,237,.55);
+  font-size: 12px;
+}
+footer .left .foot-social{
+  margin-top: 22px;
+  display: flex;
+  gap: 10px;
+}
+footer .left .foot-social a{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px; height: 36px;
+  border: 0.5px solid rgba(250,246,237,.32);
+  border-radius: 50%;
+  color: rgba(250,246,237,.85);
+  transition: background .2s ease, color .2s ease, border-color .2s ease;
+}
+footer .left .foot-social a:hover{
+  background: var(--cream);
+  color: var(--ink);
+  border-color: var(--cream);
+}
+footer .left .foot-social svg{ width: 16px; height: 16px; stroke: currentColor; stroke-width: 1.4; fill: none; }
+footer .left .retail-link{
+  margin: 22px 0 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(250,246,237,.6);
+}
+footer .left .retail-link a{
+  color: rgba(250,246,237,.88);
+  text-decoration: none;
+  border-bottom: 0.5px solid rgba(250,246,237,.32);
+  padding-bottom: 1px;
+  transition: color .2s ease, border-color .2s ease;
+}
+footer .left .retail-link a:hover{
+  color: var(--cream);
+  border-color: var(--cream);
+}
+
+/* Pay methods row */
+footer .foot-mid{
+  max-width: 1340px; margin: 40px auto 0;
+  padding-top: 24px;
+  border-top: 0.5px solid rgba(250,246,237,.18);
+  display: flex; align-items: center; gap: 20px;
+  flex-wrap: wrap;
+}
+footer .foot-mid .pay-label{
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 14px;
+  color: rgba(250,246,237,.6);
+  flex-shrink: 0;
+}
+footer .pay-methods{ display: flex; flex-wrap: wrap; align-items: center; gap: 0; }
+footer .pay-chip{
+  display: inline-block;
+  padding: 0 14px 0 0;
+  margin-right: 14px;
+  border-right: 0.5px solid rgba(250,246,237,.18);
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(250,246,237,.65);
+  white-space: nowrap;
+}
+footer .pay-chip:last-child{ border-right: 0; margin-right: 0; padding-right: 0; }
+footer .pay-chip.po{ color: var(--cream); font-weight: 600; }
+footer .cols{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; }
+footer .cols h6{
+  margin: 0 0 14px;
+  font-family: var(--sans); font-weight: 600;
+  font-size: 11px; letter-spacing: .22em; text-transform: uppercase;
+  color: rgba(250,246,237,.5);
+}
+footer .cols ul{ list-style: none; margin: 0; padding: 0; }
+footer .cols li{
+  font-family: var(--sans);
+  font-size: 13px;
+  line-height: 1.55;
+  color: rgba(250,246,237,.86);
+  margin-bottom: 6px;
+}
+footer .cols .catalog-list li{
+  padding-left: 2.6em;
+  text-indent: -2.6em;
+}
+footer .cols li a{
+  text-decoration: none;
+  color: inherit;
+  transition: color .2s ease;
+}
+footer .cols li a:hover{ color: color-mix(in oklab, var(--accent-soft) 80%, white); }
+footer .legal{
+  max-width: 1340px; margin: 32px auto 0;
+  padding-top: 22px;
+  border-top: 0.5px solid rgba(250,246,237,.14);
+  display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: .04em;
+  color: rgba(250,246,237,.55);
+}
+footer .legal .legal-links{ display: flex; gap: 22px; flex-wrap: wrap; }
+footer .legal .legal-links a{ color: inherit; text-decoration: none; transition: color .2s ease; }
+footer .legal .legal-links a:hover{ color: var(--cream); }
+
+/* ============================== RESPONSIVE ============================== */
+@media (max-width: 1080px){
+  .anchor .wrap,
+  .intro .wrap,
+  .companions .wrap,
+  .gallery .head{
+    grid-template-columns: 1fr; gap: 44px;
+  }
+  .anchor .side{
+    border-left: 0; padding-left: 0;
+    border-top: 1px solid var(--rule-soft); padding-top: 28px;
+  }
+  .intro .pillars{ grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  .stage .content{ padding: 56px 28px; }
+  .split{ grid-template-columns: 1fr; }
+  .split .img-side{ min-height: 360px; }
+  .split .img-side::after{ display: none; }
+  .split .content::before{ display: none; }
+  .split .content .contents-list{ grid-template-columns: 1fr; }
+  .spread{ padding: 72px 28px; }
+  .spread .row{ grid-template-columns: 1fr; gap: 36px; }
+  .spread .crops{ grid-template-columns: 1fr 1fr; grid-auto-rows: 200px; }
+  .spread .learn{ grid-template-columns: 1fr 1fr; }
+  .spread .learn .l{ border-bottom: 1px solid rgba(250,246,237,.12); }
+  .spread .learn .l:nth-child(2){ border-right: 0; }
+  .homes{ grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .home.size-hero, .home.size-tall, .home.size-std, .home.size-wide{
+    grid-column: span 1;
+  }
+  .companions .col-img .tile{ height: 540px; }
+  footer .wrap{ grid-template-columns: 1fr; }
+}
+@media (max-width: 640px){
+  body{ font-size: 16px; }
+  .nav{ grid-template-columns: 1fr auto; padding: 12px 18px; }
+  .nav__center{ display: none; }
+  .cover{ height: 88vh; min-height: 600px; }
+  .cover .frame{ inset: 14px; }
+  .cover .head{ top: 72px; left: 24px; right: 24px; }
+  .cover h1{ left: 24px; right: 24px; bottom: 112px; }
+  .cover .footer{ left: 24px; right: 24px; bottom: 28px; flex-direction: column; align-items: flex-start; gap: 16px; }
+  .anchor, .intro, .gallery, .companions, .closing{ }
+  .stage .top{ flex-direction: column; }
+  .stage .top .right{ text-align: left; }
+  .intro .pillars{ grid-template-columns: 1fr; }
+  .split .content .craft{ grid-template-columns: 1fr; }
+  .spread .crops{ grid-template-columns: 1fr; }
+  .spread .learn{ grid-template-columns: 1fr; }
+  .spread .learn .l{ border-right: 0 !important; }
+  .homes{ grid-template-columns: 1fr 1fr; }
+  .companions .folk{ grid-template-columns: repeat(2, 1fr); }
+  .closing .signoff{ grid-template-columns: 1fr; text-align: center; }
+  .closing .signoff .right{ text-align: center; }
+  footer .cols{ grid-template-columns: 1fr 1fr; gap: 24px; }
+}
+
+/* "Ships separately" pill, auto-injected by data-long-lead JS at the bottom of the page.
+   Tag any product card (.home), kit (.kit), or featured split with data-long-lead="true"
+   to show a small pill that signals the item has its own ship timeline. */
+.ships-separately-pill{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 11px;
+  margin: 8px 8px 0 0;
+  background: color-mix(in oklab, var(--amber, #854F0B) 10%, var(--cream, #F5F0E5));
+  color: var(--amber, #854F0B);
+  border: 0.5px solid color-mix(in oklab, var(--amber, #854F0B) 30%, transparent);
+  border-radius: 999px;
+  font-family: var(--sans, system-ui), sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.ships-separately-pill::before{
+  content: "";
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--amber, #854F0B);
+  flex-shrink: 0;
+}
+
+
+/* Pillar/eyebrow + body alignment, fixes uneven row heights when eyebrow
+   text wraps to 2 lines on some pillars but not others. Sets a minimum height
+   on the eyebrow so all 4 pillar bodies start at the same y-position. */
+.pillars .p{ display: flex; flex-direction: column; gap: 12px; }
+.pillars .p .label{
+  min-height: 2.4em;
+  display: flex;
+  align-items: flex-start;
+  line-height: 1.25;
+}
+.pillars .p p{ margin: 0; }
+
+
+/* Layout alternation, editorial rhythm.
+   .split.image-right flips the standard split so content-left, image-right.
+   Apply to Featured 2 (Letter Tracing) and Featured 3 (My Forest Floor) on
+   Sensory Play, and to Featured 2 on Woodland and Small World, for rhythm. */
+/* (Variant B below — the CSS grid order flip — is the canonical implementation.) */
+
+/* Section divider, magazine TOC-entry style.
+   Used between major editorial sections to mark transition. */
+.section-divider{
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 36px clamp(20px, 5vw, 56px) 0;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 24px;
+  align-items: center;
+}
+.section-divider .num{
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--accent-deep);
+  letter-spacing: .04em;
+}
+.section-divider .line{
+  height: 0.5px;
+  background: var(--rule-strong);
+}
+.section-divider .label{
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+
+
+/* =================================================================
+   LAYOUT ROTATION SYSTEM
+   Three split variants (Featured Product) and three gallery
+   variants (Collection Grid), applied in a fixed alternating
+   pattern across each section page so no two adjacent blocks
+   share the same geometry. Editorial rhythm without bespoke
+   per-section markup.
+   
+   SPLIT VARIANTS (Featured Product):
+     .split            — default: image-left, content-right
+     .split.image-right — mirror: image-right, content-left
+     .split.stage      — stacked: full-width image, content centered below
+   
+   GALLERY VARIANTS (Collection Grid):
+     .gallery          — default: 5-card grid with hero/tall/std
+     .gallery.even     — 5 equal columns, no hero sizing
+     .gallery.strip    — 3 across hero row + 2 across detail row
+   
+   ROTATION PER SECTION PAGE:
+     Featured 1 (Hero)    → default split
+     Gallery 1            → default gallery (hero+4)
+     Featured 2           → .image-right
+     Gallery 2            → .even
+     Featured 3 (if any)  → .stage
+     Gallery 3 (if any)   → .strip
+   ================================================================= */
+
+/* Variant B — Mirror split: content-left, image-right.
+   Uses CSS grid order property; text direction unchanged. */
+.split.image-right .img-side{ order: 2; }
+.split.image-right .content{ order: 1; }
+
+/* Variant C — Stage split: full-width image hero, content centered beneath.
+   Different visual rhythm from the side-by-side splits. */
+.split.stage{
+  display: block !important;
+  padding: 0 0 clamp(56px, 7vw, 96px);
+}
+.split.stage .img-side{
+  width: 100%;
+  height: auto;
+  padding: 0;
+}
+.split.stage .img-side .tile{
+  width: 100%;
+  aspect-ratio: 16 / 7;
+  height: auto;
+}
+.split.stage .content{
+  max-width: 920px;
+  margin: clamp(40px, 5vw, 64px) auto 0;
+  padding: 0 clamp(20px, 5vw, 56px);
+}
+
+/* Variant Y — Even gallery: 5 equal columns, override hero/tall/std sizing.
+   Reads as a "collection" rather than a featured spread. */
+.gallery.even .homes{ grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 18px; }
+.gallery.even .home.size-hero,
+.gallery.even .home.size-tall,
+.gallery.even .home.size-std{ grid-column: auto; }
+.gallery.even .home .tile-wrap{ aspect-ratio: 1 / 1; }
+.gallery.even .home .tile-wrap .tile{ height: 100%; }
+@media (max-width: 1080px){ .gallery.even .homes{ grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 720px){ .gallery.even .homes{ grid-template-columns: repeat(2, 1fr); } }
+
+/* Variant Z — Strip gallery: 3 hero across the top, 2 wide detail below.
+   Magazine "feature spread" geometry. */
+.gallery.strip .homes{ grid-template-columns: repeat(6, 1fr); gap: 18px; }
+.gallery.strip .home:nth-child(1),
+.gallery.strip .home:nth-child(2),
+.gallery.strip .home:nth-child(3){ grid-column: span 2; }
+.gallery.strip .home:nth-child(4),
+.gallery.strip .home:nth-child(5){ grid-column: span 3; }
+.gallery.strip .home:nth-child(4) .tile-wrap,
+.gallery.strip .home:nth-child(5) .tile-wrap{ aspect-ratio: 16 / 9; }
+@media (max-width: 1080px){
+  .gallery.strip .homes{ grid-template-columns: repeat(2, 1fr); }
+  .gallery.strip .home:nth-child(1),
+  .gallery.strip .home:nth-child(2),
+  .gallery.strip .home:nth-child(3),
+  .gallery.strip .home:nth-child(4),
+  .gallery.strip .home:nth-child(5){ grid-column: auto; }
+}
+
+
+/* Row alignment, gallery cards.
+   Stretches every card in a row to match the tallest, then floats the
+   procurement footer (SKU, price, add-to-cart row) to card bottom so
+   they land at a single horizontal line across the row. */
+.gallery .homes{ grid-auto-rows: 1fr; align-items: stretch; }
+.gallery .home{ height: 100%; }
+.gallery .home .cap{ flex: 1 1 auto; display: flex; flex-direction: column; }
+.gallery .home .cap > .meta{ margin-top: auto; }
+.gallery .home .cap .price + .add-row,
+.gallery .home .cap .add-row{ margin-top: auto; }
+
+/* Even variant, equal columns so the row-stretch effect is most visible. */
+.gallery.even .homes{ grid-auto-rows: 1fr; }
+.gallery.even .home{ height: 100%; }
+
+/* Strip variant, two-row pattern. Stretch within each row. */
+.gallery.strip .homes{ grid-auto-rows: 1fr; }
+.gallery.strip .home{ height: 100%; }
+
+
+/* Standards row — sits below the .craft 3-cell block on Featured Product splits.
+   Holds curriculum/standards alignment codes (CCSS, NGSS, EYFS, etc.) as
+   small chip-pills. Kept separate from .craft to avoid cramming long codes
+   into the 3-column grid and to keep the row alignment crisp. */
+.split .content .standards-row{
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--rule);
+  display: grid;
+  grid-template-columns: minmax(140px, auto) 1fr;
+  gap: 24px;
+  align-items: start;
+}
+.split .content .standards-row .label{
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: .18em;
+  display: block;
+  padding-top: 6px;
+}
+.split .content .standards-row .codes{
+  display: flex; flex-wrap: wrap; gap: 8px;
+}
+.split .content .standards-row .code{
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  color: var(--accent-deep);
+  padding: 6px 12px;
+  background: color-mix(in oklab, var(--accent-deep) 6%, transparent);
+  border: 0.5px solid color-mix(in oklab, var(--accent-deep) 28%, transparent);
+  border-radius: 999px;
+  white-space: nowrap;
+}
+@media (max-width: 720px){
+  .split .content .standards-row{ grid-template-columns: 1fr; gap: 12px; }
+  .split .content .standards-row .label{ padding-top: 0; }
+}
+
+
+/* Pull-quote, drops a large serif italic line between sections.
+   Pulled from catalog body copy to connect the reader to the ecosystem.
+   Centered, generous margin, hairline rule above and below. */
+.pull-quote{
+  background: var(--cream);
+  padding: clamp(56px, 7vw, 96px) clamp(20px, 5vw, 56px);
+  text-align: center;
+  border-top: 0.5px solid var(--rule);
+  border-bottom: 0.5px solid var(--rule);
+}
+.pull-quote blockquote{
+  max-width: 56ch;
+  margin: 0 auto;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(22px, 2.8vw, 32px);
+  line-height: 1.25;
+  color: var(--ink);
+  letter-spacing: -.008em;
+}
+.pull-quote blockquote em{ color: var(--accent-deep); font-style: italic; }
+.pull-quote cite{
+  display: block;
+  margin-top: 28px;
+  font-family: var(--sans);
+  font-style: normal;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+
+
+/* Caption variety, editorial. Apply explicitly via markup.
+   Use <div class="cap stripped"> for less-important products (variants, accents).
+   Use <div class="cap expanded"> for products that warrant editorial breath. */
+.gallery .home .cap.stripped .desc{ display: none; }
+.gallery .home .cap.stripped{ padding-bottom: 16px; }
+.gallery .home .cap.expanded::before{
+  content: "";
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: var(--accent);
+  opacity: .6;
+  margin: 10px 0 12px;
+}
+.gallery .home .cap.expanded .desc{
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+
+/* Section 01 — Sensory Play personality
+   Precise, tactile, slightly clinical. Tighter headlines, denser body. */
+.split .content h3, .gallery h2, .intro h3 { letter-spacing: -.012em; }
+.split .content .desc{ font-size: clamp(16px, 1.4vw, 18px); }
+
+
+/* Section divider, mobile fallback. Long labels should stack vertically. */
+@media (max-width: 720px){
+  .section-divider{
+    grid-template-columns: auto 1fr;
+    gap: 16px;
+  }
+  .section-divider .line{ display: block; }
+  .section-divider .label{
+    grid-column: 1 / -1;
+    margin-top: -4px;
+  }
+}
+
+
+/* Breadcrumb, retail-parallel.
+   Replaces the .back link in .subnav with a Home > Educator Catalog > Section
+   trail. Mirrors retail's Home > Collection > Product logic, optimized for B2B
+   buyers who navigate by program tier first, then section. */
+.breadcrumb{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: .04em;
+  color: var(--stone);
+}
+.breadcrumb a{
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color .2s ease;
+}
+.breadcrumb a:hover{ color: var(--forest); }
+.breadcrumb .sep{
+  color: var(--rule-strong);
+  font-size: 11px;
+  user-select: none;
+}
+.breadcrumb [aria-current="page"]{
+  color: var(--stone);
+  font-weight: 400;
+}
+@media (max-width: 720px){
+  .breadcrumb{ font-size: 11px; gap: 8px; }
+  .breadcrumb .home-crumb{ display: none; }
+}
+
+
+.split.stage-overlay{ display: block; position: relative; padding: 0; }
+.split.stage-overlay .img-side{ width: 100%; height: 70vh; min-height: 520px; max-height: 720px; position: relative; }
+.split.stage-overlay .img-side .tile{ width: 100%; height: 100%; }
+.split.stage-overlay .img-side .tile img{ width: 100%; height: 100%; object-fit: cover; display: block; }
+.split.stage-overlay .content{
+  position: absolute; left: clamp(24px, 6vw, 80px); bottom: clamp(24px, 5vw, 60px);
+  max-width: 520px; padding: clamp(28px, 3.5vw, 44px);
+  background: rgba(245, 240, 229, 0.94); backdrop-filter: blur(4px);
+  border-radius: 2px; box-shadow: 0 18px 48px rgba(44,44,42,.14);
+}
+@media (max-width: 880px){
+  .split.stage-overlay .img-side{ height: 56vh; min-height: 420px; }
+  .split.stage-overlay .content{ left: 16px; right: 16px; bottom: 16px; max-width: none; padding: 24px; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- =========================== UTILITY BAR =========================== -->
+<div class="utility">
+  <div class="utility-inner">
+    <div class="utility-left">
+      <a href="tel:6268410421" class="phone"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4a2 2 0 0 1 2-2h2l2 5-2 1a11 11 0 0 0 5 5l1-2 5 2v2a2 2 0 0 1-2 2A16 16 0 0 1 5 4Z"/></svg>(626) 841-0421</a>
+      <a href="#">Track an order</a>
+    </div>
+    <div class="utility-center">
+      <span class="slide is-active">Net-30, tax-exempt, and approved-vendor accounts for schools.</span>
+      <span class="slide">Every reply from a real human, within one business day.</span>
+      <span class="slide">Pre-paid orders ship first. Window closes when the bench fills.</span>
+    </div>
+    <div class="utility-right">
+      <a href="educator.html">Apply for an account</a>
+      <a href="educator.html">Sign in</a>
+    </div>
+  </div>
+</div>
+
+<!-- =========================== PROMO STRIP (pre-order window) =========================== -->
+<div class="promo-strip">
+  <strong>Fall booking</strong>
+  Limited production &middot; POs by <span class="vol">July 15</span> for September arrival
+  <span class="sep"></span>
+  Pre-paid orders ship first. Window closes when the bench fills.
+</div>
+
+<!-- =========================== NAV (search · logo · actions) =========================== -->
+<nav class="nav" id="nav">
+  <div class="nav__search" aria-label="Search">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <span>Search the educator catalog</span>
+  </div>
+  <a href="#" class="nav__logo">
+    <img src="{{ 'mtw-logo-full.png' | asset_url }}" alt="My Toy Wagon, Los Angeles, California, est. 2020" class="mark"/>
+  </a>
+  <div class="nav__actions">
+    <a href="educator-dashboard.html" class="nav__action" aria-label="Account">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20a8 8 0 0 1 16 0"/></svg>
+      <span class="label">Account</span>
+    </a>
+    <a href="new-quote.html" class="nav__action" aria-label="Quote builder">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="14" height="16" rx="1"/><path d="M9 9h6M9 13h6M9 17h4"/></svg>
+      <span class="label">Quote</span>
+      <span class="pill" id="quoteCount">0</span>
+    </a>
+  </div>
+</nav>
+
+<!-- =========================== SUBNAV (catalog stepper + page jumps) =========================== -->
+<div class="subnav">
+  <div class="subnav-inner">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="MTW Homepage v3.html" class="home-crumb">Home</a>
+      <span class="sep" aria-hidden="true">/</span>
+      <a href="educators.html">Educator Catalog</a>
+      <span class="sep" aria-hidden="true">/</span>
+      <span aria-current="page">Section 01 &middot; Sensory Play</span>
+    </nav>
+    <div class="stepper" id="ecosystemStepper">
+      <a class="prev" href="#"></a>
+      <span class="sep">/</span>
+      <span class="current"></span>
+      <span class="sep">/</span>
+      <a class="next" href="#"></a>
+    </div>
+    <div class="jumps">
+      <a href="#homes">The Homes</a>
+      <a href="#kits">Outfit a Classroom</a>
+      <a href="new-quote.html">Quote builder</a>
+    </div>
+  </div>
+</div>
+
+<!-- =========================== COVER =========================== -->
+<section class="cover" data-screen-label="01 Cover">
+  <div class="bg tile t-mood has-photo">
+    <img src="{{ 'diggertray.webp' | file_url }}" alt="Multi-section wooden sensory tray filled with kinetic sand and two small yellow excavators, viewed from above on a soft gray play mat. Sensory Play, section one of the My Toy Wagon Educator Catalog." loading="lazy"/>
+    <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+    <span class="tag dark" style="display:none;">[ COVER PHOTO &nbsp;&middot;&nbsp; full-bleed atmospheric: Buttonandbug Rainbow Imaginative Play Tray seated in IKEA Flisat, filled with rainbow rice and small wooden scoops, child's hands mid-pour, warm window light, slight overhead three-quarter angle. Mirrors the catalog opener (pg.&nbsp;5). ]</span>
+  </div>
+  <div class="veil"></div>
+
+  <div class="head">
+      <div class="vol">
+      <div class="meta" style="color: rgba(250,246,237,.7);">SECTION</div>
+      <div class="num"><span data-fill="volume">01</span></div>
+    </div>
+  </div>
+
+  <h1>Sensory <span class="it">Play</span></h1>
+
+  <div class="footer">
+    <div class="audience">
+      <span class="label">Section One &nbsp;&middot;&nbsp; Ages 3 to 6</span>
+      <p>The hand remembers what the mind forgets. Sensory trays, therapy doughs, sand trays, and calm-corner tools, the materials are made for that memory.</p>
+    </div>
+  </div>
+</section>
+
+<!-- =========================== QUICK FACTS =========================== -->
+<!-- BEGIN PARTIAL: ecosystem-quick-facts (per-ecosystem facts; not shared) -->
+<section class="quick-facts" data-screen-label="02 Quick Facts">
+  <div class="quick-facts-inner">
+    <span class="qf-chip-stat">Pre-K to Kindergarten</span>
+    <span class="qf-chip-stat">Solid maple, non-toxic finish</span>
+    <span class="qf-chip-stat">IKEA Flisat compatible</span>
+    <span class="qf-chip-stat">OT &amp; SLP-friendly</span>
+    <span class="qf-chip-stat">Solid maple, made in the USA</span>
+    <span class="qf-chip-stat">Solid maple &amp; FSC beech</span>
+    <span class="qf-chip-stat">Net-30 &amp; tax-exempt</span>
+  </div>
+</section>
+<!-- END PARTIAL: ecosystem-quick-facts -->
+
+<!-- =========================== SLOW GOODS BAND =========================== -->
+<section style="background: var(--cream); border-bottom: 0.5px solid var(--rule); text-align: center; padding: 56px clamp(20px, 5vw, 56px);">
+  <p style="margin: 0 auto; max-width: 68ch; font-family: var(--serif); font-style: italic; font-size: clamp(22px, 2.4vw, 30px); line-height: 1.4; color: var(--ink); letter-spacing: -.005em;">Hand-cut solid maple. Hand-blended therapy dough in California. <span style="color: var(--accent-deep);">Slow goods, on purpose.</span></p>
+  <p style="margin: 22px auto 0; max-width: 62ch; font-family: var(--sans); font-size: 16px; line-height: 1.65; color: var(--ink-soft);">Every tray, insert, sand tool, and therapy dough in Sensory Play is made by hand, Buttonandbug  Análu in California, Wooden Story in Poland, Papoose in Nepal. The wait is the craft. We accept a limited number of classroom orders each season, so we can keep the work true. Reserve early.</p>
+</section>
+
+<!-- =========================== EDITORIAL INTRO =========================== -->
+<section class="intro gut" data-screen-label="03 Editorial Intro">
+  <div class="wrap">
+    <div class="col-img">
+      <div class="tile t-hue3 has-photo">
+        <img src="{{ 'buttonandbug-cake-tray-lifestyle.png' | file_url }}" alt="Child reaching across a Buttonandbug Cake Tray of pasta sections and rainbow rice in a Flisat."/>
+      </div>
+    </div>
+    <div class="col-txt">
+      <span class="eyebrow">What Sensory Play Holds</span>
+      <h3>The hand remembers <span class="it">what the mind forgets.</span></h3>
+
+      <div class="body">
+        <p><span class="dropcap">B</span>efore a child holds a pencil, she holds a scoop. Before she counts, she pours. Before she names a feeling, she squeezes a ball of dough until her chest goes quiet again. Sensory Play is the toolkit for that prior learning: maple trays sized for the Flisat, dual-sided tracing inserts, scented therapy dough, sand trays for the morning meeting reset. No batteries. No instructions. Just texture, attention, and the long, generous space between them.</p>
+      </div>
+
+      <div class="pillars">
+        <div class="p"><span class="label">Sensory Integration</span><p>Texture, weight, smell, the body learning.</p></div>
+        <div class="p"><span class="label">Fine Motor</span><p>Scoop, pinch, pour, trace, place.</p></div>
+        <div class="p"><span class="label">Self-Regulation</span><p>The quiet tool that resets a morning.</p></div>
+        <div class="p"><span class="label">OT &amp; SLP-Friendly</span><p>Eligible under IDEA Part B &amp; Medicaid OT funding.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================== FEATURED PRODUCT (Hero: Rainbow Imaginative Play Tray) =========================== -->
+<section class="split" data-screen-label="04 Hero Product">
+  <div class="img-side">
+    <div class="tile t-soft has-photo">
+      <img src="{{ 'sensory-play-rainbow-imaginative-play-tray-cover.webp' | file_url }}" alt="Buttonandbug Rainbow Imaginative Play Tray, close-up of the rainbow-shaped maple tray filled with red and yellow pasta along the arches and brown rice in the inner curve, photographed overhead on a cream surfacerts, sized for the IKEA Flisat children's table." loading="lazy"/>
+      <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+      <span class="tag">[ HERO PRODUCT &nbsp;&middot;&nbsp; RAINBOW IMAGINATIVE PLAY TRAY, Buttonandbug maple tray fitted into an IKEA Flisat children's table, filled with rainbow rice and small loose parts; pours, scoops, sorted piles. Mirrors catalog pg.&nbsp;6 hero. ]</span>
+    </div>
+  </div>
+  <div class="content">
+    <span class="eyebrow" style="color: var(--accent-deep);">04. Buttonandbug &nbsp;&middot;&nbsp; Featured</span>
+    <h3>Rainbow Imaginative <span class="it">Play Tray.</span></h3>
+    <div class="sub">Solid maple. Fits the Flisat. A term of provocations in one tray.</div>
+    <span class="hair" aria-hidden="true"></span>
+
+    <p class="desc">Fill it with rainbow rice on Monday morning. By Tuesday, children have sorted by color, built a story, and asked to refill it themselves. Open-ended sensory exploration with any fill material, rice, lentils, pasta, dried beans, sand, water. The tray drops into the IKEA Flisat children's table, or sits on any classroom surface. The maker, Buttonandbug, hand-cuts each tray on order.</p>
+
+    <ul class="contents-list">
+      <li>One solid maple Imaginative Play Tray, hand-cut.</li>
+      <li>Non-toxic natural finish, safe for daily classroom handling.</li>
+      <li>Sized for IKEA Flisat children's table or any flat surface.</li>
+      <li>Fill is not included, pair with rice, lentils, sand, or seasonal loose parts.</li>
+    </ul>
+
+    <div class="craft">
+      <div>
+        <span class="label">Material</span>
+        <span class="v">Solid maple hardwood, non-toxic natural finish.</span>
+      </div>
+      <div>
+        <span class="label">Provenance</span>
+        <span class="v">Hand-cut on order.</span>
+      </div>
+      <div>
+        <span class="label">SKU &nbsp;&middot;&nbsp; Ages</span>
+        <span class="stock-pill">MTW-SP-IPT &nbsp;&middot;&nbsp; Ages 3&ndash;6</span>
+      </div>
+    </div>
+
+    <div class="testimony">
+      <p class="quote">&ldquo;My preschool class loves the trays, they ask for them every morning.&rdquo;</p>
+      <div class="attr">
+        <span class="dash"></span>
+        <span class="name"><b>Stefanie L.</b> &nbsp;&middot;&nbsp; Preschool Teacher &middot; Verified Buyer</span>
+      </div>
+    </div>
+
+    <!-- PRICE: MTW-SP-IPT -->
+    <span class="price">$98</span>
+    <div class="add-row">
+      <button class="add-btn" type="button" data-sku="MTW-SP-IPT"><span class="plus"></span>Add to cart</button>
+      <a href="#" class="view-pdp">View product details &rarr;</a>
+    </div>
+
+    <div class="pairs-with">
+      <span class="label">Extend the play</span>
+      <div class="pair-body">
+        <h4>The Tray Range &nbsp;&middot;&nbsp; MTW-SP-BTR</h4>
+        <p>Five more Buttonandbug trays alongside the Rainbow, Bear, Cake, Castle, Garden, and Mountain, for a term of changing sensory provocations. From the 2026 Fall Edition, p.&nbsp;7.</p>
+        <span class="pair-meta"><strong>$480</strong>Set of six trays &middot; saves $108</span>
+        <a href="#tray-range" class="pair-action">See the Tray Range &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider">
+  <span class="num">02</span>
+  <span class="line"></span>
+  <span class="label">The Imaginative Play Range</span>
+</div>
+
+<!-- =========================== GALLERY 1: THE IMAGINATIVE PLAY RANGE (p.7) =========================== -->
+<section class="gallery even gut" id="tray-range" data-screen-label="05 Imaginative Play Range">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <span class="eyebrow">05. Buttonandbug &middot; Collection</span>
+        <h2>The Imaginative <span class="it">Play Range.</span></h2>
+      </div>
+      <div class="right">
+        <p>Each tray invites a different kind of sensory exploration. Lay one out, drop it into the Flisat, and the morning has its own gravity. The maker hand-cuts every tray on order. Solid maple, non-toxic finish, built to last a school career.</p>
+        <p style="margin-top: 18px; font-family: var(--sans); font-size: 13px; line-height: 1.6; color: var(--ink); font-weight: 500;">All hand-cut on order. Solid maple, non-toxic finish. Fits the IKEA Flisat children's table.</p>
+        <div class="index">BEAR &nbsp;&middot;&nbsp; CAKE &nbsp;&middot;&nbsp; CASTLE &nbsp;&middot;&nbsp; GARDEN &nbsp;&middot;&nbsp; MOUNTAIN</div>
+      </div>
+    </div>
+
+    <div class="homes">
+      <!-- 01 Bear Tray -->
+      <article class="home size-hero">
+        <div class="tile-wrap">
+          <div class="tile t-hue3-deep dark has-photo">
+      <img src="{{ 'buttonandbug-bear-sensory-tray.webp' | file_url }}" alt="Buttonandbug Bear Sensory Tray, maple tray styled as a night-sky mountain landscape with felted snow, mossy stones, and small wooden bear figures." loading="lazy"/>
+            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+            <span class="tag">[ TRAY N&deg;01 &nbsp;&middot;&nbsp; BEAR TRAY, Buttonandbug maple tray styled as a night-sky mountain landscape with felted snow, mossy stones, and small wooden bear figures. Overhead three-quarter. Mirrors catalog pg.&nbsp;7 cell 01. ]</span>
+          </div>
+          <div class="overlay"></div>
+          <div class="float-name">Bear Tray</div>
+        </div>
+        <div class="cap">
+          <span class="no">01</span>
+          <span class="name">Bear Tray</span>
+          <span class="desc">Habitats, camouflage, and the landscapes of the bear's world. Pairs with seasonal natural materials, pinecones, moss, river stones.</span>
+          <span class="meta">MTW-SP-BEAR &nbsp;&middot;&nbsp; Single tray</span>
+          <!-- PRICE: MTW-SP-BEAR -->
+          <span class="price">$98</span>
+          <div class="add-row">
+            <button class="add-btn" type="button" data-sku="MTW-SP-BEAR"><span class="plus"></span>Add to cart</button>
+            <a href="#" class="view-pdp">View product &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 02 Cake Tray -->
+      <article class="home size-tall">
+        <div class="tile-wrap">
+          <div class="tile t-alt has-photo">
+      <img src="{{ 'buttonandbug-cake-sensory-tray.png' | file_url }}" alt="Buttonandbug Cake Sensory Tray, beech-toned tray shaped like a tiered birthday cake with pegboard candle wells and a base section of rainbow rice and pebbles." loading="lazy"/>
+            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+            <span class="tag">[ TRAY N&deg;02 &nbsp;&middot;&nbsp; CAKE TRAY, beech-toned tray shaped like a tiered birthday cake set in a Flisat, with three pegboard sections holding small acrylic candle pegs in blue, green, and white, plus a deep base section filled with rainbow-colored sensory rice and pebbles. Mirrors catalog pg.&nbsp;7 cell 04. ]</span>
+          </div>
+          <div class="overlay"></div>
+          <div class="float-name">Cake Tray</div>
+        </div>
+        <div class="cap">
+          <span class="no">02</span>
+          <span class="name">Cake Tray</span>
+          <span class="desc">A birthday-party invitation, acrylic candle wells, scooping pegs, and rainbow sensory fill. All the joy of cake without the cleanup.</span>
+          <span class="meta">MTW-SP-CAKE &nbsp;&middot;&nbsp; Tray + candles</span>
+          <!-- PRICE: MTW-SP-CAKE -->
+          <span class="price">$98</span>
+          <div class="add-row">
+            <button class="add-btn" type="button" data-sku="MTW-SP-CAKE"><span class="plus"></span>Add to cart</button>
+            <a href="#" class="view-pdp">View product &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 03 Castle Tray -->
+      <article class="home size-std">
+        <div class="tile-wrap">
+          <div class="tile t-hue3 has-photo">
+      <img src="{{ 'buttonandbug-castle-sensory-tray.webp' | file_url }}" alt="Buttonandbug Castle Sensory Tray in an IKEA Flisat table, filled with rice and rainbow corn, small wooden figures arranged at the turrets." loading="lazy"/>
+            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+            <span class="tag">[ TRAY N&deg;03 &nbsp;&middot;&nbsp; CASTLE TRAY, Buttonandbug Castle Tray in an IKEA Flisat table filled with rice and rainbow corn fills, small wooden figures arranged at the turrets. Mirrors catalog pg.&nbsp;7 cell 02. ]</span>
+          </div>
+          <div class="overlay"></div>
+          <div class="float-name">Castle Tray</div>
+        </div>
+        <div class="cap">
+          <span class="no">03</span>
+          <span class="name">Castle Tray</span>
+          <span class="desc">Fairytales, architecture, and dramatic storytelling provocations. Pairs with wooden knights, gnomes, and dramatic-play loose parts.</span>
+          <span class="meta">MTW-SP-CSTL &nbsp;&middot;&nbsp; Single tray</span>
+          <!-- PRICE: MTW-SP-CSTL -->
+          <span class="price">$98</span>
+          <div class="add-row">
+            <button class="add-btn" type="button" data-sku="MTW-SP-CSTL"><span class="plus"></span>Add to cart</button>
+            <a href="#" class="view-pdp">View product &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 04 Garden Tray -->
+      <article class="home size-std">
+        <div class="tile-wrap">
+          <div class="tile t-soft has-photo">
+      <img src="{{ 'buttonandbug-garden-sensory-tray.webp' | file_url }}" alt="Buttonandbug Garden Sensory Tray styled as a planting bed with labeled lettuce, berries, and pumpkin rows, picket fence and bird figurines." loading="lazy"/>
+            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+            <span class="tag">[ TRAY N&deg;04 &nbsp;&middot;&nbsp; GARDEN TRAY, Buttonandbug Garden Tray styled as a planting bed with labeled lettuce, berries, and pumpkin rows, picket fence and bird figurines below. Mirrors catalog pg.&nbsp;7 cell 00. ]</span>
+          </div>
+          <div class="overlay"></div>
+          <div class="float-name">Garden Tray</div>
+        </div>
+        <div class="cap">
+          <span class="no">04</span>
+          <span class="name">Garden Tray</span>
+          <span class="desc">A vegetable bed for planting, harvesting, and seasonal science. Pairs with seeds, soil-substitute fill, and small wooden produce.</span>
+          <span class="meta">MTW-SP-GDN &nbsp;&middot;&nbsp; Single tray</span>
+          <!-- PRICE: MTW-SP-GDN -->
+          <span class="price">$98</span>
+          <div class="add-row">
+            <button class="add-btn" type="button" data-sku="MTW-SP-GDN"><span class="plus"></span>Add to cart</button>
+            <a href="#" class="view-pdp">View product &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 05 Mountain Tray -->
+      <article class="home size-std">
+        <div class="tile-wrap">
+          <div class="tile t-cream has-photo">
+      <img src="{{ 'buttonandbug-mountain-sensory-tray.webp' | file_url }}" alt="Buttonandbug Mountain Sensory Tray styled as summer valleys with a blue river of dyed pasta and meadow flowers." loading="lazy"/>
+            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+            <span class="tag">[ TRAY N&deg;05 &nbsp;&middot;&nbsp; MOUNTAIN TRAY, Buttonandbug Mountain Tray styled as summer valleys with a blue river of dyed pasta and meadow flowers. Mirrors catalog pg.&nbsp;7 cell 03. ]</span>
+          </div>
+          <div class="overlay"></div>
+          <div class="float-name">Mountain Tray</div>
+        </div>
+        <div class="cap">
+          <span class="no">05</span>
+          <span class="name">Mountain Tray</span>
+          <span class="desc">Topography, ecosystems, rivers and valleys, geography you can touch. The closest thing to a small-world relief map a child can build by hand.</span>
+          <span class="meta">MTW-SP-MTN &nbsp;&middot;&nbsp; Single tray</span>
+          <!-- PRICE: MTW-SP-MTN -->
+          <span class="price">$98</span>
+          <div class="add-row">
+            <button class="add-btn" type="button" data-sku="MTW-SP-MTN"><span class="plus"></span>Add to cart</button>
+            <a href="#" class="view-pdp">View product &rarr;</a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="collection-bridge">
+      <p>
+        <strong>The Tray Range &nbsp;&middot;&nbsp; MTW-SP-BTR</strong>
+        Bear, Cake, Castle, Garden, Mountain, and Rainbow trays bundled as the catalog set, six trays for a term of sensory provocations.
+      </p>
+      <a href="#outfit" class="bridge-cta">See the Tray Range &middot; bundle below</a>
+    </div>
+  </div>
+</section>
+
+<section class="pull-quote" data-screen-label="Pull-Quote">
+  <blockquote>
+    Fill it with rainbow rice on Monday morning. By Tuesday, children have sorted by color, built a story, and <em>asked to refill it themselves.</em>
+  </blockquote>
+  <cite>From the 2026 Fall Edition, page 6</cite>
+</section>
+
+<!-- =========================== FEATURED PRODUCT 2 (p.8 Letter Tracing Insert) =========================== -->
+<section class="split image-right" data-screen-label="06 Letter Tracing Insert" style="background: var(--cream);">
+  <div class="img-side">
+    <div class="tile t-soft has-photo">
+      <img src="{{ 'buttonandbug-letter-tracing-insert.jpg' | file_url }}" alt="Buttonandbug Letter Tracing Insert, dual-sided maple insert with uppercase alphabet face up, finger tracing the curve of a letter, designed to fit the IKEA Flisat children's table." loading="lazy"/>
+      <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+      <span class="tag">[ FEATURED PRODUCT 2 &nbsp;&middot;&nbsp; LETTER TRACING INSERT, dual-sided maple insert sitting in an IKEA Flisat, uppercase alphabet face up, child's finger tracing the curve of an &lsquo;S&rsquo;; small bowl of lentils to the side for resistance-tracing. Mirrors catalog pg.&nbsp;8 hero. ]</span>
+    </div>
+  </div>
+  <div class="content">
+    <span class="eyebrow" style="color: var(--accent-deep);">06. Buttonandbug &nbsp;&middot;&nbsp; Literacy</span>
+    <h3>Letter Tracing <span class="it">Insert.</span></h3>
+    <div class="sub">Dual-sided maple. Uppercase one side, lowercase the other.</div>
+    <span class="hair" aria-hidden="true"></span>
+
+    <p class="desc">Dual-sided maple insert, uppercase letters on one face, lowercase on the other. Drops into the IKEA Flisat children's table or any classroom surface. The grooves invite the finger to follow letter shapes before the pencil ever does, pre-writing through pure tactile play. Fill with sand, lentils, or rice for resistance-tracing variations. Used by school-based OTs for pre-writing IEP goals.</p>
+
+    <ul class="contents-list">
+      <li>One dual-sided maple Letter Tracing Insert, uppercase one face, lowercase the other.</li>
+      <li>Sized for IKEA Flisat children's table; works as standalone surface.</li>
+      <li>Non-toxic natural finish.</li>
+      <li>Fill is not included, pair with sand, lentils, or rice for resistance-tracing.</li>
+    </ul>
+
+    <div class="craft">
+      <div>
+        <span class="label">Material</span>
+        <span class="v">Solid maple, non-toxic finish.</span>
+      </div>
+      <div>
+        <span class="label">Provenance</span>
+        <span class="v">Hand-cut on order.</span>
+      </div>
+      <div>
+        <span class="label">SKU &nbsp;&middot;&nbsp; Ages</span>
+        <span class="stock-pill">MTW-SP-LTI &nbsp;&middot;&nbsp; Ages 3 to 6</span>
+      </div>
+    </div>
+
+    <div class="standards-row">
+      <span class="label">CCSS Standard</span>
+      <div class="codes">
+        <span class="code">CCSS.ELA-LITERACY.RF.K.1.A</span>
+        <span class="code">EYFS &middot; Literacy</span>
+        <span class="code">Pre-Writing</span>
+      </div>
+    </div>
+
+    <div class="testimony">
+      <p class="quote">&ldquo;We pair it with the sand tray and the children spend twenty minutes tracing letters with their fingers before they ever pick up a pencil. The OT loves it.&rdquo;</p>
+      <div class="attr">
+        <span class="dash"></span>
+        <span class="name"><b>Verified educator buyer</b> &nbsp;&middot;&nbsp; Pre-K literacy lead</span>
+      </div>
+    </div>
+
+    <!-- PRICE: MTW-SP-LTI -->
+    <span class="price">$58</span>
+    <div class="add-row">
+      <button class="add-btn" type="button" data-sku="MTW-SP-LTI"><span class="plus"></span>Add to cart</button>
+      <a href="#" class="view-pdp">View product details &rarr;</a>
+    </div>
+
+    <div class="pairs-with">
+      <span class="label">Pairs with the Letter Tracing Insert</span>
+      <div class="pair-body">
+        <h4>The Sand Tray with Flashcard Holder &nbsp;&middot;&nbsp; MTW-SP-2PART</h4>
+        <p>Wooden Story 2-part tray pairs with the tracing insert for resistance-tracing and pre-writing IEP work. See Calm Corner Tools below.</p>
+        <span class="pair-meta"><strong>$88</strong>Sand bay + balls bay + stylus</span>
+        <a href="#calm-corner" class="pair-action">See Calm Corner Tools &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<div class="section-divider">
+  <span class="num">04</span>
+  <span class="line"></span>
+  <span class="label">Therapy Dough &middot; OT &amp; SLP-Friendly</span>
+</div>
+
+<!-- =========================== THERAPY DOUGH GALLERY (p.10 Análu, brand-cross-listed) =========================== -->
+<!-- Análu Therapy Dough lives in the Sensory Play section of the 2026 catalog
+     (pg. 10) although its SKU prefix is MTW-CA-* (Análu's brand home is Creative Arts).
+     This is brand-cross-listing per the catalog, not section mixing. -->
+<section class="gallery even gut" id="therapy-dough" data-screen-label="07 Therapy Dough" style="background: color-mix(in oklab, var(--accent-pale) 40%, var(--cream));">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <span class="eyebrow">07. Análu &middot; Therapy Dough &middot; OT &amp; SLP-Friendly</span>
+        <h2>Therapy dough <span class="it">for daily-use sensory.</span></h2>
+      </div>
+      <div class="right">
+        <p>A daily-use sensory tool. Pure, organic, GMO-free essential oils kneaded into soft dough, for fine-motor work, transitions, and the kind of repetitive tactile play that quietly resets a nervous system. Eligible under IDEA Part B &amp; Medicaid OT funding.</p>
+        <p style="margin-top: 18px; font-family: var(--sans); font-size: 13px; line-height: 1.6; color: var(--ink); font-weight: 500;">Wheat-based, vegan &amp; cruelty-free. Organic essential oils. ASTM D-4236. Made in USA.</p>
+        <div class="index">SWEET ORANGE &nbsp;&middot;&nbsp; EUCALYPTUS &nbsp;&middot;&nbsp; LEMON &nbsp;&middot;&nbsp; LAVENDER &nbsp;&middot;&nbsp; PEPPERMINT</div>
+      </div>
+    </div>
+
+    <div class="homes">
+      <article class="home size-hero">
+        <div class="tile-wrap">
+          <div class="tile t-alt has-photo">
+      <img src="{{ 'Analu-Orange-w1-sq__13651_5def1bc2-f016-4f33-a98d-253dffe5398e.jpg' | file_url }}" alt="Análu Sweet Orange therapy dough, orange-yellow puck of sweet-orange-scented dough beside its cream tin lid printed with an orange citrus illustration." loading="lazy"/>
+            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+            <span class="tag">[ SCENT N°01 &nbsp;&middot;&nbsp; SWEET ORANGE, orange-yellow puck of sweet-orange-scented therapy dough beside its cream tin lid printed with an orange citrus illustration. Mirrors catalog pg. 10 cell 00. ]</span>
+          </div>
+          <div class="overlay"></div>
+          <div class="float-name">Análu &middot; Sweet Orange</div>
+        </div>
+        <div class="cap">
+          <span class="no">01</span>
+          <span class="name">Análu &middot; Sweet Orange</span>
+          <span class="desc">Citrus brightness for morning circle, gently uplifting. Pure sweet-orange essential oil kneaded into wheat-based, vegan dough.</span>
+          <span class="meta">MTW-CA-ANO &nbsp;&middot;&nbsp; 4oz tin</span>
+          <span class="price">$18</span>
+          <div class="add-row">
+            <button class="add-btn" type="button" data-sku="MTW-CA-ANO"><span class="plus"></span>Add to cart</button>
+            <a href="#" class="view-pdp">View product &rarr;</a>
+          </div>
+        </div>
+      </article>
+      <article class="home size-tall">
+        <div class="tile-wrap">
+          <div class="tile t-soft has-photo">
+      <img src="{{ 'Analu-Eucalyptus.WEBP' | file_url }}" alt="Análu Eucalyptus therapy dough, sage-green puck of eucalyptus-scented dough beside its cream tin lid printed with eucalyptus leaves." loading="lazy"/>
+            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+            <span class="tag">[ SCENT N°02 &nbsp;&middot;&nbsp; EUCALYPTUS, sage-green puck of eucalyptus-scented therapy dough beside its cream tin lid printed with eucalyptus leaves. Mirrors catalog pg. 10 cell 01. ]</span>
+          </div>
+          <div class="overlay"></div>
+          <div class="float-name">Análu &middot; Eucalyptus</div>
+        </div>
+        <div class="cap">
+          <span class="no">02</span>
+          <span class="name">Análu &middot; Eucalyptus</span>
+          <span class="desc">Cool, herbal, grounding, for sensory-overload moments. The deep-breathing scent.</span>
+          <span class="meta">MTW-CA-ANE &nbsp;&middot;&nbsp; 4oz tin</span>
+          <span class="price">$18</span>
+          <div class="add-row">
+            <button class="add-btn" type="button" data-sku="MTW-CA-ANE"><span class="plus"></span>Add to cart</button>
+            <a href="#" class="view-pdp">View product &rarr;</a>
+          </div>
+        </div>
+      </article>
+      <article class="home size-std">
+        <div class="tile-wrap">
+          <div class="tile t-cream has-photo">
+      <img src="{{ 'analu-lemon-therapy-dough.webp' | file_url }}" alt="Análu Lemon therapy dough, pale-butter-yellow puck of lemon-scented dough beside its cream tin lid printed with sliced lemons." loading="lazy"/>
+            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+            <span class="tag">[ SCENT N°03 &nbsp;&middot;&nbsp; LEMON, pale-butter-yellow puck of lemon-scented therapy dough beside its cream tin lid printed with sliced lemons. Mirrors catalog pg. 10 cell 02. ]</span>
+          </div>
+          <div class="overlay"></div>
+          <div class="float-name">Análu &middot; Lemon</div>
+        </div>
+        <div class="cap">
+          <span class="no">03</span>
+          <span class="name">Análu &middot; Lemon</span>
+          <span class="desc">Bright, clean, awakening, the focus-sharpening scent for the afternoon stretch.</span>
+          <span class="meta">MTW-CA-ANL &nbsp;&middot;&nbsp; 4oz tin</span>
+          <span class="price">$18</span>
+          <div class="add-row">
+            <button class="add-btn" type="button" data-sku="MTW-CA-ANL"><span class="plus"></span>Add to cart</button>
+            <a href="#" class="view-pdp">View product &rarr;</a>
+          </div>
+        </div>
+      </article>
+      <article class="home size-std">
+        <div class="tile-wrap">
+          <div class="tile t-primary has-photo">
+      <img src="{{ 'analu-lavender-therapy-dough.webp' | file_url }}" alt="Análu Lavender therapy dough, soft lavender-purple puck embossed with the Análu logo, beside cream tin printed with lavender flowers and rosemary." loading="lazy"/>
+            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+            <span class="tag">[ SCENT N°04 &nbsp;&middot;&nbsp; LAVENDER, soft lavender-purple puck of lavender-scented therapy dough embossed with the Análu logo, beside its cream tin lid printed with a sprig of fresh lavender flowers and rosemary. Mirrors catalog pg. 10 cell 04. ]</span>
+          </div>
+          <div class="overlay"></div>
+          <div class="float-name">Análu &middot; Lavender</div>
+        </div>
+        <div class="cap">
+          <span class="no">04</span>
+          <span class="name">Análu &middot; Lavender</span>
+          <span class="desc">Floral, soothing, classroom-favorite, for nap-time and post-recess reset.</span>
+          <span class="meta">MTW-CA-ANV &nbsp;&middot;&nbsp; 4oz tin</span>
+          <span class="price">$18</span>
+          <div class="add-row">
+            <button class="add-btn" type="button" data-sku="MTW-CA-ANV"><span class="plus"></span>Add to cart</button>
+            <a href="#" class="view-pdp">View product &rarr;</a>
+          </div>
+        </div>
+      </article>
+      <article class="home size-std">
+        <div class="tile-wrap">
+          <div class="tile t-hue3 has-photo">
+      <img src="{{ 'Analu-Peppermint.webp' | file_url }}" alt="Análu Peppermint therapy dough, soft-blush puck of peppermint-scented dough beside its cream tin lid printed with mint leaves and a candy-stripe ring." loading="lazy"/>
+            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+            <span class="tag">[ SCENT N°05 &nbsp;&middot;&nbsp; PEPPERMINT, soft-blush puck of peppermint-scented therapy dough beside its cream tin lid printed with mint leaves and a candy-stripe ring. Mirrors catalog pg. 10 cell 05. ]</span>
+          </div>
+          <div class="overlay"></div>
+          <div class="float-name">Análu &middot; Peppermint</div>
+        </div>
+        <div class="cap">
+          <span class="no">05</span>
+          <span class="name">Análu &middot; Peppermint</span>
+          <span class="desc">Sharp, clean, energizing, for transitions and reset between activities.</span>
+          <span class="meta">MTW-CA-ANR &nbsp;&middot;&nbsp; 4oz tin</span>
+          <span class="price">$18</span>
+          <div class="add-row">
+            <button class="add-btn" type="button" data-sku="MTW-CA-ANR"><span class="plus"></span>Add to cart</button>
+            <a href="#" class="view-pdp">View product &rarr;</a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="collection-bridge">
+      <p>
+        <strong>The Seven Scents Set &nbsp;&middot;&nbsp; MTW-CA-ANS</strong>
+        All seven Análu scents bundled, Sweet Orange, Eucalyptus, Lemon, Mojito, Lavender, Peppermint, Pumpkin Spice. The classroom assortment, made in California.
+      </p>
+      <a href="#outfit" class="bridge-cta">See the Seven Scents Set &middot; bundle below</a>
+    </div>
+  </div>
+</section>
+
+<!-- =========================== FEATURED 3: TENDER LEAF MY FOREST FLOOR (p.11, brand-cross-listed) =========================== -->
+<!-- Tender Leaf's My Forest Floor lives in the Sensory Play section of the 2026 catalog
+     (pg. 11) although its SKU prefix is MTW-NP-* (Tender Leaf's brand home is Nature Play).
+     This is brand-cross-listing per the catalog. -->
+<section class="split image-right" data-screen-label="08 My Forest Floor" style="background: var(--cream);">
+  <div class="img-side">
+    <div class="tile t-hue3-deep dark has-photo">
+      <img src="{{ 'tender-leaf-my-forest-floor.png' | file_url }}" alt="Tender Leaf My Forest Floor tray, reclaimed rubberwood with green sand and over thirty woodland pieces including mushrooms, leaves, pebbles, beetles, and a bird's egg. Two children kneeling on a cream play mat, building a woodland scene together." loading="lazy"/>
+      <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+      <span class="tag dark">[ FEATURED 3 &nbsp;&middot;&nbsp; MY FOREST FLOOR, two boys in navy shirts kneeling on a cream mat, working together at a Tender Leaf My Forest Floor tray filled with green sand, with wooden mushrooms, leaves, pebbles, and forest pieces arranged around the edges. Junior Design Awards 2021. Mirrors catalog pg. 11 hero. ]</span>
+    </div>
+  </div>
+  <div class="content">
+    <span class="eyebrow" style="color: var(--accent-deep);">08. Tender Leaf Toys &nbsp;&middot;&nbsp; Featured &middot; Brand-Cross-Listed</span>
+    <h3>My Forest <span class="it">Floor.</span></h3>
+    <div class="sub">Reclaimed rubberwood. 30+ pieces. Lid flips to chalkboard.</div>
+    <span class="hair" aria-hidden="true"></span>
+
+    <p class="desc">An open-ended tinker tray for woodland scenes. The lid lifts off and flips over to become a chalkboard; internal compartments lift out so the tray can be filled with sand. Pebbles, rocks, mushrooms, beetles, a bird's egg, every play session shaped by curiosity. Made of reclaimed rubberwood, FSC-certified.</p>
+
+    <ul class="contents-list">
+      <li>One Tender Leaf tray with lid, lid flips to chalkboard.</li>
+      <li>6 grey flat pebbles &middot; 4 multi-faceted rocks &middot; 3 cone trees &middot; 8 twigs.</li>
+      <li>6 little toadstools + 1 large &middot; 10 leaves &middot; 2 acorns.</li>
+      <li>3 beetles &middot; 4 tunnel pieces &middot; a snail, a moth, a bird's egg.</li>
+      <li>11.8 &times; 11.8 &times; 2.4 in (30 &times; 30 &times; 6 cm).</li>
+    </ul>
+
+    <div class="craft">
+      <div>
+        <span class="label">Material</span>
+        <span class="v">Reclaimed rubberwood, FSC-certified, non-toxic paints.</span>
+      </div>
+      <div>
+        <span class="label">Provenance</span>
+        <span class="v">Made in Indonesia. Junior Design Awards 2021 Silver, Best Eco Toy Design.</span>
+      </div>
+      <div>
+        <span class="label">SKU &nbsp;&middot;&nbsp; Safety</span>
+        <span class="stock-pill">MTW-NP-TLF &nbsp;&middot;&nbsp; ASTM F963 &middot; CPSIA</span>
+      </div>
+    </div>
+
+    <span class="price">$78</span>
+    <div class="add-row">
+      <button class="add-btn" type="button" data-sku="MTW-NP-TLF"><span class="plus"></span>Add to cart</button>
+      <a href="#" class="view-pdp">View product details &rarr;</a>
+    </div>
+
+    <div class="pairs-with">
+      <span class="label">From the Nature Play collection</span>
+      <div class="pair-body">
+        <h4>Tender Leaf's brand home is Section 02</h4>
+        <p>My Forest Floor is brand-cross-listed in Sensory Play per the catalog, but Tender Leaf's full collection (and the Busy Bee Tray hero) live in Section 02 Nature Play.</p>
+        <span class="pair-meta"><strong>Section 02</strong>Nature Play &middot; coming soon</span>
+        <a href="educators.html" class="pair-action">See the catalog &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="pull-quote" data-screen-label="Pull-Quote 2" style="background: color-mix(in oklab, var(--accent-pale) 40%, var(--cream));">
+  <blockquote>
+    Stillness invites attention inward. <em>Quiet tools</em> for the kind of classroom transitions that keep a morning from unraveling.
+  </blockquote>
+  <cite>From the 2026 Fall Edition, page 12</cite>
+</section>
+
+<div class="section-divider">
+  <span class="num">06</span>
+  <span class="line"></span>
+  <span class="label">Tools for Calm, Focus, and Regulation</span>
+</div>
+
+<!-- =========================== GALLERY 3: CALM CORNER TOOLS (p.8c) =========================== -->
+<section class="gallery even gut" id="calm-corner" data-screen-label="09 Calm Corner Tools" style="background: color-mix(in oklab, var(--accent-pale) 50%, var(--cream));">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <span class="eyebrow">09. The Calm Corner Collection &middot; for school counselors &amp; SEL programs</span>
+        <h2>Tools for calm, focus, <span class="it">and regulation.</span></h2>
+      </div>
+      <div class="right">
+        <p>Stillness invites attention inward. Quiet tools for self-regulation, focused work, and the kind of classroom transitions that keep a morning from unraveling. Used by school-based OTs, SEL programs, and trauma-informed classrooms.</p>
+        <p style="margin-top: 18px; font-family: var(--sans); font-size: 13px; line-height: 1.6; color: var(--ink); font-weight: 500;">FSC-certified beech, teak, and ABS. Non-toxic finishes. ASTM F963 / EN71. Made in Poland, Indonesia &amp; China.</p>
+        <div class="index">MAGIC BALL &nbsp;&middot;&nbsp; SAND TRAY &nbsp;&middot;&nbsp; FLASHCARD &nbsp;&middot;&nbsp; TOOLS &nbsp;&middot;&nbsp; ROCKPOOL</div>
+      </div>
+    </div>
+
+    <div class="homes">
+      <!-- 01 Mindfulness Magic Ball -->
+      <article class="home size-hero">
+        <div class="tile-wrap">
+          <div class="tile t-hue3 has-photo">
+      <img src="{{ 'mindfulness-magic-ball-breathing-tool.png' | file_url }}" alt="Mindfulness Magic Ball, Hoberman-style expanding sphere of glittering teal and gold beads held in two hands mid-bloom, a tactile breathing tool for self-regulation." loading="lazy"/>
+            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+            <span class="tag">[ TOOL N&deg;01 &nbsp;&middot;&nbsp; MINDFULNESS MAGIC BALL, Hoberman-style expanding sphere of glittering teal-and-gold beads being held in two hands mid-bloom, a tactile breathing tool. Mirrors catalog pg.&nbsp;12 cell 00. ]</span>
+          </div>
+          <div class="overlay"></div>
+          <div class="float-name">Mindfulness Magic Ball</div>
+        </div>
+        <div class="cap">
+          <span class="no">01</span>
+          <span class="name">Mindfulness Magic Ball</span>
+          <span class="desc">Expanding-sphere (Hoberman) breathing tool, used in OT and SEL deep-breathing programs. The ball blooms with the inhale, contracts with the exhale, a body-scale visualization of breath.</span>
+          <span class="meta">MTW-SP-MBALL &nbsp;&middot;&nbsp; OT &amp; SEL tool</span>
+          <!-- PRICE: MTW-SP-MBALL -->
+          <span class="price">$32</span>
+          <div class="add-row">
+            <button class="add-btn" type="button" data-sku="MTW-SP-MBALL"><span class="plus"></span>Add to cart</button>
+            <a href="#" class="view-pdp">View product &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 02 Sand Tray with Accessories -->
+      <article class="home size-tall">
+        <div class="tile-wrap">
+          <div class="tile t-cream has-photo">
+      <img src="{{ 'wooden-story-montessori-sand-tray.png' | file_url }}" alt="Wooden Story Montessori Sand Tray, overhead view of an empty solid-beech rectangular tray with side handles, fine sand combed into S-curve patterns by two small wooden T-rakes." loading="lazy"/>
+            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+            <span class="tag">[ TOOL N&deg;02 &nbsp;&middot;&nbsp; SAND TRAY WITH ACCESSORIES, Wooden Story Montessori Sand Tray, overhead view of an empty solid-beech rectangular tray with side handles, fine sand combed into S-curve patterns by two small wooden T-rakes resting on the surface. Mirrors catalog pg.&nbsp;12 cell 01. ]</span>
+          </div>
+          <div class="overlay"></div>
+          <div class="float-name">Sand Tray with Accessories</div>
+        </div>
+        <div class="cap">
+          <span class="no">02</span>
+          <span class="name">Sand Tray with Accessories</span>
+          <span class="desc">Solid-wood Montessori tray with side handles, two beech rakes, and 2 kg of sand for pre-writing. The classic morning-meeting reset tool.</span>
+          <span class="meta">MTW-SP-SAND &nbsp;&middot;&nbsp; Tray + rakes + 2kg sand</span>
+          <!-- PRICE: MTW-SP-SAND -->
+          <span class="price">$78</span>
+          <div class="add-row">
+            <button class="add-btn" type="button" data-sku="MTW-SP-SAND"><span class="plus"></span>Add to cart</button>
+            <a href="#" class="view-pdp">View product &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 03 Sand Tray with Flashcard Holder -->
+      <article class="home size-std">
+        <div class="tile-wrap">
+          <div class="tile t-soft has-photo">
+      <img src="{{ 'wooden-story-2-part-sand-tray-flashcard-holder.png' | file_url }}" alt="Wooden Story 2-Part Sand Tray with Flashcard Holder, solid-wood box divided into a sand bay on the left and a wooden-balls bay on the right, with a slot at the back for flashcards and a beech writing stylus." loading="lazy"/>
+            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+            <span class="tag">[ TOOL N&deg;03 &nbsp;&middot;&nbsp; SAND TRAY WITH FLASHCARD HOLDER, Wooden Story 2-Part Sand Tray, solid-wood box divided into a sand bay on the left and a wooden-balls bay on the right, with a slot at the back for flashcards and a beech writing stylus in a groove at the front. Mirrors catalog pg.&nbsp;12 cell 02. ]</span>
+          </div>
+          <div class="overlay"></div>
+          <div class="float-name">Sand Tray with Flashcard Holder</div>
+        </div>
+        <div class="cap">
+          <span class="no">03</span>
+          <span class="name">Sand Tray with Flashcard Holder</span>
+          <span class="desc">Includes 10 wooden balls, 200 g sand, a card holder and wooden stylus, and two sections for placing sand and the wooden balls. Pairs naturally with the Letter Tracing Insert.</span>
+          <span class="meta">MTW-SP-2PART &nbsp;&middot;&nbsp; Tray + cards + stylus</span>
+          <!-- PRICE: MTW-SP-2PART -->
+          <span class="price">$88</span>
+          <div class="add-row">
+            <button class="add-btn" type="button" data-sku="MTW-SP-2PART"><span class="plus"></span>Add to cart</button>
+            <a href="#" class="view-pdp">View product &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 04 Sand Tray Tools -->
+      <article class="home size-std">
+        <div class="tile-wrap">
+          <div class="tile t-alt has-photo">
+      <img src="{{ 'wooden-story-sand-tray-tools-set-of-4.png' | file_url }}" alt="Wooden Story Sand Tray Tools, set of four beech Montessori sand accessories on cream linen: three-pin rake, five-pin comb, wide flat scraper, and narrow levelling rake." loading="lazy"/>
+            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+            <span class="tag">[ TOOL N&deg;04 &nbsp;&middot;&nbsp; SAND TRAY TOOLS (SET OF 4), Wooden Story Sand Tray Tools Set: four beech Montessori sand accessories on cream linen, three-pin rake, five-pin comb, wide flat scraper, narrow levelling rake. Mirrors catalog pg.&nbsp;12 cell 03. ]</span>
+          </div>
+          <div class="overlay"></div>
+          <div class="float-name">Sand Tray Tools (Set of 4)</div>
+        </div>
+        <div class="cap">
+          <span class="no">04</span>
+          <span class="name">Sand Tray Tools &middot; Set of 4</span>
+          <span class="desc">Four beech rakes, pins, and scrapers. Eco-cotton case doubles as cover or pencil case. Pairs with both Sand Trays above.</span>
+          <span class="meta">MTW-SP-TOOLS &nbsp;&middot;&nbsp; 4 tools + cotton case</span>
+          <!-- PRICE: MTW-SP-TOOLS -->
+          <span class="price">$42</span>
+          <div class="add-row">
+            <button class="add-btn" type="button" data-sku="MTW-SP-TOOLS"><span class="plus"></span>Add to cart</button>
+            <a href="#" class="view-pdp">View product &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 05 Rockpool Tray & Tongs -->
+      <article class="home size-std">
+        <div class="tile-wrap">
+          <div class="tile t-hue3-deep dark has-photo">
+      <img src="{{ 'category-sensory-rockpool-tray.png' | file_url }}" alt="Papoose Rockpool Tray and Tongs, carved teak rockpool tray with sorting wells. A child's hand uses small wooden tongs to place sea glass and pebbles into the wells, surrounded by spotted scallop shells, conch shells, and tumbled stones." loading="lazy"/>
+            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+            <span class="tag">[ TOOL N&deg;05 &nbsp;&middot;&nbsp; ROCKPOOL TRAY &amp; TONGS, Papoose carved teak rockpool tray with sorting wells. Child's hand using small wooden tongs to place sea glass and pebbles into the wells, surrounded by spotted scallop shells, conch shells, sea coral, and tumbled stones on cream linen. Mirrors catalog pg.&nbsp;12 cell 04. ]</span>
+          </div>
+          <div class="overlay"></div>
+          <div class="float-name">Rockpool Tray &amp; Tongs</div>
+        </div>
+        <div class="cap">
+          <span class="no">05</span>
+          <span class="name">Rockpool Tray &amp; Tongs</span>
+          <span class="desc">Carved teak rockpool tray with sorting wells. Pairs with shells, sea glass, and small wooden tongs for focused placement work and tide-pool small worlds.</span>
+          <span class="meta">MTW-SP-PRT &nbsp;&middot;&nbsp; Tray + tongs</span>
+          <!-- PRICE: MTW-SP-PRT -->
+          <span class="price">$68</span>
+          <div class="add-row">
+            <button class="add-btn" type="button" data-sku="MTW-SP-PRT"><span class="plus"></span>Add to cart</button>
+            <a href="#" class="view-pdp">View product &rarr;</a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="collection-bridge">
+      <p>
+        <strong>The Self-Regulation Set &nbsp;&middot;&nbsp; MTW-SP-CRS</strong>
+        Mindfulness Magic Ball + Wooden Story Sand Tray + Sand Tray with Flashcard Holder + Rockpool Tray, the quiet-corner essentials for morning meeting and post-recess reset.
+      </p>
+      <a href="#outfit" class="bridge-cta">See the Self-Regulation Set &middot; bundle below</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- =========================== OUTFIT YOUR CLASSROOM =========================== -->
+<section class="outfit" id="outfit" data-screen-label="10 Outfit Your Classroom">
+  <div class="head">
+    <div>
+      <p class="block-num">08 <span class="dot">/</span> The whole sensory corner</p>
+      <h2>Outfit your classroom <span class="it">in one quote.</span></h2>
+    </div>
+    <div class="right">
+      <p>Schools buy Sensory Play as catalog sets, not as single pieces. The two purchase-order-ready sets below are the same ones in our 2026 Fall Edition. Each is priced as a package on your quote.</p>
+      <div class="meta">CATALOG SETS &nbsp;&middot;&nbsp; NET-30 &nbsp;&middot;&nbsp; TAX-EXEMPT &nbsp;&middot;&nbsp; ONE-ON-ONE CURATION</div>
+    </div>
+  </div>
+
+  <div class="kits">
+    <article class="kit">
+      <p class="tier">Imaginative Play &nbsp;&middot;&nbsp; MTW-SP-BTR</p>
+      <h3>The Tray Range.</h3>
+      <p class="sub">All six Buttonandbug trays.</p>
+      <span class="hair" aria-hidden="true"></span>
+      <!-- PRICE: MTW-SP-BTR -->
+      <p class="price-line">$480</p>
+      <span class="price-note">Hand-cut maple &middot; ships within 3 weeks &middot; Net-30 available &middot; saves $108</span>
+      <p class="desc">The full Buttonandbug Imaginative Play Range, Bear, Cake, Castle, Garden, Mountain, and Rainbow trays bundled as the catalog set. A term's worth of sensory provocations in one carton. From the 2026 Fall Edition, p.&nbsp;7.</p>
+      <ul class="contains">
+        <li>Bear Tray, MTW-SP-BEAR</li>
+        <li>Cake Tray, MTW-SP-CAKE</li>
+        <li>Castle Tray, MTW-SP-CSTL</li>
+        <li>Garden Tray, MTW-SP-GDN</li>
+        <li>Mountain Tray, MTW-SP-MTN</li>
+        <li>Rainbow Imaginative Play Tray, MTW-SP-IPT</li>
+      </ul>
+      <div class="add-row">
+        <button class="add-btn" type="button" data-sku="MTW-SP-BTR"><span class="plus"></span>Add set to cart</button>
+        <a href="#quote" class="view-pdp" data-kit="tray-range">Request a quote</a>
+      </div>
+    </article>
+
+    <article class="kit featured">
+      <span class="pill"><span class="wagon-badge">Catalog set</span></span>
+      <p class="tier">Calm Corner &nbsp;&middot;&nbsp; MTW-SP-CRS</p>
+      <h3>The Self-Regulation Set.</h3>
+      <p class="sub">Calm-corner essentials.</p>
+      <span class="hair" aria-hidden="true"></span>
+      <!-- PRICE: MTW-SP-CRS -->
+      <p class="price-line">$268</p>
+      <span class="price-note">Hand-finished &middot; ships within 3 weeks &middot; Net-30 available &middot; saves $42</span>
+      <p class="desc">Mindfulness Magic Ball + Wooden Story Sand Tray + Sand Tray with Flashcard Holder + Rockpool Tray. The quiet-corner essentials for morning meeting and post-recess reset. From the 2026 Fall Edition, p.&nbsp;12.</p>
+      <ul class="contains">
+        <li>Mindfulness Magic Ball, MTW-SP-MBALL</li>
+        <li>Sand Tray with Accessories, MTW-SP-SAND</li>
+        <li>Sand Tray with Flashcard Holder, MTW-SP-2PART</li>
+        <li>Rockpool Tray &amp; Tongs, MTW-SP-PRT</li>
+      </ul>
+      <div class="add-row">
+        <button class="add-btn" type="button" data-sku="MTW-SP-CRS"><span class="plus"></span>Add set to cart</button>
+        <a href="#quote" class="view-pdp" data-kit="self-regulation">Request a quote</a>
+      </div>
+    </article>
+
+    <article class="kit">
+      <p class="tier">Scent Collection &nbsp;&middot;&nbsp; MTW-CA-ANS</p>
+      <h3>The Seven Scents Set.</h3>
+      <p class="sub">All seven Análu doughs.</p>
+      <span class="hair" aria-hidden="true"></span>
+      <!-- PRICE: MTW-CA-ANS -->
+      <p class="price-line">$118</p>
+      <span class="price-note">Hand-blended &middot; ships within 2 weeks &middot; Net-30 available &middot; saves $8</span>
+      <p class="desc">All seven Análu scents bundled, Sweet Orange, Eucalyptus, Lemon, Mojito, Lavender, Peppermint, Pumpkin Spice. The classroom assortment, made in California. From the 2026 Fall Edition, p.&nbsp;10.</p>
+      <ul class="contains">
+        <li>Análu &middot; Sweet Orange, MTW-CA-ANO</li>
+        <li>Análu &middot; Eucalyptus, MTW-CA-ANE</li>
+        <li>Análu &middot; Lemon, MTW-CA-ANL</li>
+        <li>Análu &middot; Mojito</li>
+        <li>Análu &middot; Lavender, MTW-CA-ANV</li>
+        <li>Análu &middot; Peppermint, MTW-CA-ANR</li>
+        <li>Análu &middot; Pumpkin Spice</li>
+      </ul>
+      <div class="add-row">
+        <button class="add-btn" type="button" data-sku="MTW-CA-ANS"><span class="plus"></span>Add set to cart</button>
+        <a href="#quote" class="view-pdp" data-kit="seven-scents">Request a quote</a>
+      </div>
+    </article>
+  </div>
+
+  <!-- Educator combo strip (NOT a catalog SKU) -->
+  <div style="margin: 36px clamp(20px, 5vw, 56px) 0; padding: 28px clamp(20px, 4vw, 36px); background: var(--cream); border: 0.5px solid var(--rule-strong); border-radius: 4px; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(24px, 3vw, 40px); align-items: center;">
+    <div>
+      <span class="eyebrow" style="color: var(--accent-deep);">10. Educator Program &nbsp;&middot;&nbsp; Custom Combo</span>
+      <h3 style="margin: 14px 0 0; font-family: var(--serif); font-weight: 400; font-size: clamp(24px, 2.6vw, 32px); line-height: 1.15; color: var(--ink); letter-spacing: -.005em;">The Whole Sensory Corner, <span style="font-style: italic; color: var(--accent-deep);">on one PO.</span></h3>
+    </div>
+    <div>
+      <p style="margin: 0 0 14px; font-family: var(--sans); font-size: 15px; line-height: 1.6; color: var(--ink-soft);">A custom educator combo of catalog SKUs, <strong style="color: var(--ink); font-weight: 600;">The Tray Range (MTW-SP-BTR)</strong>, <strong style="color: var(--ink); font-weight: 600;">The Self-Regulation Set (MTW-SP-CRS)</strong>, and <strong style="color: var(--ink); font-weight: 600;">The Letter Tracing Insert (MTW-SP-LTI)</strong>. Not a single SKU; requested at quote and billed on one PO with a small package discount. Items ship as they're ready, most within 3 to 4 weeks, longer-lead pieces on their own timeline.</p>
+      <a href="#quote" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; background: var(--ink); color: var(--cream); text-decoration: none; font-family: var(--sans); font-size: 13px; font-weight: 500; letter-spacing: .04em; border-radius: 999px;">Request the combo quote &rarr;</a>
+    </div>
+  </div>
+
+  <!-- TODO: when long-lead item list is finalized, add specifics here. See message m0124. -->
+  <div class="note">
+    <p class="left">Both catalog sets are billed on a single purchase order. Most items ship together within 3 to 4 weeks; longer-lead pieces ship separately on their own timeline. Net-30 and tax-exempt orders welcome. The Letter Tracing Insert (MTW-SP-LTI, $58) is sold separately but is regularly added at quote with a small discount.</p>
+    <p class="left" style="margin-top: 10px; font-family: var(--serif); font-style: italic; font-size: 14px; color: var(--stone); line-height: 1.55;">Longer-lead pieces include Magic Wood, Drewart, and select Bumbu sets. Ask your account rep for current timing.</p>
+    <div class="right">
+      <span class="verified-disc">
+        <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="6" cy="6" r="6" fill="#3B6D11"/><path d="M3.5 6.2l1.6 1.6L8.5 4.5" stroke="#F5F0E5" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Net-30 &amp; tax-exempt
+      </span>
+    </div>
+  </div>
+</section>
+
+
+<!-- =========================== QUOTE FORM =========================== -->
+<section class="quote-form gut" id="quote" data-screen-label="12 Quote Form">
+  <div class="wrap">
+    <div class="col-intro">
+      <span class="wagon-badge">A note from us</span>
+      <h2>Or tell us about <span class="it">your classroom.</span></h2>
+      <p>For custom mixes, district orders, or just a kit consultation, write to us directly. We are Irfana and Rashid, the founders, and a small team at our Los Angeles workshop. A specialist will reply with a kit recommendation, a line-item quote, and an estimated ship date.</p>
+      <p>Most schools hear back within one business day.</p>
+      <div class="human-touch">
+        <div class="ht-card">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20a8 8 0 0 1 16 0"/></svg>
+          <div class="ht-body">
+            <strong>Replied to by a human.</strong>
+            <p>Every reply comes from Irfana, Rashid, or a member of our small team. Never a bot, never a ticket queue. Within one business day.</p>
+          </div>
+        </div>
+        <div class="ht-card">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="1"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+          <div class="ht-body">
+            <strong>Or schedule a call.</strong>
+            <p>For first-time school accounts, district planning, or a walkthrough of the catalog. Twenty minutes on the phone with someone who knows the workshop.</p>
+            <a href="#" class="ht-link">Book a 20-minute call &rarr;</a>
+            <div class="ht-call">Or call us direct &middot; <a href="tel:6268410421">(626) 841-0421</a> &middot; Mon to Fri, 9am to 5pm Pacific</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <form class="qf-form" id="quoteForm" onsubmit="event.preventDefault(); alert('Thanks. A specialist will be in touch within one business day.');">
+
+      <div class="qf-row">
+        <label for="qf-name">Your name <span class="req">*</span></label>
+        <input type="text" id="qf-name" name="name" required autocomplete="name"/>
+      </div>
+
+      <div class="qf-row">
+        <label for="qf-role">Role <span class="req">*</span></label>
+        <select id="qf-role" name="role" required>
+          <option value="">Select a role</option>
+          <option>Educator</option>
+          <option>Director or Head of School</option>
+          <option>Procurement Officer</option>
+          <option>Therapist</option>
+          <option>Homeschool Parent</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="qf-row">
+        <label for="qf-school">School or organization <span class="req">*</span></label>
+        <input type="text" id="qf-school" name="school" required/>
+      </div>
+
+      <div class="qf-row">
+        <label for="qf-email">Email <span class="req">*</span></label>
+        <input type="email" id="qf-email" name="email" required autocomplete="email"/>
+      </div>
+
+      <div class="qf-row">
+        <label for="qf-classrooms">Number of classrooms</label>
+        <select id="qf-classrooms" name="classrooms">
+          <option value="">Select a range</option>
+          <option>1 classroom</option>
+          <option>2 to 4 classrooms</option>
+          <option>5 to 9 classrooms</option>
+          <option>10 or more classrooms</option>
+          <option>District-wide</option>
+        </select>
+      </div>
+
+      <div class="qf-row">
+        <label for="qf-budget">Budget range</label>
+        <select id="qf-budget" name="budget">
+          <option value="">Select a range</option>
+          <option>Under $1,000</option>
+          <option>$1,000 to $5,000</option>
+          <option>$5,000 to $15,000</option>
+          <option>$15,000 to $50,000</option>
+          <option>$50,000 or more</option>
+          <option>Just exploring</option>
+        </select>
+      </div>
+
+      <div class="qf-row full">
+        <label>Which kit are you interested in?</label>
+        <div class="qf-chips" role="radiogroup">
+          <label class="qf-chip"><input type="radio" name="kit" value="tray-range"/>The Tray Range &middot; MTW-SP-BTR</label>
+          <label class="qf-chip"><input type="radio" name="kit" value="self-regulation"/>The Self-Regulation Set &middot; MTW-SP-CRS</label>
+          <label class="qf-chip"><input type="radio" name="kit" value="seven-scents"/>The Seven Scents Set &middot; MTW-CA-ANS</label>
+          <label class="qf-chip"><input type="radio" name="kit" value="custom"/>A custom mix</label>
+          <label class="qf-chip"><input type="radio" name="kit" value="exploring"/>Just exploring</label>
+        </div>
+      </div>
+
+      <div class="qf-row full">
+        <label>Ecosystems of interest</label>
+        <div class="qf-chips">
+          <label class="qf-chip"><input type="checkbox" name="ecosystems" value="sensory-play" checked/>01 &middot; Sensory Play</label>
+          <label class="qf-chip"><input type="checkbox" name="ecosystems" value="nature-play"/>02 &middot; Nature Play</label>
+          <label class="qf-chip"><input type="checkbox" name="ecosystems" value="woodland"/>03 &middot; Woodland Habitats</label>
+          <label class="qf-chip"><input type="checkbox" name="ecosystems" value="small-world"/>04 &middot; Small World &amp; Storytelling</label>
+          <label class="qf-chip"><input type="checkbox" name="ecosystems" value="fairy-villages"/>05 &middot; Fairy Villages</label>
+          <label class="qf-chip"><input type="checkbox" name="ecosystems" value="steam"/>06 &middot; STEAM &middot; Wonder &amp; Investigation</label>
+          <label class="qf-chip"><input type="checkbox" name="ecosystems" value="dramatic-play"/>07 &middot; Dramatic Play</label>
+          <label class="qf-chip"><input type="checkbox" name="ecosystems" value="creative-arts"/>08 &middot; Creative Arts</label>
+        </div>
+      </div>
+
+      <div class="qf-row full">
+        <label>Timeline</label>
+        <div class="qf-chips" role="radiogroup">
+          <label class="qf-chip"><input type="radio" name="timeline" value="this-quarter"/>This quarter</label>
+          <label class="qf-chip"><input type="radio" name="timeline" value="next-quarter"/>Next quarter</label>
+          <label class="qf-chip"><input type="radio" name="timeline" value="next-year" checked/>Next school year</label>
+          <label class="qf-chip"><input type="radio" name="timeline" value="exploring"/>Just exploring</label>
+        </div>
+      </div>
+
+      <div class="qf-row full">
+        <label for="qf-notes">Notes</label>
+        <textarea id="qf-notes" name="notes" placeholder="Anything we should know. Special programs, allergies, accessibility, existing materials, language preferences."></textarea>
+      </div>
+
+      <div class="qf-submit-row">
+        <button type="submit" class="btn ink">Request an educator quote <span class="arrow"></span></button>
+        <p class="note">By submitting, you agree to be contacted about your quote. We will not share your information.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+
+
+<!-- =========================== EDUCATOR HUB BRIDGE =========================== -->
+<!-- Reviews, "How educator orders work," and the "Stay close to the seasons"
+     Klaviyo signup live on the educator catalog landing (educators.html) now,
+     not on each of the 8 section pages. This small strip points to them. -->
+<section data-screen-label="Educator Hub Bridge" style="background: var(--cream); border-top: 0.5px solid var(--rule); padding: 56px clamp(20px, 5vw, 56px);">
+  <div style="max-width: 920px; margin: 0 auto; text-align: center;">
+    <span class="eyebrow" style="color: var(--forest); display: inline-block; margin-bottom: 18px;">From the Educator Catalog</span>
+    <p style="margin: 0 auto 22px; max-width: 56ch; font-family: var(--serif); font-style: italic; font-size: clamp(20px, 2vw, 26px); line-height: 1.45; color: var(--ink); letter-spacing: -.005em;">Educator reviews, how orders work, and the Educator Letter all live on the catalog landing, once for every volume.</p>
+    <a href="educators.html" style="display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; background: var(--ink); color: var(--cream); text-decoration: none; font-family: var(--sans); font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; border-radius: 999px;">Visit the Educator Catalog &rarr;</a>
+  </div>
+</section>
+
+<!-- =========================== FOOTER =========================== -->
+<footer>
+  <div class="wrap">
+    <div class="left">
+      <img src="{{ 'mtw-wagon-only.png' | asset_url }}" alt="My Toy Wagon" class="foot-mark"/>
+      <p>Natural toys made for years of small hands. A small family shop in Los Angeles, online since 2020.</p>
+
+      <div class="foot-contact">
+        <a href="mailto:educators@mytoywagon.com">educators@mytoywagon.com</a>
+        <a href="tel:6268410421">(626) 841-0421</a>
+        <span class="hours">Mon to Fri, 9 am to 5 pm PT</span>
+        <span class="hours">37 W Huntington Drive, Arcadia, CA 91007</span>
+      </div>
+
+      <div class="foot-social">
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg></a>
+        <a href="#" aria-label="Pinterest"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M11 8c-2 .5-3.5 2.5-3 4.5.3 1.3 1.5 1.6 1.5.5 0-1 .5-2 1.5-2.5 1.5-.8 3.5 0 4 1.5.5 2-.5 4-2.5 4-1 0-1.5-.5-1.3-1.5L12 11"/><path d="M11 13.5 9.5 19"/></svg></a>
+        <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="3"/><path d="M10 9.5v5l4.5-2.5z" fill="currentColor"/></svg></a>
+        <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M14 4v10.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 4c0 2 1.5 4 4 4"/></svg></a>
+      </div>
+
+      <p class="retail-link">Shopping for home? <a href="https://mytoywagon.com">Browse the full retail shop &rarr;</a></p>
+    </div>
+    <div class="cols">
+      <div>
+        <h6>The Catalog</h6>
+        <ul class="catalog-list">
+          <li><a href="sensory-play.html">01 &middot; Sensory Play</a></li>
+          <li><a href="nature-play.html">02 &middot; Nature Play</a></li>
+          <li><a href="woodland.html">03 &middot; Woodland Habitats</a></li>
+          <li><a href="small-world.html">04 &middot; Small World</a></li>
+          <li><a href="fairy-villages.html">05 &middot; Fairy Villages</a></li>
+          <li><a href="steam.html">06 &middot; STEAM</a></li>
+          <li><a href="dramatic-play.html">07 &middot; Dramatic Play</a></li>
+          <li><a href="creative-arts.html">08 &middot; Creative Arts</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h6>Educator Program</h6>
+        <ul>
+          <li><a href="new-quote.html">Start a new quote</a></li>
+          <li><a href="educator-dashboard.html">Educator dashboard</a></li>
+          <li><a href="educator.html">Apply for an account</a></li>
+          <li><a href="school-affiliate.html">School affiliate</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h6>Resources</h6>
+        <ul class="downloads">
+          <li><a href="vendor-profile.html">Vendor profile</a></li>
+          <li><a href="procurement-guide.html">Procurement guide</a></li>
+          <li><a href="ordering-for-schools.html">Ordering for schools</a></li>
+          <li><a href="#" data-ext="XLSX">SKU list and prices</a></li>
+          <li><a href="#" data-ext="PDF">Catalog spread</a></li>
+          <li><a href="#" data-ext="PDF">Materials and safety</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="foot-mid">
+    <span class="pay-label">We accept</span>
+    <div class="pay-methods">
+      <span class="pay-chip po">Purchase orders</span>
+      <span class="pay-chip">Net-30</span>
+      <span class="pay-chip">Tax-exempt</span>
+      <span class="pay-chip">Visa</span>
+      <span class="pay-chip">Mastercard</span>
+      <span class="pay-chip">Amex</span>
+      <span class="pay-chip">Discover</span>
+      <span class="pay-chip">Apple&nbsp;Pay</span>
+      <span class="pay-chip">Google&nbsp;Pay</span>
+      <span class="pay-chip">PayPal</span>
+      <span class="pay-chip">Shop&nbsp;Pay</span>
+    </div>
+  </div>
+
+  <div class="legal">
+    <span>© 2026 My Toy Wagon &nbsp;·&nbsp; Educator Catalog &nbsp;·&nbsp; All rights reserved</span>
+    <div class="legal-links">
+      <a href="#">Privacy policy</a>
+      <a href="#">Terms of service</a>
+      <a href="#">Accessibility</a>
+      <a href="#">Returns &amp; shipping</a>
+    </div>
+  </div>
+</footer>
+
+<script src="image-slot.js"></script>
+<script>
+  /* =================================================================
+     CATALOG VARS, single source of truth for ecosystem strings.
+     To reskin for another ecosystem, edit ONLY this block.
+     A Shopify template can override these via Liquid:
+       const CATALOG = { volume: "{{ page.metafields.catalog.volume }}", ... };
+     ================================================================= */
+  const CATALOG = {
+    volume:       "04",
+    ecosystem:    "Sensory Play",
+    "ecosystem-uc": "SMALL WORLD &amp; STORYTELLING"
+  };
+
+  // Ordered list of all 8 ecosystems. To reskin for another ecosystem,
+  // change CATALOG.volume above and the subnav stepper auto-updates.
+  const ECOSYSTEMS = [
+    { vol: "01", slug: "sensory-play",  name: "Sensory Play" },
+    { vol: "02", slug: "nature-play",   name: "Nature Play" },
+    { vol: "03", slug: "woodland",      name: "Woodland" },
+    { vol: "04", slug: "small-world",   name: "Small World" },
+    { vol: "05", slug: "fairy-villages",name: "Fairy Villages" },
+    { vol: "06", slug: "steam",         name: "STEAM" },
+    { vol: "07", slug: "dramatic-play", name: "Dramatic Play" },
+    { vol: "08", slug: "creative-arts", name: "Creative Arts" }
+  ];
+
+  // Populate the subnav stepper based on current volume.
+  (function(){
+    var i = ECOSYSTEMS.findIndex(function(e){ return e.vol === CATALOG.volume; });
+    if (i === -1) return;
+    var prevEl = document.querySelector('#ecosystemStepper .prev');
+    var curEl  = document.querySelector('#ecosystemStepper .current');
+    var nextEl = document.querySelector('#ecosystemStepper .next');
+    if (curEl) curEl.textContent = CATALOG.volume + ' \u00b7 ' + CATALOG.ecosystem;
+    if (i > 0 && prevEl) {
+      var p = ECOSYSTEMS[i-1];
+      prevEl.textContent = p.vol + ' \u00b7 ' + p.name;
+      prevEl.href = p.slug + '.html';
+    } else if (prevEl) {
+      prevEl.style.display = 'none';
+      var sep = prevEl.nextElementSibling;
+      if (sep && sep.classList.contains('sep')) sep.style.display = 'none';
+    }
+    if (i < ECOSYSTEMS.length - 1 && nextEl) {
+      var n = ECOSYSTEMS[i+1];
+      nextEl.textContent = n.vol + ' \u00b7 ' + n.name;
+      nextEl.href = n.slug + '.html';
+    } else if (nextEl) {
+      nextEl.style.display = 'none';
+      var sep2 = nextEl.previousElementSibling;
+      if (sep2 && sep2.classList.contains('sep')) sep2.style.display = 'none';
+    }
+  })();
+  document.querySelectorAll('[data-fill]').forEach(function(el){
+    var key = el.dataset.fill;
+    if (CATALOG.hasOwnProperty(key)) el.textContent = CATALOG[key];
+  });
+
+  // Nav: solid background after scroll
+  (function(){
+    var nav = document.getElementById('nav');
+    if(!nav) return;
+    var onScroll = function(){
+      if(window.scrollY > 60){ nav.classList.add('scrolled'); }
+      else { nav.classList.remove('scrolled'); }
+    };
+    window.addEventListener('scroll', onScroll, {passive:true});
+    onScroll();
+  })();
+
+  // Add-to-cart: increment the cart count badge in the nav.
+  // For Shopify port: replace this with a real fetch to /cart/add.js and
+  // re-render the cart count from {{ cart.item_count }} on response.
+  (function(){
+    var count = 0;
+    var badge = document.getElementById('cartCount');
+    var flash = null;
+    function ensureFlash(){
+      if (flash) return flash;
+      flash = document.createElement('div');
+      flash.className = 'cart-flash';
+      document.body.appendChild(flash);
+      return flash;
+    }
+    document.querySelectorAll('.add-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        count += 1;
+        if (badge) badge.textContent = count;
+        var sku = btn.getAttribute('data-sku') || 'item';
+        var fl = ensureFlash();
+        fl.innerHTML = '<span class="added">Added to cart.</span> <span>' + sku.replace(/-/g,' ') + '</span>';
+        fl.classList.add('show');
+        clearTimeout(window.__cartFlashT);
+        window.__cartFlashT = setTimeout(function(){ fl.classList.remove('show'); }, 2400);
+      });
+    });
+  })();
+
+  // Rotating utility-bar announcement (3 messages, ~5s each).
+  (function(){
+    var slides = document.querySelectorAll('.utility-center .slide');
+    if (slides.length < 2) return;
+    var i = 0;
+    setInterval(function(){
+      slides[i].classList.remove('is-active');
+      i = (i + 1) % slides.length;
+      slides[i].classList.add('is-active');
+    }, 5000);
+  })();
+
+  // Reviews carousel. Generic horizontal-scroll snap track with
+  // arrow buttons and pagination dots. Number of dots equals the
+  // number of "pages", page width = visible track width. We compute
+  // page count from track scrollWidth / clientWidth so it adapts to
+  // breakpoints automatically.
+  (function(){
+    document.querySelectorAll('[data-reviews-carousel]').forEach(function(carousel){
+      var track = carousel.querySelector('.rc-track');
+      var prev  = carousel.querySelector('.rc-nav.prev');
+      var next  = carousel.querySelector('.rc-nav.next');
+      var dotsHost = carousel.querySelector('.rc-dots');
+      if (!track) return;
+
+      function pageCount(){
+        return Math.max(1, Math.ceil(track.scrollWidth / track.clientWidth));
+      }
+      function currentPage(){
+        return Math.round(track.scrollLeft / track.clientWidth);
+      }
+      function buildDots(){
+        if (!dotsHost) return;
+        var count = pageCount();
+        dotsHost.innerHTML = '';
+        for (var i = 0; i < count; i++){
+          var b = document.createElement('button');
+          b.type = 'button';
+          b.setAttribute('role', 'tab');
+          b.setAttribute('aria-label', 'Go to reviews page ' + (i + 1));
+          (function(idx){
+            b.addEventListener('click', function(){
+              track.scrollTo({ left: idx * track.clientWidth, behavior: 'smooth' });
+            });
+          })(i);
+          dotsHost.appendChild(b);
+        }
+        syncDots();
+      }
+      function syncDots(){
+        if (!dotsHost) return;
+        var p = currentPage();
+        Array.prototype.forEach.call(dotsHost.children, function(d, i){
+          d.classList.toggle('is-active', i === p);
+        });
+      }
+      function syncNav(){
+        if (prev) prev.disabled = track.scrollLeft <= 2;
+        if (next) next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 2;
+      }
+      function scrollByPage(dir){
+        track.scrollBy({ left: dir * track.clientWidth, behavior: 'smooth' });
+      }
+
+      if (prev) prev.addEventListener('click', function(){ scrollByPage(-1); });
+      if (next) next.addEventListener('click', function(){ scrollByPage(1); });
+      track.addEventListener('scroll', function(){ syncDots(); syncNav(); }, { passive: true });
+      window.addEventListener('resize', function(){ buildDots(); syncNav(); });
+
+      buildDots();
+      syncNav();
+    });
+  })();
+
+  // Long-lead pill, auto-tags any element with data-long-lead="true" with a
+  // "Ships separately" pill. Wire SKUs as they're added to the slow-ship list
+  // by adding data-long-lead="true" to the .home / .kit / .split card.
+  (function(){
+    document.querySelectorAll('[data-long-lead="true"]').forEach(function(card){
+      if (card.querySelector('.ships-separately-pill')) return;
+      var pill = document.createElement('span');
+      pill.className = 'ships-separately-pill';
+      pill.textContent = 'Ships separately';
+      var anchor = card.querySelector('.add-row, .add-btn, .price-line, .price');
+      if (anchor) anchor.parentNode.insertBefore(pill, anchor);
+      else card.appendChild(pill);
+    });
+  })();
+</script>
+
+</body>
+</html>

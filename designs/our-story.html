@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Story — My Toy Wagon</title>
+<meta name="description" content="A small toy shop with a big heart. Founded by Irfana and Rashid, inspired by their daughters Hafsa and Noor. Wooden and felt toys, curated by hand from Los Angeles.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#F5F0E5;--warm-white:#FFFCF7;--ink:#2C2C2A;--forest:#3B6D11;--amber:#854F0B;--stone:#5F5E5A;--card-bg:#EDE3CD;--rule:rgba(44,44,42,0.12);--rule-strong:rgba(44,44,42,0.22);}
+*{box-sizing:border-box;}html,body{margin:0;padding:0;}
+body{font-family:'Mulish',sans-serif;color:var(--ink);background:var(--cream);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+img{max-width:100%;display:block;}a{color:inherit;text-decoration:none;}
+.label{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--stone);font-weight:500;}
+.utility{background:var(--ink);color:var(--cream);font-size:12px;letter-spacing:0.06em;}
+.utility-inner{max-width:1440px;margin:0 auto;padding:9px 40px;display:flex;justify-content:space-between;align-items:center;gap:24px;}
+.utility-center{flex:1;text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;}
+.utility-links{display:flex;gap:22px;color:rgba(245,240,229,0.7);}.utility-links a:hover{color:var(--cream);}
+header.nav{border-bottom:0.5px solid var(--rule);background:var(--cream);position:sticky;top:0;z-index:50;}
+.nav-inner{max-width:1440px;margin:0 auto;padding:18px 40px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:32px;}
+.nav-left,.nav-right{display:flex;align-items:center;gap:28px;}.nav-right{justify-content:flex-end;}
+.nav-link{font-size:13.5px;font-weight:500;letter-spacing:0.02em;padding:4px 0;}.nav-link:hover{color:var(--forest);}
+.nav-link.has-caret::after{content:"";display:inline-block;width:5px;height:5px;border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:rotate(45deg);margin-left:6px;vertical-align:2px;}
+.logo{display:inline-flex;align-items:center;gap:16px;line-height:1;}
+.logo-mark{width:100px;height:100px;background-color:var(--ink);-webkit-mask:url('assets/logo-mark.png') center/contain no-repeat;mask:url('assets/logo-mark.png') center/contain no-repeat;flex-shrink:0;}
+.logo-text{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;letter-spacing:0.24em;text-transform:uppercase;line-height:1;color:var(--ink);white-space:nowrap;}
+.logo small{display:block;font-family:'Mulish',sans-serif;font-style:normal;font-size:9.5px;letter-spacing:0.22em;text-transform:uppercase;color:var(--stone);margin-top:8px;font-weight:500;white-space:nowrap;}
+.nav-icon{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;}
+.cart-count{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:18px;padding:0 5px;background:var(--forest);color:var(--cream);border-radius:9px;font-size:11px;font-weight:600;}
+.search-pill{display:flex;align-items:center;gap:8px;padding:8px 14px;background:var(--warm-white);border:0.5px solid var(--rule);border-radius:999px;font-size:12.5px;color:var(--stone);min-width:200px;}
+.icon{width:16px;height:16px;stroke:currentColor;stroke-width:1.4;fill:none;flex-shrink:0;}
+.back-link{display:inline-flex;align-items:center;gap:10px;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--stone);font-weight:500;}
+.back-link::before{content:"";width:16px;height:1px;background:currentColor;}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 28px;font-size:13px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;border-radius:2px;border:0.5px solid transparent;cursor:pointer;transition:all 160ms ease;background:none;font-family:inherit;}
+.btn-primary{background:var(--ink);color:var(--cream);}.btn-primary:hover{background:var(--forest);}
+.btn-ghost{border-color:var(--rule-strong);color:var(--ink);}.btn-ghost:hover{border-color:var(--ink);}
+.btn-arrow{width:14px;height:8px;position:relative;display:inline-block;}
+.btn-arrow::before{content:"";position:absolute;left:0;top:50%;width:100%;height:1px;background:currentColor;transform:translateY(-50%);}
+.btn-arrow::after{content:"";position:absolute;right:0;top:50%;width:6px;height:6px;border-top:1px solid currentColor;border-right:1px solid currentColor;transform:translateY(-50%) rotate(45deg);}
+
+/* Story hero */
+.story-hero{max-width:1440px;margin:0 auto;padding:64px 40px 0;}
+.story-hero .back-link{margin-bottom:48px;}
+.story-hero-inner{display:grid;grid-template-columns:1fr 1.05fr;gap:80px;align-items:center;}
+.story-hero .label{display:block;margin-bottom:22px;}
+.story-hero h1{font-family:'Cormorant Garamond',serif;font-size:88px;font-weight:500;line-height:0.98;letter-spacing:-0.014em;margin:0 0 28px;text-wrap:balance;}
+.story-hero h1 em{font-style:italic;}
+.story-hero .lead{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;color:var(--ink);line-height:1.5;max-width:500px;margin:0 0 32px;}
+.story-hero-image{position:relative;}
+.story-hero-image .frame{aspect-ratio:4/5;background:var(--card-bg);border-radius:2px;overflow:hidden;}
+.story-hero-image .frame img{width:100%;height:100%;object-fit:cover;display:block;}
+.story-hero-caption{position:absolute;left:-32px;bottom:-24px;background:var(--warm-white);border:0.5px solid var(--rule);padding:18px 22px;border-radius:2px;max-width:240px;box-shadow:0 1px 16px rgba(44,44,42,0.06);}
+.story-hero-caption .label{margin-bottom:8px;}
+.story-hero-caption p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;line-height:1.35;margin:0;color:var(--ink);}
+
+/* Body */
+.story-body{max-width:760px;margin:0 auto;padding:120px 40px 40px;}
+.story-body section{border-top:0.5px solid var(--rule);padding:56px 0;}
+.story-body section:first-child{border-top:none;padding-top:0;}
+.story-body section:last-child{border-bottom:0.5px solid var(--rule);}
+.story-body h2{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:500;line-height:1.05;margin:0 0 22px;letter-spacing:-0.008em;}
+.story-body h2 em{font-style:italic;}
+.story-body p{font-size:17px;line-height:1.78;margin:0 0 18px;color:var(--ink);text-wrap:pretty;}
+.story-body .pull{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:24px;line-height:1.45;padding-left:20px;border-left:2px solid var(--forest);margin:32px 0;color:var(--ink);max-width:600px;}
+
+/* Founder photo block */
+.founders{background:var(--card-bg);}
+.founders-inner{max-width:1100px;margin:0 auto;padding:88px 40px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+.founders .label{display:block;margin-bottom:20px;}
+.founders h2{font-family:'Cormorant Garamond',serif;font-size:56px;font-weight:500;line-height:1;margin:0 0 22px;letter-spacing:-0.008em;}
+.founders h2 em{font-style:italic;}
+.founders p{font-size:16.5px;line-height:1.78;margin:0 0 18px;max-width:480px;color:var(--ink);}
+.founders-signature{margin-top:32px;display:flex;flex-direction:column;gap:6px;}
+.founders-signature-name{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:36px;line-height:1;color:var(--ink);}
+.founders-signature-role{font-size:11.5px;letter-spacing:0.18em;text-transform:uppercase;color:var(--stone);font-weight:500;}
+.founders-signature-contact{font-size:13.5px;color:var(--stone);margin-top:10px;line-height:1.7;}
+.founders-signature-contact a:hover{color:var(--forest);}
+
+/* Daughters band */
+.daughters{background:var(--ink);color:var(--cream);}
+.daughters-inner{max-width:900px;margin:0 auto;padding:96px 40px;text-align:center;}
+.daughters .label{color:rgba(245,240,229,0.55);display:block;margin-bottom:18px;}
+.daughters h2{font-family:'Cormorant Garamond',serif;font-size:56px;font-weight:500;line-height:1.05;margin:0 0 24px;letter-spacing:-0.008em;}
+.daughters h2 em{font-style:italic;}
+.daughters p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;color:rgba(245,240,229,0.85);line-height:1.5;max-width:580px;margin:0 auto;}
+
+/* Close */
+.close-band{max-width:900px;margin:0 auto;padding:96px 40px;text-align:center;}
+.close-band .label{display:block;margin-bottom:18px;}
+.close-band h2{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:500;line-height:1.05;margin:0 0 22px;letter-spacing:-0.008em;}
+.close-band h2 em{font-style:italic;}
+.close-band p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;color:var(--stone);max-width:520px;margin:0 auto 32px;line-height:1.5;}
+.close-cta{display:inline-flex;gap:14px;align-items:center;}
+
+footer{background:var(--cream);border-top:0.5px solid var(--rule);}
+.foot-bottom-band{max-width:1440px;margin:0 auto;padding:28px 40px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--stone);letter-spacing:0.04em;flex-wrap:wrap;gap:12px;}
+.foot-bottom-band a:hover{color:var(--ink);}
+.foot-bottom-band em{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:var(--ink);margin-right:10px;}
+.foot-bottom-band .foot-bottom-links{display:flex;gap:22px;}
+@media (max-width:900px){.story-hero-inner{grid-template-columns:1fr;gap:48px;}.founders-inner{grid-template-columns:1fr;gap:40px;}}
+blockquote.pull{ font-family: 'Cormorant Garamond', serif; font-style: italic; padding-left: 20px; border-left: 2px solid var(--forest); margin: 32px 0; max-width: 600px; }
+blockquote.pull p{ font-size: 24px; line-height: 1.45; color: var(--ink); margin: 0 0 12px; font-style: italic; }
+blockquote.pull cite{ display: block; font-style: normal; font-family: 'Mulish', sans-serif; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--stone); font-weight: 500; }
+</style>
+</head>
+<body data-screen-label="Our Story">
+
+<div class="utility">
+  <div class="utility-inner">
+    <div class="utility-links"><a href="#">Track order</a><a href="#">Educator program</a></div>
+    <div class="utility-center">Free shipping on orders $150+ within the contiguous U.S.</div>
+    <div class="utility-links" style="justify-content:flex-end;"><a href="#">Gift cards</a><a href="#">Sign in</a></div>
+  </div>
+</div>
+
+<header class="nav">
+  <div class="nav-inner">
+    <nav class="nav-left">
+      <a href="#" class="nav-link has-caret">Shop all</a>
+      <a href="#" class="nav-link has-caret">Collections</a>
+      <a href="#" class="nav-link">Ages</a>
+    </nav>
+    <a href="MTW Homepage v3.html" class="logo">
+      <span class="logo-mark" aria-hidden="true"></span>
+      <span class="logo-text">My Toy Wagon<small>Los Angeles · California · est. 2020</small></span>
+    </a>
+    <div class="nav-right">
+      <div class="search-pill"><svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg><span>Search wooden blocks, plush…</span></div>
+      <a href="#" class="nav-icon">Account</a>
+      <a href="#" class="nav-icon">Cart <span class="cart-count">0</span></a>
+    </div>
+  </div>
+</header>
+
+<section class="story-hero">
+  <a href="MTW Homepage v3.html" class="back-link">Back to the shop</a>
+  <div class="story-hero-inner">
+    <div>
+      <span class="label">Our Story</span>
+      <h1>A small toy shop, <em>with a big heart</em>.</h1>
+      <p class="lead">Founded by Irfana and Rashid in Los Angeles, and inspired by our two daughters, Hafsa and Noor. My Toy Wagon is a boutique built around wooden and felt toys, mindful play, and the slow, unhurried childhood we hope every child gets to keep.</p>
+      <p class="lead" style="margin-top: 20px;">Before this was a shop, Irfana trained as a historian, earning a PhD studying what lasts and what gets left behind. That is part of why we are drawn to toys built to be handed down rather than thrown away. We choose each one the way you would weigh any source. We stay skeptical of the hype, we look for what is real, and we always ask whether it will still matter years from now.</p>
+    </div>
+    <div class="story-hero-image">
+      <div class="frame"><img src="assets/hafsa-and-noor.webp" alt="Hafsa and Noor at home, playing with the Garden of the Moon felt playscape"></div>
+      <div class="story-hero-caption">
+        <span class="label">The founders' daughters</span>
+        <p>"Hafsa and Noor are the heartbeat of the shop."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="story-body">
+  <section>
+    <h2>Welcome to <em>My Toy Wagon</em>.</h2>
+    <p>Our journey began with something simple: watching our daughters play. In their focus, their imagination, and the worlds they built out of a few wooden pieces, we were reminded how much childhood asks for, and how little of it needs a screen or a battery.</p>
+    <p>So we started a small shop with a big purpose. My Toy Wagon is more than a place to find toys. It's a place where we've chosen every item by hand, where play is taken seriously, and where we believe the right toy can spark something that lasts far longer than the afternoon it arrives.</p>
+  </section>
+
+  <section>
+    <h2>Curated, never collected.</h2>
+    <p>We don't carry everything. We carry what we'd give our own children.</p>
+    <p>Every toy on our shelves is chosen for how it's made and what it invites. We look for open-ended play, natural materials, and the kind of quality that survives being loved hard and handed down. From heirloom wooden pieces to felt and fabric, from first instruments to art that fills a rainy day, our collection spans more of childhood than most. One through-line connects everything: beautiful, well-made things that last.</p>
+    <p>That means you'll find the names families know and trust alongside makers we can't wait to introduce you to. Curated, never collected.</p>
+    <blockquote class="pull">
+      <p>"Play is the work of childhood."</p>
+      <cite>Maria Montessori</cite>
+    </blockquote>
+    <p>At My Toy Wagon, play is the real work of childhood, and our shop is built to make every visit a small occasion.</p>
+  </section>
+</div>
+
+<section class="daughters">
+  <div class="daughters-inner">
+    <span class="label">The heartbeat</span>
+    <h2>Hafsa &amp; <em>Noor</em>.</h2>
+    <p>The two who started it all. Our daughters keep us honest about what makes a toy worth keeping. It is the kind a child returns to again and again, and that one day, a younger sibling inherits. Every piece we choose has to pass their test first.</p>
+  </div>
+</section>
+
+<section class="founders">
+  <div class="founders-inner">
+    <div>
+      <span class="label">A note from the founders</span>
+      <h2>Thank you for being <em>here</em>.</h2>
+      <p>We're honored to be part of your playroom. Every order is wrapped with care, and we hope what you find here brings as much joy to your home as choosing it brought to ours.</p>
+      <p>If you ever have a question, want a gift recommendation, or simply want to say hello, we'd love to hear from you. There are real people behind this shop, and we read every note.</p>
+      <p style="margin-top: 20px;">With gratitude,</p>
+      <div class="founders-signature">
+        <span class="founders-signature-name">Irfana &amp; Rashid</span>
+        <span class="founders-signature-role">Founders, My Toy Wagon</span>
+        <div class="founders-signature-contact">
+          <a href="tel:6268410421">626.841.0421</a><br>
+          <a href="/cdn-cgi/l/email-protection#4e2d21203a2f2d3a0e23373a2137392f292120602d2123"><span class="__cf_email__" data-cfemail="5d3e3233293c3e291d30242932242a3c3a3233733e3230">[email&#160;protected]</span></a>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div style="position:relative;overflow:visible;">
+        <div style="aspect-ratio:1/1;background:var(--warm-white);border-radius:2px;overflow:hidden;border:0.5px solid var(--rule);">
+          <img src="assets/bear-unwrapping.png" alt="A child's hands lifting a hand-carved wooden bear from cream tissue paper inside a small brown gift box" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div style="position:absolute;right:-18px;bottom:-22px;background:var(--warm-white);border:0.5px solid var(--rule);padding:14px 18px;border-radius:2px;max-width:280px;box-shadow:0 1px 12px rgba(44,44,42,0.06);">
+          <span class="label" style="display:block;margin-bottom:6px;">From our warehouse</span>
+          <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;line-height:1.35;margin:0;color:var(--ink);">Packed with care. From our family to yours.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="close-band">
+  <span class="label">Visit the shop</span>
+  <h2>Find a toy your child will <em>keep</em>.</h2>
+  <p>Browse our full collection of wooden and felt toys, art, and open-ended play. These are the kind that comes back for seconds, and stays for years.</p>
+  <div class="close-cta">
+    <a href="MTW Homepage v3.html" class="btn btn-primary">Shop the collection <span class="btn-arrow"></span></a>
+    <a href="wishlist.html" class="btn btn-ghost">Start a wishlist</a>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-bottom-band">
+    <span><em>Heirloom toys, curated by hand.</em>© 2026 My Toy Wagon. All rights reserved.</span>
+    <div class="foot-bottom-links">
+      <a href="MTW Homepage v3.html">Back to the shop</a>
+      <a href="shipping.html">Shipping</a>
+      <a href="returns.html">Returns</a>
+      <a href="rewards.html">Rewards</a>
+      <a href="privacy.html">Privacy</a>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>
