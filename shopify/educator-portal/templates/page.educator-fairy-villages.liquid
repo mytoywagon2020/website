@@ -1573,6 +1573,16 @@ footer .cols .downloads a::after{
   isolation: isolate;
 }
 .cover .bg{ position:absolute; inset:0; z-index:0; }
+/* Cover: show the whole (square) product photo with `contain`, and fill the
+   wide banner edge-to-edge with a blurred copy of the same shot behind it. */
+.cover .bg.has-photo > img{ object-fit: contain; object-position: center; z-index: 1; }
+.cover .bg.has-photo::before{
+  display: block; content: "";
+  position: absolute; inset: 0; z-index: 0;
+  background: url("{{ 'pink-blossom-house.webp' | asset_url }}") center / cover no-repeat;
+  filter: blur(34px) saturate(1.08);
+  transform: scale(1.12);
+}
 .cover .veil{
   position:absolute; inset:0; z-index:1; pointer-events:none;
   background:
@@ -2551,11 +2561,11 @@ footer .cols .downloads a::after{
 }
 .companions .wrap{
   display: grid;
-  grid-template-columns: minmax(0, 6fr) minmax(0, 6fr);
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
   gap: 80px;
   align-items: center;
 }
-.companions .col-img .tile{ height: 460px; }
+.companions .col-img .tile{ height: 600px; }
 .companions .col-txt .eyebrow{ color: color-mix(in oklab, var(--accent-soft) 80%, white); }
 .companions h2{
   margin: 22px 0 0;
@@ -2922,7 +2932,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
   .home.size-hero, .home.size-tall, .home.size-std, .home.size-wide{
     grid-column: span 1;
   }
-  .companions .col-img .tile{ height: 540px; }
+  .companions .col-img .tile{ height: 620px; }
   footer .wrap{ grid-template-columns: 1fr; }
 }
 @media (max-width: 640px){
@@ -3717,7 +3727,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
         <span class="eyebrow" style="display:block; color: color-mix(in oklab, var(--accent-soft) 80%, white); margin-bottom: 18px;">Complete the Village</span>
         <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;">
           <div style="display: flex; flex-direction: column;">
-            <div class="tile t-gilt has-photo contained" style="aspect-ratio: 1 / 1; width: 100%;">
+            <div class="tile t-gilt has-photo" style="aspect-ratio: 1 / 1; width: 100%;">
               <img src="{{ 'flower-children.webp' | asset_url }}" alt="Bumbu Flower Children, five carved wooden figures with flower-head caps (red poppy, white daisy, yellow sunflower, pink tulip, blue cornflower) on green leaf bodies"/>
               <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
               <span class="tag">[ FLOWER CHILDREN ]</span>
