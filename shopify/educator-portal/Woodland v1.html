@@ -4220,7 +4220,7 @@ section[data-screen-label="07 Papoose Seasonal Trees"] .content{
           <label class="qf-chip"><input type="checkbox" name="ecosystems" value="woodland" checked/>03 &middot; Woodland</label>
           <label class="qf-chip"><input type="checkbox" name="ecosystems" value="small-world"/>04 &middot; Small World &amp; Storytelling</label>
           <label class="qf-chip"><input type="checkbox" name="ecosystems" value="fairy-villages"/>05 &middot; Fairy Villages</label>
-          <label class="qf-chip"><input type="checkbox" name="ecosystems" value="steam"/>06 &middot; STEAM &middot; Wonder &amp; Investigation</label>
+          <label class="qf-chip"><input type="checkbox" name="ecosystems" value="steam"/>06 &middot; STEAM</label>
           <label class="qf-chip"><input type="checkbox" name="ecosystems" value="dramatic-play"/>07 &middot; Dramatic Play</label>
           <label class="qf-chip"><input type="checkbox" name="ecosystems" value="creative-arts"/>08 &middot; Creative Arts</label>
         </div>
@@ -4358,7 +4358,7 @@ section[data-screen-label="07 Papoose Seasonal Trees"] .content{
      CATALOG VARS, single source of truth for ecosystem strings.
      To reskin for another ecosystem, edit ONLY this block.
      A Shopify template can override these via Liquid:
-       const CATALOG = { volume:"{{ page.metafields.catalog.volume }}", ... };
+       const CATALOG = { volume: "03", ecosystem: "Woodland", makers: ["Bumbu", "Papoose"] };
      ================================================================= */
   const CATALOG = {
     volume:"03",
