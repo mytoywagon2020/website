@@ -3269,9 +3269,10 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 [data-screen-label="04 Hero Product"] .img-side .tile img{
   width: 100% !important;
   height: 100% !important;
-  object-fit: cover !important;
+  object-fit: contain !important;
   object-position: center !important;
   display: block !important;
+  padding: clamp(16px, 3vw, 40px) !important;
 }
 [data-screen-label="04 Hero Product"] .img-side .tile::before,
 [data-screen-label="04 Hero Product"] .img-side .tile::after{
