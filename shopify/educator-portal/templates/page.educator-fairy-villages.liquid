@@ -4,6 +4,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex,nofollow"/>
 
 <!-- SEO STRATEGY ============================================================
      This page is the EDITORIAL surface (school-buyer keywords).
@@ -15,7 +16,7 @@
        4. Each has its own canonical pointing to itself
      ========================================================================= -->
 <title>Fairy Villages for Schools &middot; My Toy Wagon Educator Catalog</title>
-<meta name="description" content="Hand-felted fairy villages for Pre-K and Kindergarten classrooms. Hand-made in Nepal, made to order. Net-30 invoicing, tax-exempt orders, and approved-vendor accounts for schools.">
+<meta name="description" content="Hand-felted fairy villages for Pre-K and Kindergarten classrooms. Hand-made in Nepal, made to order. Net-30 invoicing, tax-exempt orders, and...">
 <link rel="canonical" href="https://mytoywagon.com/pages/educator-fairy-villages" />
 
 <!-- Open Graph (social shares: Facebook, LinkedIn) -->
@@ -50,8 +51,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Mulish:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 <style>
 /* =================================================================
-   MY TOY WAGON — ECOSYSTEM CATALOG TEMPLATE
-   Current preset: WOODLAND COLLECTION (Volume 03)
+   MY TOY WAGON, ECOSYSTEM CATALOG TEMPLATE
+   Current preset: FAIRY VILLAGES (Section 05)
    To retheme for another ecosystem, swap the ECOSYSTEM TOKENS block
    below + the CATALOG const at the bottom. Every component downstream
    reads from tokens.
@@ -59,7 +60,7 @@
 
 /* ----------------------------- TOKENS ---------------------------- */
 :root{
-  /* BRAND CHASSIS — shared with retail homepage. Do not vary. */
+  /* BRAND CHASSIS, shared with retail homepage. Do not vary. */
   --cream:        #F5F0E5;   /* brand cream, neutral-warm */
   --warm-white:   #FFFCF7;   /* card surface over cream */
   --card-bg:      #EDE3CD;   /* warm beige card surface */
@@ -72,22 +73,23 @@
   --gilt:         #C9A96E;
   --gilt-pale:    #E8D5A8;
 
-  /* ECOSYSTEM PALETTE — swap these per ecosystem. Carries mood. */
-  --accent:       #2D5C3A;   /* forest green, primary signature */
-  --accent-soft:  #8FA896;   /* sage soft */
-  --accent-pale:  #DCE5D6;   /* pale moss, background tint */
-  --accent-deep:  #1B3E26;   /* deep forest, type emphasis */
-  --alt:          #B89060;   /* autumn gilt, secondary */
-  --alt-deep:     #7A5A2E;   /* deep oak */
-  --hue-3:        #C97A4A;   /* rust foxtail, tertiary */
-  --hue-3-deep:   #5C3A24;   /* deep bark */
+  /* ECOSYSTEM PALETTE, swap these per ecosystem. Carries mood.
+     Matches catalog source §05 rose + educators landing --eco-05. */
+  --accent:       #C97A8A;   /* catalog rose, primary signature */
+  --accent-soft:  #E3B6C0;   /* soft rose, friendly wash */
+  --accent-pale:  #EFD5DC;   /* pale rose, background tint */
+  --accent-deep:  #8A4E5E;   /* deep rose, type emphasis */
+  --alt:          #B8A3C9;   /* lilac, secondary world color */
+  --alt-deep:     #7E6A95;   /* twilight lilac */
+  --hue-3:        #9DAB87;   /* dew green, tertiary */
+  --hue-3-deep:   #3F4A33;   /* moss, dark companion */
 
-  /* mood gradient — ecosystem signature, used on cover + bottom hero */
-  --mood-a:       #8FA896;   /* sage start */
-  --mood-b:       #6B8C5A;
-  --mood-c:       #C9A96E;   /* gilt mid */
-  --mood-d:       #C97A4A;   /* rust */
-  --mood-e:       #2D5C3A;   /* forest end */
+  /* mood gradient, ecosystem signature, used on cover + bottom hero */
+  --mood-a:       #E3B6C0;   /* start */
+  --mood-b:       #DDD49C;
+  --mood-c:       #B5C99A;
+  --mood-d:       #B7A6CE;
+  --mood-e:       #C97A8A;   /* end */
 
   /* meta strings (referenced via ::before content where needed) */
   --rule:         rgba(44,44,42,.12);   /* brand hairline */
@@ -224,7 +226,7 @@ a{ color:inherit; }
       var(--mood-e) 100%);
 }
 
-/* ----------------------- NAV (sticky, brand-styled — retail pattern) ----------------------- */
+/* ----------------------- NAV (sticky, brand-styled, retail pattern) ----------------------- */
 .nav{
   position: sticky;
   top: 0;
@@ -464,7 +466,7 @@ a{ color:inherit; }
 .utility-right a:hover{ color: var(--cream); }
 .utility-right .pipe{ color: rgba(245,240,229,.25); }
 
-/* Inverse soft strip — mirrors the homepage's "For educators" strip */
+/* Inverse soft strip, mirrors the homepage's "For educators" strip */
 .families-soft{
   background: var(--cream);
   border-bottom: 0.5px solid var(--rule);
@@ -516,7 +518,7 @@ a{ color:inherit; }
 }
 .families-soft-cta:hover{ color: var(--forest); border-color: var(--forest); }
 
-/* Wagon badge — the brand's amber rotated pill */
+/* Wagon badge, the brand's amber rotated pill */
 .wagon-badge{
   display: inline-flex;
   align-items: center;
@@ -549,7 +551,7 @@ a{ color:inherit; }
 }
 .block-num .dot{ color: var(--accent); }
 
-/* Verified buyer disc — forest green, brand micro-DNA */
+/* Verified buyer disc, forest green, brand micro-DNA */
 .verified-disc{
   display: inline-flex;
   align-items: center;
@@ -563,7 +565,7 @@ a{ color:inherit; }
 }
 .verified-disc svg{ width: 12px; height: 12px; flex-shrink: 0; }
 
-/* Image fill — drop real photos into placeholder tiles.
+/* Image fill, drop real photos into placeholder tiles.
    `.has-photo` hides the gradient texture and corner brackets.
    `cover` mode (default): photo fills the tile, cropped to fit.
    `contained` mode: photo sits inside the tile on its tinted gradient
@@ -1597,14 +1599,14 @@ footer .cols .downloads a::after{
   position:absolute;
   left: clamp(28px, 5vw, 56px);
   right: clamp(28px, 5vw, 56px);
-  bottom: 132px;
+  bottom: 220px;
   z-index: 3;
   margin: 0;
   font-family: var(--serif);
   font-weight: 400;
   color: var(--cream);
-  font-size: clamp(56px, 10vw, 168px);
-  line-height: .92;
+  font-size: clamp(48px, 8vw, 132px);
+  line-height: .94;
   letter-spacing: -.012em;
   text-shadow: 0 1px 28px rgba(0,0,0,.2);
 }
@@ -1969,7 +1971,7 @@ footer .cols .downloads a::after{
 .split .content .ctas .btn{ background: var(--ink); color: var(--cream); border-color: var(--ink); }
 .split .content .ctas .btn:hover{ background: var(--accent-deep); border-color: var(--accent-deep); }
 
-/* Pairs with — cross-sell block inside Feature Split */
+/* Pairs with, cross-sell block inside Feature Split */
 .pairs-with{
   margin-top: 28px;
   padding-top: 22px;
@@ -2234,6 +2236,26 @@ footer .cols .downloads a::after{
 }
 .home .cap .add-btn{ flex-shrink: 0; padding: 9px 14px; font-size: 11px; }
 .home .cap .view-pdp{ font-size: 11px; white-space: nowrap; }
+
+/* Footer alignment, pushes SKU + price + add-row to the bottom of every
+   card so they line up horizontally across the grid row even when desc
+   lengths vary. The .meta SKU line is the footer starter and absorbs
+   the vertical slack via margin-top:auto. Subtle hairline divides the
+   editorial description from the procurement footer. */
+.home{ display: flex; flex-direction: column; height: 100%; }
+.home .cap{ flex: 1 1 auto; }
+.home .cap > .meta{
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 0.5px solid var(--rule);
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--stone);
+  display: block;
+}
 .home .cap .price{
   grid-column: 2;
   margin-top: 4px;
@@ -2258,7 +2280,7 @@ footer .cols .downloads a::after{
   border-radius: 2px;
 }
 
-/* legacy size-X classes are no-ops now — all gallery cards uniform */
+/* legacy size-X classes are no-ops now, all gallery cards uniform */
 .home.size-hero,
 .home.size-tall,
 .home.size-std,
@@ -2371,6 +2393,80 @@ footer .cols .downloads a::after{
 .reviews-section .see-all a:hover{ color: var(--forest); border-color: var(--forest); }
 @media (max-width: 1080px){
   .reviews-section .reviews-grid{ grid-template-columns: 1fr; gap: 18px; }
+}
+
+/* Reviews carousel, generic, MTW-wide educator reviews.
+   Swap from .reviews-grid (static 3-up) to a snap-scroll track with
+   prev/next arrows and pagination dots. Cards reuse .review styles. */
+.reviews-section .reviews-carousel{
+  position: relative;
+  margin: 0 -8px;
+}
+.reviews-section .rc-track{
+  display: flex;
+  gap: 22px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 8px;
+  padding: 6px 8px 18px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.reviews-section .rc-track::-webkit-scrollbar{ display: none; }
+.reviews-section .rc-track .review{
+  flex: 0 0 calc((100% - 44px) / 3);
+  scroll-snap-align: start;
+  min-width: 280px;
+  margin: 0;
+}
+.reviews-section .rc-nav{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px; height: 44px;
+  background: var(--warm-white);
+  border: 0.5px solid var(--rule-strong);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--serif);
+  font-size: 16px;
+  color: var(--ink);
+  z-index: 2;
+  box-shadow: 0 2px 12px rgba(44,44,42,.06);
+  transition: background .2s ease, border-color .2s ease, color .2s ease, opacity .2s ease;
+}
+.reviews-section .rc-nav:hover{ background: var(--ink); color: var(--cream); border-color: var(--ink); }
+.reviews-section .rc-nav:disabled{ opacity: .25; cursor: default; }
+.reviews-section .rc-nav:disabled:hover{ background: var(--warm-white); color: var(--ink); border-color: var(--rule-strong); }
+.reviews-section .rc-nav.prev{ left: -22px; }
+.reviews-section .rc-nav.next{ right: -22px; }
+.reviews-section .rc-nav svg{ width: 14px; height: 14px; stroke: currentColor; stroke-width: 1.6; fill: none; }
+.reviews-section .rc-dots{
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 24px;
+}
+.reviews-section .rc-dots button{
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--rule-strong);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background .25s ease, width .25s ease, border-radius .25s ease;
+}
+.reviews-section .rc-dots button.is-active{
+  background: var(--accent-deep);
+  width: 22px;
+  border-radius: 3px;
+}
+@media (max-width: 1080px){
+  .reviews-section .rc-track .review{ flex: 0 0 86%; }
+  .reviews-section .rc-nav{ display: none; }
 }
 .collection-bridge{
   margin-top: 72px;
@@ -2852,6 +2948,345 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
   .closing .signoff .right{ text-align: center; }
   footer .cols{ grid-template-columns: 1fr 1fr; gap: 24px; }
 }
+
+/* "Ships separately" pill, auto-injected by data-long-lead JS at the bottom of the page.
+   Tag any product card (.home), kit (.kit), or featured split with data-long-lead="true"
+   to show a small pill that signals the item has its own ship timeline. */
+.ships-separately-pill{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 11px;
+  margin: 8px 8px 0 0;
+  background: color-mix(in oklab, var(--amber, #854F0B) 10%, var(--cream, #F5F0E5));
+  color: var(--amber, #854F0B);
+  border: 0.5px solid color-mix(in oklab, var(--amber, #854F0B) 30%, transparent);
+  border-radius: 999px;
+  font-family: var(--sans, system-ui), sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.ships-separately-pill::before{
+  content: "";
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--amber, #854F0B);
+  flex-shrink: 0;
+}
+
+
+/* Pillar/eyebrow + body alignment, fixes uneven row heights when eyebrow
+   text wraps to 2 lines on some pillars but not others. Sets a minimum height
+   on the eyebrow so all 4 pillar bodies start at the same y-position. */
+.pillars .p{ display: flex; flex-direction: column; gap: 12px; }
+.pillars .p .label{
+  min-height: 2.4em;
+  display: flex;
+  align-items: flex-start;
+  line-height: 1.25;
+}
+.pillars .p p{ margin: 0; }
+
+
+/* Layout alternation, editorial rhythm.
+   .split.image-right flips the standard split so content-left, image-right.
+   Apply to Featured 2 (Letter Tracing) and Featured 3 (My Forest Floor) on
+   Sensory Play, and to Featured 2 on Woodland and Small World, for rhythm. */
+/* (Variant B below — the CSS grid order flip — is the canonical implementation.) */
+
+/* Section divider, magazine TOC-entry style.
+   Used between major editorial sections to mark transition. */
+.section-divider{
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 36px clamp(20px, 5vw, 56px) 0;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 24px;
+  align-items: center;
+}
+.section-divider .num{
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--accent-deep);
+  letter-spacing: .04em;
+}
+.section-divider .line{
+  height: 0.5px;
+  background: var(--rule-strong);
+}
+.section-divider .label{
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+
+
+/* =================================================================
+   LAYOUT ROTATION SYSTEM
+   Three split variants (Featured Product) and three gallery
+   variants (Collection Grid), applied in a fixed alternating
+   pattern across each section page so no two adjacent blocks
+   share the same geometry. Editorial rhythm without bespoke
+   per-section markup.
+   
+   SPLIT VARIANTS (Featured Product):
+     .split            — default: image-left, content-right
+     .split.image-right — mirror: image-right, content-left
+     .split.stage      — stacked: full-width image, content centered below
+   
+   GALLERY VARIANTS (Collection Grid):
+     .gallery          — default: 5-card grid with hero/tall/std
+     .gallery.even     — 5 equal columns, no hero sizing
+     .gallery.strip    — 3 across hero row + 2 across detail row
+   
+   ROTATION PER SECTION PAGE:
+     Featured 1 (Hero)    → default split
+     Gallery 1            → default gallery (hero+4)
+     Featured 2           → .image-right
+     Gallery 2            → .even
+     Featured 3 (if any)  → .stage
+     Gallery 3 (if any)   → .strip
+   ================================================================= */
+
+/* Variant B — Mirror split: content-left, image-right.
+   Uses CSS grid order property; text direction unchanged. */
+.split.image-right .img-side{ order: 2; }
+.split.image-right .content{ order: 1; }
+
+/* Variant C — Stage split: full-width image hero, content centered beneath.
+   Different visual rhythm from the side-by-side splits. */
+.split.stage{
+  display: block !important;
+  padding: 0 0 clamp(56px, 7vw, 96px);
+}
+.split.stage .img-side{
+  width: 100%;
+  height: auto;
+  padding: 0;
+}
+.split.stage .img-side .tile{
+  width: 100%;
+  aspect-ratio: 16 / 7;
+  height: auto;
+}
+.split.stage .content{
+  max-width: 920px;
+  margin: clamp(40px, 5vw, 64px) auto 0;
+  padding: 0 clamp(20px, 5vw, 56px);
+}
+
+/* Variant Y — Even gallery: 5 equal columns, override hero/tall/std sizing.
+   Reads as a "collection" rather than a featured spread. */
+.gallery.even .homes{ grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 18px; }
+.gallery.even .home.size-hero,
+.gallery.even .home.size-tall,
+.gallery.even .home.size-std{ grid-column: auto; }
+.gallery.even .home .tile-wrap{ aspect-ratio: 1 / 1; }
+.gallery.even .home .tile-wrap .tile{ height: 100%; }
+@media (max-width: 1080px){ .gallery.even .homes{ grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 720px){ .gallery.even .homes{ grid-template-columns: repeat(2, 1fr); } }
+
+/* Variant Z — Strip gallery: 3 hero across the top, 2 wide detail below.
+   Magazine "feature spread" geometry. */
+.gallery.strip .homes{ grid-template-columns: repeat(6, 1fr); gap: 18px; }
+.gallery.strip .home:nth-child(1),
+.gallery.strip .home:nth-child(2),
+.gallery.strip .home:nth-child(3){ grid-column: span 2; }
+.gallery.strip .home:nth-child(4),
+.gallery.strip .home:nth-child(5){ grid-column: span 3; }
+.gallery.strip .home:nth-child(4) .tile-wrap,
+.gallery.strip .home:nth-child(5) .tile-wrap{ aspect-ratio: 16 / 9; }
+@media (max-width: 1080px){
+  .gallery.strip .homes{ grid-template-columns: repeat(2, 1fr); }
+  .gallery.strip .home:nth-child(1),
+  .gallery.strip .home:nth-child(2),
+  .gallery.strip .home:nth-child(3),
+  .gallery.strip .home:nth-child(4),
+  .gallery.strip .home:nth-child(5){ grid-column: auto; }
+}
+
+
+/* Row alignment, gallery cards.
+   Stretches every card in a row to match the tallest, then floats the
+   procurement footer (SKU, price, add-to-cart row) to card bottom so
+   they land at a single horizontal line across the row. */
+.gallery .homes{ grid-auto-rows: 1fr; align-items: stretch; }
+.gallery .home{ height: 100%; }
+.gallery .home .cap{ flex: 1 1 auto; display: flex; flex-direction: column; }
+.gallery .home .cap > .meta{ margin-top: auto; }
+.gallery .home .cap .price + .add-row,
+.gallery .home .cap .add-row{ margin-top: auto; }
+
+/* Even variant, equal columns so the row-stretch effect is most visible. */
+.gallery.even .homes{ grid-auto-rows: 1fr; }
+.gallery.even .home{ height: 100%; }
+
+/* Strip variant, two-row pattern. Stretch within each row. */
+.gallery.strip .homes{ grid-auto-rows: 1fr; }
+.gallery.strip .home{ height: 100%; }
+
+
+/* Standards row — sits below the .craft 3-cell block on Featured Product splits.
+   Holds curriculum/standards alignment codes (CCSS, NGSS, EYFS, etc.) as
+   small chip-pills. Kept separate from .craft to avoid cramming long codes
+   into the 3-column grid and to keep the row alignment crisp. */
+.split .content .standards-row{
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--rule);
+  display: grid;
+  grid-template-columns: minmax(140px, auto) 1fr;
+  gap: 24px;
+  align-items: start;
+}
+.split .content .standards-row .label{
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: .18em;
+  display: block;
+  padding-top: 6px;
+}
+.split .content .standards-row .codes{
+  display: flex; flex-wrap: wrap; gap: 8px;
+}
+.split .content .standards-row .code{
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  color: var(--accent-deep);
+  padding: 6px 12px;
+  background: color-mix(in oklab, var(--accent-deep) 6%, transparent);
+  border: 0.5px solid color-mix(in oklab, var(--accent-deep) 28%, transparent);
+  border-radius: 999px;
+  white-space: nowrap;
+}
+@media (max-width: 720px){
+  .split .content .standards-row{ grid-template-columns: 1fr; gap: 12px; }
+  .split .content .standards-row .label{ padding-top: 0; }
+}
+
+
+/* Pull-quote, drops a large serif italic line between sections.
+   Pulled from catalog body copy to connect the reader to the ecosystem.
+   Centered, generous margin, hairline rule above and below. */
+.pull-quote{
+  background: var(--cream);
+  padding: clamp(56px, 7vw, 96px) clamp(20px, 5vw, 56px);
+  text-align: center;
+  border-top: 0.5px solid var(--rule);
+  border-bottom: 0.5px solid var(--rule);
+}
+.pull-quote blockquote{
+  max-width: 56ch;
+  margin: 0 auto;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(22px, 2.8vw, 32px);
+  line-height: 1.25;
+  color: var(--ink);
+  letter-spacing: -.008em;
+}
+.pull-quote blockquote em{ color: var(--accent-deep); font-style: italic; }
+.pull-quote cite{
+  display: block;
+  margin-top: 28px;
+  font-family: var(--sans);
+  font-style: normal;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+
+
+/* Caption variety, editorial. Apply explicitly via markup.
+   Use <div class="cap stripped"> for less-important products (variants, accents).
+   Use <div class="cap expanded"> for products that warrant editorial breath. */
+.gallery .home .cap.stripped .desc{ display: none; }
+.gallery .home .cap.stripped{ padding-bottom: 16px; }
+.gallery .home .cap.expanded::before{
+  content: "";
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: var(--accent);
+  opacity: .6;
+  margin: 10px 0 12px;
+}
+.gallery .home .cap.expanded .desc{
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+
+/* Section 05 — Fairy Villages personality
+   Lighter headline weight, decorative restraint, soft accents. */
+.split .content h3, .gallery h2, .intro h3 { font-weight: 300; }
+.gallery .home .cap .name{ font-weight: 400; }
+.collection-bridge .bridge-cta{ border-radius: 999px; }
+
+
+/* Section divider, mobile fallback. Long labels should stack vertically. */
+@media (max-width: 720px){
+  .section-divider{
+    grid-template-columns: auto 1fr;
+    gap: 16px;
+  }
+  .section-divider .line{ display: block; }
+  .section-divider .label{
+    grid-column: 1 / -1;
+    margin-top: -4px;
+  }
+}
+
+
+/* Breadcrumb, retail-parallel.
+   Replaces the .back link in .subnav with a Home > Educator Catalog > Section
+   trail. Mirrors retail's Home > Collection > Product logic, optimized for B2B
+   buyers who navigate by program tier first, then section. */
+.breadcrumb{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: .04em;
+  color: var(--stone);
+}
+.breadcrumb a{
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color .2s ease;
+}
+.breadcrumb a:hover{ color: var(--forest); }
+.breadcrumb .sep{
+  color: var(--rule-strong);
+  font-size: 11px;
+  user-select: none;
+}
+.breadcrumb [aria-current="page"]{
+  color: var(--stone);
+  font-weight: 400;
+}
+@media (max-width: 720px){
+  .breadcrumb{ font-size: 11px; gap: 8px; }
+  .breadcrumb .home-crumb{ display: none; }
+}
+
 </style>
 </head>
 <body>
@@ -2890,7 +3325,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
     <span>Search the educator catalog</span>
   </div>
   <a href="#" class="nav__logo">
-    <img src="{{ 'mtw-logo-full.png' | asset_url }}" alt="My Toy Wagon — Los Angeles, California, est. 2020" class="mark"/>
+    <img src="{{ 'mtw-logo-full.png' | asset_url }}" alt="My Toy Wagon, Los Angeles, California, est. 2020" class="mark"/>
   </a>
   <div class="nav__actions">
     <a href="/pages/educator-dashboard" class="nav__action" aria-label="Account">
@@ -2908,7 +3343,13 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 <!-- =========================== SUBNAV (catalog stepper + page jumps) =========================== -->
 <div class="subnav">
   <div class="subnav-inner">
-    <a href="/pages/educator-dashboard" class="back">The Catalog</a>
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/" class="home-crumb">Home</a>
+      <span class="sep" aria-hidden="true">/</span>
+      <a href="/pages/educators">Educator Catalog</a>
+      <span class="sep" aria-hidden="true">/</span>
+      <span aria-current="page">Section 05 &middot; Fairy Villages</span>
+    </nav>
     <div class="stepper" id="ecosystemStepper">
       <a class="prev" href="#"></a>
       <span class="sep">/</span>
@@ -2927,19 +3368,20 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 <!-- =========================== COVER =========================== -->
 <section class="cover" data-screen-label="01 Cover">
   <div class="bg tile t-mood has-photo">
-            <img src="{{ 'fairy-cover-pink-blossom.webp' | asset_url }}" alt="A child's hands arranging a pink-petal fairy home on a wool play mat by a soft morning window."/>
-            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-          </div>
+    <img src="{{ 'pink-blossom-house.webp' | asset_url }}" alt="Pink Blossom House, a hand-felted fairy home with a curled pink petal roof and embroidered cherry blossoms"/>
+    <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+    <span class="tag dark">[ COVER &nbsp;·&nbsp; PINK BLOSSOM HOUSE ]</span>
+  </div>
   <div class="veil"></div>
 
   <div class="head">
       <div class="vol">
-      <div class="meta" style="color: rgba(250,246,237,.7);">VOLUME</div>
+      <div class="meta" style="color: rgba(250,246,237,.7);">SECTION</div>
       <div class="num"><span data-fill="volume">III</span></div>
     </div>
   </div>
 
-  <h1>The Fairy<span class="it">Villages.</span></h1>
+  <h1>Fairy<span class="it">Villages</span></h1>
 
   <div class="footer">
     <div class="audience">
@@ -2986,11 +3428,11 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
         <p><span class="dropcap">A</span> fairy village is small enough to carry and large enough to live inside for an afternoon. Felt homes, little wooden folk, and soft play mats gather into one world a young child sets up, changes, and returns to. There are no batteries. There are no instructions. There is no right way. The tending is the play.</p>
       </div>
 
-      <div class="pillars">
-        <div class="p"><span class="label">Small World</span><p>The world a child can hold in two hands.</p></div>
-        <div class="p"><span class="label">Narrative</span><p>Stories told by moving felt and wood.</p></div>
-        <div class="p"><span class="label">Sensory</span><p>The warmth of wool, the weight of wood.</p></div>
-        <div class="p"><span class="label">Expressive Arts</span><p>A vocabulary of color and gesture.</p></div>
+      <div class="pillars" style="grid-template-columns: repeat(4, 1fr);">
+        <div class="p"><span class="label">Pink Blossom</span><p>The first soft morning of the year.</p></div>
+        <div class="p"><span class="label">Lilac Blossom</span><p>The wreath at the door, the quiet end of the day.</p></div>
+        <div class="p"><span class="label">Rainbow Shimmer</span><p>The arch over the threshold, color you can hold.</p></div>
+        <div class="p"><span class="label">Butterfly Fairy</span><p>The curling spire, the wings stitched to the eave.</p></div>
       </div>
     </div>
   </div>
@@ -2999,7 +3441,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 <!-- =========================== FEATURED PRODUCT =========================== -->
 <section class="split" data-screen-label="04 Hero Product">
   <div class="img-side">
-    <div class="tile t-soft has-photo">
+    <div class="tile t-soft has-photo contained">
       <img src="{{ 'mushroom-garden-set.webp' | asset_url }}" alt="Mushroom Garden Fairy Home, opened on its round wool play mat with carrot garden, stepping-stone path, companion mushroom, and resident fairy"/>
     </div>
   </div>
@@ -3030,8 +3472,8 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
         <span class="v">Handmade in Nepal.</span>
       </div>
       <div>
-        <span class="label">Hand-felted to order</span>
-        <span class="stock-pill">Arrives in 3 to 4 weeks</span>
+        <span class="label">SKU &nbsp;&middot;&nbsp; Tara Treasures</span>
+        <span class="stock-pill">MTW-FV-MUS &nbsp;&middot;&nbsp; Ages 3+</span>
       </div>
     </div>
 
@@ -3051,20 +3493,35 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
     </div>
 
     <div class="pairs-with">
-      <span class="label">Pairs with the Mushroom set</span>
-      <div class="pair-thumb"><img src="{{ 'ambrosius-gnome-family.webp' | asset_url }}" alt="Ambrosius Forest Gnome Family"/></div>
+      <span class="label">Continue the village</span>
+      <div class="pair-thumb tile t-soft has-photo">
+        <img src="{{ 'folk-1.webp' | asset_url }}" alt="Wonderheart Little Folk pastel gnomes, the residents of the fairy village"/>
+      </div>
       <div class="pair-body">
-        <h4>Ambrosius Forest Gnome Family</h4>
-        <p>A hand-felted Waldorf gnome family from Romania. Scales with the Mushroom Garden's round mat and the toadstool door.</p>
-        <span class="pair-meta"><strong>$148</strong>Family of 7 &middot; Made to order</span>
-        <a href="#" class="pair-action">Add the family to cart &rarr;</a>
+        <h4>Wonderheart Little Folk &nbsp;&middot;&nbsp; MTW-FV-RGN / PGN</h4>
+        <p>Every village needs its people. Hand-stitched wool felt gnomes, bright rainbow or pastel, with six adults and six minis each. Sized to live inside the Mushroom Garden door.</p>
+        <span class="pair-meta"><strong>$118</strong>6 adults + 6 minis &middot; Made in USA</span>
+        <a href="#wonderheart" class="pair-action">See the Wonderheart Folk &rarr;</a>
       </div>
     </div>
   </div>
 </section>
 
+<section class="pull-quote" data-screen-label="Pull-Quote">
+  <blockquote>
+    A child who has a fairy village has a world <em>she can hold, arrange, and return to.</em>
+  </blockquote>
+  <cite>From the 2026 Fall Edition, page 31</cite>
+</section>
+
+<div class="section-divider">
+  <span class="num">02</span>
+  <span class="line"></span>
+  <span class="label">Five Fairy Homes</span>
+</div>
+
 <!-- =========================== GALLERY =========================== -->
-<section class="gallery gut">
+<section class="gallery even gut">
   <div class="wrap">
     <div class="head">
       <div>
@@ -3079,7 +3536,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
     </div>
 
     <div class="homes">
-      <!-- 01 -->
+      <!-- 01 Pink Blossom House -->
       <article class="home size-hero">
         <div class="tile-wrap">
           <div class="tile t-soft has-photo">
@@ -3088,20 +3545,21 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
           <div class="overlay"></div>
           <div class="float-name">Pink Blossom House</div>
         </div>
-        <div class="cap">
+        <div class="cap expanded">
           <span class="no">01</span>
           <span class="name">Pink Blossom House</span>
           <span class="desc">A curled pink petal roof, embroidered cherry blossoms, a springtime home that opens with the first soft morning of the year.</span>
-          <!-- PRICE: pink-blossom-house -->
+          <span class="meta">MTW-FV-PNK</span>
+          <!-- PRICE: MTW-FV-PNK -->
           <span class="price">$128</span>
           <div class="add-row">
-            <button class="add-btn" type="button" data-sku="pink-blossom-house"><span class="plus"></span>Add to cart</button>
+            <button class="add-btn" type="button" data-sku="MTW-FV-PNK"><span class="plus"></span>Add to cart</button>
             <a href="#" class="view-pdp">View product &rarr;</a>
           </div>
         </div>
       </article>
 
-      <!-- 02 -->
+      <!-- 02 Lilac Blossom House -->
       <article class="home size-tall">
         <div class="tile-wrap">
           <div class="tile t-alt-deep dark has-photo">
@@ -3114,21 +3572,23 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
           <span class="no">02</span>
           <span class="name">Lilac Blossom House</span>
           <span class="desc">A purple bell-flower roof and a wreath of violets at the door. A twilight home in felt for the quiet end of the day.</span>
-          <!-- PRICE: lilac-blossom-house -->
+          <span class="meta">MTW-FV-LIL</span>
+          <!-- PRICE: MTW-FV-LIL -->
           <span class="price">$128</span>
           <div class="add-row">
-            <button class="add-btn" type="button" data-sku="lilac-blossom-house"><span class="plus"></span>Add to cart</button>
+            <button class="add-btn" type="button" data-sku="MTW-FV-LIL"><span class="plus"></span>Add to cart</button>
             <a href="#" class="view-pdp">View product &rarr;</a>
           </div>
         </div>
       </article>
 
-      <!-- 03 -->
+      <!-- 03 Rainbow Shimmer House -->
       <article class="home size-std">
         <div class="tile-wrap">
           <div class="tile t-mood has-photo">
-            <img src="{{ 'rainbow-shimmer-house.webp' | asset_url }}" alt="Rainbow Shimmer House: white felt fairy house with a rainbow archway and petal roof."/>
+            <img src="{{ 'rainbow-shimmer-house.webp' | asset_url }}" alt="Rainbow Shimmer House, a vivid magenta-pink petal roof crowned with a green felt swirl, a full rainbow-striped felted archway over the white doorway, and multicolored felt pompom dots scattered across a green grass mat"/>
             <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+            <span class="tag">[ HOME N&deg;03 &nbsp;&middot;&nbsp; RAINBOW SHIMMER HOUSE ]</span>
           </div>
           <div class="overlay"></div>
           <div class="float-name">Rainbow Shimmer House</div>
@@ -3136,57 +3596,62 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
         <div class="cap">
           <span class="no">03</span>
           <span class="name">Rainbow Shimmer House</span>
-          <span class="desc">A petal roof and a rainbow archway. Sensory-rich detail for a child who reads the world in color.</span>
-          <!-- PRICE: rainbow-shimmer-house -->
+          <span class="desc">Petal roof, rainbow archway, and scattered felt details. Sensory-rich detail for a child who reads the world in color.</span>
+          <span class="meta">MTW-FV-RBS</span>
+          <!-- PRICE: MTW-FV-RBS -->
           <span class="price">$148</span>
           <div class="add-row">
-            <button class="add-btn" type="button" data-sku="rainbow-shimmer-house"><span class="plus"></span>Add to cart</button>
+            <button class="add-btn" type="button" data-sku="MTW-FV-RBS"><span class="plus"></span>Add to cart</button>
             <a href="#" class="view-pdp">View product &rarr;</a>
           </div>
         </div>
       </article>
 
-      <!-- 04 -->
+      <!-- 04 Rainbow Home -->
       <article class="home size-std">
         <div class="tile-wrap">
           <div class="tile t-alt has-photo">
-            <img src="{{ 'purple-flower-fairy-house.webp' | asset_url }}" alt="Purple Flower Fairy House and Mat: petal-roofed felt house on a mat of embroidered violets."/>
+            <img src="{{ 'rainbow-home.webp' | asset_url }}" alt="Rainbow Home, a tall felted house with a pink pointed roof dotted in pastel felt balls and a full rainbow-striped arched doorway topped with a pink heart keystone, set on a lilac felt mat"/>
             <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+            <span class="tag">[ HOME N&deg;04 &nbsp;&middot;&nbsp; RAINBOW HOME ]</span>
           </div>
           <div class="overlay"></div>
-          <div class="float-name">Purple Flower House &amp; Mat</div>
+          <div class="float-name">Rainbow Home</div>
         </div>
         <div class="cap">
           <span class="no">04</span>
-          <span class="name">Purple Flower Fairy House and Mat</span>
-          <span class="desc">A petal-roofed home with its own round play mat, a meadow of embroidered violets for a small world set down anywhere.</span>
-          <!-- PRICE: purple-flower-house-mat -->
+          <span class="name">Rainbow Home</span>
+          <span class="desc">A pastel-dotted spire with a rainbow archway and a pink heart keystone. The cathedral of the village.</span>
+          <span class="meta">MTW-FV-RBN</span>
+          <!-- PRICE: MTW-FV-RBN -->
           <span class="price">$168</span>
           <div class="add-row">
-            <button class="add-btn" type="button" data-sku="purple-flower-house-mat"><span class="plus"></span>Add to cart</button>
+            <button class="add-btn" type="button" data-sku="MTW-FV-RBN"><span class="plus"></span>Add to cart</button>
             <a href="#" class="view-pdp">View product &rarr;</a>
           </div>
         </div>
       </article>
 
-      <!-- 05 -->
+      <!-- 05 Butterfly Fairy House -->
       <article class="home size-std">
         <div class="tile-wrap">
           <div class="tile t-primary has-photo">
-            <img src="{{ 'pink-flower-fairy-house.webp' | asset_url }}" alt="Pink Flower Fairy House and Mat: rose petal-roofed felt house on a blossom-embroidered mat."/>
+            <img src="{{ 'butterfly-fairy-house.webp' | asset_url }}" alt="Butterfly Fairy House, a hand-felted white wool cottage with a tall pink curling spire roof topped by a blue-and-white embroidered butterfly, vining green leaves and pink rose-bud blossoms climbing the walls, a black porthole window, and a brown felt arched door"/>
             <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+            <span class="tag">[ HOME N&deg;05 &nbsp;&middot;&nbsp; BUTTERFLY FAIRY HOUSE ]</span>
           </div>
           <div class="overlay"></div>
-          <div class="float-name">Pink Flower House &amp; Mat</div>
+          <div class="float-name">Butterfly Fairy House</div>
         </div>
         <div class="cap">
           <span class="no">05</span>
-          <span class="name">Pink Flower Fairy House and Mat</span>
-          <span class="desc">A soft rose petal roof and a mat embroidered with blossoms. The companion home to the Mushroom Garden, sized for a small hand.</span>
-          <!-- PRICE: pink-flower-house-mat -->
-          <span class="price">$168</span>
+          <span class="name">Butterfly Fairy House</span>
+          <span class="desc">A hand-felted white cottage with a curling pink spire and an embroidered butterfly. Vining leaves and rose-bud blossoms climb the walls. A whimsical home for fairy-village storytelling.</span>
+          <span class="meta">MTW-FV-BFH</span>
+          <!-- PRICE: MTW-FV-BFH -->
+          <span class="price">$148</span>
           <div class="add-row">
-            <button class="add-btn" type="button" data-sku="pink-flower-house-mat"><span class="plus"></span>Add to cart</button>
+            <button class="add-btn" type="button" data-sku="MTW-FV-BFH"><span class="plus"></span>Add to cart</button>
             <a href="#" class="view-pdp">View product &rarr;</a>
           </div>
         </div>
@@ -3195,181 +3660,148 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 
     <div class="collection-bridge">
       <p>
-        <strong>The full collection</strong>
-        The Fairy Villages collection also includes wooden folk, hand-stitched mats, felted trees, river stones, and seasonal accents to rotate through the year.
+        <strong>Build the Village &nbsp;&middot;&nbsp; MTW-FV-VLG</strong>
+        All five fairy homes bundled for the nature-table village, returned to season after season. The catalog set, priced as a package.
       </p>
-      <a href="/collections/fairy-villages" class="bridge-cta">Browse the full Fairy Villages collection</a>
+      <a href="#outfit" class="bridge-cta">See Build the Village &middot; bundle below</a>
     </div>
   </div>
 </section>
 
-<!-- =========================== COMPANIONS =========================== -->
-<section class="companions gut">
+<!-- =========================== LITTLE FOLK & FAIRY ACCESSORIES =========================== -->
+<!-- Mirrors catalog pg. 33, Wonderheart Bright + Pastel as main SKUs,
+     with Flower Children, Fairy Door, and Wishing Well as accessories. -->
+<section class="companions gut" id="wonderheart" data-screen-label="07 Little Folk &amp; Accessories">
   <div class="wrap">
     <div class="col-img">
-      <div class="tile t-hue3-deep dark has-photo">
-        <img src="{{ 'wonderheart-group.webp' | asset_url }}" alt="Wonderheart wooden gnome folk, the wooden residents of the fairy village, hand-painted in pastel hooded forms"/>
+      <div class="tile t-hue3-deep dark">
+        <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+        <span class="tag dark">[ HERO &nbsp;&middot;&nbsp; WONDERHEART BRIGHT GNOMES, complete lineup: six tall adult gnomes with hand-stitched felted hoods in pink, orange, yellow, green, blue, and purple, paired with six matching mini gnomes lined up in front, soft cream backdrop. Mirrors catalog pg.&nbsp;33 hero. ]</span>
       </div>
     </div>
     <div class="col-txt">
-      <span class="eyebrow">Editorial Three</span>
-      <h2>Every village needs <span class="it">its people.</span></h2>
-      <p class="lede">Little wooden folk give the village its residents. Gather a set to populate a changing village alongside the homes, trees, and mats.</p>
+      <span class="eyebrow">07. Wonderheart &nbsp;&middot;&nbsp; Little Folk</span>
+      <h2>Every village <span class="it">needs its people.</span></h2>
+      <p class="lede">A cast of tiny folk for fairy villages, nature tables, and story-rich small-world play. Solid birch with hand-stitched felt hoods. Made in USA.</p>
 
       <div class="folk">
         <div class="f">
-          <div class="tile t-cream has-photo contained"><img src="{{ 'folk-1.webp' | asset_url }}" alt="Wonderheart Rainbow Pastel Adults wooden gnome set"/></div>
-          <span class="name">Wonderheart Pastel Adults</span>
+          <div class="tile t-cream has-photo contained"><img src="{{ 'folk-1.webp' | asset_url }}" alt="Wonderheart Pastel Rainbow Gnomes, six pastel adults with six matching minis"/></div>
+          <span class="name">Wonderheart Pastel Gnomes</span>
           <div class="folk-row">
-            <!-- PRICE: wonderheart-pastel-adults -->
-            <span class="folk-price">$58<small>set of 6</small></span>
-            <button class="add-btn icon" type="button" data-sku="wonderheart-pastel-adults" aria-label="Add Pastel Adults set to cart"><span class="plus"></span></button>
+            <!-- PRICE: MTW-FV-PGN -->
+            <span class="folk-price">$108<small>6 adults + 6 minis</small></span>
+            <button class="add-btn icon" type="button" data-sku="MTW-FV-PGN" aria-label="Add Pastel Wonderheart set to cart"><span class="plus"></span></button>
           </div>
+          <span class="meta" style="display:block; margin-top:6px; font-family:var(--sans); font-size:10px; letter-spacing:.14em; text-transform:uppercase; font-weight:500; color: rgba(245,240,229,.55);">MTW-FV-PGN</span>
         </div>
         <div class="f">
-          <div class="tile t-gilt has-photo contained"><img src="{{ 'folk-2.webp' | asset_url }}" alt="Wonderheart Rainbow Pastel Minis wooden gnome set"/></div>
-          <span class="name">Wonderheart Pastel Minis</span>
-          <div class="folk-row">
-            <!-- PRICE: wonderheart-pastel-minis -->
-            <span class="folk-price">$42<small>set of 6</small></span>
-            <button class="add-btn icon" type="button" data-sku="wonderheart-pastel-minis" aria-label="Add Pastel Minis set to cart"><span class="plus"></span></button>
+          <div class="tile t-soft">
+            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+            <span class="tag">[ WONDERHEART BRIGHT GNOMES, six adults + six minis lineup in bright rainbow hoods: pink, orange, yellow, green, blue, purple. Same composition as pastel set. ]</span>
           </div>
-        </div>
-        <div class="f">
-          <div class="tile t-soft has-photo contained"><img src="{{ 'folk-3.webp' | asset_url }}" alt="Wonderheart Bright Rainbow Adults wooden gnome set"/></div>
-          <span class="name">Wonderheart Bright Adults</span>
+          <span class="name">Wonderheart Bright Gnomes</span>
           <div class="folk-row">
-            <!-- PRICE: wonderheart-bright-adults -->
-            <span class="folk-price">$58<small>set of 6</small></span>
-            <button class="add-btn icon" type="button" data-sku="wonderheart-bright-adults" aria-label="Add Bright Adults set to cart"><span class="plus"></span></button>
+            <!-- PRICE: MTW-FV-RGN -->
+            <span class="folk-price">$108<small>6 adults + 6 minis</small></span>
+            <button class="add-btn icon" type="button" data-sku="MTW-FV-RGN" aria-label="Add Bright Wonderheart set to cart"><span class="plus"></span></button>
           </div>
-        </div>
-        <div class="f">
-          <div class="tile t-hue3 has-photo contained"><img src="{{ 'folk-4.webp' | asset_url }}" alt="Wonderheart Bright Rainbow Minis wooden gnome set"/></div>
-          <span class="name">Wonderheart Bright Minis</span>
-          <div class="folk-row">
-            <!-- PRICE: wonderheart-bright-minis -->
-            <span class="folk-price">$42<small>set of 6</small></span>
-            <button class="add-btn icon" type="button" data-sku="wonderheart-bright-minis" aria-label="Add Bright Minis set to cart"><span class="plus"></span></button>
-          </div>
+          <span class="meta" style="display:block; margin-top:6px; font-family:var(--sans); font-size:10px; letter-spacing:.14em; text-transform:uppercase; font-weight:500; color: rgba(245,240,229,.55);">MTW-FV-RGN</span>
         </div>
       </div>
 
-      <p style="margin-top: 28px; font-family: var(--serif); font-style: italic; font-size: 16px; color: rgba(250,246,237,.7); line-height: 1.5;">Pre-order &middot; ships in 2 to 3 weeks. Or a set of all four for <strong style="font-family: var(--sans); font-style: normal; font-weight: 600; color: var(--cream);">$48</strong>. <a href="#" style="color: color-mix(in oklab, var(--accent-soft) 80%, white); text-decoration: none; border-bottom: 0.5px solid rgba(245,240,229,.4); padding-bottom: 2px; font-style: normal; font-family: var(--sans); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; font-weight: 500; margin-left: 10px;">Add set to cart &rarr;</a></p>
+      <!-- Complete the village (three accessory cells) -->
+      <div style="margin-top: 40px; padding-top: 28px; border-top: 0.5px solid rgba(245,240,229,.18);">
+        <span class="eyebrow" style="display:block; color: color-mix(in oklab, var(--accent-soft) 80%, white); margin-bottom: 18px;">Complete the Village</span>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;">
+          <div style="display: flex; flex-direction: column;">
+            <div class="tile t-gilt has-photo contained" style="aspect-ratio: 1 / 1; width: 100%;">
+              <img src="{{ 'flower-children.webp' | asset_url }}" alt="Flower Children, a set of five wooden peg figures with flower-head caps on green leaf bases"/>
+              <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+              <span class="tag">[ FLOWER CHILDREN ]</span>
+            </div>
+            <span style="margin-top:10px; font-family:var(--serif); font-size:15px; color:var(--cream); line-height:1.3;">Flower Children <span style="font-family:var(--sans); font-size:10px; letter-spacing:.08em; color:rgba(245,240,229,.55); font-weight:500;">&middot; set of 5</span></span>
+            <span style="margin-top:4px; font-family:var(--sans); font-size:10px; letter-spacing:.14em; text-transform:uppercase; font-weight:500; color:rgba(245,240,229,.55);">$42 &nbsp;&middot;&nbsp; MTW-FV-FLC</span>
+          </div>
+          <div style="display: flex; flex-direction: column;">
+            <div class="tile t-cream has-photo contained" style="aspect-ratio: 1 / 1; width: 100%;">
+              <img src="{{ 'fairy-door.webp' | asset_url }}" alt="Fairy Door, a rounded natural-wood Papoose door with two black arrow-shaped iron hinges and a small knob"/>
+              <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+              <span class="tag">[ FAIRY DOOR ]</span>
+            </div>
+            <span style="margin-top:10px; font-family:var(--serif); font-size:15px; color:var(--cream); line-height:1.3;">Fairy Door <span style="font-family:var(--sans); font-size:10px; letter-spacing:.08em; color:rgba(245,240,229,.55); font-weight:500;">&middot; Papoose</span></span>
+            <span style="margin-top:4px; font-family:var(--sans); font-size:10px; letter-spacing:.14em; text-transform:uppercase; font-weight:500; color:rgba(245,240,229,.55);">$28 &nbsp;&middot;&nbsp; MTW-FV-FDR</span>
+          </div>
+          <div style="display: flex; flex-direction: column;">
+            <div class="tile t-hue3" style="aspect-ratio: 1 / 1; width: 100%;">
+              <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+              <span class="tag">[ WISHING WELL, Papoose hardwood wishing well with a cylindrical barrel, arched roof, and a tiny bucket on a string, on weathered logs. ]</span>
+            </div>
+            <span style="margin-top:10px; font-family:var(--serif); font-size:15px; color:var(--cream); line-height:1.3;">Wishing Well <span style="font-family:var(--sans); font-size:10px; letter-spacing:.08em; color:rgba(245,240,229,.55); font-weight:500;">&middot; Papoose</span></span>
+            <span style="margin-top:4px; font-family:var(--sans); font-size:10px; letter-spacing:.14em; text-transform:uppercase; font-weight:500; color:rgba(245,240,229,.55);">$32 &nbsp;&middot;&nbsp; MTW-FV-WSH</span>
+          </div>
+        </div>
+      </div>
 
       <div class="price-line">Net-30 invoicing and tax-exempt at checkout.</div>
     </div>
   </div>
 </section>
 
-<!-- =========================== REVIEWS (from the classrooms) =========================== -->
-<!-- KLAVIYO REVIEWS INTEGRATION:
-     Replace the static .review cards below with the Klaviyo Reviews widget when
-     the educator review program goes live. Klaviyo provides a <klaviyo-reviews>
-     web component or embeddable snippet. Until then, these three are seed
-     testimonials; the seed schema below lets Google index them as
-     aggregated Review markup. -->
-<section class="reviews-section gut" data-screen-label="07 Reviews">
-  <div class="wrap">
-    <div class="reviews-head">
-      <span class="eyebrow">07. From the classrooms</span>
-      <h2>What schools say <em>about the Villages.</em></h2>
-      <div class="rating-summary" style="display:block; max-width: 64ch; margin: 0 auto;">
-        <p style="margin: 0 0 14px; font-family: var(--serif); font-style: italic; font-size: 19px; line-height: 1.5; color: var(--ink); letter-spacing: -.005em;">A classroom gift for the first 100 educators who review.</p>
-        <p style="margin: 0; font-family: var(--sans); font-size: 14px; line-height: 1.6; color: var(--ink-soft);">As we open the Educator Catalog, the first 100 teachers, directors, or therapists who write a verified review of any Fairy Villages piece receive a classroom gift on their next order. A small thank-you for being early.</p>
-      </div>
-    </div>
-
-    <div class="reviews-grid">
-      <article class="review">
-        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <h3>"The children open and close the home all afternoon."</h3>
-        <p>The Mushroom Garden Fairy Home sits on our nature table from September through May. The children open it and close it all afternoon. We change the carrots with the season, and the village stays new each week. Worth every dollar.</p>
-        <p class="who"><strong>Marisol G.</strong> &middot; Lead Teacher, Pre-K &middot; Sage Meadow Montessori</p>
-      </article>
-
-      <article class="review">
-        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <h3>"Our quote was processed within a day."</h3>
-        <p>I emailed for a quote on a Tuesday. By Wednesday afternoon we had pricing for all five fairy homes, a kit recommendation, and a clear Net-30 invoice path. The team is responsive and knows the product. We placed our PO that week.</p>
-        <p class="who"><strong>Janelle S.</strong> &middot; Director &middot; Maple Tree Montessori</p>
-      </article>
-
-      <article class="review">
-        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <h3>"Truly the quality we hoped for."</h3>
-        <p>The hand-felted wool is beautiful. The embroidered cherry blossoms are detail the children point out and ask about. After a full year, no fraying, no fading. Worth waiting for, and worth the price.</p>
-        <p class="who"><strong>Anita L.</strong> &middot; Atelierista &middot; Bay Area Reggio piazza</p>
-      </article>
-    </div>
-
-    <div class="see-all">
-      <a href="#">Be among the first 100 to review &rarr;</a>
-    </div>
-  </div>
-</section>
 
 <!-- =========================== OUTFIT YOUR CLASSROOM =========================== -->
-<section class="outfit" data-screen-label="08 Outfit Your Classroom">
+<section class="outfit" id="outfit" data-screen-label="08 Outfit Your Classroom">
   <div class="head">
     <div>
       <p class="block-num">06 <span class="dot">/</span> The whole village</p>
       <h2>Outfit your classroom <span class="it">in one quote.</span></h2>
     </div>
     <div class="right">
-      <p>Schools buy the village in sets, not in single pieces. Two purchase-order-ready tiers below, each priced as a package on your quote.</p>
-      <div class="meta">VOLUME PRICING &nbsp;·&nbsp; NET-30 &nbsp;·&nbsp; TAX-EXEMPT &nbsp;·&nbsp; ONE-ON-ONE CURATION</div>
+      <p>Schools buy the village as a catalog set, not as single pieces. The Build the Village bundle below is the same one in our 2026 Fall Edition. Priced as a package on your quote.</p>
+      <div class="meta">CATALOG SET &nbsp;&middot;&nbsp; NET-30 &nbsp;&middot;&nbsp; TAX-EXEMPT &nbsp;&middot;&nbsp; ONE-ON-ONE CURATION</div>
     </div>
   </div>
 
-  <div class="kits">
-    <article class="kit">
-      <p class="tier">Tier 01 &nbsp;·&nbsp; The Starter</p>
-      <h3>The Nature Table Set.</h3>
-      <p class="sub">For a single nature table.</p>
+  <div class="kits" style="grid-template-columns: 1fr;">
+    <article class="kit featured" style="max-width: 720px; margin: 0 auto;">
+      <span class="pill"><span class="wagon-badge">Catalog set</span></span>
+      <p class="tier">Fairy Village &nbsp;&middot;&nbsp; MTW-FV-VLG</p>
+      <h3>Build the Village.</h3>
+      <p class="sub">All five fairy homes.</p>
       <span class="hair" aria-hidden="true"></span>
-      <!-- PRICE: nature-table-set -->
-      <p class="price-line">$452</p>
-      <span class="price-note">Hand-assembled &middot; ships by September &middot; Net-30 available</span>
-      <p class="desc">One fairy home of your choice, one round wool play mat, and a starter set of four wooden folk. Enough world for a single corner of a Pre-K classroom.</p>
+      <!-- PRICE: MTW-FV-VLG -->
+      <p class="price-line">$640</p>
+      <span class="price-note">Hand-felted &middot; ships within 3 to 4 weeks &middot; Net-30 available &middot; saves $80</span>
+      <p class="desc">All five fairy homes for the nature-table village, returned to season after season. The catalog set, priced as a package. The Mushroom Garden Fairy Home hero and Little Folk accessories are sold separately and pair naturally as the marquee village.</p>
       <ul class="contains">
-        <li>One fairy home, chosen from the five.</li>
-        <li>One round wool play mat.</li>
-        <li>One starter set of four wooden folk.</li>
-        <li>One companion mushroom and stones.</li>
+        <li>Pink Blossom House, MTW-FV-PNK</li>
+        <li>Lilac Blossom House, MTW-FV-LIL</li>
+        <li>Rainbow Shimmer House, MTW-FV-RBS</li>
+        <li>Rainbow Home, MTW-FV-RBN</li>
+        <li>Butterfly Fairy House, MTW-FV-BFH</li>
       </ul>
       <div class="add-row">
-        <button class="add-btn" type="button" data-sku="nature-table-set"><span class="plus"></span>Add set to cart</button>
-        <a href="#quote" class="view-pdp" data-kit="starter">Request a quote</a>
-      </div>
-    </article>
-
-    <article class="kit featured">
-      <span class="pill"><span class="wagon-badge">For most classrooms</span></span>
-      <p class="tier">Tier 02 &nbsp;·&nbsp; The Whole Village</p>
-      <h3>The Reggio Piazza Set.</h3>
-      <p class="sub">For a classroom, a piazza, a season.</p>
-      <span class="hair" aria-hidden="true"></span>
-      <!-- PRICE: reggio-piazza-set -->
-      <p class="price-line">$1,540</p>
-      <span class="price-note">Hand-assembled &middot; ships by September &middot; Net-30 available</span>
-      <p class="desc">All five fairy homes, all the mats, the full set of wooden folk, and the seasonal pieces that move them through the year. The village as the catalog imagines it.</p>
-      <ul class="contains">
-        <li>The Mushroom Garden Fairy Home, hero of the village.</li>
-        <li>Pink Blossom, Lilac Blossom, Rainbow Shimmer.</li>
-        <li>Purple Flower and Pink Flower houses with mats.</li>
-        <li>A full set of wooden folk for the village.</li>
-        <li>Trees, stones, and seasonal accents to rotate.</li>
-      </ul>
-      <div class="add-row">
-        <button class="add-btn" type="button" data-sku="reggio-piazza-set"><span class="plus"></span>Add set to cart</button>
-        <a href="#quote" class="view-pdp" data-kit="whole-village">Request a quote</a>
+        <button class="add-btn" type="button" data-sku="MTW-FV-VLG"><span class="plus"></span>Add set to cart</button>
+        <a href="#quote" class="view-pdp" data-kit="build-village">Request a quote</a>
       </div>
     </article>
   </div>
 
+  <!-- Educator combo strip (NOT a catalog SKU) -->
+  <div style="margin: 36px clamp(20px, 5vw, 56px) 0; padding: 28px clamp(20px, 4vw, 36px); background: var(--cream); border: 0.5px solid var(--rule-strong); border-radius: 4px; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(24px, 3vw, 40px); align-items: center;">
+    <div>
+      <span class="eyebrow" style="color: var(--accent-deep);">08. Educator Program &nbsp;&middot;&nbsp; Custom Combo</span>
+      <h3 style="margin: 14px 0 0; font-family: var(--serif); font-weight: 400; font-size: clamp(24px, 2.6vw, 32px); line-height: 1.15; color: var(--ink); letter-spacing: -.005em;">The Whole Village, <span style="font-style: italic; color: var(--accent-deep);">on one PO.</span></h3>
+    </div>
+    <div>
+      <p style="margin: 0 0 14px; font-family: var(--sans); font-size: 15px; line-height: 1.6; color: var(--ink-soft);">A custom educator combo of real catalog SKUs, <strong style="color: var(--ink); font-weight: 600;">Build the Village (MTW-FV-VLG)</strong>, the <strong style="color: var(--ink); font-weight: 600;">Mushroom Garden Fairy Home (MTW-FV-MUS)</strong> hero, and the <strong style="color: var(--ink); font-weight: 600;">Wonderheart Little Folk</strong> (Bright + Pastel) with Flower Children, Fairy Door, and Wishing Well. Not a single SKU; requested at quote and billed on one PO with a small package discount. Items ship as they're ready, most within 3 to 4 weeks, longer-lead pieces on their own timeline. From <strong style="color: var(--ink); font-weight: 600;">$1,098</strong>.</p>
+      <a href="#quote" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; background: var(--ink); color: var(--cream); text-decoration: none; font-family: var(--sans); font-size: 13px; font-weight: 500; letter-spacing: .04em; border-radius: 999px;">Request the combo quote &rarr;</a>
+    </div>
+  </div>
+
   <div class="note">
-    <p class="left">Both tiers ship against a single purchase order. Net-30 invoicing and tax-exempt orders are welcome. Larger sets ship directly from our partner warehouses with the same care.</p>
+    <p class="left">The catalog set is billed on a single purchase order. Most items ship together within 3 to 4 weeks; longer-lead pieces ship separately on their own timeline. Net-30 and tax-exempt orders welcome. The Mushroom Garden hero (MTW-FV-MUS, $228) and Little Folk SKUs are sold separately but are regularly added at quote with a small discount.</p>
+    <p class="left" style="margin-top: 10px; font-family: var(--serif); font-style: italic; font-size: 14px; color: var(--stone); line-height: 1.55;">Longer-lead pieces include Magic Wood, Drewart, and select Bumbu sets. Ask your account rep for current timing.</p>
     <div class="right">
       <span class="verified-disc">
         <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="6" cy="6" r="6" fill="#3B6D11"/><path d="M3.5 6.2l1.6 1.6L8.5 4.5" stroke="#F5F0E5" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -3379,39 +3811,6 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
   </div>
 </section>
 
-<!-- =========================== HOW EDUCATOR ORDERS WORK =========================== -->
-<section class="how-it-works" data-screen-label="08 How It Works">
-  <div class="how-it-works-inner">
-    <div class="how-head">
-      <div>
-        <span class="eyebrow">08. First time buying for a school?</span>
-        <h3>Three steps to your <span class="it">first classroom order.</span></h3>
-      </div>
-      <div>
-        <p>Browse the catalog, build a cart, and check out with a purchase order. We have approved educator accounts ready within one business day.</p>
-      </div>
-    </div>
-
-    <div class="steps">
-      <div class="step">
-        <span class="num">01</span>
-        <h4>Browse and add to cart.</h4>
-        <p>Prices are visible across the catalog and updated monthly. The cart saves between sessions, so you can build it over a week as your budget moves through approvals.</p>
-      </div>
-      <div class="step">
-        <span class="num">02</span>
-        <h4>Sign in, or apply.</h4>
-        <p>Approved educator accounts get school pricing, Net-30, and automatic tax-exempt. New schools apply once. Most are approved within one business day.</p>
-        <a href="#" class="more">Apply for an account &rarr;</a>
-      </div>
-      <div class="step">
-        <span class="num">03</span>
-        <h4>Check out with a PO.</h4>
-        <p>Pay by purchase order, or use a school card. We ship from our Los Angeles workshop, packed by hand. Larger sets ship from our partner warehouses with the same care.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- =========================== QUOTE FORM =========================== -->
 <section class="quote-form gut" id="quote" data-screen-label="09 Quote Form">
@@ -3511,7 +3910,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
         <div class="qf-chips">
           <label class="qf-chip"><input type="checkbox" name="ecosystems" value="sensory-play"/>01 &middot; Sensory Play</label>
           <label class="qf-chip"><input type="checkbox" name="ecosystems" value="nature-play"/>02 &middot; Nature Play</label>
-          <label class="qf-chip"><input type="checkbox" name="ecosystems" value="woodland"/>03 &middot; Woodland Collection</label>
+          <label class="qf-chip"><input type="checkbox" name="ecosystems" value="woodland"/>03 &middot; Woodland Habitats</label>
           <label class="qf-chip"><input type="checkbox" name="ecosystems" value="small-world"/>04 &middot; Small World &amp; Storytelling</label>
           <label class="qf-chip"><input type="checkbox" name="ecosystems" value="fairy-villages" checked/>05 &middot; Fairy Villages</label>
           <label class="qf-chip"><input type="checkbox" name="ecosystems" value="steam"/>06 &middot; STEAM &middot; Wonder &amp; Investigation</label>
@@ -3543,67 +3942,17 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
   </div>
 </section>
 
-<!-- =========================== KLAVIYO SIGNUP =========================== -->
-<!-- WIRE UP: replace `LIST_ID` below with the Klaviyo list ID for the educator
-     announcements list. The form posts to Klaviyo's hosted endpoint and adds
-     the subscriber with role/grade-band metadata. -->
-<section class="klaviyo-strip" data-screen-label="10 Educator Letter">
-  <div class="klaviyo-strip-inner">
-    <div>
-      <span class="eyebrow" style="color: var(--accent-deep);">09. The Educator Letter</span>
-      <h3>Stay close to <em>the seasons</em>.</h3>
-      <p class="lede">A short letter from the workshop, written for the way schools actually buy. No marketing fluff, no fundraising asks.</p>
-      <ul>
-        <li>When the next ordering window opens, and when it closes.</li>
-        <li>New ecosystems and seasonal restocks.</li>
-        <li>Procurement updates: W-9, terms, document deadlines.</li>
-        <li>The occasional curriculum note from our co-op partners.</li>
-      </ul>
-    </div>
 
-    <form class="klaviyo-form" action="https://manage.kmail-lists.com/subscriptions/subscribe" method="POST" data-form-id="LIST_ID" onsubmit="event.preventDefault(); alert('Subscribed. The next letter will arrive when the spring booking window opens.');">
-      <input type="hidden" name="g" value="LIST_ID"/>
-      <input type="hidden" name="$source" value="educator-catalog"/>
 
-      <div class="klaviyo-form-row">
-        <div class="field">
-          <label for="kl-email">School email <span style="color: var(--accent-deep);">*</span></label>
-          <input type="email" id="kl-email" name="email" required placeholder="you@school.edu" autocomplete="email"/>
-        </div>
-        <div class="field">
-          <label for="kl-school">School or program</label>
-          <input type="text" id="kl-school" name="organization" placeholder="Maple Tree Montessori"/>
-        </div>
-        <div class="field">
-          <label for="kl-role">Role</label>
-          <select id="kl-role" name="role">
-            <option value="">Select a role</option>
-            <option>Educator</option>
-            <option>Director or Head of School</option>
-            <option>Procurement Officer</option>
-            <option>Therapist</option>
-            <option>Homeschool Parent</option>
-            <option>Other</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="kl-grade">Grade band</label>
-          <select id="kl-grade" name="grade_band">
-            <option value="">All grade bands</option>
-            <option>Infant and toddler</option>
-            <option>Pre-K to Kindergarten</option>
-            <option>Grades 1 to 3</option>
-            <option>Grades 4 to 6</option>
-            <option>Mixed-age classroom</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="klaviyo-form-submit">
-        <button type="submit">Subscribe to the Educator Letter</button>
-        <p class="note">Sent ~6 times a year. Unsubscribe in one click.</p>
-      </div>
-    </form>
+<!-- =========================== EDUCATOR HUB BRIDGE =========================== -->
+<!-- Reviews, "How educator orders work," and the "Stay close to the seasons"
+     Klaviyo signup live on the educator catalog landing (educators.html) now,
+     not on each of the 8 section pages. This small strip points to them. -->
+<section data-screen-label="Educator Hub Bridge" style="background: var(--cream); border-top: 0.5px solid var(--rule); padding: 56px clamp(20px, 5vw, 56px);">
+  <div style="max-width: 920px; margin: 0 auto; text-align: center;">
+    <span class="eyebrow" style="color: var(--forest); display: inline-block; margin-bottom: 18px;">From the Educator Catalog</span>
+    <p style="margin: 0 auto 22px; max-width: 56ch; font-family: var(--serif); font-style: italic; font-size: clamp(20px, 2vw, 26px); line-height: 1.45; color: var(--ink); letter-spacing: -.005em;">Educator reviews, how orders work, and the Educator Letter all live on the catalog landing, once for every volume.</p>
+    <a href="/pages/educators" style="display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; background: var(--ink); color: var(--cream); text-decoration: none; font-family: var(--sans); font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; border-radius: 999px;">Visit the Educator Catalog &rarr;</a>
   </div>
 </section>
 
@@ -3636,7 +3985,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
         <ul class="catalog-list">
           <li><a href="/pages/educator-sensory-play">01 &middot; Sensory Play</a></li>
           <li><a href="/pages/educator-nature-play">02 &middot; Nature Play</a></li>
-          <li><a href="/pages/educator-woodland">03 &middot; Woodland Collection</a></li>
+          <li><a href="/pages/educator-woodland">03 &middot; Woodland Habitats</a></li>
           <li><a href="/pages/educator-small-world">04 &middot; Small World &amp; Storytelling</a></li>
           <li><a href="/pages/educator-fairy-villages">05 &middot; Fairy Villages</a></li>
           <li><a href="/pages/educator-steam">06 &middot; STEAM</a></li>
@@ -3686,7 +4035,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
   </div>
 
   <div class="legal">
-    <span>© 2026 My Toy Wagon &nbsp;·&nbsp; Educator Catalog</span>
+    <span>© 2026 My Toy Wagon &nbsp;·&nbsp; Educator Catalog &nbsp;·&nbsp; All rights reserved</span>
     <div class="legal-links">
       <a href="#">Privacy policy</a>
       <a href="#">Terms of service</a>
@@ -3699,7 +4048,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 <script src="image-slot.js"></script>
 <script>
   /* =================================================================
-     CATALOG VARS — single source of truth for ecosystem strings.
+     CATALOG VARS, single source of truth for ecosystem strings.
      To reskin for another ecosystem, edit ONLY this block.
      A Shopify template can override these via Liquid:
        const CATALOG = { volume: "{{ page.metafields.catalog.volume }}", ... };
@@ -3734,7 +4083,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
     if (i > 0 && prevEl) {
       var p = ECOSYSTEMS[i-1];
       prevEl.textContent = p.vol + ' \u00b7 ' + p.name;
-      prevEl.href = p.slug + '.html';
+      prevEl.href = '/pages/educator-' + p.slug;
     } else if (prevEl) {
       prevEl.style.display = 'none';
       var sep = prevEl.nextElementSibling;
@@ -3743,7 +4092,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
     if (i < ECOSYSTEMS.length - 1 && nextEl) {
       var n = ECOSYSTEMS[i+1];
       nextEl.textContent = n.vol + ' \u00b7 ' + n.name;
-      nextEl.href = n.slug + '.html';
+      nextEl.href = '/pages/educator-' + n.slug;
     } else if (nextEl) {
       nextEl.style.display = 'none';
       var sep2 = nextEl.previousElementSibling;
@@ -3805,6 +4154,83 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       i = (i + 1) % slides.length;
       slides[i].classList.add('is-active');
     }, 5000);
+  })();
+
+  // Reviews carousel. Generic horizontal-scroll snap track with
+  // arrow buttons and pagination dots. Number of dots equals the
+  // number of "pages", page width = visible track width. We compute
+  // page count from track scrollWidth / clientWidth so it adapts to
+  // breakpoints automatically.
+  (function(){
+    document.querySelectorAll('[data-reviews-carousel]').forEach(function(carousel){
+      var track = carousel.querySelector('.rc-track');
+      var prev  = carousel.querySelector('.rc-nav.prev');
+      var next  = carousel.querySelector('.rc-nav.next');
+      var dotsHost = carousel.querySelector('.rc-dots');
+      if (!track) return;
+
+      function pageCount(){
+        return Math.max(1, Math.ceil(track.scrollWidth / track.clientWidth));
+      }
+      function currentPage(){
+        return Math.round(track.scrollLeft / track.clientWidth);
+      }
+      function buildDots(){
+        if (!dotsHost) return;
+        var count = pageCount();
+        dotsHost.innerHTML = '';
+        for (var i = 0; i < count; i++){
+          var b = document.createElement('button');
+          b.type = 'button';
+          b.setAttribute('role', 'tab');
+          b.setAttribute('aria-label', 'Go to reviews page ' + (i + 1));
+          (function(idx){
+            b.addEventListener('click', function(){
+              track.scrollTo({ left: idx * track.clientWidth, behavior: 'smooth' });
+            });
+          })(i);
+          dotsHost.appendChild(b);
+        }
+        syncDots();
+      }
+      function syncDots(){
+        if (!dotsHost) return;
+        var p = currentPage();
+        Array.prototype.forEach.call(dotsHost.children, function(d, i){
+          d.classList.toggle('is-active', i === p);
+        });
+      }
+      function syncNav(){
+        if (prev) prev.disabled = track.scrollLeft <= 2;
+        if (next) next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 2;
+      }
+      function scrollByPage(dir){
+        track.scrollBy({ left: dir * track.clientWidth, behavior: 'smooth' });
+      }
+
+      if (prev) prev.addEventListener('click', function(){ scrollByPage(-1); });
+      if (next) next.addEventListener('click', function(){ scrollByPage(1); });
+      track.addEventListener('scroll', function(){ syncDots(); syncNav(); }, { passive: true });
+      window.addEventListener('resize', function(){ buildDots(); syncNav(); });
+
+      buildDots();
+      syncNav();
+    });
+  })();
+
+  // Long-lead pill, auto-tags any element with data-long-lead="true" with a
+  // "Ships separately" pill. Wire SKUs as they're added to the slow-ship list
+  // by adding data-long-lead="true" to the .home / .kit / .split card.
+  (function(){
+    document.querySelectorAll('[data-long-lead="true"]').forEach(function(card){
+      if (card.querySelector('.ships-separately-pill')) return;
+      var pill = document.createElement('span');
+      pill.className = 'ships-separately-pill';
+      pill.textContent = 'Ships separately';
+      var anchor = card.querySelector('.add-row, .add-btn, .price-line, .price');
+      if (anchor) anchor.parentNode.insertBefore(pill, anchor);
+      else card.appendChild(pill);
+    });
   })();
 </script>
 
