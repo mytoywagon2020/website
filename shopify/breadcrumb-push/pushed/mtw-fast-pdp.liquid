@@ -17,6 +17,20 @@
 {{ 'pdp-formats-base.css' | asset_url | stylesheet_tag }}
 {{ 'pdp-fast-1.css' | asset_url | stylesheet_tag }}
 {{ 'pdp-fast-2.css' | asset_url | stylesheet_tag }}
+<style>
+  [data-mtw-pdp="fast-v1"] .ff-edu{border:1px solid var(--forest,#3B6D11);background:#f3f6ee;border-radius:3px;padding:16px 18px;margin:4px 0 18px;}
+  [data-mtw-pdp="fast-v1"] .ff-edu-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:10px;}
+  [data-mtw-pdp="fast-v1"] .ff-edu-badge{font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--forest,#3B6D11);padding:3px 9px;border-radius:999px;}
+  [data-mtw-pdp="fast-v1"] .ff-edu-terms{font-size:12px;font-weight:600;color:var(--forest,#3B6D11);white-space:nowrap;}
+  [data-mtw-pdp="fast-v1"] .ff-edu-avail{font-size:13.5px;line-height:1.55;margin:0 0 8px;color:var(--ink,#2C2C2A);}
+  [data-mtw-pdp="fast-v1"] .ff-edu-min,[data-mtw-pdp="fast-v1"] .ff-edu-curric{font-size:12.5px;color:var(--stone,#5F5E5A);margin:0 0 6px;}
+  [data-mtw-pdp="fast-v1"] .ff-edu-curric .gk{color:var(--forest,#3B6D11);font-weight:600;margin-right:6px;text-transform:uppercase;font-size:10.5px;letter-spacing:.1em;}
+  [data-mtw-pdp="fast-v1"] .ff-edu-cta{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:12px 0 8px;}
+  [data-mtw-pdp="fast-v1"] .ff-btn-edu{display:inline-block;background:var(--forest,#3B6D11);color:#fff;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:11px 20px;border-radius:2px;text-decoration:none;}
+  [data-mtw-pdp="fast-v1"] .ff-edu-link{font-size:12.5px;font-weight:600;color:var(--forest,#3B6D11);text-decoration:none;}
+  [data-mtw-pdp="fast-v1"] .ff-edu-note{font-size:12px;color:var(--stone,#5F5E5A);margin:6px 0 0;}
+  [data-mtw-pdp="fast-v1"] .ff-edu-note a{color:var(--forest,#3B6D11);font-weight:600;}
+</style>
 
 {%- liquid
   assign cur = product.selected_or_first_available_variant
@@ -167,6 +181,32 @@
     assign vendor_url = vcol.url
   else
     assign vendor_url = product.vendor | url_for_vendor
+  endif
+
+  # ---- Educator context (panel renders only for approved educators) ----
+  assign is_educator = false
+  if customer
+    if customer.b2b?
+      assign is_educator = true
+    endif
+    if customer.tags contains 'educator-approved'
+      assign is_educator = true
+    endif
+  endif
+  assign edu_terms = product.metafields.educator.terms.value | default: section.settings.edu_default_terms
+  assign edu_model = product.metafields.educator.delivery_model.value | default: section.settings.edu_default_delivery_model
+  assign edu_min = product.metafields.educator.min_qty.value
+  assign edu_curric = product.metafields.educator.curriculum.value
+  assign edu_next = product.metafields.educator.next_delivery.value
+  if edu_next == blank
+    assign now_month = 'now' | date: '%m' | plus: 0
+    assign now_year = 'now' | date: '%Y' | plus: 0
+    if now_month >= 1 and now_month <= 6
+      assign edu_next = 'August–September ' | append: now_year
+    else
+      assign next_year = now_year | plus: 1
+      assign edu_next = 'May–June ' | append: next_year
+    endif
   endif
 -%}
 
@@ -321,6 +361,29 @@
             </div>
           </div>
       {%- endcase -%}
+
+      {%- if is_educator and section.settings.edu_enable -%}
+        <div class="ff-edu" data-ff-edu>
+          <div class="ff-edu-head">
+            <span class="ff-edu-badge">Educator account</span>
+            {%- if edu_terms != blank -%}<span class="ff-edu-terms">{{ edu_terms }} available</span>{%- endif -%}
+          </div>
+          {%- if edu_model == 'preorder_biannual' or edu_model == 'pre_order' -%}
+            <p class="ff-edu-avail"><strong>Seasonal pre-order for classrooms.</strong> Next delivery window: <strong>{{ edu_next }}</strong>, timed to school calendars and budget cycles. Reserve now; we fulfill to your term.</p>
+          {%- elsif edu_model == 'made_to_order' -%}
+            <p class="ff-edu-avail"><strong>Made to order.</strong> Handcrafted to order &mdash; reserve early for the next classroom delivery window ({{ edu_next }}).</p>
+          {%- else -%}
+            <p class="ff-edu-avail"><strong>In stock for classrooms.</strong> Ships from Los Angeles in 1&ndash;3 business days. Purchase orders and {{ edu_terms | default: 'Net' }} terms welcome.</p>
+          {%- endif -%}
+          {%- if edu_min != blank -%}<p class="ff-edu-min">Classroom minimum: {{ edu_min }}</p>{%- endif -%}
+          {%- if edu_curric != blank -%}<p class="ff-edu-curric"><span class="gk">Curriculum</span>{{ edu_curric }}</p>{%- endif -%}
+          <div class="ff-edu-cta">
+            <a class="ff-btn-edu" href="{{ section.settings.edu_quote_url | default: '/pages/new-quote' }}">Add to quote &middot; request PO pricing</a>
+            <a class="ff-edu-link" href="/pages/educator-dashboard">Educator dashboard &rarr;</a>
+          </div>
+          <p class="ff-edu-note">Need a curriculum-alignment letter for this item? <a href="mailto:educators@mytoywagon.com?subject=Curriculum%20alignment%20%E2%80%94%20{{ product.title | url_encode }}">Ask our team &rarr;</a></p>
+        </div>
+      {%- endif -%}
 
       {%- if hero_blurb != blank -%}
         <div class="ff-blurb rte">{{ hero_blurb }}</div>
@@ -693,8 +756,18 @@
   "settings": [
     { "type": "text", "id": "preorder_collection", "label": "Pre-order collection handle", "default": "pre-order" },
     { "type": "richtext", "id": "shipping_text", "label": "Shipping copy (accordion)", "default": "<p><strong>Shipping</strong></p><p>In-stock items ship from LA in 1–3 business days, plus 1–6 in transit (contiguous U.S.).</p><ul><li>$9.95 standard, free on orders $150+ (after discounts, before tax)</li><li>Partner-warehouse items can take up to 2 weeks, check the product page</li><li>Pre-orders follow their own timeline; mixed orders ship together when the pre-order arrives</li><li>Local LA/OC delivery, Quick Ship, Hawaii/Alaska, and international at checkout</li></ul><p><a href=\"/pages/shipping\">See full shipping policy →</a></p>" },
-    { "type": "richtext", "id": "returns_text", "label": "Returns copy (accordion)", "default": "<p>Returns accepted for 30 days from delivery. If the toy isn't right, send it back. Free returns on damaged or defective items.</p>" }
+    { "type": "richtext", "id": "returns_text", "label": "Returns copy (accordion)", "default": "<p>Returns accepted for 30 days from delivery. If the toy isn't right, send it back. Free returns on damaged or defective items.</p>" },
+    { "type": "header", "content": "Educator catalog" },
+    { "type": "checkbox", "id": "edu_enable", "label": "Show educator panel to approved educators", "default": true },
+    { "type": "text", "id": "edu_default_terms", "label": "Default payment terms", "default": "Net-30 / Net-60" },
+    { "type": "select", "id": "edu_default_delivery_model", "label": "Default delivery model", "options": [
+      { "value": "preorder_biannual", "label": "Seasonal pre-order (bi-annual)" },
+      { "value": "in_stock", "label": "In stock" },
+      { "value": "made_to_order", "label": "Made to order" }
+    ], "default": "preorder_biannual" },
+    { "type": "text", "id": "edu_quote_url", "label": "Quote / PO page path", "default": "/pages/new-quote" }
   ]
 }
 {% endschema %}
+
 
