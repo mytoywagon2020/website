@@ -285,6 +285,13 @@ The product-card **meta** line shows the **SKU only** — never a section/catego
 
 **Provisional SKUs (owner to confirm against catalog/inventory):** the cards that previously lacked a SKU were given placeholder MTW-XX-### codes so the layout reads correctly — Dramatic Play (Cow Shed MTW-DP-DCS, Straw Bale BSB, Pumpkins BPG, Mandala Tulips GMT, Bread/Pantry BPB, Charcuterie CCP, Scones SCN, Cookies COO, Bundt BND, Choc Cake CHC, Cupcakes CUP, Ice Cream ICE, Lollipops LOL, Beef Noodle BNS, Peruvian PSF, Ethiopian EFE, Mezze MEM, Jollof WAJ, Fika SWF) and STEAM (Bauspiel BMB/BLC/BFW/BCT/BSS/BOB, Life cycles LCF/LCB/LCE/LCN/LCD, Dino Eggs DNE, Prehistoric PHS, Jurassic PJS, Anatomy HAN, Food Groups FGN). Replace with real SKUs when available; flag clashes.
 
+## Fair-trade certifier terminology (do not mix up)
+
+Two different bodies — match the maker:
+- **Tara Treasures → "Fair Trade Certified™"** (Fair Trade USA's mark).
+- **Papoose → "WFTO certified"** (World Fair Trade Organization) — felt/cotton only, not teak.
+- **Do NOT** write "Fair Trade USA™" on Papoose items (recurring error across sections), and don't blanket a single certifier across a **mixed-maker** grid (e.g., Small World mixes Papoose/Himalayan/Tara) — use a generic "made under fair-trade conditions," or name each.
+
 ## Supplier provenance — verified facts (safe to cite)
 
 Maker/origin/cert claims must be verifiable (see design rule above). Confirmed so far:
