@@ -139,3 +139,11 @@ Created to fill gaps in the Connetix range. **Need maker barcodes + product imag
 ## Future: public retail flip-book catalog (SEO)
 
 When the public retail "Educator Catalog" flip-book page is built on the retail shop, that is the **one SEO surface**: keyword-rich title/H1/meta, and links out to product pages pass ranking value. **Caveat:** it can only link to products that are **public on retail** — anything currently **Draft (the entire Connetix line, per the "not live on retail" rule)** won't be linkable until published. Decide per-product whether to publish when that page is built. The gated catalog (registration page → section-cards entryway → 8 sections → dashboard) needs **no SEO**. The single public doorway today is the **registration/apply page** (`designs/educator.html` → `/pages/educator-program`).
+
+
+## Auth pages (register / login / dashboard)
+
+- **Register page rebuilt:** `shopify/educator-portal/templates/page.educator-register.liquid` replaces the old placeholder ("Account verification may take up to 3 business days" with no form). It's a **public application form** (native `{% form 'contact' %}`) capturing full name, email, organization, role, program type, state, and notes → emails the team. Staff verify and create the approved educator account (Company/Catalog), which flips the gate from "being reviewed" to full access.
+  - *Why contact-form, not create_customer:* the storefront `create_customer` form only persists name/email/password (confirmed in Shopify docs) — it can't save org/role/program fields. Approval is manual anyway, so the application emails everything to staff.
+- **Deploy:** in the theme, assign this template to the live register page and make its **handle match the "Apply" CTAs** (`/pages/educator-program`) — or update those CTAs to the new handle. The old placeholder `educator-register` template (0 pages) can be deleted.
+- **Login → dashboard (TODO):** native login (`routes.account_login_url`) currently has no return target, so it lands on `/account`. To land on `/pages/educator-dashboard`, add a return-to param on the sign-in links and/or set the redirect in the main theme's account template (outside this repo).
