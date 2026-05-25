@@ -279,6 +279,12 @@ Earlier draft assumed non-Plus Shopify with apps and Liquid hacks. **Discard tha
 
 ---
 
+## Card meta line — SKU rule (educator portal)
+
+The product-card **meta** line shows the **SKU only** — never a section/category token (the category just repeats down the row and is noise). Keep a **useful per-item spec** when it varies card-to-card (piece count "· 48 pieces", set size "· Set of 5", dimensions, tin size, "· Single tree") — those aren't repetition. Drop generic category words ("STEAM", "World Kitchen", "Farmyard", "Bakery", "Café", "Felt play food", "Life cycle set", "Prehistoric", "Science model"). Maker/material (e.g., "Hand-felted wool", "June & December") may stay where it's a credibility signal, but prefer SKU-only when the maker repeats across the row.
+
+**Provisional SKUs (owner to confirm against catalog/inventory):** the cards that previously lacked a SKU were given placeholder MTW-XX-### codes so the layout reads correctly — Dramatic Play (Cow Shed MTW-DP-DCS, Straw Bale BSB, Pumpkins BPG, Mandala Tulips GMT, Bread/Pantry BPB, Charcuterie CCP, Scones SCN, Cookies COO, Bundt BND, Choc Cake CHC, Cupcakes CUP, Ice Cream ICE, Lollipops LOL, Beef Noodle BNS, Peruvian PSF, Ethiopian EFE, Mezze MEM, Jollof WAJ, Fika SWF) and STEAM (Bauspiel BMB/BLC/BFW/BCT/BSS/BOB, Life cycles LCF/LCB/LCE/LCN/LCD, Dino Eggs DNE, Prehistoric PHS, Jurassic PJS, Anatomy HAN, Food Groups FGN). Replace with real SKUs when available; flag clashes.
+
 ## Supplier provenance — verified facts (safe to cite)
 
 Maker/origin/cert claims must be verifiable (see design rule above). Confirmed so far:
