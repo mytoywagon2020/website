@@ -288,7 +288,7 @@ The product-card **meta** line shows the **SKU only** — never a section/catego
 ## Fair-trade certifier terminology (do not mix up)
 
 Two different bodies — match the maker:
-- **Tara Treasures → "Fair Trade Certified™"** (Fair Trade USA's mark).
+- **Tara Treasures → "Fair Trade USA™ Certified"** (their exact wording).
 - **Papoose → "WFTO Guaranteed"** (World Fair Trade Organization product label) — felt (code "P/P") and 100% cotton only, not teak.
 - **Do NOT** write "Fair Trade USA™" on Papoose items (recurring error across sections), and don't blanket a single certifier across a **mixed-maker** grid (e.g., Small World mixes Papoose/Himalayan/Tara) — use a generic "made under fair-trade conditions," or name each.
 
@@ -296,7 +296,7 @@ Two different bodies — match the maker:
 
 Maker/origin/cert claims must be verifiable (see design rule above). Confirmed so far:
 
-- **Tara Treasures** (felt play food, finger puppets, fairy homes, habitats, story sets): Designed in **Melbourne, Australia** (founders Jag & Jooli Chan); handmade by **women artisans in Nepal** (home + small community workshops; women-empowerment mission). **Fair Trade Certified™.** Felt is **100% natural wool sourced from New Zealand**, eco-friendly non-toxic dyes; meets **OEKO-TEX® STANDARD 100**. → Fair Trade + OEKO-TEX are verified **for Tara Treasures specifically** — fine to cite on Tara items, but do **not** blanket them across a mixed-maker grid (Papoose/Himalayan/etc. aren't covered).
+- **Tara Treasures** (felt play food, finger puppets, fairy homes, habitats, story sets): Designed in **Melbourne, Australia** (founders Jag & Jooli Chan); handmade by **women artisans in Nepal** (home + small community workshops; women-empowerment mission). **Fair Trade USA™ Certified.** Felt is **100% natural wool sourced from New Zealand**, eco-friendly non-toxic dyes; meets **OEKO-TEX® STANDARD 100**. → Fair Trade + OEKO-TEX are verified **for Tara Treasures specifically** — fine to cite on Tara items, but do **not** blanket them across a mixed-maker grid (Papoose/Himalayan/etc. aren't covered).
 - **June & December** (Heirloom Flower Press): handmade from **reclaimed Michigan wood**, hand-assembled in their **Michigan** studio; acid-free neutral-pH boards + reusable specimen separators; FSC-certified, 100% recycled paper/boards/packaging; steel hardware standard, brass upgrade. (Not Brooklyn.)
 - **Kinfolk Pantry** (Eco-Cutters): handcrafted in small batches in **Australia** from **plant-based, biodegradable** material (PLA / recycled wood-mill sawdust); non-toxic. Ages 3–8. Not metal.
 - **Drewart** (Cow Shed, etc.): hand-finished alder, **Poland**. ("Cow shed" = the European term; for US educators it functions as the barn.)
