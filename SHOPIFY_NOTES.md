@@ -261,3 +261,27 @@ Earlier draft assumed non-Plus Shopify with apps and Liquid hacks. **Discard tha
 ---
 
 *Reach out to the original design conversation for any pixel-level clarifications.*
+
+---
+
+## Educator products: separate listings, never Collective (RULE — for staff)
+
+**Rule:** The educator portal and the Educator catalog use their OWN product listings — **never the retail "Collective" listings.** We do **not** sell Collective items on Educator.
+
+**For every educator portal product card:**
+1. If a Collective (retail) listing exists, **duplicate** it into a new **Educator listing** (copy title, description, images; add educator-specific info from the educator catalog).
+2. Make the new listing visible **only in the Educator catalog** (B2B) — not retail.
+3. Link the portal card's "View product" to the **Educator** listing's PDP (`/products/<handle>`).
+
+**Tag convention — apply to every educator listing:**
+- `educator-only` — non-Collective, educator-exclusive listing (never sell on retail/Collective). *(new — the "makes sense" tag.)*
+- `educator-<section>` — section it belongs to, e.g. `educator-dramatic-play`, `educator-creative-arts`, `educator-steam`, `educator-sensory`, `educator-nature-play`, `educator-woodland`, `educator-small-world`, `educator-fairy-villages`.
+- `needs-price` — temporary; remove once an educator price is set.
+
+**Visibility / channels (how "educators only" works):**
+- **Sales channel:** the product must be on the **Online Store** channel so its `/products/<handle>` PDP renders.
+- **Educator (B2B) catalog:** controls educator pricing + access. A B2B-catalog product is reachable by logged-in approved educators but is **not** surfaced to retail browsing.
+- Keep educator listings **out of all public/retail collections** and the retail market catalog so retail shoppers don't find them.
+- Net: **Active + in the Educator/B2B catalog + out of retail collections = educators see it, retail doesn't.**
+
+**Lifecycle:** Educator listings start `DRAFT` + `needs-price`. When priced, activate on the Educator catalog to go live. Portal card links are set by product **handle** in the templates now, so each card resolves the moment its educator listing is activated — no template change needed later.
