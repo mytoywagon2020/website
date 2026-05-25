@@ -74,3 +74,15 @@ Source of truth for the catalog build: `EDUCATOR-CATALOG-WORKSHEET.md`. Page arc
   - #24211 — $5,256.63
 - To reflect reality on her dashboard: tag each `invoice-sent` (when invoiced) and `po-paid-external` (when paid). Tell me which are paid and I'll set them.
 - Covered by the Educators market automatically (applies to all company locations) → Educator Catalog + price list.
+
+## Staff SOP — educator application, verification & approval
+Frictionless apply; **documents collected at verification, not on the form** (the register form stays short; native theme forms can't upload files anyway).
+1. Applicant submits the register form → lands as an **untagged customer** with org/role/program/state.
+2. (Optional, via Flow) auto-tag **`educator-pending`** so they appear in a "to review" customer view.
+3. **Verify (the one manual step):** reply requesting their **sales-tax exemption / resale certificate** + institution verification (.edu email, PO/letterhead, or EIN). Receive by email reply or a **Shopify Forms upload link**; attach the doc to the customer (Files/note/metafield).
+4. **Approve = add the `educator-approved` tag** (+ create/attach the B2B **Company** for PO/Net-30). Gate opens; the **Educators Market** applies pricing automatically.
+5. Decline → tag **`educator-rejected`** (so they aren't re-reviewed).
+
+**Approval/verification email (template):**
+> Subject: Your My Toy Wagon educator application — one quick step
+> Hi [name], thanks for applying! To finish approving **[organization]**, reply with your **sales-tax exemption / resale certificate** (and, if handy, a .edu email or letterhead confirming your role). Once we have it we'll switch on educator pricing, **Net-30 on purchase orders, and tax-exempt checkout** — usually same day.
