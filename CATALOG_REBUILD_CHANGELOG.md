@@ -125,3 +125,12 @@ Created to fill gaps in the Connetix range. **Need maker barcodes + product imag
 - **Existing ~35 Connetix products** have blank SKUs → assign ours (in progress).
 - **Cert verifications:** FSC, GOTS, OEKO-TEX, BSCI, IDEA Part B / Medicaid OT funding, Junior Design Awards 2021.
 - **Public catalog landing page** (the one real SEO lever — HTML page hosting the PDF; gated portal pages are not indexed).
+
+
+## Connetix — verified facts (use these; correct the catalog)
+
+- **Material:** non-toxic **ABS** plastic (BPA / lead / phthalate-free), **not acrylic**. Magnets sealed via **ultrasonic welding + rivets**; unique beveled design.
+- **Origin:** **Australian company (Connetix Pty Ltd, founded 2019), manufactured in China** — *not* "made in Brisbane."
+- **US safety standards:** ASTM F963-17 (incl. 4.3.5.1/4.3.5.2 soluble heavy metal) · CPSIA Sect 101 (lead) · CPSIA Sect 103 / 16 CFR 1307 (phthalates) · CA Prop 65 (DEHP, BBP, DBP, DIOP, DnHP). Factory passes **BSCI** employment-conditions audit. Award-winning, 100% non-toxic.
+- **Range note:** launched with the **62-piece Rainbow Starter**; pastel range (8 colours) added 2021; ball-run packs in rainbow + pastel.
+- ⏳ Apply these specs to the 8 new Connetix product descriptions (Shopping feed) when enriching.
