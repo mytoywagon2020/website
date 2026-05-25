@@ -123,7 +123,7 @@ Created to fill gaps in the Connetix range. **Need maker barcodes + product imag
 - **Barcodes + images** for the 6 new products (matters for Google Shopping when public).
 - **Confirm prices:** Roads & Ramps 64 ($89?), Glitter Castle 48 ($79?), Light Star 28 ($55?) — not in retail screenshots; Glitter Castle / Light Star may be discontinued.
 - **Variant ambiguities** (new SKU vs rename): Rainbow Creative 100 vs existing 102; Rainbow Starter 62 vs 60; Rainbow Square 40 vs 42.
-- **Existing ~35 Connetix products** have blank SKUs → assign ours (in progress).
+- **Existing ~35 Connetix products: our SKUs assigned** ✅ — educator-page items reuse their codes (Mega 212 `MTW-ST-CMP`, Creative 102 `MTW-ST-CCP`, Geometry 30 `MTW-ST-CGP`, Ball Run 92 `MTW-ST-CBR`); all others get descriptive `MTW-CX-<color><type><count>` codes (e.g., `MTW-CX-PMG202`, `MTW-CX-RD48`). Barcodes left as the maker's.
 - **Cert verifications:** FSC, GOTS, OEKO-TEX, BSCI, IDEA Part B / Medicaid OT funding, Junior Design Awards 2021.
 - **Public catalog landing page** (the one real SEO lever — HTML page hosting the PDF; gated portal pages are not indexed).
 
