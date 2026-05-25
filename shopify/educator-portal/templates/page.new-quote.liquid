@@ -1,0 +1,186 @@
+{% layout none %}
+{%- comment -%}
+  Educator quote builder — the cart doubles as the quote basket.
+  Frictionless + non-binding: submitting sends an itemized request to the team via
+  Shopify's native contact form. NO inventory is allocated here; allocation happens
+  later only on a confirmed PO (or a trusted-relationship hold). Credit-card buyers
+  use normal checkout instead. Gated to approved/B2B educators.
+{%- endcomment -%}
+{%- assign is_approved = false -%}
+{%- if customer and customer.tags contains 'educator-approved' -%}{%- assign is_approved = true -%}{%- endif -%}
+{%- if customer.b2b? -%}{%- assign is_approved = true -%}{%- endif -%}
+{%- if is_approved -%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Request a Quote | {{ shop.name }}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--cream:#F5F0E5;--warm-white:#FFFCF7;--ink:#2C2C2A;--forest:#3B6D11;--amber:#854F0B;--stone:#5F5E5A;--card-bg:#EDE3CD;--rule:rgba(44,44,42,0.12);--rule-strong:rgba(44,44,42,0.22);}
+    *{box-sizing:border-box;} html,body{margin:0;padding:0;}
+    body{font-family:'Mulish',sans-serif;color:var(--ink);background:var(--cream);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+    a{color:inherit;text-decoration:none;} img{max-width:100%;display:block;}
+    .wrap{max-width:1080px;margin:0 auto;padding:0 40px;}
+    .utility{background:var(--ink);color:var(--cream);font-size:12.5px;letter-spacing:.06em;}
+    .utility .wrap{display:flex;justify-content:space-between;align-items:center;padding:11px 40px;}
+    .utility a{color:rgba(245,240,229,.75);} .utility a:hover{color:var(--cream);}
+    header.nav{border-bottom:.5px solid var(--rule);background:var(--cream);}
+    header.nav .wrap{display:flex;justify-content:space-between;align-items:center;padding:20px 40px;gap:24px;}
+    .logo{font-family:'Cormorant Garamond',serif;font-size:26px;letter-spacing:.2em;text-transform:uppercase;line-height:1;}
+    .logo small{display:block;font-family:'Mulish',sans-serif;font-size:10.5px;letter-spacing:.22em;color:var(--stone);margin-top:7px;}
+    .nav-links{display:flex;gap:26px;font-size:14px;font-weight:500;} .nav-links a:hover{color:var(--forest);}
+    .q-hero{padding:44px 0 6px;}
+    .q-hero .eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--stone);font-weight:600;}
+    .q-hero h1{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:500;margin:12px 0 8px;letter-spacing:-.01em;}
+    .q-hero p{color:var(--stone);margin:0;max-width:64ch;}
+    .q-note{background:#f3f6ee;border:1px solid var(--forest);border-radius:3px;padding:14px 18px;margin:22px 0;font-size:13.5px;line-height:1.6;}
+    .q-note strong{color:var(--forest);}
+    .q-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:36px;align-items:start;padding:14px 0 50px;}
+    .q-card{background:var(--warm-white);border:.5px solid var(--rule);border-radius:3px;padding:26px;}
+    .q-card h2{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:500;margin:0 0 16px;}
+    table.q-items{width:100%;border-collapse:collapse;font-size:14px;}
+    table.q-items td{padding:12px 8px;border-bottom:.5px solid var(--rule);vertical-align:middle;}
+    .q-thumb{width:54px;height:54px;border-radius:2px;object-fit:cover;background:var(--card-bg);}
+    .q-it-title{font-weight:600;} .q-it-variant{font-size:12.5px;color:var(--stone);}
+    .q-sub{display:flex;justify-content:space-between;font-size:14px;padding:14px 8px 0;}
+    .q-empty{background:var(--warm-white);border:1px dashed var(--rule-strong);border-radius:3px;padding:40px;text-align:center;color:var(--stone);}
+    label.q-l{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--stone);font-weight:600;margin:14px 0 5px;}
+    .q-in,.q-ta,.q-se{width:100%;border:.5px solid var(--rule-strong);background:var(--cream);border-radius:2px;padding:11px 13px;font-family:inherit;font-size:14px;color:var(--ink);}
+    .q-ta{min-height:84px;resize:vertical;}
+    .q-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:18px;padding:14px 24px;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;border-radius:2px;background:var(--ink);color:var(--cream);border:.5px solid var(--ink);cursor:pointer;}
+    .q-btn:hover{background:var(--forest);border-color:var(--forest);}
+    .q-alt{display:block;text-align:center;margin-top:14px;font-size:13px;color:var(--forest);font-weight:600;}
+    .q-success{background:#e7f0e0;border:1px solid var(--forest);border-radius:3px;padding:18px 20px;color:var(--ink);margin:0 0 22px;}
+    .q-row2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+    footer.foot{border-top:.5px solid var(--rule);margin-top:30px;background:var(--cream);}
+    footer.foot .wrap{display:flex;justify-content:space-between;padding:26px 40px;font-size:12px;color:var(--stone);flex-wrap:wrap;gap:12px;}
+    @media(max-width:860px){.q-grid{grid-template-columns:1fr;}.nav-links{display:none;}.q-row2{grid-template-columns:1fr;}.wrap,.utility .wrap,header.nav .wrap,footer.foot .wrap{padding-left:20px;padding-right:20px;}}
+  </style>
+</head>
+<body>
+  <div class="utility"><div class="wrap">
+    <span>My Toy Wagon &middot; Educator Portal</span>
+    <span><a href="/pages/educator-dashboard">Dashboard</a> &nbsp;&middot;&nbsp; <a href="{{ routes.account_logout_url }}">Sign out</a></span>
+  </div></div>
+  <header class="nav"><div class="wrap">
+    <a href="/pages/educator-dashboard" class="logo">My Toy Wagon<small>Educator Portal</small></a>
+    <nav class="nav-links">
+      <a href="/pages/educators">Educator Catalog</a>
+      <a href="/pages/educator-dashboard">Dashboard</a>
+      <a href="/pages/procurement-guide">Procurement</a>
+    </nav>
+  </div></header>
+
+  <main class="wrap">
+    <section class="q-hero">
+      <span class="eyebrow">Educator Catalog</span>
+      <h1>Request a quote</h1>
+      <p>Build your basket from the catalog, then send it as a quote. We&rsquo;ll reply with an itemized quote (pricing held 45 days) you can take to procurement.</p>
+    </section>
+
+    <div class="q-note">
+      <strong>No payment now, and nothing is reserved yet.</strong> Inventory is allocated only once your purchase order is confirmed (or by prior arrangement for established accounts). Need it faster? You can also <a href="{{ routes.cart_url }}" style="color:var(--forest);font-weight:700;">pay now &mdash; card, Shop Pay, Apple Pay, Google Pay, or ACH</a> at checkout.
+    </div>
+
+    <div class="q-note" style="background:#fbf6ec;border-color:var(--amber);">
+      <strong style="color:var(--amber);">About delivery.</strong> Classroom quantities are brought in for you &mdash; we rarely keep 25+ of an item on the shelf. Stocked lines arrive on a <strong>short lead time</strong>; handmade or made-to-order pieces take longer, and seasonal items ship in the next delivery window (Aug&ndash;Sep or May&ndash;Jun). Your quote confirms the exact timing for your quantities.
+    </div>
+
+    <div class="q-grid">
+      <div class="q-card">
+        <h2>Your quote basket</h2>
+        {%- if cart.item_count > 0 -%}
+          <table class="q-items">
+            {%- for item in cart.items -%}
+              <tr>
+                <td style="width:54px;">{%- if item.image -%}<img class="q-thumb" src="{{ item.image | image_url: width: 120 }}" alt="{{ item.product.title | escape }}">{%- endif -%}</td>
+                <td>
+                  <div class="q-it-title">{{ item.product.title }}</div>
+                  {%- unless item.variant.title contains 'Default' -%}<div class="q-it-variant">{{ item.variant.title }}</div>{%- endunless -%}
+                  {%- if item.sku != blank -%}<div class="q-it-variant">SKU {{ item.sku }}</div>{%- endif -%}
+                </td>
+                <td style="text-align:center;white-space:nowrap;">&times; {{ item.quantity }}</td>
+                <td style="text-align:right;white-space:nowrap;">{{ item.final_line_price | money }}</td>
+              </tr>
+            {%- endfor -%}
+          </table>
+          <div class="q-sub"><span>Estimated subtotal</span><strong>{{ cart.total_price | money }}</strong></div>
+          <p style="font-size:12px;color:var(--stone);margin:10px 8px 0;">Estimate only. Final educator pricing, freight, and terms appear on your quote. <a href="{{ routes.cart_url }}" style="color:var(--forest);font-weight:600;">Edit basket &rarr;</a></p>
+        {%- else -%}
+          <div class="q-empty">Your quote basket is empty. <a href="/pages/educators" style="color:var(--forest);font-weight:600;">Browse the Educator Catalog &rarr;</a></div>
+        {%- endif -%}
+      </div>
+
+      <div class="q-card">
+        <h2>Send your quote</h2>
+        {%- if cart.item_count > 0 -%}
+          {%- capture items_text -%}{%- for item in cart.items -%}{{ item.quantity }} x {{ item.product.title }}{% unless item.variant.title contains 'Default' %} ({{ item.variant.title }}){% endunless %}{% if item.sku != blank %} [SKU {{ item.sku }}]{% endif %} — {{ item.final_line_price | money }}{% unless forloop.last %} | {% endunless %}{%- endfor -%} || Estimated subtotal {{ cart.total_price | money }}{%- endcapture -%}
+          {%- form 'contact', id: 'edu-quote-form' -%}
+            {%- if form.posted_successfully? -%}
+              <div class="q-success"><strong>Quote request received.</strong> Our team will reply within one business day with an itemized quote. Nothing has been charged or reserved.</div>
+            {%- endif -%}
+            <input type="hidden" name="contact[Submission type]" value="Educator quote request">
+            <input type="hidden" name="contact[Items]" value="{{ items_text | escape }}">
+            <input type="hidden" name="contact[Account email]" value="{{ customer.email }}">
+
+            <label class="q-l">School / organization</label>
+            <input class="q-in" type="text" name="contact[Organization]" value="{{ customer.current_company.name | default: '' }}" required>
+
+            <div class="q-row2">
+              <div>
+                <label class="q-l">Contact name</label>
+                <input class="q-in" type="text" name="contact[Contact name]" value="{{ customer.name | strip }}" required>
+              </div>
+              <div>
+                <label class="q-l">Reply email</label>
+                <input class="q-in" type="email" name="contact[email]" value="{{ customer.email }}" required>
+              </div>
+            </div>
+
+            <div class="q-row2">
+              <div>
+                <label class="q-l">PO number (optional)</label>
+                <input class="q-in" type="text" name="contact[PO number]" placeholder="If you already have one">
+              </div>
+              <div>
+                <label class="q-l">Needed by</label>
+                <select class="q-se" name="contact[Delivery window]">
+                  <option>Next available window</option>
+                  <option>Fall delivery (Aug–Sep)</option>
+                  <option>Spring delivery (May–Jun)</option>
+                  <option>As soon as possible</option>
+                </select>
+              </div>
+            </div>
+
+            <label class="q-l">For program / classroom (optional)</label>
+            <input class="q-in" type="text" name="contact[Program]" placeholder="e.g. Pre-K, Toddler Room A, Title I">
+
+            <label class="q-l">Ship-to &amp; notes</label>
+            <textarea class="q-ta" name="contact[body]" placeholder="Ship-to address(es), tax-exempt status, anything we should know."></textarea>
+
+            <button class="q-btn" type="submit">Submit quote request</button>
+            <a class="q-alt" href="{{ routes.cart_url }}">Or pay now &mdash; card, Shop Pay, Apple Pay &amp; ACH &rarr;</a>
+          {%- endform -%}
+        {%- else -%}
+          <p style="color:var(--stone);">Add items to your basket first, then come back to send your quote.</p>
+          <a class="q-btn" href="/pages/educators" style="text-decoration:none;">Browse the catalog</a>
+        {%- endif -%}
+      </div>
+    </div>
+  </main>
+
+  <footer class="foot"><div class="wrap">
+    <span>&copy; 2026 My Toy Wagon &middot; Educator Portal</span>
+    <span><a href="/pages/educator-dashboard">Dashboard</a> &nbsp;&middot;&nbsp; <a href="/pages/educators">Catalog</a></span>
+  </div></footer>
+</body>
+</html>
+{%- else -%}
+{% render 'educator-gate' %}
+{%- endif -%}

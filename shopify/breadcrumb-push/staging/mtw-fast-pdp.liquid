@@ -373,12 +373,12 @@
           {%- elsif edu_model == 'made_to_order' -%}
             <p class="ff-edu-avail"><strong>Made to order.</strong> Handcrafted to order &mdash; reserve early for the next classroom delivery window ({{ edu_next }}).</p>
           {%- else -%}
-            <p class="ff-edu-avail"><strong>In stock for classrooms.</strong> Ships from Los Angeles in 1&ndash;3 business days. Purchase orders and {{ edu_terms | default: 'Net' }} terms welcome.</p>
+            <p class="ff-edu-avail"><strong>Stocked line.</strong> Small quantities ship from Los Angeles in 1&ndash;3 business days; <strong>classroom quantities are brought in for you</strong> on a short lead time, confirmed on your quote. Purchase orders and {{ edu_terms | default: 'Net' }} terms welcome.</p>
           {%- endif -%}
           {%- if edu_min != blank -%}<p class="ff-edu-min">Classroom minimum: {{ edu_min }}</p>{%- endif -%}
           {%- if edu_curric != blank -%}<p class="ff-edu-curric"><span class="gk">Curriculum</span>{{ edu_curric }}</p>{%- endif -%}
           <div class="ff-edu-cta">
-            <a class="ff-btn-edu" href="{{ section.settings.edu_quote_url | default: '/pages/new-quote' }}">Add to quote &middot; request PO pricing</a>
+            <a class="ff-btn-edu" data-ff-quote href="{{ section.settings.edu_quote_url | default: '/pages/new-quote' }}">Add to quote &middot; request PO pricing</a>
             <a class="ff-edu-link" href="/pages/educator-dashboard">Educator dashboard &rarr;</a>
           </div>
           <p class="ff-edu-note">Need a curriculum-alignment letter for this item? <a href="mailto:educators@mytoywagon.com?subject=Curriculum%20alignment%20%E2%80%94%20{{ product.title | url_encode }}">Ask our team &rarr;</a></p>
@@ -693,6 +693,22 @@
     });
   });
   resolve();
+
+  // Add to quote (educator): add the selected variant to the basket, then open the quote builder
+  var quoteBtn = root.querySelector('[data-ff-quote]');
+  if(quoteBtn){
+    quoteBtn.addEventListener('click', function(e){
+      e.preventDefault();
+      var dest = quoteBtn.getAttribute('href') || '/pages/new-quote';
+      var id = vid ? vid.value : null;
+      var q = qty ? (parseInt(qty.value,10)||1) : 1;
+      if(!id){ window.location = dest; return; }
+      quoteBtn.style.opacity = '0.6';
+      fetch('/cart/add.js', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ id: id, quantity: q }) })
+        .then(function(){ window.location = dest; })
+        .catch(function(){ window.location = dest; });
+    });
+  }
 
   // Sticky bar with failsafe
   var sticky = root.querySelector('[data-ff-sticky]');
