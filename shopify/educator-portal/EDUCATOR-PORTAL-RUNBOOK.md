@@ -97,3 +97,27 @@ Frictionless apply; **documents collected at verification, not on the form** (th
 - **Optional document** — tax-exempt/resale cert, school ID, or PO on letterhead. **Required only to enable tax-exempt checkout** (legal: a valid exemption certificate must be on file to not charge sales tax). Account + pricing + Net-30 do NOT require it.
 - **Behavioral guardrail** — first order prepaid/small; extend Net-30 after a clean payment.
 - **Tiered rule:** auto-trust institutional-domain emails → light public lookup for personal emails → require the cert only for tax-exempt checkout.
+
+## Auto-populate Companies + one-click approve — Flow wiring spec
+**Goal:** applicant data auto-creates a **pending Company**; staff review + approve with one tag. **No app, no code — built in admin (Flow). Needs Shopify Plus.** (Claude cannot build Flows / mint the token / create metafield defs — these are admin steps.)
+
+**Prereqs (one-time, admin):**
+1. **Shopify Plus** (companyCreate is Plus-only).
+2. **Helium Customer Fields:** map org/role/program/state → **customer metafields** (verify ON, not email-only).
+3. **Admin API token:** Settings → Apps → Develop apps → create app → scope `write_companies` (+`read_customers`) → store token as a **Flow secret**.
+
+**Flow 1 — "Create pending educator company"**
+- Trigger: **Customer created**.
+- ⚠ **Condition (critical — blocks bot/spam):** continue only if `customer.metafields.customer_fields.institution_name` is set (or a form-added tag like `educator-applied`). Without this, every signup makes a junk Company.
+- Action: **Send HTTP request** → POST `https://<shop>.myshopify.com/admin/api/2025-07/graphql.json`, headers `Content-Type: application/json` + `X-Shopify-Access-Token: {{secret}}`, body:
+```json
+{ "query": "mutation($input: CompanyCreateInput!){ companyCreate(input:$input){ company{ id } userErrors{ field message } } }",
+  "variables": { "input": {
+    "company": { "name": "{{customer.metafields.customer_fields.institution_name}}", "note": "Educator application (pending). {{customer.email}}" },
+    "companyContact": { "email": "{{customer.email}}", "firstName": "{{customer.firstName}}", "lastName": "{{customer.lastName}}" },
+    "companyLocation": { "name": "{{customer.metafields.customer_fields.institution_name}}", "billingSameAsShipping": true } } } }
+```
+
+**Review + approve (the one button):** staff open the pending Company/customer → verify (see "How we verify") → add tag **`educator-approved`** → gate opens + Educators Market pricing applies. *(Optional Flow 2: on `educator-approved` tag → Send HTTP request to assign Net-30 `PaymentTermsTemplate/4` / finalize.)*
+
+**Status now:** designed + spec'd + documented (here). **Not yet wired** — the Flow/token/Helium-mapping/metafield steps are admin tasks Claude can't perform.
