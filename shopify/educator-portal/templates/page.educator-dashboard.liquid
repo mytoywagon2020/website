@@ -166,11 +166,19 @@
         <p>Browse the full catalog at your educator pricing and build a quote.</p>
         <span class="go">Open the catalog &rarr;</span>
       </a>
+      {%- if customer.b2b? -%}
+      <a class="action action--c2" href="{{ routes.cart_url }}">
+        <h3>Build a quote</h3>
+        <p>Add catalog items to your cart, then submit at checkout &mdash; it becomes a quote our team reviews and approves on your terms.</p>
+        <span class="go">Review cart &amp; submit &rarr;</span>
+      </a>
+      {%- else -%}
       <a class="action action--c2" href="/pages/new-quote">
         <h3>Start a new quote</h3>
         <p>Add items and quantities, then submit a quote for a purchase order.</p>
         <span class="go">New quote &rarr;</span>
       </a>
+      {%- endif -%}
       <a class="action action--c3" href="#po">
         <h3>Submit a purchase order</h3>
         <p>Send your school or district PO to fulfill an approved quote.</p>
