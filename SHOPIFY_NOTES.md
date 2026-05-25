@@ -280,6 +280,7 @@ Earlier draft assumed non-Plus Shopify with apps and Liquid hacks. **Discard tha
 
 **Naming & type (decided):**
 - **Title stays the clean product name** — do **NOT** append "(Educator)". The title is customer-facing (PDP, cart, receipts); the educator already knows they're in the educator catalog.
+- **Brand in title — differs by channel:** *Retail/Collective* **keeps the maker brand** (Fagus, Bumbu, Tara Treasures…) because it matters for **SEO / brand search**. *Educator* titles are **brand-agnostic & descriptive** — on the Educator catalog **My Toy Wagon is the brand** — so use the clean name that matches the portal tile (e.g., "Wooden Hay Wagon," "Cow Shed," "Felt Farm Animals, Set of 10," not "Fagus…/Drewart…"). When duplicating a Collective listing into an educator one, **rename it to the descriptive educator name.**
 - **Handle:** use a `-educator` suffix (e.g., `the-cow-shed-educator`) so the listing is recognizable by URL.
 - **Product Type:** set to `Educator` for an at-a-glance admin column.
 - Distinguish/filter the whole set in admin with **`tag:educator-only`** (primary method).
