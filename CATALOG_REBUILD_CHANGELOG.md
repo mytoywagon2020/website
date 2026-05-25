@@ -146,3 +146,25 @@ When the public retail "Educator Catalog" flip-book page is built on the retail 
 - *Note:* I mistakenly added a duplicate `page.educator-register.liquid` to the repo — **removed** (the real form is the theme one above; no rebuild needed).
 - **Login** (`educator-login`) stays a login page; on valid credentials it should land on the **dashboard**. TODO: native login currently returns to `/account` — add a return-to `/pages/educator-dashboard` on the sign-in links and/or set it in the main theme's account template.
 - `page.educator-portal.liquid` is **theme-only** (not in this repo), so these moves are done in Shopify admin, not here.
+
+## Educator onboarding — in-house, no-reentry (design + setup)
+
+**Priority:** no re-entry of applicant data **first**; bespoke form styling **second** (use a metafield-capturing form even if less pixel-perfect).
+
+**Form (already exists):** the **Customer Fields app** captures `customer_fields.institution_name` and `customer_fields.document_upload` (this is the "tool" register page). Add `educator.role`, `educator.program`, `educator.state` to the form so they're captured too.
+
+**Docs to collect (best practice; make upload required):** sales-tax exemption / resale certificate; institution verification (.edu email, letterhead/PO, or business license/EIN). W-9 only if paying them.
+
+**Metafield definitions to create in Admin** (Settings → Custom data) — *Claude's API client was denied access to create these, so do it in admin*:
+- **Company** `educator.status` · single-line · choices `pending` / `approved` / `rejected`.
+- **Customer** `educator.role`, `educator.program`, `educator.state` (institution_name + document_upload already exist).
+
+**Known IDs:** Net 30 = `gid://shopify/PaymentTermsTemplate/4`. ⚠️ "Educator Catalog" is a **MarketCatalog** (`gid://shopify/MarketCatalog/64883065002`), **not** a B2B catalog — DECISION: create a B2B catalog (assignable per company location) OR price educators via the Market (skip per-company catalog assignment).
+
+**Automated flow (Flow, no app):**
+1. Applicant submits form → customer created with metafields + uploaded doc.
+2. **Flow 1** (trigger: Customer created/tagged) → `companyCreate` pending (company name from `customer.metafields.customer_fields.institution_name`).
+3. **Manual step (only this one):** staff open the **pending Company**, **check the uploaded credentials**, verify.
+4. **Flow 2** (trigger: `approve-educator` tag) → assign catalog (or Market) + Net 30 + set `educator.status = approved`. Customer becomes B2B → gate opens.
+
+**Limitations Claude can't do from here:** create metafield definitions (access denied), publish themes/pages, install/host anything. Those are admin steps.
