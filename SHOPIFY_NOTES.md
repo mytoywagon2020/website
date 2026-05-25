@@ -285,6 +285,34 @@ The product-card **meta** line shows the **SKU only** — never a section/catego
 
 **Provisional SKUs (owner to confirm against catalog/inventory):** the cards that previously lacked a SKU were given placeholder MTW-XX-### codes so the layout reads correctly — Dramatic Play (Cow Shed MTW-DP-DCS, Straw Bale BSB, Pumpkins BPG, Mandala Tulips GMT, Bread/Pantry BPB, Charcuterie CCP, Scones SCN, Cookies COO, Bundt BND, Choc Cake CHC, Cupcakes CUP, Ice Cream ICE, Lollipops LOL, Beef Noodle BNS, Peruvian PSF, Ethiopian EFE, Mezze MEM, Jollof WAJ, Fika SWF) and STEAM (Bauspiel BMB/BLC/BFW/BCT/BSS/BOB, Life cycles LCF/LCB/LCE/LCN/LCD, Dino Eggs DNE, Prehistoric PHS, Jurassic PJS, Anatomy HAN, Food Groups FGN). Replace with real SKUs when available; flag clashes.
 
+## Educator pricing rule — REGULAR price only
+
+Educator-catalog prices must use the **regular price**, never a retail sale/markdown — these are **made-to-order** purchases, so they don't ride retail promotions. In Shopify terms: use the variant **`compareAtPrice`** when the item is on sale (that's the regular price); use `price` only when `compareAtPrice` is null (not on sale). Many retail titles are even prefixed "Sale …". ⚠️ Owner will audit **every** educator price before go-live. Known mismatch to revisit: **Wonderheart** gnome sets — Shopify regular is **$144** (Rainbow Wooden Gnome Set) / **$84** (Mini sets); educator cards currently show $108.
+
+## Brand → Certification — vendor cross-reference trigger
+
+Educator titles are often brand-agnostic, so don't guess the maker from the title. **Authoritative source: the Shopify product `vendor` field.** Workflow when sourcing/verifying a Files image: image → its product → `vendor` (brand) → apply that brand's cert from the table below. Where `vendor` = **"My Toy Wagon"** (house brand, maker not surfaced), fall back to the branded **filename** or the maker named in the card, and verify.
+
+| Brand (vendor) | Cert / provenance to cite |
+|---|---|
+| Tara Treasures | **Fair Trade USA™ Certified** · felt, designed Melbourne, made Nepal |
+| Papoose Toys (felt P/P + cotton) | **WFTO & Fair Trade USA Certified** · Nepal |
+| Papoose Toys (teak tools) | generic "fair-trade conditions" (felt/cotton cert does not cover teak) |
+| Himalayan Felt Co. | felt, Nepal — **cert unverified**, keep generic until confirmed |
+| Wonderheart | **Made in USA** (birch + felt) — not fair-trade |
+| Bumbu | FSC maple/basswood, Romania, water-based paint + organic oils, CE/EN71 |
+| Bauspiel | Germany, EN71 — **FSC unverified** |
+| Connetix | non-toxic, ASTM/EN71/CE (plastic + magnets; not FSC) |
+| Tender Leaf | FSC reclaimed rubberwood, ASTM F963/CPSIA |
+| Wooden Story | FSC, Poland, organic oils |
+| Análu | made in California, USA (therapy dough) |
+| June & December | reclaimed Michigan wood |
+| Kinfolk Pantry | Australia, plant-based biodegradable PLA |
+| Gus + Mabel | felt habitats, Nepal — **cert unverified**, keep generic until confirmed |
+| Buttonandbug | trays — **origin unverified**, do not claim "made in USA" until confirmed |
+
+Unverified above (Himalayan, Bauspiel FSC, Gus + Mabel, Buttonandbug) → owner to confirm; keep generic meanwhile.
+
 ## Fair-trade certifier terminology (do not mix up)
 
 Two different bodies — match the maker:
