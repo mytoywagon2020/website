@@ -19,6 +19,8 @@ Fulfillment/tracking is read **natively** (Fulfilled / Partially shipped / Proce
 
 ## Customer / company tags & metafields
 - Customer tag `educator-approved` → opens the gated portal (theme gate also accepts `customer.b2b?`).
+- Customer tags `educator-pending` (applied, awaiting review) and `educator-rejected` (declined) for lifecycle filtering. **Do NOT add a Company `educator.status` metafield — redundant; these tags are the source of truth.**
+- **Register form = Helium Customer Fields app** (owns the `customer_fields` namespace: `institution_name`, `document_upload`). Doc upload is OPTIONAL and can be added there if ever needed; fields must map to customer metafields for any Flow→Company no-reentry.
 - Customer metafield `educator.trusted_hold = true` → eligible for inventory hold before a PO (e.g., Erin Kim / Elk Grove).
 - Product metafields: `educator.exclusive`, `educator.continue_selling`, `educator.delivery_model`, `educator.next_delivery`, `educator.terms`, `educator.min_qty`, `educator.curriculum`.
 

@@ -158,7 +158,7 @@ When the public retail "Educator Catalog" flip-book page is built on the retail 
 **Docs to collect (best practice; make upload required):** sales-tax exemption / resale certificate; institution verification (.edu email, letterhead/PO, or business license/EIN). W-9 only if paying them.
 
 **Metafield definitions to create in Admin** (Settings → Custom data) — *Claude's API client was denied access to create these, so do it in admin*:
-- **Company** `educator.status` (optional tracking only — approval is the `educator-approved` tag) · single-line · choices `pending` / `approved` / `rejected`.
+- **Do NOT add a Company `educator.status` metafield — redundant.** Track lifecycle with **customer tags**: `educator-pending` (on apply), `educator-approved` (approval), `educator-rejected` (declined); filter via saved customer views.
 - **Customer** `educator.role`, `educator.program`, `educator.state` (institution_name + document_upload already exist).
 
 **Pricing (per runbook — already built):** educator pricing runs through the **"Educators" Market** → Educator Catalog `MarketCatalog/64883065002` + price list `PriceList/24074289322`, which **applies to all company locations automatically**. The MarketCatalog is correct by design — no per-company catalog assignment. Net 30 = `gid://shopify/PaymentTermsTemplate/4`. (Shopify does B2B pricing via the Market here.)
