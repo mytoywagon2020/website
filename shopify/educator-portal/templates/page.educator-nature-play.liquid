@@ -3772,6 +3772,7 @@ section[data-screen-label="08 The Everything Play Bundle"] .content .eyebrow{
         Toadstools, pumpkins, leaves, and acorns, bundled for the back-to-school nature shelf. Buy as a set.
       </p>
       <a href="#quote" class="bridge-cta">Request the Autumn Set</a>
+      <a href="/collections/nature-play" class="bridge-cta" style="margin-left:10px;">Shop all Nature &rarr;</a>
     </div>
   </div>
 </section>
@@ -4127,6 +4128,7 @@ section[data-screen-label="08 The Everything Play Bundle"] .content .eyebrow{
         Bowls, tongs, spoon set, coconut sieve, and slotted spoon, bundled for the loose-parts station. Buy as a set.
       </p>
       <a href="#quote" class="bridge-cta">Request the Nature Tools Set</a>
+      <a href="/collections/nature-play" class="bridge-cta" style="margin-left:10px;">Shop all Nature &rarr;</a>
     </div>
   </div>
 </section>
@@ -4566,7 +4568,7 @@ section[data-screen-label="08 The Everything Play Bundle"] .content .eyebrow{
     if (i > 0 && prevEl) {
       var p = ECOSYSTEMS[i-1];
       prevEl.textContent = p.vol + ' \u00b7 ' + p.name;
-      prevEl.href = p.slug + '.html';
+      prevEl.href = '/pages/educator-' + p.slug;
     } else if (prevEl) {
       prevEl.style.display = 'none';
       var sep = prevEl.nextElementSibling;
@@ -4575,7 +4577,7 @@ section[data-screen-label="08 The Everything Play Bundle"] .content .eyebrow{
     if (i < ECOSYSTEMS.length - 1 && nextEl) {
       var n = ECOSYSTEMS[i+1];
       nextEl.textContent = n.vol + ' \u00b7 ' + n.name;
-      nextEl.href = n.slug + '.html';
+      nextEl.href = '/pages/educator-' + n.slug;
     } else if (nextEl) {
       nextEl.style.display = 'none';
       var sep2 = nextEl.previousElementSibling;
