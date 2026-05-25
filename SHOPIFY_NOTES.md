@@ -278,10 +278,20 @@ Earlier draft assumed non-Plus Shopify with apps and Liquid hacks. **Discard tha
 - `educator-<section>` — section it belongs to, e.g. `educator-dramatic-play`, `educator-creative-arts`, `educator-steam`, `educator-sensory`, `educator-nature-play`, `educator-woodland`, `educator-small-world`, `educator-fairy-villages`.
 - `needs-price` — temporary; remove once an educator price is set.
 
+**Naming & type (decided):**
+- **Title stays the clean product name** — do **NOT** append "(Educator)". The title is customer-facing (PDP, cart, receipts); the educator already knows they're in the educator catalog.
+- **Handle:** use a `-educator` suffix (e.g., `the-cow-shed-educator`) so the listing is recognizable by URL.
+- **Product Type:** set to `Educator` for an at-a-glance admin column.
+- Distinguish/filter the whole set in admin with **`tag:educator-only`** (primary method).
+
 **Visibility / channels (how "educators only" works):**
 - **Sales channel:** the product must be on the **Online Store** channel so its `/products/<handle>` PDP renders.
 - **Educator (B2B) catalog:** controls educator pricing + access. A B2B-catalog product is reachable by logged-in approved educators but is **not** surfaced to retail browsing.
 - Keep educator listings **out of all public/retail collections** and the retail market catalog so retail shoppers don't find them.
 - Net: **Active + in the Educator/B2B catalog + out of retail collections = educators see it, retail doesn't.**
+
+**Avoid duplicate educator listings (guardrail):** Before creating an educator listing, **search for an existing one** — `tag:educator-only` or handle ending `-educator`. If one exists, **reuse/link it**; do not create a second. (A *Collective/retail* listing existing is NOT a reason to skip — only an existing *educator* listing is.)
+
+**Matching tip (avoid false "missing"):** Our product titles usually include the **brand** (Fagus, Bumbu, Tara Treasures, Papoose, Tender Leaf, Q Toys, Drewart, Gry & Sif, Análu, Connetix, Bauspiel…) and felt items often include **"felt"**. A portal tile named "Hay Wagon" is the product "Fagus Wooden Hay Wagon"; "Farm Animals" is "Felt Farm Animals, Set of 10." Always search by the **core noun + brand/felt variants** before concluding a listing is missing — otherwise you'll create a duplicate.
 
 **Lifecycle:** Educator listings start `DRAFT` + `needs-price`. When priced, activate on the Educator catalog to go live. Portal card links are set by product **handle** in the templates now, so each card resolves the moment its educator listing is activated — no template change needed later.
