@@ -1584,7 +1584,7 @@ footer .cols .downloads a::after{
 .cover .bg.has-photo::before{
   display: block; content: "";
   position: absolute; inset: 0; z-index: 0;
-  background: url("{{ 'pink-blossom-house.webp' | asset_url }}") center / cover no-repeat;
+  background: url("{{ 'pink-blossom-house.webp' | file_url }}") center / cover no-repeat;
   filter: blur(34px) saturate(1.08);
   transform: scale(1.12);
 }
@@ -3383,7 +3383,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 <!-- =========================== COVER =========================== -->
 <section class="cover" data-screen-label="01 Cover">
   <div class="bg tile t-mood has-photo">
-    <img src="{{ 'pink-blossom-house.webp' | asset_url }}" alt="Pink Blossom House, a hand-felted fairy home with a curled pink petal roof and embroidered cherry blossoms"/>
+    <img src="{{ 'pink-blossom-house.webp' | file_url }}" alt="Pink Blossom House, a hand-felted fairy home with a curled pink petal roof and embroidered cherry blossoms"/>
     <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
     <span class="tag dark">[ COVER &nbsp;·&nbsp; PINK BLOSSOM HOUSE ]</span>
   </div>
@@ -3431,7 +3431,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
   <div class="wrap">
     <div class="col-img">
       <div class="tile t-hue3 has-photo">
-        <img src="{{ 'toadstool-house-context.webp' | asset_url }}" alt="Felt toadstool fairy home, hand-felted in Nepal"/>
+        <img src="{{ 'toadstool-house-context.png' | file_url }}" alt="Felt toadstool fairy home, hand-felted in Nepal"/>
       </div>
     </div>
     <div class="col-txt">
@@ -3456,7 +3456,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 <section class="split" data-screen-label="04 Hero Product">
   <div class="img-side">
     <div class="tile t-soft has-photo">
-      <img src="{{ 'mushroom-garden-set.webp' | asset_url }}" alt="Mushroom Garden Fairy Home, opened on its round wool play mat with carrot garden, stepping-stone path, companion mushroom, and resident fairy"/>
+      <img src="{{ 'mushroom-garden-set.png' | file_url }}" alt="Mushroom Garden Fairy Home, opened on its round wool play mat with carrot garden, stepping-stone path, companion mushroom, and resident fairy"/>
     </div>
   </div>
   <div class="content">
@@ -3551,7 +3551,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       <article class="home size-hero">
         <div class="tile-wrap">
           <div class="tile t-soft has-photo">
-            <img src="{{ 'pink-blossom-house.webp' | asset_url }}" alt="Pink Blossom House, curled pink petal roof, embroidered cherry blossoms"/>
+            <img src="{{ 'pink-blossom-house.webp' | file_url }}" alt="Pink Blossom House, curled pink petal roof, embroidered cherry blossoms"/>
           </div>
           <div class="overlay"></div>
           <div class="float-name">Pink Blossom House</div>
@@ -3574,7 +3574,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       <article class="home size-tall">
         <div class="tile-wrap">
           <div class="tile t-alt-deep dark has-photo">
-            <img src="{{ 'lilac-blossom-house.jpg' | asset_url }}" alt="Lilac Blossom House, green bell-flower spire roof and a wreath of violets, photographed in a meadow"/>
+            <img src="{{ 'lilac-blossom-house.jpg' | file_url }}" alt="Lilac Blossom House, green bell-flower spire roof and a wreath of violets, photographed in a meadow"/>
           </div>
           <div class="overlay"></div>
           <div class="float-name">Lilac Blossom House</div>
@@ -3597,7 +3597,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       <article class="home size-std">
         <div class="tile-wrap">
           <div class="tile t-mood has-photo">
-            <img src="{{ 'rainbow-shimmer-house.webp' | asset_url }}" alt="Rainbow Shimmer House, a vivid magenta-pink petal roof crowned with a green felt swirl, a full rainbow-striped felted archway over the white doorway, and multicolored felt pompom dots scattered across a green grass mat"/>
+            <img src="{{ 'rainbow-shimmer-fairy-house.png' | file_url }}" alt="Rainbow Shimmer House, a vivid magenta-pink petal roof crowned with a green felt swirl, a full rainbow-striped felted archway over the white doorway, and multicolored felt pompom dots scattered across a green grass mat"/>
             <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
             <span class="tag">[ HOME N&deg;03 &nbsp;&middot;&nbsp; RAINBOW SHIMMER HOUSE ]</span>
           </div>
@@ -3622,7 +3622,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       <article class="home size-std">
         <div class="tile-wrap">
           <div class="tile t-alt has-photo">
-            <img src="{{ 'rainbow-home.webp' | asset_url }}" alt="Rainbow Home, a tall felted house with a pink pointed roof dotted in pastel felt balls and a full rainbow-striped arched doorway topped with a pink heart keystone, set on a lilac felt mat"/>
+            <img src="{{ 'Tiny-Felt-Rainbow-Shimmer-Home.jpg' | file_url }}" alt="Rainbow Home, a tall felted house with a pink pointed roof dotted in pastel felt balls and a full rainbow-striped arched doorway topped with a pink heart keystone, set on a lilac felt mat"/>
             <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
             <span class="tag">[ HOME N&deg;04 &nbsp;&middot;&nbsp; RAINBOW HOME ]</span>
           </div>
@@ -3647,7 +3647,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       <article class="home size-std">
         <div class="tile-wrap">
           <div class="tile t-primary has-photo">
-            <img src="{{ 'butterfly-fairy-house.webp' | asset_url }}" alt="Butterfly Fairy House, a hand-felted white wool cottage with a tall pink curling spire roof topped by a blue-and-white embroidered butterfly, vining green leaves and pink rose-bud blossoms climbing the walls, a black porthole window, and a brown felt arched door"/>
+            <img src="{{ 'butterfly-fairy-house.jpg' | file_url }}" alt="Butterfly Fairy House, a hand-felted white wool cottage with a tall pink curling spire roof topped by a blue-and-white embroidered butterfly, vining green leaves and pink rose-bud blossoms climbing the walls, a black porthole window, and a brown felt arched door"/>
             <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
             <span class="tag">[ HOME N&deg;05 &nbsp;&middot;&nbsp; BUTTERFLY FAIRY HOUSE ]</span>
           </div>
@@ -3686,7 +3686,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
   <div class="wrap">
     <div class="col-img">
       <div class="tile t-hue3-deep dark has-photo">
-        <img src="{{ 'wonderheart-gnomes-hero.webp' | asset_url }}" alt="Wonderheart Little Folk gnomes in their full color range, arranged in a radial rainbow on hand-dyed silk"/>
+        <img src="{{ 'wonderheart-group.webp' | file_url }}" alt="Wonderheart Little Folk gnomes in their full color range, arranged in a radial rainbow on hand-dyed silk"/>
         <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
         <span class="tag dark">[ HERO &nbsp;&middot;&nbsp; WONDERHEART BRIGHT GNOMES ]</span>
       </div>
@@ -3698,7 +3698,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 
       <div class="folk">
         <div class="f">
-          <div class="tile t-cream has-photo"><img src="{{ 'wonderheart-pastel-gnomes.webp' | asset_url }}" alt="Wonderheart Pastel Rainbow Gnomes, six pastel adults with six matching minis"/></div>
+          <div class="tile t-cream has-photo"><img src="{{ 'wonderheart-pastel-gnomes.webp' | file_url }}" alt="Wonderheart Pastel Rainbow Gnomes, six pastel adults with six matching minis"/></div>
           <span class="name">Wonderheart Pastel Gnomes</span>
           <div class="folk-row">
             <!-- PRICE: MTW-FV-PGN -->
@@ -3709,7 +3709,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
         </div>
         <div class="f">
           <div class="tile t-soft has-photo">
-            <img src="{{ 'bright-gnomes.webp' | asset_url }}" alt="Wonderheart Bright Gnomes, six adults with six matching minis in bright rainbow felted hoods"/>
+            <img src="{{ 'wonderheart-bright-gnomes.webp' | file_url }}" alt="Wonderheart Bright Gnomes, six adults with six matching minis in bright rainbow felted hoods"/>
             <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
             <span class="tag">[ WONDERHEART BRIGHT GNOMES ]</span>
           </div>
@@ -3729,7 +3729,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
         <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;">
           <div style="display: flex; flex-direction: column;">
             <div class="tile t-gilt has-photo" style="aspect-ratio: 1 / 1; width: 100%;">
-              <img src="{{ 'flower-children.webp' | asset_url }}" alt="Bumbu Flower Children, five carved wooden figures with flower-head caps (red poppy, white daisy, yellow sunflower, pink tulip, blue cornflower) on green leaf bodies"/>
+              <img src="{{ 'Bumbu_Flower_Children.webp' | file_url }}" alt="Bumbu Flower Children, five carved wooden figures with flower-head caps (red poppy, white daisy, yellow sunflower, pink tulip, blue cornflower) on green leaf bodies"/>
               <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
               <span class="tag">[ FLOWER CHILDREN ]</span>
             </div>
@@ -3738,7 +3738,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
           </div>
           <div style="display: flex; flex-direction: column;">
             <div class="tile t-cream has-photo" style="aspect-ratio: 1 / 1; width: 100%;">
-              <img src="{{ 'fairy-door.webp' | asset_url }}" alt="Fairy Door, a rounded natural-wood Papoose door with two black arrow-shaped iron hinges and a small knob"/>
+              <img src="{{ 'Papoose_Fairy_Door.png' | file_url }}" alt="Fairy Door, a rounded natural-wood Papoose door with two black arrow-shaped iron hinges and a small knob"/>
               <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
               <span class="tag">[ FAIRY DOOR ]</span>
             </div>
@@ -3747,7 +3747,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
           </div>
           <div style="display: flex; flex-direction: column;">
             <div class="tile t-hue3 has-photo" style="aspect-ratio: 1 / 1; width: 100%;">
-              <img src="{{ 'wishing-well.webp' | asset_url }}" alt="Papoose wooden wishing well, a hardwood barrel with an arched roof and a tiny bucket on a string, photographed on weathered logs"/>
+              <img src="{{ 'papoose-wishing-well.webp' | file_url }}" alt="Papoose wooden wishing well, a hardwood barrel with an arched roof and a tiny bucket on a string, photographed on weathered logs"/>
               <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
               <span class="tag">[ WISHING WELL ]</span>
             </div>
