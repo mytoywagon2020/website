@@ -288,7 +288,8 @@ Maker/origin/cert claims must be verifiable (see design rule above). Confirmed s
 - **Kinfolk Pantry** (Eco-Cutters): handcrafted in small batches in **Australia** from **plant-based, biodegradable** material (PLA / recycled wood-mill sawdust); non-toxic. Ages 3–8. Not metal.
 - **Drewart** (Cow Shed, etc.): hand-finished alder, **Poland**. ("Cow shed" = the European term; for US educators it functions as the barn.)
 - **Bumbu**: hand-carved maple/basswood, **Romania**, water-based paint + organic oils.
-- **Verify-before-claiming** still pending: exact makers/certs for threading looms (LapLoom/Potholder read as Harrisville/US; Weaving Frame = Grapat/Spain), Tender Leaf origin, Papoose/Himalayan certs.
+- **Papoose Toys** (felt play food incl. World Kitchen / world cuisines, hot drinks, felt shapes): **World Fair Trade Organization (WFTO) certified** — wool felt products with product code **"P/P"** are WFTO Guaranteed; 100% of their cotton items are WFTO certified. Handmade from **100% natural, biodegradable wool and cotton** with **non-toxic, colorfast dyes**. Crafted primarily by **women in Nepal** under fair-trade conditions (fair wages, safe workspaces, stable employment). ⚠️ The body is **WFTO** (World Fair Trade Organization) — do NOT mistype as "WTFO".
+- **Verify-before-claiming** still pending: exact makers/certs for threading looms (LapLoom/Potholder read as Harrisville/US; Weaving Frame = Grapat/Spain), Tender Leaf origin, Himalayan certs.
 
 ---
 
