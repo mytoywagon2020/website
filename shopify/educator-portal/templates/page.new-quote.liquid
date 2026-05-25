@@ -110,7 +110,7 @@
             {%- endfor -%}
           </table>
           <div class="q-sub"><span>Estimated subtotal</span><strong>{{ cart.total_price | money }}</strong></div>
-          <p style="font-size:12px;color:var(--stone);margin:10px 8px 0;">Estimate only. Final educator pricing, freight, and terms appear on your quote. <a href="{{ routes.cart_url }}" style="color:var(--forest);font-weight:600;">Edit basket &rarr;</a></p>
+          <p style="font-size:12px;color:var(--stone);margin:10px 8px 0;">Estimate only. Final educator pricing, <strong>shipping, tax,</strong> and terms are calculated by our team and confirmed on your quote. <a href="{{ routes.cart_url }}" style="color:var(--forest);font-weight:600;">Edit basket &rarr;</a></p>
         {%- else -%}
           <div class="q-empty">Your quote basket is empty. <a href="/pages/educators" style="color:var(--forest);font-weight:600;">Browse the Educator Catalog &rarr;</a></div>
         {%- endif -%}
@@ -122,7 +122,7 @@
           {%- capture items_text -%}{%- for item in cart.items -%}{{ item.quantity }} x {{ item.product.title }}{% unless item.variant.title contains 'Default' %} ({{ item.variant.title }}){% endunless %}{% if item.sku != blank %} [SKU {{ item.sku }}]{% endif %} — {{ item.final_line_price | money }}{% unless forloop.last %} | {% endunless %}{%- endfor -%} || Estimated subtotal {{ cart.total_price | money }}{%- endcapture -%}
           {%- form 'contact', id: 'edu-quote-form' -%}
             {%- if form.posted_successfully? -%}
-              <div class="q-success"><strong>Quote request received.</strong> Our team will reply within one business day with an itemized quote. Nothing has been charged or reserved.</div>
+              <div class="q-success"><strong>Quote request received.</strong> Our team will review it and reply within one business day with an itemized quote &mdash; including final shipping and tax. Nothing has been charged or reserved.</div>
             {%- endif -%}
             <input type="hidden" name="contact[Submission type]" value="Educator quote request">
             <input type="hidden" name="contact[Items]" value="{{ items_text | escape }}">
