@@ -410,7 +410,7 @@ a{ color:inherit; }
   .nav__search{ display: none; }
   .nav__logo{ justify-self: start; }
   .nav__action .label{ display: none; }
-  .subnav-inner{ grid-template-columns: auto 1fr; gap: 14px; }
+  .subnav-inner{ grid-template-columns: 1fr; gap: 14px; }
   .subnav .jumps{ display: none; }
   .subnav .stepper{ overflow-x: auto; scrollbar-width: none; white-space: nowrap; flex-wrap: nowrap; }
   .subnav .stepper::-webkit-scrollbar{ display: none; }
@@ -1982,7 +1982,7 @@ footer .cols .downloads a::after{
   padding-top: 22px;
   border-top: 0.5px solid var(--rule);
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: 1fr;
   gap: 16px 18px;
   align-items: center;
 }
@@ -3223,7 +3223,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 /* Section divider, mobile fallback. Long labels should stack vertically. */
 @media (max-width: 720px){
   .section-divider{
-    grid-template-columns: auto 1fr;
+    grid-template-columns: 1fr;
     gap: 16px;
   }
   .section-divider .line{ display: block; }
@@ -3466,9 +3466,6 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 
     <div class="pairs-with">
       <span class="label">Extend the play</span>
-      <div class="pair-thumb tile t-hue3 contained">
-        <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-      </div>
       <div class="pair-body">
         <h4>The Farmyard Set &nbsp;&middot;&nbsp; MTW-DP-FYS</h4>
         <p>Farm Mat, hand-felted farm animals, Fagus tractor and hay wagon, Papoose wooden fences. The full farmyard the Cow Shed lives at the center of. Catalog pg.&nbsp;48.</p>
@@ -3608,9 +3605,6 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 
     <div class="pairs-with">
       <span class="label">Stocks the market</span>
-      <div class="pair-thumb tile t-alt contained">
-        <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-      </div>
       <div class="pair-body">
         <h4>The Classroom Shop &nbsp;&middot;&nbsp; MTW-DP-SH</h4>
         <p>The General Stores stand, Big Box of play food, Cash Register, Shopping Cart, and Let's Go Shopping Collection. The classroom market the Harvest stocks. Catalog pg.&nbsp;49.</p>

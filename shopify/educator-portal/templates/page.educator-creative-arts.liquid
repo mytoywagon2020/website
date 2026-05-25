@@ -410,7 +410,7 @@ a{ color:inherit; }
   .nav__search{ display: none; }
   .nav__logo{ justify-self: start; }
   .nav__action .label{ display: none; }
-  .subnav-inner{ grid-template-columns: auto 1fr; gap: 14px; }
+  .subnav-inner{ grid-template-columns: 1fr; gap: 14px; }
   .subnav .jumps{ display: none; }
   .subnav .stepper{ overflow-x: auto; scrollbar-width: none; white-space: nowrap; flex-wrap: nowrap; }
   .subnav .stepper::-webkit-scrollbar{ display: none; }
@@ -1982,7 +1982,7 @@ footer .cols .downloads a::after{
   padding-top: 22px;
   border-top: 0.5px solid var(--rule);
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: 1fr;
   gap: 16px 18px;
   align-items: center;
 }
@@ -3218,7 +3218,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 /* Section divider, mobile fallback. Long labels should stack vertically. */
 @media (max-width: 720px){
   .section-divider{
-    grid-template-columns: auto 1fr;
+    grid-template-columns: 1fr;
     gap: 16px;
   }
   .section-divider .line{ display: block; }
@@ -3470,9 +3470,6 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 
     <div class="pairs-with">
       <span class="label">Extend the making</span>
-      <div class="pair-thumb tile t-hue3 contained">
-        <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-      </div>
       <div class="pair-body">
         <h4>The Eco-Cutters &nbsp;&middot;&nbsp; MTW-CA-ECBF</h4>
         <p>Stamp shapes from clay, dough, sand. The Eco-Cutters meet the press where making intersects with story.</p>
@@ -3596,9 +3593,6 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 
     <div class="pairs-with">
       <span class="label">Stamp meets press meets thread</span>
-      <div class="pair-thumb tile t-alt contained">
-        <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-      </div>
       <div class="pair-body">
         <h4>The Felt Florals Collection &nbsp;&middot;&nbsp; MTW-CA-FLC</h4>
         <p>Hand-felted flowers, ferns, and leaves for collage, pressing, weaving. The botanical alphabet the Eco-Cutters reach for.</p>

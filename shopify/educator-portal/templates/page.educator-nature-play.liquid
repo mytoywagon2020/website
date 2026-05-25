@@ -410,7 +410,7 @@ a{ color:inherit; }
   .nav__search{ display: none; }
   .nav__logo{ justify-self: start; }
   .nav__action .label{ display: none; }
-  .subnav-inner{ grid-template-columns: auto 1fr; gap: 14px; }
+  .subnav-inner{ grid-template-columns: 1fr; gap: 14px; }
   .subnav .jumps{ display: none; }
   .subnav .stepper{ overflow-x: auto; scrollbar-width: none; white-space: nowrap; flex-wrap: nowrap; }
   .subnav .stepper::-webkit-scrollbar{ display: none; }
@@ -1982,7 +1982,7 @@ footer .cols .downloads a::after{
   padding-top: 22px;
   border-top: 0.5px solid var(--rule);
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: 1fr;
   gap: 16px 18px;
   align-items: center;
 }
@@ -3266,7 +3266,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 /* Section divider, mobile fallback. Long labels should stack vertically. */
 @media (max-width: 720px){
   .section-divider{
-    grid-template-columns: auto 1fr;
+    grid-template-columns: 1fr;
     gap: 16px;
   }
   .section-divider .line{ display: block; }

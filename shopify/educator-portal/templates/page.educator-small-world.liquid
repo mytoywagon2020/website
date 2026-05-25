@@ -410,7 +410,7 @@ a{ color:inherit; }
   .nav__search{ display: none; }
   .nav__logo{ justify-self: start; }
   .nav__action .label{ display: none; }
-  .subnav-inner{ grid-template-columns: auto 1fr; gap: 14px; }
+  .subnav-inner{ grid-template-columns: 1fr; gap: 14px; }
   .subnav .jumps{ display: none; }
   .subnav .stepper{ overflow-x: auto; scrollbar-width: none; white-space: nowrap; flex-wrap: nowrap; }
   .subnav .stepper::-webkit-scrollbar{ display: none; }
@@ -1982,7 +1982,7 @@ footer .cols .downloads a::after{
   padding-top: 22px;
   border-top: 0.5px solid var(--rule);
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: 1fr;
   gap: 16px 18px;
   align-items: center;
 }
@@ -3245,7 +3245,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 /* Section divider, mobile fallback. Long labels should stack vertically. */
 @media (max-width: 720px){
   .section-divider{
-    grid-template-columns: auto 1fr;
+    grid-template-columns: 1fr;
     gap: 16px;
   }
   .section-divider .line{ display: block; }
@@ -3498,10 +3498,6 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 
     <div class="pairs-with">
       <span class="label">Extend the play</span>
-      <div class="pair-thumb tile t-alt has-photo">
-        <img src="{{ 'sw-complete-habitats-thumb.webp' | asset_url }}" alt="Tiny Tale Terrains: four round hand-felted biome canvases in green, blue, orange, and white."/>
-        <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-      </div>
       <div class="pair-body">
         <h4>The Complete Felt Habitats &nbsp;&middot;&nbsp; MTW-SW-FB5</h4>
         <p>Eight immersive Gus + Mabel felt habitats, including the Forest Caves Play Mat, bundled for layered small-world storytelling.</p>
@@ -3809,10 +3805,6 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 
     <div class="pairs-with">
       <span class="label">Continue the story</span>
-      <div class="pair-thumb tile t-alt has-photo">
-        <img src="{{ 'sw-room-on-the-broom.webp' | asset_url }}" alt="Room on the Broom puppet set: cat, tiger, frog, and bird finger puppets with the Julia Donaldson hardcover book."/>
-        <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-      </div>
       <div class="pair-body">
         <h4>More story bundles &middot; Sold separately</h4>
         <p><em>The Gruffalo&rsquo;s Child</em> 2-puppet set with rods and hardcover &middot; <em>Room on the Broom</em> 6-puppet set &middot; <em>Three Little Pigs</em> with hardcover &middot; <em>Old MacDonald Had a Farm</em> (see Circle Time gallery, below).</p>
