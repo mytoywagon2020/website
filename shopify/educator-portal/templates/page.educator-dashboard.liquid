@@ -1,0 +1,200 @@
+{% layout none %}
+{%- comment -%}
+  Educator Dashboard — gated portal home for approved educators.
+  Renders live customer data (orders, invoices) via Liquid, so it must be its own
+  template (the shared page.educator-portal template only outputs static page.content).
+  Closed unless the customer is tagged 'educator-approved' or is a B2B customer.
+{%- endcomment -%}
+{%- assign is_approved = false -%}
+{%- if customer and customer.tags contains 'educator-approved' -%}{%- assign is_approved = true -%}{%- endif -%}
+{%- if customer.b2b? -%}{%- assign is_approved = true -%}{%- endif -%}
+{%- if is_approved -%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Educator Dashboard | {{ shop.name }}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--cream:#F5F0E5;--warm-white:#FFFCF7;--ink:#2C2C2A;--forest:#3B6D11;--amber:#854F0B;--stone:#5F5E5A;--card-bg:#EDE3CD;--rule:rgba(44,44,42,0.12);--rule-strong:rgba(44,44,42,0.22);}
+    *{box-sizing:border-box;} html,body{margin:0;padding:0;}
+    body{font-family:'Mulish',sans-serif;color:var(--ink);background:var(--cream);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+    a{color:inherit;text-decoration:none;} img{max-width:100%;display:block;}
+    .wrap{max-width:1160px;margin:0 auto;padding:0 40px;}
+    .utility{background:var(--ink);color:var(--cream);font-size:12.5px;letter-spacing:.06em;}
+    .utility .wrap{display:flex;justify-content:space-between;align-items:center;padding:11px 40px;}
+    .utility a{color:rgba(245,240,229,.75);} .utility a:hover{color:var(--cream);}
+    header.nav{border-bottom:.5px solid var(--rule);background:var(--cream);}
+    header.nav .wrap{display:flex;justify-content:space-between;align-items:center;padding:20px 40px;gap:24px;}
+    .logo{font-family:'Cormorant Garamond',serif;font-size:26px;letter-spacing:.2em;text-transform:uppercase;line-height:1;color:var(--ink);}
+    .logo small{display:block;font-family:'Mulish',sans-serif;font-size:10.5px;letter-spacing:.22em;color:var(--stone);margin-top:7px;}
+    .nav-links{display:flex;gap:26px;font-size:14px;font-weight:500;}
+    .nav-links a:hover{color:var(--forest);}
+    .dash-hero{padding:48px 0 8px;}
+    .dash-hero .eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--stone);font-weight:600;}
+    .dash-hero h1{font-family:'Cormorant Garamond',serif;font-size:46px;font-weight:500;margin:12px 0 6px;letter-spacing:-.01em;line-height:1.05;}
+    .dash-hero h1 em{font-style:italic;}
+    .dash-hero p{color:var(--stone);margin:0;}
+    .actions{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:36px 0;}
+    .action{background:var(--warm-white);border:.5px solid var(--rule);border-radius:3px;padding:28px;display:flex;flex-direction:column;gap:10px;transition:border-color 160ms ease;}
+    .action:hover{border-color:var(--ink);}
+    .action h3{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;margin:0;}
+    .action p{font-size:13.5px;color:var(--stone);margin:0;flex:1;}
+    .action .go{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--forest);}
+    .action--accent{background:var(--ink);color:var(--cream);} .action--accent p{color:rgba(245,240,229,.8);} .action--accent .go{color:var(--cream);}
+    section.block{padding:30px 0;border-top:.5px solid var(--rule);}
+    .block h2{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:500;margin:0 0 18px;letter-spacing:-.005em;}
+    table.orders{width:100%;border-collapse:collapse;font-size:14px;}
+    table.orders th{text-align:left;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);font-weight:600;padding:10px 12px;border-bottom:.5px solid var(--rule-strong);}
+    table.orders td{padding:14px 12px;border-bottom:.5px solid var(--rule);vertical-align:middle;}
+    .pill{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.04em;padding:3px 11px;border-radius:999px;}
+    .pill--paid{background:#e7f0e0;color:var(--forest);} .pill--pending{background:#f6ecd8;color:var(--amber);} .pill--other{background:#ececec;color:var(--stone);}
+    .lk{color:var(--forest);font-weight:600;}
+    .empty{background:var(--warm-white);border:1px dashed var(--rule-strong);border-radius:3px;padding:36px;text-align:center;color:var(--stone);}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;border-radius:2px;background:var(--ink);color:var(--cream);border:.5px solid var(--ink);}
+    .btn--ghost{background:transparent;color:var(--ink);border-color:var(--rule-strong);}
+    .po-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:24px;align-items:start;}
+    .po-card{background:var(--warm-white);border:.5px solid var(--rule);border-radius:3px;padding:28px;}
+    .po-card h3{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:20px;margin:0 0 8px;}
+    footer.foot{border-top:.5px solid var(--rule);margin-top:44px;background:var(--cream);}
+    footer.foot .wrap{display:flex;justify-content:space-between;padding:28px 40px;font-size:12px;color:var(--stone);flex-wrap:wrap;gap:12px;}
+    @media(max-width:860px){.actions{grid-template-columns:1fr;}.po-grid{grid-template-columns:1fr;}.nav-links{display:none;}.dash-hero h1{font-size:34px;}.wrap,.utility .wrap,header.nav .wrap,footer.foot .wrap{padding-left:20px;padding-right:20px;}.orders thead{display:none;}table.orders td{display:block;padding:6px 12px;border:0;}table.orders tr{display:block;border-bottom:.5px solid var(--rule);padding:12px 0;}}
+  </style>
+</head>
+<body>
+  <div class="utility"><div class="wrap">
+    <span>My Toy Wagon &middot; Educator Portal</span>
+    <span><a href="{{ routes.account_url }}">Account</a> &nbsp;&middot;&nbsp; <a href="{{ routes.account_logout_url }}">Sign out</a></span>
+  </div></div>
+
+  <header class="nav"><div class="wrap">
+    <a href="/pages/educator-dashboard" class="logo">My Toy Wagon<small>Educator Portal</small></a>
+    <nav class="nav-links">
+      <a href="/pages/educators">Educator Catalog</a>
+      <a href="#orders">Orders</a>
+      <a href="#invoices">Invoices</a>
+      <a href="#po">Upload PO</a>
+      <a href="/pages/procurement-guide">Procurement</a>
+    </nav>
+  </div></header>
+
+  <main class="wrap">
+    <section class="dash-hero">
+      <span class="eyebrow">Educator Dashboard</span>
+      <h1>Welcome back{% if customer.first_name != blank %}, <em>{{ customer.first_name }}</em>{% endif %}.</h1>
+      <p>
+        {%- if customer.b2b? and customer.current_company != blank -%}{{ customer.current_company.name }} &middot; {% endif -%}
+        Approved educator account &middot; {{ customer.email }}
+      </p>
+    </section>
+
+    <section class="actions">
+      <a class="action action--accent" href="/pages/educators">
+        <h3>Shop the Educator Catalog</h3>
+        <p>Browse the full catalog at your educator pricing and build a quote.</p>
+        <span class="go">Open the catalog &rarr;</span>
+      </a>
+      <a class="action" href="/pages/new-quote">
+        <h3>Start a new quote</h3>
+        <p>Add items and quantities, then submit a quote for a purchase order.</p>
+        <span class="go">New quote &rarr;</span>
+      </a>
+      <a class="action" href="#po">
+        <h3>Upload a purchase order</h3>
+        <p>Send your school or district PO to fulfill an approved quote.</p>
+        <span class="go">Upload PO &rarr;</span>
+      </a>
+    </section>
+
+    <section class="block" id="orders">
+      <h2>Your orders</h2>
+      {%- if customer.orders.size > 0 -%}
+      <table class="orders">
+        <thead><tr><th>Order</th><th>Date</th><th>Payment</th><th>Fulfillment</th><th>Total</th><th></th></tr></thead>
+        <tbody>
+        {%- for order in customer.orders -%}
+          <tr>
+            <td><strong>{{ order.name }}</strong></td>
+            <td>{{ order.created_at | date: "%b %-d, %Y" }}</td>
+            <td>{% assign fs = order.financial_status %}<span class="pill {% if fs == 'paid' %}pill--paid{% elsif fs == 'pending' or fs == 'partially_paid' or fs == 'authorized' %}pill--pending{% else %}pill--other{% endif %}">{{ order.financial_status_label }}</span></td>
+            <td>{{ order.fulfillment_status_label | default: 'Unfulfilled' }}</td>
+            <td>{{ order.total_price | money }}</td>
+            <td><a class="lk" href="{{ order.customer_url }}">View &rarr;</a></td>
+          </tr>
+        {%- endfor -%}
+        </tbody>
+      </table>
+      {%- else -%}
+      <div class="empty">You have no orders yet. <a class="lk" href="/pages/educators">Shop the Educator Catalog &rarr;</a></div>
+      {%- endif -%}
+    </section>
+
+    <section class="block" id="invoices">
+      <h2>Invoices &amp; payment terms</h2>
+      {%- assign open_count = 0 -%}
+      {%- for order in customer.orders -%}{%- if order.financial_status == 'pending' or order.financial_status == 'partially_paid' or order.financial_status == 'authorized' -%}{%- assign open_count = open_count | plus: 1 -%}{%- endif -%}{%- endfor -%}
+      {%- if open_count > 0 -%}
+      <table class="orders">
+        <thead><tr><th>Invoice</th><th>Date</th><th>Status</th><th>Amount</th><th></th></tr></thead>
+        <tbody>
+        {%- for order in customer.orders -%}
+          {%- if order.financial_status == 'pending' or order.financial_status == 'partially_paid' or order.financial_status == 'authorized' -%}
+          <tr>
+            <td><strong>{{ order.name }}</strong></td>
+            <td>{{ order.created_at | date: "%b %-d, %Y" }}</td>
+            <td><span class="pill pill--pending">{{ order.financial_status_label }}</span></td>
+            <td>{{ order.total_price | money }}</td>
+            <td><a class="lk" href="{{ order.customer_url }}">View / pay &rarr;</a></td>
+          </tr>
+          {%- endif -%}
+        {%- endfor -%}
+        </tbody>
+      </table>
+      <p style="color:var(--stone);font-size:13px;margin-top:14px;">Net-30 / Net-60 invoices appear here once a purchase order is processed. Open the invoice to download a PDF or pay online.</p>
+      {%- else -%}
+      <div class="empty">No open invoices. Net-30 / Net-60 invoices will appear here once a purchase order is processed.</div>
+      {%- endif -%}
+    </section>
+
+    <section class="block" id="po">
+      <h2>Upload a purchase order</h2>
+      <div class="po-grid">
+        <div class="po-card">
+          <h3>Send us your PO</h3>
+          <p style="margin-top:0;color:var(--stone);">Have an approved quote? Upload your school or district PO (PDF) and we&rsquo;ll convert it to an order on your terms.</p>
+          <!-- TALLY_PO_FORM: replace REPLACE_WITH_FORM_ID with your Tally PO-upload form id -->
+          <iframe data-tally-src="https://tally.so/embed/REPLACE_WITH_FORM_ID?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="340" frameborder="0" title="Upload Purchase Order"></iframe>
+        </div>
+        <div class="po-card">
+          <h3>Prefer email?</h3>
+          <p style="color:var(--stone);font-size:14px;">Email your PO to <a class="lk" href="mailto:educators@mytoywagon.com?subject=Purchase%20Order%20Submission">educators@mytoywagon.com</a> referencing your quote number. We confirm within one business day.</p>
+          <p style="color:var(--stone);font-size:13px;">Please include: PO number, billing contact, ship-to address(es), and a tax-exempt certificate if not already on file.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2>Account &amp; support</h2>
+      <p>
+        <a class="btn btn--ghost" href="{{ routes.account_url }}">Account &amp; addresses</a> &nbsp;
+        <a class="btn btn--ghost" href="/pages/procurement-guide">Procurement guide</a> &nbsp;
+        <a class="btn btn--ghost" href="/pages/vendor-profile">Vendor profile / W-9</a>
+      </p>
+      <p style="color:var(--stone);font-size:14px;">Questions about an order, quote, or your account? <a class="lk" href="mailto:educators@mytoywagon.com">educators@mytoywagon.com</a></p>
+    </section>
+  </main>
+
+  <footer class="foot"><div class="wrap">
+    <span>&copy; 2026 My Toy Wagon &middot; Educator Portal</span>
+    <span><a href="/pages/educators">Catalog</a> &nbsp;&middot;&nbsp; <a href="/pages/procurement-guide">Procurement</a> &nbsp;&middot;&nbsp; <a href="{{ routes.account_logout_url }}">Sign out</a></span>
+  </div></footer>
+  <script src="https://tally.so/widgets/embed.js"></script>
+</body>
+</html>
+{%- else -%}
+{% render 'educator-gate' %}
+{%- endif -%}
