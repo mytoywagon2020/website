@@ -1,4 +1,8 @@
 {% layout none %}
+{%- comment -%} Educator catalog gate: closed unless approved educator. {%- endcomment -%}
+{%- assign is_approved = false -%}
+{%- if customer and customer.tags contains 'educator-approved' -%}{%- assign is_approved = true -%}{%- endif -%}
+{%- if is_approved -%}
 <!doctype html>
 <html lang="en">
 <head>
@@ -4670,3 +4674,6 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 
 </body>
 </html>
+{%- else -%}
+{% render 'educator-gate' %}
+{%- endif -%}
