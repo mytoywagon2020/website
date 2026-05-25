@@ -135,3 +135,7 @@ Created to fill gaps in the Connetix range. **Need maker barcodes + product imag
 - **US safety standards:** ASTM F963-17 (incl. 4.3.5.1/4.3.5.2 soluble heavy metal) · CPSIA Sect 101 (lead) · CPSIA Sect 103 / 16 CFR 1307 (phthalates) · CA Prop 65 (DEHP, BBP, DBP, DIOP, DnHP). Factory passes **BSCI** employment-conditions audit. Award-winning, 100% non-toxic.
 - **Range note:** launched with the **62-piece Rainbow Starter**; pastel range (8 colours) added 2021; ball-run packs in rainbow + pastel.
 - ⏳ Apply these specs to the 8 new Connetix product descriptions (Shopping feed) when enriching.
+
+## Future: public retail flip-book catalog (SEO)
+
+When the public retail "Educator Catalog" flip-book page is built on the retail shop, that is the **one SEO surface**: keyword-rich title/H1/meta, and links out to product pages pass ranking value. **Caveat:** it can only link to products that are **public on retail** — anything currently **Draft (the entire Connetix line, per the "not live on retail" rule)** won't be linkable until published. Decide per-product whether to publish when that page is built. The gated catalog (registration page → section-cards entryway → 8 sections → dashboard) needs **no SEO**. The single public doorway today is the **registration/apply page** (`designs/educator.html` → `/pages/educator-program`).
