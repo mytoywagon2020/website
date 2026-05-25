@@ -271,7 +271,11 @@ Earlier draft assumed non-Plus Shopify with apps and Liquid hacks. **Discard tha
 - **American spelling throughout** — color (not colour), fiber (not fibre), center (not centre).
 - **Educator titles:** descriptive + MTW-branded; **no maker brand in the title unless it's a marquee credibility name** (Connetix, Bauspiel, Grimm's, Holztiger, Tara Treasures). **Gry & Sif is NOT marquee** — drop it. (Brand/cert/provenance still go in the body/specs.)
 - **Catalog citation:** "From the 2026 **Fall** Edit" (twice-yearly cadence: Fall + Spring).
-- **No "Request a quote"** CTAs — cards link to the product PDP ("View product").
+- **No "Request a quote"** CTAs — cards link to the product PDP ("View product →").
+- **Remove redundancy *unless it adds value*.** Cut repeated copy/labels (e.g. "Creative Arts" on every card meta, the same opener line across sections, "Price on request"). BUT keep intentional repetition that earns its place — e.g. a hero product also shown in its grid when the two images are *different and complementary* (lifestyle hero + clean product-shot grid card). Different media (web ≠ print): make the online version superior, not a literal clone of the catalog.
+- **Each featured hero sits directly before its matching grid** (The Floral → felt florals, Eco-Cutters → eco-cutters grid, Heirloom Press → Pressing & Preserving, etc.).
+- **No blanket spec strip over a mixed-maker grid.** A section header may only state material/origin/cert that is true for *every* product in it. When makers/origins differ (e.g. Grapat/Spain + Harrisville/US in one grid), keep it neutral ("Natural materials and child-safe finishes; maker and origin vary by piece") and put specifics per product.
+- **Only claim certs/materials we can verify.** Don't assert OEKO-TEX/GOTS/Fair Trade or a material (metal vs biodegradable bioplastic; glass vs paper press) unless confirmed for that product. Conceal a little for marketing, but never inaccurately.
 
 ---
 
