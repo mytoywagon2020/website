@@ -161,30 +161,52 @@
     </section>
 
     <section class="block" id="po">
-      <h2>Upload a purchase order</h2>
+      <h2>Submit a purchase order</h2>
       <div class="po-grid">
         <div class="po-card">
-          <h3>Send us your PO</h3>
-          <p style="margin-top:0;color:var(--stone);">Have an approved quote? Upload your school or district PO (PDF) and we&rsquo;ll convert it to an order on your terms.</p>
-          <!-- TALLY_PO_FORM: replace REPLACE_WITH_FORM_ID with your Tally PO-upload form id -->
-          <iframe data-tally-src="https://tally.so/embed/REPLACE_WITH_FORM_ID?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="340" frameborder="0" title="Upload Purchase Order"></iframe>
+          <h3>Email us your PO</h3>
+          <p style="margin-top:0;color:var(--stone);">Have an approved quote? Send your school or district PO (PDF) and we convert it to an order on your terms &mdash; we confirm within one business day. Inventory is allocated once your PO is received.</p>
+          <p style="margin:14px 0 4px;"><a class="btn" href="mailto:educators@mytoywagon.com?subject=Purchase%20Order%20Submission&body=Quote%20number%3A%20%0APO%20number%3A%20%0ABilling%20contact%3A%20%0AShip-to%20address(es)%3A%20%0ANeeded%20by%3A%20%0ANotes%3A%20">Email your PO &rarr;</a></p>
+          <p style="color:var(--stone);font-size:12.5px;margin-top:12px;">Include: quote number, PO number, billing contact, ship-to address(es), needed-by date, and a tax-exempt certificate if not already on file.</p>
         </div>
         <div class="po-card">
-          <h3>Prefer email?</h3>
-          <p style="color:var(--stone);font-size:14px;">Email your PO to <a class="lk" href="mailto:educators@mytoywagon.com?subject=Purchase%20Order%20Submission">educators@mytoywagon.com</a> referencing your quote number. We confirm within one business day.</p>
-          <p style="color:var(--stone);font-size:13px;">Please include: PO number, billing contact, ship-to address(es), and a tax-exempt certificate if not already on file.</p>
+          <h3>No PO yet?</h3>
+          <p style="color:var(--stone);font-size:14px;">Build a quote first &mdash; take the itemized quote (pricing held 45 days) to your procurement team, then send the PO back to us.</p>
+          <p style="margin:12px 0 0;"><a class="btn btn--ghost" href="/pages/new-quote">Start a quote &rarr;</a></p>
+          <p style="color:var(--stone);font-size:12.5px;margin-top:12px;">Prefer to pay now? Card, Shop Pay, Apple Pay, Google Pay, and ACH are all available at checkout.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="account">
+      <h2>Your account</h2>
+      <div class="po-grid">
+        <div class="po-card">
+          <h3>Account details</h3>
+          <p style="margin:0 0 6px;font-size:14px;"><strong>Status:</strong> Approved educator</p>
+          {%- if customer.b2b? and customer.current_company != blank -%}<p style="margin:0 0 6px;font-size:14px;"><strong>Organization:</strong> {{ customer.current_company.name }}</p>{%- endif -%}
+          <p style="margin:0 0 6px;font-size:14px;"><strong>Contact:</strong> {{ customer.name | strip }}{% if customer.email != blank %} &middot; {{ customer.email }}{% endif %}</p>
+          <p style="margin:0 0 14px;font-size:14px;"><strong>Terms:</strong> Net-30 / Net-60 available for approved organizations &mdash; confirmed on each quote.</p>
+          <a class="btn btn--ghost" href="{{ routes.account_url }}">Account &amp; addresses</a>
+        </div>
+        <div class="po-card">
+          <h3>Vendor documents</h3>
+          <p style="margin:0 0 12px;color:var(--stone);font-size:14px;">For your accounts-payable team and grant or foundation funding: W-9, certificate of insurance, tax-exempt handling, and supplier documentation.</p>
+          <a class="btn btn--ghost" href="/pages/vendor-profile">Vendor profile / W-9</a>
+          <p style="margin:12px 0 0;font-size:13px;"><a class="lk" href="mailto:educators@mytoywagon.com?subject=Vendor%20documents%20request&body=Please%20send%3A%20W-9%2C%20COI%2C%20tax-exempt%2C%20supplier%20packet.%0AOrganization%3A%20">Request W-9, COI &amp; supplier packet &rarr;</a></p>
         </div>
       </div>
     </section>
 
     <section class="block">
-      <h2>Account &amp; support</h2>
+      <h2>Resources &amp; support</h2>
       <p>
-        <a class="btn btn--ghost" href="{{ routes.account_url }}">Account &amp; addresses</a> &nbsp;
+        <a class="btn btn--ghost" href="/pages/educators">Educator Catalog</a> &nbsp;
         <a class="btn btn--ghost" href="/pages/procurement-guide">Procurement guide</a> &nbsp;
-        <a class="btn btn--ghost" href="/pages/vendor-profile">Vendor profile / W-9</a>
+        <a class="btn btn--ghost" href="/pages/new-quote">Request a quote</a>
       </p>
-      <p style="color:var(--stone);font-size:14px;">Questions about an order, quote, or your account? <a class="lk" href="mailto:educators@mytoywagon.com">educators@mytoywagon.com</a></p>
+      <p style="color:var(--stone);font-size:14px;margin-top:14px;">Need a curriculum-alignment letter for an order or grant? <a class="lk" href="mailto:educators@mytoywagon.com?subject=Curriculum-alignment%20letter">Ask our team &rarr;</a></p>
+      <p style="color:var(--stone);font-size:14px;">Questions about an order, quote, or your account: <a class="lk" href="mailto:educators@mytoywagon.com">educators@mytoywagon.com</a> &middot; <a class="lk" href="tel:+16268410421">(626) 841-0421</a> &middot; Mon&ndash;Fri 9&ndash;5 PT</p>
     </section>
   </main>
 
