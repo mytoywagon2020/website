@@ -389,6 +389,7 @@
           {%- endif -%}
           {%- if edu_min != blank -%}<p class="ff-edu-min">Classroom minimum: {{ edu_min }}</p>{%- endif -%}
           {%- if edu_curric != blank -%}<p class="ff-edu-curric"><span class="gk">Curriculum</span>{{ edu_curric }}</p>{%- endif -%}
+          <p class="ff-edu-pricing" style="font-size:12.5px;line-height:1.5;color:var(--stone,#5F5E5A);margin:2px 0 10px;border-top:1px solid var(--rule,rgba(44,44,42,0.12));padding-top:10px;">Catalog shows current retail. Your <strong>educator quote</strong> reflects up-to-date pricing, volume &amp; freight &mdash; with PO &amp; Net-30/60 terms, tax-exempt handling, combined-freight quotes, replacement parts, and curriculum-alignment letters.</p>
           <div class="ff-edu-cta">
             <a class="ff-btn-edu" data-ff-quote href="{{ section.settings.edu_quote_url | default: '/pages/new-quote' }}">Add to quote &middot; request PO pricing</a>
             <a class="ff-edu-link" href="/pages/educator-dashboard">Educator dashboard &rarr;</a>
