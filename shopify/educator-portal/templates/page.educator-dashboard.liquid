@@ -126,10 +126,14 @@
       assign open_count = 0
       assign open_total = 0
       for o in customer.orders
-        if o.financial_status == 'pending' or o.financial_status == 'partially_paid' or o.financial_status == 'authorized'
+        assign o_paid = false
+        if o.financial_status == 'paid' or o.tags contains 'po-paid-external'
+          assign o_paid = true
+        endif
+        unless o_paid
           assign open_count = open_count | plus: 1
           assign open_total = open_total | plus: o.total_price
-        endif
+        endunless
       endfor
     -%}
 
@@ -181,11 +185,23 @@
         <thead><tr><th>Order</th><th>Date</th><th>Payment</th><th>Fulfillment</th><th>Total</th><th></th></tr></thead>
         <tbody>
         {%- for order in customer.orders -%}
+          {%- assign o_paid = false -%}{%- if order.financial_status == 'paid' or order.tags contains 'po-paid-external' -%}{%- assign o_paid = true -%}{%- endif -%}
+          {%- assign o_ful = false -%}{%- if order.fulfillment_status == 'fulfilled' or order.tags contains 'fulfilled-external' -%}{%- assign o_ful = true -%}{%- endif -%}
           <tr>
             <td><strong>{{ order.name }}</strong></td>
             <td>{{ order.created_at | date: "%b %-d, %Y" }}</td>
-            <td>{% assign fs = order.financial_status %}<span class="pill {% if fs == 'paid' %}pill--paid{% elsif fs == 'pending' or fs == 'partially_paid' or fs == 'authorized' %}pill--pending{% else %}pill--other{% endif %}">{{ order.financial_status_label }}</span></td>
-            <td>{{ order.fulfillment_status_label | default: 'Unfulfilled' }}</td>
+            <td>{% if o_paid %}<span class="pill pill--paid">Paid</span>{% else %}<span class="pill pill--pending">Payment due</span>{% endif %}</td>
+            <td>
+              {%- assign fstat = order.fulfillment_status -%}
+              {%- if fstat == 'fulfilled' or order.tags contains 'fulfilled-external' -%}<span class="pill pill--paid">Fulfilled</span>
+              {%- elsif fstat == 'partial' -%}<span class="pill pill--pending">Partially shipped</span>
+              {%- else -%}<span class="pill pill--other">Processing</span>{%- endif -%}
+              {%- for f in order.fulfillments -%}
+                {%- if f.tracking_url != blank -%}<div style="margin-top:5px;"><a class="lk" href="{{ f.tracking_url }}">Track{% if f.tracking_company != blank %} {{ f.tracking_company }}{% endif %}{% if f.tracking_number != blank %} {{ f.tracking_number }}{% endif %} &rarr;</a></div>
+                {%- elsif f.tracking_number != blank -%}<div style="margin-top:5px;font-size:12.5px;color:var(--stone);">{{ f.tracking_company }} {{ f.tracking_number }}</div>{%- endif -%}
+              {%- endfor -%}
+              {%- if fstat == 'partial' -%}{%- assign rem = 0 -%}{%- for li in order.line_items -%}{%- assign rem = rem | plus: li.fulfillable_quantity -%}{%- endfor -%}{%- if rem > 0 -%}<div style="margin-top:5px;font-size:12px;color:var(--amber);">{{ rem }} item{% if rem > 1 %}s{% endif %} still to ship</div>{%- endif -%}{%- endif -%}
+            </td>
             <td>{{ order.total_price | money }}</td>
             <td><a class="lk" href="{{ order.customer_url }}">View &rarr;</a></td>
           </tr>
@@ -207,26 +223,27 @@
 
     <section class="block" id="invoices">
       <h2>Invoices &amp; payment terms</h2>
-      {%- assign open_count = 0 -%}
-      {%- for order in customer.orders -%}{%- if order.financial_status == 'pending' or order.financial_status == 'partially_paid' or order.financial_status == 'authorized' -%}{%- assign open_count = open_count | plus: 1 -%}{%- endif -%}{%- endfor -%}
-      {%- if open_count > 0 -%}
+      {%- assign inv_count = 0 -%}
+      {%- for order in customer.orders -%}{%- assign o_paid = false -%}{%- if order.financial_status == 'paid' or order.tags contains 'po-paid-external' -%}{%- assign o_paid = true -%}{%- endif -%}{%- unless o_paid -%}{%- assign inv_count = inv_count | plus: 1 -%}{%- endunless -%}{%- endfor -%}
+      {%- if inv_count > 0 -%}
       <table class="orders">
         <thead><tr><th>Invoice</th><th>Date</th><th>Status</th><th>Amount</th><th></th></tr></thead>
         <tbody>
         {%- for order in customer.orders -%}
-          {%- if order.financial_status == 'pending' or order.financial_status == 'partially_paid' or order.financial_status == 'authorized' -%}
+          {%- assign o_paid = false -%}{%- if order.financial_status == 'paid' or order.tags contains 'po-paid-external' -%}{%- assign o_paid = true -%}{%- endif -%}
+          {%- unless o_paid -%}
           <tr>
             <td><strong>{{ order.name }}</strong></td>
             <td>{{ order.created_at | date: "%b %-d, %Y" }}</td>
-            <td><span class="pill pill--pending">{{ order.financial_status_label }}</span></td>
+            <td><span class="pill pill--pending">Payment due</span></td>
             <td>{{ order.total_price | money }}</td>
             <td><a class="lk" href="{{ order.customer_url }}">View / pay &rarr;</a></td>
           </tr>
-          {%- endif -%}
+          {%- endunless -%}
         {%- endfor -%}
         </tbody>
       </table>
-      <p style="color:var(--stone);font-size:13px;margin-top:14px;">Net-30 / Net-60 invoices appear here once a purchase order is processed. Open the invoice to download a PDF or pay online.</p>
+      <p style="color:var(--stone);font-size:13px;margin-top:14px;">Orders paid by PO, check, or ACH are marked paid here as soon as we record your payment. Net-30 / Net-60 terms available for approved organizations.</p>
       {%- else -%}
       <div class="empty">No open invoices. Net-30 / Net-60 invoices will appear here once a purchase order is processed.</div>
       {%- endif -%}
