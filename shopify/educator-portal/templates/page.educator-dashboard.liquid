@@ -190,7 +190,7 @@
           <tr>
             <td><strong>{{ order.name }}</strong></td>
             <td>{{ order.created_at | date: "%b %-d, %Y" }}</td>
-            <td>{% if o_paid %}<span class="pill pill--paid">Paid</span>{% else %}<span class="pill pill--pending">Payment due</span>{% endif %}</td>
+            <td>{% if o_paid %}<span class="pill pill--paid">Paid</span>{% elsif order.tags contains 'invoice-sent' %}<span class="pill pill--pending">Invoiced</span>{% else %}<span class="pill pill--other">Payment due</span>{% endif %}</td>
             <td>
               {%- assign fstat = order.fulfillment_status -%}
               {%- if fstat == 'fulfilled' or order.tags contains 'fulfilled-external' -%}<span class="pill pill--paid">Fulfilled</span>
@@ -235,7 +235,7 @@
           <tr>
             <td><strong>{{ order.name }}</strong></td>
             <td>{{ order.created_at | date: "%b %-d, %Y" }}</td>
-            <td><span class="pill pill--pending">Payment due</span></td>
+            <td>{% if order.tags contains 'invoice-sent' %}<span class="pill pill--pending">Invoiced</span>{% else %}<span class="pill pill--other">Payment due</span>{% endif %}</td>
             <td>{{ order.total_price | money }}</td>
             <td><a class="lk" href="{{ order.customer_url }}">View / pay &rarr;</a></td>
           </tr>
