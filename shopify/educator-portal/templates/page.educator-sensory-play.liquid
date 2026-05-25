@@ -2,6 +2,7 @@
 {%- comment -%} Educator catalog gate: closed unless approved educator. {%- endcomment -%}
 {%- assign is_approved = false -%}
 {%- if customer and customer.tags contains 'educator-approved' -%}{%- assign is_approved = true -%}{%- endif -%}
+{%- if customer.b2b? -%}{%- assign is_approved = true -%}{%- endif -%}
 {%- if is_approved -%}
 <!doctype html>
 <html lang="en">
@@ -20,22 +21,21 @@
        4. Each has its own canonical pointing to itself
      ========================================================================= -->
 <title>Sensory Play for Schools &middot; My Toy Wagon Educator Catalog</title>
-<meta name="description" content="Hand-felted play mats, habitat puppets, and circle-time story sets for Pre-K to Grade 2 literacy classrooms. Hand-made in Nepal. Net-30 invoicing,...">
+<meta name="description" content="Maple sensory trays, scented therapy dough, and Montessori sand trays for Pre-K to Grade 2 classrooms. Net-30 invoicing and tax-exempt ordering for approved schools.">
 <link rel="canonical" href="https://mytoywagon.com/pages/educator-sensory-play" />
 
 <!-- Open Graph (social shares: Facebook, LinkedIn) -->
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Sensory Play for Schools &middot; My Toy Wagon Educator Catalog" />
-<meta property="og:description" content="Hand-felted play mats, habitat puppets, and circle-time story sets for Pre-K to Grade 2 literacy classrooms. Net-30 and tax-exempt for approved schools." />
+<meta property="og:description" content="Maple sensory trays, scented therapy dough, and Montessori sand trays for Pre-K to Grade 2 classrooms. Net-30 and tax-exempt for approved schools." />
 <meta property="og:url" content="https://mytoywagon.com/pages/educator-sensory-play" />
-<meta property="og:image" content="https://mytoywagon.com/assets/og-sensory-play.jpg" />
+<meta property="og:image" content="https://cdn.shopify.com/s/files/1/0522/0882/8586/files/sensory-play-rainbow-imaginative-play-tray-cover.webp?v=1779376785" />
 <meta property="og:site_name" content="My Toy Wagon" />
 
 <!-- Twitter card -->
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="https://mytoywagon.com/assets/og-sensory-play.jpg" />
 <meta name="twitter:title" content="Sensory Play for Schools &middot; My Toy Wagon Educator Catalog" />
-<meta name="twitter:description" content="Hand-felted play mats, habitat puppets, and circle-time story sets for Pre-K to Grade 2 literacy classrooms. Net-30 and tax-exempt for approved schools." />
+<meta name="twitter:description" content="Maple sensory trays, scented therapy dough, and Montessori sand trays for Pre-K to Grade 2 classrooms. Net-30 and tax-exempt for approved schools." />
 
 <!-- Structured data: BreadcrumbList for educator portal hierarchy.
      Tells Google: Home > Educator Catalog > Sensory Play.
@@ -103,7 +103,7 @@
   /* type */
   --serif:        "Cormorant Garamond", "Garamond", Georgia, serif;
   --sans:         "Mulish", "Helvetica Neue", system-ui, sans-serif;
-  --mono:         ui-monospace, "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+  --mono:         "Mulish", "Helvetica Neue", system-ui, sans-serif;
 }
 
 /* ----------------------------- BASE ------------------------------ */
@@ -143,7 +143,7 @@ a{ color:inherit; }
 }
 .meta{
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 10.5px;
   letter-spacing: .06em;
 }
 .rule-hair{ display:block; width:100%; height:1px; background: var(--rule-soft); border:0; }
@@ -260,7 +260,7 @@ a{ color:inherit; }
   border-radius: 999px;
   font-family: var(--serif);
   font-style: italic;
-  font-size: 14px;
+  font-size: 14.5px;
   color: var(--stone);
   cursor: text;
   width: 100%;
@@ -317,7 +317,7 @@ a{ color:inherit; }
   background: var(--forest);
   color: var(--cream);
   border-radius: 9px;
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 600;
   letter-spacing: 0;
 }
@@ -441,7 +441,7 @@ a{ color:inherit; }
   font-family: var(--sans);
   font-style: normal;
   font-weight: 500;
-  font-size: 12px;
+  font-size: 12.5px;
   letter-spacing: .04em;
   color: var(--cream);
   line-height: 1.5;
@@ -498,7 +498,7 @@ a{ color:inherit; }
   font-style: normal;
   font-weight: 500;
   font-family: var(--sans);
-  font-size: 11px;
+  font-size: 10.5px;
   letter-spacing: .2em;
   text-transform: uppercase;
   color: var(--stone);
@@ -561,7 +561,7 @@ a{ color:inherit; }
   align-items: center;
   gap: 6px;
   font-family: var(--sans);
-  font-size: 11px;
+  font-size: 10.5px;
   letter-spacing: .14em;
   text-transform: uppercase;
   font-weight: 600;
@@ -598,7 +598,7 @@ a{ color:inherit; }
   right: 12px; bottom: 12px;
   z-index: 3;
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 9.5px;
   letter-spacing: .08em;
   color: rgba(44,44,42,.55);
   background: rgba(245,240,229,.78);
@@ -631,7 +631,7 @@ a{ color:inherit; }
 .qf-chip-stat{
   font-family: var(--sans);
   font-weight: 500;
-  font-size: 12px;
+  font-size: 11.5px;
   letter-spacing: .14em;
   text-transform: uppercase;
   color: var(--ink);
@@ -654,7 +654,7 @@ a{ color:inherit; }
     scrollbar-width: none;
   }
   .quick-facts-inner::-webkit-scrollbar{ display: none; }
-  .qf-chip-stat{ font-size: 11px; padding: 6px 16px; flex-shrink: 0; }
+  .qf-chip-stat{ font-size: 10.5px; padding: 6px 16px; flex-shrink: 0; }
 }
 
 /* ----------------------- BOM (kit bill-of-materials) ----------------------- */
@@ -682,7 +682,7 @@ a{ color:inherit; }
 .bom-item .sku-tba{
   display: inline-block;
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 9.5px;
   letter-spacing: .12em;
   text-transform: uppercase;
   color: var(--stone);
@@ -704,7 +704,7 @@ a{ color:inherit; }
   display: flex; align-items: baseline; justify-content: space-between;
   padding-top: 14px;
   font-family: var(--sans);
-  font-size: 12px;
+  font-size: 11.5px;
   letter-spacing: .14em;
   text-transform: uppercase;
 }
@@ -796,7 +796,7 @@ a{ color:inherit; }
 .view-pdp:hover{ color: var(--ink); border-color: var(--ink); }
 .stock-pill{
   font-family: var(--sans);
-  font-size: 11px;
+  font-size: 10.5px;
   letter-spacing: .14em;
   text-transform: uppercase;
   font-weight: 500;
@@ -837,7 +837,7 @@ a{ color:inherit; }
 }
 .kit .price-note{
   font-family: var(--sans);
-  font-size: 11px;
+  font-size: 10.5px;
   letter-spacing: .14em;
   text-transform: uppercase;
   color: var(--stone);
@@ -907,7 +907,7 @@ a{ color:inherit; }
   background: var(--forest);
   color: var(--cream);
   border-radius: 9px;
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 600;
 }
 
@@ -981,7 +981,7 @@ a{ color:inherit; }
 }
 .step p{
   margin: 0;
-  font-size: 14px;
+  font-size: 14.5px;
   line-height: 1.6;
   color: var(--ink-soft);
   max-width: 36ch;
@@ -1016,7 +1016,7 @@ a{ color:inherit; }
   text-align: center;
   padding: 12px 16px;
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 10.5px;
   letter-spacing: .12em;
   text-transform: uppercase;
   color: var(--stone);
@@ -1053,7 +1053,7 @@ a{ color:inherit; }
   padding-top: 24px;
   border-top: 0.5px solid var(--rule);
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 10.5px;
   letter-spacing: .12em;
   text-transform: uppercase;
   color: var(--ink-soft);
@@ -1095,7 +1095,7 @@ a{ color:inherit; }
 .human-touch .ht-body p{
   margin: 0;
   font-family: var(--sans);
-  font-size: 13px;
+  font-size: 13.5px;
   color: var(--ink-soft);
   line-height: 1.55;
 }
@@ -1276,7 +1276,7 @@ a{ color:inherit; }
 .klaviyo-form-row label{
   font-family: var(--sans);
   font-weight: 600;
-  font-size: 11px;
+  font-size: 10.5px;
   letter-spacing: .14em;
   text-transform: uppercase;
   color: var(--stone);
@@ -1284,7 +1284,7 @@ a{ color:inherit; }
 .klaviyo-form-row input,
 .klaviyo-form-row select{
   font-family: var(--sans);
-  font-size: 14px;
+  font-size: 14.5px;
   color: var(--ink);
   background: var(--cream);
   border: 0.5px solid var(--rule-strong);
@@ -1347,7 +1347,7 @@ footer .cols .downloads a:hover{ color: color-mix(in oklab, var(--accent-soft) 8
 footer .cols .downloads a::after{
   content: attr(data-ext);
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 9.5px;
   letter-spacing: .12em;
   color: rgba(250,246,237,.5);
   border: 0.5px solid rgba(250,246,237,.25);
@@ -1411,7 +1411,7 @@ footer .cols .downloads a::after{
 .outfit .head .right .meta{
   margin-top: 18px;
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 10.5px;
   letter-spacing: .08em;
   color: var(--stone);
 }
@@ -1445,7 +1445,7 @@ footer .cols .downloads a::after{
 }
 .outfit .kit .tier{
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 10.5px;
   letter-spacing: .14em;
   text-transform: uppercase;
   color: var(--stone);
@@ -1474,7 +1474,7 @@ footer .cols .downloads a::after{
   margin: 24px 0 22px;
 }
 .outfit .kit .desc{
-  font-size: 14px;
+  font-size: 14.5px;
   line-height: 1.65;
   color: var(--ink-soft);
   margin: 0 0 22px;
@@ -1593,11 +1593,12 @@ footer .cols .downloads a::after{
   z-index: 3;
   display: flex; justify-content: space-between; align-items: flex-start;
   color: var(--cream);
+  text-shadow: 0 1px 12px rgba(0,0,0,.5);
 }
 .cover .head .vol{ text-align:right; }
 .cover .head .vol .num{
   font-family: var(--serif); font-style: italic;
-  font-size: clamp(48px, 5.6vw, 88px); line-height: 1;
+  font-size: 38px; line-height: 1;
 }
 .cover h1{
   position:absolute;
@@ -1612,7 +1613,7 @@ footer .cols .downloads a::after{
   font-size: clamp(48px, 8vw, 132px);
   line-height: .94;
   letter-spacing: -.012em;
-  text-shadow: 0 1px 28px rgba(0,0,0,.2);
+  text-shadow: 0 2px 30px rgba(0,0,0,.5), 0 1px 3px rgba(0,0,0,.32);
 }
 .cover h1 .it{
   display: block;
@@ -1640,7 +1641,7 @@ footer .cols .downloads a::after{
 }
 .cover .scroll{
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 10.5px;
   letter-spacing: .14em;
   color: rgba(250,246,237,.85);
   text-align:right;
@@ -1738,7 +1739,7 @@ footer .cols .downloads a::after{
 }
 .intro .col-txt h3 .it{ color: var(--accent-deep); }
 .intro .body{
-  font-size: 17px;
+  font-size: 17.5px;
   line-height: 1.78;
   max-width: 56ch;
 }
@@ -1834,7 +1835,7 @@ footer .cols .downloads a::after{
   display:inline-flex; align-items:center; gap:14px;
   font-family: var(--sans);
   font-weight: 600;
-  font-size: 12px;
+  font-size: 12.5px;
   letter-spacing: .18em;
   text-transform: uppercase;
   background: var(--cream);
@@ -1933,7 +1934,7 @@ footer .cols .downloads a::after{
   padding-top: 28px;
   border-top: 1px solid rgba(159,79,97,.22);
 }
-.split .content .craft .label{ color: var(--muted); display:block; margin-bottom: 8px; font-size: 11px; }
+.split .content .craft .label{ color: var(--muted); display:block; margin-bottom: 8px; font-size: 10.5px; }
 .split .content .craft .v{
   font-family: var(--serif);
   font-style: italic;
@@ -1962,7 +1963,7 @@ footer .cols .downloads a::after{
 .split .content .testimony .attr .dash{ display:inline-block; width: 36px; height: 1px; background: var(--accent); }
 .split .content .testimony .attr .name{
   font-family: var(--sans);
-  font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-soft);
+  font-size: 11.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-soft);
 }
 .split .content .testimony .attr .name b{ color: var(--ink); font-weight: 700; }
 .split .content .ctas{ margin-top: 40px; display: flex; flex-wrap: wrap; gap: 16px 22px; align-items: center; }
@@ -1992,15 +1993,8 @@ footer .cols .downloads a::after{
   font-size: 11px;
   letter-spacing: .22em;
   text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 8px;
-  padding: 4px 10px;
-  background: color-mix(in oklab, var(--accent) 8%, transparent);
-  border-left: 2px solid var(--accent);
-  display: inline-block;
-  width: auto;
-  justify-self: start;
-  border-radius: 0 2px 2px 0;
+  color: var(--accent-deep);
+  margin-bottom: 4px;
 }
 .pairs-with .pair-thumb{
   width: 88px; height: 88px;
@@ -2025,7 +2019,7 @@ footer .cols .downloads a::after{
 .pairs-with .pair-body p{
   margin: 0;
   font-family: var(--sans);
-  font-size: 13px;
+  font-size: 13.5px;
   line-height: 1.5;
   color: var(--ink-soft);
 }
@@ -2042,7 +2036,7 @@ footer .cols .downloads a::after{
   gap: 8px;
   font-family: var(--sans);
   font-weight: 500;
-  font-size: 12px;
+  font-size: 11.5px;
   letter-spacing: .14em;
   text-transform: uppercase;
   color: var(--ink);
@@ -2158,7 +2152,7 @@ footer .cols .downloads a::after{
 .gallery .head .index{
   margin-top: 18px;
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 10.5px;
   letter-spacing: .08em;
   color: var(--ink-soft);
 }
@@ -2174,7 +2168,7 @@ footer .cols .downloads a::after{
   width: 100%;
   overflow: hidden;
   border-radius: 2px;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 4 / 5;
 }
 .home .tile-wrap .tile{ width: 100%; height: 100%; min-height: 0; }
 .home .tile-wrap .overlay{
@@ -2218,7 +2212,7 @@ footer .cols .downloads a::after{
   margin-top: 2px;
 }
 .home .cap .desc{
-  font-size: 13px;
+  font-size: 13.5px;
   line-height: 1.5;
   color: var(--ink-soft);
   margin: 6px 0 4px;
@@ -2238,8 +2232,8 @@ footer .cols .downloads a::after{
   flex-wrap: wrap;
   margin-top: 10px;
 }
-.home .cap .add-btn{ flex-shrink: 0; padding: 9px 14px; font-size: 11px; }
-.home .cap .view-pdp{ font-size: 11px; white-space: nowrap; }
+.home .cap .add-btn{ flex-shrink: 0; padding: 9px 14px; font-size: 10.5px; }
+.home .cap .view-pdp{ font-size: 10.5px; white-space: nowrap; }
 
 /* Footer alignment, pushes SKU + price + add-row to the bottom of every
    card so they line up horizontally across the grid row even when desc
@@ -2254,7 +2248,7 @@ footer .cols .downloads a::after{
   border-top: 0.5px solid var(--rule);
   font-family: var(--sans);
   font-weight: 500;
-  font-size: 11px;
+  font-size: 10.5px;
   letter-spacing: .14em;
   text-transform: uppercase;
   color: var(--stone);
@@ -2264,7 +2258,7 @@ footer .cols .downloads a::after{
   grid-column: 2;
   margin-top: 4px;
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 10.5px;
   letter-spacing: .08em;
   color: var(--accent-deep);
 }
@@ -2360,7 +2354,7 @@ footer .cols .downloads a::after{
 }
 .reviews-section .review p{
   margin: 0 0 18px;
-  font-size: 14px;
+  font-size: 14.5px;
   line-height: 1.65;
   color: var(--ink-soft);
   flex: 1;
@@ -2370,7 +2364,7 @@ footer .cols .downloads a::after{
   padding-top: 16px;
   border-top: 0.5px solid var(--rule);
   font-family: var(--sans);
-  font-size: 12px;
+  font-size: 12.5px;
   color: var(--stone);
   line-height: 1.45;
 }
@@ -2385,7 +2379,7 @@ footer .cols .downloads a::after{
   gap: 10px;
   font-family: var(--sans);
   font-weight: 500;
-  font-size: 12px;
+  font-size: 12.5px;
   letter-spacing: .18em;
   text-transform: uppercase;
   color: var(--ink);
@@ -2491,7 +2485,7 @@ footer .cols .downloads a::after{
   font-style: normal;
   font-family: var(--sans);
   font-weight: 600;
-  font-size: 11px;
+  font-size: 10.5px;
   letter-spacing: .2em;
   text-transform: uppercase;
   color: var(--ink);
@@ -2504,7 +2498,7 @@ footer .cols .downloads a::after{
   gap: 12px;
   font-family: var(--sans);
   font-weight: 500;
-  font-size: 12px;
+  font-size: 12.5px;
   letter-spacing: .18em;
   text-transform: uppercase;
   color: var(--cream);
@@ -2729,7 +2723,7 @@ footer .cols .downloads a::after{
 .closing .signoff .left,
 .closing .signoff .right{
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 10.5px;
   letter-spacing: .1em;
   color: var(--ink-soft);
 }
@@ -2812,7 +2806,7 @@ footer .left .retail-link{
   margin: 22px 0 0;
   font-family: var(--serif);
   font-style: italic;
-  font-size: 14px;
+  font-size: 14.5px;
   line-height: 1.5;
   color: rgba(250,246,237,.6);
 }
@@ -2868,7 +2862,7 @@ footer .cols h6{
 footer .cols ul{ list-style: none; margin: 0; padding: 0; }
 footer .cols li{
   font-family: var(--sans);
-  font-size: 13px;
+  font-size: 13.5px;
   line-height: 1.55;
   color: rgba(250,246,237,.86);
   margin-bottom: 6px;
@@ -2889,7 +2883,7 @@ footer .legal{
   border-top: 0.5px solid rgba(250,246,237,.14);
   display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap;
   font-family: var(--sans);
-  font-size: 12px;
+  font-size: 11.5px;
   letter-spacing: .04em;
   color: rgba(250,246,237,.55);
 }
@@ -2998,7 +2992,9 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
    .split.image-right flips the standard split so content-left, image-right.
    Apply to Featured 2 (Letter Tracing) and Featured 3 (My Forest Floor) on
    Sensory Play, and to Featured 2 on Woodland and Small World, for rhythm. */
-/* (Variant B below — the CSS grid order flip — is the canonical implementation.) */
+.split.image-right{ direction: rtl; }
+.split.image-right > *{ direction: ltr; }
+@media (max-width: 980px){ .split.image-right{ direction: ltr; } }
 
 /* Section divider, magazine TOC-entry style.
    Used between major editorial sections to mark transition. */
@@ -3093,7 +3089,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 .gallery.even .home.size-hero,
 .gallery.even .home.size-tall,
 .gallery.even .home.size-std{ grid-column: auto; }
-.gallery.even .home .tile-wrap{ aspect-ratio: 1 / 1; }
+.gallery.even .home .tile-wrap{ aspect-ratio: 3 / 4; }
 .gallery.even .home .tile-wrap .tile{ height: 100%; }
 @media (max-width: 1080px){ .gallery.even .homes{ grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 720px){ .gallery.even .homes{ grid-template-columns: repeat(2, 1fr); } }
@@ -3153,7 +3149,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 }
 .split .content .standards-row .label{
   color: var(--muted);
-  font-size: 11px;
+  font-size: 10.5px;
   letter-spacing: .18em;
   display: block;
   padding-top: 6px;
@@ -3323,8 +3319,8 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       <span class="slide">Pre-paid orders ship first. Window closes when the bench fills.</span>
     </div>
     <div class="utility-right">
-      <a href="/pages/educators">Apply for an account</a>
-      <a href="/pages/educators">Sign in</a>
+      <a href="educator.html">Apply for an account</a>
+      <a href="educator.html">Sign in</a>
     </div>
   </div>
 </div>
@@ -3347,11 +3343,11 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
     <img src="{{ 'mtw-logo-full.png' | asset_url }}" alt="My Toy Wagon, Los Angeles, California, est. 2020" class="mark"/>
   </a>
   <div class="nav__actions">
-    <a href="/pages/educator-dashboard" class="nav__action" aria-label="Account">
+    <a href="educator-dashboard.html" class="nav__action" aria-label="Account">
       <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20a8 8 0 0 1 16 0"/></svg>
       <span class="label">Account</span>
     </a>
-    <a href="/pages/new-quote" class="nav__action" aria-label="Quote builder">
+    <a href="new-quote.html" class="nav__action" aria-label="Quote builder">
       <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="14" height="16" rx="1"/><path d="M9 9h6M9 13h6M9 17h4"/></svg>
       <span class="label">Quote</span>
       <span class="pill" id="quoteCount">0</span>
@@ -3365,7 +3361,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
     <nav class="breadcrumb" aria-label="Breadcrumb">
       <a href="MTW Homepage v3.html" class="home-crumb">Home</a>
       <span class="sep" aria-hidden="true">/</span>
-      <a href="/pages/educators">Educator Catalog</a>
+      <a href="educators.html">Educator Catalog</a>
       <span class="sep" aria-hidden="true">/</span>
       <span aria-current="page">Section 01 &middot; Sensory Play</span>
     </nav>
@@ -3379,7 +3375,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
     <div class="jumps">
       <a href="#homes">The Homes</a>
       <a href="#kits">Outfit a Classroom</a>
-      <a href="/pages/new-quote">Quote builder</a>
+      <a href="new-quote.html">Quote builder</a>
     </div>
   </div>
 </div>
@@ -3387,14 +3383,17 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 <!-- =========================== COVER =========================== -->
 <section class="cover" data-screen-label="01 Cover">
   <div class="bg tile t-mood has-photo">
-    <img src="{{ 'diggertray.webp' | asset_url }}" alt="Wooden multi-section sensory tray with kinetic sand and two yellow excavators, for digging and scooping play." loading="lazy"/>
+    <img src="{{ 'sensory-play-hero-digger.png' | file_url }}" alt="Wooden digger- and truck-shaped sensory trays filled with dyed pasta, coffee beans, and grains in a sensory bin — Sensory Play for classrooms." loading="lazy"/>
     <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
     <span class="tag dark" style="display:none;">[ COVER PHOTO &nbsp;&middot;&nbsp; full-bleed atmospheric: Buttonandbug Rainbow Imaginative Play Tray seated in IKEA Flisat, filled with rainbow rice and small wooden scoops, child's hands mid-pour, warm window light, slight overhead three-quarter angle. Mirrors the catalog opener (pg.&nbsp;5). ]</span>
   </div>
   <div class="veil"></div>
 
   <div class="head">
-      <div class="vol">
+    <div>
+      <span class="wagon-badge">For Educators</span>
+    </div>
+    <div class="vol">
       <div class="meta" style="color: rgba(250,246,237,.7);">SECTION</div>
       <div class="num"><span data-fill="volume">01</span></div>
     </div>
@@ -3428,7 +3427,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 <!-- =========================== SLOW GOODS BAND =========================== -->
 <section style="background: var(--cream); border-bottom: 0.5px solid var(--rule); text-align: center; padding: 56px clamp(20px, 5vw, 56px);">
   <p style="margin: 0 auto; max-width: 68ch; font-family: var(--serif); font-style: italic; font-size: clamp(22px, 2.4vw, 30px); line-height: 1.4; color: var(--ink); letter-spacing: -.005em;">Hand-cut solid maple. Hand-blended therapy dough in California. <span style="color: var(--accent-deep);">Slow goods, on purpose.</span></p>
-  <p style="margin: 22px auto 0; max-width: 62ch; font-family: var(--sans); font-size: 16px; line-height: 1.65; color: var(--ink-soft);">Every tray, insert, sand tool, and therapy dough in Sensory Play is made by hand, Buttonandbug  Análu in California, Wooden Story in Poland, Papoose in Nepal. The wait is the craft. We accept a limited number of classroom orders each season, so we can keep the work true. Reserve early.</p>
+  <p style="margin: 22px auto 0; max-width: 62ch; font-family: var(--sans); font-size: 16px; line-height: 1.65; color: var(--ink-soft);">Every tray, insert, sand tool, and therapy dough in Sensory Play is made by hand, Buttonandbug  Análu in California, Wooden Story in Poland. The wait is the craft. We accept a limited number of classroom orders each season, so we can keep the work true. Reserve early.</p>
 </section>
 
 <!-- =========================== EDITORIAL INTRO =========================== -->
@@ -3436,11 +3435,11 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
   <div class="wrap">
     <div class="col-img">
       <div class="tile t-hue3 has-photo">
-        <img src="{{ 'buttonandbug-cake-tray-lifestyle.png' | asset_url }}" alt="Child reaching across a Buttonandbug Cake Tray of pasta sections and rainbow rice in a Flisat."/>
+        <img src="{{ 'buttonandbug-cake-tray-lifestyle.png' | file_url }}" alt="A child reaches into a Buttonandbug cake-shaped sensory tray filled with colored pasta and rainbow rice at a Flisat table."/>
       </div>
     </div>
     <div class="col-txt">
-      <span class="eyebrow">What Sensory Play Holds</span>
+      <span class="eyebrow">Essay One &nbsp;&middot;&nbsp; What Sensory Play Holds</span>
       <h3>The hand remembers <span class="it">what the mind forgets.</span></h3>
 
       <div class="body">
@@ -3461,13 +3460,13 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 <section class="split" data-screen-label="04 Hero Product">
   <div class="img-side">
     <div class="tile t-soft has-photo">
-      <img src="{{ 'sensory-play-rainbow-imaginative-play-tray-cover.webp' | asset_url }}" alt="Buttonandbug Rainbow Imaginative Play Tray: rainbow-shaped maple tray filled with pasta and rice, fits the IKEA Flisat." loading="lazy"/>
+      <img src="{{ 'Rainbow_Play_Tray.webp' | file_url }}" alt="Rainbow-shaped maple sensory play tray filled with rainbow-dyed pasta and rice, photographed overhead on a cream surface; fits the IKEA Flisat table." loading="lazy"/>
       <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
       <span class="tag">[ HERO PRODUCT &nbsp;&middot;&nbsp; RAINBOW IMAGINATIVE PLAY TRAY, Buttonandbug maple tray fitted into an IKEA Flisat children's table, filled with rainbow rice and small loose parts; pours, scoops, sorted piles. Mirrors catalog pg.&nbsp;6 hero. ]</span>
     </div>
   </div>
   <div class="content">
-    <span class="eyebrow" style="color: var(--accent-deep);">04. Buttonandbug &nbsp;&middot;&nbsp; Featured</span>
+    <span class="eyebrow" style="color: var(--accent-deep);">Buttonandbug &nbsp;&middot;&nbsp; Featured</span>
     <h3>Rainbow Imaginative <span class="it">Play Tray.</span></h3>
     <div class="sub">Solid maple. Fits the Flisat. A term of provocations in one tray.</div>
     <span class="hair" aria-hidden="true"></span>
@@ -3513,9 +3512,12 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 
     <div class="pairs-with">
       <span class="label">Extend the play</span>
+      <div class="pair-thumb tile t-alt contained">
+        <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+      </div>
       <div class="pair-body">
         <h4>The Tray Range &nbsp;&middot;&nbsp; MTW-SP-BTR</h4>
-        <p>Five more Buttonandbug trays alongside the Rainbow, Bear, Cake, Castle, Garden, and Mountain, for a term of changing sensory provocations. From the 2026 Fall Edition, p.&nbsp;7.</p>
+        <p>Five more Buttonandbug trays alongside the Rainbow, Bear, Cake, Castle, Garden, and Mountain, for a term of changing sensory provocations. From the 2026 Spring Catalog, p.&nbsp;7.</p>
         <span class="pair-meta"><strong>$480</strong>Set of six trays &middot; saves $108</span>
         <a href="#tray-range" class="pair-action">See the Tray Range &rarr;</a>
       </div>
@@ -3534,12 +3536,12 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
   <div class="wrap">
     <div class="head">
       <div>
-        <span class="eyebrow">05. Buttonandbug &middot; Collection</span>
+        <span class="eyebrow">Editorial Two &nbsp;&middot;&nbsp; Buttonandbug &middot; Collection</span>
         <h2>The Imaginative <span class="it">Play Range.</span></h2>
       </div>
       <div class="right">
         <p>Each tray invites a different kind of sensory exploration. Lay one out, drop it into the Flisat, and the morning has its own gravity. The maker hand-cuts every tray on order. Solid maple, non-toxic finish, built to last a school career.</p>
-        <p style="margin-top: 18px; font-family: var(--sans); font-size: 13px; line-height: 1.6; color: var(--ink); font-weight: 500;">All hand-cut on order. Solid maple, non-toxic finish. Fits the IKEA Flisat children's table.</p>
+        <p style="margin-top: 18px; font-family: var(--sans); font-size: 13.5px; line-height: 1.6; color: var(--ink); font-weight: 500;">All hand-cut on order. Solid maple, non-toxic finish. Fits the IKEA Flisat children's table.</p>
         <div class="index">BEAR &nbsp;&middot;&nbsp; CAKE &nbsp;&middot;&nbsp; CASTLE &nbsp;&middot;&nbsp; GARDEN &nbsp;&middot;&nbsp; MOUNTAIN</div>
       </div>
     </div>
@@ -3549,7 +3551,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       <article class="home size-hero">
         <div class="tile-wrap">
           <div class="tile t-hue3-deep dark has-photo">
-      <img src="{{ 'buttonandbug-bear-sensory-tray.webp' | asset_url }}" alt="Buttonandbug Bear Sensory Tray: maple tray as a night-sky mountain landscape with felted snow and wooden bears." loading="lazy"/>
+      <img src="{{ 'sensory-play-bear-tray-cream.png' | file_url }}" alt="Buttonandbug bear-shaped sensory tray in cream maple with felted snow, mossy stones, and small wooden bears." loading="lazy"/>
             <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
             <span class="tag">[ TRAY N&deg;01 &nbsp;&middot;&nbsp; BEAR TRAY, Buttonandbug maple tray styled as a night-sky mountain landscape with felted snow, mossy stones, and small wooden bear figures. Overhead three-quarter. Mirrors catalog pg.&nbsp;7 cell 01. ]</span>
           </div>
@@ -3574,7 +3576,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       <article class="home size-tall">
         <div class="tile-wrap">
           <div class="tile t-alt has-photo">
-      <img src="{{ 'buttonandbug-cake-sensory-tray.png' | asset_url }}" alt="Buttonandbug Cake Sensory Tray: beech tiered-cake tray with pegboard candle wells and a rainbow rice base." loading="lazy"/>
+      <img src="{{ 'buttonandbug-cake-sensory-tray.png' | file_url }}" alt="Buttonandbug cake-shaped sensory tray in beech with pegboard candle wells and a base of rainbow rice and pebbles." loading="lazy"/>
             <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
             <span class="tag">[ TRAY N&deg;02 &nbsp;&middot;&nbsp; CAKE TRAY, beech-toned tray shaped like a tiered birthday cake set in a Flisat, with three pegboard sections holding small acrylic candle pegs in blue, green, and white, plus a deep base section filled with rainbow-colored sensory rice and pebbles. Mirrors catalog pg.&nbsp;7 cell 04. ]</span>
           </div>
@@ -3599,7 +3601,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       <article class="home size-std">
         <div class="tile-wrap">
           <div class="tile t-hue3 has-photo">
-      <img src="{{ 'buttonandbug-castle-sensory-tray.webp' | asset_url }}" alt="Buttonandbug Castle Sensory Tray in an IKEA Flisat, filled with rice, rainbow corn, and wooden figures." loading="lazy"/>
+      <img src="{{ 'buttonandbug-castle-sensory-tray.webp' | file_url }}" alt="Buttonandbug castle sensory tray in a Flisat table, filled with rice and rainbow corn with small wooden figures at the turrets." loading="lazy"/>
             <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
             <span class="tag">[ TRAY N&deg;03 &nbsp;&middot;&nbsp; CASTLE TRAY, Buttonandbug Castle Tray in an IKEA Flisat table filled with rice and rainbow corn fills, small wooden figures arranged at the turrets. Mirrors catalog pg.&nbsp;7 cell 02. ]</span>
           </div>
@@ -3624,7 +3626,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       <article class="home size-std">
         <div class="tile-wrap">
           <div class="tile t-soft has-photo">
-      <img src="{{ 'buttonandbug-garden-sensory-tray.webp' | asset_url }}" alt="Buttonandbug Garden Sensory Tray: planting bed with labeled lettuce, berries, pumpkin rows, and a picket fence." loading="lazy"/>
+      <img src="{{ 'buttonandbug-garden-sensory-tray.webp' | file_url }}" alt="Buttonandbug garden sensory tray styled as a planting bed with lettuce, berries, and pumpkin rows, a picket fence, and bird figures." loading="lazy"/>
             <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
             <span class="tag">[ TRAY N&deg;04 &nbsp;&middot;&nbsp; GARDEN TRAY, Buttonandbug Garden Tray styled as a planting bed with labeled lettuce, berries, and pumpkin rows, picket fence and bird figurines below. Mirrors catalog pg.&nbsp;7 cell 00. ]</span>
           </div>
@@ -3649,7 +3651,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       <article class="home size-std">
         <div class="tile-wrap">
           <div class="tile t-cream has-photo">
-      <img src="{{ 'buttonandbug-mountain-sensory-tray.webp' | asset_url }}" alt="Buttonandbug Mountain Sensory Tray styled as summer valleys with a blue river of dyed pasta and meadow flowers." loading="lazy"/>
+      <img src="{{ 'buttonandbug-mountain-sensory-tray.webp' | file_url }}" alt="Buttonandbug mountain sensory tray styled as summer valleys with a blue dyed-pasta river and meadow flowers." loading="lazy"/>
             <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
             <span class="tag">[ TRAY N&deg;05 &nbsp;&middot;&nbsp; MOUNTAIN TRAY, Buttonandbug Mountain Tray styled as summer valleys with a blue river of dyed pasta and meadow flowers. Mirrors catalog pg.&nbsp;7 cell 03. ]</span>
           </div>
@@ -3685,20 +3687,20 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
   <blockquote>
     Fill it with rainbow rice on Monday morning. By Tuesday, children have sorted by color, built a story, and <em>asked to refill it themselves.</em>
   </blockquote>
-  <cite>From the 2026 Fall Edition, page 6</cite>
+  <cite>From the 2026 Spring Edit, page 6</cite>
 </section>
 
 <!-- =========================== FEATURED PRODUCT 2 (p.8 Letter Tracing Insert) =========================== -->
 <section class="split image-right" data-screen-label="06 Letter Tracing Insert" style="background: var(--cream);">
   <div class="img-side">
     <div class="tile t-soft has-photo">
-      <img src="{{ 'buttonandbug-letter-tracing-insert.jpg' | asset_url }}" alt="Buttonandbug Letter Tracing Insert: dual-sided maple alphabet tracing board, fits the IKEA Flisat table." loading="lazy"/>
+      <img src="{{ 'buttonandbug-letter-tracing-insert.jpg' | file_url }}" alt="Buttonandbug dual-sided maple letter-tracing insert with an uppercase alphabet, a finger tracing a letter; fits the IKEA Flisat table." loading="lazy"/>
       <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
       <span class="tag">[ FEATURED PRODUCT 2 &nbsp;&middot;&nbsp; LETTER TRACING INSERT, dual-sided maple insert sitting in an IKEA Flisat, uppercase alphabet face up, child's finger tracing the curve of an &lsquo;S&rsquo;; small bowl of lentils to the side for resistance-tracing. Mirrors catalog pg.&nbsp;8 hero. ]</span>
     </div>
   </div>
   <div class="content">
-    <span class="eyebrow" style="color: var(--accent-deep);">06. Buttonandbug &nbsp;&middot;&nbsp; Literacy</span>
+    <span class="eyebrow" style="color: var(--accent-deep);">Buttonandbug &nbsp;&middot;&nbsp; Literacy</span>
     <h3>Letter Tracing <span class="it">Insert.</span></h3>
     <div class="sub">Dual-sided maple. Uppercase one side, lowercase the other.</div>
     <span class="hair" aria-hidden="true"></span>
@@ -3753,6 +3755,9 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 
     <div class="pairs-with">
       <span class="label">Pairs with the Letter Tracing Insert</span>
+      <div class="pair-thumb tile t-alt contained">
+        <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+      </div>
       <div class="pair-body">
         <h4>The Sand Tray with Flashcard Holder &nbsp;&middot;&nbsp; MTW-SP-2PART</h4>
         <p>Wooden Story 2-part tray pairs with the tracing insert for resistance-tracing and pre-writing IEP work. See Calm Corner Tools below.</p>
@@ -3778,12 +3783,12 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
   <div class="wrap">
     <div class="head">
       <div>
-        <span class="eyebrow">07. Análu &middot; Therapy Dough &middot; OT &amp; SLP-Friendly</span>
+        <span class="eyebrow">Editorial Four &nbsp;&middot;&nbsp; Análu &middot; Therapy Dough &middot; OT &amp; SLP-Friendly</span>
         <h2>Therapy dough <span class="it">for daily-use sensory.</span></h2>
       </div>
       <div class="right">
         <p>A daily-use sensory tool. Pure, organic, GMO-free essential oils kneaded into soft dough, for fine-motor work, transitions, and the kind of repetitive tactile play that quietly resets a nervous system. Eligible under IDEA Part B &amp; Medicaid OT funding.</p>
-        <p style="margin-top: 18px; font-family: var(--sans); font-size: 13px; line-height: 1.6; color: var(--ink); font-weight: 500;">Wheat-based, vegan &amp; cruelty-free. Organic essential oils. ASTM D-4236. Made in USA.</p>
+        <p style="margin-top: 18px; font-family: var(--sans); font-size: 13.5px; line-height: 1.6; color: var(--ink); font-weight: 500;">Wheat-based, vegan &amp; cruelty-free. Organic essential oils. ASTM D-4236. Made in USA.</p>
         <div class="index">SWEET ORANGE &nbsp;&middot;&nbsp; EUCALYPTUS &nbsp;&middot;&nbsp; LEMON &nbsp;&middot;&nbsp; LAVENDER &nbsp;&middot;&nbsp; PEPPERMINT</div>
       </div>
     </div>
@@ -3792,7 +3797,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       <article class="home size-hero">
         <div class="tile-wrap">
           <div class="tile t-alt has-photo">
-      <img src="{{ 'analu-therapy-dough-orange.webp' | asset_url }}" alt="Análu Sweet Orange therapy dough: scented dough puck beside its illustrated cream tin." loading="lazy"/>
+      <img src="{{ 'Analu-Orange-w1-sq__13651_5def1bc2-f016-4f33-a98d-253dffe5398e.jpg' | file_url }}" alt="Analu sweet orange scented therapy dough, an orange-yellow puck beside its cream tin printed with citrus." loading="lazy"/>
             <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
             <span class="tag">[ SCENT N°01 &nbsp;&middot;&nbsp; SWEET ORANGE, orange-yellow puck of sweet-orange-scented therapy dough beside its cream tin lid printed with an orange citrus illustration. Mirrors catalog pg. 10 cell 00. ]</span>
           </div>
@@ -3814,7 +3819,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       <article class="home size-tall">
         <div class="tile-wrap">
           <div class="tile t-soft has-photo">
-      <img src="{{ 'analu-therapy-dough-eucalyptus.webp' | asset_url }}" alt="Análu Eucalyptus therapy dough: sage-green scented puck beside its illustrated cream tin." loading="lazy"/>
+      <img src="{{ 'Analu-Eucalyptus.webp' | file_url }}" alt="Analu eucalyptus scented therapy dough, a sage-green puck beside its cream tin printed with eucalyptus leaves." loading="lazy"/>
             <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
             <span class="tag">[ SCENT N°02 &nbsp;&middot;&nbsp; EUCALYPTUS, sage-green puck of eucalyptus-scented therapy dough beside its cream tin lid printed with eucalyptus leaves. Mirrors catalog pg. 10 cell 01. ]</span>
           </div>
@@ -3836,7 +3841,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       <article class="home size-std">
         <div class="tile-wrap">
           <div class="tile t-cream has-photo">
-      <img src="{{ 'analu-lemon-therapy-dough.webp' | asset_url }}" alt="Análu Lemon therapy dough: pale-yellow scented puck beside its illustrated cream tin." loading="lazy"/>
+      <img src="{{ 'analu-lemon-therapy-dough.webp' | file_url }}" alt="Analu lemon scented therapy dough, a pale-yellow puck beside its cream tin printed with sliced lemons." loading="lazy"/>
             <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
             <span class="tag">[ SCENT N°03 &nbsp;&middot;&nbsp; LEMON, pale-butter-yellow puck of lemon-scented therapy dough beside its cream tin lid printed with sliced lemons. Mirrors catalog pg. 10 cell 02. ]</span>
           </div>
@@ -3858,7 +3863,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       <article class="home size-std">
         <div class="tile-wrap">
           <div class="tile t-primary has-photo">
-      <img src="{{ 'analu-lavender-therapy-dough.webp' | asset_url }}" alt="Análu Lavender therapy dough: lavender-purple puck embossed with the logo, beside its illustrated tin." loading="lazy"/>
+      <img src="{{ 'analu-lavender-therapy-dough.webp' | file_url }}" alt="Analu lavender scented therapy dough, a soft-purple puck embossed with the Analu logo beside a cream tin printed with lavender." loading="lazy"/>
             <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
             <span class="tag">[ SCENT N°04 &nbsp;&middot;&nbsp; LAVENDER, soft lavender-purple puck of lavender-scented therapy dough embossed with the Análu logo, beside its cream tin lid printed with a sprig of fresh lavender flowers and rosemary. Mirrors catalog pg. 10 cell 04. ]</span>
           </div>
@@ -3880,7 +3885,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       <article class="home size-std">
         <div class="tile-wrap">
           <div class="tile t-hue3 has-photo">
-      <img src="{{ 'Analu-Peppermint.webp' | asset_url }}" alt="Análu Peppermint therapy dough: soft-blush scented puck beside its illustrated cream tin." loading="lazy"/>
+      <img src="{{ 'Analu-Peppermint.webp' | file_url }}" alt="Analu peppermint scented therapy dough, a soft-blush puck beside its cream tin printed with mint leaves." loading="lazy"/>
             <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
             <span class="tag">[ SCENT N°05 &nbsp;&middot;&nbsp; PEPPERMINT, soft-blush puck of peppermint-scented therapy dough beside its cream tin lid printed with mint leaves and a candy-stripe ring. Mirrors catalog pg. 10 cell 05. ]</span>
           </div>
@@ -3918,13 +3923,13 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 <section class="split image-right" data-screen-label="08 My Forest Floor" style="background: var(--cream);">
   <div class="img-side">
     <div class="tile t-hue3-deep dark has-photo">
-      <img src="{{ 'tender-leaf-my-forest-floor.png' | asset_url }}" alt="Tender Leaf My Forest Floor tray: reclaimed rubberwood with green sand and 30+ woodland pieces to build a scene." loading="lazy"/>
+      <img src="{{ 'tender-leaf-my-forest-floor.png' | file_url }}" alt="Tender Leaf My Forest Floor tray in reclaimed rubberwood with green sand and woodland pieces; two children build a woodland scene on a cream mat." loading="lazy"/>
       <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
       <span class="tag dark">[ FEATURED 3 &nbsp;&middot;&nbsp; MY FOREST FLOOR, two boys in navy shirts kneeling on a cream mat, working together at a Tender Leaf My Forest Floor tray filled with green sand, with wooden mushrooms, leaves, pebbles, and forest pieces arranged around the edges. Junior Design Awards 2021. Mirrors catalog pg. 11 hero. ]</span>
     </div>
   </div>
   <div class="content">
-    <span class="eyebrow" style="color: var(--accent-deep);">08. Tender Leaf Toys &nbsp;&middot;&nbsp; Featured &middot; Brand-Cross-Listed</span>
+    <span class="eyebrow" style="color: var(--accent-deep);">Tender Leaf Toys &nbsp;&middot;&nbsp; Featured &middot; Brand-Cross-Listed</span>
     <h3>My Forest <span class="it">Floor.</span></h3>
     <div class="sub">Reclaimed rubberwood. 30+ pieces. Lid flips to chalkboard.</div>
     <span class="hair" aria-hidden="true"></span>
@@ -3962,11 +3967,14 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 
     <div class="pairs-with">
       <span class="label">From the Nature Play collection</span>
+      <div class="pair-thumb tile t-soft contained">
+        <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+      </div>
       <div class="pair-body">
         <h4>Tender Leaf's brand home is Section 02</h4>
         <p>My Forest Floor is brand-cross-listed in Sensory Play per the catalog, but Tender Leaf's full collection (and the Busy Bee Tray hero) live in Section 02 Nature Play.</p>
         <span class="pair-meta"><strong>Section 02</strong>Nature Play &middot; coming soon</span>
-        <a href="/pages/educators" class="pair-action">See the catalog &rarr;</a>
+        <a href="educators.html" class="pair-action">See the catalog &rarr;</a>
       </div>
     </div>
   </div>
@@ -3977,7 +3985,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
   <blockquote>
     Stillness invites attention inward. <em>Quiet tools</em> for the kind of classroom transitions that keep a morning from unraveling.
   </blockquote>
-  <cite>From the 2026 Fall Edition, page 12</cite>
+  <cite>From the 2026 Spring Edit, page 12</cite>
 </section>
 
 <div class="section-divider">
@@ -3991,12 +3999,12 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
   <div class="wrap">
     <div class="head">
       <div>
-        <span class="eyebrow">09. The Calm Corner Collection &middot; for school counselors &amp; SEL programs</span>
+        <span class="eyebrow">Editorial Three &nbsp;&middot;&nbsp; The Calm Corner Collection &middot; for school counselors &amp; SEL programs</span>
         <h2>Tools for calm, focus, <span class="it">and regulation.</span></h2>
       </div>
       <div class="right">
         <p>Stillness invites attention inward. Quiet tools for self-regulation, focused work, and the kind of classroom transitions that keep a morning from unraveling. Used by school-based OTs, SEL programs, and trauma-informed classrooms.</p>
-        <p style="margin-top: 18px; font-family: var(--sans); font-size: 13px; line-height: 1.6; color: var(--ink); font-weight: 500;">FSC-certified beech, teak, and ABS. Non-toxic finishes. ASTM F963 / EN71. Made in Poland, Indonesia &amp; China.</p>
+        <p style="margin-top: 18px; font-family: var(--sans); font-size: 13.5px; line-height: 1.6; color: var(--ink); font-weight: 500;">FSC-certified beech, teak, and ABS. Non-toxic finishes. ASTM F963 / EN71. Made in Poland, Indonesia &amp; China.</p>
         <div class="index">MAGIC BALL &nbsp;&middot;&nbsp; SAND TRAY &nbsp;&middot;&nbsp; FLASHCARD &nbsp;&middot;&nbsp; TOOLS &nbsp;&middot;&nbsp; ROCKPOOL</div>
       </div>
     </div>
@@ -4006,7 +4014,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       <article class="home size-hero">
         <div class="tile-wrap">
           <div class="tile t-hue3 has-photo">
-      <img src="{{ 'mindfulness-magic-ball-breathing-tool.png' | asset_url }}" alt="Mindfulness Magic Ball: Hoberman-style expanding teal-and-gold sphere, a tactile breathing tool for self-regulation." loading="lazy"/>
+      <img src="{{ 'mindfulness-magic-ball-breathing-tool.png' | file_url }}" alt="Mindfulness magic ball, an expanding teal-and-gold sphere held mid-bloom in two hands, a tactile breathing tool for self-regulation." loading="lazy"/>
             <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
             <span class="tag">[ TOOL N&deg;01 &nbsp;&middot;&nbsp; MINDFULNESS MAGIC BALL, Hoberman-style expanding sphere of glittering teal-and-gold beads being held in two hands mid-bloom, a tactile breathing tool. Mirrors catalog pg.&nbsp;12 cell 00. ]</span>
           </div>
@@ -4031,7 +4039,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       <article class="home size-tall">
         <div class="tile-wrap">
           <div class="tile t-cream has-photo">
-      <img src="{{ 'wooden-story-montessori-sand-tray.png' | asset_url }}" alt="Wooden Story Montessori Sand Tray: solid-beech tray with side handles and two wooden rakes for sand patterns." loading="lazy"/>
+      <img src="{{ 'wooden-story-montessori-sand-tray.png' | file_url }}" alt="Wooden Story Montessori sand tray in solid beech, fine sand combed into S-curves by two small wooden rakes, overhead view." loading="lazy"/>
             <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
             <span class="tag">[ TOOL N&deg;02 &nbsp;&middot;&nbsp; SAND TRAY WITH ACCESSORIES, Wooden Story Montessori Sand Tray, overhead view of an empty solid-beech rectangular tray with side handles, fine sand combed into S-curve patterns by two small wooden T-rakes resting on the surface. Mirrors catalog pg.&nbsp;12 cell 01. ]</span>
           </div>
@@ -4056,7 +4064,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       <article class="home size-std">
         <div class="tile-wrap">
           <div class="tile t-soft has-photo">
-      <img src="{{ 'wooden-story-2-part-sand-tray-flashcard-holder.png' | asset_url }}" alt="Wooden Story 2-Part Sand Tray: solid-wood box with sand and wooden-balls bays, a flashcard slot, and beech stylus." loading="lazy"/>
+      <img src="{{ 'wooden-story-2-part-sand-tray-flashcard-holder.png' | file_url }}" alt="Wooden Story two-part sand tray with a sand bay, a wooden-balls bay, a back slot for flashcards, and a beech stylus." loading="lazy"/>
             <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
             <span class="tag">[ TOOL N&deg;03 &nbsp;&middot;&nbsp; SAND TRAY WITH FLASHCARD HOLDER, Wooden Story 2-Part Sand Tray, solid-wood box divided into a sand bay on the left and a wooden-balls bay on the right, with a slot at the back for flashcards and a beech writing stylus in a groove at the front. Mirrors catalog pg.&nbsp;12 cell 02. ]</span>
           </div>
@@ -4081,7 +4089,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       <article class="home size-std">
         <div class="tile-wrap">
           <div class="tile t-alt has-photo">
-      <img src="{{ 'wooden-story-sand-tray-tools-set-of-4.png' | asset_url }}" alt="Wooden Story Sand Tray Tools: set of four beech Montessori accessories, rake, comb, scraper, and leveller." loading="lazy"/>
+      <img src="{{ 'wooden-story-sand-tray-tools-set-of-4.png' | file_url }}" alt="Wooden Story set of four beech sand-tray tools on cream linen: a three-pin rake, five-pin comb, flat scraper, and levelling rake." loading="lazy"/>
             <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
             <span class="tag">[ TOOL N&deg;04 &nbsp;&middot;&nbsp; SAND TRAY TOOLS (SET OF 4), Wooden Story Sand Tray Tools Set: four beech Montessori sand accessories on cream linen, three-pin rake, five-pin comb, wide flat scraper, narrow levelling rake. Mirrors catalog pg.&nbsp;12 cell 03. ]</span>
           </div>
@@ -4106,9 +4114,9 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       <article class="home size-std">
         <div class="tile-wrap">
           <div class="tile t-hue3-deep dark has-photo">
-      <img src="{{ 'category-sensory-rockpool-tray.png' | asset_url }}" alt="Papoose Rockpool Tray and Tongs: carved teak sorting tray with wooden tongs, shells, sea glass, and pebbles." loading="lazy"/>
+      <img src="{{ 'category-sensory-rockpool-tray.png' | file_url }}" alt="Carved teak rockpool sorting tray with wooden tongs; a child sorts sea glass, pebbles, and shells into the wells among scallop and conch shells." loading="lazy"/>
             <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-            <span class="tag">[ TOOL N&deg;05 &nbsp;&middot;&nbsp; ROCKPOOL TRAY &amp; TONGS, Papoose carved teak rockpool tray with sorting wells. Child's hand using small wooden tongs to place sea glass and pebbles into the wells, surrounded by spotted scallop shells, conch shells, sea coral, and tumbled stones on cream linen. Mirrors catalog pg.&nbsp;12 cell 04. ]</span>
+            <span class="tag">[ TOOL N&deg;05 &nbsp;&middot;&nbsp; ROCKPOOL TRAY &amp; TONGS, carved teak rockpool tray with sorting wells. Child's hand using small wooden tongs to place sea glass and pebbles into the wells, surrounded by spotted scallop shells, conch shells, sea coral, and tumbled stones on cream linen. Mirrors catalog pg.&nbsp;12 cell 04. ]</span>
           </div>
           <div class="overlay"></div>
           <div class="float-name">Rockpool Tray &amp; Tongs</div>
@@ -4147,7 +4155,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       <h2>Outfit your classroom <span class="it">in one quote.</span></h2>
     </div>
     <div class="right">
-      <p>Schools buy Sensory Play as catalog sets, not as single pieces. The two purchase-order-ready sets below are the same ones in our 2026 Fall Edition. Each is priced as a package on your quote.</p>
+      <p>Schools buy Sensory Play as catalog sets, not as single pieces. The two purchase-order-ready sets below are the same ones in our 2026 Spring Catalog. Each is priced as a package on your quote.</p>
       <div class="meta">CATALOG SETS &nbsp;&middot;&nbsp; NET-30 &nbsp;&middot;&nbsp; TAX-EXEMPT &nbsp;&middot;&nbsp; ONE-ON-ONE CURATION</div>
     </div>
   </div>
@@ -4161,7 +4169,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       <!-- PRICE: MTW-SP-BTR -->
       <p class="price-line">$480</p>
       <span class="price-note">Hand-cut maple &middot; ships within 3 weeks &middot; Net-30 available &middot; saves $108</span>
-      <p class="desc">The full Buttonandbug Imaginative Play Range, Bear, Cake, Castle, Garden, Mountain, and Rainbow trays bundled as the catalog set. A term's worth of sensory provocations in one carton. From the 2026 Fall Edition, p.&nbsp;7.</p>
+      <p class="desc">The full Buttonandbug Imaginative Play Range, Bear, Cake, Castle, Garden, Mountain, and Rainbow trays bundled as the catalog set. A term's worth of sensory provocations in one carton. From the 2026 Spring Catalog, p.&nbsp;7.</p>
       <ul class="contains">
         <li>Bear Tray, MTW-SP-BEAR</li>
         <li>Cake Tray, MTW-SP-CAKE</li>
@@ -4185,7 +4193,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       <!-- PRICE: MTW-SP-CRS -->
       <p class="price-line">$268</p>
       <span class="price-note">Hand-finished &middot; ships within 3 weeks &middot; Net-30 available &middot; saves $42</span>
-      <p class="desc">Mindfulness Magic Ball + Wooden Story Sand Tray + Sand Tray with Flashcard Holder + Rockpool Tray. The quiet-corner essentials for morning meeting and post-recess reset. From the 2026 Fall Edition, p.&nbsp;12.</p>
+      <p class="desc">Mindfulness Magic Ball + Wooden Story Sand Tray + Sand Tray with Flashcard Holder + Rockpool Tray. The quiet-corner essentials for morning meeting and post-recess reset. From the 2026 Spring Catalog, p.&nbsp;12.</p>
       <ul class="contains">
         <li>Mindfulness Magic Ball, MTW-SP-MBALL</li>
         <li>Sand Tray with Accessories, MTW-SP-SAND</li>
@@ -4206,7 +4214,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       <!-- PRICE: MTW-CA-ANS -->
       <p class="price-line">$118</p>
       <span class="price-note">Hand-blended &middot; ships within 2 weeks &middot; Net-30 available &middot; saves $8</span>
-      <p class="desc">All seven Análu scents bundled, Sweet Orange, Eucalyptus, Lemon, Mojito, Lavender, Peppermint, Pumpkin Spice. The classroom assortment, made in California. From the 2026 Fall Edition, p.&nbsp;10.</p>
+      <p class="desc">All seven Análu scents bundled, Sweet Orange, Eucalyptus, Lemon, Mojito, Lavender, Peppermint, Pumpkin Spice. The classroom assortment, made in California. From the 2026 Spring Catalog, p.&nbsp;10.</p>
       <ul class="contains">
         <li>Análu &middot; Sweet Orange, MTW-CA-ANO</li>
         <li>Análu &middot; Eucalyptus, MTW-CA-ANE</li>
@@ -4226,7 +4234,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
   <!-- Educator combo strip (NOT a catalog SKU) -->
   <div style="margin: 36px clamp(20px, 5vw, 56px) 0; padding: 28px clamp(20px, 4vw, 36px); background: var(--cream); border: 0.5px solid var(--rule-strong); border-radius: 4px; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(24px, 3vw, 40px); align-items: center;">
     <div>
-      <span class="eyebrow" style="color: var(--accent-deep);">10. Educator Program &nbsp;&middot;&nbsp; Custom Combo</span>
+      <span class="eyebrow" style="color: var(--accent-deep);">Educator Program &nbsp;&middot;&nbsp; Custom Combo</span>
       <h3 style="margin: 14px 0 0; font-family: var(--serif); font-weight: 400; font-size: clamp(24px, 2.6vw, 32px); line-height: 1.15; color: var(--ink); letter-spacing: -.005em;">The Whole Sensory Corner, <span style="font-style: italic; color: var(--accent-deep);">on one PO.</span></h3>
     </div>
     <div>
@@ -4348,10 +4356,10 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
         <div class="qf-chips">
           <label class="qf-chip"><input type="checkbox" name="ecosystems" value="sensory-play" checked/>01 &middot; Sensory Play</label>
           <label class="qf-chip"><input type="checkbox" name="ecosystems" value="nature-play"/>02 &middot; Nature Play</label>
-          <label class="qf-chip"><input type="checkbox" name="ecosystems" value="woodland"/>03 &middot; Woodland</label>
+          <label class="qf-chip"><input type="checkbox" name="ecosystems" value="woodland"/>03 &middot; Woodland Habitats</label>
           <label class="qf-chip"><input type="checkbox" name="ecosystems" value="small-world"/>04 &middot; Small World &amp; Storytelling</label>
           <label class="qf-chip"><input type="checkbox" name="ecosystems" value="fairy-villages"/>05 &middot; Fairy Villages</label>
-          <label class="qf-chip"><input type="checkbox" name="ecosystems" value="steam"/>06 &middot; STEAM</label>
+          <label class="qf-chip"><input type="checkbox" name="ecosystems" value="steam"/>06 &middot; STEAM &middot; Wonder &amp; Investigation</label>
           <label class="qf-chip"><input type="checkbox" name="ecosystems" value="dramatic-play"/>07 &middot; Dramatic Play</label>
           <label class="qf-chip"><input type="checkbox" name="ecosystems" value="creative-arts"/>08 &middot; Creative Arts</label>
         </div>
@@ -4390,7 +4398,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
   <div style="max-width: 920px; margin: 0 auto; text-align: center;">
     <span class="eyebrow" style="color: var(--forest); display: inline-block; margin-bottom: 18px;">From the Educator Catalog</span>
     <p style="margin: 0 auto 22px; max-width: 56ch; font-family: var(--serif); font-style: italic; font-size: clamp(20px, 2vw, 26px); line-height: 1.45; color: var(--ink); letter-spacing: -.005em;">Educator reviews, how orders work, and the Educator Letter all live on the catalog landing, once for every volume.</p>
-    <a href="/pages/educators" style="display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; background: var(--ink); color: var(--cream); text-decoration: none; font-family: var(--sans); font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; border-radius: 999px;">Visit the Educator Catalog &rarr;</a>
+    <a href="educators.html" style="display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; background: var(--ink); color: var(--cream); text-decoration: none; font-family: var(--sans); font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; border-radius: 999px;">Visit the Educator Catalog &rarr;</a>
   </div>
 </section>
 
@@ -4421,33 +4429,33 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       <div>
         <h6>The Catalog</h6>
         <ul class="catalog-list">
-          <li><a href="/pages/educator-sensory-play">01 &middot; Sensory Play</a></li>
-          <li><a href="/pages/educator-nature-play">02 &middot; Nature Play</a></li>
-          <li><a href="/pages/educator-woodland">03 &middot; Woodland</a></li>
-          <li><a href="/pages/educator-small-world">04 &middot; Small World &amp; Storytelling</a></li>
-          <li><a href="/pages/educator-fairy-villages">05 &middot; Fairy Villages</a></li>
-          <li><a href="/pages/educator-steam">06 &middot; STEAM</a></li>
-          <li><a href="/pages/educator-dramatic-play">07 &middot; Dramatic Play</a></li>
-          <li><a href="/pages/educator-creative-arts">08 &middot; Creative Arts</a></li>
+          <li><a href="sensory-play.html">01 &middot; Sensory Play</a></li>
+          <li><a href="nature-play.html">02 &middot; Nature Play</a></li>
+          <li><a href="woodland.html">03 &middot; Woodland Habitats</a></li>
+          <li><a href="small-world.html">04 &middot; Small World</a></li>
+          <li><a href="fairy-villages.html">05 &middot; Fairy Villages</a></li>
+          <li><a href="steam.html">06 &middot; STEAM</a></li>
+          <li><a href="dramatic-play.html">07 &middot; Dramatic Play</a></li>
+          <li><a href="creative-arts.html">08 &middot; Creative Arts</a></li>
         </ul>
       </div>
 
       <div>
         <h6>Educator Program</h6>
         <ul>
-          <li><a href="/pages/new-quote">Start a new quote</a></li>
-          <li><a href="/pages/educator-dashboard">Educator dashboard</a></li>
-          <li><a href="/pages/educators">Apply for an account</a></li>
-          <li><a href="/pages/school-affiliate">School affiliate</a></li>
+          <li><a href="new-quote.html">Start a new quote</a></li>
+          <li><a href="educator-dashboard.html">Educator dashboard</a></li>
+          <li><a href="educator.html">Apply for an account</a></li>
+          <li><a href="school-affiliate.html">School affiliate</a></li>
         </ul>
       </div>
 
       <div>
         <h6>Resources</h6>
         <ul class="downloads">
-          <li><a href="/pages/vendor-profile">Vendor profile</a></li>
-          <li><a href="/pages/procurement-guide">Procurement guide</a></li>
-          <li><a href="/pages/schools">Ordering for schools</a></li>
+          <li><a href="vendor-profile.html">Vendor profile</a></li>
+          <li><a href="procurement-guide.html">Procurement guide</a></li>
+          <li><a href="ordering-for-schools.html">Ordering for schools</a></li>
           <li><a href="#" data-ext="XLSX">SKU list and prices</a></li>
           <li><a href="#" data-ext="PDF">Catalog spread</a></li>
           <li><a href="#" data-ext="PDF">Materials and safety</a></li>
@@ -4489,7 +4497,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
      CATALOG VARS, single source of truth for ecosystem strings.
      To reskin for another ecosystem, edit ONLY this block.
      A Shopify template can override these via Liquid:
-       const CATALOG = { volume: "01", ecosystem: "Sensory Play", makers: ["Buttonandbug", "Análu", "Tender Leaf Toys"] };
+       const CATALOG = { volume: "{{ page.metafields.catalog.volume }}", ... };
      ================================================================= */
   const CATALOG = {
     volume:       "04",

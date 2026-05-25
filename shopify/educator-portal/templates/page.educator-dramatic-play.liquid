@@ -2,10 +2,12 @@
 {%- comment -%} Educator catalog gate: closed unless approved educator. {%- endcomment -%}
 {%- assign is_approved = false -%}
 {%- if customer and customer.tags contains 'educator-approved' -%}{%- assign is_approved = true -%}{%- endif -%}
+{%- if customer.b2b? -%}{%- assign is_approved = true -%}{%- endif -%}
 {%- if is_approved -%}
 <!doctype html>
 <html lang="en">
 <head>
+  {{ content_for_header }}
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="robots" content="noindex,nofollow"/>
@@ -19,23 +21,22 @@
        3. Different target keywords
        4. Each has its own canonical pointing to itself
      ========================================================================= -->
-<title>Dramatic Play for Schools &middot; MTW Educator Catalog</title>
-<meta name="description" content="Farmyards, classroom markets, shops, and home corners for sociodramatic role-play, ages 3 to 8. By Drewart, Tara Treasures, and Tender Leaf.">
+<title>Dramatic Play · My Toy Wagon Educator Catalog</title>
+<meta name="description" content="Hand-felted play mats, habitat puppets, and circle-time story sets for Pre-K to Grade 2 literacy classrooms. Hand-made in Nepal. Net-30 invoicing,...">
 <link rel="canonical" href="https://mytoywagon.com/pages/educator-dramatic-play" />
 
 <!-- Open Graph (social shares: Facebook, LinkedIn) -->
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Dramatic Play for Schools" />
-<meta property="og:description" content="Farmyards, classroom markets, shops, and home corners for sociodramatic role-play, ages 3 to 8. By Drewart, Tara Treasures, and Tender Leaf." />
+<meta property="og:title" content="Dramatic Play for Schools &middot; My Toy Wagon Educator Catalog" />
+<meta property="og:description" content="Hand-built farmyards, classroom markets, and harvest tables for sociodramatic centers, home corners, and market role-play. Net-30 and tax-exempt for approved schools." />
 <meta property="og:url" content="https://mytoywagon.com/pages/educator-dramatic-play" />
 <meta property="og:image" content="https://mytoywagon.com/assets/og-dramatic-play.jpg" />
 <meta property="og:site_name" content="My Toy Wagon" />
 
 <!-- Twitter card -->
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="https://mytoywagon.com/assets/og-dramatic-play.jpg" />
-<meta name="twitter:title" content="Dramatic Play for Schools" />
-<meta name="twitter:description" content="Farmyards, classroom markets, shops, and home corners for sociodramatic role-play, ages 3 to 8. By Drewart, Tara Treasures, and Tender Leaf." />
+<meta name="twitter:title" content="Dramatic Play for Schools &middot; My Toy Wagon Educator Catalog" />
+<meta name="twitter:description" content="Hand-built farmyards, classroom markets, and harvest tables for sociodramatic centers, home corners, and market role-play. Net-30 and tax-exempt for approved schools." />
 
 <!-- Structured data: BreadcrumbList for educator portal hierarchy.
      Tells Google: Home > Educator Catalog > Dramatic Play.
@@ -103,7 +104,7 @@
   /* type */
   --serif:        "Cormorant Garamond", "Garamond", Georgia, serif;
   --sans:         "Mulish", "Helvetica Neue", system-ui, sans-serif;
-  --mono:         ui-monospace, "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+  --mono:         "Mulish", "Helvetica Neue", system-ui, sans-serif;
 }
 
 /* ----------------------------- BASE ------------------------------ */
@@ -143,7 +144,7 @@ a{ color:inherit; }
 }
 .meta{
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 10.5px;
   letter-spacing: .06em;
 }
 .rule-hair{ display:block; width:100%; height:1px; background: var(--rule-soft); border:0; }
@@ -260,7 +261,7 @@ a{ color:inherit; }
   border-radius: 999px;
   font-family: var(--serif);
   font-style: italic;
-  font-size: 14px;
+  font-size: 14.5px;
   color: var(--stone);
   cursor: text;
   width: 100%;
@@ -317,7 +318,7 @@ a{ color:inherit; }
   background: var(--forest);
   color: var(--cream);
   border-radius: 9px;
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 600;
   letter-spacing: 0;
 }
@@ -441,7 +442,7 @@ a{ color:inherit; }
   font-family: var(--sans);
   font-style: normal;
   font-weight: 500;
-  font-size: 12px;
+  font-size: 12.5px;
   letter-spacing: .04em;
   color: var(--cream);
   line-height: 1.5;
@@ -498,7 +499,7 @@ a{ color:inherit; }
   font-style: normal;
   font-weight: 500;
   font-family: var(--sans);
-  font-size: 11px;
+  font-size: 10.5px;
   letter-spacing: .2em;
   text-transform: uppercase;
   color: var(--stone);
@@ -561,7 +562,7 @@ a{ color:inherit; }
   align-items: center;
   gap: 6px;
   font-family: var(--sans);
-  font-size: 11px;
+  font-size: 10.5px;
   letter-spacing: .14em;
   text-transform: uppercase;
   font-weight: 600;
@@ -598,7 +599,7 @@ a{ color:inherit; }
   right: 12px; bottom: 12px;
   z-index: 3;
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 9.5px;
   letter-spacing: .08em;
   color: rgba(44,44,42,.55);
   background: rgba(245,240,229,.78);
@@ -631,7 +632,7 @@ a{ color:inherit; }
 .qf-chip-stat{
   font-family: var(--sans);
   font-weight: 500;
-  font-size: 12px;
+  font-size: 11.5px;
   letter-spacing: .14em;
   text-transform: uppercase;
   color: var(--ink);
@@ -654,7 +655,7 @@ a{ color:inherit; }
     scrollbar-width: none;
   }
   .quick-facts-inner::-webkit-scrollbar{ display: none; }
-  .qf-chip-stat{ font-size: 11px; padding: 6px 16px; flex-shrink: 0; }
+  .qf-chip-stat{ font-size: 10.5px; padding: 6px 16px; flex-shrink: 0; }
 }
 
 /* ----------------------- BOM (kit bill-of-materials) ----------------------- */
@@ -682,7 +683,7 @@ a{ color:inherit; }
 .bom-item .sku-tba{
   display: inline-block;
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 9.5px;
   letter-spacing: .12em;
   text-transform: uppercase;
   color: var(--stone);
@@ -704,7 +705,7 @@ a{ color:inherit; }
   display: flex; align-items: baseline; justify-content: space-between;
   padding-top: 14px;
   font-family: var(--sans);
-  font-size: 12px;
+  font-size: 11.5px;
   letter-spacing: .14em;
   text-transform: uppercase;
 }
@@ -796,7 +797,7 @@ a{ color:inherit; }
 .view-pdp:hover{ color: var(--ink); border-color: var(--ink); }
 .stock-pill{
   font-family: var(--sans);
-  font-size: 11px;
+  font-size: 10.5px;
   letter-spacing: .14em;
   text-transform: uppercase;
   font-weight: 500;
@@ -837,7 +838,7 @@ a{ color:inherit; }
 }
 .kit .price-note{
   font-family: var(--sans);
-  font-size: 11px;
+  font-size: 10.5px;
   letter-spacing: .14em;
   text-transform: uppercase;
   color: var(--stone);
@@ -907,7 +908,7 @@ a{ color:inherit; }
   background: var(--forest);
   color: var(--cream);
   border-radius: 9px;
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 600;
 }
 
@@ -981,7 +982,7 @@ a{ color:inherit; }
 }
 .step p{
   margin: 0;
-  font-size: 14px;
+  font-size: 14.5px;
   line-height: 1.6;
   color: var(--ink-soft);
   max-width: 36ch;
@@ -1016,7 +1017,7 @@ a{ color:inherit; }
   text-align: center;
   padding: 12px 16px;
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 10.5px;
   letter-spacing: .12em;
   text-transform: uppercase;
   color: var(--stone);
@@ -1053,7 +1054,7 @@ a{ color:inherit; }
   padding-top: 24px;
   border-top: 0.5px solid var(--rule);
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 10.5px;
   letter-spacing: .12em;
   text-transform: uppercase;
   color: var(--ink-soft);
@@ -1095,7 +1096,7 @@ a{ color:inherit; }
 .human-touch .ht-body p{
   margin: 0;
   font-family: var(--sans);
-  font-size: 13px;
+  font-size: 13.5px;
   color: var(--ink-soft);
   line-height: 1.55;
 }
@@ -1276,7 +1277,7 @@ a{ color:inherit; }
 .klaviyo-form-row label{
   font-family: var(--sans);
   font-weight: 600;
-  font-size: 11px;
+  font-size: 10.5px;
   letter-spacing: .14em;
   text-transform: uppercase;
   color: var(--stone);
@@ -1284,7 +1285,7 @@ a{ color:inherit; }
 .klaviyo-form-row input,
 .klaviyo-form-row select{
   font-family: var(--sans);
-  font-size: 14px;
+  font-size: 14.5px;
   color: var(--ink);
   background: var(--cream);
   border: 0.5px solid var(--rule-strong);
@@ -1347,7 +1348,7 @@ footer .cols .downloads a:hover{ color: color-mix(in oklab, var(--accent-soft) 8
 footer .cols .downloads a::after{
   content: attr(data-ext);
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 9.5px;
   letter-spacing: .12em;
   color: rgba(250,246,237,.5);
   border: 0.5px solid rgba(250,246,237,.25);
@@ -1411,7 +1412,7 @@ footer .cols .downloads a::after{
 .outfit .head .right .meta{
   margin-top: 18px;
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 10.5px;
   letter-spacing: .08em;
   color: var(--stone);
 }
@@ -1445,7 +1446,7 @@ footer .cols .downloads a::after{
 }
 .outfit .kit .tier{
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 10.5px;
   letter-spacing: .14em;
   text-transform: uppercase;
   color: var(--stone);
@@ -1474,7 +1475,7 @@ footer .cols .downloads a::after{
   margin: 24px 0 22px;
 }
 .outfit .kit .desc{
-  font-size: 14px;
+  font-size: 14.5px;
   line-height: 1.65;
   color: var(--ink-soft);
   margin: 0 0 22px;
@@ -1597,7 +1598,7 @@ footer .cols .downloads a::after{
 .cover .head .vol{ text-align:right; }
 .cover .head .vol .num{
   font-family: var(--serif); font-style: italic;
-  font-size: clamp(48px, 5.6vw, 88px); line-height: 1;
+  font-size: 38px; line-height: 1;
 }
 .cover h1{
   position:absolute;
@@ -1640,7 +1641,7 @@ footer .cols .downloads a::after{
 }
 .cover .scroll{
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 10.5px;
   letter-spacing: .14em;
   color: rgba(250,246,237,.85);
   text-align:right;
@@ -1738,7 +1739,7 @@ footer .cols .downloads a::after{
 }
 .intro .col-txt h3 .it{ color: var(--accent-deep); }
 .intro .body{
-  font-size: 17px;
+  font-size: 17.5px;
   line-height: 1.78;
   max-width: 56ch;
 }
@@ -1834,7 +1835,7 @@ footer .cols .downloads a::after{
   display:inline-flex; align-items:center; gap:14px;
   font-family: var(--sans);
   font-weight: 600;
-  font-size: 12px;
+  font-size: 12.5px;
   letter-spacing: .18em;
   text-transform: uppercase;
   background: var(--cream);
@@ -1933,7 +1934,7 @@ footer .cols .downloads a::after{
   padding-top: 28px;
   border-top: 1px solid rgba(159,79,97,.22);
 }
-.split .content .craft .label{ color: var(--muted); display:block; margin-bottom: 8px; font-size: 11px; }
+.split .content .craft .label{ color: var(--muted); display:block; margin-bottom: 8px; font-size: 10.5px; }
 .split .content .craft .v{
   font-family: var(--serif);
   font-style: italic;
@@ -1962,7 +1963,7 @@ footer .cols .downloads a::after{
 .split .content .testimony .attr .dash{ display:inline-block; width: 36px; height: 1px; background: var(--accent); }
 .split .content .testimony .attr .name{
   font-family: var(--sans);
-  font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-soft);
+  font-size: 11.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-soft);
 }
 .split .content .testimony .attr .name b{ color: var(--ink); font-weight: 700; }
 .split .content .ctas{ margin-top: 40px; display: flex; flex-wrap: wrap; gap: 16px 22px; align-items: center; }
@@ -1992,15 +1993,8 @@ footer .cols .downloads a::after{
   font-size: 11px;
   letter-spacing: .22em;
   text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 8px;
-  padding: 4px 10px;
-  background: color-mix(in oklab, var(--accent) 8%, transparent);
-  border-left: 2px solid var(--accent);
-  display: inline-block;
-  width: auto;
-  justify-self: start;
-  border-radius: 0 2px 2px 0;
+  color: var(--accent-deep);
+  margin-bottom: 4px;
 }
 .pairs-with .pair-thumb{
   width: 88px; height: 88px;
@@ -2025,7 +2019,7 @@ footer .cols .downloads a::after{
 .pairs-with .pair-body p{
   margin: 0;
   font-family: var(--sans);
-  font-size: 13px;
+  font-size: 13.5px;
   line-height: 1.5;
   color: var(--ink-soft);
 }
@@ -2042,7 +2036,7 @@ footer .cols .downloads a::after{
   gap: 8px;
   font-family: var(--sans);
   font-weight: 500;
-  font-size: 12px;
+  font-size: 11.5px;
   letter-spacing: .14em;
   text-transform: uppercase;
   color: var(--ink);
@@ -2158,7 +2152,7 @@ footer .cols .downloads a::after{
 .gallery .head .index{
   margin-top: 18px;
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 10.5px;
   letter-spacing: .08em;
   color: var(--ink-soft);
 }
@@ -2174,7 +2168,7 @@ footer .cols .downloads a::after{
   width: 100%;
   overflow: hidden;
   border-radius: 2px;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 4 / 5;
 }
 .home .tile-wrap .tile{ width: 100%; height: 100%; min-height: 0; }
 .home .tile-wrap .overlay{
@@ -2218,7 +2212,7 @@ footer .cols .downloads a::after{
   margin-top: 2px;
 }
 .home .cap .desc{
-  font-size: 13px;
+  font-size: 13.5px;
   line-height: 1.5;
   color: var(--ink-soft);
   margin: 6px 0 4px;
@@ -2238,8 +2232,8 @@ footer .cols .downloads a::after{
   flex-wrap: wrap;
   margin-top: 10px;
 }
-.home .cap .add-btn{ flex-shrink: 0; padding: 9px 14px; font-size: 11px; }
-.home .cap .view-pdp{ font-size: 11px; white-space: nowrap; }
+.home .cap .add-btn{ flex-shrink: 0; padding: 9px 14px; font-size: 10.5px; }
+.home .cap .view-pdp{ font-size: 10.5px; white-space: nowrap; }
 
 /* Footer alignment, pushes SKU + price + add-row to the bottom of every
    card so they line up horizontally across the grid row even when desc
@@ -2254,7 +2248,7 @@ footer .cols .downloads a::after{
   border-top: 0.5px solid var(--rule);
   font-family: var(--sans);
   font-weight: 500;
-  font-size: 11px;
+  font-size: 10.5px;
   letter-spacing: .14em;
   text-transform: uppercase;
   color: var(--stone);
@@ -2264,7 +2258,7 @@ footer .cols .downloads a::after{
   grid-column: 2;
   margin-top: 4px;
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 10.5px;
   letter-spacing: .08em;
   color: var(--accent-deep);
 }
@@ -2360,7 +2354,7 @@ footer .cols .downloads a::after{
 }
 .reviews-section .review p{
   margin: 0 0 18px;
-  font-size: 14px;
+  font-size: 14.5px;
   line-height: 1.65;
   color: var(--ink-soft);
   flex: 1;
@@ -2370,7 +2364,7 @@ footer .cols .downloads a::after{
   padding-top: 16px;
   border-top: 0.5px solid var(--rule);
   font-family: var(--sans);
-  font-size: 12px;
+  font-size: 12.5px;
   color: var(--stone);
   line-height: 1.45;
 }
@@ -2385,7 +2379,7 @@ footer .cols .downloads a::after{
   gap: 10px;
   font-family: var(--sans);
   font-weight: 500;
-  font-size: 12px;
+  font-size: 12.5px;
   letter-spacing: .18em;
   text-transform: uppercase;
   color: var(--ink);
@@ -2491,7 +2485,7 @@ footer .cols .downloads a::after{
   font-style: normal;
   font-family: var(--sans);
   font-weight: 600;
-  font-size: 11px;
+  font-size: 10.5px;
   letter-spacing: .2em;
   text-transform: uppercase;
   color: var(--ink);
@@ -2504,7 +2498,7 @@ footer .cols .downloads a::after{
   gap: 12px;
   font-family: var(--sans);
   font-weight: 500;
-  font-size: 12px;
+  font-size: 12.5px;
   letter-spacing: .18em;
   text-transform: uppercase;
   color: var(--cream);
@@ -2729,7 +2723,7 @@ footer .cols .downloads a::after{
 .closing .signoff .left,
 .closing .signoff .right{
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 10.5px;
   letter-spacing: .1em;
   color: var(--ink-soft);
 }
@@ -2786,33 +2780,11 @@ footer .left .foot-contact .hours{
   margin-top: 8px;
   color: rgba(250,246,237,.55);
   font-size: 12px;
-}
-footer .left .foot-social{
-  margin-top: 22px;
-  display: flex;
-  gap: 10px;
-}
-footer .left .foot-social a{
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px; height: 36px;
-  border: 0.5px solid rgba(250,246,237,.32);
-  border-radius: 50%;
-  color: rgba(250,246,237,.85);
-  transition: background .2s ease, color .2s ease, border-color .2s ease;
-}
-footer .left .foot-social a:hover{
-  background: var(--cream);
-  color: var(--ink);
-  border-color: var(--cream);
-}
-footer .left .foot-social svg{ width: 16px; height: 16px; stroke: currentColor; stroke-width: 1.4; fill: none; }
-footer .left .retail-link{
+}footer .left .retail-link{
   margin: 22px 0 0;
   font-family: var(--serif);
   font-style: italic;
-  font-size: 14px;
+  font-size: 14.5px;
   line-height: 1.5;
   color: rgba(250,246,237,.6);
 }
@@ -2868,7 +2840,7 @@ footer .cols h6{
 footer .cols ul{ list-style: none; margin: 0; padding: 0; }
 footer .cols li{
   font-family: var(--sans);
-  font-size: 13px;
+  font-size: 13.5px;
   line-height: 1.55;
   color: rgba(250,246,237,.86);
   margin-bottom: 6px;
@@ -2889,7 +2861,7 @@ footer .legal{
   border-top: 0.5px solid rgba(250,246,237,.14);
   display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap;
   font-family: var(--sans);
-  font-size: 12px;
+  font-size: 11.5px;
   letter-spacing: .04em;
   color: rgba(250,246,237,.55);
 }
@@ -2997,7 +2969,9 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 /* Layout alternation, editorial rhythm.
    .split.image-right flips the standard split so content-left, image-right.
    Apply to Featured 2 (The Harvest) for content rhythm. */
-/* (Variant B below — the CSS grid order flip — is the canonical implementation.) */
+.split.image-right{ direction: rtl; }
+.split.image-right > *{ direction: ltr; }
+@media (max-width: 980px){ .split.image-right{ direction: ltr; } }
 
 /* Section divider, magazine TOC-entry style.
    Used between major editorial sections to mark transition. */
@@ -3092,7 +3066,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 .gallery.even .home.size-hero,
 .gallery.even .home.size-tall,
 .gallery.even .home.size-std{ grid-column: auto; }
-.gallery.even .home .tile-wrap{ aspect-ratio: 1 / 1; }
+.gallery.even .home .tile-wrap{ aspect-ratio: 3 / 4; }
 .gallery.even .home .tile-wrap .tile{ height: 100%; }
 @media (max-width: 1080px){ .gallery.even .homes{ grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 720px){ .gallery.even .homes{ grid-template-columns: repeat(2, 1fr); } }
@@ -3152,7 +3126,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 }
 .split .content .standards-row .label{
   color: var(--muted);
-  font-size: 11px;
+  font-size: 10.5px;
   letter-spacing: .18em;
   display: block;
   padding-top: 6px;
@@ -3306,8 +3280,8 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       <span class="slide">Pre-paid orders ship first. Window closes when the bench fills.</span>
     </div>
     <div class="utility-right">
-      <a href="/pages/educators">Apply for an account</a>
-      <a href="/pages/educators">Sign in</a>
+      <a href="/pages/educator-program">Apply for an account</a>
+      <a href="/pages/educator-program">Sign in</a>
     </div>
   </div>
 </div>
@@ -3346,7 +3320,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 <div class="subnav">
   <div class="subnav-inner">
     <nav class="breadcrumb" aria-label="Breadcrumb">
-      <a href="MTW Homepage v3.html" class="home-crumb">Home</a>
+      <a href="https://mytoywagon.com" class="home-crumb">Home</a>
       <span class="sep" aria-hidden="true">/</span>
       <a href="/pages/educators">Educator Catalog</a>
       <span class="sep" aria-hidden="true">/</span>
@@ -3376,7 +3350,10 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
   <div class="veil"></div>
 
   <div class="head">
-      <div class="vol">
+    <div>
+      <span class="wagon-badge">For Educators</span>
+    </div>
+    <div class="vol">
       <div class="meta" style="color: rgba(250,246,237,.7);">SECTION</div>
       <div class="num"><span data-fill="volume">07</span></div>
     </div>
@@ -3411,7 +3388,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 <section style="background: var(--cream); border-bottom: 0.5px solid var(--rule); text-align: center; padding: 56px clamp(20px, 5vw, 56px);">
   <p style="margin: 0 auto; max-width: 68ch; font-family: var(--serif); font-style: italic; font-size: clamp(22px, 2.4vw, 30px); line-height: 1.4; color: var(--ink); letter-spacing: -.005em;">Hand-finished alder in a Polish workshop. Hand-stitched felt produce in Nepal. <span style="color: var(--accent-deep);">Slow goods, on purpose.</span></p>
   <p style="margin: 22px auto 0; max-width: 62ch; font-family: var(--sans); font-size: 16px; line-height: 1.65; color: var(--ink-soft);">Every dramatic-play piece is built by makers we know by name. Drewart alder furniture from a Polish family workshop. Tender Leaf market fixtures. Fagus heirloom vehicles. Tara Treasures hand-felted produce from a women-owned co-op in Nepal. Slow goods, on purpose. Reserve early.</p>
-  <p style="margin: 24px auto 0; max-width: 62ch; font-family: var(--sans); font-size: 14px; line-height: 1.6; color: var(--forest); font-weight: 600; letter-spacing: .02em;">For every classroom order, we share a meal with families served by the Los Angeles Regional Food Bank.</p>
+  <p style="margin: 24px auto 0; max-width: 62ch; font-family: var(--sans); font-size: 14.5px; line-height: 1.6; color: var(--forest); font-weight: 600; letter-spacing: .02em;">For every classroom order, we share a meal with families served by the Los Angeles Regional Food Bank.</p>
 </section>
 
 <!-- =========================== EDITORIAL INTRO =========================== -->
@@ -3424,7 +3401,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       </div>
     </div>
     <div class="col-txt">
-      <span class="eyebrow">Imagine and Become</span>
+      <span class="eyebrow">Essay One &nbsp;&middot;&nbsp; Imagine and Become</span>
       <h3>Children learn the world <span class="it">by playing it first.</span></h3>
 
       <div class="body">
@@ -3449,7 +3426,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
     </div>
   </div>
   <div class="content">
-    <span class="eyebrow" style="color: var(--accent-deep);">04. Drewart &nbsp;&middot;&nbsp; Featured Heirloom</span>
+    <span class="eyebrow" style="color: var(--accent-deep);">Drewart &nbsp;&middot;&nbsp; Featured Heirloom</span>
     <h3>The Cow <span class="it">Shed.</span></h3>
     <div class="sub">Hand-finished alder. Arched roof. Hay loft. Polish workshop.</div>
     <span class="hair" aria-hidden="true"></span>
@@ -3487,6 +3464,9 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 
     <div class="pairs-with">
       <span class="label">Extend the play</span>
+      <div class="pair-thumb tile t-hue3 contained">
+        <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+      </div>
       <div class="pair-body">
         <h4>The Farmyard Set &nbsp;&middot;&nbsp; MTW-DP-FYS</h4>
         <p>Farm Mat, hand-felted farm animals, Fagus tractor and hay wagon, Papoose wooden fences. The full farmyard the Cow Shed lives at the center of. Catalog pg.&nbsp;48.</p>
@@ -3508,7 +3488,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
   <blockquote>
     A market stand, a cart, a cash register, shopping accessories, and <em>a hundred pieces of wooden food.</em>
   </blockquote>
-  <cite>From the 2026 Fall Edition, page 49</cite>
+  <cite>From the 2026 Spring Edit, page 49</cite>
 </section>
 
 <div class="section-divider">
@@ -3522,12 +3502,12 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
   <div class="wrap">
     <div class="head">
       <div>
-        <span class="eyebrow">05. Farmyard &middot; Domestic Small-World Anchor</span>
+        <span class="eyebrow">Editorial Two &nbsp;&middot;&nbsp; Farmyard &middot; Domestic Small-World Anchor</span>
         <h2>The complete <span class="it">farmyard scene.</span></h2>
       </div>
       <div class="right">
         <p>A complete farmyard world built from animals, fences, vehicles, and open-ended terrain. Set it on a shelf or play table and children immediately begin sorting, hauling, caring, and telling farm stories.</p>
-        <p style="margin-top: 18px; font-family: var(--sans); font-size: 13px; line-height: 1.6; color: var(--ink); font-weight: 500;">Hand-felted wool, solid beech, driftwood. CE / EN71. Made in Nepal and Germany.</p>
+        <p style="margin-top: 18px; font-family: var(--sans); font-size: 13.5px; line-height: 1.6; color: var(--ink); font-weight: 500;">Hand-felted wool, solid beech, driftwood. CE / EN71. Made in Nepal and Germany.</p>
         <div class="index">FARM MAT &nbsp;&middot;&nbsp; ANIMALS &nbsp;&middot;&nbsp; TRACTOR &nbsp;&middot;&nbsp; HAY WAGON &nbsp;&middot;&nbsp; FENCES</div>
       </div>
     </div>
@@ -3555,7 +3535,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
   <blockquote>
     Fill it with rainbow rice on Monday morning. By Tuesday, children have sorted by color, built a story, and <em>asked to refill it themselves.</em>
   </blockquote>
-  <cite>From the 2026 Fall Edition, page 6</cite>
+  <cite>From the 2026 Spring Edit, page 6</cite>
 </section>
 
 <div class="section-divider">
@@ -3573,7 +3553,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
     </div>
   </div>
   <div class="content">
-    <span class="eyebrow" style="color: var(--accent-deep);">06. Tara Treasures &nbsp;&middot;&nbsp; From Garden to Shop</span>
+    <span class="eyebrow" style="color: var(--accent-deep);">Tara Treasures &nbsp;&middot;&nbsp; From Garden to Shop</span>
     <h3>The <span class="it">Harvest.</span></h3>
     <div class="sub">Fifty-two hand-felted pieces. Four sub-collections. The bridge between farm and shop.</div>
     <span class="hair" aria-hidden="true"></span>
@@ -3619,6 +3599,9 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 
     <div class="pairs-with">
       <span class="label">Stocks the market</span>
+      <div class="pair-thumb tile t-alt contained">
+        <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+      </div>
       <div class="pair-body">
         <h4>The Classroom Shop &nbsp;&middot;&nbsp; MTW-DP-SH</h4>
         <p>The General Stores stand, Big Box of play food, Cash Register, Shopping Cart, and Let's Go Shopping Collection. The classroom market the Harvest stocks. Catalog pg.&nbsp;49.</p>
@@ -3647,12 +3630,12 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
   <div class="wrap">
     <div class="head">
       <div>
-        <span class="eyebrow">07. Tender Leaf &middot; Shop &amp; Market Play</span>
+        <span class="eyebrow">Editorial Three &nbsp;&middot;&nbsp; Tender Leaf &middot; Shop &amp; Market Play</span>
         <h2>The classroom <span class="it">shop scene.</span></h2>
       </div>
       <div class="right">
         <p>A classroom market filled with groceries, baskets, carts, scales, and the rituals of buying and helping. Children sort, count, sell, shop, and practice the everyday language of exchange.</p>
-        <p style="margin-top: 18px; font-family: var(--sans); font-size: 13px; line-height: 1.6; color: var(--ink); font-weight: 500;">Rubberwood and beech. Non-toxic water-based paints. ASTM F963, CE / EN71. Made in Indonesia and Germany.</p>
+        <p style="margin-top: 18px; font-family: var(--sans); font-size: 13.5px; line-height: 1.6; color: var(--ink); font-weight: 500;">Rubberwood and beech. Non-toxic water-based paints. ASTM F963, CE / EN71. Made in Indonesia and Germany.</p>
         <div class="index">STALL &nbsp;&middot;&nbsp; SHOPPING &nbsp;&middot;&nbsp; FOOD &nbsp;&middot;&nbsp; REGISTER &nbsp;&middot;&nbsp; CART</div>
       </div>
     </div>
@@ -3683,7 +3666,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
   <blockquote>
     Stillness invites attention inward. <em>Quiet tools</em> for the kind of classroom transitions that keep a morning from unraveling.
   </blockquote>
-  <cite>From the 2026 Fall Edition, page 12</cite>
+  <cite>From the 2026 Spring Edit, page 12</cite>
 </section>
 
 <div class="section-divider">
@@ -3703,7 +3686,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       <h2>Outfit your classroom <span class="it">in one quote.</span></h2>
     </div>
     <div class="right">
-      <p>Schools buy Dramatic Play as catalog sets, not as single pieces. The two purchase-order-ready sets below are the same ones in our 2026 Fall Edition. Each is priced as a package on your quote.</p>
+      <p>Schools buy Dramatic Play as catalog sets, not as single pieces. The two purchase-order-ready sets below are the same ones in our 2026 Spring Catalog. Each is priced as a package on your quote.</p>
       <div class="meta">CATALOG SETS &nbsp;&middot;&nbsp; NET-30 &nbsp;&middot;&nbsp; TAX-EXEMPT &nbsp;&middot;&nbsp; ONE-ON-ONE CURATION</div>
     </div>
   </div>
@@ -3716,7 +3699,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       <span class="hair" aria-hidden="true"></span>
       <p class="price-line">Price on request</p>
       <span class="price-note">Hand-felted &amp; solid beech &middot; ships within 4 weeks &middot; Net-30 available</span>
-      <p class="desc">A complete farmyard play scene with mat, animals, working vehicles, and wooden fences. The five-piece catalog set, priced as a package. From the 2026 Fall Edition, p.&nbsp;48.</p>
+      <p class="desc">A complete farmyard play scene with mat, animals, working vehicles, and wooden fences. The five-piece catalog set, priced as a package. From the 2026 Spring Catalog, p.&nbsp;48.</p>
       <ul class="contains">
         <li>Farm Mat &mdash; MTW-DP-TFM</li>
         <li>Farm Animals (set of 10) &mdash; MTW-DP-TFA</li>
@@ -3738,7 +3721,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       <span class="hair" aria-hidden="true"></span>
       <p class="price-line">Price on request</p>
       <span class="price-note">Hand-finished wood &middot; ships within 4 weeks &middot; Net-30 available</span>
-      <p class="desc">A market stand, cart, cash register, shopping accessories, and a hundred pieces of wooden food. The complete classroom market for sociodramatic centers. From the 2026 Fall Edition, p.&nbsp;49.</p>
+      <p class="desc">A market stand, cart, cash register, shopping accessories, and a hundred pieces of wooden food. The complete classroom market for sociodramatic centers. From the 2026 Spring Catalog, p.&nbsp;49.</p>
       <ul class="contains">
         <li>General Stores Market Stall &mdash; MTW-DP-TGS</li>
         <li>Let&rsquo;s Go Shopping Collection &mdash; MTW-DP-TLS</li>
@@ -3755,7 +3738,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 
   <div style="margin: 36px clamp(20px, 5vw, 56px) 0; padding: 28px clamp(20px, 4vw, 36px); background: var(--cream); border: 0.5px solid var(--rule-strong); border-radius: 4px; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(24px, 3vw, 40px); align-items: center;">
     <div>
-      <span class="eyebrow" style="color: var(--accent-deep);">08. Educator Program &nbsp;&middot;&nbsp; Custom Combo</span>
+      <span class="eyebrow" style="color: var(--accent-deep);">Educator Program &nbsp;&middot;&nbsp; Custom Combo</span>
       <h3 style="margin: 14px 0 0; font-family: var(--serif); font-weight: 400; font-size: clamp(24px, 2.6vw, 32px); line-height: 1.15; color: var(--ink); letter-spacing: -.005em;">The whole sociodramatic corner, <span style="font-style: italic; color: var(--accent-deep);">on one PO.</span></h3>
     </div>
     <div>
@@ -3875,10 +3858,10 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
         <div class="qf-chips">
           <label class="qf-chip"><input type="checkbox" name="ecosystems" value="sensory-play"/>01 &middot; Sensory Play</label>
           <label class="qf-chip"><input type="checkbox" name="ecosystems" value="nature-play"/>02 &middot; Nature Play</label>
-          <label class="qf-chip"><input type="checkbox" name="ecosystems" value="woodland"/>03 &middot; Woodland</label>
+          <label class="qf-chip"><input type="checkbox" name="ecosystems" value="woodland"/>03 &middot; Woodland Habitats</label>
           <label class="qf-chip"><input type="checkbox" name="ecosystems" value="small-world"/>04 &middot; Small World &amp; Storytelling</label>
           <label class="qf-chip"><input type="checkbox" name="ecosystems" value="fairy-villages"/>05 &middot; Fairy Villages</label>
-          <label class="qf-chip"><input type="checkbox" name="ecosystems" value="steam"/>06 &middot; STEAM</label>
+          <label class="qf-chip"><input type="checkbox" name="ecosystems" value="steam"/>06 &middot; STEAM &middot; Wonder &amp; Investigation</label>
           <label class="qf-chip"><input type="checkbox" name="ecosystems" value="dramatic-play" checked/>07 &middot; Dramatic Play</label>
           <label class="qf-chip"><input type="checkbox" name="ecosystems" value="creative-arts"/>08 &middot; Creative Arts</label>
         </div>
@@ -3929,17 +3912,16 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       <p>Natural toys made for years of small hands. A small family shop in Los Angeles, online since 2020.</p>
 
       <div class="foot-contact">
-        <a href="mailto:educators@mytoywagon.com">educators@mytoywagon.com</a>
+        <a href="mailto:educator@mytoywagon.com">educator@mytoywagon.com</a>
         <a href="tel:6268410421">(626) 841-0421</a>
         <span class="hours">Mon to Fri, 9 am to 5 pm PT</span>
-        <span class="hours">37 W Huntington Drive, Arcadia, CA 91007</span>
+        <span class="hours">Los Angeles, California</span>
       </div>
 
-      <div class="foot-social">
-        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg></a>
-        <a href="#" aria-label="Pinterest"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M11 8c-2 .5-3.5 2.5-3 4.5.3 1.3 1.5 1.6 1.5.5 0-1 .5-2 1.5-2.5 1.5-.8 3.5 0 4 1.5.5 2-.5 4-2.5 4-1 0-1.5-.5-1.3-1.5L12 11"/><path d="M11 13.5 9.5 19"/></svg></a>
-        <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="3"/><path d="M10 9.5v5l4.5-2.5z" fill="currentColor"/></svg></a>
-        <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M14 4v10.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 4c0 2 1.5 4 4 4"/></svg></a>
+      <div class="foot-procurement" style="margin-top:22px;display:flex;flex-direction:column;gap:9px;font-size:13px;">
+        <a href="/pages/procurement-guide" style="color:rgba(250,246,237,.75);text-decoration:none;">Procurement guide</a>
+        <a href="/pages/vendor-profile" style="color:rgba(250,246,237,.75);text-decoration:none;">Vendor profile</a>
+        <a href="mailto:educator@mytoywagon.com?subject=Reference%20request" style="color:rgba(250,246,237,.75);text-decoration:none;">References on request</a>
       </div>
 
       <p class="retail-link">Shopping for home? <a href="https://mytoywagon.com">Browse the full retail shop &rarr;</a></p>
@@ -3950,8 +3932,8 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
         <ul class="catalog-list">
           <li><a href="/pages/educator-sensory-play">01 &middot; Sensory Play</a></li>
           <li><a href="/pages/educator-nature-play">02 &middot; Nature Play</a></li>
-          <li><a href="/pages/educator-woodland">03 &middot; Woodland</a></li>
-          <li><a href="/pages/educator-small-world">04 &middot; Small World &amp; Storytelling</a></li>
+          <li><a href="/pages/educator-woodland">03 &middot; Woodland Habitats</a></li>
+          <li><a href="/pages/educator-small-world">04 &middot; Small World</a></li>
           <li><a href="/pages/educator-fairy-villages">05 &middot; Fairy Villages</a></li>
           <li><a href="/pages/educator-steam">06 &middot; STEAM</a></li>
           <li><a href="/pages/educator-dramatic-play">07 &middot; Dramatic Play</a></li>
@@ -3964,7 +3946,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
         <ul>
           <li><a href="/pages/new-quote">Start a new quote</a></li>
           <li><a href="/pages/educator-dashboard">Educator dashboard</a></li>
-          <li><a href="/pages/educators">Apply for an account</a></li>
+          <li><a href="/pages/educator-program">Apply for an account</a></li>
           <li><a href="/pages/school-affiliate">School affiliate</a></li>
         </ul>
       </div>
@@ -4010,13 +3992,13 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
   </div>
 </footer>
 
-<script src="image-slot.js"></script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="image-slot.js"></script>
 <script>
   /* =================================================================
      CATALOG VARS, single source of truth for ecosystem strings.
      To reskin for another ecosystem, edit ONLY this block.
      A Shopify template can override these via Liquid:
-       const CATALOG = { volume: "07", ecosystem: "Dramatic Play", makers: ["Drewart", "Tara Treasures", "Tender Leaf"] };
+       const CATALOG = { volume: "{{ page.metafields.catalog.volume }}", ... };
      ================================================================= */
   const CATALOG = {
     volume:       "07",
