@@ -1,0 +1,27 @@
+{% for group in robots.default_groups %}
+  {{- group.user_agent }}
+
+  {%- for rule in group.rules -%}
+    {{ rule }}
+  {%- endfor -%}
+
+  {%- if group.user_agent.value == '*' -%}
+{{ 'Disallow: /pages/educators' }}
+{{ 'Disallow: /pages/educator-sensory-play' }}
+{{ 'Disallow: /pages/educator-nature-play' }}
+{{ 'Disallow: /pages/educator-woodland' }}
+{{ 'Disallow: /pages/educator-small-world' }}
+{{ 'Disallow: /pages/educator-fairy-villages' }}
+{{ 'Disallow: /pages/educator-steam' }}
+{{ 'Disallow: /pages/educator-dramatic-play' }}
+{{ 'Disallow: /pages/educator-creative-arts' }}
+{{ 'Disallow: /pages/educator-dashboard' }}
+{{ 'Disallow: /pages/new-quote' }}
+{{ 'Disallow: /pages/educator-catalog-guide' }}
+{{ 'Disallow: /pages/vendor-profile' }}
+  {%- endif -%}
+
+  {%- if group.sitemap -%}
+    {{ group.sitemap }}
+  {%- endif -%}
+{% endfor %}
