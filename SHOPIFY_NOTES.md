@@ -264,6 +264,17 @@ Earlier draft assumed non-Plus Shopify with apps and Liquid hacks. **Discard tha
 
 ---
 
+## Educator portal — design rules (standing)
+
+- **All product & hero images sit FLUSH in frame** (`object-fit: cover`, fill — no padding/letterbox/`contained`). Apply automatically, don't wait to be told.
+- **Product cards are square** (`aspect-ratio: 1/1`) so square product photos fit without cropping.
+- **American spelling throughout** — color (not colour), fiber (not fibre), center (not centre).
+- **Educator titles:** descriptive + MTW-branded; **no maker brand in the title unless it's a marquee credibility name** (Connetix, Bauspiel, Grimm's, Holztiger, Tara Treasures). **Gry & Sif is NOT marquee** — drop it. (Brand/cert/provenance still go in the body/specs.)
+- **Catalog citation:** "From the 2026 **Fall** Edit" (twice-yearly cadence: Fall + Spring).
+- **No "Request a quote"** CTAs — cards link to the product PDP ("View product").
+
+---
+
 ## Educator products: separate listings, never Collective (RULE — for staff)
 
 **Rule:** The educator portal and the Educator catalog use their OWN product listings — **never the retail "Collective" listings.** We do **not** sell Collective items on Educator.
