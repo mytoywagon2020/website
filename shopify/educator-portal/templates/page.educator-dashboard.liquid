@@ -65,7 +65,7 @@
     @media(max-width:860px){.actions{grid-template-columns:1fr;}.po-grid{grid-template-columns:1fr;}.nav-links{display:none;}.dash-hero h1{font-size:34px;}.wrap,.utility .wrap,header.nav .wrap,footer.foot .wrap{padding-left:20px;padding-right:20px;}.orders thead{display:none;}table.orders td{display:block;padding:6px 12px;border:0;}table.orders tr{display:block;border-bottom:.5px solid var(--rule);padding:12px 0;}}
     /* color accents */
     :root{--c-forest:#3B6D11;--c-amber:#9A5B0B;--c-berry:#8C3A5B;--c-sky:#2F6F7A;}
-    .dash-banner{display:flex;align-items:center;gap:16px;justify-content:space-between;flex-wrap:wrap;background:linear-gradient(100deg,#3B6D11,#2c5a0d);color:#fff;border-radius:7px;padding:16px 22px;margin:20px 0 6px;font-size:14px;}
+    .dash-banner{display:flex;align-items:center;gap:16px;justify-content:space-between;flex-wrap:wrap;background:linear-gradient(100deg,#3B6D11,#2c5a0d);background-size:cover;background-position:center;color:#fff;border-radius:7px;padding:20px 24px;margin:20px 0 6px;font-size:14px;min-height:104px;text-shadow:0 1px 3px rgba(0,0,0,.35);}
     .dash-banner strong{font-weight:700;}
     .dash-banner-cta{background:#fff;color:var(--c-forest);font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:10px 18px;border-radius:5px;white-space:nowrap;}
     .snapshot{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:14px 0 6px;}
@@ -116,10 +116,12 @@
       if now_month >= 1 and now_month <= 6
         assign edu_window = 'August–September ' | append: now_year
         assign edu_orderby = 'July 15'
+        assign edu_banner_img = 'sw-cover-lifestyle.webp'
       else
         assign ny = now_year | plus: 1
         assign edu_window = 'May–June ' | append: ny
         assign edu_orderby = 'March 15'
+        assign edu_banner_img = 'fairy-cover-pink-blossom.webp'
       endif
       assign open_count = 0
       assign open_total = 0
@@ -131,7 +133,7 @@
       endfor
     -%}
 
-    <div class="dash-banner">
+    <div class="dash-banner" style="background-image:linear-gradient(100deg,rgba(31,60,9,.92),rgba(59,109,17,.62)),url('{{ edu_banner_img | asset_url }}');">
       <span><strong>Next delivery window: {{ edu_window }}.</strong> Order by {{ edu_orderby }} for this window &mdash; stocked, seasonal, and made-to-order items are confirmed on your quote.</span>
       <a class="dash-banner-cta" href="/pages/educators">Shop the catalog</a>
     </div>
