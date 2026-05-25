@@ -285,6 +285,10 @@ The product-card **meta** line shows the **SKU only** — never a section/catego
 
 **Provisional SKUs (owner to confirm against catalog/inventory):** the cards that previously lacked a SKU were given placeholder MTW-XX-### codes so the layout reads correctly — Dramatic Play (Cow Shed MTW-DP-DCS, Straw Bale BSB, Pumpkins BPG, Mandala Tulips GMT, Bread/Pantry BPB, Charcuterie CCP, Scones SCN, Cookies COO, Bundt BND, Choc Cake CHC, Cupcakes CUP, Ice Cream ICE, Lollipops LOL, Beef Noodle BNS, Peruvian PSF, Ethiopian EFE, Mezze MEM, Jollof WAJ, Fika SWF) and STEAM (Bauspiel BMB/BLC/BFW/BCT/BSS/BOB, Life cycles LCF/LCB/LCE/LCN/LCD, Dino Eggs DNE, Prehistoric PHS, Jurassic PJS, Anatomy HAN, Food Groups FGN). Replace with real SKUs when available; flag clashes.
 
+## Grid symmetry rule — center partial rows
+
+In the **uniform** product grids (`.gallery .homes` with plain `<article class="home">` — STEAM, Dramatic Play, Creative Arts), any row with **fewer than 5 cards** must be **centered** for symmetry. Implementation: on that grid's `<div class="homes">` use inline `style="grid-template-columns: repeat(auto-fit, minmax(190px, 222px)); justify-content: center;"` (keeps 5-up rows identical, centers orphan rows at all widths). Does **not** apply to the intentionally asymmetric `size-hero/size-tall/size-std` compositions (Sensory, Nature, Woodland, etc.) — those are designed and already balanced.
+
 ## Educator pricing rule — REGULAR price only
 
 Educator-catalog prices must use the **regular price**, never a retail sale/markdown — these are **made-to-order** purchases, so they don't ride retail promotions. In Shopify terms: use the variant **`compareAtPrice`** when the item is on sale (that's the regular price); use `price` only when `compareAtPrice` is null (not on sale). Many retail titles are even prefixed "Sale …". ⚠️ Owner will audit **every** educator price before go-live. Known mismatch to revisit: **Wonderheart** gnome sets — Shopify regular is **$144** (Rainbow Wooden Gnome Set) / **$84** (Mini sets); educator cards currently show $108.
