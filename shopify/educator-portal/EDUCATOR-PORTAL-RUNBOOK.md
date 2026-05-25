@@ -79,10 +79,19 @@ Source of truth for the catalog build: `EDUCATOR-CATALOG-WORKSHEET.md`. Page arc
 Frictionless apply; **documents collected at verification, not on the form** (the register form stays short; native theme forms can't upload files anyway).
 1. Applicant submits the register form → lands as an **untagged customer** with org/role/program/state.
 2. (Optional, via Flow) auto-tag **`educator-pending`** so they appear in a "to review" customer view.
-3. **Verify (the one manual step):** reply requesting their **sales-tax exemption / resale certificate** + institution verification (.edu email, PO/letterhead, or EIN). Receive by email reply or a **Shopify Forms upload link**; attach the doc to the customer (Files/note/metafield).
+3. **Verify (the one manual step) — documents are OPTIONAL.** Confirm legitimacy with the lightest sufficient signal (see "How we verify" below). Request a document only if unsure, or to enable tax-exempt checkout.
 4. **Approve = add the `educator-approved` tag** (+ create/attach the B2B **Company** for PO/Net-30). Gate opens; the **Educators Market** applies pricing automatically.
 5. Decline → tag **`educator-rejected`** (so they aren't re-reviewed).
 
 **Approval/verification email (template):**
 > Subject: Your My Toy Wagon educator application — one quick step
-> Hi [name], thanks for applying! To finish approving **[organization]**, reply with your **sales-tax exemption / resale certificate** (and, if handy, a .edu email or letterhead confirming your role). Once we have it we'll switch on educator pricing, **Net-30 on purchase orders, and tax-exempt checkout** — usually same day.
+> Hi [name], thanks for applying! You're approved for **[organization]** — educator pricing and **Net-30 on purchase orders** are on. If you'd like **tax-exempt checkout**, reply with your **sales-tax exemption / resale certificate** and we'll add it (required by law to skip sales tax). Otherwise you're all set.
+
+### How we verify (lightest → strongest; doc optional)
+- **Institutional email domain** (`.edu`, `.gov`, `.k12.*`, school/district domain) — strongest low-friction signal; OK to fast-track.
+- **Personal email** → ask them to confirm from / we send approval to their **institutional email**.
+- **Public lookup** — confirm the institution exists: **NCES school directory** (US), state school directory, or the org's website/staff page; ideally confirm the person's role.
+- **Role check** — staff directory or LinkedIn.
+- **Optional document** — tax-exempt/resale cert, school ID, or PO on letterhead. **Required only to enable tax-exempt checkout** (legal: a valid exemption certificate must be on file to not charge sales tax). Account + pricing + Net-30 do NOT require it.
+- **Behavioral guardrail** — first order prepaid/small; extend Net-30 after a clean payment.
+- **Tiered rule:** auto-trust institutional-domain emails → light public lookup for personal emails → require the cert only for tax-exempt checkout.
