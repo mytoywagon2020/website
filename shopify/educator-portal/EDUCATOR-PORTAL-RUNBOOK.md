@@ -51,6 +51,20 @@ Fulfillment/tracking is read **natively** (Fulfilled / Partially shipped / Proce
 
 ---
 
+## Architecture map — what's native vs theme (read this first in 6 months)
+| Concern | Where it lives |
+|---|---|
+| Educator identity / approval | **Native** customer tag `educator-approved` + **native** B2B Company contact |
+| Pricing / catalog access | **Native** B2B: "Educators" market (applies to ALL company locations) → Educator Catalog (`MarketCatalog/64883065002`) + price list `PriceList/24074289322` |
+| Product availability (educator-only) | **Native** publication to the Educator Catalog + product status; **Theme** `educator.exclusive` gate as the storefront retail block |
+| Gated portal pages (dashboard, catalog sections, quote) | **Theme** — `page.educator-*` templates + `snippets/educator-gate.liquid`, gated on `b2b?` or `educator-approved` |
+| Order/invoice/fulfillment display | **Theme** dashboard reads **native** `customer.orders` + fulfillment/tracking; payment status via **tags** (`po-paid-external`, `invoice-sent`) |
+| Quote building | **Theme** `/pages/new-quote` (email) **today**; target = **native** B2B self-serve draft orders |
+| PO submission | **Theme** email (today); optional Shopify Forms/Tally upload |
+| Crawl/SEO control | **Theme** `noindex` + `robots.txt.liquid` |
+
+Source of truth for the catalog build: `EDUCATOR-CATALOG-WORKSHEET.md`. Page architecture: Program → Apply → Sign in → **Educator Dashboard** → Catalog / Quote / Orders.
+
 ## Erin Kim / Elk Grove (reference)
 - Company: Elk Grove Elementary School (`Company/1464893610`); Location `CompanyLocation/1567097002`.
 - Contact: Erin Kim (`Customer/8984220303530`, emaudlin@egusd.net) — tagged `educator-approved` + `educator.trusted_hold=true`.
