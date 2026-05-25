@@ -285,9 +285,13 @@ The product-card **meta** line shows the **SKU only** — never a section/catego
 
 **Provisional SKUs (owner to confirm against catalog/inventory):** the cards that previously lacked a SKU were given placeholder MTW-XX-### codes so the layout reads correctly — Dramatic Play (Cow Shed MTW-DP-DCS, Straw Bale BSB, Pumpkins BPG, Mandala Tulips GMT, Bread/Pantry BPB, Charcuterie CCP, Scones SCN, Cookies COO, Bundt BND, Choc Cake CHC, Cupcakes CUP, Ice Cream ICE, Lollipops LOL, Beef Noodle BNS, Peruvian PSF, Ethiopian EFE, Mezze MEM, Jollof WAJ, Fika SWF) and STEAM (Bauspiel BMB/BLC/BFW/BCT/BSS/BOB, Life cycles LCF/LCB/LCE/LCN/LCD, Dino Eggs DNE, Prehistoric PHS, Jurassic PJS, Anatomy HAN, Food Groups FGN). Replace with real SKUs when available; flag clashes.
 
-## Season naming — Autumn only
+## Season naming — Autumn (public) / Fall (schedule)
 
-The educator catalog is **Autumn**-themed; use **"Autumn" everywhere** (matches product names like *Autumn Leaves* and *The Autumn Set* / MTW-NP-AUT). Never "Fall" (edition refs unified to *Autumn Edition*) and **never "Spring"** in theme/edition copy. Exceptions left intact (functional, not theme copy): the twice-a-year **booking/delivery windows** (Fall + Spring) in dashboard/new-quote/Klaviyo, and the **Papoose 4-season Seasonal Trees** product (spring/summer/autumn/winter is its literal feature).
+Deliberate split:
+- **Autumn** = product names, public-facing display copy, and the catalog edition name (*Autumn Leaves*, *The Autumn Set* / MTW-NP-AUT, *2026 Autumn Edition*). Premium register.
+- **Fall** = anything **schedule/calendar** — booking windows, delivery windows, "book in the fall" — because that's the vernacular schools think in. (e.g., "Fall booking", "Fall delivery (Aug–Sep)").
+- **"fall"** as an SEO tag/keyword is fine but minor; real SEO is generic high-intent terms (e.g., "magnetic tiles for classrooms", "Montessori sensory materials"), not the season word.
+- **Spring**: removed from all theme/edition copy. Still under review for the *schedule* (the spring booking/delivery window) and the **Papoose 4-season Seasonal Trees** product, where spring is a literal calendar/product feature.
 
 ## Grid symmetry rule — center partial rows
 
