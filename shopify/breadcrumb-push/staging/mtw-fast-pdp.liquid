@@ -208,6 +208,18 @@
       assign edu_next = 'May–June ' | append: next_year
     endif
   endif
+
+  # ---- Educator availability controls ----
+  # continue_selling: educators can order when OOS (sourced/pre-order); retail still sees Sold out.
+  assign edu_continue = product.metafields.educator.continue_selling.value
+  assign edu_exclusive = product.metafields.educator.exclusive.value
+  if edu_continue == true and cur.inventory_management != blank and cur.inventory_quantity <= 0
+    if is_educator
+      assign state = 'pre_order'
+    else
+      assign state = 'sold_out'
+    endif
+  endif
 -%}
 
 {%- capture schema_images -%}
@@ -455,7 +467,16 @@
         </div>
       {%- endif -%}
 
-      {%- if state == 'sold_out' -%}
+      {%- if edu_exclusive and is_educator == false -%}
+        <div class="ff-edu" style="border-color:var(--amber,#854F0B);background:#fbf6ec;">
+          <div class="ff-edu-head"><span class="ff-edu-badge" style="background:var(--amber,#854F0B);">Educator exclusive</span></div>
+          <p class="ff-edu-avail">This item is available <strong>through our Educator Program</strong> &mdash; for schools, districts, therapists, and early-learning programs. It isn&rsquo;t sold at retail.</p>
+          <div class="ff-edu-cta">
+            <a class="ff-btn-edu" style="background:var(--amber,#854F0B);" href="/pages/educator-program">Apply for educator access</a>
+            <a class="ff-edu-link" style="color:var(--amber,#854F0B);" href="{{ routes.account_login_url }}">Already approved? Sign in &rarr;</a>
+          </div>
+        </div>
+      {%- elsif state == 'sold_out' -%}
         <form class="ff-notify" data-ff-bis data-variant-id="{{ cur.id }}">
           <div class="ff-add-row" style="grid-template-columns:1fr auto;">
             <input type="email" name="email" placeholder="you@email.com" required
