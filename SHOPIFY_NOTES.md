@@ -289,7 +289,7 @@ The product-card **meta** line shows the **SKU only** — never a section/catego
 
 Two different bodies — match the maker:
 - **Tara Treasures → "Fair Trade Certified™"** (Fair Trade USA's mark).
-- **Papoose → "WFTO certified"** (World Fair Trade Organization) — felt/cotton only, not teak.
+- **Papoose → "WFTO Guaranteed"** (World Fair Trade Organization product label) — felt (code "P/P") and 100% cotton only, not teak.
 - **Do NOT** write "Fair Trade USA™" on Papoose items (recurring error across sections), and don't blanket a single certifier across a **mixed-maker** grid (e.g., Small World mixes Papoose/Himalayan/Tara) — use a generic "made under fair-trade conditions," or name each.
 
 ## Supplier provenance — verified facts (safe to cite)
