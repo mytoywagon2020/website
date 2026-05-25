@@ -113,14 +113,15 @@
     {%- liquid
       assign now_month = 'now' | date: '%m' | plus: 0
       assign now_year = 'now' | date: '%Y' | plus: 0
+      assign es = shop.metafields.educator.settings.value
       if now_month >= 1 and now_month <= 6
-        assign edu_window = 'August–September ' | append: now_year
-        assign edu_orderby = 'July 15'
+        assign edu_window = es.fall_window | default: 'August–September' | append: ' ' | append: now_year
+        assign edu_orderby = es.fall_order_by | default: 'July 15'
         assign edu_banner_img = 'sw-cover-lifestyle.webp'
       else
         assign ny = now_year | plus: 1
-        assign edu_window = 'May–June ' | append: ny
-        assign edu_orderby = 'March 15'
+        assign edu_window = es.spring_window | default: 'May–June' | append: ' ' | append: ny
+        assign edu_orderby = es.spring_order_by | default: 'March 15'
         assign edu_banner_img = 'fairy-cover-pink-blossom.webp'
       endif
       assign open_count = 0

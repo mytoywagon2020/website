@@ -199,13 +199,14 @@
   assign edu_curric = product.metafields.educator.curriculum.value
   assign edu_next = product.metafields.educator.next_delivery.value
   if edu_next == blank
+    assign es = shop.metafields.educator.settings.value
     assign now_month = 'now' | date: '%m' | plus: 0
     assign now_year = 'now' | date: '%Y' | plus: 0
     if now_month >= 1 and now_month <= 6
-      assign edu_next = 'August–September ' | append: now_year
+      assign edu_next = es.fall_window | default: 'August–September' | append: ' ' | append: now_year
     else
       assign next_year = now_year | plus: 1
-      assign edu_next = 'May–June ' | append: next_year
+      assign edu_next = es.spring_window | default: 'May–June' | append: ' ' | append: next_year
     endif
   endif
 
