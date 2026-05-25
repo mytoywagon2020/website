@@ -12,7 +12,7 @@ Running list of changes made to the **web educator portal** that the **print/PDF
 ## Catalog updates needed (web is now ahead of print)
 
 - **Connetix Creative Pack is 102pc / $99** (current; the **100pc is discontinued**). Catalog is already at 102 — no change needed; noted to avoid re-introducing 100pc.
-- **Connetix prices → current retail (regular):** Mega 212 $209 · Creative 102 $99 · Geometry 30 $55 · Ball Run 92 $85 · PRO Constructor 70 $99 · Glitter Unicorn 56 $79 · Portal 48 $69. (To confirm: Roads & Ramps 64, Glitter Castle 48, Light Star 28.)
+- **Connetix prices → current retail (regular):** Mega 212 $209 · Creative 102 $99 · Geometry 30 $55 · Ball Run 92 $85 · PRO Constructor 70 $99 · Glitter Unicorn 56 $79 · Glitter Castle 48 $69 · Portal 48 $69. (To confirm: Roads & Ramps 64, Light Star 28.)
 - **Connetix bundles priced** (component sum − 10%, MAP cap): Starter $139 · Mid $265 · Full $533.
 - **STEAM split into three sections** (was merged): Observation Station / Hand-Felted Biology / Deep Time.
 - **Specimen Study Station** hero added (June & December bundles).
@@ -51,7 +51,7 @@ Running list of changes made to the **web educator portal** that the **print/PDF
 - **Bauspiel specialty grid** images updated: Mirror Blocks, Lucent Cubes 100, Fairytale Windows, Color Track 45, Transparent Windows 25.
 - **Food Groups Nutrition Set removed from STEAM** → moved to DP Pantry.
 - **Kaleidoscope hero**: dedicated image, shown contained (full image / child's face visible, sharp).
-- **Connetix prices corrected to real retail (regular):** Mega 212 **$209**, Creative 102 **$99**, Geometry 30 **$55**, Ball Run 92 **$85**, PRO Constructor 70 **$99**, Glitter Unicorn 56 **$79**, Bright/Pastel Portal 48 **$69**. ⚠ *Estimates to confirm:* Roads & Ramps 64 **$89**, Glitter Castle 48 **$79**, Light Star 28 **$55**.
+- **Connetix prices corrected to real retail (regular):** Mega 212 **$209**, Creative 102 **$99**, Geometry 30 **$55**, Ball Run 92 **$85**, PRO Constructor 70 **$99**, Glitter Unicorn 56 **$79**, Bright/Pastel Portal 48 **$69**. Glitter Castle 48 **$69** (confirmed). ⚠ *Estimates to confirm:* Roads & Ramps 64 **$89**, Light Star 28 **$55**.
 - **Connetix tiered bundles priced (component sum − 10%):**
   - Starter (Creative 102 + Shape Expansion) **$154 → $139** (`MTW-ST-CCS`)
   - Mid (Starter + Ball Run + Geometry) **$294 → $265** (`MTW-ST-CCM`)
@@ -112,6 +112,7 @@ Created to fill gaps in the Connetix range. **Need maker barcodes + product imag
 | Charity Pack Pink 20pc | $45 | MTW-ST-CHP |
 | Charity Pack Teal 20pc | $45 | MTW-ST-CHT |
 | Pastel Portal Pack 48pc | $69 | MTW-ST-CPP |
+| Glitter Castle Pack 48pc | $69 | MTW-ST-CGC |
 
 ---
 
