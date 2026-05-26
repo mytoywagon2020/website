@@ -134,6 +134,11 @@ Other shop-wide vendors (Tara Treasures, Wonderheart, Drewart, Bumbu, Wooden Sto
 - Pocket Flower Press + Field Flower Press
 - Coherent narrative: nature-archive habit from pocket-press through full specimen archive
 
+**Bauspiel (27 active audited, 4 rewrites completed):**
+- 23 active Bauspiel products already had rich narrative descriptions from prior work (Color Track, X-Blocks, Lucent Cubes 100/20, Mirror Blocks, Fairytale Windows, Transparent Windows, Large/Small Fairytale Castle, Color Staircase 16/32, Lucent Cylinders/Pillars, Luminous Blocks 24/Pastel, Magic Cube, Natural Stair Blocks, Optical Blocks, Small Color Track with Lucent/Pastel, Tooth Fairy Box, Sparkling Stones sets, Giant Glittery Sparkling Stones) — left as-is to avoid downgrading good copy
+- 4 rewrites tonight: Castle Set 16 pc, Knight's Castle Extension 6 pc, Stepped Blocks (Cuisenaire-style math set), Tree Set 4 Seasons
+- All Bauspiel: alder wood, child-safe natural oil, handcrafted in Germany
+
 ## Retail-side vendor catalog scale (scouted, not yet deep-dived)
 
 The store has ~50+ vendors beyond Connetix. Spot-check on three priority vendors:
@@ -146,10 +151,14 @@ A deep dive on all retail-side vendors at the depth I gave Connetix would be hun
 2. Or pick a specific product type (e.g. Drewart "signature" items: Camper, Kitchen, Castle, Fastness — the big-ticket SKUs that justify rich copy)
 3. Or skip retail-side entirely and focus on educator portal final polish before launch
 
+## Tonight's total: 51 retail-side PDPs deep-dived
+- Wonderheart 30 + Huckleberry 11 + June & December 6 + Bauspiel 4 = **51**
+- Plus the 43 Connetix products done earlier in the night = **94 PDPs total tonight**
+
 ## Open questions for the morning
 1. **Huckleberry "Complete Observation Station"** — you flagged this as the standout Huckleberry item but it isn't currently in our catalog. Did you mean a different product, or do you want to source/import this one from Huckleberry?
-2. **Bauspiel deep-dive status** — ~27 active Bauspiel products; spot-check shows ~6–7 already have rich narrative descriptions ("A radiant celebration…", "Spark curiosity…", etc.) from prior work, the rest are still in the old shallow style. Continuing tomorrow night I'll audit each and only rewrite the shallow ones (avoid downgrading good copy).
-3. **Drewart big-ticket** — still pending per your original prioritization; queued behind Bauspiel cleanup.
+2. **Drewart big-ticket** — still pending from your earlier prioritization. ~100 Drewart products in the catalog; the high-revenue ones (Camper $410, Kitchen $455, Cupboard $530, Large Fastness $770, Sink $420, Stove $399, Castle $320, Jeep $338) are the natural starting point. Confirm priority and I'll dive in.
+3. Any other small-catalog vendors you want me to sweep with the same depth? (Bumbu, Brin d'Ours, Wooden Story, Papoose, Magic Wood, Bajo, etc. all have under ~15 products each.)
 4. Confirm the Teal Charity Pack correction (MND/ALS, not ovarian). If you have a contradicting source, push back and I'll revert.
 5. Preview the Fairy Villages cover at /pages/educator-fairy-villages once the theme is republished — confirm the Toadstool House image renders flush-in-frame at the new aspect.
 
