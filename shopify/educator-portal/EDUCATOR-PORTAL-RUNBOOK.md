@@ -121,3 +121,18 @@ Frictionless apply; **documents collected at verification, not on the form** (th
 **Review + approve (the one button):** staff open the pending Company/customer → verify (see "How we verify") → add tag **`educator-approved`** → gate opens + Educators Market pricing applies. *(Optional Flow 2: on `educator-approved` tag → Send HTTP request to assign Net-30 `PaymentTermsTemplate/4` / finalize.)*
 
 **Status now:** designed + spec'd + documented (here). **Not yet wired** — the Flow/token/Helium-mapping/metafield steps are admin tasks Claude can't perform.
+
+### Flow 1 — click-by-click (admin; Claude CANNOT build this — hand to whoever has admin)
+**Prereqs:** (1) Admin API token from a **Dev Dashboard app** with `write_companies` (legacy custom apps are closed as of 2026-01-01, so the old copy-paste token path is gone). (2) In **Helium**, on submit: add tag **`educator-applied`** (cleaner Flow trigger than a metafield condition) AND map org/role/program/state → customer metafields.
+1. Admin → **Apps → Flow → Create workflow**.
+2. **Trigger:** "Customer tags added" → tag `educator-applied`. *(Tag is more reliable than a metafield condition; alt: trigger "Customer created" + condition `customer_fields.institution_name` is not empty.)*
+3. **Action: "Send HTTP request":**
+   - Method **POST**
+   - URL `https://mytoywagon.myshopify.com/admin/api/2025-07/graphql.json`
+   - Headers: `Content-Type: application/json` and `X-Shopify-Access-Token: {{secret}}`
+   - Store the Admin API token in the action's **secret** field.
+   - Body = the `companyCreate` JSON in the spec above (uses `{{customer.metafields.customer_fields.institution_name}}`, `{{customer.email}}`, etc.).
+4. **Turn the workflow ON.** Test: submit the form → a **pending Company** should appear in admin.
+5. **Approve = add the `educator-approved` tag** (manual one-click). *(Optional Flow 2 on that tag → Send HTTP request to assign Net-30.)*
+
+**Status: NOT built. This is the build checklist; Claude can't create Flows or the token (admin/dev tasks).**
