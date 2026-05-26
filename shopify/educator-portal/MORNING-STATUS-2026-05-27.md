@@ -243,3 +243,28 @@ Bear, Cake, Castle, Garden, Mountain Imaginative Play Trays. All now use the Rai
 4. Connetix descriptions — catalog "Magnetic Tiles for the Classroom" overview content needs application across the rebranded Connetix line
 5. Clean up duplicate customer metafield definitions (5+ Program variants, 3 Role variants, 3 Institution variants — once Helium-vs-Shopify config is settled)
 6. Products in catalog but not yet in Shopify (need owner to create): Specimen Study Station, When the Pantry Becomes a Shop, The Heirloom Press, The Floral Collection, Magnetic Tiles for the Classroom overview, Deep Time in Felt & Wood, The Stamp the Shape the Story, Gem Blocks & Mirror Geometry
+
+## Late-shift extension #2: full educator-only catalog format pass + Análu + bundles
+
+Continued the catalog-format sweep through the rest of the dedicated educator-only line — all now have scenario hook + developmental benefits bullets + learning connections + classroom specs (material/origin/ages) in the catalog voice:
+
+**ButtonandBug tray siblings (5):** Bear, Cake, Castle, Garden, Mountain Imaginative Play Trays — each with theme-specific developmental benefits and cross-vendor "Extend the play" suggestions (Bear → Goldilocks puppet set, Castle → Bauspiel Fairytale Castle blocks, Mountain → Bumbu Deer Family, etc.)
+
+**Análu Aromatherapy Doughs (7 scents + Seven Scents Set):** each scent gets a specific use case (Lavender for distress, Lemon for focus, Pumpkin Spice for autumn warmth, etc.), shared specs (organic, wheat/gluten/dairy/nut-free, hand-made USA), and pairing recommendations with ButtonandBug trays and educator bundles.
+
+**Educator-only bundles (3):**
+- The Sensory Tray Range (MTW-SP-BTR) — 6-tray PO bundle with full breakdown + rotation rationale
+- The Calm Corner Set (MTW-SP-CRS) — self-regulation provisioning set; tied to MTSS/RTI Tier 2 framing
+- Build the Village Fairy Village Set (MTW-FV-VLG) — renamed from "(Educator Fairy Village Set)"; 5-home village PO bundle
+
+**Educator small-world line (4 puppet/mat sets) — renamed + reformatted:**
+- Australiana Birds Puppet Set (was "Australiana Birds Puppet Set (Educator)")
+- Butterfly Puppet Set (was "Butterfly Puppet Set (Educator)")
+- Coral Reef, Under the Sea Puppet Set (was "(Educator)")
+- Coralwhim Cove Play Mat (was "Coralwhim Cove Play Mat (Educator)")
+
+All four kept Tara Treasures vendor (the maker) and Puppets / Play Mats product types (specific, not "Educator"). Educator status now signaled only via SKU + tag + handle + metafields, never in title.
+
+**Extension #2 total:** 21 products updated + 7 title renames
+
+## Cumulative tonight: ~250+ product touches
