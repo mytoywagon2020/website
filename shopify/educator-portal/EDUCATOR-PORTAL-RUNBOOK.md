@@ -216,3 +216,24 @@ Plus: status **ACTIVE**, variant **inventory policy = continue selling**, publis
 - The gated educator **pages** were leaking into on-site search; fixed in the staging theme `snippets/collection-grid.liquid` + `snippets/search-results.liquid` (skip `educator*` / `new-quote` / `vendor-profile`). The **live** theme needs the same paste (API can't write the published theme) — or it carries over when the staging theme is published.
 
 **Plan facts (confirmed):** B2B (Companies, Catalogs, Net-30 = `PaymentTermsTemplate/4`) **works on our Grow plan**, with a **3-catalog limit**. Multi-location inventory is available, but there is **no** per-channel/per-location inventory reservation on any plan. *(Correction: the "Needs Shopify Plus / companyCreate is Plus-only" lines in the Flow section above are **stale** — B2B is live on Grow; Elk Grove proves it.)*
+
+---
+
+## Where the applicant's form data lives (Helium vs Shopify)
+
+The Helium "Educator Application" form writes some fields to the **Shopify customer record** and some are only stored in **Helium's submission log**. Both matter when verifying an applicant.
+
+**On the Shopify customer record (the verification essentials):**
+- First name, Last name, Email, Phone (native customer fields)
+- Full address (`default_address.address1` / `city` / `province` / `zip` / `country`)
+- `customer_fields.institution_name` (the school name)
+- `customer_fields.document_upload` (the tax-exempt cert, if uploaded)
+- `customer_fields.form_ids` (Helium's origin tracker, value `["pvtAWd"]`)
+
+**In the Helium app's submission log (the rest of the application):**
+- Role or title
+- Program or grade levels
+- Anything else captured by the form that isn't bound to a native Shopify customer field
+
+**To review an applicant's full application:**
+Helium app → **Submissions** (or "Form submissions" in the left nav) → **Educator Application** → click the submission. Every form field they entered is there, including Role and Program. Treat it as the applicant's "application file." The customer record has the verification essentials. Helium has the full form context. Cross-reference both when approving.
