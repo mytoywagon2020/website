@@ -237,3 +237,23 @@ The Helium "Educator Application" form writes some fields to the **Shopify custo
 
 **To review an applicant's full application:**
 Helium app → **Submissions** (or "Form submissions" in the left nav) → **Educator Application** → click the submission. Every form field they entered is there, including Role and Program. Treat it as the applicant's "application file." The customer record has the verification essentials. Helium has the full form context. Cross-reference both when approving.
+
+## How to approve an applicant (the one-click action)
+
+1. Admin → **Customers** (your main Shopify admin, not in Helium).
+2. Click the applicant (or filter the list by **`tag:educator-pending`** to find everyone waiting).
+3. In the **right sidebar**, find the **Tags** section.
+4. Type **`educator-approved`** and press Enter to add the tag.
+5. **Save** (top right).
+
+Done. The gate opens for that customer and the Educators Market applies its pricing automatically. No other steps are required.
+
+**Batch version (multiple applicants at once):**
+1. Customers list → filter by **`tag:educator-pending`**.
+2. Tick the checkboxes for the ones you are approving.
+3. **More actions** at the top → **Add tags** → enter `educator-approved` → Apply.
+4. Optional: also bulk-remove the `educator-pending` tag in another pass so the pending view stays clean.
+
+## Note on B2B Companies (rare, on-demand)
+
+Approving an educator does **not** create a B2B Company. That is a separate workflow used only when an educator specifically needs **Net-30 or PO billing**. Path: **Admin → Companies → Add company**, copy-paste their details from the customer record, set Net-30 payment terms. Skip this step until a school actually requests PO/Net-30. A Company showing as "Not approved" in the Companies list is unrelated to whether the educator catalog access works for that buyer; the customer tag is the only gate key.
