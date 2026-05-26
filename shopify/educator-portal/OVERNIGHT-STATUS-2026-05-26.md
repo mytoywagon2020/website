@@ -51,6 +51,42 @@ Use the `my-toy-wagon.myshopify.com` domain (not the custom domain) and ensure y
 - **Header wagon logo** — pulls from theme asset `assets/mtw-wagon-only.png`. Confirmed present on staging. Sized at 44px height (36px on mobile) with light opacity. Adjust via `.mtw-edu-h__mark` rule in `sections/mtw-educator-header.liquid`.
 - **PDP template** — `product.educator.json` uses Shopify's standard `main-product` section, not `mtw-fast-pdp`. The educator add-on blocks (request_quote_cta, procurement_trust, educator_policies) are wired in via the main-product block system. If the team prefers the fast-pdp section as the base, the educator blocks need to be ported into `mtw-fast-pdp.liquid` itself (the section doesn't accept custom blocks the way main-product does).
 
+## Audit findings (flagged for your review)
+
+### Product descriptions cleaned of em-dashes (7 products)
+Done autonomously — the em-dash sweep earlier was on theme template files only; the product descriptions in the Shopify database also had em-dashes. Cleaned via `productUpdate`:
+- Rainbow Imaginative Play Tray
+- Bear Imaginative Play Tray
+- Cake Imaginative Play Tray
+- Castle Imaginative Play Tray
+- Garden Imaginative Play Tray
+- Mountain Imaginative Play Tray
+- Letter Tracing Insert
+
+### Missing featured images (10 products) — flagged
+These products have no featured image. Educator catalog pages may render empty tiles. Upload a hero image for each (Shopify admin → Products → edit → Media):
+- The Sensory Tray Range (MTW-SP-BTR)
+- The Calm Corner Set (MTW-SP-CRS)
+- The Cow Shed (MTW-DP-DCS) — also DRAFT, $0.00 price
+- Sweet Orange Aromatherapy Dough (MTW-CA-ANO)
+- Eucalyptus Aromatherapy Dough (MTW-CA-ANE)
+- Lemon Aromatherapy Dough (MTW-CA-ANL)
+- Lavender Aromatherapy Dough (MTW-CA-ANV)
+- Peppermint Aromatherapy Dough (MTW-CA-ANR)
+- Mojito Aromatherapy Dough (MTW-CA-ANM)
+- Pumpkin Spice Aromatherapy Dough (MTW-CA-ANP)
+- The Seven Scents Set (MTW-CA-ANS)
+
+I'm not uploading images autonomously — the Análu dough images and the bundle hero shots need photo selection, which is your call.
+
+### The Cow Shed needs attention
+- Status: **DRAFT** (not yet visible on educator catalog)
+- Price: **$0.00** — needs to be set
+- No featured image
+- SKU `MTW-DP-DCS` ✅ correct
+- Template: `educator` ✅ correct
+- Decision needed: activate + price + add image, or keep as draft pending product photography.
+
 ## Commits this session
 
 ```
