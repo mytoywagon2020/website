@@ -199,3 +199,47 @@ A deep dive on all retail-side vendors at the depth I gave Connetix would be hun
 - `shopify/educator-portal/templates/page.educator-fairy-villages.liquid` — Mushroom House #1 cover + Mat 4 in Section 04 Hero Product
 - 43 Connetix products updated in Shopify Admin (no git change — remote API)
 - This file
+
+## Late-shift session: catalog application + Connetix vendor revert + Helium diagnosis (2026-05-26 evening)
+
+**Connetix vendor revert (43 products):** All 43 Connetix products reverted from `vendor: "My Toy Wagon"` back to `vendor: "Connetix Tiles"` (the actual maker). Restores the convention that vendor field always names the maker; educator-portal signal lives in tags/metafields/SKU prefix instead.
+
+**Catalog application — 14 educator-portal products updated with catalog-mined copy:**
+- Rainbow Imaginative Play Tray (MTW-SP-IPT) — scenario + 4 benefits + 9 learning tags + specs
+- Letter Tracing Insert (MTW-SP-LTI) — 5 benefits + CCSS literacy tag
+- Busy Bee Tray (MTW-NP-BBT) — 4 benefits + eco-composite spec + China origin
+- Mushroom Garden Fairy Home (MTW-FV-MGF) — scenario + dims + Nepal origin
+- The Cow Shed (MTW-DP-DCS) — Drewart Poland alder; full catalog specs; correct dimensions 23.6×15.6×16.3
+- Wonderheart Bright Gnomes Set (MTW-FV-RGN) — 6 adults + 6 minis; Vermont USA
+- Wonderheart Pastel Gnomes Set (MTW-FV-PGN) — pastel sibling
+- Kaleidoscopes of Natural Materials Trio (MTW-ST-KAL) — Amber/Forest/Blue Dreams variants
+- Bumbu Deer Family Set (educator MTW-WD-DEER + retail) — both renamed from "Deer Herd Set" / "Deer Family (Educator Set)" → "Deer Family Set"; full catalog 5-piece breakdown
+- The Forest Caves Play Mat (MTW-SW-FCV) — 18.5×18.5×10.6 dims + Nepal felt
+- Papoose Seasonal Trees Set (MTW-WD-PST) — 12 trees, 4 seasons; Fair Trade USA
+- The Gruffalo Story Bundle (MTW-SW-GRF) — mat + 5 puppets + book; Magic Light Pictures license
+- The Harvest — Felt Fruit & Vegetables Set (MTW-DP-TFV) — 52 pieces, 4 sub-collections
+- Q Toys Wooden Microscope (MTW-ST-QTM) — close-looking framing
+- My Forest Floor Tinker Tray (MTW-NP-TLF) — full Tender Leaf contents + ASTM/CPSIA; 5 retail images pulled
+- The Everything Play Bundle (MTW-SP-WMC-EPB) — 14-piece WMC Doussie set + BSCI Fair Trade
+
+**Vendor fixes during catalog work:**
+- Bumbu (educator Deer Family Set) → Bumbu Toys (matches maker name on retail)
+- Tender Leaf Toys (My Forest Floor Tinker Tray) → Tender Leaf (matches retail vendor)
+- My Toy Wagon (Everything Play Bundle) → Wild Mountain Child (the actual maker)
+
+**ButtonandBug tray siblings — catalog-style reformat (5 products):**
+Bear, Cake, Castle, Garden, Mountain Imaginative Play Trays. All now use the Rainbow tray's catalog structure (scenario + 4 benefits + learning tags + Classroom specs with material/fit/use/origin/ages). Each connects to a specific thematic extension (Goldilocks puppets for Bear, Connetix Glitter Castle for Castle, Bumbu Deer for Mountain, etc.).
+
+**Cow Shed image fix:** removed mislabeled Wonderheart-gnomes photo, copied 6 correct Drewart Large Cow Shed images from retail listing. Corrected dimensions from placeholder 12×10×11 to actual 23.6×15.6×16.3 per catalog. Added EN-71 cert.
+
+**Title cleanup:** dropped "(Educator)" / "(Educator Set)" suffix from 8 customer-facing titles per the no-Educator-in-title rule.
+
+**Helium issue diagnosed:** Atom @ Helium confirmed Role + Program metafields silently failing to write due to definition mismatch. Recreated definitions for `customer_fields.educator_role` and `customer_fields.educator_program` (single_line_text_field). Test submission still failed — issue handed back to Helium support with full diagnostic email (their fix needed, not ours). Runbook updated with known-issue section.
+
+## Open queue
+1. Continue catalog-mined description sweeps on remaining educator-only products (Análu doughs x7 + Seven Scents Set; Sensory Tray Range bundle; Calm Corner Set; Australiana Birds / Butterfly / Coral Reef Puppet Sets educator versions; Coralwhim Cove Play Mat; Build the Village)
+2. Bumbu single items deep-dive (~40 from earlier queue — Baby Otter, Bumblebee, Curious/Careful Rabbit, Dragon, etc.)
+3. Educator-only product-type fix (Cow Shed, ButtonandBug trays etc. currently typed as "Educator" — should be specific types like "Sensory Trays", "Dollhouses", "Sensory Dough")
+4. Connetix descriptions — catalog "Magnetic Tiles for the Classroom" overview content needs application across the rebranded Connetix line
+5. Clean up duplicate customer metafield definitions (5+ Program variants, 3 Role variants, 3 Institution variants — once Helium-vs-Shopify config is settled)
+6. Products in catalog but not yet in Shopify (need owner to create): Specimen Study Station, When the Pantry Becomes a Shop, The Heirloom Press, The Floral Collection, Magnetic Tiles for the Classroom overview, Deep Time in Felt & Wood, The Stamp the Shape the Story, Gem Blocks & Mirror Geometry
