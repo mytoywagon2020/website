@@ -161,3 +161,18 @@ Frictionless apply; **documents collected at verification, not on the form** (th
 5. **Approve = add the `educator-approved` tag** (manual one-click). *(Optional Flow 2 on that tag → Send HTTP request to assign Net-30.)*
 
 **Status: NOT built. This is the build checklist; Claude can't create Flows or the token (admin/dev tasks).**
+
+
+## Register/quote forms = app/embed, NOT theme liquid (verified from theme 145914462378)
+- `templates/page.educator-register.json` = placeholder rich-text ("Educator Account Registration / verification up to 3 business days") + an **"apps" slot** + two disabled sections. **No form liquid.**
+- The visible application form is rendered by an **app/embed: Helium Customer Fields and/or Tally** (gate template `page.educator-portal.liquid` loads `tally.so/widgets/embed.js`). So **fields, logo, doc upload, and metafield-capture are configured in Helium/Tally — not theme code.** To confirm no-reentry: Helium form → each field → "save to metafield."
+- `page.educator-portal.liquid` is the **gate** ({% layout none %}; closed if handle in `educator-dashboard,new-quote,...` or `page.metafields.educator.gated==true`; renders `{{ page.content }}` only for a customer tagged `educator-approved`).
+- ⚠ **Routing mismatch to fix:** gate "Apply for access" → native `routes.account_register_url`; section-page "Apply" CTAs → `/pages/educator-program`. Point both at the same place.
+
+## Pre-launch cert verification checklist (owner to confirm or remove)
+- **FSC-certified** — Woodland (9), Nature (3), Sensory (4), STEAM (2), Creative Arts (2)
+- **Fair Trade USA** — Nature (4), Small World (4), DP (3), STEAM (1), Woodland (1)
+- **WFTO** — Nature (3), DP, Small World, STEAM, Woodland
+- **BSCI** — Nature (1) — which product?
+- ⚠ **IDEA Part B / Medicaid OT funding** — Sensory (2 each) — highest risk; verify or soften
+- ⚠ **Junior Design Awards 2021** — Sensory (2) — **flagged for end**; verify the win or remove
