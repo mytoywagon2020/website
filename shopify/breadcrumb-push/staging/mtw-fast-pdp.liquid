@@ -384,13 +384,13 @@
           {%- if edu_model == 'preorder_biannual' or edu_model == 'pre_order' -%}
             <p class="ff-edu-avail"><strong>Seasonal pre-order for classrooms.</strong> Next delivery window: <strong>{{ edu_next }}</strong>, timed to school calendars and budget cycles. Reserve now; we fulfill to your term.</p>
           {%- elsif edu_model == 'made_to_order' -%}
-            <p class="ff-edu-avail"><strong>Made to order.</strong> Handcrafted to order &mdash; reserve early for the next classroom delivery window ({{ edu_next }}).</p>
+            <p class="ff-edu-avail"><strong>Made to order.</strong> Handcrafted to order. Reserve early for the next classroom delivery window ({{ edu_next }}).</p>
           {%- else -%}
             <p class="ff-edu-avail"><strong>Stocked line.</strong> Small quantities ship from Los Angeles in 1&ndash;3 business days; <strong>classroom quantities are brought in for you</strong> on a short lead time, confirmed on your quote. Purchase orders and {{ edu_terms | default: 'Net' }} terms welcome.</p>
           {%- endif -%}
           {%- if edu_min != blank -%}<p class="ff-edu-min">Classroom minimum: {{ edu_min }}</p>{%- endif -%}
           {%- if edu_curric != blank -%}<p class="ff-edu-curric"><span class="gk">Curriculum</span>{{ edu_curric }}</p>{%- endif -%}
-          <p class="ff-edu-pricing" style="font-size:12.5px;line-height:1.5;color:var(--stone,#5F5E5A);margin:2px 0 10px;border-top:1px solid var(--rule,rgba(44,44,42,0.12));padding-top:10px;">Catalog shows current retail. Your <strong>educator quote</strong> reflects up-to-date pricing, volume &amp; freight &mdash; with PO &amp; Net-30/60 terms, tax-exempt handling, combined-freight quotes, replacement parts, and curriculum-alignment letters.</p>
+          <p class="ff-edu-pricing" style="font-size:12.5px;line-height:1.5;color:var(--stone,#5F5E5A);margin:2px 0 10px;border-top:1px solid var(--rule,rgba(44,44,42,0.12));padding-top:10px;">Catalog shows current retail. Your <strong>educator quote</strong> reflects up-to-date pricing, volume and freight, with PO and Net-30/60 terms, tax-exempt handling, combined-freight quotes, replacement parts, and curriculum-alignment letters.</p>
           <div class="ff-edu-cta">
             <a class="ff-btn-edu" data-ff-quote href="{{ section.settings.edu_quote_url | default: '/pages/new-quote' }}">Add to quote &middot; request PO pricing</a>
             <a class="ff-edu-link" href="/pages/educator-dashboard">Educator dashboard &rarr;</a>
@@ -472,7 +472,7 @@
       {%- if edu_exclusive and is_educator == false -%}
         <div class="ff-edu" style="border-color:var(--amber,#854F0B);background:#fbf6ec;">
           <div class="ff-edu-head"><span class="ff-edu-badge" style="background:var(--amber,#854F0B);">Educator exclusive</span></div>
-          <p class="ff-edu-avail">This item is available <strong>through our Educator Program</strong> &mdash; for schools, districts, therapists, and early-learning programs. It isn&rsquo;t sold at retail.</p>
+          <p class="ff-edu-avail">This item is available <strong>through our Educator Program</strong> for schools, districts, therapists, and early-learning programs. It isn&rsquo;t sold at retail.</p>
           <div class="ff-edu-cta">
             <a class="ff-btn-edu" style="background:var(--amber,#854F0B);" href="/pages/educator-program">Apply for educator access</a>
             <a class="ff-edu-link" style="color:var(--amber,#854F0B);" href="{{ routes.account_login_url }}">Already approved? Sign in &rarr;</a>

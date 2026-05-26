@@ -139,7 +139,7 @@
     -%}
 
     <div class="dash-banner" style="background-image:linear-gradient(100deg,rgba(31,60,9,.92),rgba(59,109,17,.62)),url('{{ edu_banner_img | asset_url }}');">
-      <span><strong>Next delivery window: {{ edu_window }}.</strong> Order by {{ edu_orderby }} for this window &mdash; stocked, seasonal, and made-to-order items are confirmed on your quote.</span>
+      <span><strong>Next delivery window: {{ edu_window }}.</strong> Order by {{ edu_orderby }} for this window. Stocked, seasonal, and made-to-order items are confirmed on your quote.</span>
       <a class="dash-banner-cta" href="/pages/educators">Shop the catalog</a>
     </div>
 
@@ -170,7 +170,7 @@
       {%- if customer.b2b? -%}
       <a class="action action--c2" href="{{ routes.cart_url }}">
         <h3>Build a quote</h3>
-        <p>Add catalog items to your cart, then submit at checkout &mdash; it becomes a quote our team reviews and approves on your terms.</p>
+        <p>Add catalog items to your cart, then submit at checkout. It becomes a quote our team reviews and approves on your terms.</p>
         <span class="go">Review cart &amp; submit &rarr;</span>
       </a>
       {%- else -%}
@@ -222,7 +222,7 @@
         <h3>Place your first order in three steps</h3>
         <ol>
           <li><strong>Browse the catalog</strong> and add items to your basket. <a href="/pages/educators">Open the Educator Catalog &rarr;</a></li>
-          <li><strong>Send a quote</strong> &mdash; we reply within one business day with an itemized quote (pricing held 45 days), including shipping and tax. <a href="/pages/new-quote">Start a quote &rarr;</a></li>
+          <li><strong>Send a quote.</strong> We reply within one business day with an itemized quote (pricing held 45 days), including shipping and tax. <a href="/pages/new-quote">Start a quote &rarr;</a></li>
           <li><strong>Issue your PO</strong> referencing the quote; we confirm, allocate, and ship to your delivery window. Net-30 / Net-60 available.</li>
         </ol>
         <p style="margin:14px 0 0;color:var(--stone);font-size:13.5px;">Prefer to pay now? Card, Shop Pay, Apple Pay, Google Pay, and ACH are all available at checkout.</p>
@@ -263,13 +263,13 @@
       <div class="po-grid">
         <div class="po-card">
           <h3>Email us your PO</h3>
-          <p style="margin-top:0;color:var(--stone);">Have an approved quote? Send your school or district PO (PDF) and we convert it to an order on your terms &mdash; we confirm within one business day. Inventory is allocated once your PO is received.</p>
+          <p style="margin-top:0;color:var(--stone);">Have an approved quote? Send your school or district PO (PDF) and we convert it to an order on your terms. We confirm within one business day. Inventory is allocated once your PO is received.</p>
           <p style="margin:14px 0 4px;"><a class="btn" href="mailto:educators@mytoywagon.com?subject=Purchase%20Order%20Submission&body=Quote%20number%3A%20%0APO%20number%3A%20%0ABilling%20contact%3A%20%0AShip-to%20address(es)%3A%20%0ANeeded%20by%3A%20%0ANotes%3A%20">Email your PO &rarr;</a></p>
           <p style="color:var(--stone);font-size:12.5px;margin-top:12px;">Include: quote number, PO number, billing contact, ship-to address(es), needed-by date, and a tax-exempt certificate if not already on file.</p>
         </div>
         <div class="po-card">
           <h3>No PO yet?</h3>
-          <p style="color:var(--stone);font-size:14px;">Build a quote first &mdash; take the itemized quote (pricing held 45 days) to your procurement team, then send the PO back to us.</p>
+          <p style="color:var(--stone);font-size:14px;">Build a quote first. Take the itemized quote (pricing held 45 days) to your procurement team, then send the PO back to us.</p>
           <p style="margin:12px 0 0;"><a class="btn btn--ghost" href="/pages/new-quote">Start a quote &rarr;</a></p>
           <p style="color:var(--stone);font-size:12.5px;margin-top:12px;">Prefer to pay now? Card, Shop Pay, Apple Pay, Google Pay, and ACH are all available at checkout.</p>
         </div>
@@ -284,7 +284,7 @@
           <p style="margin:0 0 6px;font-size:14px;"><strong>Status:</strong> Approved educator</p>
           {%- if customer.b2b? and customer.current_company != blank -%}<p style="margin:0 0 6px;font-size:14px;"><strong>Organization:</strong> {{ customer.current_company.name }}</p>{%- endif -%}
           <p style="margin:0 0 6px;font-size:14px;"><strong>Contact:</strong> {{ customer.name | strip }}{% if customer.email != blank %} &middot; {{ customer.email }}{% endif %}</p>
-          <p style="margin:0 0 14px;font-size:14px;"><strong>Terms:</strong> Net-30 / Net-60 available for approved organizations &mdash; confirmed on each quote.</p>
+          <p style="margin:0 0 14px;font-size:14px;"><strong>Terms:</strong> Net-30 and Net-60 available for approved organizations, confirmed on each quote.</p>
           <a class="btn btn--ghost" href="{{ routes.account_url }}">Account &amp; addresses</a>
         </div>
         <div class="po-card">

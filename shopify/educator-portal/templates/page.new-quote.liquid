@@ -84,11 +84,11 @@
     </section>
 
     <div class="q-note">
-      <strong>No payment now, and nothing is reserved yet.</strong> Inventory is allocated only once your purchase order is confirmed (or by prior arrangement for established accounts). Need it faster? You can also <a href="{{ routes.cart_url }}" style="color:var(--forest);font-weight:700;">pay now &mdash; card, Shop Pay, Apple Pay, Google Pay, or ACH</a> at checkout.
+      <strong>No payment now, and nothing is reserved yet.</strong> Inventory is allocated only once your purchase order is confirmed (or by prior arrangement for established accounts). Need it faster? You can also <a href="{{ routes.cart_url }}" style="color:var(--forest);font-weight:700;">pay now with card, Shop Pay, Apple Pay, Google Pay, or ACH</a> at checkout.
     </div>
 
     <div class="q-note" style="background:#fbf6ec;border-color:var(--amber);">
-      <strong style="color:var(--amber);">About delivery.</strong> Classroom quantities are brought in for you &mdash; we rarely keep 25+ of an item on the shelf. Stocked lines arrive on a <strong>short lead time</strong>; handmade or made-to-order pieces take longer, and seasonal items ship in the next delivery window (Aug&ndash;Sep or May&ndash;Jun). Your quote confirms the exact timing for your quantities.
+      <strong style="color:var(--amber);">About delivery.</strong> Classroom quantities are brought in for you. We rarely keep 25+ of an item on the shelf. Stocked lines arrive on a <strong>short lead time</strong>. Handmade or made-to-order pieces take longer, and seasonal items ship in the next delivery window (Aug&ndash;Sep or May&ndash;Jun). Your quote confirms the exact timing for your quantities.
     </div>
 
     <div class="q-grid">
@@ -122,7 +122,7 @@
           {%- capture items_text -%}{%- for item in cart.items -%}{{ item.quantity }} x {{ item.product.title }}{% unless item.variant.title contains 'Default' %} ({{ item.variant.title }}){% endunless %}{% if item.sku != blank %} [SKU {{ item.sku }}]{% endif %} — {{ item.final_line_price | money }}{% unless forloop.last %} | {% endunless %}{%- endfor -%} || Estimated subtotal {{ cart.total_price | money }}{%- endcapture -%}
           {%- form 'contact', id: 'edu-quote-form' -%}
             {%- if form.posted_successfully? -%}
-              <div class="q-success"><strong>Quote request received.</strong> Our team will review it and reply within one business day with an itemized quote &mdash; including final shipping and tax. Nothing has been charged or reserved.</div>
+              <div class="q-success"><strong>Quote request received.</strong> Our team will review it and reply within one business day with an itemized quote, including final shipping and tax. Nothing has been charged or reserved.</div>
             {%- endif -%}
             <input type="hidden" name="contact[Submission type]" value="Educator quote request">
             <input type="hidden" name="contact[Items]" value="{{ items_text | escape }}">
@@ -165,7 +165,7 @@
             <textarea class="q-ta" name="contact[body]" placeholder="Ship-to address(es), tax-exempt status, anything we should know."></textarea>
 
             <button class="q-btn" type="submit">Submit quote request</button>
-            <a class="q-alt" href="{{ routes.cart_url }}">Or pay now &mdash; card, Shop Pay, Apple Pay &amp; ACH &rarr;</a>
+            <a class="q-alt" href="{{ routes.cart_url }}">Or pay now with card, Shop Pay, Apple Pay &amp; ACH &rarr;</a>
           {%- endform -%}
         {%- else -%}
           <p style="color:var(--stone);">Add items to your basket first, then come back to send your quote.</p>
