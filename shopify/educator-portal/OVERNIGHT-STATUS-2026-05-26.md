@@ -257,3 +257,29 @@ Plus `mtw-educator-header` and `mtw-educator-footer` sections wrap the page. Sec
 
 This is rendering for all 18 educator products that use `templateSuffix: "educator"`.
 
+
+---
+
+## Fifth-shift (Connetix work)
+
+### All 43 Connetix products vendored "My Toy Wagon"
+Bulk swap from "Connetix Tiles" → "My Toy Wagon" via productUpdate (3 batches of 14-15 products each). Per the vendor/origin rule: Shopify `vendor` field = MTW for all educator products; descriptions still credit the original maker (Connetix is Australian-designed, China-manufactured) and the brand name shows on titles + descriptions.
+
+### 8 Connetix descriptions rewritten with full educator voice
+The newest 8 (previously ~540 chars each, 2-3 lines) now have 5-7 paragraph descriptions with the procurement/STEAM/curriculum framing:
+
+1. Glitter Unicorn Pack 56 pc (MTW-ST-CGU, $79)
+2. PRO Constructor Set 70 pc (MTW-ST-CPR, $99)
+3. Super Ball Run Pack 134 pc (MTW-ST-CSB, $149)
+4. Charity Pack Pink 20 pc (MTW-ST-CHP, $45) — breast cancer awareness
+5. Charity Pack Teal 20 pc (MTW-ST-CHT, $45) — ovarian cancer awareness
+6. Pastel Portal Pack 48 pc (MTW-ST-CPP, $69)
+7. Glitter Castle Pack 48 pc (MTW-ST-CGC, $69)
+8. Star Light Pack 28 pc (MTW-ST-CLS, $59)
+
+### Educator metafields set on first 8 Connetix products
+`educator.developmental_age`, `educator.materials`, `educator.certifications` set on the first 8 Connetix SKUs. 35 more need the same metafields applied (template values: ages 3+, ABS plastic + neodymium magnets, CE/EN71/ASTM F963). Remaining batch work continues.
+
+### Connetix product status
+All 43 still `DRAFT` (per the "Connetix stays Draft / not live on retail" rule — they only show on educator pages with `continue selling when out of stock`).
+
