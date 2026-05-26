@@ -1,75 +1,99 @@
 # Morning Status — 2026-05-27
 
-## Connetix product description updates
+## Connetix line: 43/43 products now have real-spec deep-dive descriptions ✓
 
-### ✓ Done — real specs verified (43 products, listed in progress order)
+Every Connetix product in the shop now has:
+- Vendor: **My Toy Wagon**
+- Real piece-count breakdown verified against Connetix official + 5+ major retailers (Amazon, Staples, Bright Bean, Toppings Kids, Maude Kids, Smallable, Mindware, Toy Insider, Lil Tulips, Hello Archie, etc.)
+- Educator-voice paragraph framing + Educator notes paragraph
+- Materials/safety boilerplate (ABS plastic, ultrasonic welding + rivets, BPA-free + phthalate-free, bevel design, strong magnets)
+- Ages 3+ with choking hazard warning
+- Origin: Designed in Australia by Connetix; manufactured responsibly
 
-**User-provided real specs (5 products):**
-- Connetix PRO Constructor Set 70pc — Smart-Spin tech, ages 5+
-- Connetix Bright Portal Pack 48pc — 8 bright colors, open-frame Portal pieces, Smart-Spin mini-squares
-- Connetix Star Light Pack 28pc — rechargeable light-up tile, LR44 battery, 3 dimming settings
-- Connetix Glitter Castle Pack 48pc — iridescent glitter, inspiration book
-- Connetix Glitter Unicorn Pack 56pc — full piece breakdown, ultrasonic welding + rivets, pink/yellow/teal/purple brights
+### Source mix (43 total)
 
-**Web-research verified specs (4 products this batch):**
-- Connetix 212 Piece Rainbow Mega Pack — full 11-line shape breakdown including hexagons, fence pieces, car bases
-- Connetix 202 Piece Pastel Mega Pack — full breakdown, 8 earthy pastels named (rose, berry, peach, mint, emerald, lemon, violet, sapphire)
-- Connetix 60 Piece Rainbow Starter Pack — 7 shape types listed with counts
-- Connetix 64 Piece Pastel Starter Pack — color-by-color breakdown
-- Connetix 102 Rainbow Creative Pack — 9 shape types
-- Connetix 120 Pastel Creative Pack — 7 shape types
+**User-provided real specs (5):**
+1. PRO Constructor Set 70pc — Smart-Spin tech, ages 5+
+2. Bright Portal Pack 48pc — 8 bright colors, Portal pieces, Smart-Spin mini-squares
+3. Star Light Pack 28pc — rechargeable light-up tile, LR44 battery, 3 dimming settings
+4. Glitter Castle Pack 48pc — iridescent glitter, inspiration book
+5. Glitter Unicorn Pack 56pc — full piece breakdown, pink/yellow/teal/purple brights
 
-### → Still to enrich with real-spec deep dive
+**Web-research verified specs (38):**
 
-**Ball Run / Marble Run line (8):**
-- 92 Piece Rainbow Ball Run Pack
-- 106 Piece Pastel Ball Run Pack
-- 134 Piece Super Ball Run Pack
-- 66 pc Rainbow Ball Run Expansion Pack
-- 80 pc Pastel Ball Run Expansion Pack
-- 12 Pc Rainbow Replacement Ball Pack
-- 16 Pc Pastel Replacement Ball Pack
-- Ramps and Intersections Pack 16 pc
+Mega + Starter + Creative (6):
+- 212 Rainbow Mega Pack
+- 202 Pastel Mega Pack
+- 102 Rainbow Creative Pack
+- 120 Pastel Creative Pack
+- 60 Rainbow Starter Pack
+- 64 Pastel Starter Pack
 
-**Transport / Motion / Roads (4):**
-- 50 Piece Rainbow Transport Pack
-- 50 Piece Pastel Transport Pack
-- 24 Piece Motion Pack
-- 2 Piece Car Pack
-- Creative Roads Pack 48 pc
+Mini (2):
+- 24 Rainbow Mini Pack
+- 32 Pastel Mini Pack
 
-**Base Plates (4):**
-- 2 Piece Base Plate Blue & Green Pack
-- 2 Piece Base Plate Lemon & Peach Pack
-- 2 Piece Base Plate Pink & Berry Pack
-- 2 Piece Clear Base Plate Pack
+Ball Run + Expansions (5):
+- 92 Rainbow Ball Run
+- 106 Pastel Ball Run
+- 134 Super Ball Run
+- 66 Rainbow Ball Run Expansion (note: includes X-tubes + spiral tubes)
+- 80 Pastel Ball Run Expansion (note: includes X-tubes + spiral tubes)
 
-**Specialty Shape Expansions (8):**
-- 12 Piece Clear Rectangle Pack
-- 18 Piece Rainbow Rectangle Pack
-- 24 Piece Pastel Rectangle Pack
-- 24 Piece Clear Shape Expansion Pack
-- 36 Piece Rainbow Shape Expansion Pack
-- 48 Piece Pastel Shape Expansion Pack
-- 40 Piece Pastel Square Pack
-- 42 Piece Rainbow Square Pack
+Replacement balls (2):
+- 12 Rainbow Replacement Ball Pack
+- 16 Pastel Replacement Ball Pack
 
-**Geometry / Mini / Clear (5):**
-- 34 pc Clear Starter Pack
-- 30 Piece Geometry Pack
-- 40 Piece Pastel Geometry Pack
-- 24 Piece Rainbow Mini Pack
-- 32 Piece Pastel Mini Pack
+Transport / Motion / Roads / Car (5):
+- 50 Rainbow Transport Pack
+- 50 Pastel Transport Pack
+- 24 Motion Pack
+- 2 Car Pack
+- 48 Creative Roads Pack
+- 16 Ramps & Intersections Pack
 
-**Charity (2):**
-- Charity Pack Pink 20 pc (breast cancer awareness)
-- Charity Pack Teal 20 pc (ovarian cancer awareness)
+Base Plates (4):
+- 2 Base Plate Blue & Green
+- 2 Base Plate Lemon & Peach
+- 2 Base Plate Pink & Berry
+- 2 Clear Base Plate Pack
+
+Shape Expansions (3):
+- 36 Rainbow Shape Expansion Pack
+- 48 Pastel Shape Expansion Pack
+- 24 Clear Shape Expansion Pack
+
+Geometry (2):
+- 30 Rainbow Geometry Pack
+- 40 Pastel Geometry Pack
+
+Squares (2):
+- 40 Pastel Square Pack
+- 42 Rainbow Square Pack
+
+Rectangles (3):
+- 18 Rainbow Rectangle Pack
+- 24 Pastel Rectangle Pack
+- 12 Clear Rectangle Pack
+
+Clear Starter (1):
+- 34 Clear Starter Pack
+
+Charity (2):
+- Charity Pack Pink 20pc → breast cancer research (20% to Australian Breast Cancer Research)
+- Charity Pack Teal 20pc → MND/ALS research (20% to FightMND) ⚠️ **CORRECTION**: was previously described as "ovarian cancer awareness"; the official Connetix Teal pack is MND awareness, not ovarian. Updated accordingly.
 
 ## Non-Connetix product status
 
-All 18 educator-only products (ButtonandBug trays, Análu doughs, Cow Shed, etc.) already have rich educator-voice descriptions, vendor "My Toy Wagon", and full educator metafields (developmental_age, materials, certifications). No further deep-dive needed on those.
+All 18 educator-only products (ButtonandBug trays, Análu doughs, Cow Shed, kaleidoscopes, sets) already had rich educator-voice descriptions, vendor "My Toy Wagon", and full educator metafields (developmental_age, materials, certifications, bundle_components, replacement_parts). No deep-dive needed on those.
 
-Other shop-wide vendors (Tara Treasures, Wonderheart, Drewart, Bumbu, Wooden Story, Brin d'Ours) — these are NOT in the educator-only set; their PDPs are retail-side and were not part of the educator portal scope. Flag for the morning whether you want descriptions enriched on those too.
+Other shop-wide vendors (Tara Treasures, Wonderheart, Drewart, Bumbu, Wooden Story, Brin d'Ours, Papoose) — these are NOT in the educator-only set; their PDPs are retail-side and were not part of the educator portal scope. Flag for the morning whether you want descriptions enriched on those too — if yes, I'll start with the highest-revenue items first.
+
+## Fairy Villages page
+
+- Cover: **MushroomHousewithCarrotGardenMat1.png** (Toadstool House) — wired
+- Section 04 Hero Product: **MushroomHousewithCarrotGardenMat4.webp** — wired
+- Cover tag label: updated to "TOADSTOOL HOUSE"
 
 ## Vendor / origin reference (from CLAUDE.md + SHOPIFY_NOTES.md)
 - Connetix → designed in Australia, manufactured responsibly
@@ -85,6 +109,11 @@ Other shop-wide vendors (Tara Treasures, Wonderheart, Drewart, Bumbu, Wooden Sto
 - All educator-only products: Shopify `vendor` field = "My Toy Wagon"
 
 ## Open questions for the morning
-1. Continue enriching all 32 remaining Connetix products tonight, or prioritize a subset?
-2. Should retail-side (non-educator) vendor PDPs also get deep-dive descriptions?
-3. Mushroom House Photo 2 (Mat 4) — wired to Section 04 Hero Product image. Confirm at /pages/educator-fairy-villages preview.
+1. Should I extend the same deep-dive treatment to retail-side (non-educator) vendor PDPs — Wonderheart, Tara Treasures, Drewart, Bumbu, Wooden Story, etc.? If yes, name the priority order.
+2. Confirm the Teal Charity Pack correction (MND/ALS, not ovarian). If you have a contradicting source, push back and I'll revert.
+3. Preview the Fairy Villages cover at /pages/educator-fairy-villages once the theme is republished — confirm the Toadstool House image renders flush-in-frame at the new aspect.
+
+## Files changed tonight
+- `shopify/educator-portal/templates/page.educator-fairy-villages.liquid` — Mushroom House #1 cover + Mat 4 in Section 04 Hero Product
+- 43 Connetix products updated in Shopify Admin (no git change — remote API)
+- This file
