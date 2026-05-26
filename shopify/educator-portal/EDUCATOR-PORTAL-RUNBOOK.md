@@ -176,3 +176,39 @@ Frictionless apply; **documents collected at verification, not on the form** (th
 - **BSCI** — Nature (1) — which product?
 - ⚠ **IDEA Part B / Medicaid OT funding** — Sensory (2 each) — highest risk; verify or soften
 - ⚠ **Junior Design Awards 2021** — Sensory (2) — **flagged for end**; verify the win or remove
+
+---
+
+## Educator listings — build SOP & conventions (employee-facing) — DECIDED 2026-05
+
+**THE MODEL: every educator item is its OWN listing, fully separate from retail.**
+- Educator listings are **made-to-order / pre-order**: variant **"continue selling when out of stock" = ON**, published to the **Educator catalog ONLY** — **never** on the retail Online Store. Schools order on their schedule; you fulfill from production/restock and **reconcile physical stock at the PO** ("allocate at PO"; use customer metafield `educator.trusted_hold` to set stock aside before a PO).
+- **Never share one listing across retail + educator.** "Sell when out of stock" is a single **per-variant** setting (it hits every channel at once), and inventory is **one shared pool per variant** — there is **no per-channel or per-location inventory fence on our plan** (confirmed). So a shared listing can't be *retail-accurate* AND *educator-pre-order* at the same time. Two listings is the only clean way: retail keeps its real stock (stops at 0); the educator twin is its own pre-order pool. **An educator order never touches retail stock** (different SKUs). Keeping them separate is also less work than juggling shared stock.
+
+**Build each educator listing FROM the retail listing — not a thin stub:**
+1. Copy the retail listing's **full description + all images**.
+2. **Clean** it: delete shipping/stock/dropship lines ("ships from our partner warehouse", "two shipping options", "limited quantity in stock", "pre-order for [holiday]"); drop the maker brand from the body **unless it's marquee** (Connetix, Bauspiel, Grimm's, Holztiger, Tara Treasures).
+3. Append the **educator note**: *"Made to order for classroom use — always available to order on your school schedule. Net-30 and tax-exempt purchasing available for approved educators."*
+
+**The 5 markers — apply to EVERY educator listing:**
+| Field | Value |
+|---|---|
+| **Title** | clean product name — **NO "(Educator)" suffix** |
+| **Vendor** | **My Toy Wagon** (one-click "filter all B2B by vendor"; also our true vendor once we manufacture) |
+| **Product Type** | **Educator** (secondary identifier + Type-column filter) |
+| **Tags** | `educator-only` (primary filter) + `educator-<section>` + **maker brand** tag (e.g. `ButtonandBug`, so staff know the real maker) + age tags |
+| **Handle** | `-educator` suffix |
+
+Plus: status **ACTIVE**, variant **inventory policy = continue selling**, published to the **Educator catalog** (`Publication/152026382506`) only. Price = **regular** price (never a retail sale price).
+
+**Tell educator vs retail apart in admin:** filter **`tag:educator-only`** (save as a view "Educator"); or Vendor = **My Toy Wagon**; or Product Type = **Educator**; or handle ends `-educator`. On the storefront, educator listings are off the public store entirely (retail can't see them; they don't appear in retail search).
+
+**Collective (dropship) items:** never link/reuse a Collective listing for educator — build a **fresh** educator listing (a dropship item can't be made-to-order/educator-only). **All Tender Leaf items are Collective → create new**, EXCEPT the **Botanical Press** (old shop-owned listing, not Collective).
+
+**Technical do/don't (API — learned the hard way):**
+- **Never activate an existing *retail* draft to "make it educator."** Retail drafts carry every sales channel, so activating them **leaks them onto retail** — and **`publishableUnpublish` is BLOCKED** (you can't pull it back via API). Instead use a clean stub or a **freshly created** product (both start with **zero** channels) and publish ONLY to the Educator catalog.
+- `productCreate` = clean (no channels). `productDuplicate` = **inherits ALL the source's channels** — don't use it for educator items.
+- Activating any product **auto-adds it to the "Microsoft Copilot" channel** (that channel auto-publishes). Turn that toggle off in admin if unwanted (it's not the retail storefront).
+- The gated educator **pages** were leaking into on-site search; fixed in the staging theme `snippets/collection-grid.liquid` + `snippets/search-results.liquid` (skip `educator*` / `new-quote` / `vendor-profile`). The **live** theme needs the same paste (API can't write the published theme) — or it carries over when the staging theme is published.
+
+**Plan facts (confirmed):** B2B (Companies, Catalogs, Net-30 = `PaymentTermsTemplate/4`) **works on our Grow plan**, with a **3-catalog limit**. Multi-location inventory is available, but there is **no** per-channel/per-location inventory reservation on any plan. *(Correction: the "Needs Shopify Plus / companyCreate is Plus-only" lines in the Flow section above are **stale** — B2B is live on Grow; Elk Grove proves it.)*
