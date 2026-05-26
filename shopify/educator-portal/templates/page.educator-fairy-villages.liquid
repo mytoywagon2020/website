@@ -1578,13 +1578,12 @@ footer .cols .downloads a::after{
   isolation: isolate;
 }
 .cover .bg{ position:absolute; inset:0; z-index:0; }
-/* Cover: show the whole (square) product photo with `contain`, and fill the
-   wide banner edge-to-edge with a blurred copy of the same shot behind it. */
-.cover .bg.has-photo > img{ object-fit: contain; object-position: center; z-index: 1; }
+/* Cover: photo flush in the frame edge-to-edge. */
+.cover .bg.has-photo > img{ width: 100%; height: 100%; object-fit: cover; object-position: center; z-index: 1; }
 .cover .bg.has-photo::before{
   display: block; content: "";
   position: absolute; inset: 0; z-index: 0;
-  background: url("{{ 'pink-blossom-house.webp' | file_url }}") center / cover no-repeat;
+  background: url("https://cdn.shopify.com/s/files/1/0522/0882/8586/files/lilac-blossom-fairy-house.jpg?v=1779662621") center / cover no-repeat;
   filter: blur(34px) saturate(1.08);
   transform: scale(1.12);
 }
