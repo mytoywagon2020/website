@@ -390,3 +390,17 @@ Maker/origin/cert claims must be verifiable (see design rule above). Confirmed s
 **Bundles = educator convenience ("one-click instant corner play space").** Each section offers a bundle that buys the whole corner at once (Farmyard, Classroom Shop, Play Café, World Foods, etc.). Create these as **educator-only bundle products** (tags `educator-bundle` + `educator-<section>` + `educator-only`), linked from the section's "See the bundle" CTA. Bundle SKUs already referenced in the templates: `MTW-DP-SH` (shop), `MTW-DP-CAFE` (café), `MTW-DP-WEA` (East Asian East-Asian), plus farmyard/world-kitchen sets, and the Creative-Arts collections.
 
 **Lifecycle:** Educator listings start `DRAFT` + `needs-price`. When priced, activate on the Educator catalog to go live. Portal card links are set by product **handle** in the templates now, so each card resolves the moment its educator listing is activated — no template change needed later.
+
+## Vendor / origin rules (2026-05-26)
+
+- **Shopify `vendor` field for ALL educator products = "My Toy Wagon"**, regardless of the original maker. Educator products are MTW-vendored.
+- **Origin in descriptions/metafields, by maker:**
+  - **Drewart → Poland.** (Family workshop in Poland. Do NOT say Germany.)
+  - **Análu → USA, small-batch hand-made.**
+  - **ButtonandBug → USA, hand-cut maple.**
+  - **Papoose → designed in Australia, hand-made in Nepal.**
+  - **Wonderheart → USA (Vermont studio).**
+  - **Bumbu → Romania, hand-carved FSC maple/basswood.**
+  - **Tara Treasures → designed in Australia, hand-felted in Nepal (Fair Trade USA Certified).**
+  - **Wooden Story → Poland (sand trays, beech tools).**
+  - **Brin d'Ours → France (Alsace, Vosges-region wood).**
