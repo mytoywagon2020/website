@@ -108,6 +108,32 @@ Other shop-wide vendors (Tara Treasures, Wonderheart, Drewart, Bumbu, Wooden Sto
 - Papoose → Australia/Nepal
 - All educator-only products: Shopify `vendor` field = "My Toy Wagon"
 
+## Retail-side vendor PDPs — deep-dived tonight (47 total)
+
+**Wonderheart (30/30 complete):**
+- All 7 standard bright gnomes (Blue, Green, Orange, Yellow, Pink, Purple, White) with per-color personality (river-stone, forest-floor, harvest lantern, sunlight, candy-bright, dusk dreamer, snowdrop)
+- All 6 mini bright gnomes
+- Rainbow Set (6-piece, standard) + Colors of the Week Set (7-piece, Waldorf days-of-the-week framing)
+- Mini Rainbow Set (6-piece)
+- All 6 standard pastel gnomes (mist-blue, sage, peach, butter, blush, lavender)
+- All 6 mini pastel gnomes
+- Pastel Rainbow Set + Mini Pastel Rainbow Set
+- Construction details on every PDP: solid wood, hand-stitched wool coat, cotton tie, glass bead, made in Vermont USA, 4" standard / ~3" mini, ages 3+
+
+**Huckleberry by Kikkerland (11/11 complete):**
+- My Little Museum (specimen display box w/ 5 compartments + magnifying lid)
+- Dual Magnifier, Wooden Magnifying Glass, Kaleidoscope (refillable chamber)
+- First Pocket Knife (real folding tool), Wood Carving Tool (3-pc whittling), Pocket Boomerang
+- Pressed Flower Wooden Frame, Crafters Flower Paper Kit
+- Wooden Compass (FSC-certified), Little Bee Home (pollinator hotel)
+- Note: User asked for "Complete Observation Station" — not currently in shop. Flagged below.
+
+**June & December (6/6 complete):**
+- Large Specimen Bottles set of 10 + Medium Specimen Bottles set of 16
+- Specimen Collecting Kit + Beach Collecting Kit
+- Pocket Flower Press + Field Flower Press
+- Coherent narrative: nature-archive habit from pocket-press through full specimen archive
+
 ## Retail-side vendor catalog scale (scouted, not yet deep-dived)
 
 The store has ~50+ vendors beyond Connetix. Spot-check on three priority vendors:
@@ -121,9 +147,11 @@ A deep dive on all retail-side vendors at the depth I gave Connetix would be hun
 3. Or skip retail-side entirely and focus on educator portal final polish before launch
 
 ## Open questions for the morning
-1. **Retail-side vendor priority**: pick from above options (Wonderheart first / Drewart big-ticket / skip retail). Tell me an ordered list and I'll work through it tomorrow night.
-2. Confirm the Teal Charity Pack correction (MND/ALS, not ovarian). If you have a contradicting source, push back and I'll revert.
-3. Preview the Fairy Villages cover at /pages/educator-fairy-villages once the theme is republished — confirm the Toadstool House image renders flush-in-frame at the new aspect.
+1. **Huckleberry "Complete Observation Station"** — you flagged this as the standout Huckleberry item but it isn't currently in our catalog. Did you mean a different product, or do you want to source/import this one from Huckleberry?
+2. **Bauspiel deep-dive status** — ~27 active Bauspiel products; spot-check shows ~6–7 already have rich narrative descriptions ("A radiant celebration…", "Spark curiosity…", etc.) from prior work, the rest are still in the old shallow style. Continuing tomorrow night I'll audit each and only rewrite the shallow ones (avoid downgrading good copy).
+3. **Drewart big-ticket** — still pending per your original prioritization; queued behind Bauspiel cleanup.
+4. Confirm the Teal Charity Pack correction (MND/ALS, not ovarian). If you have a contradicting source, push back and I'll revert.
+5. Preview the Fairy Villages cover at /pages/educator-fairy-villages once the theme is republished — confirm the Toadstool House image renders flush-in-frame at the new aspect.
 
 ## Files changed tonight
 - `shopify/educator-portal/templates/page.educator-fairy-villages.liquid` — Mushroom House #1 cover + Mat 4 in Section 04 Hero Product
