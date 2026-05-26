@@ -2178,6 +2178,9 @@ footer .cols .downloads a::after{
   aspect-ratio: 1 / 1;
 }
 .home .tile-wrap .tile{ width: 100%; height: 100%; min-height: 0; }
+/* Ensure every product photo fills the square frame, no letterboxing. */
+.home .tile-wrap .tile.has-photo img,
+.home .tile-wrap .tile img{ width: 100%; height: 100%; object-fit: cover; display: block; }
 .home .tile-wrap .overlay{
   position: absolute; inset: 0; z-index: 4; pointer-events: none;
   background: linear-gradient(to top, rgba(44,26,14,.65) 0%, rgba(44,26,14,0) 45%);
@@ -2592,7 +2595,7 @@ footer .cols .downloads a::after{
 }
 .companions .folk .f .tile{
   position: relative;
-  aspect-ratio: 1 / 1.1;
+  aspect-ratio: 1 / 1;
   width: 100%;
 }
 .companions .folk .f .name{
@@ -3108,7 +3111,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 .gallery.strip .home:nth-child(4),
 .gallery.strip .home:nth-child(5){ grid-column: span 3; }
 .gallery.strip .home:nth-child(4) .tile-wrap,
-.gallery.strip .home:nth-child(5) .tile-wrap{ aspect-ratio: 16 / 9; }
+.gallery.strip .home:nth-child(5) .tile-wrap{ aspect-ratio: 1 / 1; }
 @media (max-width: 1080px){
   .gallery.strip .homes{ grid-template-columns: repeat(2, 1fr); }
   .gallery.strip .home:nth-child(1),
@@ -3796,8 +3799,8 @@ section[data-screen-label="08 The Everything Play Bundle"] .content .eyebrow{
 
       <!-- Hero photo: Leaf Babies lifestyle -->
       <div style="position: relative;">
-        <div class="tile has-photo" style="aspect-ratio: 4 / 5; position: relative; overflow: hidden; border-radius: 2px;">
-          <img src="{{ 'np-leaf-babies-moon-basket.png' | file_url }}" alt="Papoose Leaf Babies: four hand-felted babies with different skin tones, swaddled in stitched autumn and lime maple leaves, nestled in a crescent-moon wicker basket filled with dried chamomile, gold stars, and pine cones on a soft mossy green surface." style="width: 100%; height: 100%; object-fit: cover; display: block;"/>
+        <div class="tile has-photo" style="aspect-ratio: 1 / 1; position: relative; overflow: hidden; border-radius: 2px;">
+          <img src="{{ 'np-leaf-babies-moon-basket.png' | file_url }}" alt="Papoose Leaf Babies: four hand-felted babies with different skin tones, swaddled in stitched autumn and lime maple leaves, lying inside a crescent-moon wicker basket filled with dried chamomile, gold stars, and pine cones on a soft mossy green surface." style="width: 100%; height: 100%; object-fit: cover; display: block;"/>
           <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
         </div>
       </div>
@@ -3930,7 +3933,7 @@ section[data-screen-label="08 The Everything Play Bundle"] .content .eyebrow{
       <article class="home size-tall">
         <div class="tile-wrap">
           <div class="tile t-cream has-photo">
-            <img src="https://cdn.shopify.com/s/files/1/0522/0882/8586/files/moonpicnic-mushrooms.webp?v=1779655275&amp;width=1100" alt="Forest mushrooms in a basket: a dozen hand-carved wooden mushrooms in cream, brown, peach, and white-and-red caps, nestled in a small kraft basket of straw for foraging and woodland small-world play."/>
+            <img src="https://cdn.shopify.com/s/files/1/0522/0882/8586/files/moonpicnic-mushrooms.webp?v=1779655275&amp;width=1100" alt="Forest mushrooms in a basket: a dozen hand-carved wooden mushrooms in cream, brown, peach, and white-and-red caps, gathered in a small kraft basket of straw for foraging and woodland small-world play."/>
             <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
             <span class="tag">[ WOOD N&deg;04 &nbsp;&middot;&nbsp; FOREST MUSHROOMS IN A BASKET ]</span>
           </div>

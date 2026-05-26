@@ -2168,9 +2168,12 @@ footer .cols .downloads a::after{
   width: 100%;
   overflow: hidden;
   border-radius: 2px;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 1 / 1;
 }
 .home .tile-wrap .tile{ width: 100%; height: 100%; min-height: 0; }
+/* Ensure all product photos fill the square frame, no letterboxing. */
+.home .tile-wrap .tile.has-photo img,
+.home .tile-wrap .tile img{ width: 100%; height: 100%; object-fit: cover; display: block; }
 .home .tile-wrap .overlay{
   position: absolute; inset: 0; z-index: 4; pointer-events: none;
   background: linear-gradient(to top, rgba(44,26,14,.65) 0%, rgba(44,26,14,0) 45%);
@@ -2585,7 +2588,7 @@ footer .cols .downloads a::after{
 }
 .companions .folk .f .tile{
   position: relative;
-  aspect-ratio: 1 / 1.1;
+  aspect-ratio: 1 / 1;
   width: 100%;
 }
 .companions .folk .f .name{
@@ -3089,7 +3092,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 .gallery.even .home.size-hero,
 .gallery.even .home.size-tall,
 .gallery.even .home.size-std{ grid-column: auto; }
-.gallery.even .home .tile-wrap{ aspect-ratio: 3 / 4; }
+.gallery.even .home .tile-wrap{ aspect-ratio: 1 / 1; }
 .gallery.even .home .tile-wrap .tile{ height: 100%; }
 @media (max-width: 1080px){ .gallery.even .homes{ grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 720px){ .gallery.even .homes{ grid-template-columns: repeat(2, 1fr); } }
@@ -3103,7 +3106,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 .gallery.strip .home:nth-child(4),
 .gallery.strip .home:nth-child(5){ grid-column: span 3; }
 .gallery.strip .home:nth-child(4) .tile-wrap,
-.gallery.strip .home:nth-child(5) .tile-wrap{ aspect-ratio: 16 / 9; }
+.gallery.strip .home:nth-child(5) .tile-wrap{ aspect-ratio: 1 / 1; }
 @media (max-width: 1080px){
   .gallery.strip .homes{ grid-template-columns: repeat(2, 1fr); }
   .gallery.strip .home:nth-child(1),
