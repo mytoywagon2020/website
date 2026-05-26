@@ -99,3 +99,78 @@ d7b650e Dashboard: realign colors to brand (drop teal/burnt-orange/mauve stat ca
 ```
 
 Branch: `claude/kind-bardeen-lX5a2`
+
+---
+
+## Second-shift work (overnight 2026-05-26 continuation)
+
+### Dashboard
+- v1 rebuild from new design (Combined desktop + mobile + wagon-card states) committed as `8e08bd3`.
+- v2 alignment with the design README spec committed as `00ea590` — countdown removed, wagon state keyed off `customer.metafields.educator.open_quote_id`, featured tiles read from `shop.metafields.educator.featured_handles`, body bg `#dcd5c5`, mobile `<details>` account section.
+- Both versions in git on `claude/kind-bardeen-lX5a2`. **Not yet deployed to a Shopify theme** — the LIVE theme can't be written via API. To preview, duplicate the live theme in admin and we can push the new dashboard to the duplicate.
+
+### Landing page (`/pages/educators`)
+- All 8 section vol-cards now wire the section cover image. Sources from real CDN URLs on the page (Sensory, Nature, Woodland, Small World, Fairy, STEAM, Dramatic Play, Creative Arts). Committed `6508b1d`.
+
+### Fast PDP / educator template
+- Extended `mtw-fast-pdp.liquid` (the section that the new educator PDP is based on) with five new structured blocks inside the educator panel. Render conditionally on product metafields:
+  - `educator.developmental_age` (text) → Developmental age block
+  - `educator.certifications` (list or text) → Cert chips
+  - `educator.bundle_components` (list or text) → "What's included" bullet list
+  - `educator.materials` (text) → Materials and craft block
+  - `educator.replacement_parts` (boolean) → Replacement-parts note with mailto
+- CSS added for `.ff-edu-block`, `.ff-edu-cert-chip`, `.ff-edu-bundle-list` using brand vars.
+- Committed `ad77358`.
+- **Not yet wired:** the `product.educator.json` template on the live theme still uses `main-product` section. To swap to `mtw-fast-pdp`, the template needs to be updated when we have a draft theme to write to.
+
+### Fairy Villages section
+- Substantial redesign + copy lift. Pull-quote relocated, Woodland-style rhythm imported, new "Woodland Bridge" cross-collection block, second Outfit kit added (The Little Folk Set, MTW-FV-LFS, $298 — **needs to be created in admin as a new SKU**), section numbering normalized, copy rewritten to be grounded (no AI tells), product cards confirmed 1:1.
+- Committed `86888d9`.
+- Flagged: Bumbu Flower Children price ($42 on page vs $78 in catalog worksheet — confirm). og-fairy-villages.jpg social image referenced but existence not verified.
+
+### Product descriptions (substantially expanded)
+Voice/style template established for ~200-product expansion. **11 products now have rich 5-7 paragraph descriptions** covering procurement, OT/SLP angle, materials, care, pairing recommendations, and educator note:
+
+1. Análu Sweet Orange Aromatherapy Dough
+2. Análu Eucalyptus Aromatherapy Dough
+3. Análu Lemon Aromatherapy Dough
+4. Análu Lavender Aromatherapy Dough
+5. Análu Peppermint Aromatherapy Dough
+6. Análu Mojito Aromatherapy Dough
+7. Análu Pumpkin Spice Aromatherapy Dough
+8. The Seven Scents Set (bundle of 7 doughs)
+9. The Sensory Tray Range (bundle of 6 maple trays)
+10. The Calm Corner Set (Magic Ball + sand trays + rockpool)
+11. The Cow Shed (Drewart farm play)
+
+#### Voice / style template for the remaining ~190 products
+
+Each description follows this skeleton (4 to 7 paragraphs):
+
+1. **Hook** — one rich sentence about the object. Specific, sensory, grounded. No AI tells.
+2. **Texture / use paragraph** — what the object does in the hand and the room. Mention fine-motor, OT goals, oromotor, regulation, or whatever fits the product type.
+3. **Use cases bullet** — `<strong>Use:</strong>` followed by 4-6 specific classroom uses + a pairs-well-with cross-sell.
+4. **Specs** — `<strong>Specs:</strong>` followed by materials, dimensions, age range. One line.
+5. **Care** — `<strong>Care:</strong>` followed by maintenance + replacement guidance.
+6. **For OT/SLP/procurement** — `<strong>For OT and SLP teams:</strong>` IDEA Part B / Medicaid funding language where it fits, OR `<strong>Educator note:</strong>` for non-OT items: Net-30, tax-exempt, made-to-order, "Order by July 15 to ship in August or September."
+
+Rules applied throughout:
+- No em dashes (—). Periods, commas, colons only.
+- No AI tells (no "nestled," "elevate," "delve," "leverage," "seamlessly," etc.).
+- Full sentences. Fragments only in `<strong>Labels</strong>:`.
+- Brand voice: small-shop, observational, classroom-specific. Not generic, not marketing-chatbot.
+- Educator-first framing: every description ends with procurement / OT / IEP / school-calendar language that a vendor team member or AP officer would search for.
+
+**To continue tomorrow:** Apply this exact skeleton to the remaining ~190 educator products. Each should take 5-10 minutes if the source content (catalog HTML, retail listing, vendor description) is gathered first.
+
+### Section pages (in progress)
+- 7-section polish + 1:1 product cards agent running. Will commit when done.
+- Fairy Villages already done (separate agent, committed).
+
+### Outstanding (woke up to)
+- Publish new dashboard + section changes to a draft theme (you decide which strategy).
+- Create the new SKU MTW-FV-LFS (The Little Folk Set, $298) in admin.
+- Confirm Bumbu Flower Children price ($42 vs $78 catalog).
+- Continue product description expansion using the template above.
+- The ~110 new draft products from the earlier agent run — need image + price + description audit.
+- Klaviyo flow activation (still draft until catalog launch).
