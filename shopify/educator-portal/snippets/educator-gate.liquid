@@ -42,7 +42,7 @@
         <h1 class="mtw-gate__title">This catalog is for approved educators.</h1>
         <p class="mtw-gate__body">Sign in with your approved educator account to view catalog pricing and request purchase-order quotes. If you don&rsquo;t have an account yet, you can apply for educator access. Approval usually takes one to two business days.</p>
         <div class="mtw-gate__actions">
-          <a class="mtw-gate__btn mtw-gate__btn--solid" href="{{ routes.account_login_url }}">Sign in</a>
+          <a class="mtw-gate__btn mtw-gate__btn--solid" href="{{ routes.account_login_url }}?return_to=%2Fpages%2Feducator-dashboard">Sign in</a>
           <a class="mtw-gate__btn mtw-gate__btn--ghost" href="{{ routes.account_register_url }}">Apply for access</a>
         </div>
       {%- else -%}
