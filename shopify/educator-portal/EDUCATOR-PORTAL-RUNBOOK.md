@@ -77,6 +77,16 @@ Source of truth for the catalog build: `EDUCATOR-CATALOG-WORKSHEET.md`. Page arc
 - To reflect reality on her dashboard: tag each `invoice-sent` (when invoiced) and `po-paid-external` (when paid). Tell me which are paid and I'll set them.
 - Covered by the Educators market automatically (applies to all company locations) → Educator Catalog + price list.
 
+## Easy path (RECOMMENDED DEFAULT — no app, no token, no Flow, no dev)
+The only part that needs dev/token is auto-creating the Company. Skip it. Everything else is already automatic.
+1. Applicant fills the **Helium form** → info saves to their **customer profile** automatically.
+2. Notification arrives → glance + verify (email domain / quick lookup, ~30 sec).
+3. **Add the `educator-approved` tag** to the customer. ← the one button.
+4. **Done:** gate opens (login works) + **Educators Market applies educator pricing automatically** (no per-customer setup).
+5. **Only if** they need **PO/Net-30** → create a B2B Company then; their details are already on the customer profile (copy-paste).
+
+→ The Flow/`companyCreate` auto-populate below is an **OPTIONAL upgrade for later** (only worth it if step 5 is frequent; needs a Dev Dashboard app token).
+
 ## Staff SOP — educator application, verification & approval
 Frictionless apply; **documents collected at verification, not on the form** (the register form stays short; native theme forms can't upload files anyway).
 1. Applicant submits the register form → lands as an **untagged customer** with org/role/program/state.
