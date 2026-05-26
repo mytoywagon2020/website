@@ -134,6 +134,18 @@ Other shop-wide vendors (Tara Treasures, Wonderheart, Drewart, Bumbu, Wooden Sto
 - Pocket Flower Press + Field Flower Press
 - Coherent narrative: nature-archive habit from pocket-press through full specimen archive
 
+**My Toy Wagon Fairy Houses (10/10 complete):**
+- 4 Blossom Houses: Pink (signature), Lilac, Violet, Blush — each with petal-roof detail, doorway interior, color personality
+- 4 Flower Fairy House and Mat sets: Pink, Purple, Brown, Apple Red — house + round meadow mat sold together
+- Butterfly Fairy House (embroidered butterflies, spring-into-summer)
+- Whimsical Flower Fairy House (largest, mixed-petal roof, village centerpiece)
+- All: hand-stitched wool felt by Nepalese women's cooperative, fair-trade, paired with Wonderheart gnome recommendations
+
+**Gus + Mabel (10/10 mats + tray complete):**
+- 6 felt playmats: Fairy Streamlet, Lily Pad Pond, Wispy Waters Way, Coralwhim Cove, Featherfloat Pond, Tiny Terrains Set of 4 (Desert/Waters/Grasses/Snow)
+- 3 Busy Bee Tray configurations (2-half / 4-quarter / 6-sixth inserts, all $165) + Mirror Insert accessory
+- Rewrote marketing-flowery existing copy in our educator voice with concrete use cases
+
 **Bauspiel (27 active audited, 4 rewrites completed):**
 - 23 active Bauspiel products already had rich narrative descriptions from prior work (Color Track, X-Blocks, Lucent Cubes 100/20, Mirror Blocks, Fairytale Windows, Transparent Windows, Large/Small Fairytale Castle, Color Staircase 16/32, Lucent Cylinders/Pillars, Luminous Blocks 24/Pastel, Magic Cube, Natural Stair Blocks, Optical Blocks, Small Color Track with Lucent/Pastel, Tooth Fairy Box, Sparkling Stones sets, Giant Glittery Sparkling Stones) — left as-is to avoid downgrading good copy
 - 4 rewrites tonight: Castle Set 16 pc, Knight's Castle Extension 6 pc, Stepped Blocks (Cuisenaire-style math set), Tree Set 4 Seasons
@@ -151,9 +163,9 @@ A deep dive on all retail-side vendors at the depth I gave Connetix would be hun
 2. Or pick a specific product type (e.g. Drewart "signature" items: Camper, Kitchen, Castle, Fastness — the big-ticket SKUs that justify rich copy)
 3. Or skip retail-side entirely and focus on educator portal final polish before launch
 
-## Tonight's total: 51 retail-side PDPs deep-dived
-- Wonderheart 30 + Huckleberry 11 + June & December 6 + Bauspiel 4 = **51**
-- Plus the 43 Connetix products done earlier in the night = **94 PDPs total tonight**
+## Tonight's total: 71 retail-side PDPs deep-dived
+- Wonderheart 30 + Huckleberry 11 + June & December 6 + Bauspiel 4 + MTW Fairy Houses 10 + Gus + Mabel 10 = **71**
+- Plus the 43 Connetix products done earlier in the night = **114 PDPs total tonight**
 
 ## Open questions for the morning
 1. **Huckleberry "Complete Observation Station"** — you flagged this as the standout Huckleberry item but it isn't currently in our catalog. Did you mean a different product, or do you want to source/import this one from Huckleberry?
