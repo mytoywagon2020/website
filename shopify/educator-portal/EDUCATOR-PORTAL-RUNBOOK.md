@@ -257,3 +257,22 @@ Done. The gate opens for that customer and the Educators Market applies its pric
 ## Note on B2B Companies (rare, on-demand)
 
 Approving an educator does **not** create a B2B Company. That is a separate workflow used only when an educator specifically needs **Net-30 or PO billing**. Path: **Admin → Companies → Add company**, copy-paste their details from the customer record, set Net-30 payment terms. Skip this step until a school actually requests PO/Net-30. A Company showing as "Not approved" in the Companies list is unrelated to whether the educator catalog access works for that buyer; the customer tag is the only gate key.
+
+## Outstanding — admin-UI work (not API-doable)
+
+These cannot be automated by Claude or any AI agent; the underlying APIs don't expose creation. All must be built by hand in the relevant admin UI.
+
+1. **Klaviyo flow — Educator approval welcome.** Template `XLJeUa` ("Educator Approval Welcome v2") is built and branded. To wire the flow:
+   - Klaviyo → **Audience → Segments** → Create segment `Educator – Approved` with definition: *Properties about someone* → `Shopify Tags` *contains* `educator-approved`.
+   - Klaviyo → **Flows** → Create flow → Trigger: *When someone enters segment* → pick `Educator – Approved`.
+   - Flow filter: *Received Email* equals 0 in the last 365 days where Subject equals `You're in — your Educator Catalog access is approved` (prevents re-sends).
+   - Action: **Send Email** → import template `XLJeUa` → From `My Toy Wagon` / `contact@mytoywagon.com`, Reply-to `educators@mytoywagon.com`, Subject `You're in — your Educator Catalog access is approved`. Smart Sending OFF; Send to unengaged ON.
+   - Status: **Draft → Manual** for test, then **Live**.
+
+2. **Shopify Flow #1 — Auto-tag `educator-pending` on submission.** Admin → Apps → Flow → Create workflow. Trigger: *Customer created*. Condition: `customer.metafields.customer_fields.institution_name` is not empty. Action: *Add customer tags* `educator-pending`. Title: `Auto-tag new educator applicants`. Turn on.
+
+3. **Customer accounts menu link.** Settings → Customer accounts → Customer account menu → add link: label `Educator dashboard`, URL `/pages/educator-dashboard`. (So the stock /account UI has a one-click jump back to the branded dashboard.)
+
+4. **Klaviyo: delete old template `QUtJd5`.** Done by owner 2026-05-26. Use `XLJeUa` going forward.
+
+5. **Educator login page (optional polish).** `/pages/educator-login` is published with `educator-portal` templateSuffix (the gate). To replace with a fully branded sign-in form wrapping `{% form 'customer_login' %}`, build `templates/page.educator-login.liquid` and re-point the page's templateSuffix to `educator-login`. Low priority — native `/account/login` works today.

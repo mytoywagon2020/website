@@ -64,9 +64,10 @@
     footer.foot .wrap{display:flex;justify-content:space-between;padding:28px 40px;font-size:12px;color:var(--stone);flex-wrap:wrap;gap:12px;}
     @media(max-width:860px){.actions{grid-template-columns:1fr;}.po-grid{grid-template-columns:1fr;}.nav-links{display:none;}.dash-hero h1{font-size:34px;}.wrap,.utility .wrap,header.nav .wrap,footer.foot .wrap{padding-left:20px;padding-right:20px;}.orders thead{display:none;}table.orders,table.orders tbody{display:block;}table.orders tr{display:block;background:var(--warm-white);border:.5px solid var(--rule-strong);border-radius:7px;padding:14px 16px;margin-bottom:12px;}table.orders td{display:block;padding:3px 0;border:0;}table.orders td:first-child{font-size:16px;margin-bottom:6px;}}
     /* brand-aligned accents (cream/ink/forest/stone/amber) */
-    .dash-banner{display:flex;align-items:center;gap:16px;justify-content:space-between;flex-wrap:wrap;background:var(--ink);color:var(--cream);border-radius:3px;padding:22px 26px;margin:20px 0 6px;font-size:14px;min-height:104px;}
-    .dash-banner strong{font-weight:700;color:var(--cream);}
-    .dash-banner-cta{background:var(--cream);color:var(--ink);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:11px 20px;border-radius:2px;white-space:nowrap;border:1px solid var(--cream);}
+    .dash-banner{display:flex;align-items:center;gap:18px;justify-content:space-between;flex-wrap:wrap;background:var(--warm-white);color:var(--ink);border:1px solid var(--rule-strong);border-left:4px solid var(--forest);border-radius:3px;padding:22px 26px;margin:20px 0 6px;font-size:14px;line-height:1.55;}
+    .dash-banner strong{font-weight:700;color:var(--ink);font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;font-weight:500;}
+    .dash-banner-cta{background:var(--ink);color:var(--cream);font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:11px 22px;border-radius:2px;white-space:nowrap;border:1px solid var(--ink);}
+    .dash-banner-cta:hover{background:var(--forest);border-color:var(--forest);}
     .snapshot{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:14px 0 6px;}
     .stat{background:var(--warm-white);border:1px solid var(--rule-strong);border-top:3px solid var(--forest);border-radius:3px;padding:22px 24px;color:var(--ink);}
     .stat--orders,.stat--invoices,.stat--season{background:var(--warm-white);color:var(--ink);}
@@ -83,21 +84,7 @@
   </style>
 </head>
 <body>
-  <div class="utility"><div class="wrap">
-    <span>My Toy Wagon &middot; Educator Portal</span>
-    <span><a href="{{ routes.account_url }}">Account</a> &nbsp;&middot;&nbsp; <a href="{{ routes.account_logout_url }}">Sign out</a></span>
-  </div></div>
-
-  <header class="nav"><div class="wrap">
-    <a href="/pages/educator-dashboard" class="logo">My Toy Wagon<small>Educator Portal</small></a>
-    <nav class="nav-links">
-      <a href="/pages/educators">Educator Catalog</a>
-      <a href="#orders">Orders</a>
-      <a href="#invoices">Invoices</a>
-      <a href="#po">Upload PO</a>
-      <a href="/pages/procurement-guide">Procurement</a>
-    </nav>
-  </div></header>
+  {% section 'mtw-educator-header' %}
 
   <main class="wrap">
     <section class="dash-hero">
@@ -137,7 +124,7 @@
       endfor
     -%}
 
-    <div class="dash-banner" style="background-image:linear-gradient(100deg,rgba(31,60,9,.92),rgba(59,109,17,.62)),url('{{ edu_banner_img | asset_url }}');">
+    <div class="dash-banner">
       <span><strong>Next delivery window: {{ edu_window }}.</strong> Most items deliver in this window. Order by {{ edu_orderby }}. Stocked, seasonal, and made-to-order items are confirmed on your quote.</span>
       <a class="dash-banner-cta" href="/pages/educators">Shop the catalog</a>
     </div>
@@ -307,10 +294,7 @@
     </section>
   </main>
 
-  <footer class="foot"><div class="wrap">
-    <span>&copy; 2026 My Toy Wagon &middot; Educator Portal</span>
-    <span><a href="/pages/educators">Catalog</a> &nbsp;&middot;&nbsp; <a href="/pages/procurement-guide">Procurement</a> &nbsp;&middot;&nbsp; <a href="{{ routes.account_logout_url }}">Sign out</a></span>
-  </div></footer>
+  {% section 'mtw-educator-footer' %}
   <script src="https://tally.so/widgets/embed.js"></script>
 </body>
 </html>
