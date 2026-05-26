@@ -97,7 +97,7 @@ Running list of changes made to the **web educator portal** that the **print/PDF
 - Sections present & grouped (Florals, Threading, Dough, Eco-Cutters, Modeling Tools, Paints, Presses, Mindful Potion).
 - Card metas reduced to SKU-only (stripped repeated "Hand-felted wool", maker names; kept piece-counts).
 - Play Dough Tool Set (10pc) new image; eco-cutters standardized to Ages 3–8; intro copy fixes.
-- ⏳ *Pending:* grid order differs from print (print leads with Weaving p59; web leads with Florals) — reorder TBD.
+- **Reordered for superior web flow:** Hero Product (Heirloom Press) moved up to right after the Editorial Intro (was buried after Paints); grids kept in a sensible materials progression (Florals → Threading → Playdough → Eco-Cutters → Modeling → Paints → Pressing → Mindful Potion). Screen-labels now sequential.
 
 ---
 
