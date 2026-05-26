@@ -219,3 +219,41 @@ All 25 hrefs in the new dashboard verified live (no `#` placeholders, no empty h
 - Live MAIN theme: `Current Shop with Impulse (9.0)` (the old retail theme — you unpublished the educator portal)
 - Educator portal staging (with all this work): `Educator Portal Staging (copy of live 2026-05-18)` — UNPUBLISHED but all latest files pushed
 - To publish educator portal live: admin → Themes → "Educator Portal Staging" → Actions → Publish
+
+---
+
+## Fourth-shift (autonomous work while you slept)
+
+### Tray descriptions enriched with vendor attribution
+All 7 ButtonandBug-made products (6 maple trays + Letter Tracing Insert) now carry "Designed and made in the USA by ButtonandBug" attribution + the Sensory Tray Range bundle. Pulled from Collective retail descriptions you flagged as foundation.
+
+### Educator metafields set on all 18 products
+- `educator.developmental_age` (text) — age range + developmental fit
+- `educator.materials` (multi-line text) — full materials breakdown
+- `educator.certifications` (list) — IDEA Part B / Medicaid OT / FDA-food-safe etc.
+- `educator.bundle_components` (list) — set on Seven Scents Set, Sensory Tray Range, Calm Corner Set
+- `educator.replacement_parts` (boolean) — set TRUE on Cow Shed (alder wood can be repaired)
+
+These metafields are stored. They'll render once the `product.educator.json` template adds custom blocks that reference them, OR once the template switches to `mtw-fast-pdp` (which has the metafield-driven educator panel I extended earlier tonight).
+
+### Quality scan across 8 section pages
+- Em-dashes in customer-visible copy: **0 across all 8 pages.** All remaining em-dashes are in CSS comments / dev `<span class="tag">` blocks that are hidden via `.tile.has-photo > .tag { display: none; }`.
+- AI tells ("nestled in", "elevate", "delve", "leverage", "in today", "harness", "unleash", "robust", "seamlessly", "embark on", "in the realm"): **0 across all 8 pages.**
+- Product cards 1:1 (flush in frame): standardized across all 8 pages with `object-fit: cover`. Editorial full-bleed banners (split.stage, hero-product, etc.) preserved as non-square intentionally per design.
+
+### PDP — finalized
+`product.educator.json` ships with the hand-coded educator block stack:
+1. Made-to-order pill
+2. Price
+3. Variant picker (button-style, SKU-enabled)
+4. Request-a-quote CTA → /pages/new-quote?product=...
+5. Procurement trust card (Net-30, tax-exempt, W-9/COI, sole-source, replacement parts, bulk shipping)
+6. Description (which now contains the rich 5-7 paragraph educator content)
+7. Separator
+8. Educator policies accordion (Fulfillment, Payment/terms, Procurement docs, Replacement parts/care)
+
+Plus `mtw-educator-header` and `mtw-educator-footer` sections wrap the page. Section order:
+`educator_header → product-full-width → main-product → product-recommendations → educator_footer`
+
+This is rendering for all 18 educator products that use `templateSuffix: "educator"`.
+
