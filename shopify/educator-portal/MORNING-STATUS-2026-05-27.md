@@ -108,8 +108,20 @@ Other shop-wide vendors (Tara Treasures, Wonderheart, Drewart, Bumbu, Wooden Sto
 - Papoose → Australia/Nepal
 - All educator-only products: Shopify `vendor` field = "My Toy Wagon"
 
+## Retail-side vendor catalog scale (scouted, not yet deep-dived)
+
+The store has ~50+ vendors beyond Connetix. Spot-check on three priority vendors:
+- **Drewart (Poland)**: 100+ products, most with passable existing descriptions ("The Drewart Collection is exempt from discounts. This item ships for free...") but no per-product real-spec deep dives. Includes Camper Van $410, Kitchen $455, Cupboard $530, Large Fastness $770, Medium Castle $320, Sink $420, Stove $399, Catapult $98, Cash Register $140, Doll Wardrobe $190, Jeep variants $320–$338, Chopping Board $12, Duck Push Toy $32, Dwarf's House $142, Flower Press $60, plus 80+ more.
+- **Tara Treasures (Australia/Nepal)**: hundreds of products — finger puppets, play mats, dolls, garlands, life cycle sets, mobiles. Pricing $22–$62 typical. Already has decent narrative descriptions per item.
+- **Wonderheart (Vermont)**: 30+ wooden gnomes (mini + standard, rainbow + pastel palettes), Colors of the Week set $112. Existing descriptions are all the same template ("Meet our enchanting wooden gnomes..."), would benefit from per-product differentiation.
+
+A deep dive on all retail-side vendors at the depth I gave Connetix would be hundreds of products and is too broad to tackle without owner priority. **Recommended approach to discuss in the morning:**
+1. Pick a vendor tier to start with (suggest Wonderheart first — small catalog, current copy is uniform, biggest lift-per-hour)
+2. Or pick a specific product type (e.g. Drewart "signature" items: Camper, Kitchen, Castle, Fastness — the big-ticket SKUs that justify rich copy)
+3. Or skip retail-side entirely and focus on educator portal final polish before launch
+
 ## Open questions for the morning
-1. Should I extend the same deep-dive treatment to retail-side (non-educator) vendor PDPs — Wonderheart, Tara Treasures, Drewart, Bumbu, Wooden Story, etc.? If yes, name the priority order.
+1. **Retail-side vendor priority**: pick from above options (Wonderheart first / Drewart big-ticket / skip retail). Tell me an ordered list and I'll work through it tomorrow night.
 2. Confirm the Teal Charity Pack correction (MND/ALS, not ovarian). If you have a contradicting source, push back and I'll revert.
 3. Preview the Fairy Villages cover at /pages/educator-fairy-villages once the theme is republished — confirm the Toadstool House image renders flush-in-frame at the new aspect.
 
