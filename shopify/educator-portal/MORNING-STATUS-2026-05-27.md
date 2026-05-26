@@ -163,9 +163,30 @@ A deep dive on all retail-side vendors at the depth I gave Connetix would be hun
 2. Or pick a specific product type (e.g. Drewart "signature" items: Camper, Kitchen, Castle, Fastness — the big-ticket SKUs that justify rich copy)
 3. Or skip retail-side entirely and focus on educator portal final polish before launch
 
-## Tonight's total: 71 retail-side PDPs deep-dived
-- Wonderheart 30 + Huckleberry 11 + June & December 6 + Bauspiel 4 + MTW Fairy Houses 10 + Gus + Mabel 10 = **71**
-- Plus the 43 Connetix products done earlier in the night = **114 PDPs total tonight**
+## Tonight's total: ~180 product touches
+
+**Deep-dive new descriptions (110):**
+- Connetix initial deep-dive: 43
+- Wonderheart: 30
+- Huckleberry: 11
+- June & December: 6
+- Bauspiel rewrites: 4 (23 already polished, skipped)
+- MTW Fairy Houses: 10
+- Gus + Mabel mats/trays: 10
+- MTW Cow Shed: 1 (image fix + dimension correction)
+- Fagus Hay Wagon: 1
+- Tender Leaf (all 11 active): Alouette, Bunny's Carrot Patch, Doll Family, Humming Bird Doll Family, Kitchen Dresser, Animal Vet Case, Badger Picnic, Purrfect Cat Hotel, Mr. Forrester, Mrs. Forrester, Ayana
+- Tara Treasures puppet sets: 28
+
+**Connetix compatibility sweep (25):** standardized "Compatible with the entire Connetix range and most other magnetic tile sets" across all tile/structure products (replacement balls correctly skipped).
+
+**Fixes:**
+- Cow Shed: removed mislabeled Wonderheart-gnomes image, pulled 6 correct images from retail Drewart listing, corrected dimensions (12×10×11 → 23.6×15.6×16.1), added EN-71 cert
+- Fairy Villages copy in Glitter Castle/Unicorn: removed overclaim that Connetix "pairs with our wooden Fairy Villages" (Fairy Villages are felt; Connetix doesn't physically pair with non-magnetic materials)
+
+## Queued for next session
+- Bumbu single items (from retail listings — user request)
+- Optional: remaining Tender Leaf draft items, Bauspiel draft items, broader retail vendor sweep
 
 ## Open questions for the morning
 1. **Huckleberry "Complete Observation Station"** — you flagged this as the standout Huckleberry item but it isn't currently in our catalog. Did you mean a different product, or do you want to source/import this one from Huckleberry?
