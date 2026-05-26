@@ -30,6 +30,13 @@
   [data-mtw-pdp="fast-v1"] .ff-edu-link{font-size:12.5px;font-weight:600;color:var(--forest,#3B6D11);text-decoration:none;}
   [data-mtw-pdp="fast-v1"] .ff-edu-note{font-size:12px;color:var(--stone,#5F5E5A);margin:6px 0 0;}
   [data-mtw-pdp="fast-v1"] .ff-edu-note a{color:var(--forest,#3B6D11);font-weight:600;}
+  [data-mtw-pdp="fast-v1"] .ff-edu-block{margin:10px 0 0;padding-top:10px;border-top:1px solid rgba(59,109,17,0.18);}
+  [data-mtw-pdp="fast-v1"] .ff-edu-block__label{display:block;font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--forest,#3B6D11);margin-bottom:6px;}
+  [data-mtw-pdp="fast-v1"] .ff-edu-block__body{font-size:13.5px;line-height:1.55;color:var(--ink,#2C2C2A);margin:0;}
+  [data-mtw-pdp="fast-v1"] .ff-edu-cert-list{display:flex;flex-wrap:wrap;gap:6px;}
+  [data-mtw-pdp="fast-v1"] .ff-edu-cert-chip{display:inline-block;background:#fff;border:1px solid rgba(59,109,17,0.32);color:var(--forest,#3B6D11);font-size:11.5px;font-weight:600;letter-spacing:.02em;padding:4px 10px;border-radius:999px;}
+  [data-mtw-pdp="fast-v1"] .ff-edu-bundle-list{margin:0;padding:0 0 0 18px;list-style:disc;font-size:13.5px;line-height:1.6;color:var(--ink,#2C2C2A);}
+  [data-mtw-pdp="fast-v1"] .ff-edu-bundle-list li{margin:0 0 4px;}
 </style>
 
 {%- liquid
@@ -390,9 +397,63 @@
           {%- endif -%}
           {%- if edu_min != blank -%}<p class="ff-edu-min">Classroom minimum: {{ edu_min }}</p>{%- endif -%}
           {%- if edu_curric != blank -%}<p class="ff-edu-curric"><span class="gk">Curriculum</span>{{ edu_curric }}</p>{%- endif -%}
-          <p class="ff-edu-pricing" style="font-size:12.5px;line-height:1.5;color:var(--stone,#5F5E5A);margin:2px 0 10px;border-top:1px solid var(--rule,rgba(44,44,42,0.12));padding-top:10px;">Catalog shows current retail. Your <strong>educator quote</strong> reflects up-to-date pricing, volume and freight, with PO and Net-30/60 terms, tax-exempt handling, combined-freight quotes, replacement parts, and curriculum-alignment letters.</p>
+
+          {%- comment -%} Educator add-on blocks (developmental age, certifications, bundle composition, materials, replacement parts). Each renders only when the matching metafield is set. {%- endcomment -%}
+          {%- assign edu_dev_age = product.metafields.educator.developmental_age.value -%}
+          {%- if edu_dev_age != blank -%}
+            <div class="ff-edu-block ff-edu-age">
+              <span class="ff-edu-block__label">Developmental age</span>
+              <p class="ff-edu-block__body">{{ edu_dev_age }}</p>
+            </div>
+          {%- endif -%}
+
+          {%- assign edu_certs = product.metafields.educator.certifications.value -%}
+          {%- if edu_certs != blank -%}
+            <div class="ff-edu-block ff-edu-certs">
+              <span class="ff-edu-block__label">Certifications</span>
+              <div class="ff-edu-cert-list">
+                {%- if edu_certs.size and edu_certs.first -%}
+                  {%- for cert in edu_certs -%}<span class="ff-edu-cert-chip">{{ cert }}</span>{%- endfor -%}
+                {%- else -%}
+                  <span class="ff-edu-cert-chip">{{ edu_certs }}</span>
+                {%- endif -%}
+              </div>
+            </div>
+          {%- endif -%}
+
+          {%- assign edu_bundle = product.metafields.educator.bundle_components.value -%}
+          {%- if edu_bundle != blank -%}
+            <div class="ff-edu-block ff-edu-bundle">
+              <span class="ff-edu-block__label">What's included</span>
+              <ul class="ff-edu-bundle-list">
+                {%- if edu_bundle.size and edu_bundle.first -%}
+                  {%- for item in edu_bundle -%}<li>{{ item }}</li>{%- endfor -%}
+                {%- else -%}
+                  <li>{{ edu_bundle }}</li>
+                {%- endif -%}
+              </ul>
+            </div>
+          {%- endif -%}
+
+          {%- assign edu_materials = product.metafields.educator.materials.value -%}
+          {%- if edu_materials != blank -%}
+            <div class="ff-edu-block ff-edu-materials">
+              <span class="ff-edu-block__label">Materials and craft</span>
+              <p class="ff-edu-block__body">{{ edu_materials }}</p>
+            </div>
+          {%- endif -%}
+
+          {%- assign edu_replace = product.metafields.educator.replacement_parts.value -%}
+          {%- if edu_replace == true or edu_replace == 'true' or edu_replace == 'yes' -%}
+            <div class="ff-edu-block ff-edu-replace">
+              <span class="ff-edu-block__label">Replacement parts</span>
+              <p class="ff-edu-block__body">Replacement parts are available on request. Email <a href="mailto:educators@mytoywagon.com?subject=Replacement%20part%20%E2%80%93%20{{ product.title | url_encode }}">educators@mytoywagon.com</a> with the part you need.</p>
+            </div>
+          {%- endif -%}
+
+          <p class="ff-edu-pricing" style="font-size:12.5px;line-height:1.5;color:var(--stone,#5F5E5A);margin:2px 0 10px;border-top:1px solid var(--rule,rgba(44,44,42,0.12));padding-top:10px;">Catalog shows current retail. Your <strong>educator quote</strong> reflects up-to-date pricing, volume and freight, with PO and Net-30/60 terms, tax-exempt handling, combined-freight quotes, and curriculum-alignment letters.</p>
           <div class="ff-edu-cta">
-            <a class="ff-btn-edu" data-ff-quote href="{{ section.settings.edu_quote_url | default: '/pages/new-quote' }}">Add to quote &middot; request PO pricing</a>
+            <a class="ff-btn-edu" data-ff-quote href="{{ section.settings.edu_quote_url | default: '/pages/new-quote' }}">Add to quote. Request PO pricing.</a>
             <a class="ff-edu-link" href="/pages/educator-dashboard">Educator dashboard &rarr;</a>
           </div>
           <p class="ff-edu-note">Need a curriculum-alignment letter for this item? <a href="mailto:educators@mytoywagon.com?subject=Curriculum%20alignment%20%E2%80%94%20{{ product.title | url_encode }}">Ask our team &rarr;</a></p>
