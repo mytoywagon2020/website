@@ -192,7 +192,8 @@ Frictionless apply; **documents collected at verification, not on the form** (th
 **Build each educator listing FROM the retail listing — not a thin stub:**
 1. Copy the retail listing's **full description + all images**.
 2. **Clean** it: delete shipping/stock/dropship lines ("ships from our partner warehouse", "two shipping options", "limited quantity in stock", "pre-order for [holiday]"); drop the maker brand from the body **unless it's marquee** (Connetix, Bauspiel, Grimm's, Holztiger, Tara Treasures).
-3. Append the **educator note**: *"Made to order for classroom use — always available to order on your school schedule. Net-30 and tax-exempt purchasing available for approved educators."*
+3. **Fill catalog gaps from the vendor's official website** — when the retail listing is missing specs (dimensions, materials, certifications, set contents, age range, country of origin), cross-reference the maker's site before writing copy. Primary vendors to check: **Wooden Story, Mindful & Co (mindfulandcokids.com), Tender Leaf (tenderleaftoys.com), ButtonandBug, Gus + Mabel, Wonderheart, Bumbu (bumbutoys.com), Connetix (connetixtiles.com), Bauspiel, Tara Treasures**. Use WebFetch with a targeted prompt ("extract dimensions, materials, certifications, age range, set contents"). Never invent specs.
+4. Append the **educator note**: *"Made to order for classroom use — always available to order on your school schedule. Net-30 and tax-exempt purchasing available for approved educators."*
 
 **The 5 markers — apply to EVERY educator listing:**
 | Field | Value |
