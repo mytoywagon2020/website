@@ -174,3 +174,48 @@ Rules applied throughout:
 - Continue product description expansion using the template above.
 - The ~110 new draft products from the earlier agent run — need image + price + description audit.
 - Klaviyo flow activation (still draft until catalog launch).
+
+---
+
+## Third-shift updates (2026-05-26, post-dashboard / post-Fairy-image work)
+
+### Product descriptions — 18 of 18 educator-only now rich
+Continued from 11/18 to **all 18 educator-only products** now have substantial brand-aligned descriptions following the voice template documented above:
+
+- All 7 Análu therapy doughs (Sweet Orange, Eucalyptus, Lemon, Lavender, Peppermint, Mojito, Pumpkin Spice)
+- Seven Scents Set (bundle)
+- Sensory Tray Range (bundle)
+- Calm Corner Set (bundle)
+- The Cow Shed
+- Rainbow Imaginative Play Tray
+- Bear Imaginative Play Tray
+- Cake Imaginative Play Tray
+- Castle Imaginative Play Tray
+- Garden Imaginative Play Tray
+- Mountain Imaginative Play Tray
+- Letter Tracing Insert
+
+Each description: 5-7 paragraphs, brand voice (small-shop, observational), no em-dashes, no AI tells, procurement/OT/IEP framing, pair-with cross-sells.
+
+### Fairy Villages image swaps (all via CDN URLs you provided)
+- Cover: lilac-blossom-fairy-house.jpg (flush in frame, object-fit cover, background-image matches)
+- Pink Blossom House product card: preview_7.webp
+- Rainbow Home product card: mtw-ecosystem-fairy-villages-04.webp
+- Wonderheart Little Folk hero: wonderheart-gnomes-rainbow-fan.jpg
+- Wonderheart Pastel Gnomes card: Wonderheart_Pastel_Gnomes.webp
+
+### Fairy Villages copy fix
+- Awkward Woodland Bridge h3 rewritten: "A village in felt. *A whole woodland* one volume over."
+
+### Dashboard live links audit
+All 25 hrefs in the new dashboard verified live (no `#` placeholders, no empty hrefs). Routes: `/pages/educators`, `/pages/new-quote`, `/pages/vendor-profile`, mailto, Shopify `routes.account_url`.
+
+### Cow Shed
+- Activated (status: ACTIVE)
+- Price: $420 set
+- Featured image attached (Drewart catalog hero shot)
+
+### Theme state
+- Live MAIN theme: `Current Shop with Impulse (9.0)` (the old retail theme — you unpublished the educator portal)
+- Educator portal staging (with all this work): `Educator Portal Staging (copy of live 2026-05-18)` — UNPUBLISHED but all latest files pushed
+- To publish educator portal live: admin → Themes → "Educator Portal Staging" → Actions → Publish
