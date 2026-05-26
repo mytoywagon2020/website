@@ -3464,7 +3464,7 @@ section[data-screen-label="07 Papoose Seasonal Trees"] .content{
 <div class="subnav">
   <div class="subnav-inner">
     <nav class="breadcrumb" aria-label="Breadcrumb">
-      <a href="MTW Homepage v3.html" class="home-crumb">Home</a>
+      <a href="/" class="home-crumb">Home</a>
       <span class="sep" aria-hidden="true">/</span>
       <a href="/pages/educators">Educator Catalog</a>
       <span class="sep" aria-hidden="true">/</span>
@@ -4035,7 +4035,7 @@ section[data-screen-label="07 Papoose Seasonal Trees"] .content{
     </div>
     <div>
       <p style="margin: 0 0 18px; font-family: var(--sans); font-size: 16px; line-height: 1.65; color: var(--ink-soft);">Children always ask, who lives here? Wonderheart Little Folk, rainbow and pastel gnomes, flower children, fairy doors, and wishing wells, live a volume away in <strong style="color: var(--ink); font-weight: 600;">Section Five, Fairy Villages</strong>. They move into the Bumbu woodland naturally: a fox family at the edge of the clearing, a gnome family at the doorstep of the felted toadstool. One small world.</p>
-      <a href="Fairy Villages v3.html" style="display: inline-flex; align-items: center; gap: 8px; padding: 14px 24px; background: var(--ink); color: var(--cream); text-decoration: none; font-family: var(--sans); font-size: 13px; font-weight: 500; letter-spacing: .04em; border-radius: 999px; transition: background .2s ease;">See Section 05 &middot; Fairy Villages &rarr;</a>
+      <a href="/pages/educator-fairy-villages" style="display: inline-flex; align-items: center; gap: 8px; padding: 14px 24px; background: var(--ink); color: var(--cream); text-decoration: none; font-family: var(--sans); font-size: 13px; font-weight: 500; letter-spacing: .04em; border-radius: 999px; transition: background .2s ease;">See Section 05 &middot; Fairy Villages &rarr;</a>
     </div>
   </div>
 </section>
@@ -4396,7 +4396,7 @@ section[data-screen-label="07 Papoose Seasonal Trees"] .content{
     if (i > 0 && prevEl) {
       var p = ECOSYSTEMS[i-1];
       prevEl.textContent = p.vol + ' \u00b7 ' + p.name;
-      prevEl.href = p.slug + '.html';
+      prevEl.href = '/pages/educator-' + p.slug;
     } else if (prevEl) {
       prevEl.style.display = 'none';
       var sep = prevEl.nextElementSibling;
@@ -4405,7 +4405,7 @@ section[data-screen-label="07 Papoose Seasonal Trees"] .content{
     if (i < ECOSYSTEMS.length - 1 && nextEl) {
       var n = ECOSYSTEMS[i+1];
       nextEl.textContent = n.vol + ' \u00b7 ' + n.name;
-      nextEl.href = n.slug + '.html';
+      nextEl.href = '/pages/educator-' + n.slug;
     } else if (nextEl) {
       nextEl.style.display = 'none';
       var sep2 = nextEl.previousElementSibling;
