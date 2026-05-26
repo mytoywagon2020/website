@@ -87,6 +87,21 @@ The only part that needs dev/token is auto-creating the Company. Skip it. Everyt
 
 → The Flow/`companyCreate` auto-populate below is an **OPTIONAL upgrade for later** (only worth it if step 5 is frequent; needs a Dev Dashboard app token).
 
+## Tag vs. pricing vs. Company — what each actually does (read this)
+Precise model (don't conflate these):
+- **`educator-approved` tag** → opens the **gated catalog** (login + browse). One click, manual.
+- **Educator pricing** → confirmed on the **quote** (your volume-based pricing), **not** a live storefront discount. The tag gets them *in*; you price the quote.
+- **B2B Company** → carries **PO / Net-30 terms** + native self-serve quoting. In the easy path this is **manual, as-needed** — created only when a school is actually ready to order on terms (their details are already on the customer profile from Helium → quick copy-paste). Auto-creating it (Flow) is the **deferred automation**.
+
+**So: the Company is NOT automated in the easy path — manual, on an as-needed basis.** The Flow that auto-creates a pending Company on every application is the piece that's deferred.
+
+**Practical rhythm:**
+1. Applicant applies (Helium) → tag `educator-approved` → they're in.
+2. They request a quote → you price it.
+3. First time they need a **PO/Net-30** → create their Company then (~2 min, copy-paste from their profile).
+
+Most educators won't need a Company on day one — only when they place a PO. Manual is fine until volume makes the automation worth building. Nothing's broken by deferring it.
+
 ## Staff SOP — educator application, verification & approval
 Frictionless apply; **documents collected at verification, not on the form** (the register form stays short; native theme forms can't upload files anyway).
 1. Applicant submits the register form → lands as an **untagged customer** with org/role/program/state.
