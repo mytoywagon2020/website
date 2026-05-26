@@ -238,6 +238,33 @@ The Helium "Educator Application" form writes some fields to the **Shopify custo
 **To review an applicant's full application:**
 Helium app → **Submissions** (or "Form submissions" in the left nav) → **Educator Application** → click the submission. Every form field they entered is there, including Role and Program. Treat it as the applicant's "application file." The customer record has the verification essentials. Helium has the full form context. Cross-reference both when approving.
 
+---
+
+## Known issue: Role + Program not landing on the customer record (Helium diagnosis, 2026-05-26)
+
+**Symptom:** test signups (`mytoywagon+test01@gmail.com` etc.) showed `customer_fields.institution_name` and `customer_fields.document_upload` populated, but `customer_fields.educator_role` and `customer_fields.educator_program` were empty on the customer record. That broke the no-reentry plan — Flow can't auto-fill the Company without those two fields.
+
+**Why (per Atom @ Helium support, 2026-05-26):** Helium **silently** drops the write when the Shopify metafield definition's content type doesn't match the data column type Helium expects for that field. Other fields (institution_name, document_upload) wrote through because their types happen to align. Role and Program fail because their definitions don't match.
+
+When this happens, Helium normally shows a **red error banner** in its admin where it detects the bad definition — check there first.
+
+**Fix recipe (admin only — no API path; Claude cannot do this):**
+
+For each of the two fields (`educator_role`, `educator_program`), in order:
+
+1. **Shopify Admin → Settings → Custom data → Customers.** Find the definition for the field. Note its content type (e.g. *Single line text*, *Multi-line text*, *List of single-line text*).
+2. **Helium app → form config →** open that field. Note the data type Helium has it set as.
+3. If the two don't match, the cleanest fix is to **delete the Shopify metafield definition** for that field. Submit a fresh test application. Helium will auto-create the definition with the type it actually writes.
+4. Confirm on the test customer record that the field is now populated.
+5. Repeat for the second field.
+
+**Important caveat:** each custom field is its own separate metafield (Helium does not bundle them). Fixing `educator_role` does not fix `educator_program` — both need their own definition correctly typed.
+
+**Verification after the fix:**
+- Submit a fresh test signup. Check the customer record: both `customer_fields.educator_role` and `customer_fields.educator_program` should now be populated.
+- Run a quick audit on existing customers: customers who applied **after** the fix should have both fields; those who applied **before** will still be empty (the Helium submission log has their data though — review there if you need it to approve them).
+- For pre-fix customers, decide whether to backfill manually (open each customer, paste in role/program from the Helium submission log) or leave it (they can self-update on their next visit if you wire a "complete your profile" prompt).
+
 ## How to approve an applicant (the one-click action)
 
 1. Admin → **Customers** (your main Shopify admin, not in Helium).
