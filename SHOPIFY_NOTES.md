@@ -269,6 +269,7 @@ Earlier draft assumed non-Plus Shopify with apps and Liquid hacks. **Discard tha
 - **All product & hero images sit FLUSH in frame** (`object-fit: cover`, fill — no padding/letterbox/`contained`). Apply automatically, don't wait to be told.
 - **Product cards are square** (`aspect-ratio: 1/1`) so square product photos fit without cropping.
 - **American spelling throughout** — color (not colour), fiber (not fibre), center (not centre).
+- **Plain, full sentences. No em-dashes. No AI tells / artifacts.** All educator-portal copy (gate, section pages, product descriptions, emails, notifications, dashboard) reads like a person wrote it. **No em-dashes (—)** — use a period and start a new sentence, or a comma. No filler/AI-tell phrasing ("nestled in," "as you can see," "it's worth noting," "elevate," "delve," "leverage," "in today's world," "made-to-order" as fluff). Read it aloud — if it sounds like a chatbot, rewrite. Sentence fragments only when deliberate UI labels.
 - **Educator titles:** descriptive + MTW-branded; **no maker brand in the title unless it's a marquee credibility name** (Connetix, Bauspiel, Grimm's, Holztiger, Tara Treasures). **Gry & Sif is NOT marquee** — drop it. (Brand/cert/provenance still go in the body/specs.)
 - **Catalog citation:** "From the 2026 **Fall** Edit" (twice-yearly cadence: Fall + Spring).
 - **No "Request a quote"** CTAs — cards link to the product PDP ("View product →").

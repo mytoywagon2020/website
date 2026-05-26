@@ -169,6 +169,10 @@ Frictionless apply; **documents collected at verification, not on the form** (th
 - `page.educator-portal.liquid` is the **gate** ({% layout none %}; closed if handle in `educator-dashboard,new-quote,...` or `page.metafields.educator.gated==true`; renders `{{ page.content }}` only for a customer tagged `educator-approved`).
 - ⚠ **Routing mismatch to fix:** gate "Apply for access" → native `routes.account_register_url`; section-page "Apply" CTAs → `/pages/educator-program`. Point both at the same place.
 
+**RESOLVED (2026-05):** Gate **"Sign in"** → `/pages/educator-login`; **"Apply for access"** → `/pages/educator-register`. Section-page "Apply" CTAs also → `/pages/educator-register`. Both pages exist and are verified. The native `routes.account_login_url` / `routes.account_register_url` defaults are **not** used on the gate — the educator-branded pages are canonical.
+
+**Gate copy rule:** Full sentences, no em-dashes, no AI tells (see SHOPIFY_NOTES design rules).
+
 ## Pre-launch cert verification checklist (owner to confirm or remove)
 - **FSC-certified** — Woodland (9), Nature (3), Sensory (4), STEAM (2), Creative Arts (2)
 - **Fair Trade USA** — Nature (4), Small World (4), DP (3), STEAM (1), Woodland (1)
