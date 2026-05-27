@@ -20,21 +20,20 @@ A single source of truth for what's been built, what's pushed live, and what you
 ## The 10 Lakeshore-comparable features
 
 ### 1. Grant / funding guidance page
-- ✅ Template pushed: `templates/page.funding-your-classroom.liquid` (15 KB)
-- 🔵 **You: create the page** in Shopify admin
+- ✅ Template pushed to staging theme + committed to repo: `templates/page.funding-your-classroom.liquid` (15 KB)
+- ✅ Owner pasted into live theme code editor
+- 🔵 **You: create the page record** in Shopify admin
   - Pages → Add page → Title: *"Funding your classroom"*, URL: `funding-your-classroom`
   - Template dropdown: **`page.funding-your-classroom`**
-  - ⚠ If you're on the LIVE theme and the template doesn't appear, paste the file into the live theme's code editor first (see "Theme push workflow" below)
 - 6 funding programs surfaced: Title I, ESSER, DonorsChoose, education foundations, PTA/PTO, district allocations
 - CTA → `mailto:accounting@mytoywagon.com`
 
-### 2. Vendor packet PDF download
-- 🟡 Vendor-profile page already has placeholder text. The "Download vendor packet" button needs:
-- 🔵 **You: assemble + upload the actual PDF** to Shopify Files
-  - Bundle: W-9 + COI (Certificate of Insurance) + remit-to letter + EIN + NAICS code in ONE PDF
-  - Upload to Shopify admin → Settings → Files → Upload
-  - Copy the file URL
-- ⏳ Once URL is available, I add `<a href="...">Download vendor packet (PDF)</a>` button to vendor-profile page
+### 2. Vendor packet & remit-to (TWO-TIER DISCLOSURE PATTERN)
+**Important:** Bank account / routing numbers are NOT published publicly. Public Shopify Files URLs would expose them to any scraper. Pattern used:
+- **Public on `/pages/vendor-profile`:** EIN, legal name, mailing/remit-to address, contact, W-9/COI/resale by email request
+- **Bank/ACH/wire details:** sent ONLY on request from a verified school/district email after vendor setup is approved
+- ✅ Vendor-profile page updated live with this pattern (Remit-to card live; EIN 87-4237224 visible; mailing 288 E Live Oak Ave Ste 119 Arcadia CA 91007; closed-portal nav applied)
+- 🔵 **Optional follow-up:** assemble a public-safe vendor packet PDF (W-9 + COI + remit-to + EIN + NAICS — NO bank info) and upload to Shopify Files; share URL; I'll add a "Download vendor packet" button. Even this PDF should NOT contain bank info.
 
 ### 3. Self-serve tax-exempt cert upload (Helium)
 - ⏳ Form spec ready. To build:
@@ -71,10 +70,14 @@ A single source of truth for what's been built, what's pushed live, and what you
   - **Bumbu / Drewart / Buttonandbug / June & December**: *"Hand-made in small batches · 3–4 weeks"*
 
 ### 7. PO # lookup + "Order again" on dashboard
-- ⏳ NOT YET BUILT in this pass — next push targets dashboard template (16 KB — pushable)
-- Will add:
-  - A small `<input>` labeled "Look up by PO #" that filters the dashboard's recent orders by metafield/note
-  - "Order again" button on each past order card (uses Shopify's native `/cart/add?id=...` from past order line items)
+- ✅ Built and committed (page.educator-dashboard.liquid)
+- ✅ Pasted into live theme by owner
+- Includes:
+  - MAP-protected trust strip with 10% bundle savings pill
+  - "Contact your educator team" mailto CTA pre-filled with customer email
+  - PO# / order# client-side filter input above the orders table
+  - "Reorder" button on each past-order row — re-adds every line item to cart via POST to `/cart/add`
+  - PO tag surfaced inline on each order row (parsed from `po-XXXX` order tag)
 
 ### 8. Chatbot for B2B
 - 🔵 **Tidio + Lyro AI** chosen (free tier, AI-powered, page-targeted)
