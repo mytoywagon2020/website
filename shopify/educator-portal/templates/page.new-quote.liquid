@@ -230,29 +230,33 @@
       var rand = Math.random().toString(16).slice(2,6).toUpperCase();
       return 'Q-' + ymd + '-' + rand;
     }
-    var saved = null;
-    try { saved = localStorage.getItem('mtw_edu_quote_pending'); } catch(e){}
-    var qid = null;
-    if (saved) {
-      try {
-        var obj = JSON.parse(saved);
-        if (obj && obj.id) qid = obj.id;
-      } catch(e){}
-    }
-    if (!qid) qid = newQuoteId();
+    // Read prior localStorage entry written by submit handler so we can
+    // preserve the cart_token / items_count / total_formatted fields.
+    var savedObj = null;
+    try {
+      var saved = localStorage.getItem('mtw_edu_quote_pending');
+      if (saved) savedObj = JSON.parse(saved);
+    } catch(e){}
+    var qid = (savedObj && savedObj.id) ? savedObj.id : newQuoteId();
 
     var disp = document.getElementById('qid-display');
     if (disp) disp.textContent = qid;
 
-    // Clear cart server-side (idempotent — safe if already empty)
+    // Clear cart server-side (idempotent — safe if already empty).
     fetch('/cart/clear.js', {method:'POST', credentials:'same-origin'}).catch(function(){});
 
-    // Write localStorage state for the dashboard to read.
+    // Re-write the localStorage entry preserving all cart-context fields
+    // captured by the submit handler so the dashboard can render a richer
+    // Awaiting-PO state (X items · $YYY) without server data.
     try {
-      localStorage.setItem('mtw_edu_quote_pending', JSON.stringify({
+      var nextObj = {
         id: qid,
-        at: Date.now()
-      }));
+        at: (savedObj && savedObj.at) ? savedObj.at : Date.now(),
+        cart_token: savedObj && savedObj.cart_token,
+        items_count: savedObj && savedObj.items_count,
+        total_formatted: savedObj && savedObj.total_formatted
+      };
+      localStorage.setItem('mtw_edu_quote_pending', JSON.stringify(nextObj));
     } catch(e){}
 
     // Optional: fire a Klaviyo event if Klaviyo is loaded on the page.
@@ -432,6 +436,15 @@
     var pendingQid = newQuoteId();
     if (qidField) qidField.value = pendingQid;
 
+    // Capture cart state at render time so the post-submit localStorage
+    // write includes context the dashboard can use to render a richer
+    // Awaiting-PO card AND to detect cart-clear failures.
+    var liveCart = {
+      cart_token: {{ cart.token | json }},
+      items_count: {{ cart.item_count | default: 0 }},
+      total_formatted: {{ cart.total_price | money_without_trailing_zeros | json }}
+    };
+
     var form = document.getElementById('edu-quote-form');
     if (!form) return;
     var btn = document.getElementById('q-submit');
@@ -459,11 +472,15 @@
 
       // Optimistically write localStorage BEFORE the form post so the
       // dashboard can show the awaiting state even if the post-success page
-      // doesn't load (e.g. educator closes the tab early).
+      // doesn't load (e.g. educator closes the tab early). cart_token lets
+      // the dashboard detect cart-clear failure post-submit.
       try {
         localStorage.setItem('mtw_edu_quote_pending', JSON.stringify({
           id: pendingQid,
-          at: Date.now()
+          at: Date.now(),
+          cart_token: liveCart.cart_token,
+          items_count: liveCart.items_count,
+          total_formatted: liveCart.total_formatted
         }));
       } catch(e){}
 

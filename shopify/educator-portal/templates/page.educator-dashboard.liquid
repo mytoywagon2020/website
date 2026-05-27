@@ -291,22 +291,32 @@
     endif
 
     # ---- Open invoices (unpaid orders) ----
+    # Skip cancelled, refunded, voided, partially-refunded — those aren't
+    # "open" obligations even if financial_status != 'paid'.
     assign open_count = 0
     assign open_total = 0
     assign first_open_order_name = ''
     assign first_open_order_url = ''
-    for o in customer.orders
-      assign o_paid = false
-      if o.financial_status == 'paid' or o.tags contains 'po-paid-external'
-        assign o_paid = true
+    for o in customer.orders limit: 50
+      assign o_skip = false
+      if o.cancelled_at != blank
+        assign o_skip = true
+      elsif o.financial_status == 'refunded' or o.financial_status == 'voided' or o.financial_status == 'partially_refunded'
+        assign o_skip = true
       endif
-      unless o_paid
-        assign open_count = open_count | plus: 1
-        assign open_total = open_total | plus: o.total_price
-        if first_open_order_name == ''
-          assign first_open_order_name = o.name
-          assign first_open_order_url = o.customer_url
+      unless o_skip
+        assign o_paid = false
+        if o.financial_status == 'paid' or o.tags contains 'po-paid-external'
+          assign o_paid = true
         endif
+        unless o_paid
+          assign open_count = open_count | plus: 1
+          assign open_total = open_total | plus: o.total_price
+          if first_open_order_name == ''
+            assign first_open_order_name = o.name
+            assign first_open_order_url = o.customer_url
+          endif
+        endunless
       endunless
     endfor
 
@@ -314,7 +324,10 @@
     # 'empty'    - no cart items AND no open_quote_id
     # 'draft'    - cart has items (regardless of quote state)
     # 'awaiting' - cart empty AND customer has educator.open_quote_id set
-    # The open_quote_id metafield is written by the Tally form webhook.
+    # open_quote_id is written by staff in admin after replying with the
+    # formal quote (Customer record → Metafields → educator.open_quote_id).
+    # Pre-staff-update, the dashboard JS reads localStorage as a fallback
+    # so educators see the Awaiting-PO state immediately after submit.
     assign open_quote_id = customer.metafields.educator.open_quote_id | default: ''
     assign wagon_state = 'empty'
     if cart.item_count > 0
@@ -324,9 +337,24 @@
     endif
 
     # ---- Org name ----
+    # Fallback chain: B2B current_company → Helium customer_fields metafield
+    # → educator namespace fallback → blank (welcome line drops the org).
     assign org_name = ''
     if customer.b2b? and customer.current_company != blank
       assign org_name = customer.current_company.name
+    endif
+    if org_name == ''
+      assign org_name = customer.metafields.customer_fields.institution_name | default: customer.metafields.educator.institution_name | default: ''
+    endif
+
+    # ---- Terms line ----
+    # B2B customers have Net-30/60 set up on the Shopify company record.
+    # Non-B2B approved educators don't until staff creates a Company for them
+    # (which happens on first PO/Net-30 request, per the runbook). So show
+    # "Net-30 on file" only when it's actually true.
+    assign terms_line = 'Approved educator'
+    if customer.b2b?
+      assign terms_line = 'Approved educator &middot; Net-30 / Net-60 on file'
     endif
 
     # ---- Featured catalog tiles ----
@@ -347,7 +375,7 @@
         </h1>
         <p class="dash-welcome__sub">
           {%- if org_name != '' %}{{ org_name }} &middot; {% endif -%}
-          Approved educator &middot; Net-30 on file
+          {{ terms_line }}
         </p>
         {%- comment -%}Mobile-only inline season chip{%- endcomment -%}
         <span class="dash-welcome__pill"><span class="label">{{ edu_season_label }} &rsquo;{{ now_year | modulo: 100 }}:</span>Order by {{ edu_orderby_label }}</span>
@@ -542,23 +570,27 @@
               <a class="tile" href="{{ featured.url }}">
                 <div class="tile__art {{ hue_class }}">
                   <div class="tile__art-overlay"></div>
-                  <svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-                    <g opacity=".55" stroke="#FFFCF7" stroke-width="2" fill="none">
-                      <path d="M 60 200 Q 70 120 110 60 Q 130 40 160 50"/>
-                      <path d="M 110 60 Q 140 50 150 30"/>
-                      <path d="M 90 120 Q 70 110 50 122"/>
-                      <path d="M 100 160 Q 130 152 145 140"/>
-                    </g>
-                    <g opacity=".7" fill="#FFFCF7">
-                      <ellipse cx="160" cy="50" rx="18" ry="7" transform="rotate(-25 160 50)"/>
-                      <ellipse cx="50" cy="122" rx="15" ry="6" transform="rotate(15 50 122)"/>
-                      <ellipse cx="145" cy="140" rx="13" ry="5" transform="rotate(-15 145 140)"/>
-                    </g>
-                    <g opacity=".35" fill="#FFFCF7">
-                      <circle cx="300" cy="80" r="38"/>
-                      <circle cx="340" cy="130" r="22"/>
-                    </g>
-                  </svg>
+                  {%- if featured.featured_image -%}
+                    <img src="{{ featured.featured_image | image_url: width: 800 }}" alt="{{ featured.title | escape }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.95;z-index:0;">
+                  {%- else -%}
+                    <svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+                      <g opacity=".55" stroke="#FFFCF7" stroke-width="2" fill="none">
+                        <path d="M 60 200 Q 70 120 110 60 Q 130 40 160 50"/>
+                        <path d="M 110 60 Q 140 50 150 30"/>
+                        <path d="M 90 120 Q 70 110 50 122"/>
+                        <path d="M 100 160 Q 130 152 145 140"/>
+                      </g>
+                      <g opacity=".7" fill="#FFFCF7">
+                        <ellipse cx="160" cy="50" rx="18" ry="7" transform="rotate(-25 160 50)"/>
+                        <ellipse cx="50" cy="122" rx="15" ry="6" transform="rotate(15 50 122)"/>
+                        <ellipse cx="145" cy="140" rx="13" ry="5" transform="rotate(-15 145 140)"/>
+                      </g>
+                      <g opacity=".35" fill="#FFFCF7">
+                        <circle cx="300" cy="80" r="38"/>
+                        <circle cx="340" cy="130" r="22"/>
+                      </g>
+                    </svg>
+                  {%- endif -%}
                   <div class="tile__section">{{ section_label }}</div>
                 </div>
                 <div class="tile__body">
@@ -567,7 +599,11 @@
                   <div class="tile__foot">
                     <div>
                       <div class="tile__price-label">Educator price</div>
-                      <div class="tile__price">{{ featured.price | money_without_trailing_zeros }}</div>
+                      {%- if featured.price > 0 -%}
+                        <div class="tile__price">{{ featured.price | money_without_trailing_zeros }}</div>
+                      {%- else -%}
+                        <div class="tile__price" style="font-size:14px;font-style:italic;color:var(--stone);">Pricing on quote</div>
+                      {%- endif -%}
                     </div>
                     <span class="tile__add">Add to wagon &rarr;</span>
                   </div>
@@ -683,19 +719,24 @@
 
   <script>
   (function(){
-    // Wagon-card localStorage fallback.
+    // Wagon-card localStorage fallback + cart-clear-failure recovery.
     //
-    // The new-quote page writes localStorage 'mtw_edu_quote_pending' on
-    // submit. If the server-rendered wagon state is 'empty' (cart cleared
-    // after submission) BUT localStorage has a recent pending quote AND the
-    // customer's open_quote_id metafield isn't set yet (staff hasn't
-    // replied), swap the empty wagon-card to the Awaiting-PO state so the
-    // dashboard reflects reality immediately, not after staff manually
-    // updates the metafield.
+    // Quote page writes 'mtw_edu_quote_pending' = {id, at, cart_token} on submit.
+    // After successful submission, /cart/clear.js is called server-side. If
+    // that succeeds, server renders wagon state = 'empty'. This JS then swaps
+    // to the Awaiting-PO state using the localStorage quote ID.
     //
-    // Metafield (server) takes precedence over localStorage when set.
+    // If /cart/clear.js FAILED silently (network blip), the cart still has
+    // items and server renders 'draft'. This JS detects that case by
+    // comparing the current cart_token against the one saved at submit time;
+    // if they match, the cart didn't change — the clear just failed — so we
+    // attempt the clear again, then swap the wagon to Awaiting-PO.
+    //
+    // Server-set customer.metafields.educator.open_quote_id takes precedence
+    // when set (Liquid renders Awaiting-PO directly; this JS exits early).
+
     var serverOpenQid = {{ open_quote_id | json }};
-    if (serverOpenQid && serverOpenQid.length) return; // server-set, no swap needed
+    if (serverOpenQid && serverOpenQid.length) return;
 
     var pending = null;
     try {
@@ -704,7 +745,7 @@
     } catch(e){}
     if (!pending || !pending.id || !pending.at) return;
 
-    // 14-day TTL — older entries are stale and we let the empty state stand.
+    // 14-day TTL — stale entries get cleared and we let server state stand.
     if (Date.now() - pending.at > 14 * 24 * 60 * 60 * 1000) {
       try { localStorage.removeItem('mtw_edu_quote_pending'); } catch(e){}
       return;
@@ -712,37 +753,60 @@
 
     var card = document.querySelector('.wagon-card');
     if (!card) return;
-    // Don't override draft or awaiting (server) states.
     var existingTitle = card.querySelector('.wagon-card__title');
     if (!existingTitle) return;
     var titleText = (existingTitle.textContent || '').toLowerCase();
-    // 'empty' state title contains 'wagon is empty' — only swap on that.
-    if (titleText.indexOf('empty') === -1) return;
+    var isEmpty = titleText.indexOf('empty') !== -1;
+    var isAwaiting = titleText.indexOf('quote sent') !== -1;
+    if (isAwaiting) return; // server already rendered awaiting — nothing to do
 
-    card.innerHTML = ''
-      + '<div class="wagon-card__head">'
-      +   '<div class="wagon-card__label">Your wagon</div>'
-      +   '<svg viewBox="0 0 120 80" width="64" height="42.67" aria-hidden="true">'
-      +     '<ellipse cx="60" cy="68" rx="44" ry="3" fill="#000" opacity=".10"/>'
-      +     '<line x1="22" y1="48" x2="6" y2="32" stroke="#A87B43" stroke-width="3" stroke-linecap="round"/>'
-      +     '<path d="M 24 40 L 96 40 L 100 56 Q 60 62 20 56 Z" fill="#7c3128"/>'
-      +     '<g opacity=".5"><line x1="32" y1="32" x2="88" y2="32" stroke="#F5F0E5" stroke-dasharray="2 3" stroke-width="1"/></g>'
-      +     '<circle cx="32" cy="60" r="9" fill="#2a1810"/>'
-      +     '<circle cx="88" cy="60" r="9" fill="#2a1810"/>'
-      +     '<circle cx="32" cy="60" r="3" fill="#F5F0E5"/>'
-      +     '<circle cx="88" cy="60" r="3" fill="#F5F0E5"/>'
-      +   '</svg>'
-      + '</div>'
-      + '<div class="wagon-card__title wagon-card__title--small">Quote sent — <em>awaiting&nbsp;PO</em></div>'
-      + '<div class="wagon-card__meta wagon-card__meta--strong">' + (pending.id || 'pending') + '</div>'
-      + '<div class="wagon-card__progress">'
-      +   '<span class="is-active"></span>'
-      +   '<span class="is-active"></span>'
-      +   '<span></span>'
-      +   '<span></span>'
-      + '</div>'
-      + '<div class="wagon-card__steps">Drafted &middot; Sent &middot; <strong>Awaiting PO</strong> &middot; Confirmed</div>'
-      + '<a class="wagon-card__cta" href="mailto:educators@mytoywagon.com?subject=Purchase%20Order%20for%20' + encodeURIComponent(pending.id) + '&body=Quote%20number%3A%20' + encodeURIComponent(pending.id) + '%0APO%20number%3A%20%0ABilling%20contact%3A%20%0ANeeded%20by%3A%20">Submit your PO &rarr;</a>';
+    // For draft state, only swap if the current cart_token matches the
+    // token captured at submit time — that's the cart-clear-failure signal.
+    if (!isEmpty) {
+      var liveCartToken = {{ cart.token | json }};
+      if (!pending.cart_token || pending.cart_token !== liveCartToken) return;
+      // Cart-clear retry — fire and forget. UI swap proceeds regardless so
+      // educator isn't blocked on a flaky endpoint.
+      fetch('/cart/clear.js', {method:'POST', credentials:'same-origin'}).catch(function(){});
+    }
+
+    function awaitingHtml(qid){
+      var subject = encodeURIComponent('Purchase Order for ' + qid);
+      var body = encodeURIComponent('Quote number: ' + qid + '\nPO number: \nBilling contact: \nNeeded by: ');
+      var meta = qid;
+      if (pending.items_count) {
+        meta += ' &middot; ' + pending.items_count + ' item' + (pending.items_count !== 1 ? 's' : '');
+      }
+      if (pending.total_formatted) {
+        meta += ' &middot; ' + pending.total_formatted;
+      }
+      return ''
+        + '<div class="wagon-card__head">'
+        +   '<div class="wagon-card__label">Your wagon</div>'
+        +   '<svg viewBox="0 0 120 80" width="64" height="42.67" aria-hidden="true">'
+        +     '<ellipse cx="60" cy="68" rx="44" ry="3" fill="#000" opacity=".10"/>'
+        +     '<line x1="22" y1="48" x2="6" y2="32" stroke="#A87B43" stroke-width="3" stroke-linecap="round"/>'
+        +     '<path d="M 24 40 L 96 40 L 100 56 Q 60 62 20 56 Z" fill="#7c3128"/>'
+        +     '<g opacity=".5"><line x1="32" y1="32" x2="88" y2="32" stroke="#F5F0E5" stroke-dasharray="2 3" stroke-width="1"/></g>'
+        +     '<circle cx="32" cy="60" r="9" fill="#2a1810"/>'
+        +     '<circle cx="88" cy="60" r="9" fill="#2a1810"/>'
+        +     '<circle cx="32" cy="60" r="3" fill="#F5F0E5"/>'
+        +     '<circle cx="88" cy="60" r="3" fill="#F5F0E5"/>'
+        +   '</svg>'
+        + '</div>'
+        + '<div class="wagon-card__title wagon-card__title--small">Quote sent — <em>awaiting&nbsp;PO</em></div>'
+        + '<div class="wagon-card__meta wagon-card__meta--strong">' + meta + '</div>'
+        + '<div class="wagon-card__progress">'
+        +   '<span class="is-active"></span>'
+        +   '<span class="is-active"></span>'
+        +   '<span></span>'
+        +   '<span></span>'
+        + '</div>'
+        + '<div class="wagon-card__steps">Drafted &middot; Sent &middot; <strong>Awaiting PO</strong> &middot; Confirmed</div>'
+        + '<a class="wagon-card__cta" href="mailto:educators@mytoywagon.com?subject=' + subject + '&body=' + body + '">Submit your PO &rarr;</a>';
+    }
+
+    card.innerHTML = awaitingHtml(pending.id);
   })();
   </script>
 </body>
