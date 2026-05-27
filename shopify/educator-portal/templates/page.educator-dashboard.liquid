@@ -680,6 +680,71 @@
   </main>
 
   {% section 'mtw-educator-footer' %}
+
+  <script>
+  (function(){
+    // Wagon-card localStorage fallback.
+    //
+    // The new-quote page writes localStorage 'mtw_edu_quote_pending' on
+    // submit. If the server-rendered wagon state is 'empty' (cart cleared
+    // after submission) BUT localStorage has a recent pending quote AND the
+    // customer's open_quote_id metafield isn't set yet (staff hasn't
+    // replied), swap the empty wagon-card to the Awaiting-PO state so the
+    // dashboard reflects reality immediately, not after staff manually
+    // updates the metafield.
+    //
+    // Metafield (server) takes precedence over localStorage when set.
+    var serverOpenQid = {{ open_quote_id | json }};
+    if (serverOpenQid && serverOpenQid.length) return; // server-set, no swap needed
+
+    var pending = null;
+    try {
+      var raw = localStorage.getItem('mtw_edu_quote_pending');
+      if (raw) pending = JSON.parse(raw);
+    } catch(e){}
+    if (!pending || !pending.id || !pending.at) return;
+
+    // 14-day TTL — older entries are stale and we let the empty state stand.
+    if (Date.now() - pending.at > 14 * 24 * 60 * 60 * 1000) {
+      try { localStorage.removeItem('mtw_edu_quote_pending'); } catch(e){}
+      return;
+    }
+
+    var card = document.querySelector('.wagon-card');
+    if (!card) return;
+    // Don't override draft or awaiting (server) states.
+    var existingTitle = card.querySelector('.wagon-card__title');
+    if (!existingTitle) return;
+    var titleText = (existingTitle.textContent || '').toLowerCase();
+    // 'empty' state title contains 'wagon is empty' — only swap on that.
+    if (titleText.indexOf('empty') === -1) return;
+
+    card.innerHTML = ''
+      + '<div class="wagon-card__head">'
+      +   '<div class="wagon-card__label">Your wagon</div>'
+      +   '<svg viewBox="0 0 120 80" width="64" height="42.67" aria-hidden="true">'
+      +     '<ellipse cx="60" cy="68" rx="44" ry="3" fill="#000" opacity=".10"/>'
+      +     '<line x1="22" y1="48" x2="6" y2="32" stroke="#A87B43" stroke-width="3" stroke-linecap="round"/>'
+      +     '<path d="M 24 40 L 96 40 L 100 56 Q 60 62 20 56 Z" fill="#7c3128"/>'
+      +     '<g opacity=".5"><line x1="32" y1="32" x2="88" y2="32" stroke="#F5F0E5" stroke-dasharray="2 3" stroke-width="1"/></g>'
+      +     '<circle cx="32" cy="60" r="9" fill="#2a1810"/>'
+      +     '<circle cx="88" cy="60" r="9" fill="#2a1810"/>'
+      +     '<circle cx="32" cy="60" r="3" fill="#F5F0E5"/>'
+      +     '<circle cx="88" cy="60" r="3" fill="#F5F0E5"/>'
+      +   '</svg>'
+      + '</div>'
+      + '<div class="wagon-card__title wagon-card__title--small">Quote sent — <em>awaiting&nbsp;PO</em></div>'
+      + '<div class="wagon-card__meta wagon-card__meta--strong">' + (pending.id || 'pending') + '</div>'
+      + '<div class="wagon-card__progress">'
+      +   '<span class="is-active"></span>'
+      +   '<span class="is-active"></span>'
+      +   '<span></span>'
+      +   '<span></span>'
+      + '</div>'
+      + '<div class="wagon-card__steps">Drafted &middot; Sent &middot; <strong>Awaiting PO</strong> &middot; Confirmed</div>'
+      + '<a class="wagon-card__cta" href="mailto:educators@mytoywagon.com?subject=Purchase%20Order%20for%20' + encodeURIComponent(pending.id) + '&body=Quote%20number%3A%20' + encodeURIComponent(pending.id) + '%0APO%20number%3A%20%0ABilling%20contact%3A%20%0ANeeded%20by%3A%20">Submit your PO &rarr;</a>';
+  })();
+  </script>
 </body>
 </html>
 {%- else -%}

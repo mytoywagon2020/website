@@ -49,7 +49,7 @@ Fulfillment/tracking is read **natively** (Fulfilled / Partially shipped / Proce
 
 ## App recommendations (where native isn't enough)
 - **Saved/named classroom lists (wishlist/shopping lists):** native Shopify has no multi-list "saved lists." Recommend **Swym Wishlist Plus** (multiple named lists, reorder, B2B-friendly) or a B2B ordering suite like **BSS B2B/Wholesale Solution** (quick-order + lists). *Reorder alone may not need an app — the B2B account supports reordering past orders.*
-- **PO file upload (customer-facing):** Shopify contact form can't attach files. Use **Shopify Forms** (native, supports file upload) or a **Tally** form (matches existing portal embeds). Staff attach emailed POs to the order/draft in admin.
+- **PO file upload (customer-facing):** Shopify contact form can't attach files. Use **Shopify Forms** (native, supports file upload) or **Helium** (matches existing portal embeds). Staff attach emailed POs to the order/draft in admin.
 
 ---
 
@@ -62,7 +62,7 @@ Fulfillment/tracking is read **natively** (Fulfilled / Partially shipped / Proce
 | Gated portal pages (dashboard, catalog sections, quote) | **Theme** — `page.educator-*` templates + `snippets/educator-gate.liquid`, gated on `b2b?` or `educator-approved` |
 | Order/invoice/fulfillment display | **Theme** dashboard reads **native** `customer.orders` + fulfillment/tracking; payment status via **tags** (`po-paid-external`, `invoice-sent`) |
 | Quote building | **Theme** `/pages/new-quote` (email) **today**; target = **native** B2B self-serve draft orders |
-| PO submission | **Theme** email (today); optional Shopify Forms/Tally upload |
+| PO submission | **Theme** email (today); optional Shopify Forms/Helium upload |
 | Crawl/SEO control | **Theme** `noindex` + `robots.txt.liquid` |
 
 Source of truth for the catalog build: `EDUCATOR-CATALOG-WORKSHEET.md`. Page architecture: Program → Apply → Sign in → **Educator Dashboard** → Catalog / Quote / Orders.
@@ -165,7 +165,7 @@ Frictionless apply; **documents collected at verification, not on the form** (th
 
 ## Register/quote forms = app/embed, NOT theme liquid (verified from theme 145914462378)
 - `templates/page.educator-register.json` = placeholder rich-text ("Educator Account Registration / verification up to 3 business days") + an **"apps" slot** + two disabled sections. **No form liquid.**
-- The visible application form is rendered by an **app/embed: Helium Customer Fields and/or Tally** (gate template `page.educator-portal.liquid` loads `tally.so/widgets/embed.js`). So **fields, logo, doc upload, and metafield-capture are configured in Helium/Tally — not theme code.** To confirm no-reentry: Helium form → each field → "save to metafield."
+- The visible application form is rendered by an **app/embed: Helium Customer Fields** (Tally retired 2026-05). So **fields, logo, doc upload, and metafield-capture are configured in Helium — not theme code.** To confirm no-reentry: Helium form → each field → "save to metafield."
 - `page.educator-portal.liquid` is the **gate** ({% layout none %}; closed if handle in `educator-dashboard,new-quote,...` or `page.metafields.educator.gated==true`; renders `{{ page.content }}` only for a customer tagged `educator-approved`).
 - ⚠ **Routing mismatch to fix:** gate "Apply for access" → native `routes.account_register_url`; section-page "Apply" CTAs → `/pages/educator-program`. Point both at the same place.
 
