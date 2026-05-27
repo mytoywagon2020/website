@@ -275,6 +275,93 @@ a{ color:inherit; }
   border-top: 0.5px solid var(--rule-strong);
 }
 
+/* ----------------------- MAP NOTE & CATALOG REQUEST ----------------------- */
+.map-note{
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--stone);
+  font-style: italic;
+  max-width: 62ch;
+  margin: 12px auto 0;
+}
+.catalog-req{
+  background: var(--warm-white);
+  border-top: 0.5px solid var(--rule);
+  border-bottom: 0.5px solid var(--rule);
+  padding: 56px clamp(20px, 4vw, 44px);
+  text-align: center;
+}
+.catalog-req-inner{ max-width: 580px; margin: 0 auto; }
+.catalog-req h3{
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(22px, 2.6vw, 28px);
+  line-height: 1.25;
+  color: var(--ink);
+  margin: 0 0 10px;
+}
+.catalog-req h3 .it{ font-style: italic; color: var(--forest); }
+.catalog-req p{
+  font-size: 14px;
+  color: var(--stone);
+  line-height: 1.6;
+  margin: 0 0 20px;
+}
+.catalog-req form{
+  display: flex;
+  gap: 8px;
+  max-width: 480px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+.catalog-req input[type="email"]{
+  flex: 1 1 240px;
+  padding: 12px 14px;
+  font-size: 14px;
+  font-family: var(--sans);
+  border: 1px solid var(--rule-strong);
+  border-radius: 2px;
+  background: var(--warm-white);
+  color: var(--ink);
+}
+.catalog-req input[type="email"]:focus{ outline: none; border-color: var(--ink); }
+.catalog-req button{
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  padding: 12px 22px;
+  border-radius: 2px;
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: var(--cream);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.catalog-req button:hover{ background: var(--forest); border-color: var(--forest); }
+.catalog-req .micro{ font-size: 11.5px; color: var(--stone); margin-top: 12px; }
+
+/* ----------------------- BRAND LINE ----------------------- */
+.brand-line{
+  background: var(--cream);
+  border-top: 0.5px solid var(--rule);
+  border-bottom: 0.5px solid var(--rule);
+  padding: 36px clamp(20px, 4vw, 44px);
+  text-align: center;
+}
+.brand-line p{
+  max-width: 760px;
+  margin: 0 auto;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(20px, 2.4vw, 28px);
+  line-height: 1.35;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+.brand-line em{ font-style: italic; color: var(--forest); }
+@media(max-width:560px){ .brand-line{ padding: 28px 20px; } .brand-line p{ font-size: 19px; } }
+
 /* ----------------------- THE EIGHT VOLUMES ----------------------- */
 .volumes{
   background: var(--warm-white);
@@ -375,6 +462,21 @@ a{ color:inherit; }
   padding: 5px 10px;
   border-radius: 999px;
   backdrop-filter: blur(2px);
+}
+.vol-card .vol-img .vol-savings{
+  position: absolute;
+  top: 12px; right: 12px;
+  z-index: 4;
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 10.5px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--cream);
+  background: var(--forest);
+  padding: 5px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
 }
 .vol-card .vol-img .vol-tag{ display: none; }
 .vol-card .vol-img .vol-tag{
@@ -1140,13 +1242,14 @@ footer ul a:hover{ color: var(--cream); }
 </style>
 </head>
 <body>
+  {% section 'mtw-educator-header' %}
 
 <!-- =========================== UTILITY BAR =========================== -->
 <div class="utility">
   <div class="utility-inner">
     <div class="utility-left">
       <a href="tel:6268410421">(626) 841-0421</a>
-      <a href="#">Track an order</a>
+      <a href="/pages/educator-dashboard">Track an order</a>
     </div>
     <div class="utility-center">
       <span>Net-30, tax-exempt, and approved-vendor accounts for schools.</span>
@@ -1164,7 +1267,7 @@ footer ul a:hover{ color: var(--cream); }
     <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
     <span>Search the educator catalog&hellip;</span>
   </div>
-  <a href="#" class="nav__logo">
+  <a href="/pages/educator-dashboard" class="nav__logo">
     <img src="{{ 'mtw-logo-full.png' | asset_url }}" alt="My Toy Wagon, Los Angeles, California, est. 2020" class="mark"/>
   </a>
   <div class="nav__actions">
@@ -1172,7 +1275,7 @@ footer ul a:hover{ color: var(--cream); }
       <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20a8 8 0 0 1 16 0"/></svg>
       <span class="label">Dashboard</span>
     </a>
-    <a href="#quote" class="nav__action" aria-label="Quote">
+    <a href="/pages/new-quote" class="nav__action" aria-label="Quote">
       <svg viewBox="0 0 24 24"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
       <span class="label">Quote</span>
     </a>
@@ -1190,7 +1293,7 @@ footer ul a:hover{ color: var(--cream); }
 <div style="background: var(--cream); border-bottom: 0.5px solid var(--rule); padding: 14px clamp(20px, 4vw, 44px);">
   <div style="max-width: 1440px; margin: 0 auto;">
     <nav class="breadcrumb" aria-label="Breadcrumb">
-      <a href="/" class="home-crumb">Home</a>
+      <a href="/pages/educator-dashboard" class="home-crumb">Dashboard</a>
       <span class="sep" aria-hidden="true">/</span>
       <span aria-current="page">Educator Catalog</span>
     </nav>
@@ -1212,6 +1315,11 @@ footer ul a:hover{ color: var(--cream); }
   </div>
 </section>
 
+<!-- =========================== BRAND LINE =========================== -->
+<aside class="brand-line" aria-label="Why we curate">
+  <p>You trust <em>our picks</em> more than you trust your research time.</p>
+</aside>
+
 <!-- =========================== THE EIGHT VOLUMES =========================== -->
 <section class="volumes gut" data-screen-label="02 Eight Volumes">
   <div class="volumes-inner">
@@ -1219,6 +1327,7 @@ footer ul a:hover{ color: var(--cream); }
       <span class="eyebrow">The Eight Sections</span>
       <h2>Pick a section, <span class="it">open the catalog.</span></h2>
       <p>Each section opens to its own editorial page with featured products, classroom bundles, and a quote form pre-filled for that section. Browse all eight, or jump to the one your program needs first.</p>
+      <p class="map-note">Curated bundles ship together at 10% off the individual price. Single items hold their full price so the makers we represent stay supported.</p>
     </div>
 
     <div class="volumes-grid">
@@ -1226,10 +1335,10 @@ footer ul a:hover{ color: var(--cream); }
       <!-- 01 Sensory Play -->
       <a class="vol-card vol-01" href="/pages/educator-sensory-play">
         <div class="vol-img">
-          <img src="{{ 'sensory-cover.webp' | file_url }}" alt="Section 01 &middot; Sensory Play: Buttonandbug rainbow sensory tray filled with dyed pasta and grains on a sunlit classroom table."/>
+          <img src="{{ 'sensory-play-rainbow-imaginative-play-tray-cover.webp' | file_url }}" alt="Rainbow Imaginative Play Tray with curated sensory elements on linen, overhead flatlay" loading="lazy"/>
           <span class="vol-stripe"></span>
           <span class="vol-num">Section 01</span>
-          <span class="vol-tag">[ Cover &middot; Buttonandbug Rainbow Tray + Wild Mountain Child sensory bottles on linen, overhead flatlay. Mirrors catalog pg. 5 opener. ]</span>
+          <span class="vol-savings">Saves 10%</span>
         </div>
         <div class="vol-body">
           <span class="vol-name">Sensory <span class="it">Play</span></span>
@@ -1241,10 +1350,10 @@ footer ul a:hover{ color: var(--cream); }
       <!-- 02 Nature Play -->
       <a class="vol-card vol-02" href="/pages/educator-nature-play">
         <div class="vol-img">
-          <img src="{{ 'np-cover-busy-bee-feet.webp' | file_url }}" alt="Section 02 &middot; Nature Play: a child stands ankle-deep in a Gus + Mabel Busy Bee Tray scattered with hibiscus, nasturtium, and pansy blossoms in late-afternoon light."/>
+          <img src="{{ 'np-busy-bee-tray-hero_webp.webp' | file_url }}" alt="Busy Bee Tray nature-play arrangement with felted honeybees, pinecones, and a woodland tray" loading="lazy"/>
           <span class="vol-stripe"></span>
           <span class="vol-num">Section 02</span>
-          <span class="vol-tag">[ Cover &middot; Tender Leaf My Forest Floor lifestyle, child arranging carved logs and pebbles on a wooden classroom shelf. Mirrors catalog pg. 10 opener. ]</span>
+          <span class="vol-savings">Saves 10%</span>
         </div>
         <div class="vol-body">
           <span class="vol-name">Nature <span class="it">Play</span></span>
@@ -1256,10 +1365,10 @@ footer ul a:hover{ color: var(--cream); }
       <!-- 03 Woodland -->
       <a class="vol-card vol-03" href="/pages/educator-woodland">
         <div class="vol-img">
-          <img src="{{ 'wd-cover-acorn-house.jpg' | file_url }}" alt="Section 03 &middot; Woodland: Bumbu hand-carved acorn-shaped wooden house with squirrel figures and a birch tree in a sunlit meadow."/>
+          <img src="{{ 'bumbu-birch-trees-set-of-two.webp' | file_url }}" alt="Bumbu hand-carved birch trees, set of two, soft yellow-green canopy" loading="lazy"/>
           <span class="vol-stripe"></span>
           <span class="vol-num">Section 03</span>
-          <span class="vol-tag">[ Cover &middot; Bumbu hand-carved deer family in a forest clearing beneath a yellow-green birch canopy. Mirrors catalog pg. 18 opener. ]</span>
+          <span class="vol-savings">Saves 10%</span>
         </div>
         <div class="vol-body">
           <span class="vol-name">Woodland <span class="it">Habitats</span></span>
@@ -1271,74 +1380,75 @@ footer ul a:hover{ color: var(--cream); }
       <!-- 04 Small World -->
       <a class="vol-card vol-04" href="/pages/educator-small-world">
         <div class="vol-img">
-          <img src="{{ 'sw-cover-lifestyle.png' | file_url }}" alt="Section 04 &middot; Small World &amp; Storytelling: a boy places a wooden triceratops on the Papoose Forest Caves play mat, with dinosaurs and felt acorns gathered around a mossy cave."/>
+          <img src="{{ 'sw-cover-lifestyle.png' | file_url }}" alt="Papoose Forest Caves felt play mat with a child placing wooden dinosaurs and felt acorns by a mossy cave" loading="lazy"/>
           <span class="vol-stripe"></span>
           <span class="vol-num">Section 04</span>
-          <span class="vol-tag">[ Cover &middot; Papoose Forest Caves play mat, child's-hands shot, soft daylight from above. Mirrors catalog pg. 23 opener. ]</span>
+          <span class="vol-savings">Saves 10%</span>
         </div>
         <div class="vol-body">
           <span class="vol-name">Small World &amp; <span class="it">Storytelling</span></span>
           <p class="vol-lede">Small hands, vast worlds. The stories children need to tell can&rsquo;t always wait for words.</p>
-          <span class="vol-cta">Open collection &rarr;</span>
+          <span class="vol-cta">Open section &rarr;</span>
         </div>
       </a>
 
       <!-- 05 Fairy Villages -->
       <a class="vol-card vol-05" href="/pages/educator-fairy-villages">
         <div class="vol-img">
-          <img src="{{ 'fairy-cover-pink-blossom.webp' | file_url }}" alt="Section 05 &middot; Fairy Villages: Pink Blossom House, a hand-felted fairy home with a curled pink petal roof and embroidered cherry blossoms among wool moss."/>
+          <img src="{{ 'mushroom-garden-fairy-home.png' | asset_url }}" alt="Mushroom Garden Fairy Home, hero of the Fairy Villages collection, hand-felted toadstool home on a round wool play mat"/>
           <span class="vol-stripe"></span>
           <span class="vol-num">Section 05</span>
+          <span class="vol-savings">Saves 10%</span>
         </div>
         <div class="vol-body">
           <span class="vol-name">Fairy <span class="it">Villages</span></span>
           <p class="vol-lede">A child who has a fairy village has a world she can hold, arrange, and return to.</p>
-          <span class="vol-cta">Open collection &rarr;</span>
+          <span class="vol-cta">Open section &rarr;</span>
         </div>
       </a>
 
       <!-- 06 STEAM -->
-      <a class="vol-card vol-06" href="#" data-status="coming-soon">
+      <a class="vol-card vol-06" href="/pages/educator-steam">
         <div class="vol-img">
-          <img src="https://cdn.shopify.com/s/files/1/0522/0882/8586/files/Bauspiel_lucent_cubes.png?v=1779676037&amp;width=1400" alt="Section 06 &middot; STEAM: glowing Bauspiel lucent cubes stacked in stained-glass color on a light table for science, color, and construction inquiry."/>
+          <img src="{{ 'Bauspiel_lucent_cubes.png' | file_url }}" alt="Bauspiel Lucent Cubes glowing on a light table for color-mixing exploration" loading="lazy"/>
           <span class="vol-stripe"></span>
           <span class="vol-num">Section 06</span>
-          <span class="vol-tag">[ Cover &middot; Bauspiel lucent cubes on a classroom light table. Mirrors catalog pg. 34 opener. ]</span>
+          <span class="vol-savings">Saves 10%</span>
         </div>
         <div class="vol-body">
           <span class="vol-name">STEAM <span class="it">Wonder &amp; Investigation</span></span>
           <p class="vol-lede">Wonder comes before vocabulary. These tools invite the questions that begin real inquiry.</p>
-          <span class="vol-cta">Coming soon &rarr;</span>
+          <span class="vol-cta">Open section &rarr;</span>
         </div>
       </a>
 
       <!-- 07 Dramatic Play -->
-      <a class="vol-card vol-07" href="#" data-status="coming-soon">
+      <a class="vol-card vol-07" href="/pages/educator-dramatic-play">
         <div class="vol-img">
-          <img src="https://cdn.shopify.com/s/files/1/0522/0882/8586/files/Dramatic_Play_Cover.webp?v=1779721374&amp;width=1400" alt="Section 07 &middot; Dramatic Play: a child plays at a wooden market stall piled with hand-felted fruit, vegetables, and flowers under a striped awning."/>
+          <img src="{{ 'Dramatic_Play_Cover.webp' | file_url }}" alt="Drewart cow shed dramatic-play scene with hand-carved farm animals and a harvest of felt vegetables" loading="lazy"/>
           <span class="vol-stripe"></span>
           <span class="vol-num">Section 07</span>
-          <span class="vol-tag">[ Cover &middot; Felt-market stall dramatic-play scene with produce and harvest baskets. Mirrors catalog pg. 38 opener. ]</span>
+          <span class="vol-savings">Saves 10%</span>
         </div>
         <div class="vol-body">
           <span class="vol-name">Dramatic <span class="it">Play</span></span>
           <p class="vol-lede">The kitchen, the shop, the farmyard at dawn. Children learn the world by playing it first.</p>
-          <span class="vol-cta">Coming soon &rarr;</span>
+          <span class="vol-cta">Open section &rarr;</span>
         </div>
       </a>
 
       <!-- 08 Creative Arts -->
-      <a class="vol-card vol-08" href="#" data-status="coming-soon">
+      <a class="vol-card vol-08" href="/pages/educator-creative-arts">
         <div class="vol-img">
-          <img src="https://cdn.shopify.com/s/files/1/0522/0882/8586/files/weaving_2_b9bdb840-2976-4bf0-9a23-a8ae54a259dc.png?v=1779724911&amp;width=1400" alt="Section 08 &middot; Creative Arts: a child weaves yarn on a wooden frame at the craft table, slow hand-work in fiber and color."/>
+          <img src="{{ 'weaving_2_b9bdb840-2976-4bf0-9a23-a8ae54a259dc.png' | file_url }}" alt="Weaving station with a handcrafted loom and natural fibers for creative arts practice" loading="lazy"/>
           <span class="vol-stripe"></span>
           <span class="vol-num">Section 08</span>
-          <span class="vol-tag">[ Cover &middot; Child weaving on a wooden frame; fiber, color, and slow hand-work. Mirrors catalog pg. 48 opener. ]</span>
+          <span class="vol-savings">Saves 10%</span>
         </div>
         <div class="vol-body">
           <span class="vol-name">Creative <span class="it">Arts</span></span>
           <p class="vol-lede">The slow work of making something with your hands. Patience, attention, and a little mess.</p>
-          <span class="vol-cta">Coming soon &rarr;</span>
+          <span class="vol-cta">Open section &rarr;</span>
         </div>
       </a>
 
@@ -1350,71 +1460,15 @@ footer ul a:hover{ color: var(--cream); }
 <!-- This rolling carousel of MTW-wide educator reviews lives here now,
      once per logged-in catalog landing instead of repeating on each of
      the 8 section pages. Klaviyo Reviews replaces these seed cards. -->
-<section class="reviews-section gut" data-screen-label="03 Reviews">
-  <div class="reviews-head">
+<!-- =========================== REVIEWS (placeholder — will be populated by Klaviyo Reviews after launch) =========================== -->
+<!-- The fake seed reviews were removed pre-launch. The carousel HTML, CSS, and JS remain in
+     the file (commented out below). When Klaviyo Reviews is wired up and the first verified
+     educator reviews come in, restore the <section class="reviews-section gut"> block from git
+     history and swap the static cards for the Klaviyo web component. -->
+<section class="reviews-placeholder gut" data-screen-label="03 Reviews">
+  <div class="reviews-head" style="text-align:center;max-width:64ch;margin:0 auto;padding:24px 20px;">
     <span class="eyebrow">From the schools we serve</span>
-    <h2>What educators say <em>about working with us.</em></h2>
-    <p>The first 100 educators who write a verified review receive a classroom gift on their next order.</p>
-  </div>
-
-  <div class="reviews-carousel" data-reviews-carousel>
-    <button class="rc-nav prev" type="button" aria-label="Previous reviews">
-      <svg viewBox="0 0 24 24"><path d="M15 18 9 12l6-6"/></svg>
-    </button>
-
-    <div class="rc-track" tabindex="0" aria-label="Educator reviews">
-      <article class="review">
-        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <h3>&ldquo;Our PO went through in two days.&rdquo;</h3>
-        <p>I emailed on a Tuesday for a kit consultation and a price sheet. By Wednesday afternoon we had pricing, a kit recommendation, a clear Net-30 invoice path, and an actual person on email. Painless from a procurement seat.</p>
-        <p class="who"><strong>Janelle S.</strong> &middot; Director &middot; Maple Tree Montessori</p>
-      </article>
-
-      <article class="review">
-        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <h3>&ldquo;Three years in, still soft, still new.&rdquo;</h3>
-        <p>The hand-felted wool gets handled all day, every day, by three- and four-year-olds. Three school years later, no fraying and no fading. We have replaced consumables but not a single MTW piece. Worth waiting for, worth the price.</p>
-        <p class="who"><strong>Marisol G.</strong> &middot; Lead Teacher, Pre-K &middot; Sage Meadow Montessori</p>
-      </article>
-
-      <article class="review">
-        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <h3>&ldquo;Irfana wrote back, not a ticket queue.&rdquo;</h3>
-        <p>I asked a small question about wool sourcing for our materials and safety binder. Irfana, one of the founders, answered the same day with photos from the workshop. It is the first vendor relationship in a decade that feels like a relationship.</p>
-        <p class="who"><strong>Anita L.</strong> &middot; Atelierista &middot; Bay Area Reggio piazza</p>
-      </article>
-
-      <article class="review">
-        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <h3>&ldquo;Net-30 worked. Tax-exempt worked.&rdquo;</h3>
-        <p>We are a small district and the paperwork normally takes two weeks. MTW had us set up in a day, accepted our W-9, applied the exemption at checkout, and invoiced cleanly on Net-30. Our finance office now lists them as a preferred natural-materials vendor.</p>
-        <p class="who"><strong>Daniel R.</strong> &middot; Procurement Officer &middot; Greenwood Charter K-5</p>
-      </article>
-
-      <article class="review">
-        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <h3>&ldquo;We rotate one section each season.&rdquo;</h3>
-        <p>We ordered Sensory Play in the fall, Woodland in the winter, and Fairy Villages this spring. Each volume comes with the same care, the same packaging, the same hand-written note. The children read the change of season through the materials.</p>
-        <p class="who"><strong>Priya N.</strong> &middot; Head of School &middot; Olivewood Day School</p>
-      </article>
-
-      <article class="review">
-        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <h3>&ldquo;Slow goods, and they say so.&rdquo;</h3>
-        <p>The lead time is the lead time. They tell you up front, the calendar holds, and the goods arrive when promised. The first school vendor I have used where the ship date in the quote is the actual ship date.</p>
-        <p class="who"><strong>Theresa K.</strong> &middot; Director &middot; Sunday Hill Forest School</p>
-      </article>
-    </div>
-
-    <button class="rc-nav next" type="button" aria-label="Next reviews">
-      <svg viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg>
-    </button>
-
-    <div class="rc-dots" role="tablist" aria-label="Carousel pages"></div>
-  </div>
-
-  <div class="see-all">
-    <a href="#">Be among the first 100 to review &rarr;</a>
+    <p style="margin-top:18px;color:var(--stone);">Verified educator reviews appear here once approved educators publish them. We seed nothing.</p>
   </div>
 </section>
 
@@ -1526,6 +1580,23 @@ footer ul a:hover{ color: var(--cream); }
   </div>
 </section>
 
+<!-- =========================== CATALOG REQUEST =========================== -->
+<section class="catalog-req" data-screen-label="06 Catalog request">
+  <div class="catalog-req-inner">
+    <h3>Want a printed catalog <span class="it">mailed to you?</span></h3>
+    <p>We mail the Autumn Educator Catalog (the 2026 print edition) within three business days. Free, no obligation.</p>
+    <form action="/contact#contact_form" method="post" id="catalog-request" accept-charset="UTF-8">
+      <input type="hidden" name="form_type" value="contact"/>
+      <input type="hidden" name="utf8" value="&#x2713;"/>
+      <input type="hidden" name="contact[subject]" value="Print catalog request"/>
+      <input type="hidden" name="contact[mailing_address]" value="REQUEST_PRINT_CATALOG"/>
+      <input type="email" name="contact[email]" required placeholder="your email" aria-label="Email"/>
+      <button type="submit">Mail me a catalog</button>
+    </form>
+    <p class="micro">We&rsquo;ll email you to confirm your shipping address before sending.</p>
+  </div>
+</section>
+
 <!-- =========================== FOOTER =========================== -->
 <footer>
   <div class="wrap">
@@ -1548,9 +1619,9 @@ footer ul a:hover{ color: var(--cream); }
           <li><a href="/pages/educator-woodland">03 &middot; Woodland</a></li>
           <li><a href="/pages/educator-small-world">04 &middot; Small World &amp; Storytelling</a></li>
           <li><a href="/pages/educator-fairy-villages">05 &middot; Fairy Villages</a></li>
-          <li><a href="#" data-status="coming-soon">06 &middot; STEAM</a></li>
-          <li><a href="#" data-status="coming-soon">07 &middot; Dramatic Play</a></li>
-          <li><a href="#" data-status="coming-soon">08 &middot; Creative Arts</a></li>
+          <li><a href="/pages/educator-steam">06 &middot; STEAM</a></li>
+          <li><a href="/pages/educator-dramatic-play">07 &middot; Dramatic Play</a></li>
+          <li><a href="/pages/educator-creative-arts">08 &middot; Creative Arts</a></li>
         </ul>
       </div>
       <div>
@@ -1559,7 +1630,7 @@ footer ul a:hover{ color: var(--cream); }
           <li><a href="/pages/new-quote">Start a new quote</a></li>
           <li><a href="/pages/educator-dashboard">Educator dashboard</a></li>
           <li><a href="/pages/educator-program">Apply for an account</a></li>
-          <li><a href="#">School affiliate</a></li>
+          
         </ul>
       </div>
       <div>
@@ -1567,9 +1638,7 @@ footer ul a:hover{ color: var(--cream); }
         <ul>
           <li><a href="/pages/vendor-profile">Vendor profile</a></li>
           <li><a href="/pages/procurement-guide">Procurement guide</a></li>
-          <li><a href="/pages/schools">Ordering for schools</a></li>
-          <li><a href="#">SKU list and prices</a></li>
-          <li><a href="#">Catalog spread (PDF)</a></li>
+          
         </ul>
       </div>
     </div>
@@ -1577,10 +1646,10 @@ footer ul a:hover{ color: var(--cream); }
   <div class="foot-bottom">
     <span><em>Natural toys, curated by hand.</em> &copy; 2026 My Toy Wagon. All rights reserved.</span>
     <div>
-      <a href="https://mytoywagon.com">Back to the shop</a>
       <a href="/pages/vendor-profile">Vendor profile</a>
-      <a href="#">Terms</a>
-      <a href="#">Privacy</a>
+      <a href="/policies/terms-of-service">Terms</a>
+      <a href="/policies/privacy-policy">Privacy</a>
+      <a href="/account/logout">Sign out</a>
     </div>
   </div>
 </footer>
@@ -1648,8 +1717,11 @@ footer ul a:hover{ color: var(--cream); }
   })();
 </script>
 
+  {% section 'mtw-educator-footer' %}
 </body>
 </html>
 {%- else -%}
 {% render 'educator-gate' %}
 {%- endif -%}
+
+

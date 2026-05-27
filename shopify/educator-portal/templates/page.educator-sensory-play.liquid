@@ -22,7 +22,7 @@
      ========================================================================= -->
 <title>Sensory Play for Schools &middot; My Toy Wagon Educator Catalog</title>
 <meta name="description" content="Maple sensory trays, scented therapy dough, and Montessori sand trays for Pre-K to Grade 2 classrooms. Net-30 invoicing and tax-exempt ordering for approved schools.">
-<link rel="canonical" href="https://mytoywagon.com/pages/educator-sensory-play" />
+<link rel="canonical" href="/pages/educator-sensory-play" />
 
 <!-- Open Graph (social shares: Facebook, LinkedIn) -->
 <meta property="og:type" content="website" />
@@ -2168,12 +2168,9 @@ footer .cols .downloads a::after{
   width: 100%;
   overflow: hidden;
   border-radius: 2px;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 4 / 5;
 }
 .home .tile-wrap .tile{ width: 100%; height: 100%; min-height: 0; }
-/* Ensure all product photos fill the square frame, no letterboxing. */
-.home .tile-wrap .tile.has-photo img,
-.home .tile-wrap .tile img{ width: 100%; height: 100%; object-fit: cover; display: block; }
 .home .tile-wrap .overlay{
   position: absolute; inset: 0; z-index: 4; pointer-events: none;
   background: linear-gradient(to top, rgba(44,26,14,.65) 0%, rgba(44,26,14,0) 45%);
@@ -2588,7 +2585,7 @@ footer .cols .downloads a::after{
 }
 .companions .folk .f .tile{
   position: relative;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 1 / 1.1;
   width: 100%;
 }
 .companions .folk .f .name{
@@ -3092,7 +3089,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 .gallery.even .home.size-hero,
 .gallery.even .home.size-tall,
 .gallery.even .home.size-std{ grid-column: auto; }
-.gallery.even .home .tile-wrap{ aspect-ratio: 1 / 1; }
+.gallery.even .home .tile-wrap{ aspect-ratio: 3 / 4; }
 .gallery.even .home .tile-wrap .tile{ height: 100%; }
 @media (max-width: 1080px){ .gallery.even .homes{ grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 720px){ .gallery.even .homes{ grid-template-columns: repeat(2, 1fr); } }
@@ -3106,7 +3103,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 .gallery.strip .home:nth-child(4),
 .gallery.strip .home:nth-child(5){ grid-column: span 3; }
 .gallery.strip .home:nth-child(4) .tile-wrap,
-.gallery.strip .home:nth-child(5) .tile-wrap{ aspect-ratio: 1 / 1; }
+.gallery.strip .home:nth-child(5) .tile-wrap{ aspect-ratio: 16 / 9; }
 @media (max-width: 1080px){
   .gallery.strip .homes{ grid-template-columns: repeat(2, 1fr); }
   .gallery.strip .home:nth-child(1),
@@ -3308,6 +3305,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 </style>
 </head>
 <body>
+  {% section 'mtw-educator-header' %}
 
 <!-- =========================== UTILITY BAR =========================== -->
 <div class="utility">
@@ -3362,7 +3360,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 <div class="subnav">
   <div class="subnav-inner">
     <nav class="breadcrumb" aria-label="Breadcrumb">
-      <a href="/" class="home-crumb">Home</a>
+      <a href="/pages/educator-dashboard" class="home-crumb">Dashboard</a>
       <span class="sep" aria-hidden="true">/</span>
       <a href="/pages/educators">Educator Catalog</a>
       <span class="sep" aria-hidden="true">/</span>
@@ -4460,8 +4458,6 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
         <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="3"/><path d="M10 9.5v5l4.5-2.5z" fill="currentColor"/></svg></a>
         <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M14 4v10.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 4c0 2 1.5 4 4 4"/></svg></a>
       </div>
-
-      <p class="retail-link">Shopping for home? <a href="https://mytoywagon.com">Browse the full retail shop &rarr;</a></p>
     </div>
     <div class="cols">
       <div>
@@ -4484,7 +4480,6 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
           <li><a href="/pages/new-quote">Start a new quote</a></li>
           <li><a href="/pages/educator-dashboard">Educator dashboard</a></li>
           <li><a href="/pages/educator-register">Apply for an account</a></li>
-          <li><a href="/pages/school-affiliate">School affiliate</a></li>
         </ul>
       </div>
 
@@ -4718,8 +4713,10 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
   })();
 </script>
 
+  {% section 'mtw-educator-footer' %}
 </body>
 </html>
 {%- else -%}
 {% render 'educator-gate' %}
 {%- endif -%}
+

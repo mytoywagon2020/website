@@ -23,7 +23,7 @@
      ========================================================================= -->
 <title>Creative Arts &middot; My Toy Wagon Educator Catalog</title>
 <meta name="description" content="Hand-felted play mats, habitat puppets, and circle-time story sets for Pre-K to Grade 2 literacy classrooms. Hand-made in Nepal. Net-30 invoicing,...">
-<link rel="canonical" href="https://mytoywagon.com/pages/educator-creative-arts" />
+<link rel="canonical" href="/pages/educator-creative-arts" />
 
 <!-- Open Graph (social shares: Facebook, LinkedIn) -->
 <meta property="og:type" content="website" />
@@ -2171,9 +2171,6 @@ footer .cols .downloads a::after{
   aspect-ratio: 1 / 1;
 }
 .home .tile-wrap .tile{ width: 100%; height: 100%; min-height: 0; }
-/* Ensure every product photo fills the square frame, no letterboxing. */
-.home .tile-wrap .tile.has-photo img,
-.home .tile-wrap .tile img{ width: 100%; height: 100%; object-fit: cover; display: block; }
 .home .tile-wrap .overlay{
   position: absolute; inset: 0; z-index: 4; pointer-events: none;
   background: linear-gradient(to top, rgba(44,26,14,.65) 0%, rgba(44,26,14,0) 45%);
@@ -2588,7 +2585,7 @@ footer .cols .downloads a::after{
 }
 .companions .folk .f .tile{
   position: relative;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 1 / 1.1;
   width: 100%;
 }
 .companions .folk .f .name{
@@ -3083,7 +3080,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 .gallery.strip .home:nth-child(4),
 .gallery.strip .home:nth-child(5){ grid-column: span 3; }
 .gallery.strip .home:nth-child(4) .tile-wrap,
-.gallery.strip .home:nth-child(5) .tile-wrap{ aspect-ratio: 1 / 1; }
+.gallery.strip .home:nth-child(5) .tile-wrap{ aspect-ratio: 16 / 9; }
 @media (max-width: 1080px){
   .gallery.strip .homes{ grid-template-columns: repeat(2, 1fr); }
   .gallery.strip .home:nth-child(1),
@@ -3269,6 +3266,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 </style>
 </head>
 <body>
+  {% section 'mtw-educator-header' %}
 
 <!-- =========================== UTILITY BAR =========================== -->
 <div class="utility">
@@ -3323,7 +3321,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 <div class="subnav">
   <div class="subnav-inner">
     <nav class="breadcrumb" aria-label="Breadcrumb">
-      <a href="https://mytoywagon.com" class="home-crumb">Home</a>
+      <a href="/pages/educator-dashboard" class="home-crumb">Dashboard</a>
       <span class="sep" aria-hidden="true">/</span>
       <a href="/pages/educators">Educator Catalog</a>
       <span class="sep" aria-hidden="true">/</span>
@@ -3400,7 +3398,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       <div class="tile t-hue3 has-photo"><img src="https://cdn.shopify.com/s/files/1/0522/0882/8586/files/weavingstation_b780a863-8811-4c8e-bcfb-7e671c1bda72.png?v=1688516804&amp;width=1100" style="object-position: center 30%;" alt="A young girl weaving on a wooden weaving station for classroom creative-arts and the slow work of making"/>
         <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
       </div>
-      <a href="https://mytoywagon.com/products/q-toys-wooden-weaving-station" class="view-pdp" style="display:inline-block; margin-top:16px;">Weaving Frame &nbsp;&middot;&nbsp; MTW-CA-QWS &nbsp;&middot;&nbsp; View product &rarr;</a>
+      <a href="/products/q-toys-wooden-weaving-station" class="view-pdp" style="display:inline-block; margin-top:16px;">Weaving Frame &nbsp;&middot;&nbsp; MTW-CA-QWS &nbsp;&middot;&nbsp; View product &rarr;</a>
     </div>
     <div class="col-txt">
       <span class="eyebrow">Essay One &nbsp;&middot;&nbsp; The Slow Work</span>
@@ -3595,7 +3593,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
     </div>
 
     <div class="homes">
-      <article class="home"><div class="tile-wrap"><div class="tile t-hue3 has-photo"><img src="https://cdn.shopify.com/s/files/1/0522/0882/8586/files/Weaving_Frame.webp?v=1779721881&amp;width=1100" alt="A child at an open wooden weaving frame on the floor with trays of loose parts, for process art and nature weaving"/><span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span><span class="tag">[ THREADING N&deg;01 &nbsp;&middot;&nbsp; WEAVING FRAME ]</span></div><div class="overlay"></div><div class="float-name">Weaving Frame</div></div><div class="cap"><span class="no">01</span><span class="name">Weaving Frame</span><span class="desc">Four wooden sticks and hemp thread form an open weaving frame for process art, nature weaving, and seasonal classroom displays.</span><span class="meta">MTW-CA-QWS</span><div class="add-row"><a href="https://mytoywagon.com/products/q-toys-wooden-weaving-station" class="view-pdp">View product &rarr;</a></div></div></article>
+      <article class="home"><div class="tile-wrap"><div class="tile t-hue3 has-photo"><img src="https://cdn.shopify.com/s/files/1/0522/0882/8586/files/Weaving_Frame.webp?v=1779721881&amp;width=1100" alt="A child at an open wooden weaving frame on the floor with trays of loose parts, for process art and nature weaving"/><span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span><span class="tag">[ THREADING N&deg;01 &nbsp;&middot;&nbsp; WEAVING FRAME ]</span></div><div class="overlay"></div><div class="float-name">Weaving Frame</div></div><div class="cap"><span class="no">01</span><span class="name">Weaving Frame</span><span class="desc">Four wooden sticks and hemp thread form an open weaving frame for process art, nature weaving, and seasonal classroom displays.</span><span class="meta">MTW-CA-QWS</span><div class="add-row"><a href="/products/q-toys-wooden-weaving-station" class="view-pdp">View product &rarr;</a></div></div></article>
 
       <article class="home"><div class="tile-wrap"><div class="tile t-hue3-deep dark has-photo"><img src="https://cdn.shopify.com/s/files/1/0522/0882/8586/files/LapLoom.webp?v=1779721851&amp;width=1100" alt="Q Toys LapLoom, a portable hardwood tapestry loom for classroom creative-arts weaving and fiber work"/><span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span><span class="tag">[ THREADING N&deg;02 &nbsp;&middot;&nbsp; LAPLOOM ]</span></div><div class="overlay"></div><div class="float-name">LapLoom</div></div><div class="cap"><span class="no">02</span><span class="name">LapLoom</span><span class="desc">Portable hardwood tapestry loom for table, floor, or lap work: a longer-focus weaving tool for older children.</span><span class="meta">MTW-CA-FLL</span><div class="add-row"><a href="#" class="view-pdp">View product &rarr;</a></div></div></article>
 
@@ -3639,7 +3637,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 
       <article class="home"><div class="tile-wrap"><div class="tile t-hue3 has-photo"><img src="https://cdn.shopify.com/s/files/1/0522/0882/8586/files/Eco-Dough_rainbow_trio.webp?v=1779723147&amp;width=1100" alt="Eco-dough rainbow trio, natural modelling dough set for creative-arts"/><span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span><span class="tag">[ DOUGH N&deg;03 &nbsp;&middot;&nbsp; ECO-DOUGH &middot; RAINBOW TRIO ]</span></div><div class="overlay"></div><div class="float-name">Eco-Dough Trio</div></div><div class="cap"><span class="no">03</span><span class="name">Eco-Dough &middot; Rainbow Trio</span><span class="desc">All-natural, non-toxic playdough handmade in small batches. 4-color rainbow set. Made in Maine, USA. Ages 3+.</span><span class="meta">MTW-CA-EKD</span><div class="add-row"><a href="#" class="view-pdp">View product &rarr;</a></div></div></article>
 
-      <article class="home"><div class="tile-wrap"><div class="tile t-alt has-photo"><img src="https://cdn.shopify.com/s/files/1/0522/0882/8586/files/Sculpting_Dough.webp?v=1779723163&amp;width=1100" alt="Sculpting dough five-color set for creative-arts modelling and three-dimensional making"/><span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span><span class="tag">[ DOUGH N&deg;04 &nbsp;&middot;&nbsp; SCULPTING DOUGH ]</span></div><div class="overlay"></div><div class="float-name">Sculpting Dough</div></div><div class="cap"><span class="no">04</span><span class="name">Sculpting Dough</span><span class="desc">Plant-based sculpting dough, 5-color set in compostable kraft pouches. Vegan, non-toxic. Ages 2+.</span><span class="meta">MTW-CA-VBS</span><div class="add-row"><a href="https://mytoywagon.com/products/veggie-baby-edible-sculpting-dough" class="view-pdp">View product &rarr;</a></div></div></article>
+      <article class="home"><div class="tile-wrap"><div class="tile t-alt has-photo"><img src="https://cdn.shopify.com/s/files/1/0522/0882/8586/files/Sculpting_Dough.webp?v=1779723163&amp;width=1100" alt="Sculpting dough five-color set for creative-arts modelling and three-dimensional making"/><span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span><span class="tag">[ DOUGH N&deg;04 &nbsp;&middot;&nbsp; SCULPTING DOUGH ]</span></div><div class="overlay"></div><div class="float-name">Sculpting Dough</div></div><div class="cap"><span class="no">04</span><span class="name">Sculpting Dough</span><span class="desc">Plant-based sculpting dough, 5-color set in compostable kraft pouches. Vegan, non-toxic. Ages 2+.</span><span class="meta">MTW-CA-VBS</span><div class="add-row"><a href="/products/veggie-baby-edible-sculpting-dough" class="view-pdp">View product &rarr;</a></div></div></article>
 
       <article class="home"><div class="tile-wrap"><div class="tile t-primary has-photo"><img src="https://cdn.shopify.com/s/files/1/0522/0882/8586/files/Mini_Kiddough_Rainbow_Set.webp?v=1779739717&amp;width=1100" alt="Mini Kiddough rainbow set of plant-pigment dough tubs for creative-arts color mixing"/><span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span><span class="tag">[ DOUGH N&deg;05 &nbsp;&middot;&nbsp; MINI KIDDOUGH RAINBOW SET ]</span></div><div class="overlay"></div><div class="float-name">Mini Kiddough</div></div><div class="cap"><span class="no">05</span><span class="name">Mini Kiddough Rainbow Set</span><span class="desc">Seven mini tubs of plant-pigment dough in rainbow colors, perfect for small hands and a color-mixing introduction.</span><span class="meta">MTW-CA-MKR</span><div class="add-row"><a href="#" class="view-pdp">View product &rarr;</a></div></div></article>
     </div>
@@ -3815,7 +3813,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 
       <article class="home"><div class="tile-wrap"><div class="tile t-hue3 has-photo"><img src="https://cdn.shopify.com/s/files/1/0522/0882/8586/files/Finger_Paint.webp?v=1779723765&amp;width=1100" alt="Natural finger paint set for creative-arts mark-making and sensory painting"/><span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span><span class="tag">[ PAINT N&deg;03 &nbsp;&middot;&nbsp; FINGER PAINT ]</span></div><div class="overlay"></div><div class="float-name">Finger Paint</div></div><div class="cap"><span class="no">03</span><span class="name">Finger Paint</span><span class="desc">Plant-based finger paints for sensory mark-making, color mixing, and early process-art exploration.</span><span class="meta">MTW-CA-EUF</span><div class="add-row"><a href="#" class="view-pdp">View product &rarr;</a></div></div></article>
 
-      <article class="home"><div class="tile-wrap"><div class="tile t-cream has-photo"><img src="https://cdn.shopify.com/s/files/1/0522/0882/8586/files/Veggie_Baby_Finger_Paint.webp?v=1779723782&amp;width=1100" alt="Veggie-based baby finger paint for creative-arts mark-making and sensory painting"/><span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span><span class="tag">[ PAINT N&deg;04 &nbsp;&middot;&nbsp; VEGGIE BABY PAINT ]</span></div><div class="overlay"></div><div class="float-name">Baby Paint</div></div><div class="cap"><span class="no">04</span><span class="name">Veggie Baby &middot; Finger Paint</span><span class="desc">Vegetable-pigment finger paint set in compostable kraft pouches for tactile color play and washable process art.</span><span class="meta">MTW-CA-VBF</span><div class="add-row"><a href="https://mytoywagon.com/products/veggie-baby-edible-finger-paints" class="view-pdp">View product &rarr;</a></div></div></article>
+      <article class="home"><div class="tile-wrap"><div class="tile t-cream has-photo"><img src="https://cdn.shopify.com/s/files/1/0522/0882/8586/files/Veggie_Baby_Finger_Paint.webp?v=1779723782&amp;width=1100" alt="Veggie-based baby finger paint for creative-arts mark-making and sensory painting"/><span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span><span class="tag">[ PAINT N&deg;04 &nbsp;&middot;&nbsp; VEGGIE BABY PAINT ]</span></div><div class="overlay"></div><div class="float-name">Baby Paint</div></div><div class="cap"><span class="no">04</span><span class="name">Veggie Baby &middot; Finger Paint</span><span class="desc">Vegetable-pigment finger paint set in compostable kraft pouches for tactile color play and washable process art.</span><span class="meta">MTW-CA-VBF</span><div class="add-row"><a href="/products/veggie-baby-edible-finger-paints" class="view-pdp">View product &rarr;</a></div></div></article>
 
       <article class="home"><div class="tile-wrap"><div class="tile t-primary has-photo"><img src="https://cdn.shopify.com/s/files/1/0522/0882/8586/files/Flower_Paper_Kit.webp?v=1779723779&amp;width=1100" alt="Flower paper craft kit for creative-arts paper-making and collage"/><span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span><span class="tag">[ PAINT N&deg;05 &nbsp;&middot;&nbsp; FLOWER PAPER KIT ]</span></div><div class="overlay"></div><div class="float-name">Paper Kit</div></div><div class="cap"><span class="no">05</span><span class="name">Flower Paper Kit</span><span class="desc">Make handmade paper from petals and pulp using a pine frame, screen mesh, sponge, instructions, and pressed botanicals.</span><span class="meta">MTW-CA-HCP</span><div class="add-row"><a href="#" class="view-pdp">View product &rarr;</a></div></div></article>
     </div>
@@ -4160,8 +4158,6 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
         <a href="/pages/vendor-profile" style="color:rgba(250,246,237,.75);text-decoration:none;">Vendor profile</a>
         <a href="mailto:educator@mytoywagon.com?subject=Reference%20request" style="color:rgba(250,246,237,.75);text-decoration:none;">References on request</a>
       </div>
-
-      <p class="retail-link">Shopping for home? <a href="https://mytoywagon.com">Browse the full retail shop &rarr;</a></p>
     </div>
     <div class="cols">
       <div>
@@ -4184,7 +4180,6 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
           <li><a href="/pages/new-quote">Start a new quote</a></li>
           <li><a href="/pages/educator-dashboard">Educator dashboard</a></li>
           <li><a href="/pages/educator-program">Apply for an account</a></li>
-          <li><a href="/pages/school-affiliate">School affiliate</a></li>
         </ul>
       </div>
 
@@ -4418,8 +4413,10 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
   })();
 </script>
 
+  {% section 'mtw-educator-footer' %}
 </body>
 </html>
 {%- else -%}
 {% render 'educator-gate' %}
 {%- endif -%}
+

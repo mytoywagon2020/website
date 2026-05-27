@@ -1,31 +1,10 @@
 {% layout none %}
 {%- comment -%}
-  Educator quote builder — high-conversion, leak-proof.
-
-  STACK: Shopify contact form + Helium (Tally retired 2026-05).
-  The dashboard's "Awaiting PO" wagon-card state depends on
-  customer.metafields.educator.open_quote_id (set by staff in admin when
-  they reply with the quote) OR on a localStorage fallback set client-side
-  on successful submission. Both checked by the dashboard.
-
-  CONVERSION DESIGN PRINCIPLES (do not relitigate):
-    - Trust signals above the fold: "No payment now. Nothing reserved."
-    - Cart contents always visible alongside form (left/right split)
-    - Pre-fill every field we can from customer + metafields
-    - One-click submit; live loading state; double-submit prevented
-    - Confirmation page is its own visual (quote ID prominent + "what's next")
-    - Cart cleared on success so dashboard reflects new state
-    - localStorage written so dashboard awaiting-PO state shows immediately
-    - Mobile-perfect; no horizontal scroll; CTAs full-width
-
-  NO-LEAK FAILURE MODES HANDLED:
-    - Empty cart: clear actionable empty-state pointing to catalog
-    - Network error on submit: form preserved, retry surface inline
-    - Network error on cart-clear: graceful (educator sees confirmation anyway)
-    - Form validation: native required + JS gate before fetch
-    - Double-submit: button disabled + cooldown
-    - JS disabled: native form post still works, success block renders
-    - Cart preserved if educator leaves mid-fill
+  Educator quote builder — the cart doubles as the quote basket.
+  Frictionless + non-binding: submitting sends an itemized request to the team via
+  Shopify's native contact form. NO inventory is allocated here; allocation happens
+  later only on a confirmed PO (or a trusted-relationship hold). Credit-card buyers
+  use normal checkout instead. Gated to approved/B2B educators.
 {%- endcomment -%}
 {%- assign is_approved = false -%}
 {%- if customer and customer.tags contains 'educator-approved' -%}{%- assign is_approved = true -%}{%- endif -%}
@@ -37,482 +16,174 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
-  <title>Request a quote · {{ shop.name }}</title>
+  <title>Request a Quote | {{ shop.name }}</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --cream:#F5F0E5; --warm-white:#FFFCF7; --ink:#2C2C2A; --forest:#3B6D11;
-      --amber:#854F0B; --stone:#5F5E5A; --card-bg:#EDE3CD;
-      --rule:rgba(44,44,42,0.12); --rule-strong:rgba(44,44,42,0.22);
-      --moss:#5A7240; --body-bg:#dcd5c5;
-      --err:#a72c29; --ok:#3B6D11;
-    }
+    :root{--cream:#F5F0E5;--warm-white:#FFFCF7;--ink:#2C2C2A;--forest:#3B6D11;--amber:#854F0B;--stone:#5F5E5A;--card-bg:#EDE3CD;--rule:rgba(44,44,42,0.12);--rule-strong:rgba(44,44,42,0.22);}
     *{box-sizing:border-box;} html,body{margin:0;padding:0;}
-    body{font-family:'Mulish',sans-serif;color:var(--ink);background:var(--body-bg);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;}
-    a{color:inherit;text-decoration:none;}
-    img{max-width:100%;display:block;}
-
-    /* Utility band */
-    .utility{background:var(--ink);color:rgba(245,240,229,.8);font-size:12px;letter-spacing:.06em;}
-    .utility__inner{max-width:1080px;margin:0 auto;padding:10px 40px;display:flex;justify-content:space-between;gap:16px;}
-
-    /* Hero band */
-    .q-hero{background:var(--cream);border-bottom:.5px solid var(--rule);}
-    .q-hero__inner{max-width:1080px;margin:0 auto;padding:36px 40px 24px;}
-    .q-hero__eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--stone);font-weight:600;}
-    .q-hero h1{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:500;margin:10px 0 6px;letter-spacing:-.01em;line-height:1.05;}
-    .q-hero h1 em{font-style:italic;}
-    .q-hero__lede{color:var(--stone);font-size:15.5px;line-height:1.55;margin:8px 0 18px;max-width:680px;}
-
-    /* Trust pills */
-    .trust-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;}
-    .trust-pill{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;background:var(--warm-white);border:.5px solid var(--rule-strong);border-radius:999px;font-size:12px;color:var(--ink);}
-    .trust-pill .dot{width:6px;height:6px;border-radius:50%;background:var(--forest);}
-
-    /* Main grid */
-    .q-main{max-width:1080px;margin:0 auto;padding:30px 40px 60px;display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start;}
-
-    /* Cards */
-    .q-card{background:var(--warm-white);border:.5px solid var(--rule);border-radius:3px;padding:24px 26px;}
-    .q-card h2{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:500;margin:0 0 16px;}
-    .q-card h2 em{font-style:italic;}
-    .q-card__sub{font-size:12.5px;color:var(--stone);margin:-10px 0 16px;}
-
-    /* Basket */
-    .basket-table{width:100%;border-collapse:collapse;font-size:13.5px;}
-    .basket-table td{padding:12px 0;border-bottom:.5px solid var(--rule);vertical-align:middle;}
-    .basket-table tr:last-child td{border-bottom:0;}
-    .q-thumb{width:46px;height:46px;border-radius:2px;border:.5px solid var(--rule);object-fit:cover;background:#fff;}
-    .q-it-title{font-weight:600;color:var(--ink);line-height:1.3;}
-    .q-it-variant{font-size:11.5px;color:var(--stone);}
-    .basket-table .qty{text-align:center;white-space:nowrap;color:var(--stone);font-size:13px;}
-    .basket-table .price{text-align:right;white-space:nowrap;font-weight:600;}
-
-    .q-sub{display:flex;justify-content:space-between;align-items:baseline;padding:14px 0 0;margin-top:6px;border-top:1px solid var(--rule-strong);font-size:14px;}
-    .q-sub strong{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;}
-    .q-disclaimer{font-size:12px;color:var(--stone);margin:14px 0 0;line-height:1.5;}
-    .q-disclaimer a{color:var(--forest);font-weight:600;}
-
-    .q-empty{padding:24px 0;text-align:center;color:var(--stone);font-size:14.5px;}
-    .q-empty a{color:var(--forest);font-weight:700;}
-
-    /* Form fields */
+    body{font-family:'Mulish',sans-serif;color:var(--ink);background:var(--cream);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+    a{color:inherit;text-decoration:none;} img{max-width:100%;display:block;}
+    .wrap{max-width:1080px;margin:0 auto;padding:0 40px;}
+    .utility{background:var(--ink);color:var(--cream);font-size:12.5px;letter-spacing:.06em;}
+    .utility .wrap{display:flex;justify-content:space-between;align-items:center;padding:11px 40px;}
+    .utility a{color:rgba(245,240,229,.75);} .utility a:hover{color:var(--cream);}
+    header.nav{border-bottom:.5px solid var(--rule);background:var(--cream);}
+    header.nav .wrap{display:flex;justify-content:space-between;align-items:center;padding:20px 40px;gap:24px;}
+    .logo{font-family:'Cormorant Garamond',serif;font-size:26px;letter-spacing:.2em;text-transform:uppercase;line-height:1;}
+    .logo small{display:block;font-family:'Mulish',sans-serif;font-size:10.5px;letter-spacing:.22em;color:var(--stone);margin-top:7px;}
+    .nav-links{display:flex;gap:26px;font-size:14px;font-weight:500;} .nav-links a:hover{color:var(--forest);}
+    .q-hero{padding:44px 0 6px;}
+    .q-hero .eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--stone);font-weight:600;}
+    .q-hero h1{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:500;margin:12px 0 8px;letter-spacing:-.01em;}
+    .q-hero p{color:var(--stone);margin:0;max-width:64ch;}
+    .q-note{background:#f3f6ee;border:1px solid var(--forest);border-radius:3px;padding:14px 18px;margin:22px 0;font-size:13.5px;line-height:1.6;}
+    .q-note strong{color:var(--forest);}
+    .q-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:36px;align-items:start;padding:14px 0 50px;}
+    .q-card{background:var(--warm-white);border:.5px solid var(--rule);border-radius:3px;padding:26px;}
+    .q-card h2{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:500;margin:0 0 16px;}
+    table.q-items{width:100%;border-collapse:collapse;font-size:14px;}
+    table.q-items td{padding:12px 8px;border-bottom:.5px solid var(--rule);vertical-align:middle;}
+    .q-thumb{width:54px;height:54px;border-radius:2px;object-fit:cover;background:var(--card-bg);}
+    .q-it-title{font-weight:600;} .q-it-variant{font-size:12.5px;color:var(--stone);}
+    .q-sub{display:flex;justify-content:space-between;font-size:14px;padding:14px 8px 0;}
+    .q-empty{background:var(--warm-white);border:1px dashed var(--rule-strong);border-radius:3px;padding:40px;text-align:center;color:var(--stone);}
     label.q-l{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--stone);font-weight:600;margin:14px 0 5px;}
-    label.q-l.req::after{content:" *";color:var(--err);}
-    .q-in,.q-ta,.q-se{
-      width:100%;padding:11px 12px;font-family:inherit;font-size:14px;color:var(--ink);
-      background:#fff;border:.5px solid var(--rule-strong);border-radius:2px;
-      transition:border-color 120ms ease, box-shadow 120ms ease;
-    }
-    .q-in:focus,.q-ta:focus,.q-se:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 3px rgba(44,44,42,.06);}
-    .q-ta{min-height:84px;resize:vertical;font-family:inherit;}
-    .q-row2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
-
-    .q-btn{
-      display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;
-      margin-top:20px;padding:14px 24px;font-size:12px;font-weight:700;letter-spacing:.1em;
-      text-transform:uppercase;border-radius:2px;background:var(--ink);color:var(--cream);
-      border:.5px solid var(--ink);cursor:pointer;font-family:inherit;
-      transition:background 160ms ease, opacity 120ms ease;
-    }
+    .q-in,.q-ta,.q-se{width:100%;border:.5px solid var(--rule-strong);background:var(--cream);border-radius:2px;padding:11px 13px;font-family:inherit;font-size:14px;color:var(--ink);}
+    .q-ta{min-height:84px;resize:vertical;}
+    .q-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:18px;padding:14px 24px;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;border-radius:2px;background:var(--ink);color:var(--cream);border:.5px solid var(--ink);cursor:pointer;}
     .q-btn:hover{background:var(--forest);border-color:var(--forest);}
-    .q-btn[disabled]{opacity:.55;cursor:not-allowed;}
-    .q-btn .spinner{display:none;width:14px;height:14px;border:2px solid rgba(245,240,229,.3);border-top-color:var(--cream);border-radius:50%;animation:spin 700ms linear infinite;}
-    .q-btn[data-loading="1"] .spinner{display:inline-block;}
-    @keyframes spin{to{transform:rotate(360deg);}}
-    .q-alt{display:block;text-align:center;margin-top:12px;font-size:11.5px;color:var(--forest);font-weight:700;letter-spacing:.06em;}
-    .q-alt:hover{color:var(--ink);}
-
-    /* Inline error/success */
-    .q-error{background:#fff1f0;border:.5px solid #e8b8b5;color:var(--err);padding:12px 14px;border-radius:2px;font-size:13px;margin:10px 0 0;display:none;}
-    .q-error[data-show="1"]{display:block;}
-
-    /* Success state */
-    .q-success-wrap{max-width:780px;margin:0 auto;padding:60px 40px;}
-    .q-success-card{background:var(--warm-white);border:.5px solid var(--rule);border-radius:3px;padding:48px 42px;text-align:center;}
-    .q-success-eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--forest);font-weight:700;}
-    .q-success h2{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:500;margin:16px 0 8px;line-height:1.1;}
-    .q-success h2 em{font-style:italic;}
-    .q-success .quote-id{display:inline-block;margin:16px 0 22px;padding:10px 18px;background:var(--cream);border:.5px solid var(--rule-strong);border-radius:2px;font-family:'Mulish',monospace;font-size:14px;font-weight:600;letter-spacing:.05em;}
-    .q-success__intro{color:var(--stone);font-size:15px;line-height:1.6;max-width:520px;margin:0 auto 28px;}
-    .q-success__steps{text-align:left;max-width:480px;margin:0 auto 28px;padding:24px 26px;background:var(--cream);border-radius:2px;}
-    .q-success__steps h3{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:500;margin:0 0 14px;font-style:italic;}
-    .q-success__steps ol{margin:0;padding-left:20px;font-size:13.5px;line-height:1.7;color:var(--ink);}
-    .q-success__steps li{margin-bottom:6px;}
-    .q-success__steps li strong{font-weight:700;}
-    .q-success__cta{display:inline-block;margin-top:8px;padding:13px 28px;background:var(--ink);color:var(--cream);font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border-radius:2px;}
-    .q-success__cta:hover{background:var(--forest);}
-    .q-success__alt{display:block;margin-top:14px;font-size:12.5px;color:var(--stone);}
-    .q-success__alt a{color:var(--forest);font-weight:600;}
-
-    /* Footer */
-    .foot{background:var(--cream);border-top:.5px solid var(--rule);padding:22px 40px;color:var(--stone);font-size:12.5px;}
-    .foot__inner{max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;gap:16px;}
-    .foot a{color:var(--forest);font-weight:600;}
-
-    /* Mobile */
-    @media (max-width:860px){
-      .utility__inner{padding:8px 16px;flex-wrap:wrap;justify-content:center;gap:6px;font-size:10.5px;}
-      .q-hero__inner{padding:24px 16px 18px;}
-      .q-hero h1{font-size:30px;}
-      .q-hero__lede{font-size:14px;}
-      .q-main{grid-template-columns:1fr;gap:16px;padding:16px;}
-      .q-card{padding:18px 18px;}
-      .q-card h2{font-size:22px;margin-bottom:12px;}
-      .q-row2{grid-template-columns:1fr;gap:0;}
-      .trust-row{margin-top:4px;}
-      .trust-pill{font-size:11px;padding:5px 10px;}
-      .q-success-wrap{padding:30px 16px;}
-      .q-success-card{padding:28px 22px;}
-      .q-success h2{font-size:28px;}
-      .q-success .quote-id{font-size:13px;padding:8px 14px;}
-      .q-success__steps{padding:18px 20px;}
-      .foot__inner{flex-direction:column;align-items:center;text-align:center;gap:6px;padding:0 16px;}
-    }
+    .q-alt{display:block;text-align:center;margin-top:14px;font-size:13px;color:var(--forest);font-weight:600;}
+    .q-success{background:#e7f0e0;border:1px solid var(--forest);border-radius:3px;padding:18px 20px;color:var(--ink);margin:0 0 22px;}
+    .q-row2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+    footer.foot{border-top:.5px solid var(--rule);margin-top:30px;background:var(--cream);}
+    footer.foot .wrap{display:flex;justify-content:space-between;padding:26px 40px;font-size:12px;color:var(--stone);flex-wrap:wrap;gap:12px;}
+    @media(max-width:860px){.q-grid{grid-template-columns:1fr;}.nav-links{display:none;}.q-row2{grid-template-columns:1fr;}.wrap,.utility .wrap,header.nav .wrap,footer.foot .wrap{padding-left:20px;padding-right:20px;}}
   </style>
 </head>
 <body>
+  {% section 'mtw-educator-header' %}
+  <div class="utility"><div class="wrap">
+    <span>My Toy Wagon &middot; Educator Portal</span>
+    <span><a href="/pages/educator-dashboard">Dashboard</a> &nbsp;&middot;&nbsp; <a href="{{ routes.account_logout_url }}">Sign out</a></span>
+  </div></div>
+  <header class="nav"><div class="wrap">
+    <a href="/pages/educator-dashboard" class="logo">My Toy Wagon<small>Educator Portal</small></a>
+    <nav class="nav-links">
+      <a href="/pages/educators">Educator Catalog</a>
+      <a href="/pages/educator-dashboard">Dashboard</a>
+      <a href="/pages/procurement-guide">Procurement</a>
+    </nav>
+  </div></header>
 
-  {%- comment -%} Render the success page if the form just posted successfully {%- endcomment -%}
-  {%- if form.posted_successfully? -%}
-  <div class="utility">
-    <div class="utility__inner">
-      <div>Quote request received · Approved educator</div>
-      <div>(626) 841-0421 · educators@mytoywagon.com</div>
+  <main class="wrap">
+    <section class="q-hero">
+      <span class="eyebrow">Educator Catalog</span>
+      <h1>Request a quote</h1>
+      <p>Build your basket from the catalog, then send it as a quote. We&rsquo;ll reply with an itemized quote (pricing held 45 days) you can take to procurement.</p>
+    </section>
+
+    <div class="q-note">
+      <strong>No payment now, and nothing is reserved yet.</strong> Inventory is allocated only once your purchase order is confirmed (or by prior arrangement for established accounts). Need it faster? You can also <a href="{{ routes.cart_url }}" style="color:var(--forest);font-weight:700;">pay now &mdash; card, Shop Pay, Apple Pay, Google Pay, or ACH</a> at checkout.
     </div>
-  </div>
 
-  <main class="q-success-wrap">
-    <div class="q-success-card q-success">
-      <div class="q-success-eyebrow">Quote request received</div>
-      <h2>Thank you, <em>{% if customer.first_name != blank %}{{ customer.first_name }}{% else %}educator{% endif %}</em>.</h2>
-      <div class="quote-id" id="qid-display">Q-PENDING</div>
-      <p class="q-success__intro">
-        Your itemized quote request is in our queue. Our team replies within
-        <strong>one business day</strong> with educator pricing, final shipping, tax,
-        and terms. Nothing has been charged and no inventory is reserved yet.
-      </p>
+    <div class="q-note" style="background:#fbf6ec;border-color:var(--amber);">
+      <strong style="color:var(--amber);">About delivery.</strong> Classroom quantities are brought in for you &mdash; we rarely keep 25+ of an item on the shelf. Stocked lines arrive on a <strong>short lead time</strong>; handmade or made-to-order pieces take longer, and seasonal items ship in the next delivery window (Aug&ndash;Sep or May&ndash;Jun). Your quote confirms the exact timing for your quantities.
+    </div>
 
-      <div class="q-success__steps">
-        <h3>What happens next</h3>
-        <ol>
-          <li><strong>We reply within 1 business day</strong> with a formal quote (PDF), held 45 days.</li>
-          <li><strong>You issue a PO</strong> (or pay by card / Shop Pay / ACH at checkout). Net-30 and Net-60 available.</li>
-          <li><strong>We confirm, allocate, and ship</strong> to your delivery window.</li>
-        </ol>
+    <div class="q-grid">
+      <div class="q-card">
+        <h2>Your quote basket</h2>
+        {%- if cart.item_count > 0 -%}
+          <table class="q-items">
+            {%- for item in cart.items -%}
+              <tr>
+                <td style="width:54px;">{%- if item.image -%}<img class="q-thumb" src="{{ item.image | image_url: width: 120 }}" alt="{{ item.product.title | escape }}">{%- endif -%}</td>
+                <td>
+                  <div class="q-it-title">{{ item.product.title }}</div>
+                  {%- unless item.variant.title contains 'Default' -%}<div class="q-it-variant">{{ item.variant.title }}</div>{%- endunless -%}
+                  {%- if item.sku != blank -%}<div class="q-it-variant">SKU {{ item.sku }}</div>{%- endif -%}
+                </td>
+                <td style="text-align:center;white-space:nowrap;">&times; {{ item.quantity }}</td>
+                <td style="text-align:right;white-space:nowrap;">{{ item.final_line_price | money }}</td>
+              </tr>
+            {%- endfor -%}
+          </table>
+          <div class="q-sub"><span>Estimated subtotal</span><strong>{{ cart.total_price | money }}</strong></div>
+          <p style="font-size:12px;color:var(--stone);margin:10px 8px 0;">Estimate only. Final educator pricing, <strong>shipping, tax,</strong> and terms are calculated by our team and confirmed on your quote. <a href="{{ routes.cart_url }}" style="color:var(--forest);font-weight:600;">Edit basket &rarr;</a></p>
+        {%- else -%}
+          <div class="q-empty">Your quote basket is empty. <a href="/pages/educators" style="color:var(--forest);font-weight:600;">Browse the Educator Catalog &rarr;</a></div>
+        {%- endif -%}
       </div>
 
-      <a class="q-success__cta" href="/pages/educator-dashboard">Return to your dashboard &rarr;</a>
-      <span class="q-success__alt">
-        Need a curriculum-alignment letter? <a href="mailto:educators@mytoywagon.com?subject=Curriculum-alignment%20letter%20request">Email us</a>.
-      </span>
+      <div class="q-card">
+        <h2>Send your quote</h2>
+        {%- if cart.item_count > 0 -%}
+          {%- capture items_text -%}{%- for item in cart.items -%}{{ item.quantity }} x {{ item.product.title }}{% unless item.variant.title contains 'Default' %} ({{ item.variant.title }}){% endunless %}{% if item.sku != blank %} [SKU {{ item.sku }}]{% endif %} — {{ item.final_line_price | money }}{% unless forloop.last %} | {% endunless %}{%- endfor -%} || Estimated subtotal {{ cart.total_price | money }}{%- endcapture -%}
+          {%- form 'contact', id: 'edu-quote-form' -%}
+            {%- if form.posted_successfully? -%}
+              <div class="q-success"><strong>Quote request received.</strong> Our team will review it and reply within one business day with an itemized quote &mdash; including final shipping and tax. Nothing has been charged or reserved.</div>
+            {%- endif -%}
+            <input type="hidden" name="contact[Submission type]" value="Educator quote request">
+            <input type="hidden" name="contact[Items]" value="{{ items_text | escape }}">
+            <input type="hidden" name="contact[Account email]" value="{{ customer.email }}">
+
+            <label class="q-l">School / organization</label>
+            <input class="q-in" type="text" name="contact[Organization]" value="{{ customer.current_company.name | default: '' }}" required>
+
+            <div class="q-row2">
+              <div>
+                <label class="q-l">Contact name</label>
+                <input class="q-in" type="text" name="contact[Contact name]" value="{{ customer.name | strip }}" required>
+              </div>
+              <div>
+                <label class="q-l">Reply email</label>
+                <input class="q-in" type="email" name="contact[email]" value="{{ customer.email }}" required>
+              </div>
+            </div>
+
+            <div class="q-row2">
+              <div>
+                <label class="q-l">PO number (optional)</label>
+                <input class="q-in" type="text" name="contact[PO number]" placeholder="If you already have one">
+              </div>
+              <div>
+                <label class="q-l">Needed by</label>
+                <select class="q-se" name="contact[Delivery window]">
+                  <option>Next available window</option>
+                  <option>Fall delivery (Aug–Sep)</option>
+                  <option>Spring delivery (May–Jun)</option>
+                  <option>As soon as possible</option>
+                </select>
+              </div>
+            </div>
+
+            <label class="q-l">For program / classroom (optional)</label>
+            <input class="q-in" type="text" name="contact[Program]" placeholder="e.g. Pre-K, Toddler Room A, Title I">
+
+            <label class="q-l">Ship-to &amp; notes</label>
+            <textarea class="q-ta" name="contact[body]" placeholder="Ship-to address(es), tax-exempt status, anything we should know."></textarea>
+
+            <button class="q-btn" type="submit">Submit quote request</button>
+            <a class="q-alt" href="{{ routes.cart_url }}">Or pay now &mdash; card, Shop Pay, Apple Pay &amp; ACH &rarr;</a>
+          {%- endform -%}
+        {%- else -%}
+          <p style="color:var(--stone);">Add items to your basket first, then come back to send your quote.</p>
+          <a class="q-btn" href="/pages/educators" style="text-decoration:none;">Browse the catalog</a>
+        {%- endif -%}
+      </div>
     </div>
   </main>
 
-  <footer class="foot">
-    <div class="foot__inner">
-      <span>&copy; 2026 My Toy Wagon &middot; Educator Portal</span>
-      <span><a href="/pages/educator-dashboard">Dashboard</a> &middot; <a href="/pages/educators">Catalog</a></span>
-    </div>
-  </footer>
-
-  <script>
-  (function(){
-    // On a successful native-form post, run the same cleanup as the AJAX path:
-    // generate/restore quote ID, clear cart, write localStorage so the
-    // dashboard shows the Awaiting-PO wagon state on next visit.
-    function pad(n){return String(n).padStart(2,'0');}
-    function newQuoteId(){
-      var d = new Date();
-      var ymd = d.getFullYear() + pad(d.getMonth()+1) + pad(d.getDate());
-      var rand = Math.random().toString(16).slice(2,6).toUpperCase();
-      return 'Q-' + ymd + '-' + rand;
-    }
-    // Read prior localStorage entry written by submit handler so we can
-    // preserve the cart_token / items_count / total_formatted fields.
-    var savedObj = null;
-    try {
-      var saved = localStorage.getItem('mtw_edu_quote_pending');
-      if (saved) savedObj = JSON.parse(saved);
-    } catch(e){}
-    var qid = (savedObj && savedObj.id) ? savedObj.id : newQuoteId();
-
-    var disp = document.getElementById('qid-display');
-    if (disp) disp.textContent = qid;
-
-    // Clear cart server-side (idempotent — safe if already empty).
-    fetch('/cart/clear.js', {method:'POST', credentials:'same-origin'}).catch(function(){});
-
-    // Re-write the localStorage entry preserving all cart-context fields
-    // captured by the submit handler so the dashboard can render a richer
-    // Awaiting-PO state (X items · $YYY) without server data.
-    try {
-      var nextObj = {
-        id: qid,
-        at: (savedObj && savedObj.at) ? savedObj.at : Date.now(),
-        cart_token: savedObj && savedObj.cart_token,
-        items_count: savedObj && savedObj.items_count,
-        total_formatted: savedObj && savedObj.total_formatted
-      };
-      localStorage.setItem('mtw_edu_quote_pending', JSON.stringify(nextObj));
-    } catch(e){}
-
-    // Optional: fire a Klaviyo event if Klaviyo is loaded on the page.
-    if (window.klaviyo && typeof window.klaviyo.push === 'function') {
-      window.klaviyo.push(['track', 'Submitted Educator Quote', {
-        QuoteId: qid,
-        Source: 'new-quote-page'
-      }]);
-    }
-  })();
-  </script>
-  </body>
-  </html>
-  {%- else -%}
-
-  <div class="utility">
-    <div class="utility__inner">
-      <div>Approved educator &middot; Net-30 on file &middot; Tax-exempt</div>
-      <div>educators@mytoywagon.com &middot; (626) 841-0421</div>
-    </div>
-  </div>
-
-  <section class="q-hero">
-    <div class="q-hero__inner">
-      <div class="q-hero__eyebrow">Step 1 of 3 &middot; Request a quote</div>
-      <h1>Request a <em>quote</em>.</h1>
-      <p class="q-hero__lede">
-        <strong>No payment now. Nothing reserved yet.</strong> We reply within one
-        business day with educator pricing, final shipping, tax, and terms.
-        Inventory is allocated only once your purchase order is confirmed.
-        Prefer to pay directly? <a href="{{ routes.cart_url }}" style="color:var(--forest);font-weight:700;">Checkout with card, Shop Pay, Apple Pay, or ACH &rarr;</a>
-      </p>
-      <div class="trust-row">
-        <span class="trust-pill"><span class="dot"></span>1-business-day reply</span>
-        <span class="trust-pill"><span class="dot"></span>Net-30 / Net-60 available</span>
-        <span class="trust-pill"><span class="dot"></span>Tax-exempt purchasing</span>
-        <span class="trust-pill"><span class="dot"></span>Quote held 45 days</span>
-      </div>
-    </div>
-  </section>
-
-  <main class="q-main">
-
-    <div class="q-card">
-      <h2>Your quote basket</h2>
-      {%- if cart.item_count > 0 -%}
-        <table class="basket-table">
-          {%- for item in cart.items -%}
-            <tr>
-              <td style="width:54px;padding-right:10px;">{%- if item.image -%}<img class="q-thumb" src="{{ item.image | image_url: width: 120 }}" alt="{{ item.product.title | escape }}">{%- endif -%}</td>
-              <td>
-                <div class="q-it-title">{{ item.product.title }}</div>
-                {%- unless item.variant.title contains 'Default' -%}<div class="q-it-variant">{{ item.variant.title }}</div>{%- endunless -%}
-                {%- if item.sku != blank -%}<div class="q-it-variant">SKU {{ item.sku }}</div>{%- endif -%}
-              </td>
-              <td class="qty">&times; {{ item.quantity }}</td>
-              <td class="price">{{ item.final_line_price | money }}</td>
-            </tr>
-          {%- endfor -%}
-        </table>
-        <div class="q-sub"><span>Estimated subtotal</span><strong>{{ cart.total_price | money }}</strong></div>
-        <p class="q-disclaimer">
-          Estimate only. <strong>Final educator pricing, shipping, and tax</strong> are
-          calculated by our team and confirmed on your quote.
-          <a href="{{ routes.cart_url }}">Edit basket &rarr;</a>
-        </p>
-      {%- else -%}
-        <div class="q-empty">
-          Your quote basket is empty.<br>
-          <a href="/pages/educators">Browse the Educator Catalog &rarr;</a>
-        </div>
-      {%- endif -%}
-    </div>
-
-    <div class="q-card">
-      <h2>Send your quote</h2>
-      <p class="q-card__sub">Pre-filled where we can. We reply to your account email within one business day.</p>
-
-      {%- if cart.item_count > 0 -%}
-        {%- comment -%}
-          items_text packs every line item into a single string for the email.
-          Format: "3 x Title (Variant) [SKU MTW-XX] — $XX.XX | ..." plus subtotal.
-        {%- endcomment -%}
-        {%- capture items_text -%}{%- for item in cart.items -%}{{ item.quantity }} x {{ item.product.title }}{% unless item.variant.title contains 'Default' %} ({{ item.variant.title }}){% endunless %}{% if item.sku != blank %} [SKU {{ item.sku }}]{% endif %} — {{ item.final_line_price | money }}{% unless forloop.last %} | {% endunless %}{%- endfor -%} || Estimated subtotal {{ cart.total_price | money }} || Cart token {{ cart.token }}{%- endcapture -%}
-
-        {%- comment -%}
-          Pre-fill org name: B2B current_company > customer metafield > blank.
-        {%- endcomment -%}
-        {%- assign prefill_org = customer.current_company.name | default: customer.metafields.customer_fields.institution_name | default: customer.metafields.educator.institution_name | default: '' -%}
-        {%- assign prefill_phone = customer.phone | default: customer.default_address.phone | default: '' -%}
-
-        {%- form 'contact', id: 'edu-quote-form' -%}
-          <input type="hidden" name="contact[Submission type]" value="Educator quote request">
-          <input type="hidden" name="contact[Items]" value="{{ items_text | escape }}">
-          <input type="hidden" name="contact[Account email]" value="{{ customer.email }}">
-          <input type="hidden" name="contact[Quote ID]" id="qid-field" value="">
-
-          <label class="q-l req" for="q-org">School / organization</label>
-          <input class="q-in" id="q-org" type="text" name="contact[Organization]" value="{{ prefill_org }}" required autocomplete="organization">
-
-          <div class="q-row2">
-            <div>
-              <label class="q-l req" for="q-name">Contact name</label>
-              <input class="q-in" id="q-name" type="text" name="contact[Contact name]" value="{{ customer.name | strip }}" required autocomplete="name">
-            </div>
-            <div>
-              <label class="q-l req" for="q-email">Reply email</label>
-              <input class="q-in" id="q-email" type="email" name="contact[email]" value="{{ customer.email }}" required autocomplete="email">
-            </div>
-          </div>
-
-          <div class="q-row2">
-            <div>
-              <label class="q-l" for="q-phone">Phone (for callbacks)</label>
-              <input class="q-in" id="q-phone" type="tel" name="contact[Phone]" value="{{ prefill_phone }}" autocomplete="tel">
-            </div>
-            <div>
-              <label class="q-l" for="q-po">PO number (optional)</label>
-              <input class="q-in" id="q-po" type="text" name="contact[PO number]" placeholder="If you already have one">
-            </div>
-          </div>
-
-          <div class="q-row2">
-            <div>
-              <label class="q-l" for="q-window">Needed by</label>
-              <select class="q-se" id="q-window" name="contact[Delivery window]">
-                <option>Next available window</option>
-                <option>Fall delivery (Aug&ndash;Sep)</option>
-                <option>Spring delivery (May&ndash;Jun)</option>
-                <option>As soon as possible</option>
-                <option>By a specific date (note below)</option>
-              </select>
-            </div>
-            <div>
-              <label class="q-l" for="q-prog">For program / classroom</label>
-              <input class="q-in" id="q-prog" type="text" name="contact[Program]" placeholder="e.g. Pre-K, Toddler Room A, Title I">
-            </div>
-          </div>
-
-          <label class="q-l" for="q-notes">Ship-to address &amp; notes</label>
-          <textarea class="q-ta" id="q-notes" name="contact[body]" placeholder="Ship-to address(es), tax-exempt status, anything we should know."></textarea>
-
-          <div class="q-error" id="q-error" role="alert"></div>
-
-          <button class="q-btn" id="q-submit" type="submit">
-            <span class="spinner" aria-hidden="true"></span>
-            <span class="label">Submit quote request</span>
-          </button>
-          <a class="q-alt" href="{{ routes.cart_url }}">Or pay now with card, Shop Pay, Apple Pay &amp; ACH &rarr;</a>
-        {%- endform -%}
-      {%- else -%}
-        <p style="color:var(--stone);font-size:14px;">Add items to your basket first, then come back to send your quote.</p>
-        <a class="q-btn" href="/pages/educators" style="text-decoration:none;">Browse the catalog</a>
-      {%- endif -%}
-    </div>
-  </main>
-
-  <footer class="foot">
-    <div class="foot__inner">
-      <span>&copy; 2026 My Toy Wagon &middot; Educator Portal</span>
-      <span><a href="/pages/educator-dashboard">Dashboard</a> &middot; <a href="/pages/educators">Catalog</a></span>
-    </div>
-  </footer>
-
-  <script>
-  (function(){
-    // Generate a quote ID client-side and inject into the hidden form field.
-    // Format: Q-YYYYMMDD-XXXX (4 hex chars).
-    function pad(n){return String(n).padStart(2,'0');}
-    function newQuoteId(){
-      var d = new Date();
-      var ymd = d.getFullYear() + pad(d.getMonth()+1) + pad(d.getDate());
-      var rand = Math.random().toString(16).slice(2,6).toUpperCase();
-      return 'Q-' + ymd + '-' + rand;
-    }
-    var qidField = document.getElementById('qid-field');
-    var pendingQid = newQuoteId();
-    if (qidField) qidField.value = pendingQid;
-
-    // Capture cart state at render time so the post-submit localStorage
-    // write includes context the dashboard can use to render a richer
-    // Awaiting-PO card AND to detect cart-clear failures.
-    var liveCart = {
-      cart_token: {{ cart.token | json }},
-      items_count: {{ cart.item_count | default: 0 }},
-      total_formatted: {{ cart.total_price | money_without_trailing_zeros | json }}
-    };
-
-    var form = document.getElementById('edu-quote-form');
-    if (!form) return;
-    var btn = document.getElementById('q-submit');
-    var errBox = document.getElementById('q-error');
-    var submitted = false;
-
-    function showError(msg){
-      if (!errBox) return;
-      errBox.textContent = msg;
-      errBox.setAttribute('data-show','1');
-    }
-    function hideError(){
-      if (!errBox) return;
-      errBox.removeAttribute('data-show');
-      errBox.textContent = '';
-    }
-
-    // Prevent double-submit, even if JS bails partway.
-    form.addEventListener('submit', function(e){
-      if (submitted) { e.preventDefault(); return; }
-      hideError();
-
-      // Native required validation runs first. If anything's missing, allow native.
-      if (!form.checkValidity()) return;
-
-      // Optimistically write localStorage BEFORE the form post so the
-      // dashboard can show the awaiting state even if the post-success page
-      // doesn't load (e.g. educator closes the tab early). cart_token lets
-      // the dashboard detect cart-clear failure post-submit.
-      try {
-        localStorage.setItem('mtw_edu_quote_pending', JSON.stringify({
-          id: pendingQid,
-          at: Date.now(),
-          cart_token: liveCart.cart_token,
-          items_count: liveCart.items_count,
-          total_formatted: liveCart.total_formatted
-        }));
-      } catch(e){}
-
-      submitted = true;
-      if (btn) {
-        btn.setAttribute('disabled','disabled');
-        btn.setAttribute('data-loading','1');
-        var label = btn.querySelector('.label');
-        if (label) label.textContent = 'Sending…';
-      }
-      // Let the native form post proceed. The page reloads with
-      // form.posted_successfully? = true and the success block renders.
-    });
-
-    // If the user navigates back to this page with a populated cart AFTER
-    // submitting (rare but possible), surface a gentle "already submitted"
-    // note instead of letting them re-submit silently.
-    try {
-      var prior = localStorage.getItem('mtw_edu_quote_pending');
-      if (prior) {
-        var obj = JSON.parse(prior);
-        // Within last 30 minutes, warn.
-        if (obj && obj.at && (Date.now() - obj.at < 30 * 60 * 1000)) {
-          showError("You submitted quote " + obj.id + " a few minutes ago. If you need to add items, send a follow-up to educators@mytoywagon.com referencing that quote ID. Otherwise resubmitting will create a duplicate.");
-        }
-      }
-    } catch(e){}
-  })();
-  </script>
-  </body>
-  </html>
-  {%- endif -%}
+  <footer class="foot"><div class="wrap">
+    <span>&copy; 2026 My Toy Wagon &middot; Educator Portal</span>
+    <span><a href="/pages/educator-dashboard">Dashboard</a> &nbsp;&middot;&nbsp; <a href="/pages/educators">Catalog</a></span>
+  </div></footer>
+  {% section 'mtw-educator-footer' %}
+</body>
+</html>
 {%- else -%}
 {% render 'educator-gate' %}
 {%- endif -%}
+

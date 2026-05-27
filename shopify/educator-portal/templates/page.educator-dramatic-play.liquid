@@ -23,7 +23,7 @@
      ========================================================================= -->
 <title>Dramatic Play · My Toy Wagon Educator Catalog</title>
 <meta name="description" content="Hand-felted play mats, habitat puppets, and circle-time story sets for Pre-K to Grade 2 literacy classrooms. Hand-made in Nepal. Net-30 invoicing,...">
-<link rel="canonical" href="https://mytoywagon.com/pages/educator-dramatic-play" />
+<link rel="canonical" href="/pages/educator-dramatic-play" />
 
 <!-- Open Graph (social shares: Facebook, LinkedIn) -->
 <meta property="og:type" content="website" />
@@ -2171,9 +2171,6 @@ footer .cols .downloads a::after{
   aspect-ratio: 1 / 1;
 }
 .home .tile-wrap .tile{ width: 100%; height: 100%; min-height: 0; }
-/* Ensure every product photo fills the square frame, no letterboxing. */
-.home .tile-wrap .tile.has-photo img,
-.home .tile-wrap .tile img{ width: 100%; height: 100%; object-fit: cover; display: block; }
 .home .tile-wrap .overlay{
   position: absolute; inset: 0; z-index: 4; pointer-events: none;
   background: linear-gradient(to top, rgba(44,26,14,.65) 0%, rgba(44,26,14,0) 45%);
@@ -2588,7 +2585,7 @@ footer .cols .downloads a::after{
 }
 .companions .folk .f .tile{
   position: relative;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 1 / 1.1;
   width: 100%;
 }
 .companions .folk .f .name{
@@ -3088,7 +3085,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 .gallery.strip .home:nth-child(4),
 .gallery.strip .home:nth-child(5){ grid-column: span 3; }
 .gallery.strip .home:nth-child(4) .tile-wrap,
-.gallery.strip .home:nth-child(5) .tile-wrap{ aspect-ratio: 1 / 1; }
+.gallery.strip .home:nth-child(5) .tile-wrap{ aspect-ratio: 16 / 9; }
 @media (max-width: 1080px){
   .gallery.strip .homes{ grid-template-columns: repeat(2, 1fr); }
   .gallery.strip .home:nth-child(1),
@@ -3274,6 +3271,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 </style>
 </head>
 <body>
+  {% section 'mtw-educator-header' %}
 
 <!-- =========================== UTILITY BAR =========================== -->
 <div class="utility">
@@ -3328,7 +3326,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 <div class="subnav">
   <div class="subnav-inner">
     <nav class="breadcrumb" aria-label="Breadcrumb">
-      <a href="https://mytoywagon.com" class="home-crumb">Home</a>
+      <a href="/pages/educator-dashboard" class="home-crumb">Dashboard</a>
       <span class="sep" aria-hidden="true">/</span>
       <a href="/pages/educators">Educator Catalog</a>
       <span class="sep" aria-hidden="true">/</span>
@@ -3509,21 +3507,21 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
     </div>
 
     <div class="homes" style="grid-template-columns: repeat(auto-fit, minmax(190px, 222px)); justify-content: center;">
-      <article class="home"><div class="tile-wrap"><div class="tile t-cream has-photo"><img src="https://cdn.shopify.com/s/files/1/0522/0882/8586/files/drewartcowshed_4.webp?v=1779725809&amp;width=1100" alt="Drewart wooden cow shed for farmyard dramatic play and small-world farm scenes"/><span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span><span class="tag">[ FARMYARD N&deg;01 &nbsp;&middot;&nbsp; COW SHED ]</span></div><div class="overlay"></div><div class="float-name">Cow Shed</div></div><div class="cap"><span class="no">01</span><span class="name">Cow Shed</span><span class="desc">A wooden cow shed for the farmyard: shelter, milking, and barn routines in animal-care small-world play.</span><span class="meta">MTW-DP-DCS</span><div class="add-row"><a href="https://mytoywagon.com/products/the-cow-shed-educator" class="view-pdp">View product &rarr;</a></div></div></article>
+      <article class="home"><div class="tile-wrap"><div class="tile t-cream has-photo"><img src="https://cdn.shopify.com/s/files/1/0522/0882/8586/files/drewartcowshed_4.webp?v=1779725809&amp;width=1100" alt="Drewart wooden cow shed for farmyard dramatic play and small-world farm scenes"/><span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span><span class="tag">[ FARMYARD N&deg;01 &nbsp;&middot;&nbsp; COW SHED ]</span></div><div class="overlay"></div><div class="float-name">Cow Shed</div></div><div class="cap"><span class="no">01</span><span class="name">Cow Shed</span><span class="desc">A wooden cow shed for the farmyard: shelter, milking, and barn routines in animal-care small-world play.</span><span class="meta">MTW-DP-DCS</span><div class="add-row"><a href="/products/the-cow-shed-educator" class="view-pdp">View product &rarr;</a></div></div></article>
 
-      <article class="home"><div class="tile-wrap"><div class="tile t-hue3 has-photo"><img src="https://cdn.shopify.com/s/files/1/0522/0882/8586/files/Farm_Mat.webp?v=1779722078&amp;width=1100" alt="Tara Treasures hand-felted farm play mat for farmyard dramatic play and small-world scenes"/><span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span><span class="tag">[ FARMYARD N&deg;02 &nbsp;&middot;&nbsp; FARM MAT ]</span></div><div class="overlay"></div><div class="float-name">Farm Mat</div></div><div class="cap"><span class="no">02</span><span class="name">Farm Mat</span><span class="desc">A hand-felted playscape with vegetable patches, pond, hill, and barnyard zones for farm-to-table storytelling.</span><span class="meta">MTW-DP-TFM</span><div class="add-row"><a href="https://mytoywagon.com/products/farm-felt-play-mat-playscape" class="view-pdp">View product &rarr;</a></div></div></article>
+      <article class="home"><div class="tile-wrap"><div class="tile t-hue3 has-photo"><img src="https://cdn.shopify.com/s/files/1/0522/0882/8586/files/Farm_Mat.webp?v=1779722078&amp;width=1100" alt="Tara Treasures hand-felted farm play mat for farmyard dramatic play and small-world scenes"/><span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span><span class="tag">[ FARMYARD N&deg;02 &nbsp;&middot;&nbsp; FARM MAT ]</span></div><div class="overlay"></div><div class="float-name">Farm Mat</div></div><div class="cap"><span class="no">02</span><span class="name">Farm Mat</span><span class="desc">A hand-felted playscape with vegetable patches, pond, hill, and barnyard zones for farm-to-table storytelling.</span><span class="meta">MTW-DP-TFM</span><div class="add-row"><a href="/products/farm-felt-play-mat-playscape" class="view-pdp">View product &rarr;</a></div></div></article>
 
-      <article class="home"><div class="tile-wrap"><div class="tile t-cream has-photo"><img src="https://cdn.shopify.com/s/files/1/0522/0882/8586/files/Farm_Animals_10.webp?v=1779722079&amp;width=1100" alt="Tara Treasures hand-felted farm animals, set of 10 soft play figures for dramatic play and small-world farm scenes"/><span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span><span class="tag">[ FARMYARD N&deg;03 &nbsp;&middot;&nbsp; FARM ANIMALS &mdash; Tara Treasures felt farm animal collection of 10: Holstein cow, brown horse, white sheep, pink pig, brown rabbit, tan dog, white goose, gray cat, red-brown hen, mallard duck. Off-white studio background. Mirrors catalog pg.&nbsp;48 cell 00. ]</span></div><div class="overlay"></div><div class="float-name">Farm Animals</div></div><div class="cap"><span class="no">03</span><span class="name">Farm Animals &middot; Set of 10</span><span class="desc">Hand-stitched felt farm animals for animal care stories, vocabulary, sorting, and small-world play.</span><span class="meta">MTW-DP-TFA</span><div class="add-row"><a href="https://mytoywagon.com/products/felt-farm-animals-toys-set-of-10" class="view-pdp">View product &rarr;</a></div></div></article>
+      <article class="home"><div class="tile-wrap"><div class="tile t-cream has-photo"><img src="https://cdn.shopify.com/s/files/1/0522/0882/8586/files/Farm_Animals_10.webp?v=1779722079&amp;width=1100" alt="Tara Treasures hand-felted farm animals, set of 10 soft play figures for dramatic play and small-world farm scenes"/><span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span><span class="tag">[ FARMYARD N&deg;03 &nbsp;&middot;&nbsp; FARM ANIMALS &mdash; Tara Treasures felt farm animal collection of 10: Holstein cow, brown horse, white sheep, pink pig, brown rabbit, tan dog, white goose, gray cat, red-brown hen, mallard duck. Off-white studio background. Mirrors catalog pg.&nbsp;48 cell 00. ]</span></div><div class="overlay"></div><div class="float-name">Farm Animals</div></div><div class="cap"><span class="no">03</span><span class="name">Farm Animals &middot; Set of 10</span><span class="desc">Hand-stitched felt farm animals for animal care stories, vocabulary, sorting, and small-world play.</span><span class="meta">MTW-DP-TFA</span><div class="add-row"><a href="/products/felt-farm-animals-toys-set-of-10" class="view-pdp">View product &rarr;</a></div></div></article>
 
-      <article class="home"><div class="tile-wrap"><div class="tile t-alt has-photo"><img src="https://cdn.shopify.com/s/files/1/0522/0882/8586/files/tractor_and_trailer.webp?v=1779722828&amp;width=1100" alt="Fagus wooden tractor and trailer for farmyard dramatic play and small-world harvest scenes"/><span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span><span class="tag">[ FARMYARD N&deg;04 &nbsp;&middot;&nbsp; TRACTOR &amp; TRAILER ]</span></div><div class="overlay"></div><div class="float-name">Tractor &amp; Trailer</div></div><div class="cap"><span class="no">04</span><span class="name">Tractor &amp; Trailer</span><span class="desc">Solid-beech tractor with detachable trailer, working steering, and real rubber wheels for hauling and harvest play.</span><span class="meta">MTW-DP-FTT</span><div class="add-row"><a href="https://mytoywagon.com/products/fagus-wooden-tractor" class="view-pdp">View product &rarr;</a></div></div></article>
+      <article class="home"><div class="tile-wrap"><div class="tile t-alt has-photo"><img src="https://cdn.shopify.com/s/files/1/0522/0882/8586/files/tractor_and_trailer.webp?v=1779722828&amp;width=1100" alt="Fagus wooden tractor and trailer for farmyard dramatic play and small-world harvest scenes"/><span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span><span class="tag">[ FARMYARD N&deg;04 &nbsp;&middot;&nbsp; TRACTOR &amp; TRAILER ]</span></div><div class="overlay"></div><div class="float-name">Tractor &amp; Trailer</div></div><div class="cap"><span class="no">04</span><span class="name">Tractor &amp; Trailer</span><span class="desc">Solid-beech tractor with detachable trailer, working steering, and real rubber wheels for hauling and harvest play.</span><span class="meta">MTW-DP-FTT</span><div class="add-row"><a href="/products/fagus-wooden-tractor" class="view-pdp">View product &rarr;</a></div></div></article>
 
-      <article class="home"><div class="tile-wrap"><div class="tile t-alt-deep dark has-photo"><img src="https://cdn.shopify.com/s/files/1/0522/0882/8586/files/Hay_Wagon.webp?v=1779721638&amp;width=1100" alt="Fagus wooden hay wagon for farmyard dramatic play and small-world harvest scenes"/><span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span><span class="tag">[ FARMYARD N&deg;05 &nbsp;&middot;&nbsp; HAY WAGON ]</span></div><div class="overlay"></div><div class="float-name">Hay Wagon</div></div><div class="cap"><span class="no">05</span><span class="name">Hay Wagon</span><span class="desc">Solid-beech hay wagon with slatted sides. Hitches to the Fagus tractor for harvest and transport play.</span><span class="meta">MTW-DP-FHW</span><div class="add-row"><a href="https://mytoywagon.com/products/fagus-wooden-hay-wagon" class="view-pdp">View product &rarr;</a></div></div></article>
+      <article class="home"><div class="tile-wrap"><div class="tile t-alt-deep dark has-photo"><img src="https://cdn.shopify.com/s/files/1/0522/0882/8586/files/Hay_Wagon.webp?v=1779721638&amp;width=1100" alt="Fagus wooden hay wagon for farmyard dramatic play and small-world harvest scenes"/><span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span><span class="tag">[ FARMYARD N&deg;05 &nbsp;&middot;&nbsp; HAY WAGON ]</span></div><div class="overlay"></div><div class="float-name">Hay Wagon</div></div><div class="cap"><span class="no">05</span><span class="name">Hay Wagon</span><span class="desc">Solid-beech hay wagon with slatted sides. Hitches to the Fagus tractor for harvest and transport play.</span><span class="meta">MTW-DP-FHW</span><div class="add-row"><a href="/products/fagus-wooden-hay-wagon" class="view-pdp">View product &rarr;</a></div></div></article>
 
       <article class="home"><div class="tile-wrap"><div class="tile t-hue3-deep dark has-photo"><img src="https://cdn.shopify.com/s/files/1/0522/0882/8586/files/Wooden_Farm_Fences_4_pc.webp?v=1779722081&amp;width=1100" alt="Papoose wooden farm fences, set of 4, for farmyard dramatic play and small-world scenes"/><span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span><span class="tag">[ FARMYARD N&deg;06 &nbsp;&middot;&nbsp; WOODEN FARM FENCES ]</span></div><div class="overlay"></div><div class="float-name">Farm Fences</div></div><div class="cap"><span class="no">06</span><span class="name">Wooden Farm Fences &middot; 4 pc</span><span class="desc">Hand-finished post-and-rail fence sections for enclosing pastures, sorting animals, and defining farmyard zones.</span><span class="meta">MTW-DP-PWF</span><div class="add-row"><a href="#" class="view-pdp">View product &rarr;</a></div></div></article>
 
-      <article class="home"><div class="tile-wrap"><div class="tile t-soft has-photo"><img src="https://cdn.shopify.com/s/files/1/0522/0882/8586/files/Bumbu_Straw_Bale.webp?v=1779722037&amp;width=1100" alt="Bumbu wooden straw bale for farmyard dramatic play and small-world farm scenes"/><span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span><span class="tag">[ FARMYARD N&deg;07 &nbsp;&middot;&nbsp; STRAW BALE ]</span></div><div class="overlay"></div><div class="float-name">Straw Bale</div></div><div class="cap"><span class="no">07</span><span class="name">Bumbu Straw Bale</span><span class="desc">A wooden straw bale for the farmyard: feed the animals, stack the harvest, and set the barnyard scene.</span><span class="meta">MTW-DP-BSB</span><div class="add-row"><a href="https://mytoywagon.com/products/bumbu-straw-bale-set" class="view-pdp">View product &rarr;</a></div></div></article>
+      <article class="home"><div class="tile-wrap"><div class="tile t-soft has-photo"><img src="https://cdn.shopify.com/s/files/1/0522/0882/8586/files/Bumbu_Straw_Bale.webp?v=1779722037&amp;width=1100" alt="Bumbu wooden straw bale for farmyard dramatic play and small-world farm scenes"/><span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span><span class="tag">[ FARMYARD N&deg;07 &nbsp;&middot;&nbsp; STRAW BALE ]</span></div><div class="overlay"></div><div class="float-name">Straw Bale</div></div><div class="cap"><span class="no">07</span><span class="name">Bumbu Straw Bale</span><span class="desc">A wooden straw bale for the farmyard: feed the animals, stack the harvest, and set the barnyard scene.</span><span class="meta">MTW-DP-BSB</span><div class="add-row"><a href="/products/bumbu-straw-bale-set" class="view-pdp">View product &rarr;</a></div></div></article>
 
-      <article class="home"><div class="tile-wrap"><div class="tile t-soft has-photo"><img src="https://cdn.shopify.com/s/files/1/0522/0882/8586/files/np-bumbu-pumpkin-harvest.png?v=1779654730&amp;width=1100" alt="Bumbu wooden pumpkins and gourds for farmyard dramatic play and autumn small-world scenes"/><span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span><span class="tag">[ FARMYARD N&deg;08 &nbsp;&middot;&nbsp; PUMPKINS &amp; GOURDS ]</span></div><div class="overlay"></div><div class="float-name">Pumpkins &amp; Gourds</div></div><div class="cap"><span class="no">08</span><span class="name">Wooden Pumpkins &amp; Gourds</span><span class="desc">Wooden pumpkins and gourds for the autumn farm: counting, sorting, stacking, and seasonal small-world scenes.</span><span class="meta">MTW-DP-BPG</span><div class="add-row"><a href="https://mytoywagon.com/products/bumbu-raven-and-cheese" class="view-pdp">View product &rarr;</a></div></div></article>
+      <article class="home"><div class="tile-wrap"><div class="tile t-soft has-photo"><img src="https://cdn.shopify.com/s/files/1/0522/0882/8586/files/np-bumbu-pumpkin-harvest.png?v=1779654730&amp;width=1100" alt="Bumbu wooden pumpkins and gourds for farmyard dramatic play and autumn small-world scenes"/><span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span><span class="tag">[ FARMYARD N&deg;08 &nbsp;&middot;&nbsp; PUMPKINS &amp; GOURDS ]</span></div><div class="overlay"></div><div class="float-name">Pumpkins &amp; Gourds</div></div><div class="cap"><span class="no">08</span><span class="name">Wooden Pumpkins &amp; Gourds</span><span class="desc">Wooden pumpkins and gourds for the autumn farm: counting, sorting, stacking, and seasonal small-world scenes.</span><span class="meta">MTW-DP-BPG</span><div class="add-row"><a href="/products/bumbu-raven-and-cheese" class="view-pdp">View product &rarr;</a></div></div></article>
 
       <article class="home"><div class="tile-wrap"><div class="tile t-cream has-photo"><img src="https://cdn.shopify.com/s/files/1/0522/0882/8586/files/Grapat_Mandala_Tulips.jpg?v=1779722011&amp;width=1100" alt="Grapat Mandala tulips, wooden tulip loose parts for farm small-world play, sorting, and garden scenes"/><span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span><span class="tag">[ FARMYARD N&deg;09 &nbsp;&middot;&nbsp; MANDALA TULIPS ]</span></div><div class="overlay"></div><div class="float-name">Mandala Tulips</div></div><div class="cap"><span class="no">09</span><span class="name">Grapat Mandala Tulips</span><span class="desc">Wooden tulip loose parts for the farm garden: planting, sorting, counting, and small-world flower beds.</span><span class="meta">MTW-DP-GMT</span><div class="add-row"><a href="#" class="view-pdp">View product &rarr;</a></div></div></article>
     </div>
@@ -4113,8 +4111,6 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
         <a href="/pages/vendor-profile" style="color:rgba(250,246,237,.75);text-decoration:none;">Vendor profile</a>
         <a href="mailto:educator@mytoywagon.com?subject=Reference%20request" style="color:rgba(250,246,237,.75);text-decoration:none;">References on request</a>
       </div>
-
-      <p class="retail-link">Shopping for home? <a href="https://mytoywagon.com">Browse the full retail shop &rarr;</a></p>
     </div>
     <div class="cols">
       <div>
@@ -4137,7 +4133,6 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
           <li><a href="/pages/new-quote">Start a new quote</a></li>
           <li><a href="/pages/educator-dashboard">Educator dashboard</a></li>
           <li><a href="/pages/educator-program">Apply for an account</a></li>
-          <li><a href="/pages/school-affiliate">School affiliate</a></li>
         </ul>
       </div>
 
@@ -4371,8 +4366,10 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
   })();
 </script>
 
+  {% section 'mtw-educator-footer' %}
 </body>
 </html>
 {%- else -%}
 {% render 'educator-gate' %}
 {%- endif -%}
+

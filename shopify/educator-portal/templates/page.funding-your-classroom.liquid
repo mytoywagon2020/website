@@ -1,0 +1,191 @@
+{% layout none %}
+<!doctype html>
+<html lang="en">
+<head>
+{{ content_for_header }}
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Funding Your Classroom &middot; A guide for educators &middot; My Toy Wagon</title>
+<meta name="description" content="A practical guide to funding your classroom with hand-made natural materials: Title I, ESSER, DonorsChoose, education foundation grants, PTA/PTO budgets, and district classroom allocations. With links and how-to-apply notes." />
+<link rel="canonical" href="https://mytoywagon.com/pages/funding-your-classroom" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+:root{
+  --cream:#F5F0E5; --warm-white:#FFFCF7; --ink:#2C2C2A; --forest:#3B6D11; --stone:#5F5E5A;
+  --rule:rgba(44,44,42,0.12); --rule-strong:rgba(44,44,42,0.22);
+  --serif:'Cormorant Garamond', Georgia, serif;
+  --sans:'Mulish', system-ui, sans-serif;
+}
+*{box-sizing:border-box}html,body{margin:0;padding:0}
+body{font-family:var(--sans);color:var(--ink);background:var(--cream);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+
+/* ------- hero ------- */
+.fund-hero{padding:64px clamp(20px,4vw,44px) 48px;max-width:1100px;margin:0 auto}
+.fund-hero .eyebrow{font-size:11.5px;font-weight:600;text-transform:uppercase;letter-spacing:.22em;color:var(--forest);display:block;margin-bottom:18px}
+.fund-hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(34px,4.4vw,52px);line-height:1.1;letter-spacing:-.01em;margin:0 0 22px;color:var(--ink)}
+.fund-hero h1 .it{font-style:italic;color:var(--forest)}
+.fund-hero p.dek{font-size:18px;line-height:1.55;color:var(--stone);max-width:62ch;margin:0 0 24px}
+.fund-hero p.body{font-size:15px;line-height:1.65;max-width:62ch;margin:0 0 8px}
+
+/* ------- programs grid ------- */
+.programs{padding:24px clamp(20px,4vw,44px) 60px;max-width:1100px;margin:0 auto}
+.programs-head{margin-bottom:36px;text-align:center}
+.programs-head .eyebrow{font-size:11.5px;font-weight:600;text-transform:uppercase;letter-spacing:.22em;color:var(--forest);display:block;margin-bottom:14px}
+.programs-head h2{font-family:var(--serif);font-weight:500;font-size:clamp(26px,3vw,34px);line-height:1.2;color:var(--ink);margin:0 0 12px}
+.programs-head h2 .it{font-style:italic;color:var(--forest)}
+.programs-head p{font-size:15px;color:var(--stone);max-width:62ch;margin:0 auto}
+
+.program-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:8px}
+.program-card{background:var(--warm-white);border:0.5px solid var(--rule);border-radius:2px;padding:28px 26px;display:flex;flex-direction:column;gap:14px;transition:border-color .2s,transform .2s,box-shadow .2s}
+.program-card:hover{border-color:var(--ink);transform:translateY(-2px);box-shadow:0 8px 24px rgba(44,44,42,.06)}
+.program-card .tag{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.18em;color:var(--forest);display:inline-block}
+.program-card h3{font-family:var(--serif);font-weight:500;font-size:22px;line-height:1.2;color:var(--ink);margin:0;letter-spacing:-.005em}
+.program-card .what{font-size:14px;color:var(--ink);line-height:1.55;margin:0}
+.program-card .how{font-size:13.5px;color:var(--stone);line-height:1.55;margin:0;border-top:0.5px solid var(--rule);padding-top:12px}
+.program-card .how strong{color:var(--ink);font-weight:600}
+.program-card .more{margin-top:auto;padding-top:8px}
+.program-card .more a{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.14em;color:var(--forest);display:inline-flex;align-items:center;gap:6px}
+.program-card .more a::after{content:"";width:6px;height:6px;border-top:1.5px solid currentColor;border-right:1.5px solid currentColor;transform:rotate(45deg);display:inline-block}
+
+@media(max-width:760px){.program-grid{grid-template-columns:1fr}}
+
+/* ------- cta band ------- */
+.cta-band{background:var(--warm-white);border-top:0.5px solid var(--rule);border-bottom:0.5px solid var(--rule);padding:56px clamp(20px,4vw,44px);text-align:center}
+.cta-band-inner{max-width:760px;margin:0 auto}
+.cta-band h3{font-family:var(--serif);font-weight:500;font-size:clamp(24px,3vw,32px);line-height:1.2;color:var(--ink);margin:0 0 16px}
+.cta-band h3 .it{font-style:italic;color:var(--forest)}
+.cta-band p{font-size:15px;color:var(--stone);line-height:1.6;margin:0 0 22px;max-width:60ch;margin-left:auto;margin-right:auto}
+.cta-band .actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.cta-band .btn{display:inline-block;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;padding:14px 26px;border-radius:2px;border:1px solid var(--ink);transition:background .15s,color .15s}
+.cta-band .btn--solid{background:var(--ink);color:var(--cream)}
+.cta-band .btn--solid:hover{background:var(--forest);border-color:var(--forest)}
+.cta-band .btn--ghost{color:var(--ink);background:transparent}
+.cta-band .btn--ghost:hover{background:var(--ink);color:var(--cream)}
+
+/* ------- how we help ------- */
+.help{padding:60px clamp(20px,4vw,44px);max-width:1000px;margin:0 auto}
+.help-head{margin-bottom:32px}
+.help-head .eyebrow{font-size:11.5px;font-weight:600;text-transform:uppercase;letter-spacing:.22em;color:var(--forest);display:block;margin-bottom:14px}
+.help-head h2{font-family:var(--serif);font-weight:500;font-size:clamp(26px,3vw,34px);line-height:1.2;color:var(--ink);margin:0 0 16px}
+.help-head h2 .it{font-style:italic;color:var(--forest)}
+.help-head p{font-size:15px;color:var(--stone);max-width:62ch;margin:0}
+.help-list{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.help-item{background:var(--cream);border:0.5px solid var(--rule);padding:24px;border-radius:2px}
+.help-item .n{font-family:var(--serif);font-style:italic;font-size:32px;color:var(--forest);display:block;margin-bottom:8px;line-height:1}
+.help-item h4{font-size:15px;font-weight:700;margin:0 0 8px;color:var(--ink)}
+.help-item p{font-size:13.5px;color:var(--stone);line-height:1.55;margin:0}
+@media(max-width:680px){.help-list{grid-template-columns:1fr}}
+
+/* ------- disclosure ------- */
+.disclosure{background:var(--cream);border-top:0.5px solid var(--rule);padding:32px clamp(20px,4vw,44px);text-align:center}
+.disclosure p{font-size:12.5px;color:var(--stone);line-height:1.55;max-width:62ch;margin:0 auto}
+.disclosure p strong{color:var(--ink)}
+</style>
+</head>
+<body>
+  {% section 'mtw-educator-header' %}
+
+  <section class="fund-hero">
+    <span class="eyebrow">For educators &middot; A funding guide</span>
+    <h1>Funding your <span class="it">classroom.</span></h1>
+    <p class="dek">A practical map of where the money comes from for hand-made classroom materials, and how to ask for it.</p>
+    <p class="body">Most of our educator customers fund their classroom orders from one of six sources below. Each program is real, current, and accepts requests for natural materials, manipulatives, sensory tools, and dramatic-play kits. We help educators put together quotes that fit a program's reimbursement format, complete the W-9 / vendor paperwork your AP needs, and ship within the grant cycle.</p>
+  </section>
+
+  <section class="programs">
+    <div class="programs-head">
+      <span class="eyebrow">Six programs that fund classroom materials</span>
+      <h2>Where the <span class="it">money comes from.</span></h2>
+      <p>The most common funding paths our educator customers use. Most schools tap two or three of these per year. We can prepare a quote in any of these formats.</p>
+    </div>
+
+    <div class="program-grid">
+
+      <article class="program-card">
+        <span class="tag">Federal &middot; School-level</span>
+        <h3>Title I, Part A</h3>
+        <p class="what">Federal funds for schools serving low-income families. Eligible schools (40%+ low-income enrollment) can use Title I dollars for supplementary classroom materials that serve at-risk students.</p>
+        <p class="how"><strong>How to apply:</strong> Talk to your school's Title I coordinator or principal. Most districts approve material requests on a per-classroom basis. We provide an itemized quote your coordinator can submit for reimbursement.</p>
+        <p class="more"><a href="https://www2.ed.gov/programs/titleiparta/index.html" target="_blank" rel="noopener">Title I program details</a></p>
+      </article>
+
+      <article class="program-card">
+        <span class="tag">Federal &middot; Recovery</span>
+        <h3>ESSER &middot; III &amp; extensions</h3>
+        <p class="what">Federal pandemic-recovery funds. Most ESSER III obligations ran through September 2024, but many districts secured Late Liquidation extensions through March 2026 for specific projects, including classroom supplies that support student well-being and learning recovery.</p>
+        <p class="how"><strong>How to apply:</strong> Ask your district's federal-programs office whether your school has remaining ESSER funds with active extension authority. Natural-materials kits qualify under the social-emotional and student-engagement criteria.</p>
+        <p class="more"><a href="https://oese.ed.gov/offices/american-rescue-plan/american-rescue-plan-elementary-and-secondary-school-emergency-relief/" target="_blank" rel="noopener">ESSER program details</a></p>
+      </article>
+
+      <article class="program-card">
+        <span class="tag">Public funding &middot; Per-project</span>
+        <h3>DonorsChoose</h3>
+        <p class="what">Public-school teachers post a classroom project; community members fund it. Average funded project is $500&ndash;$1,500. Materials ship directly to the school. Open to any public-school teacher in the U.S.</p>
+        <p class="how"><strong>How to apply:</strong> Create a project at donorschoose.org and add the items you need. We can prepare a matching item list with SKUs and prices so your project page reads accurately. Average project funds in 6&ndash;10 weeks.</p>
+        <p class="more"><a href="https://www.donorschoose.org/" target="_blank" rel="noopener">Start a DonorsChoose project</a></p>
+      </article>
+
+      <article class="program-card">
+        <span class="tag">Foundation &middot; National</span>
+        <h3>Education foundation grants</h3>
+        <p class="what">National and state-level education foundations grant directly to classroom teachers. Award sizes range $500&ndash;$10,000. Most accept applications once or twice a year and review on rolling cycles.</p>
+        <p class="how"><strong>Where to look:</strong> NEA Foundation Learning &amp; Leadership Grant, McCarthey Dressman Foundation, Fund for Teachers, Voya Unsung Heroes, and your state-level education foundation. Each has a separate application; most ask for a budget, narrative, and vendor quotes.</p>
+        <p class="more"><a href="https://www.neafoundation.org/educator-grants-and-fellowships/" target="_blank" rel="noopener">NEA Foundation grants</a></p>
+      </article>
+
+      <article class="program-card">
+        <span class="tag">Local &middot; School community</span>
+        <h3>PTA &middot; PTO &middot; PFA budgets</h3>
+        <p class="what">Almost every school's parent organization has an annual budget line for classroom enrichment, materials, and special projects. Funds are usually under-allocated late in the school year.</p>
+        <p class="how"><strong>How to apply:</strong> Talk to your PTA president or treasurer. Most parent organizations approve teacher requests of $200&ndash;$1,500 in a single board meeting. Bring a printed quote; PTOs prefer paying a vendor directly with a check or card on file.</p>
+        <p class="more"><a href="/pages/educators">Request a quote you can take to your PTA</a></p>
+      </article>
+
+      <article class="program-card">
+        <span class="tag">District &middot; Internal</span>
+        <h3>District classroom allocations</h3>
+        <p class="what">Most districts give teachers a per-classroom material allocation each year. These funds expire at the end of the school year. Many teachers leave them un-spent because the procurement process feels heavy.</p>
+        <p class="how"><strong>How to apply:</strong> Ask your principal or office manager what your remaining per-classroom budget is. We accept district POs on Net-30 terms and complete vendor paperwork (W-9, COI, remit-to) within one business day so the spend lands before the fiscal close.</p>
+        <p class="more"><a href="/pages/educator-program">Approved-vendor setup &amp; PO terms</a></p>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="cta-band-inner">
+      <h3>Have a grant officer or AP department <span class="it">we should hear from?</span></h3>
+      <p>Send them our way. We respond to quote requests and vendor-setup paperwork within one business day and have onboarded schools from one-classroom co-ops to multi-site districts.</p>
+      <div class="actions">
+        <a href="mailto:accounting@mytoywagon.com?subject=Grant%20%2F%20funding%20question%20%E2%80%94%20My%20Toy%20Wagon" class="btn btn--solid">Email accounting@</a>
+        <a href="/pages/educator-program" class="btn btn--ghost">Set up an educator account</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="help">
+    <div class="help-head">
+      <span class="eyebrow">How we help, once you have funding</span>
+      <h2>The grant-friendly <span class="it">vendor checklist.</span></h2>
+      <p>What schools usually ask for when paying with grant or district funds, and what we have ready.</p>
+    </div>
+    <div class="help-list">
+      <div class="help-item"><span class="n">01</span><h4>Quote in your grant format</h4><p>Itemized PDF with educator pricing, SKUs, ship-to, taxes, totals. Ready within one business day.</p></div>
+      <div class="help-item"><span class="n">02</span><h4>W-9 &middot; COI &middot; remit-to</h4><p>Standard vendor packet for your AP department. Available as a single download on our vendor profile.</p></div>
+      <div class="help-item"><span class="n">03</span><h4>Net-30 &middot; Net-60 on PO</h4><p>Established Net terms on a purchase order, with no prepayment required. Tax-exempt at checkout for verified institutions.</p></div>
+      <div class="help-item"><span class="n">04</span><h4>One shipment &middot; one invoice</h4><p>Consolidated ship from our Los Angeles workshop. One invoice per PO, easy reconciliation for your business office.</p></div>
+    </div>
+  </section>
+
+  <section class="disclosure">
+    <p><strong>One disclosure:</strong> This guide describes how educators have used these programs to purchase our materials. We do not administer grants, do not control funding decisions, and cannot guarantee any specific program will fund any specific request. Always confirm eligibility, deadlines, and current rules with the program directly before purchasing.</p>
+  </section>
+
+  {% section 'mtw-educator-footer' %}
+</body>
+</html>
