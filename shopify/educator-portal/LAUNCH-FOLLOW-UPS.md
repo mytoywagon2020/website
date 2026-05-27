@@ -15,18 +15,59 @@ A single source of truth for what's been built, what's pushed live, and what you
 - ⏳ **Specced, not built** (waiting on your input)
 - 🔵 **Your action required** in Shopify admin / third-party tools
 
+## Public vs gated — which pages are SEO-indexable
+
+| Page | Gated to educator-approved? | Indexable by Google? |
+|---|---|---|
+| `/pages/funding-your-classroom` (hub) | NO | ✅ Yes (intentional SEO play) |
+| `/pages/donorschoose-for-classrooms` (deep) | NO | ✅ Yes |
+| `/pages/grants-for-natural-materials-classrooms` (deep) | NO | ✅ Yes |
+| `/pages/educator-program` (apply for account) | NO | ✅ Yes (already in retail nav/footer) |
+| `/pages/vendor-profile` | YES | No (closed-portal nav, gated) |
+| `/pages/educators` (landing) | YES | No |
+| `/pages/educator-dashboard` | YES | No |
+| 8 section pages | YES | No |
+| `/pages/new-quote` | YES | No |
+
+**Deliberate split**: top-of-funnel (public + indexable) → portal (gated). Funding pages drive SEO traffic to the portal door; everything past the door is private.
+
+## Retail footer — add the four educator links
+
+See `RETAIL-FOOTER-SNIPPET.md` in this folder for the exact HTML and SEO logic. Summary:
+- 🔵 **You: add a "For educators" link group to your retail theme footer** with these four links:
+  - Apply for an educator account → `/pages/educator-program`
+  - Funding your classroom → `/pages/funding-your-classroom`
+  - Vendor profile → `/pages/vendor-profile`
+  - Contact accounts payable → `mailto:accounting@mytoywagon.com`
+- This is the SEO connection — it tells Google these pages are first-class assets and passes some homepage authority to them.
+
 ---
 
 ## The 10 Lakeshore-comparable features
 
-### 1. Grant / funding guidance page
-- ✅ Template pushed to staging theme + committed to repo: `templates/page.funding-your-classroom.liquid` (15 KB)
-- ✅ Owner pasted into live theme code editor
-- 🔵 **You: create the page record** in Shopify admin
-  - Pages → Add page → Title: *"Funding your classroom"*, URL: `funding-your-classroom`
-  - Template dropdown: **`page.funding-your-classroom`**
-- 6 funding programs surfaced: Title I, ESSER, DonorsChoose, education foundations, PTA/PTO, district allocations
-- CTA → `mailto:accounting@mytoywagon.com`
+### 1. Grant / funding guidance pages (hub-and-spoke, 3 pages total)
+Public/indexable funnel-top assets. NOT gated. Drive SEO traffic to the portal door.
+
+**Hub page**: `/pages/funding-your-classroom` — overview of 6 programs
+- ✅ Template pushed (staging + repo) + pasted to live theme
+- ✅ SEO title updated: *"Funding Your Classroom: Title I, ESSER, DonorsChoose & Grants for Hand-Made Materials"*
+- ✅ Internal links added to deep pages
+- 🔵 **You: create the page record** in admin (Pages → Add → template `page.funding-your-classroom`)
+
+**Deep page A**: `/pages/donorschoose-for-classrooms` — DonorsChoose deep dive
+- ✅ Template pushed + committed (19 KB)
+- Includes: 4-step how-it-works, 5 winning-project tips, 6 sample project item lists keyed to our 8 sections, DonorsChoose disclosure (we are NOT a DonorsChoose-approved vendor — page is purely educational)
+- 🔵 **You: create the page record** in admin (Pages → Add → template `page.donorschoose-for-classrooms`)
+
+**Deep page B**: `/pages/grants-for-natural-materials-classrooms` — foundation + federal grants deep dive
+- ✅ Template pushed + committed (22 KB)
+- Includes: 6 grant cards (Title I, ESSER, NEA Foundation, McCarthey Dressman, Fund for Teachers, Voya Unsung Heroes) with award sizes + cycles + MTW catalog-fit; 5 application-writing tips; 3 sample budgets ($500 / $2,000 / $5,000+)
+- 🔵 **You: create the page record** in admin (Pages → Add → template `page.grants-for-natural-materials-classrooms`)
+
+**Future-investigation TODO**: DonorsChoose vendor application
+- We are NOT currently a DonorsChoose-approved vendor
+- If accepted into their vendor catalog, teachers could buy MTW materials directly through funded DonorsChoose projects (separate funnel)
+- Apply via donorschoose.org/about/partners
 
 ### 2. Vendor packet & remit-to (TWO-TIER DISCLOSURE PATTERN)
 **Important:** Bank account / routing numbers are NOT published publicly. Public Shopify Files URLs would expose them to any scraper. Pattern used:

@@ -1,0 +1,290 @@
+{% layout none %}
+<!doctype html>
+<html lang="en">
+<head>
+{{ content_for_header }}
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Foundation &amp; Federal Grants for Hand-Made Classroom Materials &middot; A Teacher's Guide &middot; My Toy Wagon</title>
+<meta name="description" content="A guide to federal and foundation grants that fund natural, hand-made classroom materials: NEA Foundation, McCarthey Dressman, Fund for Teachers, Voya Unsung Heroes, plus Title I and ESSER. Award sizes, deadlines, application tips, and sample budgets." />
+<link rel="canonical" href="https://mytoywagon.com/pages/grants-for-natural-materials-classrooms" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+:root{--cream:#F5F0E5;--warm-white:#FFFCF7;--ink:#2C2C2A;--forest:#3B6D11;--amber:#854F0B;--stone:#5F5E5A;--rule:rgba(44,44,42,0.12);--rule-strong:rgba(44,44,42,0.22);--serif:'Cormorant Garamond',Georgia,serif;--sans:'Mulish',system-ui,sans-serif}
+*{box-sizing:border-box}html,body{margin:0;padding:0}
+body{font-family:var(--sans);color:var(--ink);background:var(--cream);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+
+.crumbs{padding:20px clamp(20px,4vw,44px) 0;max-width:1100px;margin:0 auto;font-size:12px;letter-spacing:.08em;color:var(--stone)}
+.crumbs a{color:var(--forest);text-decoration:underline;text-underline-offset:3px}
+.crumbs .sep{margin:0 8px;color:var(--rule-strong)}
+
+.hero{padding:48px clamp(20px,4vw,44px) 40px;max-width:1100px;margin:0 auto}
+.hero .eyebrow{font-size:11.5px;font-weight:600;text-transform:uppercase;letter-spacing:.22em;color:var(--forest);display:block;margin-bottom:18px}
+.hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(32px,4.2vw,48px);line-height:1.05;letter-spacing:-.01em;margin:0 0 22px;color:var(--ink);text-wrap:balance}
+.hero h1 .it{font-style:italic;color:var(--forest)}
+.hero p.dek{font-size:17px;line-height:1.6;color:var(--stone);max-width:64ch;margin:0 0 14px}
+.hero p.body{font-size:15px;line-height:1.65;max-width:64ch;margin:0 0 8px}
+
+/* grants grid */
+.grants{padding:24px clamp(20px,4vw,44px) 60px;max-width:1100px;margin:0 auto}
+.grants-head{margin-bottom:36px}
+.grants-head .eyebrow{font-size:11.5px;font-weight:600;text-transform:uppercase;letter-spacing:.22em;color:var(--forest);display:block;margin-bottom:14px}
+.grants-head h2{font-family:var(--serif);font-weight:500;font-size:clamp(26px,3vw,34px);line-height:1.2;color:var(--ink);margin:0 0 12px}
+.grants-head h2 .it{font-style:italic;color:var(--forest)}
+.grants-head p{font-size:15px;color:var(--stone);max-width:62ch;margin:0}
+
+.grant-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:8px}
+.grant-card{background:var(--warm-white);border:0.5px solid var(--rule);border-radius:2px;padding:28px 26px;display:flex;flex-direction:column;gap:14px}
+.grant-card:hover{border-color:var(--ink);transform:translateY(-2px);box-shadow:0 8px 24px rgba(44,44,42,.06);transition:all .2s}
+.grant-card .tag{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.18em;color:var(--forest);display:inline-block}
+.grant-card h3{font-family:var(--serif);font-weight:500;font-size:22px;line-height:1.2;color:var(--ink);margin:0;letter-spacing:-.005em}
+.grant-card .meta{display:flex;flex-wrap:wrap;gap:14px;font-size:12px;color:var(--stone)}
+.grant-card .meta span{display:inline-flex;gap:5px}
+.grant-card .meta strong{color:var(--ink);font-weight:600}
+.grant-card .what{font-size:14px;color:var(--ink);line-height:1.55;margin:0}
+.grant-card .fit{font-size:13.5px;color:var(--stone);line-height:1.55;margin:0;border-top:0.5px solid var(--rule);padding-top:12px;font-style:italic}
+.grant-card .more{margin-top:auto;padding-top:8px}
+.grant-card .more a{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.14em;color:var(--forest);display:inline-flex;align-items:center;gap:6px}
+.grant-card .more a::after{content:"";width:6px;height:6px;border-top:1.5px solid currentColor;border-right:1.5px solid currentColor;transform:rotate(45deg);display:inline-block}
+@media(max-width:760px){.grant-grid{grid-template-columns:1fr}}
+
+/* writing tips */
+.tips-sec{background:var(--warm-white);border-top:0.5px solid var(--rule);border-bottom:0.5px solid var(--rule);padding:56px clamp(20px,4vw,44px)}
+.tips-sec-inner{max-width:1000px;margin:0 auto}
+.tips-sec h2{font-family:var(--serif);font-weight:500;font-size:clamp(26px,3vw,34px);line-height:1.2;color:var(--ink);margin:0 0 16px}
+.tips-sec h2 .it{font-style:italic;color:var(--forest)}
+.tips-sec h2 .eyebrow{font-size:11.5px;font-weight:600;text-transform:uppercase;letter-spacing:.22em;color:var(--forest);display:block;margin-bottom:14px;font-family:var(--sans);font-style:normal}
+.tips-sec p.lede{font-size:16px;color:var(--stone);line-height:1.65;max-width:62ch;margin:0 0 24px}
+.tips{padding-left:0;list-style:none;margin:0}
+.tips li{padding:18px 0;border-bottom:0.5px solid var(--rule);font-size:14.5px;line-height:1.65;color:var(--ink);display:flex;gap:18px;align-items:baseline}
+.tips li:last-child{border-bottom:none}
+.tips .n{font-family:var(--serif);font-style:italic;font-size:26px;color:var(--forest);flex:0 0 40px;line-height:1}
+.tips strong{font-weight:600;color:var(--ink)}
+
+/* budget examples */
+.budgets{padding:60px clamp(20px,4vw,44px);max-width:1000px;margin:0 auto}
+.budgets h2{font-family:var(--serif);font-weight:500;font-size:clamp(26px,3vw,34px);line-height:1.2;color:var(--ink);margin:0 0 16px}
+.budgets h2 .it{font-style:italic;color:var(--forest)}
+.budgets h2 .eyebrow{font-size:11.5px;font-weight:600;text-transform:uppercase;letter-spacing:.22em;color:var(--forest);display:block;margin-bottom:14px;font-family:var(--sans);font-style:normal}
+.budgets p.lede{font-size:16px;color:var(--stone);line-height:1.65;max-width:62ch;margin:0 0 24px}
+.budget-list{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}
+.budget-card{background:var(--cream);border:0.5px solid var(--rule);border-radius:2px;padding:22px 20px}
+.budget-card .level{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.18em;color:var(--forest);margin-bottom:8px;display:block}
+.budget-card h4{font-family:var(--serif);font-weight:500;font-size:19px;color:var(--ink);margin:0 0 6px;line-height:1.2}
+.budget-card .total{font-family:var(--serif);font-style:italic;font-size:18px;color:var(--ink);margin:0 0 10px}
+.budget-card .fit{font-size:13px;color:var(--stone);line-height:1.55;margin:0}
+@media(max-width:760px){.budget-list{grid-template-columns:1fr}}
+
+/* cta band */
+.cta-band{background:var(--warm-white);border-top:0.5px solid var(--rule);border-bottom:0.5px solid var(--rule);padding:56px clamp(20px,4vw,44px);text-align:center}
+.cta-band-inner{max-width:760px;margin:0 auto}
+.cta-band h3{font-family:var(--serif);font-weight:500;font-size:clamp(24px,3vw,32px);line-height:1.2;color:var(--ink);margin:0 0 16px}
+.cta-band h3 .it{font-style:italic;color:var(--forest)}
+.cta-band p{font-size:15px;color:var(--stone);line-height:1.6;margin:0 0 22px;max-width:60ch;margin-left:auto;margin-right:auto}
+.cta-band .actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.btn{display:inline-block;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;padding:14px 26px;border-radius:2px;border:1px solid var(--ink);transition:background .15s,color .15s}
+.btn--solid{background:var(--ink);color:var(--cream)}
+.btn--solid:hover{background:var(--forest);border-color:var(--forest)}
+.btn--ghost{color:var(--ink);background:transparent}
+.btn--ghost:hover{background:var(--ink);color:var(--cream)}
+
+/* related */
+.related{background:var(--cream);border-top:0.5px solid var(--rule);padding:48px clamp(20px,4vw,44px)}
+.related-inner{max-width:1000px;margin:0 auto}
+.related h3{font-family:var(--serif);font-weight:500;font-size:22px;color:var(--ink);margin:0 0 18px}
+.related-list{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.related-card{background:var(--warm-white);border:0.5px solid var(--rule);border-radius:2px;padding:22px}
+.related-card .tag{font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.14em;color:var(--stone);margin-bottom:6px;display:block}
+.related-card h4{font-family:var(--serif);font-weight:500;font-size:18px;color:var(--ink);margin:0 0 6px}
+.related-card p{font-size:13.5px;color:var(--stone);margin:0 0 10px;line-height:1.55}
+.related-card .lk{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.14em;color:var(--forest)}
+@media(max-width:680px){.related-list{grid-template-columns:1fr}}
+
+/* disclosure */
+.disclosure{background:var(--cream);border-top:0.5px solid var(--rule);padding:32px clamp(20px,4vw,44px);text-align:center}
+.disclosure p{font-size:12.5px;color:var(--stone);line-height:1.55;max-width:62ch;margin:0 auto}
+.disclosure p strong{color:var(--ink)}
+</style>
+</head>
+<body>
+  {% section 'mtw-educator-header' %}
+
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="/pages/funding-your-classroom">Funding your classroom</a>
+    <span class="sep">&rsaquo;</span>
+    <span>Grants for natural materials</span>
+  </nav>
+
+  <section class="hero">
+    <span class="eyebrow">For teachers &middot; Foundation &amp; federal grants</span>
+    <h1>Grants for the <span class="it">hand-made classroom.</span></h1>
+    <p class="dek">National foundations, federal funds, and state-level grants that pay for natural materials, manipulatives, and sensory tools. Award ranges, application cycles, and how each one fits a Montessori or natural-materials practice.</p>
+    <p class="body">Most teachers researching grants for natural classroom materials don't realize how many programs explicitly fund this work. The grants below have a track record of supporting hand-made, sustainably-sourced, developmentally-aligned materials. We've grouped them by source and added the practical detail you need to write a successful application: typical award size, deadline cadence, and which of our catalog sections fits each program's funding range.</p>
+  </section>
+
+  <section class="grants">
+    <div class="grants-head">
+      <span class="eyebrow">Six grant programs that fund natural classroom materials</span>
+      <h2>The grant <span class="it">map.</span></h2>
+      <p>Each card shows what the program funds, the typical award size, the application window, and which of our eight catalog sections fits the funding range. Click through to apply directly.</p>
+    </div>
+
+    <div class="grant-grid">
+
+      <article class="grant-card">
+        <span class="tag">Federal &middot; School-level</span>
+        <h3>Title I, Part A</h3>
+        <div class="meta">
+          <span><strong>Award:</strong> Varies by district</span>
+          <span><strong>Cycle:</strong> Annual allocation</span>
+        </div>
+        <p class="what">Federal funds for schools serving low-income families (40%+ free-and-reduced lunch enrollment). Title I dollars can be spent on supplementary classroom materials for at-risk students &mdash; including sensory tools, manipulatives, and self-regulation kits that support social-emotional learning.</p>
+        <p class="fit">Pairs well with: Sensory Play (Calm Corner), Nature Play, STEAM Investigation Table.</p>
+        <p class="more"><a href="https://www2.ed.gov/programs/titleiparta/index.html" target="_blank" rel="noopener">Title I program details</a></p>
+      </article>
+
+      <article class="grant-card">
+        <span class="tag">Federal &middot; Recovery</span>
+        <h3>ESSER III with extensions</h3>
+        <div class="meta">
+          <span><strong>Award:</strong> Per-district allocation</span>
+          <span><strong>Cycle:</strong> March 2026 deadline</span>
+        </div>
+        <p class="what">Federal pandemic-recovery funds. Most ESSER III obligations closed September 2024, but many districts secured Late Liquidation extensions through March 2026 for specific projects supporting student well-being and learning recovery. Natural materials qualify under the social-emotional and engagement criteria.</p>
+        <p class="fit">Pairs well with: any section. Ask your federal-programs office for remaining extension authority.</p>
+        <p class="more"><a href="https://oese.ed.gov/offices/american-rescue-plan/american-rescue-plan-elementary-and-secondary-school-emergency-relief/" target="_blank" rel="noopener">ESSER program details</a></p>
+      </article>
+
+      <article class="grant-card">
+        <span class="tag">Foundation &middot; National</span>
+        <h3>NEA Foundation Learning &amp; Leadership Grant</h3>
+        <div class="meta">
+          <span><strong>Award:</strong> $2,000 or $5,000</span>
+          <span><strong>Cycle:</strong> Three rounds per year</span>
+        </div>
+        <p class="what">The NEA Foundation funds individual teachers and small teams pursuing professional growth that translates directly into classroom practice. Materials purchases that support a documented inquiry, study group, or new curriculum are explicitly eligible.</p>
+        <p class="fit">Pairs well with: Woodland Habitats ($487 bundle fits perfectly within the $2,000 award range, leaving room for travel or research costs).</p>
+        <p class="more"><a href="https://www.neafoundation.org/educator-grants-and-fellowships/" target="_blank" rel="noopener">NEA Foundation grants</a></p>
+      </article>
+
+      <article class="grant-card">
+        <span class="tag">Foundation &middot; National</span>
+        <h3>McCarthey Dressman Education Foundation</h3>
+        <div class="meta">
+          <span><strong>Award:</strong> Up to $10,000 over 3 years</span>
+          <span><strong>Cycle:</strong> Annual, April deadline</span>
+        </div>
+        <p class="what">Funds creative classroom projects that go beyond standard curriculum &mdash; including extended-time project work, hands-on inquiry, and arts integration. Multi-year structure rewards programs you intend to grow.</p>
+        <p class="fit">Pairs well with: Creative Arts, Small World &amp; Storytelling, multi-section programs spanning a full school year.</p>
+        <p class="more"><a href="https://mccartheydressman.org/" target="_blank" rel="noopener">McCarthey Dressman Foundation</a></p>
+      </article>
+
+      <article class="grant-card">
+        <span class="tag">Foundation &middot; National</span>
+        <h3>Fund for Teachers</h3>
+        <div class="meta">
+          <span><strong>Award:</strong> Up to $5,000 individual / $10,000 team</span>
+          <span><strong>Cycle:</strong> Annual, January deadline</span>
+        </div>
+        <p class="what">Funds teacher-designed summer learning experiences that return to the classroom in the fall. Materials purchases tied to a documented fellowship (e.g., "after my Reggio Emilia study trip, I'll bring back materials for a new atelier") are eligible.</p>
+        <p class="fit">Pairs well with: Creative Arts (atelier setup), Dramatic Play (Reggio-inspired role-play environments).</p>
+        <p class="more"><a href="https://www.fundforteachers.org/" target="_blank" rel="noopener">Fund for Teachers</a></p>
+      </article>
+
+      <article class="grant-card">
+        <span class="tag">Foundation &middot; National</span>
+        <h3>Voya Unsung Heroes</h3>
+        <div class="meta">
+          <span><strong>Award:</strong> $2,000 (with $5,000 &amp; $25,000 top awards)</span>
+          <span><strong>Cycle:</strong> Annual, April deadline</span>
+        </div>
+        <p class="what">Recognizes K-12 educators with innovative teaching ideas. Award is intended to fund the materials and resources needed to implement the idea. Strong fit for natural-materials and hands-on learning projects.</p>
+        <p class="fit">Pairs well with: any section, especially when the application can document a specific student-outcome goal.</p>
+        <p class="more"><a href="https://www.voya.com/voya-foundation/voya-unsung-heroes" target="_blank" rel="noopener">Voya Unsung Heroes</a></p>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="tips-sec">
+    <div class="tips-sec-inner">
+      <h2><span class="eyebrow">Five ways to write a winning application</span>What grant reviewers actually <span class="it">look for.</span></h2>
+      <p class="lede">Reading hundreds of applications, reviewers look for the same five things. None of them are about you being a great teacher (they assume that). All five are about the application itself.</p>
+      <ol class="tips">
+        <li><span class="n">01</span><div><strong>Lead with the student outcome, not the materials.</strong> "After 12 weeks with the woodland-habitat materials, my Kindergartners will identify and describe four forest species using full-sentence oral storytelling." That's an outcome a reviewer can score. "I want to buy wooden animals" is not.</div></li>
+        <li><span class="n">02</span><div><strong>Show that the materials are the right tool for the outcome.</strong> Reviewers funded the outcome, but they want to see the materials connect to it. Hand-felted habitats hold up under three years of daily classroom use, which makes them more cost-effective than printed posters that fade. Make that case.</div></li>
+        <li><span class="n">03</span><div><strong>Budget every line item, with vendor names and SKUs.</strong> Vague budgets ("$1,500 for sensory supplies") fund less often than itemized ones. Reviewers want to see you've done the research. Our quotes come with SKUs and educator pricing in your grant's format &mdash; ask us to prepare one.</div></li>
+        <li><span class="n">04</span><div><strong>Include a sustainability statement.</strong> "These materials are hand-made, third-party verified for child-safety, and intended to last 5+ school years &mdash; reducing the ongoing cost of replacing single-use classroom supplies." Reviewers love a long-tail funding argument.</div></li>
+        <li><span class="n">05</span><div><strong>Submit early, not at the deadline.</strong> Reviewers often work through applications in order received. The closer to deadline, the more fatigue, the more boilerplate writing blends together. First-week submissions tend to read fresher to a tired reviewer.</div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="budgets">
+    <h2><span class="eyebrow">Sample budgets that fit common grant ranges</span>How our catalog <span class="it">maps to grant tiers.</span></h2>
+    <p class="lede">Three reference budgets aligned to common foundation award sizes. Each maps to a specific catalog section so you can write the application against real materials and real prices.</p>
+    <div class="budget-list">
+      <div class="budget-card">
+        <span class="level">$500 grants</span>
+        <h4>The Calm Corner</h4>
+        <p class="total"><em>~$487</em></p>
+        <p class="fit">Vol-01 Sensory Play essentials. Fits inside any $500&ndash;$1,500 grant cycle with room for shipping. Strong fit for first-year teacher grants and DonorsChoose.</p>
+      </div>
+      <div class="budget-card">
+        <span class="level">$2,000 grants</span>
+        <h4>The Habitat Story Kit</h4>
+        <p class="total"><em>~$1,650</em></p>
+        <p class="fit">Vol-04 Small World &amp; Storytelling. Fits NEA Foundation Learning &amp; Leadership $2,000 award with budget remaining for travel to a habitat field site.</p>
+      </div>
+      <div class="budget-card">
+        <span class="level">$5,000+ grants</span>
+        <h4>The Reggio Atelier</h4>
+        <p class="total"><em>~$3,800</em></p>
+        <p class="fit">Vol-08 Creative Arts plus a partial Vol-07 Dramatic Play setup. Fits Fund for Teachers and McCarthey Dressman with budget for student materials over a full year.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="cta-band-inner">
+      <h3>Have a grant deadline <span class="it">coming up?</span></h3>
+      <p>Send us your application format and we will prepare a quote with SKUs, educator pricing, shipping, and a sustainability statement that fits your grant's reimbursement template. Within one business day.</p>
+      <div class="actions">
+        <a href="mailto:accounting@mytoywagon.com?subject=Grant%20application%20quote%20request&body=Hi%20MTW%2C%0A%0AI%20am%20applying%20for%20a%20grant%20and%20would%20like%20a%20quote%20prepared%20in%20the%20grant%27s%20format.%0A%0AGrant%20program%3A%0ADeadline%3A%0ATarget%20budget%3A%0ASections%20of%20interest%3A%0A%0AThank%20you.%0A" class="btn btn--solid">Email accounting@</a>
+        <a href="/pages/funding-your-classroom" class="btn btn--ghost">Other funding paths</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="related">
+    <div class="related-inner">
+      <h3>Other ways to fund your classroom</h3>
+      <div class="related-list">
+        <div class="related-card">
+          <span class="tag">Public funding &middot; Per-project</span>
+          <h4>DonorsChoose</h4>
+          <p>Community-funded teacher projects. Average funded project is $500&ndash;$1,500. Materials ship directly to your school.</p>
+          <a class="lk" href="/pages/donorschoose-for-classrooms">Read the DonorsChoose guide &rarr;</a>
+        </div>
+        <div class="related-card">
+          <span class="tag">Local funding</span>
+          <h4>PTA, PTO, district allocations</h4>
+          <p>School-community and per-classroom funds that often go unused. Many approve teacher requests of $200&ndash;$1,500 in a single board meeting.</p>
+          <a class="lk" href="/pages/funding-your-classroom">See the overview &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="disclosure">
+    <p><strong>One disclosure:</strong> This page describes funding programs as we understand them. We are not affiliated with any of the listed foundations or federal programs, do not administer grants, and cannot guarantee any specific program will fund any specific request. Award amounts, deadlines, and eligibility rules change. Always confirm current details with the granting organization before applying. The "Pairs well with" guidance is based on past educator-customer experience and is not a guarantee that any particular grant will fund a particular bundle.</p>
+  </section>
+
+  {% section 'mtw-educator-footer' %}
+</body>
+</html>
