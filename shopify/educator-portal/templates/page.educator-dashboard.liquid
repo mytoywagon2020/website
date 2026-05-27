@@ -62,6 +62,27 @@
     .dash-utility__right a{color:inherit;}
 
     /* Welcome bar */
+    .orders-lookup{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:0 0 12px;}
+    .orders-lookup__label{font-size:11.5px;font-weight:600;text-transform:uppercase;letter-spacing:.14em;color:var(--stone);}
+    .orders-lookup__input{flex:1 1 240px;max-width:320px;padding:9px 12px;font-size:13.5px;font-family:inherit;border:1px solid var(--rule-strong);border-radius:2px;background:var(--warm-white);color:var(--ink);}
+    .orders-lookup__input:focus{outline:none;border-color:var(--ink);}
+    .orders-lookup__empty{font-size:12px;color:var(--stone);font-style:italic;}
+    .orders .actions{white-space:nowrap;}
+    .orders .actions .reorder-form{display:inline;margin-left:8px;}
+    .orders .actions .reorder-btn{background:transparent;border:none;padding:0;font:inherit;cursor:pointer;color:var(--forest);text-decoration:underline;text-underline-offset:3px;}
+    .orders .actions .reorder-btn:hover{color:var(--ink);}
+    .orders .po-tag{color:var(--stone);font-size:12px;font-weight:400;}
+
+    .dash-trust{background:var(--warm-white);border-bottom:.5px solid var(--rule);padding:14px clamp(20px,4vw,40px);}
+    .dash-trust__inner{max-width:1080px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;font-size:13px;color:var(--stone);}
+    .dash-trust__pill{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--cream);background:var(--forest);padding:5px 10px;border-radius:999px;white-space:nowrap;}
+    .dash-trust__sep{color:var(--rule-strong);}
+    .dash-trust__line{flex:1 1 auto;min-width:240px;font-style:italic;color:var(--stone);line-height:1.45;}
+    .dash-trust__contact{font-size:12.5px;font-weight:600;color:var(--forest);text-decoration:underline;text-underline-offset:3px;white-space:nowrap;}
+    .dash-trust__contact:hover{color:var(--ink);}
+    .dash-trust__sub{max-width:1080px;margin:6px auto 0;font-size:11.5px;color:var(--stone);}
+    @media(max-width:640px){.dash-trust__sep{display:none;}}
+
     .dash-welcome{border-bottom:.5px solid var(--rule);background:var(--cream);}
     .dash-welcome__inner{max-width:1080px;margin:0 auto;padding:36px 40px 30px;display:flex;justify-content:space-between;align-items:flex-end;gap:32px;}
     .dash-welcome__eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--stone);font-weight:600;}
@@ -388,6 +409,17 @@
     </div>
   </section>
 
+  <!-- ------- MAP trust strip + contact CTA ------- -->
+  <section class="dash-trust">
+    <div class="dash-trust__inner">
+      <span class="dash-trust__pill">MAP-protected pricing &middot; 10% bundle savings</span>
+      <span class="dash-trust__sep" aria-hidden="true">&middot;</span>
+      <span class="dash-trust__line">Curated bundles ship together at 10% off. Single items hold their full price so the makers stay supported.</span>
+      <a class="dash-trust__contact" href="mailto:educators@mytoywagon.com?subject=Help%20with%20my%20educator%20account%20%E2%80%94%20{{ customer.first_name | url_encode }}&body=Hi%20MTW%20educator%20team%2C%0A%0AAccount%20email%3A%20{{ customer.email | url_encode }}%0A%0A">Contact your educator team &rarr;</a>
+    </div>
+    <div class="dash-trust__sub">M&ndash;F &middot; 8am&ndash;5pm PT &middot; reply within 1 business day</div>
+  </section>
+
   <main class="dash-main">
 
     {%- comment -%}LEFT RAIL{%- endcomment -%}
@@ -657,7 +689,12 @@
         </div>
 
         {%- if customer.orders.size > 0 -%}
-        <table class="orders">
+        <div class="orders-lookup">
+          <label for="po-search" class="orders-lookup__label">Look up by PO# or order#</label>
+          <input id="po-search" class="orders-lookup__input" type="search" placeholder="e.g. PO-1234 or #1099" autocomplete="off"/>
+          <span id="po-search-empty" class="orders-lookup__empty" hidden>No matches.</span>
+        </div>
+        <table class="orders" id="orders-table">
           <thead>
             <tr>
               <th>Order</th><th>Date</th><th>Payment</th><th>Fulfillment</th><th>Total</th><th></th>
@@ -668,8 +705,11 @@
               {%- assign o_paid = false -%}
               {%- if order.financial_status == 'paid' or order.tags contains 'po-paid-external' -%}{%- assign o_paid = true -%}{%- endif -%}
               {%- assign fstat = order.fulfillment_status -%}
-              <tr>
-                <td class="is-id">{{ order.name }}</td>
+              {%- comment -%}Extract PO# from tags like 'po-PO-1234' for client-side search{%- endcomment -%}
+              {%- assign po_tag = '' -%}
+              {%- for t in order.tags -%}{%- if t contains 'po-' and t != 'po-paid-external' -%}{%- assign po_tag = t | remove_first: 'po-' -%}{%- endif -%}{%- endfor -%}
+              <tr data-order-name="{{ order.name | downcase }}" data-po="{{ po_tag | downcase }}">
+                <td class="is-id">{{ order.name }}{%- if po_tag != '' %}<span class="po-tag"> &middot; PO {{ po_tag }}</span>{% endif -%}</td>
                 <td>{{ order.created_at | date: "%b %-d, %Y" }}</td>
                 <td>
                   {%- if o_paid -%}<span class="pill paid">Paid</span>
@@ -682,7 +722,18 @@
                   {%- else -%}<span class="pill other">Processing</span>{%- endif -%}
                 </td>
                 <td>{{ order.total_price | money }}</td>
-                <td><a class="lk" href="{{ order.customer_url }}">View &rarr;</a></td>
+                <td class="actions">
+                  <a class="lk" href="{{ order.customer_url }}">View &rarr;</a>
+                  {%- if order.line_items.size > 0 -%}
+                  <form action="/cart/add" method="post" class="reorder-form">
+                    {%- for li in order.line_items -%}{%- if li.variant_id -%}
+                    <input type="hidden" name="items[][id]" value="{{ li.variant_id }}"/>
+                    <input type="hidden" name="items[][quantity]" value="{{ li.quantity }}"/>
+                    {%- endif -%}{%- endfor -%}
+                    <button type="submit" class="lk reorder-btn" title="Add every item from this order back to your wagon">Reorder</button>
+                  </form>
+                  {%- endif -%}
+                </td>
               </tr>
             {%- endfor -%}
           </tbody>
@@ -807,6 +858,30 @@
     }
 
     card.innerHTML = awaitingHtml(pending.id);
+  })();
+
+  // PO# / order# client-side filter on the orders table.
+  // Matches on data-order-name (e.g. "#1099") OR data-po (e.g. "po-1234").
+  // No network calls — just shows/hides rows.
+  (function(){
+    var input = document.getElementById('po-search');
+    var table = document.getElementById('orders-table');
+    var empty = document.getElementById('po-search-empty');
+    if (!input || !table) return;
+    var rows = table.querySelectorAll('tbody tr');
+    input.addEventListener('input', function(){
+      var q = input.value.trim().toLowerCase().replace(/^#/,'').replace(/^po[-\s]?/,'');
+      var visible = 0;
+      rows.forEach(function(r){
+        if (!q){ r.style.display = ''; visible++; return; }
+        var name = (r.getAttribute('data-order-name') || '').replace(/^#/,'');
+        var po   = (r.getAttribute('data-po') || '');
+        var hit  = name.indexOf(q) !== -1 || (po && po.indexOf(q) !== -1);
+        r.style.display = hit ? '' : 'none';
+        if (hit) visible++;
+      });
+      if (empty) empty.hidden = (visible !== 0);
+    });
   })();
   </script>
 </body>
