@@ -77,14 +77,13 @@ Public/indexable funnel-top assets. NOT gated. Drive SEO traffic to the portal d
 - 🔵 **Optional follow-up:** assemble a public-safe vendor packet PDF (W-9 + COI + remit-to + EIN + NAICS — NO bank info) and upload to Shopify Files; share URL; I'll add a "Download vendor packet" button. Even this PDF should NOT contain bank info.
 
 ### 3. Self-serve tax-exempt cert upload (Helium)
-- ⏳ Form spec ready. To build:
-- 🔵 **You: configure Helium Customer Fields**
-  - Add a new form: "Tax-exempt certificate upload"
-  - Field type: file upload (PDF, JPG)
-  - Map to customer metafield: `educator.tax_exempt_cert_url` (single_line_text_field)
-  - Trigger: customer tag `tax-exempt-pending` added on submit
-- ⏳ I then add the form embed + dashboard CTA in a follow-up pass
-- Verification flow stays manual (you add `tax-exempt-verified` tag + Shopify Tax settings exemption)
+- ✅ Template pushed (staging) + committed: `templates/page.tax-exempt-upload.liquid` (12.5 KB)
+- ✅ Helium config spec written: see `HELIUM-TAX-EXEMPT-CONFIG.md` for the full step-by-step
+- Page is gated to educator-approved customers; includes a Helium form embed container, three sidebar info cards (what we accept / how verification works / what might delay it), and an email-fallback path to `accounting@` that works even before Helium is configured
+- Status pill at the top of the page shows current cert state based on customer tags (`tax-exempt-pending` / `tax-exempt-verified`)
+- 🔵 **You: create the page record** in admin (template: `page.tax-exempt-upload`, URL: `tax-exempt-upload`)
+- 🔵 **You: configure Helium form** per `HELIUM-TAX-EXEMPT-CONFIG.md` (5 metafields + 6 form fields + on-submit tag/event + bind to `#helium-tax-exempt-form` container + enable Helium app embed in live theme)
+- 🔵 **You: build Klaviyo expiration-reminder flow** (30 days before `educator.tax_exempt_expires`)
 
 ### 4. Printable PDF quote
 - ⏳ Deferred to staff workflow (no code change)
