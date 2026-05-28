@@ -31,6 +31,17 @@ Snippet Arguments
   for filter in filters
     assign current_filter_size = current_filter_size | plus: filter.active_values.size
   endfor
+
+  # Hide educator-only products from RETAIL search results. Only applies in
+  # search context (collection.results), so collection pages are unaffected.
+  # Signed-in educators (educator-approved) still see them.
+  assign hide_educator = false
+  if collection.results
+    assign hide_educator = true
+    if customer and customer.tags contains 'educator-approved'
+      assign hide_educator = false
+    endif
+  endif
 %}
 
 <div class="collection-grid__wrapper">
@@ -73,6 +84,10 @@ Snippet Arguments
       {%- if item.object_type == 'page' and item.handle contains 'educator' -%}{%- continue -%}{%- endif -%}
       {%- if item.object_type == 'page' and item.handle == 'new-quote' -%}{%- continue -%}{%- endif -%}
       {%- if item.object_type == 'page' and item.handle == 'vendor-profile' -%}{%- continue -%}{%- endif -%}
+      {%- if hide_educator and item.object_type == 'product' -%}
+        {%- capture is_edu -%}{%- render 'educator-product', product: item -%}{%- endcapture -%}
+        {%- if is_edu contains 'yes' -%}{%- continue -%}{%- endif -%}
+      {%- endif -%}
       {%- if item.object_type == 'product' -%}
         {%- render 'product-grid-item',
           product: item,

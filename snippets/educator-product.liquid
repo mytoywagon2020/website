@@ -1,0 +1,36 @@
+{%- comment -%}
+  educator-product
+  ----------------
+  Single source of truth for "is this an educator-only product?".
+
+  An educator product is one served by the educator product template
+  (template_suffix 'educator') OR carrying any educator-* merchandising
+  tag (educator-only, educator-sensory-play, educator-nature-play,
+  educator-creative-arts, educator-dramatic-play, educator-steam, etc.).
+
+  These products are published to the Online Store so signed-in educators
+  can open their PDPs, but they must NOT surface to retail shoppers (e.g.
+  in search / predictive search). Retail and educator share one storefront
+  gated by the customer tag, so the separation has to happen at render time.
+
+  Usage (outputs the string 'yes' for an educator product, otherwise nothing):
+    {%- capture is_edu -%}{%- render 'educator-product', product: item -%}{%- endcapture -%}
+    {%- if is_edu contains 'yes' -%} ... {%- endif -%}
+{%- endcomment -%}
+{%- liquid
+  assign is_edu = false
+  if product.template_suffix contains 'educator'
+    assign is_edu = true
+  endif
+  unless is_edu
+    for t in product.tags
+      if t contains 'educator-'
+        assign is_edu = true
+        break
+      endif
+    endfor
+  endunless
+  if is_edu
+    echo 'yes'
+  endif
+-%}

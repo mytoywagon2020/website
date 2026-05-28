@@ -1,7 +1,21 @@
+{%- comment -%}
+  Keep educator-only products and educator portal pages out of RETAIL
+  predictive search. Signed-in educators (educator-approved) still see them.
+{%- endcomment -%}
+{%- liquid
+  assign hide_educator = true
+  if customer and customer.tags contains 'educator-approved'
+    assign hide_educator = false
+  endif
+-%}
 {%- if predictive_search.performed -%}
   {%- if predictive_search.resources.products.size > 0 -%}
     <div data-type-products>
       {%- for product in predictive_search.resources.products -%}
+        {%- if hide_educator -%}
+          {%- capture is_edu -%}{%- render 'educator-product', product: product -%}{%- endcapture -%}
+          {%- if is_edu contains 'yes' -%}{%- continue -%}{%- endif -%}
+        {%- endif -%}
         {%- render 'product-grid-item',
           product: product,
           per_row: 4,
@@ -31,6 +45,9 @@
       <p class="h6 predictive__label">{{ 'general.search.pages' | t }}</p>
       <ul class="no-bullets">
         {%- for page in predictive_search.resources.pages -%}
+          {%- if hide_educator and page.handle contains 'educator' -%}{%- continue -%}{%- endif -%}
+          {%- if hide_educator and page.handle == 'new-quote' -%}{%- continue -%}{%- endif -%}
+          {%- if hide_educator and page.handle == 'vendor-profile' -%}{%- continue -%}{%- endif -%}
           <li>
             <a href="{{ page.url }}">
               {{ page.title }}
