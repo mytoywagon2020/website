@@ -1,0 +1,298 @@
+{% layout none %}
+<!doctype html>
+<html lang="en">
+<head>
+{{ content_for_header }}
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex,nofollow"/>
+<title>DonorsChoose Project Guide for Hand-Made Classroom Materials &middot; My Toy Wagon</title>
+<meta name="description" content="A teacher's how-to for funding hand-made natural materials through DonorsChoose. Average funded project, winning narrative tips, sample item lists for sensory, nature, woodland, fairy, and dramatic-play classrooms." />
+<link rel="canonical" href="https://mytoywagon.com/pages/donorschoose-for-classrooms" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+:root{--cream:#F5F0E5;--warm-white:#FFFCF7;--ink:#2C2C2A;--forest:#3B6D11;--amber:#854F0B;--stone:#5F5E5A;--rule:rgba(44,44,42,0.12);--rule-strong:rgba(44,44,42,0.22);--serif:'Cormorant Garamond',Georgia,serif;--sans:'Mulish',system-ui,sans-serif}
+*{box-sizing:border-box}html,body{margin:0;padding:0}
+body{font-family:var(--sans);color:var(--ink);background:var(--cream);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+
+.crumbs{padding:20px clamp(20px,4vw,44px) 0;max-width:1100px;margin:0 auto;font-size:12px;letter-spacing:.08em;color:var(--stone)}
+.crumbs a{color:var(--forest);text-decoration:underline;text-underline-offset:3px}
+.crumbs .sep{margin:0 8px;color:var(--rule-strong)}
+
+.hero{padding:48px clamp(20px,4vw,44px) 40px;max-width:1100px;margin:0 auto}
+.hero .eyebrow{font-size:11.5px;font-weight:600;text-transform:uppercase;letter-spacing:.22em;color:var(--forest);display:block;margin-bottom:18px}
+.hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(32px,4.2vw,48px);line-height:1.1;letter-spacing:-.01em;margin:0 0 22px;color:var(--ink)}
+.hero h1 .it{font-style:italic;color:var(--forest)}
+.hero p.dek{font-size:17px;line-height:1.6;color:var(--stone);max-width:62ch;margin:0 0 14px}
+.hero p.body{font-size:15px;line-height:1.65;max-width:62ch;margin:0 0 8px}
+
+/* metric strip */
+.metrics{background:var(--warm-white);border-top:0.5px solid var(--rule);border-bottom:0.5px solid var(--rule);padding:24px clamp(20px,4vw,44px)}
+.metrics-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;text-align:center}
+.metric .n{font-family:var(--serif);font-style:italic;font-size:clamp(28px,3vw,36px);color:var(--forest);display:block;line-height:1}
+.metric .l{font-size:11.5px;font-weight:600;text-transform:uppercase;letter-spacing:.16em;color:var(--stone);margin-top:8px;display:block}
+@media(max-width:680px){.metrics-inner{grid-template-columns:1fr;gap:14px}}
+
+/* section */
+.sec{padding:56px clamp(20px,4vw,44px);max-width:1000px;margin:0 auto}
+.sec h2{font-family:var(--serif);font-weight:500;font-size:clamp(26px,3vw,34px);line-height:1.2;color:var(--ink);margin:0 0 16px;letter-spacing:-.005em}
+.sec h2 .it{font-style:italic;color:var(--forest)}
+.sec h2 .eyebrow{font-size:11.5px;font-weight:600;text-transform:uppercase;letter-spacing:.22em;color:var(--forest);display:block;margin-bottom:14px;font-family:var(--sans);font-style:normal}
+.sec p{font-size:15px;line-height:1.7;color:var(--ink);margin:0 0 14px;max-width:64ch}
+.sec p.lede{font-size:16px;color:var(--stone);max-width:62ch}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:32px}
+.step{background:var(--warm-white);border:0.5px solid var(--rule);border-radius:2px;padding:24px 22px}
+.step .n{font-family:var(--serif);font-style:italic;font-size:34px;color:var(--forest);line-height:1;display:block;margin-bottom:10px}
+.step h4{font-size:14px;font-weight:700;color:var(--ink);margin:0 0 8px}
+.step p{font-size:13.5px;color:var(--stone);line-height:1.55;margin:0}
+@media(max-width:760px){.steps{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.steps{grid-template-columns:1fr}}
+
+/* tips */
+.tips{margin-top:24px;padding-left:0;list-style:none}
+.tips li{padding:16px 0;border-bottom:0.5px solid var(--rule);font-size:14.5px;line-height:1.6;color:var(--ink);display:flex;gap:18px;align-items:baseline}
+.tips li:last-child{border-bottom:none}
+.tips .n{font-family:var(--serif);font-style:italic;font-size:22px;color:var(--forest);flex:0 0 36px;line-height:1}
+.tips strong{font-weight:600}
+
+/* sample-lists */
+.samples{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:32px}
+.sample{background:var(--warm-white);border:0.5px solid var(--rule);border-radius:2px;padding:24px 22px;display:flex;flex-direction:column;gap:10px}
+.sample .tag{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.16em;color:var(--forest)}
+.sample h4{font-family:var(--serif);font-weight:500;font-size:20px;color:var(--ink);margin:0;line-height:1.2}
+.sample .range{font-size:12.5px;color:var(--stone);font-style:italic}
+.sample ul{margin:6px 0 0;padding-left:18px;font-size:13.5px;color:var(--ink);line-height:1.6}
+.sample ul li{margin-bottom:2px}
+.sample .link{margin-top:auto;padding-top:10px;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.14em;color:var(--forest);display:inline-flex;align-items:center;gap:6px}
+.sample .link::after{content:"";width:6px;height:6px;border-top:1.5px solid currentColor;border-right:1.5px solid currentColor;transform:rotate(45deg);display:inline-block}
+@media(max-width:900px){.samples{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.samples{grid-template-columns:1fr}}
+
+/* cta band */
+.cta-band{background:var(--warm-white);border-top:0.5px solid var(--rule);border-bottom:0.5px solid var(--rule);padding:56px clamp(20px,4vw,44px);text-align:center}
+.cta-band-inner{max-width:760px;margin:0 auto}
+.cta-band h3{font-family:var(--serif);font-weight:500;font-size:clamp(24px,3vw,32px);line-height:1.2;color:var(--ink);margin:0 0 16px}
+.cta-band h3 .it{font-style:italic;color:var(--forest)}
+.cta-band p{font-size:15px;color:var(--stone);line-height:1.6;margin:0 0 22px;max-width:60ch;margin-left:auto;margin-right:auto}
+.cta-band .actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.btn{display:inline-block;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;padding:14px 26px;border-radius:2px;border:1px solid var(--ink);transition:background .15s,color .15s}
+.btn--solid{background:var(--ink);color:var(--cream)}
+.btn--solid:hover{background:var(--forest);border-color:var(--forest)}
+.btn--ghost{color:var(--ink);background:transparent}
+.btn--ghost:hover{background:var(--ink);color:var(--cream)}
+
+/* related */
+.related{background:var(--cream);border-top:0.5px solid var(--rule);padding:48px clamp(20px,4vw,44px)}
+.related-inner{max-width:1000px;margin:0 auto}
+.related h3{font-family:var(--serif);font-weight:500;font-size:22px;color:var(--ink);margin:0 0 18px}
+.related-list{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.related-card{background:var(--warm-white);border:0.5px solid var(--rule);border-radius:2px;padding:22px}
+.related-card .tag{font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.14em;color:var(--stone);margin-bottom:6px;display:block}
+.related-card h4{font-family:var(--serif);font-weight:500;font-size:18px;color:var(--ink);margin:0 0 6px}
+.related-card p{font-size:13.5px;color:var(--stone);margin:0 0 10px;line-height:1.55}
+.related-card .lk{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.14em;color:var(--forest)}
+@media(max-width:680px){.related-list{grid-template-columns:1fr}}
+
+/* disclosure */
+.disclosure{background:var(--cream);border-top:0.5px solid var(--rule);padding:32px clamp(20px,4vw,44px);text-align:center}
+.disclosure p{font-size:12.5px;color:var(--stone);line-height:1.55;max-width:62ch;margin:0 auto}
+.disclosure p strong{color:var(--ink)}
+</style>
+</head>
+<body>
+  {% section 'mtw-educator-header' %}
+
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="/pages/funding-your-classroom">Funding your classroom</a>
+    <span class="sep">&rsaquo;</span>
+    <span>DonorsChoose for classrooms</span>
+  </nav>
+
+  <section class="hero">
+    <span class="eyebrow">For teachers &middot; Funding guide</span>
+    <h1>Funding your classroom through <span class="it">DonorsChoose.</span></h1>
+    <p class="dek">A how-to for public-school teachers building projects around hand-made, natural classroom materials.</p>
+    <p class="body">DonorsChoose is the easiest path to funding a small-to-mid classroom project. Average funded project sits between $500 and $1,500, donor community fully covers the cost, and the materials ship straight to your school. This page is a teacher-to-teacher guide to writing a project that funds quickly and reads truthfully.</p>
+  </section>
+
+  <section class="metrics" aria-label="DonorsChoose at a glance">
+    <div class="metrics-inner">
+      <div class="metric"><span class="n">$500&ndash;$1,500</span><span class="l">Avg funded project</span></div>
+      <div class="metric"><span class="n">6&ndash;10 weeks</span><span class="l">Avg time to funded</span></div>
+      <div class="metric"><span class="n">Public schools</span><span class="l">Eligible educators</span></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <h2><span class="eyebrow">How it works</span>Four steps from project to <span class="it">shipped materials.</span></h2>
+    <p class="lede">DonorsChoose handles vendor selection, ordering, and shipping &mdash; you write the project; donors fund it; we ship the materials.</p>
+    <div class="steps">
+      <div class="step">
+        <span class="n">01</span>
+        <h4>Create the project</h4>
+        <p>Sign in at donorschoose.org as a public-school teacher. Choose your subject area and grade range.</p>
+      </div>
+      <div class="step">
+        <span class="n">02</span>
+        <h4>Add the materials</h4>
+        <p>Add items from the DonorsChoose vendor catalog with quantities. Bigger projects can request specific items not in the catalog by name; reviewers source them.</p>
+      </div>
+      <div class="step">
+        <span class="n">03</span>
+        <h4>Write the narrative</h4>
+        <p>Two short paragraphs: who your students are, what the materials do for their learning. Photos help.</p>
+      </div>
+      <div class="step">
+        <span class="n">04</span>
+        <h4>Share and wait</h4>
+        <p>Share the project link with your community. Most fully-funded projects hit 100% within 6&ndash;10 weeks. DonorsChoose orders the materials, ships them to your school, sends you a thank-you packet for donors.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="background:var(--warm-white);max-width:none;padding:56px clamp(20px,4vw,44px);border-top:0.5px solid var(--rule);border-bottom:0.5px solid var(--rule)">
+    <div style="max-width:1000px;margin:0 auto">
+      <h2><span class="eyebrow">Five tips from teachers who get funded</span>What makes a project <span class="it">read true and fund fast.</span></h2>
+      <ol class="tips">
+        <li><span class="n">01</span><div><strong>Open with a concrete student moment.</strong> "Maria spent the morning lining up acorns by size" lands harder than "my students love hands-on learning." Donors fund stories about real children.</div></li>
+        <li><span class="n">02</span><div><strong>Keep the budget under $1,500 for your first project.</strong> Funded-rate drops sharply above $1,500. If you need more, run two projects across two months. Donors prefer to see a teacher's first project succeed.</div></li>
+        <li><span class="n">03</span><div><strong>Name the developmental skill, not the toy.</strong> "Tactile exploration and fine-motor practice" reads as classroom learning. "Wooden rainbow tray" reads as a wish-list item. Both can be true; lead with the skill.</div></li>
+        <li><span class="n">04</span><div><strong>Add a single photo of your classroom corner.</strong> Even a quick phone photo of where the materials will live signals that the project is real. Funded-rate roughly doubles with a photo.</div></li>
+        <li><span class="n">05</span><div><strong>Share the link with three audiences in the first 48 hours.</strong> Parents, your school community, and one local Facebook moms' group. Projects that hit 25% funded in the first week almost always reach 100%.</div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="sec">
+    <h2><span class="eyebrow">Project ideas that match our catalog</span>Five sample project <span class="it">item lists.</span></h2>
+    <p class="lede">Each list maps to one of our eight educator catalog sections. Use them as starting points, edit the quantities to fit your classroom, copy the language into your DonorsChoose narrative.</p>
+    <div class="samples">
+
+      <div class="sample">
+        <span class="tag">Sensory &middot; $500&ndash;$700</span>
+        <h4>The Calm Corner</h4>
+        <span class="range">For Pre-K through K. Self-regulation, breath work, sensory grounding.</span>
+        <ul>
+          <li>One sensory tray (rainbow or castle)</li>
+          <li>Three jars of therapy dough</li>
+          <li>One self-regulation kit (breath cards + plush)</li>
+          <li>Loose-parts basket: pebbles, shells, acorns</li>
+        </ul>
+        <a class="link" href="/pages/educator-sensory-play">See the section</a>
+      </div>
+
+      <div class="sample">
+        <span class="tag">Nature Play &middot; $700&ndash;$1,000</span>
+        <h4>The Forest Floor</h4>
+        <span class="range">For Pre-K through G2. Seasonal nature, classification, outdoor-to-indoor flow.</span>
+        <ul>
+          <li>One Tender Leaf Forest Floor play tray</li>
+          <li>One Busy Bee nature-play tray</li>
+          <li>Wooden mushrooms, pinecones, acorns set</li>
+          <li>Pumpkin &amp; gourd seasonal set</li>
+        </ul>
+        <a class="link" href="/pages/educator-nature-play">See the section</a>
+      </div>
+
+      <div class="sample">
+        <span class="tag">Small World &middot; $800&ndash;$1,200</span>
+        <h4>The Habitat Story Kit</h4>
+        <span class="range">For K through G3. Habitat science, oral storytelling, vocabulary building.</span>
+        <ul>
+          <li>One Papoose Forest Caves or Coralwhim Cove felt mat</li>
+          <li>Tiny Tale Terrains set of four biomes</li>
+          <li>Wooden animal figure set (woodland or sea)</li>
+          <li>Optional add: fairy streamlet, featherfloat pond</li>
+        </ul>
+        <a class="link" href="/pages/educator-small-world">See the section</a>
+      </div>
+
+      <div class="sample">
+        <span class="tag">STEAM &middot; $500&ndash;$1,000</span>
+        <h4>The Investigation Table</h4>
+        <span class="range">For G1 through G4. Observation, classification, early scientific method.</span>
+        <ul>
+          <li>One Q Toys wooden microscope</li>
+          <li>One amber kaleidoscope</li>
+          <li>Wooden compass (pocket size)</li>
+          <li>Specimen tray with loose-parts collection</li>
+          <li>Optional add: Bauspiel Lucent cubes for light-table work</li>
+        </ul>
+        <a class="link" href="/pages/educator-steam">See the section</a>
+      </div>
+
+      <div class="sample">
+        <span class="tag">Dramatic Play &middot; $800&ndash;$1,500</span>
+        <h4>The Farmyard</h4>
+        <span class="range">For Pre-K through G2. Role-play, animal care vocabulary, harvest themes.</span>
+        <ul>
+          <li>One Drewart wooden cow shed</li>
+          <li>One Tara Treasures farm play mat</li>
+          <li>Felt farm animals set of ten</li>
+          <li>Fagus tractor &amp; trailer</li>
+          <li>Bumbu straw bale + wooden pumpkins</li>
+        </ul>
+        <a class="link" href="/pages/educator-dramatic-play">See the section</a>
+      </div>
+
+      <div class="sample">
+        <span class="tag">Creative Arts &middot; $400&ndash;$800</span>
+        <h4>The Weaving Bench</h4>
+        <span class="range">For K through G4. Process art, fine-motor, patience-building craft.</span>
+        <ul>
+          <li>One Q Toys wooden weaving frame</li>
+          <li>Plant-based sculpting dough, 5-color set</li>
+          <li>June &amp; December heirloom flower press</li>
+          <li>Veggie Baby finger paint kit</li>
+        </ul>
+        <a class="link" href="/pages/educator-creative-arts">See the section</a>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="cta-band-inner">
+      <h3>Have a project draft? <span class="it">Send it over.</span></h3>
+      <p>We can prepare a matching item list with SKUs, prices, and exact descriptions so your DonorsChoose project page reads accurately. We do this for free for any teacher building a project that includes our materials.</p>
+      <div class="actions">
+        <a href="mailto:accounting@mytoywagon.com?subject=DonorsChoose%20project%20item%20list%20request&body=Hi%20MTW%2C%0A%0AI%20am%20building%20a%20DonorsChoose%20project%20and%20would%20like%20a%20matching%20item%20list%20with%20SKUs%20and%20prices.%20Details%20below.%0A%0AGrade%20level%3A%0AClassroom%20theme%3A%0AItems%20I%27m%20interested%20in%3A%0ATarget%20budget%3A%0A%0AThank%20you.%0A" class="btn btn--solid">Email accounting@</a>
+        <a href="/pages/funding-your-classroom" class="btn btn--ghost">Other funding paths</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="related">
+    <div class="related-inner">
+      <h3>Other ways to fund your classroom</h3>
+      <div class="related-list">
+        <div class="related-card">
+          <span class="tag">Federal &middot; Title I &middot; ESSER</span>
+          <h4>Federal funds for low-income and recovery</h4>
+          <p>Title I dollars and remaining ESSER extensions cover supplementary classroom materials at qualifying schools.</p>
+          <a class="lk" href="/pages/funding-your-classroom">See the overview &rarr;</a>
+        </div>
+        <div class="related-card">
+          <span class="tag">Foundation grants</span>
+          <h4>NEA, McCarthey Dressman, Fund for Teachers</h4>
+          <p>National foundations fund individual teachers' classroom projects between $500 and $10,000 on rolling cycles.</p>
+          <a class="lk" href="/pages/grants-for-natural-materials-classrooms">Read the grants guide &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="disclosure">
+    <p><strong>One disclosure:</strong> We are not affiliated with DonorsChoose, do not control which projects fund, and cannot guarantee that any specific project will reach its goal. DonorsChoose's vendor catalog and project rules are managed by DonorsChoose; verify current eligibility and rules at donorschoose.org before committing to a project. This page is offered as a teacher-to-teacher guide.</p>
+  </section>
+
+  {% section 'mtw-educator-footer' %}
+</body>
+</html>

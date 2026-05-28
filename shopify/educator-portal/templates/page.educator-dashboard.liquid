@@ -1,0 +1,904 @@
+{% layout none %}
+{%- comment -%}
+  Educator Dashboard — gated portal home for approved educators.
+  Renders live customer data via Liquid. Closed unless the customer is tagged
+  'educator-approved' or is a B2B customer.
+
+  Design: 2026-05 redesign — "Combined" desktop + mobile per design team README.
+  Wagon-card state branches on cart.item_count + customer.metafields.educator.open_quote_id.
+  Featured tiles read from shop.metafields.educator.featured_handles (list of 3 product handles).
+
+  Page order (between header and footer sections):
+    utility bar (above mtw-educator-header) → mtw-educator-header → welcome bar
+    → main grid (left rail + content) → mtw-educator-footer
+
+  Hard rules from README:
+    - NO countdown to order-by date (considered and rejected).
+    - Status pill classes 'paid' / 'pending' / 'other' — do not invent new colors.
+    - Sticky left rail on desktop; disabled below 860px.
+    - <details> Account section on mobile (native HTML, no JS).
+    - Mobile h1 32px, desktop h1 52px. Body bg #dcd5c5 warm tan (intentional).
+    - Catalog tile bg colors are intentional placeholders for seasonal photography.
+{%- endcomment -%}
+{%- assign is_approved = false -%}
+{%- if customer and customer.tags contains 'educator-approved' -%}{%- assign is_approved = true -%}{%- endif -%}
+{%- if customer.b2b? -%}{%- assign is_approved = true -%}{%- endif -%}
+{%- if is_approved -%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Educator Dashboard | {{ shop.name }}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --cream:#F5F0E5;
+      --warm-white:#FFFCF7;
+      --ink:#2C2C2A;
+      --forest:#3B6D11;
+      --amber:#854F0B;
+      --stone:#5F5E5A;
+      --card-bg:#EDE3CD;
+      --rule:rgba(44,44,42,0.12);
+      --rule-strong:rgba(44,44,42,0.22);
+      --moss:#5A7240;
+      /* Warm tan body bg — intentional (design team confirmed) */
+      --body-bg:#dcd5c5;
+    }
+    *{box-sizing:border-box;}
+    html,body{margin:0;padding:0;}
+    body{font-family:'Mulish',sans-serif;color:var(--ink);background:var(--body-bg);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+    a{color:inherit;text-decoration:none;}
+    img{max-width:100%;display:block;}
+
+    /* Utility bar — full-width black strip above header */
+    .dash-utility{background:var(--ink);}
+    .dash-utility__inner{max-width:1080px;margin:0 auto;padding:10px 40px;display:flex;justify-content:space-between;align-items:center;gap:16px;color:rgba(245,240,229,.8);font-size:12px;letter-spacing:.06em;}
+    .dash-utility__left,.dash-utility__right{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    .dash-utility__right a{color:inherit;}
+
+    /* Welcome bar */
+    .orders-lookup{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:0 0 12px;}
+    .orders-lookup__label{font-size:11.5px;font-weight:600;text-transform:uppercase;letter-spacing:.14em;color:var(--stone);}
+    .orders-lookup__input{flex:1 1 240px;max-width:320px;padding:9px 12px;font-size:13.5px;font-family:inherit;border:1px solid var(--rule-strong);border-radius:2px;background:var(--warm-white);color:var(--ink);}
+    .orders-lookup__input:focus{outline:none;border-color:var(--ink);}
+    .orders-lookup__empty{font-size:12px;color:var(--stone);font-style:italic;}
+    .orders .actions{white-space:nowrap;}
+    .orders .actions .reorder-form{display:inline;margin-left:8px;}
+    .orders .actions .reorder-btn{background:transparent;border:none;padding:0;font:inherit;cursor:pointer;color:var(--forest);text-decoration:underline;text-underline-offset:3px;}
+    .orders .actions .reorder-btn:hover{color:var(--ink);}
+    .orders .po-tag{color:var(--stone);font-size:12px;font-weight:400;}
+
+    .dash-trust{background:var(--warm-white);border-bottom:.5px solid var(--rule);padding:14px clamp(20px,4vw,40px);}
+    .dash-trust__inner{max-width:1080px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;font-size:13px;color:var(--stone);}
+    .dash-trust__pill{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--cream);background:var(--forest);padding:5px 10px;border-radius:999px;white-space:nowrap;}
+    .dash-trust__sep{color:var(--rule-strong);}
+    .dash-trust__line{flex:1 1 auto;min-width:240px;font-style:italic;color:var(--stone);line-height:1.45;}
+    .dash-trust__contact{font-size:12.5px;font-weight:600;color:var(--forest);text-decoration:underline;text-underline-offset:3px;white-space:nowrap;}
+    .dash-trust__contact:hover{color:var(--ink);}
+    .dash-trust__sub{max-width:1080px;margin:6px auto 0;font-size:11.5px;color:var(--stone);}
+    @media(max-width:640px){.dash-trust__sep{display:none;}}
+
+    .dash-welcome{border-bottom:.5px solid var(--rule);background:var(--cream);}
+    .dash-welcome__inner{max-width:1080px;margin:0 auto;padding:36px 40px 30px;display:flex;justify-content:space-between;align-items:flex-end;gap:32px;}
+    .dash-welcome__eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--stone);font-weight:600;}
+    .dash-welcome__title{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:500;margin:10px 0 0;letter-spacing:-.01em;line-height:1.05;}
+    .dash-welcome__title em{font-style:italic;}
+    .dash-welcome__title br{display:none;}
+    .dash-welcome__sub{color:var(--stone);margin:8px 0 0;font-size:14.5px;}
+    .dash-welcome__right{text-align:right;flex-shrink:0;}
+    .dash-welcome__season{font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--amber);font-weight:700;}
+    .dash-welcome__orderby{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:500;margin-top:4px;font-style:italic;}
+    .dash-welcome__deliver{font-size:12.5px;color:var(--stone);margin-top:2px;}
+    .dash-welcome__pill{display:none;}
+
+    /* Main grid */
+    .dash-main{max-width:1080px;margin:0 auto;padding:36px 40px 40px;display:grid;grid-template-columns:300px 1fr;gap:36px;align-items:start;}
+
+    /* LEFT RAIL */
+    .dash-aside{position:sticky;top:20px;display:flex;flex-direction:column;gap:18px;}
+
+    /* Wagon card */
+    .wagon-card{background:var(--ink);color:var(--cream);padding:22px 22px 24px;border-radius:3px;position:relative;overflow:hidden;}
+    .wagon-card__head{display:flex;justify-content:space-between;align-items:flex-start;}
+    .wagon-card__label{font-size:10px;letter-spacing:.22em;text-transform:uppercase;opacity:.7;font-weight:600;}
+    .wagon-card__title{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:500;margin:4px 0 4px;line-height:1.15;}
+    .wagon-card__title em{font-style:italic;}
+    .wagon-card__title--small{font-size:22px;line-height:1.2;}
+    .wagon-card__title--empty{font-size:24px;font-style:italic;margin:4px 0 6px;line-height:1.2;}
+    .wagon-card__meta{font-size:12px;color:rgba(245,240,229,.65);margin-bottom:16px;}
+    .wagon-card__meta--strong{color:rgba(245,240,229,.78);margin-bottom:6px;}
+    .wagon-card__cta{display:inline-block;background:var(--cream);color:var(--ink);padding:10px 16px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border-radius:2px;border:0;cursor:pointer;font-family:inherit;transition:background 160ms ease;}
+    .wagon-card__cta:hover{background:var(--warm-white);}
+    .wagon-card__actions{display:flex;flex-direction:column;gap:8px;margin-bottom:10px;}
+    .wagon-card__cta--solid{background:var(--cream);color:var(--ink);text-align:center;}
+    .wagon-card__cta--solid:hover{background:var(--warm-white);}
+    .wagon-card__cta--ghost{background:transparent;color:var(--cream);border:1px solid rgba(245,240,229,.45);text-align:center;}
+    .wagon-card__cta--ghost:hover{background:rgba(245,240,229,.12);}
+    .wagon-card__hint{font-size:11px;line-height:1.5;color:rgba(245,240,229,.7);margin:0;}
+    .wagon-card__progress{display:flex;gap:4px;margin-bottom:14px;}
+    .wagon-card__progress span{flex:1;height:3px;background:rgba(245,240,229,.25);border-radius:1px;}
+    .wagon-card__progress span.is-active{background:#7a9355;}
+    .wagon-card__steps{font-size:11px;color:rgba(245,240,229,.55);letter-spacing:.04em;margin-bottom:16px;}
+    .wagon-card__steps strong{color:var(--cream);font-weight:700;}
+
+    /* Account card (desktop) */
+    .acct-card{background:var(--warm-white);border:.5px solid var(--rule);padding:20px 22px;border-radius:3px;}
+    .acct-card__label{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--stone);font-weight:600;}
+    .acct-card__org{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:500;margin-top:6px;}
+    .acct-card__lines{font-size:12.5px;color:var(--stone);line-height:1.55;margin-top:6px;}
+    .acct-card__links{margin-top:14px;display:flex;flex-direction:column;gap:6px;font-size:12.5px;}
+    .acct-card__links a{color:var(--forest);font-weight:600;}
+    .acct-card__links a:hover{color:var(--ink);}
+    .acct-card--mobile{display:none;}
+
+    /* Open invoices card */
+    .inv-card{background:var(--warm-white);border:.5px solid var(--rule);padding:16px 20px;border-radius:2px;}
+    .inv-card__label{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--stone);font-weight:600;}
+    .inv-card__amt{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;margin-top:4px;}
+    .inv-card__line{font-size:12px;color:var(--stone);margin-top:2px;}
+    .inv-card__line a{color:var(--forest);font-weight:600;}
+
+    /* Support card */
+    .support-card{background:var(--card-bg);padding:18px 22px;border-radius:3px;}
+    .support-card__label{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);font-weight:700;}
+    .support-card__body{font-size:13px;color:var(--ink);line-height:1.55;margin:8px 0 0;}
+    .support-card__body span{color:var(--stone);}
+
+    /* MAIN COLUMN */
+    .dash-content{min-width:0;}
+
+    /* Season feature */
+    .season{margin-bottom:40px;}
+    .season__head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:18px;border-bottom:.5px solid var(--rule-strong);padding-bottom:12px;gap:16px;}
+    .season__eyebrow{font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);font-weight:700;}
+    .season__title{font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:500;margin:6px 0 0;letter-spacing:-.005em;}
+    .season__title em{font-style:italic;}
+    .season__more{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--forest);font-weight:700;white-space:nowrap;}
+    .season__more:hover{color:var(--ink);}
+    .season__lede{color:var(--stone);font-size:14.5px;line-height:1.6;margin:0 0 24px;max-width:640px;}
+    .tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+
+    /* Catalog tile */
+    .tile{display:block;text-decoration:none;color:var(--ink);background:var(--warm-white);border:.5px solid var(--rule);border-radius:3px;overflow:hidden;transition:transform 200ms ease,box-shadow 200ms ease,border-color 200ms ease;}
+    .tile:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(44,44,42,.08);border-color:var(--rule-strong);}
+    .tile__art{position:relative;height:200px;overflow:hidden;}
+    .tile__art--moss{background-color:#5A7240;}
+    .tile__art--forest{background-color:#3B6D11;}
+    .tile__art--amber{background-color:#854F0B;}
+    .tile__art-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.22) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,0) 70%,rgba(0,0,0,.18) 100%);z-index:1;}
+    .tile__art svg{position:absolute;inset:0;width:100%;height:100%;}
+    .tile__section{position:absolute;top:14px;left:16px;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--cream);font-weight:700;z-index:2;text-shadow:0 1px 2px rgba(0,0,0,.3);}
+    .tile__body{padding:18px 20px 22px;}
+    .tile__title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;margin:0;line-height:1.15;}
+    .tile__blurb{color:var(--stone);font-size:13px;line-height:1.5;margin:8px 0 14px;}
+    .tile__foot{display:flex;justify-content:space-between;align-items:center;border-top:.5px solid var(--rule);padding-top:12px;}
+    .tile__price-label{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);font-weight:600;}
+    .tile__price{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:500;margin-top:2px;}
+    .tile__add{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--forest);font-weight:700;}
+
+    .season__cta-strip{margin-top:18px;padding:14px 18px;background:var(--warm-white);border:.5px dashed var(--rule-strong);border-radius:3px;}
+    .season__cta-strip span{font-size:13.5px;color:var(--stone);}
+    .season__cta-strip a{color:var(--forest);font-weight:700;}
+
+    /* Orders */
+    .orders-block{margin-bottom:36px;}
+    .orders-block__head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px;}
+    .orders-block__title{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:500;margin:0;letter-spacing:-.005em;}
+    .orders-block__more{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--forest);font-weight:700;}
+    .orders-block__more:hover{color:var(--ink);}
+    table.orders{width:100%;border-collapse:collapse;font-size:13.5px;}
+    table.orders th{text-align:left;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);font-weight:600;padding:10px 12px;border-bottom:.5px solid var(--rule-strong);}
+    table.orders td{padding:14px 12px;border-bottom:.5px solid var(--rule);vertical-align:middle;}
+    table.orders td.is-id{font-weight:600;}
+    .pill{display:inline-block;font-size:10.5px;font-weight:600;letter-spacing:.04em;padding:3px 10px;border-radius:999px;}
+    .pill.paid{background:#e7f0e0;color:#3B6D11;}
+    .pill.pending{background:#f6ecd8;color:#854F0B;}
+    .pill.other{background:#ececec;color:var(--stone);}
+    .lk{color:var(--forest);font-weight:600;}
+    .lk:hover{color:var(--ink);}
+
+    /* PO section */
+    .po-section{background:var(--warm-white);border:.5px solid var(--rule);padding:24px 28px;border-radius:3px;}
+    .po-section__inner{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;}
+    .po-section__eyebrow{font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--stone);font-weight:600;}
+    .po-section__title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;margin:6px 0 4px;}
+    .po-section__body{color:var(--stone);font-size:13.5px;margin:0;}
+
+    /* Buttons */
+    .btn{display:inline-flex;align-items:center;gap:6px;padding:11px 22px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border-radius:2px;background:var(--ink);color:var(--cream);border:.5px solid var(--ink);cursor:pointer;transition:background 160ms ease,color 160ms ease,border-color 160ms ease;font-family:inherit;}
+    .btn:hover{background:var(--forest);border-color:var(--forest);color:var(--cream);}
+
+    /* Guided / empty */
+    .guided{background:var(--warm-white);border:1px solid var(--rule-strong);border-left:3px solid var(--forest);border-radius:3px;padding:24px 26px;}
+    .guided h3{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:22px;margin:0 0 14px;}
+    .guided ol{margin:0;padding-left:20px;color:var(--ink);}
+    .guided li{margin:0 0 9px;line-height:1.5;}
+    .guided li a{color:var(--forest);font-weight:600;}
+
+    /* MOBILE — single column, reorder, <details> account */
+    @media (max-width: 860px){
+      .dash-utility__inner{padding:8px 16px;justify-content:center;font-size:10.5px;letter-spacing:.04em;}
+      .dash-utility__right{display:none;}
+
+      .dash-welcome__inner{flex-direction:column;align-items:flex-start;gap:12px;padding:24px 16px 18px;}
+      .dash-welcome__title{font-size:32px;}
+      .dash-welcome__title br{display:inline;}
+      .dash-welcome__right{display:none;}
+      .dash-welcome__pill{display:inline-block;padding:6px 10px;background:var(--warm-white);border:.5px solid var(--rule-strong);border-radius:2px;font-size:12px;color:var(--ink);}
+      .dash-welcome__pill .label{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);font-weight:700;margin-right:4px;}
+
+      .dash-main{grid-template-columns:1fr;gap:16px;padding:16px;}
+      .dash-aside{position:static;order:0;}
+      .dash-content{order:1;}
+
+      /* Hide desktop account card on mobile, show <details> variant */
+      .acct-card{display:none;}
+      .acct-card--mobile{display:block;background:var(--warm-white);border:.5px solid var(--rule);border-radius:3px;padding:14px 16px;}
+      .acct-card--mobile > summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;}
+      .acct-card--mobile > summary::-webkit-details-marker{display:none;}
+      .acct-card--mobile > summary::marker{content:'';}
+      .acct-card--mobile .indicator{color:var(--stone);font-size:18px;line-height:1;transition:transform 160ms ease;}
+      .acct-card--mobile[open] .indicator{transform:rotate(45deg);}
+      .acct-card--mobile .body{margin-top:12px;font-size:12.5px;color:var(--stone);line-height:1.55;}
+      .acct-card--mobile .body .links{margin-top:10px;display:flex;flex-direction:column;gap:6px;}
+      .acct-card--mobile .body .links a{color:var(--forest);font-weight:600;}
+
+      /* Wagon CTA full-width on mobile */
+      .wagon-card{padding:18px 18px 20px;}
+      .wagon-card__title{font-size:24px;}
+      .wagon-card__cta{display:block;text-align:center;padding:12px 14px;}
+
+      .season__head{flex-direction:column;align-items:flex-start;gap:8px;}
+      .season__title{font-size:24px;}
+      .tiles{grid-template-columns:1fr;gap:10px;}
+
+      /* Mobile catalog tiles become horizontal cards */
+      .tile{display:flex;min-height:96px;}
+      .tile__art{height:auto;width:110px;flex-shrink:0;}
+      .tile__art svg{display:none;}
+      .tile__section{font-size:9.5px;letter-spacing:.16em;line-height:1.2;top:10px;left:10px;right:10px;}
+      .tile__body{flex:1;padding:12px 14px;display:flex;flex-direction:column;justify-content:space-between;}
+      .tile__title{font-size:17px;line-height:1.2;}
+      .tile__blurb{display:none;}
+      .tile__foot{border-top:0;padding-top:0;align-items:baseline;margin-top:8px;}
+      .tile__price-label{display:none;}
+      .tile__price{font-size:16px;margin-top:0;}
+      .tile__add{font-size:10px;}
+
+      .season__more{display:none;}
+      .season__more--mobile{display:block;text-align:center;margin-top:12px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--forest);font-weight:700;padding:12px 0;border:.5px solid var(--rule-strong);border-radius:2px;}
+
+      /* Orders as cards on mobile */
+      .orders-block__title{font-size:22px;}
+      table.orders thead{display:none;}
+      table.orders,table.orders tbody{display:block;}
+      table.orders tr{display:block;background:var(--warm-white);border:.5px solid var(--rule);border-radius:3px;padding:14px 16px;margin-bottom:8px;}
+      table.orders td{display:block;padding:3px 0;border:0;}
+      table.orders td.is-id{font-size:14px;font-weight:700;margin-bottom:2px;display:inline-block;}
+      table.orders td:nth-child(5){display:inline-block;float:right;font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:500;}
+
+      .po-section{padding:18px 18px 20px;}
+      .po-section__inner{flex-direction:column;align-items:stretch;}
+      .po-section .btn{display:block;text-align:center;}
+    }
+    .season__more--mobile{display:none;}
+  </style>
+</head>
+<body>
+
+  {%- comment -%}Utility bar — black strip above the header section{%- endcomment -%}
+  <div class="dash-utility">
+    <div class="dash-utility__inner">
+      <div class="dash-utility__left">Approved educator portal &middot; Net-30 / Net-60 available</div>
+      <div class="dash-utility__right"><a href="mailto:educators@mytoywagon.com">educators@mytoywagon.com</a> &middot; (626) 841-0421</div>
+    </div>
+  </div>
+
+  {% section 'mtw-educator-header' %}
+
+  {%- liquid
+    # ---- Season / window copy (no countdown — design team rejected it) ----
+    assign now_month = 'now' | date: '%m' | plus: 0
+    assign now_year = 'now' | date: '%Y' | plus: 0
+    assign es = shop.metafields.educator.settings.value
+    if now_month >= 1 and now_month <= 6
+      assign edu_window = es.fall_window | default: 'August–September' | append: ' ' | append: now_year
+      assign edu_orderby_label = es.fall_order_by | default: 'July 15'
+      assign edu_season_label = 'Fall'
+    else
+      assign ny = now_year | plus: 1
+      assign edu_window = es.spring_window | default: 'May–June' | append: ' ' | append: ny
+      assign edu_orderby_label = es.spring_order_by | default: 'March 15'
+      assign edu_season_label = 'Spring'
+    endif
+
+    # ---- Open invoices (unpaid orders) ----
+    # Skip cancelled, refunded, voided, partially-refunded — those aren't
+    # "open" obligations even if financial_status != 'paid'.
+    assign open_count = 0
+    assign open_total = 0
+    assign first_open_order_name = ''
+    assign first_open_order_url = ''
+    for o in customer.orders limit: 50
+      assign o_skip = false
+      if o.cancelled_at != blank
+        assign o_skip = true
+      elsif o.financial_status == 'refunded' or o.financial_status == 'voided' or o.financial_status == 'partially_refunded'
+        assign o_skip = true
+      endif
+      unless o_skip
+        assign o_paid = false
+        if o.financial_status == 'paid' or o.tags contains 'po-paid-external'
+          assign o_paid = true
+        endif
+        unless o_paid
+          assign open_count = open_count | plus: 1
+          assign open_total = open_total | plus: o.total_price
+          if first_open_order_name == ''
+            assign first_open_order_name = o.name
+            assign first_open_order_url = o.customer_url
+          endif
+        endunless
+      endunless
+    endfor
+
+    # ---- Wagon state ----
+    # 'empty'    - no cart items AND no open_quote_id
+    # 'draft'    - cart has items (regardless of quote state)
+    # 'awaiting' - cart empty AND customer has educator.open_quote_id set
+    # open_quote_id is written by staff in admin after replying with the
+    # formal quote (Customer record → Metafields → educator.open_quote_id).
+    # Pre-staff-update, the dashboard JS reads localStorage as a fallback
+    # so educators see the Awaiting-PO state immediately after submit.
+    assign open_quote_id = customer.metafields.educator.open_quote_id | default: ''
+    assign wagon_state = 'empty'
+    if cart.item_count > 0
+      assign wagon_state = 'draft'
+    elsif open_quote_id != ''
+      assign wagon_state = 'awaiting'
+    endif
+
+    # ---- Org name ----
+    # Fallback chain: B2B current_company → Helium customer_fields metafield
+    # → educator namespace fallback → blank (welcome line drops the org).
+    assign org_name = ''
+    if customer.b2b? and customer.current_company != blank
+      assign org_name = customer.current_company.name
+    endif
+    if org_name == ''
+      assign org_name = customer.metafields.customer_fields.institution_name | default: customer.metafields.educator.institution_name | default: ''
+    endif
+
+    # ---- Terms line ----
+    # B2B customers have Net-30/60 set up on the Shopify company record.
+    # Non-B2B approved educators don't until staff creates a Company for them
+    # (which happens on first PO/Net-30 request, per the runbook). So show
+    # "Net-30 on file" only when it's actually true.
+    assign terms_line = 'Approved educator'
+    if customer.b2b?
+      assign terms_line = 'Approved educator &middot; Net-30 / Net-60 on file'
+    endif
+
+    # ---- Featured catalog tiles ----
+    # Source of truth: shop.metafields.educator.featured_handles (list of 3 product handles).
+    # Fallback: empty list → generic browse-the-catalog tile.
+    assign featured_handles = shop.metafields.educator.featured_handles.value
+    assign hue_classes = 'tile__art--moss,tile__art--forest,tile__art--amber' | split: ','
+    assign section_labels = 'Sensory Play,Woodland,Nature Play' | split: ','
+  -%}
+
+  {%- comment -%}Welcome bar{%- endcomment -%}
+  <section class="dash-welcome">
+    <div class="dash-welcome__inner">
+      <div>
+        <div class="dash-welcome__eyebrow">Educator dashboard</div>
+        <h1 class="dash-welcome__title">
+          Welcome back,<br/>{% if customer.first_name != blank %}<em>{{ customer.first_name }}</em>{% else %}<em>educator</em>{% endif %}.
+        </h1>
+        <p class="dash-welcome__sub">
+          {%- if org_name != '' %}{{ org_name }} &middot; {% endif -%}
+          {{ terms_line }}
+        </p>
+        {%- comment -%}Mobile-only inline season chip{%- endcomment -%}
+        <span class="dash-welcome__pill"><span class="label">{{ edu_season_label }} &rsquo;{{ now_year | modulo: 100 }}:</span>Order by {{ edu_orderby_label }}</span>
+      </div>
+      <div class="dash-welcome__right">
+        <div class="dash-welcome__season">{{ edu_season_label }} &rsquo;{{ now_year | modulo: 100 }} window</div>
+        <div class="dash-welcome__orderby">Order by {{ edu_orderby_label }}</div>
+        <div class="dash-welcome__deliver">Delivers {{ edu_window }}</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ------- MAP trust strip + contact CTA ------- -->
+  <section class="dash-trust">
+    <div class="dash-trust__inner">
+      <span class="dash-trust__pill">MAP-protected pricing &middot; 10% bundle savings</span>
+      <span class="dash-trust__sep" aria-hidden="true">&middot;</span>
+      <span class="dash-trust__line">Curated bundles ship together at 10% off. Single items hold their full price so the makers stay supported.</span>
+      <a class="dash-trust__contact" href="mailto:educators@mytoywagon.com?subject=Help%20with%20my%20educator%20account%20%E2%80%94%20{{ customer.first_name | url_encode }}&body=Hi%20MTW%20educator%20team%2C%0A%0AAccount%20email%3A%20{{ customer.email | url_encode }}%0A%0A">Contact your educator team &rarr;</a>
+    </div>
+    <div class="dash-trust__sub">M&ndash;F &middot; 8am&ndash;5pm PT &middot; reply within 1 business day</div>
+  </section>
+
+  <main class="dash-main">
+
+    {%- comment -%}LEFT RAIL{%- endcomment -%}
+    <aside class="dash-aside">
+
+      {%- comment -%}Wagon card — three states{%- endcomment -%}
+      {%- if wagon_state == 'empty' -%}
+      <div class="wagon-card">
+        <div class="wagon-card__head">
+          <div class="wagon-card__label">Your wagon</div>
+          {%- comment -%}TinyWagonMark, items="empty"{%- endcomment -%}
+          <svg viewBox="0 0 120 80" width="64" height="42.67" aria-hidden="true">
+            <ellipse cx="60" cy="68" rx="44" ry="3" fill="#000" opacity=".10"/>
+            <line x1="22" y1="48" x2="6" y2="32" stroke="#A87B43" stroke-width="3" stroke-linecap="round"/>
+            <path d="M 24 40 L 96 40 L 100 56 Q 60 62 20 56 Z" fill="#B33B2E"/>
+            <circle cx="32" cy="60" r="9" fill="#2a1810"/>
+            <circle cx="88" cy="60" r="9" fill="#2a1810"/>
+            <circle cx="32" cy="60" r="3" fill="#F5F0E5"/>
+            <circle cx="88" cy="60" r="3" fill="#F5F0E5"/>
+          </svg>
+        </div>
+        <div class="wagon-card__title wagon-card__title--empty">Your wagon is empty.</div>
+        <div class="wagon-card__meta wagon-card__meta--strong">Add items from the catalog and we&rsquo;ll send you an itemized quote.</div>
+        <a class="wagon-card__cta" href="/pages/educators">Open the catalog &rarr;</a>
+      </div>
+
+      {%- elsif wagon_state == 'draft' -%}
+      <div class="wagon-card">
+        <div class="wagon-card__head">
+          <div class="wagon-card__label">Your wagon</div>
+          {%- comment -%}TinyWagonMark, items="loaded"{%- endcomment -%}
+          <svg viewBox="0 0 120 80" width="64" height="42.67" aria-hidden="true">
+            <ellipse cx="60" cy="68" rx="44" ry="3" fill="#000" opacity=".10"/>
+            <line x1="22" y1="48" x2="6" y2="32" stroke="#A87B43" stroke-width="3" stroke-linecap="round"/>
+            <path d="M 24 40 L 96 40 L 100 56 Q 60 62 20 56 Z" fill="#B33B2E"/>
+            <rect x="36" y="28" width="12" height="12" rx="2" fill="#A87B43"/>
+            <rect x="52" y="22" width="9" height="18" rx="2" fill="#5A7240"/>
+            <circle cx="70" cy="32" r="6" fill="#854F0B"/>
+            <circle cx="32" cy="60" r="9" fill="#2a1810"/>
+            <circle cx="88" cy="60" r="9" fill="#2a1810"/>
+            <circle cx="32" cy="60" r="3" fill="#F5F0E5"/>
+            <circle cx="88" cy="60" r="3" fill="#F5F0E5"/>
+          </svg>
+        </div>
+        <div class="wagon-card__title">{{ cart.item_count }} item{% if cart.item_count != 1 %}s{% endif %} &middot; <em>{{ cart.total_price | money_without_trailing_zeros }}</em></div>
+        <div class="wagon-card__meta">{{ cart.item_count }} line{% if cart.item_count != 1 %}s{% endif %} in your wagon &middot; educator pricing applied</div>
+        {%- comment -%}
+          Dual checkout path:
+          - "Check out & pay" goes to native Shopify checkout (card / Shop Pay /
+            Apple Pay / Google Pay / ACH). Educator pricing already applied via
+            the Educators Market, so no quote needed for card buyers.
+          - "Request a quote" submits the cart to the educator-quote form on
+            /pages/new-quote for buyers who need a PO / Net-30 / grant reimbursement.
+        {%- endcomment -%}
+        <div class="wagon-card__actions">
+          <a class="wagon-card__cta wagon-card__cta--solid" href="/checkout">Check out &amp; pay &rarr;</a>
+          <a class="wagon-card__cta wagon-card__cta--ghost" href="/pages/new-quote">Request a quote / pay by PO</a>
+        </div>
+        <p class="wagon-card__hint">Paying by card, Shop Pay, or ACH? Check out now. Need Net-30 or a PO for your school? Request a quote.</p>
+      </div>
+
+      {%- elsif wagon_state == 'awaiting' -%}
+      <div class="wagon-card">
+        <div class="wagon-card__head">
+          <div class="wagon-card__label">Your wagon</div>
+          {%- comment -%}TinyWagonMark, items="shipped" (dashed in-transit lines){%- endcomment -%}
+          <svg viewBox="0 0 120 80" width="64" height="42.67" aria-hidden="true">
+            <ellipse cx="60" cy="68" rx="44" ry="3" fill="#000" opacity=".10"/>
+            <line x1="22" y1="48" x2="6" y2="32" stroke="#A87B43" stroke-width="3" stroke-linecap="round"/>
+            <path d="M 24 40 L 96 40 L 100 56 Q 60 62 20 56 Z" fill="#7c3128"/>
+            <g opacity=".5"><line x1="32" y1="32" x2="88" y2="32" stroke="#F5F0E5" stroke-dasharray="2 3" stroke-width="1"/></g>
+            <circle cx="32" cy="60" r="9" fill="#2a1810"/>
+            <circle cx="88" cy="60" r="9" fill="#2a1810"/>
+            <circle cx="32" cy="60" r="3" fill="#F5F0E5"/>
+            <circle cx="88" cy="60" r="3" fill="#F5F0E5"/>
+          </svg>
+        </div>
+        <div class="wagon-card__title wagon-card__title--small">Quote sent — <em>awaiting&nbsp;PO</em></div>
+        <div class="wagon-card__meta wagon-card__meta--strong">{{ open_quote_id }}</div>
+        <div class="wagon-card__progress">
+          <span class="is-active"></span>
+          <span class="is-active"></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="wagon-card__steps">Drafted &middot; Sent &middot; <strong>Awaiting PO</strong> &middot; Confirmed</div>
+        <a class="wagon-card__cta" href="mailto:educators@mytoywagon.com?subject=Purchase%20Order%20for%20{{ open_quote_id | url_encode }}&body=Quote%20number%3A%20{{ open_quote_id | url_encode }}%0APO%20number%3A%20%0ABilling%20contact%3A%20%0ANeeded%20by%3A%20">Submit your PO &rarr;</a>
+      </div>
+      {%- endif -%}
+
+      {%- comment -%}Account snapshot — desktop card{%- endcomment -%}
+      <div class="acct-card">
+        <div class="acct-card__label">Your account</div>
+        {%- if org_name != '' -%}
+        <div class="acct-card__org">{{ org_name }}</div>
+        {%- else -%}
+        <div class="acct-card__org">{{ customer.name | strip | default: customer.first_name }}</div>
+        {%- endif -%}
+        <div class="acct-card__lines">
+          {%- if customer.first_name != blank -%}{{ customer.first_name }} {{ customer.last_name }}<br/>{%- endif -%}
+          {{ customer.email }}<br/>
+          Net-30 &middot; Tax-exempt
+        </div>
+        <div class="acct-card__links">
+          <a href="{{ routes.account_url }}">Addresses &amp; contacts &rarr;</a>
+          <a href="/pages/vendor-profile">W-9 / COI / supplier docs &rarr;</a>
+          <a href="mailto:educators@mytoywagon.com?subject=Curriculum-alignment%20letter">Curriculum-alignment letter &rarr;</a>
+        </div>
+      </div>
+
+      {%- comment -%}Account snapshot — mobile <details> variant{%- endcomment -%}
+      <details class="acct-card--mobile">
+        <summary>
+          <div>
+            <div class="acct-card__label">Your account</div>
+            {%- if org_name != '' -%}
+            <div class="acct-card__org" style="font-size:17px;">{{ org_name }}</div>
+            {%- else -%}
+            <div class="acct-card__org" style="font-size:17px;">{{ customer.name | strip | default: customer.first_name }}</div>
+            {%- endif -%}
+          </div>
+          <span class="indicator" aria-hidden="true">+</span>
+        </summary>
+        <div class="body">
+          {%- if customer.first_name != blank -%}{{ customer.first_name }} {{ customer.last_name }} &middot; {%- endif -%}
+          {{ customer.email }}<br/>
+          Net-30 &middot; Tax-exempt on file
+          <div class="links">
+            <a href="{{ routes.account_url }}">Addresses &rarr;</a>
+            <a href="/pages/vendor-profile">W-9 / COI &rarr;</a>
+            <a href="mailto:educators@mytoywagon.com?subject=Curriculum-alignment%20letter">Curriculum letter &rarr;</a>
+          </div>
+        </div>
+      </details>
+
+      {%- comment -%}Open invoices snapshot{%- endcomment -%}
+      {%- if open_count > 0 -%}
+      <div class="inv-card">
+        <div class="inv-card__label">Open invoice{% if open_count != 1 %}s{% endif %}</div>
+        <div class="inv-card__amt">{{ open_total | money }}</div>
+        <div class="inv-card__line">
+          {%- if first_open_order_name != '' -%}
+            Inv. {{ first_open_order_name }} &middot; <a href="{{ first_open_order_url }}">view</a>
+          {%- else -%}
+            {{ open_count }} open
+          {%- endif -%}
+        </div>
+      </div>
+      {%- endif -%}
+
+      {%- comment -%}Support{%- endcomment -%}
+      <div class="support-card">
+        <div class="support-card__label">Talk to us</div>
+        <p class="support-card__body">
+          <strong>(626) 841-0421</strong><br/>
+          <span>Mon&ndash;Fri 9&ndash;5 PT</span>
+        </p>
+      </div>
+    </aside>
+
+    {%- comment -%}MAIN COLUMN{%- endcomment -%}
+    <div class="dash-content">
+
+      {%- comment -%}Season feature with 3 catalog tiles from shop.metafields.educator.featured_handles{%- endcomment -%}
+      <section class="season">
+        <div class="season__head">
+          <div>
+            <div class="season__eyebrow">This season at the wagon</div>
+            <h2 class="season__title">For your <em>{{ edu_season_label | downcase }} &rsquo;{{ now_year | modulo: 100 }}</em> classrooms</h2>
+          </div>
+          <a class="season__more" href="/pages/educators">Full catalog &rarr;</a>
+        </div>
+
+        <p class="season__lede">
+          Hand-picked for Pre-K through 2nd grade and the {{ edu_window }} delivery window.
+          All prices show your educator rate; add to your wagon and our team
+          confirms availability within one business day on your draft quote.
+        </p>
+
+        <div class="tiles">
+          {%- for i in (0..2) -%}
+            {%- assign handle = featured_handles[i] -%}
+            {%- assign hue_class = hue_classes[i] -%}
+            {%- assign section_label = section_labels[i] -%}
+            {%- assign featured = all_products[handle] -%}
+            {%- if handle != blank and featured and featured.title != '' -%}
+              <a class="tile" href="{{ featured.url }}">
+                <div class="tile__art {{ hue_class }}">
+                  <div class="tile__art-overlay"></div>
+                  {%- if featured.featured_image -%}
+                    <img src="{{ featured.featured_image | image_url: width: 800 }}" alt="{{ featured.title | escape }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.95;z-index:0;">
+                  {%- else -%}
+                    <svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+                      <g opacity=".55" stroke="#FFFCF7" stroke-width="2" fill="none">
+                        <path d="M 60 200 Q 70 120 110 60 Q 130 40 160 50"/>
+                        <path d="M 110 60 Q 140 50 150 30"/>
+                        <path d="M 90 120 Q 70 110 50 122"/>
+                        <path d="M 100 160 Q 130 152 145 140"/>
+                      </g>
+                      <g opacity=".7" fill="#FFFCF7">
+                        <ellipse cx="160" cy="50" rx="18" ry="7" transform="rotate(-25 160 50)"/>
+                        <ellipse cx="50" cy="122" rx="15" ry="6" transform="rotate(15 50 122)"/>
+                        <ellipse cx="145" cy="140" rx="13" ry="5" transform="rotate(-15 145 140)"/>
+                      </g>
+                      <g opacity=".35" fill="#FFFCF7">
+                        <circle cx="300" cy="80" r="38"/>
+                        <circle cx="340" cy="130" r="22"/>
+                      </g>
+                    </svg>
+                  {%- endif -%}
+                  <div class="tile__section">{{ section_label }}</div>
+                </div>
+                <div class="tile__body">
+                  <h4 class="tile__title">{{ featured.title }}</h4>
+                  <p class="tile__blurb">{{ featured.description | strip_html | truncate: 110 }}</p>
+                  <div class="tile__foot">
+                    <div>
+                      <div class="tile__price-label">Educator price</div>
+                      {%- if featured.price > 0 -%}
+                        <div class="tile__price">{{ featured.price | money_without_trailing_zeros }}</div>
+                      {%- else -%}
+                        <div class="tile__price" style="font-size:14px;font-style:italic;color:var(--stone);">Pricing on quote</div>
+                      {%- endif -%}
+                    </div>
+                    <span class="tile__add">Add to wagon &rarr;</span>
+                  </div>
+                </div>
+              </a>
+            {%- else -%}
+              {%- comment -%}Fallback generic tile while featured_handles metafield is unset{%- endcomment -%}
+              <a class="tile" href="/pages/educators">
+                <div class="tile__art {{ hue_class }}">
+                  <div class="tile__art-overlay"></div>
+                  <div class="tile__section">{{ section_label }}</div>
+                </div>
+                <div class="tile__body">
+                  <h4 class="tile__title">Featured this season</h4>
+                  <p class="tile__blurb">Hand-picked for the {{ edu_window }} delivery window — browse the catalog for our full seasonal selection.</p>
+                  <div class="tile__foot">
+                    <div>
+                      <div class="tile__price-label">Educator price</div>
+                      <div class="tile__price">View catalog</div>
+                    </div>
+                    <span class="tile__add">Browse &rarr;</span>
+                  </div>
+                </div>
+              </a>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+
+        <a class="season__more--mobile" href="/pages/educators">Browse the full catalog &rarr;</a>
+
+        {%- comment -%}
+          Curriculum-alignment mailto pre-fills with the three featured product handles
+          if present, so the staff member can compose the letter from the request alone.
+        {%- endcomment -%}
+        {%- capture curriculum_body -%}Please send a curriculum-alignment letter covering: {%- for i in (0..2) -%}{%- assign h = featured_handles[i] -%}{%- if h != blank -%}{{ h }}{%- unless forloop.last %}, {% endunless -%}{%- endif -%}{%- endfor -%}. Grant: ____. Deadline: ____.{%- endcapture -%}
+        <div class="season__cta-strip">
+          <span>
+            Building a grant proposal?
+            <a href="mailto:educators@mytoywagon.com?subject=Curriculum-alignment%20letter%20request&body={{ curriculum_body | url_encode }}">Request a curriculum-alignment letter for these items &rarr;</a>
+          </span>
+        </div>
+      </section>
+
+      {%- comment -%}Orders{%- endcomment -%}
+      <section class="orders-block" id="orders">
+        <div class="orders-block__head">
+          <h2 class="orders-block__title">Your orders</h2>
+          {%- if customer.orders.size > 0 -%}
+          <a class="orders-block__more" href="{{ routes.account_url }}">All orders &rarr;</a>
+          {%- endif -%}
+        </div>
+
+        {%- if customer.orders.size > 0 -%}
+        <div class="orders-lookup">
+          <label for="po-search" class="orders-lookup__label">Look up by PO# or order#</label>
+          <input id="po-search" class="orders-lookup__input" type="search" placeholder="e.g. PO-1234 or #1099" autocomplete="off"/>
+          <span id="po-search-empty" class="orders-lookup__empty" hidden>No matches.</span>
+        </div>
+        <table class="orders" id="orders-table">
+          <thead>
+            <tr>
+              <th>Order</th><th>Date</th><th>Payment</th><th>Fulfillment</th><th>Total</th><th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {%- for order in customer.orders limit: 6 -%}
+              {%- assign o_paid = false -%}
+              {%- if order.financial_status == 'paid' or order.tags contains 'po-paid-external' -%}{%- assign o_paid = true -%}{%- endif -%}
+              {%- assign fstat = order.fulfillment_status -%}
+              {%- comment -%}Extract PO# from tags like 'po-PO-1234' for client-side search{%- endcomment -%}
+              {%- assign po_tag = '' -%}
+              {%- for t in order.tags -%}{%- if t contains 'po-' and t != 'po-paid-external' -%}{%- assign po_tag = t | remove_first: 'po-' -%}{%- endif -%}{%- endfor -%}
+              <tr data-order-name="{{ order.name | downcase }}" data-po="{{ po_tag | downcase }}">
+                <td class="is-id">{{ order.name }}{%- if po_tag != '' %}<span class="po-tag"> &middot; PO {{ po_tag }}</span>{% endif -%}</td>
+                <td>{{ order.created_at | date: "%b %-d, %Y" }}</td>
+                <td>
+                  {%- if o_paid -%}<span class="pill paid">Paid</span>
+                  {%- elsif order.tags contains 'invoice-sent' -%}<span class="pill pending">Invoiced</span>
+                  {%- else -%}<span class="pill other">Payment due</span>{%- endif -%}
+                </td>
+                <td>
+                  {%- if fstat == 'fulfilled' or order.tags contains 'fulfilled-external' -%}<span class="pill paid">Fulfilled</span>
+                  {%- elsif fstat == 'partial' -%}<span class="pill pending">Partially shipped</span>
+                  {%- else -%}<span class="pill other">Processing</span>{%- endif -%}
+                </td>
+                <td>{{ order.total_price | money }}</td>
+                <td class="actions">
+                  <a class="lk" href="{{ order.customer_url }}">View &rarr;</a>
+                  {%- if order.line_items.size > 0 -%}
+                  <form action="/cart/add" method="post" class="reorder-form">
+                    {%- for li in order.line_items -%}{%- if li.variant_id -%}
+                    <input type="hidden" name="items[][id]" value="{{ li.variant_id }}"/>
+                    <input type="hidden" name="items[][quantity]" value="{{ li.quantity }}"/>
+                    {%- endif -%}{%- endfor -%}
+                    <button type="submit" class="lk reorder-btn" title="Add every item from this order back to your wagon">Reorder</button>
+                  </form>
+                  {%- endif -%}
+                </td>
+              </tr>
+            {%- endfor -%}
+          </tbody>
+        </table>
+        {%- else -%}
+        <div class="guided">
+          <h3>Place your first order in three steps</h3>
+          <ol>
+            <li><strong>Browse the catalog</strong> and add items to your wagon. <a href="/pages/educators">Open the Educator Catalog &rarr;</a></li>
+            <li><strong>Send for a quote.</strong> We reply within one business day with an itemized quote (pricing held 45 days), including shipping and tax.</li>
+            <li><strong>Issue your PO</strong> referencing the quote; we confirm, allocate, and ship to your delivery window. Net-30 / Net-60 available.</li>
+          </ol>
+          <p style="margin:14px 0 0;color:var(--stone);font-size:13.5px;">Prefer to pay now? Card, Shop Pay, Apple Pay, Google Pay, and ACH are all available at checkout.</p>
+        </div>
+        {%- endif -%}
+      </section>
+
+      {%- comment -%}PO submission section{%- endcomment -%}
+      <section class="po-section" id="po">
+        <div class="po-section__inner">
+          <div>
+            <div class="po-section__eyebrow">Submit a purchase order</div>
+            <h3 class="po-section__title">Have an approved quote?</h3>
+            <p class="po-section__body">Email your PO (PDF) referencing the quote &mdash; we confirm within one business day.</p>
+          </div>
+          <a class="btn" href="mailto:educators@mytoywagon.com?subject=Purchase%20Order%20Submission{%- if open_quote_id != '' %}%20for%20{{ open_quote_id | url_encode }}{% endif -%}&body=Quote%20number%3A%20{{ open_quote_id | url_encode }}%0APO%20number%3A%20%0ABilling%20contact%3A%20%0AShip-to%20address(es)%3A%20%0ANeeded%20by%3A%20%0ANotes%3A%20">Email your PO &rarr;</a>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  {% section 'mtw-educator-footer' %}
+
+  <script>
+  (function(){
+    // Wagon-card localStorage fallback + cart-clear-failure recovery.
+    //
+    // Quote page writes 'mtw_edu_quote_pending' = {id, at, cart_token} on submit.
+    // After successful submission, /cart/clear.js is called server-side. If
+    // that succeeds, server renders wagon state = 'empty'. This JS then swaps
+    // to the Awaiting-PO state using the localStorage quote ID.
+    //
+    // If /cart/clear.js FAILED silently (network blip), the cart still has
+    // items and server renders 'draft'. This JS detects that case by
+    // comparing the current cart_token against the one saved at submit time;
+    // if they match, the cart didn't change — the clear just failed — so we
+    // attempt the clear again, then swap the wagon to Awaiting-PO.
+    //
+    // Server-set customer.metafields.educator.open_quote_id takes precedence
+    // when set (Liquid renders Awaiting-PO directly; this JS exits early).
+
+    var serverOpenQid = {{ open_quote_id | json }};
+    if (serverOpenQid && serverOpenQid.length) return;
+
+    var pending = null;
+    try {
+      var raw = localStorage.getItem('mtw_edu_quote_pending');
+      if (raw) pending = JSON.parse(raw);
+    } catch(e){}
+    if (!pending || !pending.id || !pending.at) return;
+
+    // 14-day TTL — stale entries get cleared and we let server state stand.
+    if (Date.now() - pending.at > 14 * 24 * 60 * 60 * 1000) {
+      try { localStorage.removeItem('mtw_edu_quote_pending'); } catch(e){}
+      return;
+    }
+
+    var card = document.querySelector('.wagon-card');
+    if (!card) return;
+    var existingTitle = card.querySelector('.wagon-card__title');
+    if (!existingTitle) return;
+    var titleText = (existingTitle.textContent || '').toLowerCase();
+    var isEmpty = titleText.indexOf('empty') !== -1;
+    var isAwaiting = titleText.indexOf('quote sent') !== -1;
+    if (isAwaiting) return; // server already rendered awaiting — nothing to do
+
+    // For draft state, only swap if the current cart_token matches the
+    // token captured at submit time — that's the cart-clear-failure signal.
+    if (!isEmpty) {
+      var liveCartToken = {{ cart.token | json }};
+      if (!pending.cart_token || pending.cart_token !== liveCartToken) return;
+      // Cart-clear retry — fire and forget. UI swap proceeds regardless so
+      // educator isn't blocked on a flaky endpoint.
+      fetch('/cart/clear.js', {method:'POST', credentials:'same-origin'}).catch(function(){});
+    }
+
+    function awaitingHtml(qid){
+      var subject = encodeURIComponent('Purchase Order for ' + qid);
+      var body = encodeURIComponent('Quote number: ' + qid + '\nPO number: \nBilling contact: \nNeeded by: ');
+      var meta = qid;
+      if (pending.items_count) {
+        meta += ' &middot; ' + pending.items_count + ' item' + (pending.items_count !== 1 ? 's' : '');
+      }
+      if (pending.total_formatted) {
+        meta += ' &middot; ' + pending.total_formatted;
+      }
+      return ''
+        + '<div class="wagon-card__head">'
+        +   '<div class="wagon-card__label">Your wagon</div>'
+        +   '<svg viewBox="0 0 120 80" width="64" height="42.67" aria-hidden="true">'
+        +     '<ellipse cx="60" cy="68" rx="44" ry="3" fill="#000" opacity=".10"/>'
+        +     '<line x1="22" y1="48" x2="6" y2="32" stroke="#A87B43" stroke-width="3" stroke-linecap="round"/>'
+        +     '<path d="M 24 40 L 96 40 L 100 56 Q 60 62 20 56 Z" fill="#7c3128"/>'
+        +     '<g opacity=".5"><line x1="32" y1="32" x2="88" y2="32" stroke="#F5F0E5" stroke-dasharray="2 3" stroke-width="1"/></g>'
+        +     '<circle cx="32" cy="60" r="9" fill="#2a1810"/>'
+        +     '<circle cx="88" cy="60" r="9" fill="#2a1810"/>'
+        +     '<circle cx="32" cy="60" r="3" fill="#F5F0E5"/>'
+        +     '<circle cx="88" cy="60" r="3" fill="#F5F0E5"/>'
+        +   '</svg>'
+        + '</div>'
+        + '<div class="wagon-card__title wagon-card__title--small">Quote sent — <em>awaiting&nbsp;PO</em></div>'
+        + '<div class="wagon-card__meta wagon-card__meta--strong">' + meta + '</div>'
+        + '<div class="wagon-card__progress">'
+        +   '<span class="is-active"></span>'
+        +   '<span class="is-active"></span>'
+        +   '<span></span>'
+        +   '<span></span>'
+        + '</div>'
+        + '<div class="wagon-card__steps">Drafted &middot; Sent &middot; <strong>Awaiting PO</strong> &middot; Confirmed</div>'
+        + '<a class="wagon-card__cta" href="mailto:educators@mytoywagon.com?subject=' + subject + '&body=' + body + '">Submit your PO &rarr;</a>';
+    }
+
+    card.innerHTML = awaitingHtml(pending.id);
+  })();
+
+  // PO# / order# client-side filter on the orders table.
+  // Matches on data-order-name (e.g. "#1099") OR data-po (e.g. "po-1234").
+  // No network calls — just shows/hides rows.
+  (function(){
+    var input = document.getElementById('po-search');
+    var table = document.getElementById('orders-table');
+    var empty = document.getElementById('po-search-empty');
+    if (!input || !table) return;
+    var rows = table.querySelectorAll('tbody tr');
+    input.addEventListener('input', function(){
+      var q = input.value.trim().toLowerCase().replace(/^#/,'').replace(/^po[-\s]?/,'');
+      var visible = 0;
+      rows.forEach(function(r){
+        if (!q){ r.style.display = ''; visible++; return; }
+        var name = (r.getAttribute('data-order-name') || '').replace(/^#/,'');
+        var po   = (r.getAttribute('data-po') || '');
+        var hit  = name.indexOf(q) !== -1 || (po && po.indexOf(q) !== -1);
+        r.style.display = hit ? '' : 'none';
+        if (hit) visible++;
+      });
+      if (empty) empty.hidden = (visible !== 0);
+    });
+  })();
+  </script>
+</body>
+</html>
+{%- else -%}
+{% render 'educator-gate' %}
+{%- endif -%}

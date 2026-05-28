@@ -1,0 +1,172 @@
+# Catalog Rebuild Changelog — Web → Print/PDF sync
+
+Running list of changes made to the **web educator portal** that the **print/PDF catalog must be rebuilt to reflect**. Grouped by topic/section. Newest work at top of each list. Branch: `claude/kind-bardeen-lX5a2`.
+
+> Web exceeds catalog on purpose: the print catalog had to fit one page per section (8.5×11); the web is infinite, so some grids carry extra products (flagged below). The print rebuild should adopt the **structure, naming, pricing, and corrections** here even where it can't carry every extra SKU.
+
+
+## How to use this for the rebuild
+
+**The Educator Catalog is the source of truth.** When a web edit conflicts with the catalog: default to the catalog, UNLESS the web edit is a genuine correction or newer data (real prices, new SKUs, fixed mis-bindings) — in which case keep the web version and record it under **"Catalog updates needed"** below so the print/PDF is brought in line on the next rebuild.
+
+## Catalog updates needed (web is now ahead of print)
+
+- **Connetix Creative Pack is 102pc / $99** (current; the **100pc is discontinued**). Catalog is already at 102 — no change needed; noted to avoid re-introducing 100pc.
+- **Connetix prices → current retail (regular):** Mega 212 $209 · Creative 102 $99 · Geometry 30 $55 · Ball Run 92 $85 · PRO Constructor 70 $99 · Glitter Unicorn 56 $79 · Glitter Castle 48 $69 · Portal 48 $69 · Light Star (Star Light Pack) 28 $59 · Roads & Ramps 64 = **$214** (2-pack: Creative Roads 48 $139 + Ramps & Intersections 16 $75; **not** 10%-discounted for now). All Connetix prices confirmed.
+- **Connetix bundles priced** (component sum − 10%, MAP cap): Starter $139 · Mid $265 · **Full $645** (clean 10% off all components incl. Roads & Ramps 2-pack).
+- **Connetix specs corrected** (print likely wrong): material is **ABS, not acrylic**; origin is **Australian company, made in China** (not "Brisbane"); add **US safety standards** (ASTM F963 · CPSIA · CA Prop 65 · BSCI factory). See "Connetix — verified facts" at the bottom.
+- **STEAM split into three sections** (was merged): Observation Station / Hand-Felted Biology / Deep Time.
+- **Specimen Study Station** hero added (June & December bundles).
+- **Transparent Windows 25pc ($152)** replaces Sparkling Stones.
+- **DP Kitchen split** into Pantry / Sweet Shop·Bakery / Sweet Shop·Treats; **Food Groups now the Pantry anchor** (moved from STEAM).
+- **6 new Connetix products** added to the range (see table).
+- **Use latest Connetix counts/prices** from the site screenshots for Starter (62/$65), Square (40/$59), etc.
+- **Edition name = "2026 Autumn Edition"** (was a Spring/Fall mix).
+- **Creative Pack:** keep at **102pc** (100pc discontinued); image `Connetix_Creative_Pack_102pc.webp` is correct.
+
+---
+
+## Global rules (apply catalog-wide)
+
+- **Season naming — Autumn (public) / Fall (schedule).**
+  - **Autumn** = product names, public display copy, and the edition name → **"2026 Autumn Edition"** (was a mix of "Spring"/"Fall").
+  - **Fall** = schedule/calendar only (booking + delivery windows, "book in the fall").
+  - **Spring removed** from all theme/edition copy. Kept only as a *delivery/booking* window (Fall-first) and in the literal 4-season Seasonal Trees product.
+- **Educator price = REGULAR price** (never a retail sale/markdown).
+- **In-stock rule:** educator items always show a price + order CTA (made-to-order / continue-selling). No "Coming soon."
+- **Bundle pricing:** sum of component regular prices − **10%** (flat; **10% is the maker MAP ceiling**; bundles only, never individual packs). Show contents + list total + savings.
+- **Grid symmetry:** in uniform card grids, any row with **<5 cards is centered**.
+- **Card metas = SKU-only** (drop repeated maker/category; keep genuine piece-count specs like "3 sets").
+- **Cert claims:** only cite verified-per-maker. Papoose = **WFTO + Fair Trade USA**; Tara Treasures = **Fair Trade USA Certified** (designed Melbourne, made by women artisans in Nepal). Removed unverified OEKO-TEX/GOTS where not confirmed. **Still to verify:** FSC, GOTS, OEKO-TEX, BSCI, IDEA Part B / Medicaid OT funding, Junior Design Awards 2021.
+
+---
+
+## STEAM
+
+- **De-conflated into three distinct sections** (were merged into one grid):
+  1. **The Complete Observation Station** (`MTW-ST-OBS`): Wooden Microscope, Magnifier Set, My Little Museum Bug Box, Binoculars, Compass, Specimen Collecting Kit, **Optical Blocks** (moved in).
+  2. **Hand-Felted Biology:** Frog / Butterfly / Bee / Bean life cycles + Human Anatomy (dinos/optics/nutrition removed).
+  3. **Deep Time** (NEW): Papoose Jurassic hero (`MTW-ST-PDM`) + Prehistoric Set (`MTW-ST-BPS`), Dinosaur Eggs (`MTW-ST-BDE`), Dinosaur Life Cycle (`MTW-ST-TLC`).
+- **Specimen Study Station** hero added (June & December): Starter (26 bottles/2 forceps/36 labels, `MTW-ST-JDB-S1`) + Complete (58/4/72, `MTW-ST-JDB-S2`); priced as a package on quote.
+- **Sparkling Stones → Bauspiel Transparent Windows 25pc** (`MTW-ST-BTW`, **$152**). Bauspiel section index now MIRROR · LUCENT · FAIRYTALE · COLOUR · TRANSPARENT.
+- **Bauspiel specialty grid** images updated: Mirror Blocks, Lucent Cubes 100, Fairytale Windows, Color Track 45, Transparent Windows 25.
+- **Food Groups Nutrition Set removed from STEAM** → moved to DP Pantry.
+- **Kaleidoscope hero**: dedicated image, shown contained (full image / child's face visible, sharp).
+- **Connetix prices corrected to real retail (regular):** Mega 212 **$209**, Creative 102 **$99**, Geometry 30 **$55**, Ball Run 92 **$85**, PRO Constructor 70 **$99**, Glitter Unicorn 56 **$79**, Bright/Pastel Portal 48 **$69**. Glitter Castle 48 **$69**, Light Star (Star Light Pack) 28 **$59**, **Roads & Ramps 64 = $214** (2-pack: Creative Roads 48 $139 + Ramps & Intersections 16 $75, not 10%-discounted) — all confirmed.
+- **Connetix tiered bundles priced (component sum − 10%):**
+  - Starter (Creative 102 + Shape Expansion) **$154 → $139** (`MTW-ST-CCS`)
+  - Mid (Starter + Ball Run + Geometry) **$294 → $265** (`MTW-ST-CCM`)
+  - Full (Mid + Roads & Ramps 2-pack + Mega) **$717 → $645** (10% off) (`MTW-ST-CCF`)
+- All "Coming soon" replaced with prices (Kaleidoscope from $34, etc.).
+
+## Dramatic Play
+
+- **Kitchen & Café split** into: **The Pantry** (5), **Sweet Shop · Bakery** (6, adds Pavlova), **Sweet Shop · Treats** (5).
+- **The Pantry** now anchored by **Food Groups, Nutrition Set** (`MTW-DP-TFG`) → Food Groups, Bread, Pasta, Charcuterie & Cheese, Artisan Preserves & Scones. (Replaces the old standalone produce card.)
+- **Farmyard** reordered (Cow Shed hero + grid card, Farm Mat, Animals set-of-10, Tractor, Hay Wagon, Fences, harvest extras); 9-card grid centered.
+- **Shop Scene** gains a lead lifestyle image ("Pantry Becomes a Shop"), shown at natural ratio.
+
+## Sensory Play
+
+- Therapy-dough index lists all **7 scents** (incl. Mojito `MTW-CA-ANM`, Pumpkin Spice `MTW-CA-ANP` — web extras beyond the 5 in print).
+- Calm Corner origins alphabetized; Calm Corner intro de-duplicated from the pull-quote; "coming soon" cross-link label removed.
+
+## Nature Play
+
+- Section is **Autumn**-themed (Spring removed from copy).
+- **Fix:** Felt Pinecones "Add to cart" now fires `MTW-NP-PNC` (was mis-bound to `MTW-NT-MSH-G`).
+- "Nature Tools · Papoose" divider repositioned before the Nature Tools grid.
+- "Autumn Folk" Bumbu/Moonpicnic wood grid is a web extra (not in print).
+
+## Woodland
+
+- Papoose **Seasonal Trees** kept as a true 4-season product (spring/summer/autumn/winter is its literal feature).
+- Cert copy: FSC-certified (to verify), WFTO & Fair Trade USA.
+
+## Small World
+
+- **Fix:** Gus + Mabel felt habitats corrected from "**eight**" to "**five**" everywhere (matches the `MTW-SW-FB5` bundle + the 5-card grid: TTT/FST/FPP/CCV/WWW).
+
+## Fairy Villages
+
+- **Fix:** Mushroom Garden hero "Add to cart" now fires `MTW-FV-MUS` (was a text slug). Hero $228.
+- Wonderheart pairing price corrected ($118 → $108).
+
+## Creative Arts
+
+- Sections present & grouped (Florals, Threading, Dough, Eco-Cutters, Modeling Tools, Paints, Presses, Mindful Potion).
+- Card metas reduced to SKU-only (stripped repeated "Hand-felted wool", maker names; kept piece-counts).
+- Play Dough Tool Set (10pc) new image; eco-cutters standardized to Ages 3–8; intro copy fixes.
+- **Reordered for superior web flow:** Hero Product (Heirloom Press) moved up to right after the Editorial Intro (was buried after Paints); grids kept in a sensible materials progression (Florals → Threading → Playdough → Eco-Cutters → Modeling → Paints → Pressing → Mindful Potion). Screen-labels now sequential.
+
+---
+
+## New Shopify products created (DRAFT, our SKUs)
+
+Created to fill gaps in the Connetix range. **Need maker barcodes + product images** (important for Google/Shopping once public). Barcode = keep maker's; SKU = ours.
+
+| Product | Price | Our SKU |
+|---|---|---|
+| Glitter Unicorn Pack 56pc | $79 | MTW-ST-CGU |
+| PRO Constructor Set 70pc | $99 | MTW-ST-CPR |
+| Super Ball Run Pack 134pc | $149 | MTW-ST-CSB |
+| Charity Pack Pink 20pc | $45 | MTW-ST-CHP |
+| Charity Pack Teal 20pc | $45 | MTW-ST-CHT |
+| Pastel Portal Pack 48pc | $69 | MTW-ST-CPP |
+| Glitter Castle Pack 48pc | $69 | MTW-ST-CGC |
+| Star Light Pack 28pc | $59 | MTW-ST-CLS |
+
+---
+
+## Open items (owner input needed)
+
+- **Barcodes + images** for the 6 new products (matters for Google Shopping when public).
+- **Confirm prices:** Roads & Ramps 64 ($89?), Glitter Castle 48 ($79?), Light Star 28 ($55?) — not in retail screenshots; Glitter Castle / Light Star may be discontinued.
+- **Variant ambiguities** (new SKU vs rename): Rainbow Creative 100 vs existing 102; Rainbow Starter 62 vs 60; Rainbow Square 40 vs 42.
+- **Existing ~35 Connetix products: our SKUs assigned** ✅ — educator-page items reuse their codes (Mega 212 `MTW-ST-CMP`, Creative 102 `MTW-ST-CCP`, Geometry 30 `MTW-ST-CGP`, Ball Run 92 `MTW-ST-CBR`); all others get descriptive `MTW-CX-<color><type><count>` codes (e.g., `MTW-CX-PMG202`, `MTW-CX-RD48`). Barcodes left as the maker's.
+- **Cert verifications:** FSC, GOTS, OEKO-TEX, BSCI, IDEA Part B / Medicaid OT funding, Junior Design Awards 2021.
+- **Public catalog landing page** (the one real SEO lever — HTML page hosting the PDF; gated portal pages are not indexed).
+
+
+## Connetix — verified facts (use these; correct the catalog)
+
+- **Material:** non-toxic **ABS** plastic (BPA / lead / phthalate-free), **not acrylic**. Magnets sealed via **ultrasonic welding + rivets**; unique beveled design.
+- **Origin:** **Australian company (Connetix Pty Ltd, founded 2019), manufactured in China** — *not* "made in Brisbane."
+- **US safety standards:** ASTM F963-17 (incl. 4.3.5.1/4.3.5.2 soluble heavy metal) · CPSIA Sect 101 (lead) · CPSIA Sect 103 / 16 CFR 1307 (phthalates) · CA Prop 65 (DEHP, BBP, DBP, DIOP, DnHP). Factory passes **BSCI** employment-conditions audit. Award-winning, 100% non-toxic.
+- **Range note:** launched with the **62-piece Rainbow Starter**; pastel range (8 colours) added 2021; ball-run packs in rainbow + pastel.
+- ⏳ Apply these specs to the 8 new Connetix product descriptions (Shopping feed) when enriching.
+
+## Future: public retail flip-book catalog (SEO)
+
+When the public retail "Educator Catalog" flip-book page is built on the retail shop, that is the **one SEO surface**: keyword-rich title/H1/meta, and links out to product pages pass ranking value. **Caveat:** it can only link to products that are **public on retail** — anything currently **Draft (the entire Connetix line, per the "not live on retail" rule)** won't be linkable until published. Decide per-product whether to publish when that page is built. The gated catalog (registration page → section-cards entryway → 8 sections → dashboard) needs **no SEO**. The single public doorway today is the **registration/apply page** (`designs/educator.html` → `/pages/educator-program`).
+
+## Auth pages (register / login / dashboard)
+
+- **Register page already exists** — the working application form lives in the **theme `educator-portal` template** (the "register link"), built ~2 days ago. **Action (theme-admin):** move/reassign that register page to the **`educator-register`** template so the naming is logical, then point the register link/CTAs at it. The old placeholder content on `educator-register` ("verification may take 3 business days," no form) gets replaced by it.
+- *Note:* I mistakenly added a duplicate `page.educator-register.liquid` to the repo — **removed** (the real form is the theme one above; no rebuild needed).
+- **Login** (`educator-login`) stays a login page; on valid credentials it should land on the **dashboard**. TODO: native login currently returns to `/account` — add a return-to `/pages/educator-dashboard` on the sign-in links and/or set it in the main theme's account template.
+- `page.educator-portal.liquid` is **theme-only** (not in this repo), so these moves are done in Shopify admin, not here.
+
+## Educator onboarding — in-house, no-reentry (design + setup)
+
+> Aligns to `shopify/educator-portal/EDUCATOR-PORTAL-RUNBOOK.md` (source of truth): approval = `educator-approved` tag; pricing = Educators Market (not a per-company catalog).
+
+**Priority:** no re-entry of applicant data **first**; bespoke form styling **second** (use a metafield-capturing form even if less pixel-perfect).
+
+**Form (already exists):** the **Customer Fields app** captures `customer_fields.institution_name` and `customer_fields.document_upload` (this is the "tool" register page). Add `educator.role`, `educator.program`, `educator.state` to the form so they're captured too.
+
+**Docs to collect (best practice; make upload required):** sales-tax exemption / resale certificate; institution verification (.edu email, letterhead/PO, or business license/EIN). W-9 only if paying them.
+
+**Metafield definitions to create in Admin** (Settings → Custom data) — *Claude's API client was denied access to create these, so do it in admin*:
+- **Do NOT add a Company `educator.status` metafield — redundant.** Track lifecycle with **customer tags**: `educator-pending` (on apply), `educator-approved` (approval), `educator-rejected` (declined); filter via saved customer views.
+- **Customer** `educator.role`, `educator.program`, `educator.state` (institution_name + document_upload already exist).
+
+**Pricing (per runbook — already built):** educator pricing runs through the **"Educators" Market** → Educator Catalog `MarketCatalog/64883065002` + price list `PriceList/24074289322`, which **applies to all company locations automatically**. The MarketCatalog is correct by design — no per-company catalog assignment. Net 30 = `gid://shopify/PaymentTermsTemplate/4`. (Shopify does B2B pricing via the Market here.)
+
+**Automated flow (Flow, no app):**
+1. Applicant submits form → customer created with metafields + uploaded doc.
+2. **Flow 1** (trigger: Customer created/tagged) → `companyCreate` pending (company name from `customer.metafields.customer_fields.institution_name`).
+3. **Manual step (only this one):** staff open the **pending Company**, **check the uploaded credentials**, verify.
+4. **Approval = one click: add the `educator-approved` customer tag.** The gate opens (accepts `b2b?` OR `educator-approved`) and the Educators Market applies pricing automatically. Optionally create/attach a native **B2B Company** contact for PO/Net-30. (`educator.status` on the Company is optional tracking, not required for access.)
+
+**Limitations Claude can't do from here:** create metafield definitions (access denied), publish themes/pages, install/host anything. Those are admin steps.

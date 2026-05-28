@@ -1,0 +1,1727 @@
+{% layout none %}
+{%- comment -%} Educator catalog gate: closed unless approved educator. {%- endcomment -%}
+{%- assign is_approved = false -%}
+{%- if customer and customer.tags contains 'educator-approved' -%}{%- assign is_approved = true -%}{%- endif -%}
+{%- if customer.b2b? -%}{%- assign is_approved = true -%}{%- endif -%}
+{%- if is_approved -%}
+<!doctype html>
+<html lang="en">
+<head>
+{{ content_for_header }}
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex,nofollow"/>
+
+<!-- SEO STRATEGY ============================================================
+     This page is the EDUCATOR CATALOG LANDING, the post-sign-in hub for
+     approved educator accounts, listing the 8 catalog volumes and the
+     MTW-wide educator program elements (reviews, how it works, letter
+     signup). Each volume page lives at /pages/educator-<slug>.
+     ========================================================================= -->
+<title>The Educator Catalog &middot; My Toy Wagon</title>
+<meta name="description" content="The 2026 Autumn Educator Catalog. Eight sections of hand-made classroom materials, on purchase orders, Net-30, tax-exempt. For schools, therapists, and homeschool co-ops.">
+<link rel="canonical" href="https://mytoywagon.com/pages/educators" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Mulish:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+/* =================================================================
+   MY TOY WAGON, EDUCATOR CATALOG LANDING
+   Reuses brand tokens + Fairy Villages typography vocabulary.
+   ================================================================= */
+
+/* ----------------------------- TOKENS ---------------------------- */
+:root{
+  /* BRAND CHASSIS */
+  --cream:        #F5F0E5;
+  --warm-white:   #FFFCF7;
+  --card-bg:      #EDE3CD;
+  --ink:          #2C2C2A;
+  --ink-soft:     #44423E;
+  --stone:        #5F5E5A;
+  --muted:        #5F5E5A;
+  --forest:       #3B6D11;
+  --amber:        #854F0B;
+  --gilt:         #C9A96E;
+  --gilt-pale:    #E8D5A8;
+
+  --rule:         rgba(44,44,42,.12);
+  --rule-soft:    rgba(44,44,42,.06);
+  --rule-strong:  rgba(44,44,42,.22);
+
+  --serif:        "Cormorant Garamond", "Garamond", Georgia, serif;
+  --sans:         "Mulish", "Helvetica Neue", system-ui, sans-serif;
+
+  /* Ecosystem accent palette, one row per catalog section */
+  --eco-01: #3D7A6A;  /* Sensory Play, teal-green */
+  --eco-02: #5A7A5A;  /* Nature Play, sage */
+  --eco-03: #2D5C3A;  /* Woodland, forest */
+  --eco-04: #7A5C8A;  /* Small World, purple */
+  --eco-05: #C97A8A;  /* Fairy Villages, rose */
+  --eco-06: #7A5E3A;  /* STEAM, amber */
+  --eco-07: #8B6840;  /* Dramatic Play, tan */
+  --eco-08: #4E7A7A;  /* Creative Arts, teal-slate */
+}
+
+/* ----------------------------- BASE ------------------------------ */
+*, *::before, *::after{ box-sizing:border-box; margin:0; padding:0; }
+html{ scroll-behavior:smooth; }
+body{
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+  text-wrap: pretty;
+}
+img{ display:block; max-width:100%; }
+a{ color:inherit; }
+::selection{ background: var(--ink); color: var(--cream); }
+
+.serif{ font-family: var(--serif); }
+.it{ font-style: italic; }
+.eyebrow{
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+}
+.label{
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+.gut{ padding: clamp(60px, 8vw, 96px) clamp(20px, 5vw, 64px); }
+
+/* ----------------------- UTILITY BAR ----------------------- */
+.utility{
+  background: var(--ink);
+  color: rgba(245,240,229,.85);
+  font-size: 12px;
+  letter-spacing: .04em;
+}
+.utility-inner{
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 10px 40px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 24px;
+}
+.utility-left, .utility-right{ display: inline-flex; gap: 22px; align-items: center; color: rgba(245,240,229,.7); }
+.utility-right{ justify-self: end; }
+.utility-left a, .utility-right a{ text-decoration: none; }
+.utility-left a:hover, .utility-right a:hover{ color: var(--cream); }
+.utility-center{
+  text-align: center;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--cream);
+}
+
+/* ----------------------- NAV ----------------------- */
+.nav{
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  padding: 18px clamp(20px, 4vw, 44px);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 32px;
+  background: var(--cream);
+  border-bottom: 0.5px solid var(--rule);
+  transition: background .25s ease, padding .25s ease;
+}
+.nav.scrolled{
+  background: rgba(245,240,229,.96);
+  backdrop-filter: saturate(140%) blur(8px);
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+.nav__search{
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 22px;
+  background: var(--warm-white);
+  border: 0.5px solid var(--rule-strong);
+  border-radius: 999px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 14.5px;
+  color: var(--stone);
+  cursor: text;
+  width: 100%;
+  max-width: 380px;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.nav__search:hover{ border-color: var(--ink); box-shadow: 0 1px 12px rgba(44,44,42,.06); }
+.nav__search svg{ width: 16px; height: 16px; stroke: var(--ink); stroke-width: 1.6; fill: none; flex-shrink: 0; }
+.nav__logo{
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--ink);
+  line-height: 1;
+  justify-self: center;
+}
+.nav__logo .mark{
+  height: 78px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+  flex-shrink: 0;
+  transition: height .25s ease;
+}
+.nav.scrolled .nav__logo .mark{ height: 54px; }
+.nav__actions{
+  justify-self: end;
+  display: inline-flex;
+  align-items: center;
+  gap: 24px;
+}
+.nav__action{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: .02em;
+  color: var(--ink);
+  text-decoration: none;
+  padding: 4px 0;
+  transition: color .2s ease;
+}
+.nav__action:hover{ color: var(--forest); }
+.nav__action svg{ width: 17px; height: 17px; stroke: currentColor; stroke-width: 1.4; fill: none; flex-shrink: 0; }
+
+/* ----------------------- PROMO STRIP ----------------------- */
+.promo-strip{
+  background: var(--card-bg);
+  border-bottom: 0.5px solid var(--rule);
+  text-align: center;
+  padding: 12px clamp(16px, 4vw, 40px);
+  font-family: var(--sans);
+  font-size: 13px;
+  letter-spacing: .02em;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+.promo-strip .vol{ color: var(--forest); font-weight: 600; }
+.promo-strip .sep{ display: inline-block; width: 3px; height: 3px; border-radius: 50%; background: var(--rule-strong); vertical-align: middle; margin: 0 14px; }
+.promo-strip strong{ color: var(--ink); font-weight: 600; font-family: var(--sans); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; margin-right: 8px; }
+
+/* ----------------------- HERO ----------------------- */
+.edu-hero{
+  padding: clamp(56px, 7vw, 96px) clamp(20px, 5vw, 64px);
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.edu-hero-inner{
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: clamp(40px, 6vw, 96px);
+  align-items: end;
+}
+.edu-hero .label{ color: var(--stone); display: block; margin-bottom: 22px; }
+.edu-hero h1{
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(56px, 8vw, 112px);
+  line-height: 0.96;
+  letter-spacing: -.014em;
+  margin: 0 0 0;
+  color: var(--ink);
+  text-wrap: balance;
+}
+.edu-hero h1 .it{ color: var(--forest); }
+.edu-hero .dek{
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(20px, 2vw, 26px);
+  line-height: 1.45;
+  color: var(--ink-soft);
+  margin-bottom: 22px;
+}
+.edu-hero .body{
+  font-family: var(--sans);
+  font-size: 15.5px;
+  line-height: 1.65;
+  color: var(--ink-soft);
+  margin-bottom: 28px;
+}
+.edu-hero .hero-meta{
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--stone);
+  font-weight: 500;
+  padding-top: 22px;
+  border-top: 0.5px solid var(--rule-strong);
+}
+
+/* ----------------------- MAP NOTE & CATALOG REQUEST ----------------------- */
+.map-note{
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--stone);
+  font-style: italic;
+  max-width: 62ch;
+  margin: 12px auto 0;
+}
+.catalog-req{
+  background: var(--warm-white);
+  border-top: 0.5px solid var(--rule);
+  border-bottom: 0.5px solid var(--rule);
+  padding: 56px clamp(20px, 4vw, 44px);
+  text-align: center;
+}
+.catalog-req-inner{ max-width: 580px; margin: 0 auto; }
+.catalog-req h3{
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(22px, 2.6vw, 28px);
+  line-height: 1.25;
+  color: var(--ink);
+  margin: 0 0 10px;
+}
+.catalog-req h3 .it{ font-style: italic; color: var(--forest); }
+.catalog-req p{
+  font-size: 14px;
+  color: var(--stone);
+  line-height: 1.6;
+  margin: 0 0 20px;
+}
+.catalog-req form{
+  display: flex;
+  gap: 8px;
+  max-width: 480px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+.catalog-req input[type="email"]{
+  flex: 1 1 240px;
+  padding: 12px 14px;
+  font-size: 14px;
+  font-family: var(--sans);
+  border: 1px solid var(--rule-strong);
+  border-radius: 2px;
+  background: var(--warm-white);
+  color: var(--ink);
+}
+.catalog-req input[type="email"]:focus{ outline: none; border-color: var(--ink); }
+.catalog-req button{
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  padding: 12px 22px;
+  border-radius: 2px;
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: var(--cream);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.catalog-req button:hover{ background: var(--forest); border-color: var(--forest); }
+.catalog-req .micro{ font-size: 11.5px; color: var(--stone); margin-top: 12px; }
+
+/* ----------------------- BRAND LINE ----------------------- */
+.brand-line{
+  background: var(--cream);
+  border-top: 0.5px solid var(--rule);
+  border-bottom: 0.5px solid var(--rule);
+  padding: 36px clamp(20px, 4vw, 44px);
+  text-align: center;
+}
+.brand-line p{
+  max-width: 760px;
+  margin: 0 auto;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(20px, 2.4vw, 28px);
+  line-height: 1.35;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+.brand-line em{ font-style: italic; color: var(--forest); }
+@media(max-width:560px){ .brand-line{ padding: 28px 20px; } .brand-line p{ font-size: 19px; } }
+
+/* ----------------------- THE EIGHT VOLUMES ----------------------- */
+.volumes{
+  background: var(--warm-white);
+  border-top: 0.5px solid var(--rule);
+  border-bottom: 0.5px solid var(--rule);
+}
+.volumes-inner{
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.volumes-head{
+  text-align: center;
+  max-width: 56ch;
+  margin: 0 auto 64px;
+}
+.volumes-head .eyebrow{ color: var(--forest); display: block; margin-bottom: 18px; }
+.volumes-head h2{
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(36px, 4vw, 56px);
+  line-height: 1.05;
+  letter-spacing: -.008em;
+  color: var(--ink);
+  margin: 0 0 18px;
+}
+.volumes-head h2 .it{ font-style: italic; color: var(--forest); }
+.volumes-head p{
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 19px;
+  color: var(--stone);
+  line-height: 1.5;
+}
+
+.volumes-grid{
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 14px;
+}
+.vol-card{
+  position: relative;
+  background: var(--cream);
+  border: 0.5px solid var(--rule);
+  border-radius: 2px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  text-decoration: none;
+  color: inherit;
+}
+.vol-card:hover{
+  transform: translateY(-2px);
+  border-color: var(--ink);
+  box-shadow: 0 12px 32px rgba(44,44,42,.08);
+}
+.vol-card .vol-img{
+  position: relative;
+  aspect-ratio: 1 / 1;
+  background: var(--card-bg);
+  overflow: hidden;
+  isolation: isolate;
+}
+.vol-card .vol-img::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    radial-gradient(120% 80% at 20% 18%, rgba(255,255,255,.18), rgba(255,255,255,0) 60%),
+    radial-gradient(120% 80% at 85% 90%, rgba(0,0,0,.16), rgba(0,0,0,0) 55%);
+  pointer-events: none;
+}
+.vol-card .vol-img img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.vol-card .vol-img .vol-stripe{
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 4px;
+  z-index: 3;
+}
+.vol-card .vol-img .vol-num{
+  position: absolute;
+  top: 12px; left: 12px;
+  z-index: 4;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 11.5px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--cream);
+  background: rgba(44,44,42,.55);
+  padding: 5px 10px;
+  border-radius: 999px;
+  backdrop-filter: blur(2px);
+}
+.vol-card .vol-img .vol-savings{
+  position: absolute;
+  top: 12px; right: 12px;
+  z-index: 4;
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 10.5px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--cream);
+  background: var(--forest);
+  padding: 5px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.vol-card .vol-img .vol-tag{ display: none; }
+.vol-card .vol-img .vol-tag{
+  position: absolute;
+  left: 18px; right: 18px; bottom: 18px;
+  z-index: 4;
+  font-family: var(--mono, var(--sans));
+  font-size: 10.5px;
+  line-height: 1.45;
+  color: rgba(250,246,237,.92);
+  background: rgba(44,26,14,.55);
+  border: 1px solid rgba(250,246,237,.18);
+  padding: 8px 12px;
+  letter-spacing: .04em;
+}
+.vol-card .vol-body{
+  padding: 14px 10px 16px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 6px;
+}
+.vol-card .vol-name{
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.1;
+  letter-spacing: -.005em;
+  color: var(--ink);
+}
+.vol-card .vol-name .it{ font-style: italic; }
+.vol-card .vol-lede{
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 13.5px;
+  line-height: 1.35;
+  color: var(--ink-soft);
+  margin: 0;
+}
+.vol-card .vol-cta{
+  margin-top: auto;
+  padding-top: 12px;
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: gap .2s ease, color .2s ease;
+}
+.vol-card:hover .vol-cta{ gap: 10px; color: var(--ink); }
+.vol-card[data-status="coming-soon"]{ opacity: .82; }
+.vol-card[data-status="coming-soon"] .vol-cta{ color: var(--stone); }
+.vol-card[data-status="coming-soon"]:hover{ transform: none; box-shadow: none; border-color: var(--rule); }
+
+/* Per-volume accent stripes (visible across top of vol-img) */
+.vol-01 .vol-stripe{ background: var(--eco-01); }
+.vol-02 .vol-stripe{ background: var(--eco-02); }
+.vol-03 .vol-stripe{ background: var(--eco-03); }
+.vol-04 .vol-stripe{ background: var(--eco-04); }
+.vol-05 .vol-stripe{ background: var(--eco-05); }
+.vol-06 .vol-stripe{ background: var(--eco-06); }
+.vol-07 .vol-stripe{ background: var(--eco-07); }
+.vol-08 .vol-stripe{ background: var(--eco-08); }
+
+/* Per-volume tinted-tile placeholder when no image exists */
+.vol-01 .vol-img{ background: linear-gradient(160deg, color-mix(in oklab, var(--eco-01) 30%, var(--cream)) 0%, color-mix(in oklab, var(--eco-01) 70%, var(--ink)) 100%); }
+.vol-02 .vol-img{ background: linear-gradient(160deg, color-mix(in oklab, var(--eco-02) 30%, var(--cream)) 0%, color-mix(in oklab, var(--eco-02) 70%, var(--ink)) 100%); }
+.vol-03 .vol-img{ background: linear-gradient(160deg, color-mix(in oklab, var(--eco-03) 30%, var(--cream)) 0%, color-mix(in oklab, var(--eco-03) 70%, var(--ink)) 100%); }
+.vol-04 .vol-img{ background: linear-gradient(160deg, color-mix(in oklab, var(--eco-04) 30%, var(--cream)) 0%, color-mix(in oklab, var(--eco-04) 70%, var(--ink)) 100%); }
+.vol-05 .vol-img{ background: linear-gradient(160deg, color-mix(in oklab, var(--eco-05) 30%, var(--cream)) 0%, color-mix(in oklab, var(--eco-05) 70%, var(--ink)) 100%); }
+.vol-06 .vol-img{ background: linear-gradient(160deg, color-mix(in oklab, var(--eco-06) 30%, var(--cream)) 0%, color-mix(in oklab, var(--eco-06) 70%, var(--ink)) 100%); }
+.vol-07 .vol-img{ background: linear-gradient(160deg, color-mix(in oklab, var(--eco-07) 30%, var(--cream)) 0%, color-mix(in oklab, var(--eco-07) 70%, var(--ink)) 100%); }
+.vol-08 .vol-img{ background: linear-gradient(160deg, color-mix(in oklab, var(--eco-08) 30%, var(--cream)) 0%, color-mix(in oklab, var(--eco-08) 70%, var(--ink)) 100%); }
+
+/* ----------------------- REVIEWS CAROUSEL (moved from per-collection) ----------------------- */
+.reviews-section{ background: var(--cream); }
+.reviews-section .reviews-head{ text-align: center; margin-bottom: 56px; max-width: 64ch; margin-left: auto; margin-right: auto; }
+.reviews-section .reviews-head .eyebrow{ color: var(--forest); display: inline-block; margin-bottom: 18px; }
+.reviews-section .reviews-head h2{
+  margin: 0 0 18px;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(36px, 4vw, 52px);
+  line-height: 1.05;
+  color: var(--ink);
+  letter-spacing: -.008em;
+}
+.reviews-section .reviews-head h2 em{ font-style: italic; color: var(--forest); }
+.reviews-section .reviews-head p{
+  font-family: var(--serif); font-style: italic; font-size: 19px;
+  color: var(--stone); line-height: 1.5;
+}
+
+.reviews-carousel{ position: relative; margin: 0 -8px; max-width: 1440px; margin-left: auto; margin-right: auto; }
+.rc-track{
+  display: flex;
+  gap: 22px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 8px;
+  padding: 6px 8px 18px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.rc-track::-webkit-scrollbar{ display: none; }
+.rc-track .review{
+  flex: 0 0 calc((100% - 44px) / 3);
+  scroll-snap-align: start;
+  min-width: 280px;
+  margin: 0;
+  background: var(--warm-white);
+  border: 0.5px solid var(--rule);
+  border-radius: 2px;
+  padding: 28px 28px 24px;
+  display: flex;
+  flex-direction: column;
+}
+.review .stars{ color: var(--amber); font-size: 14px; letter-spacing: 2px; margin-bottom: 18px; }
+.review h3{
+  margin: 0 0 16px;
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.25;
+  letter-spacing: -.005em;
+  color: var(--ink);
+}
+.review p{
+  margin: 0 0 18px;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  flex: 1;
+}
+.review .who{
+  margin: 0;
+  padding-top: 16px;
+  border-top: 0.5px solid var(--rule);
+  font-family: var(--sans);
+  font-size: 12px;
+  color: var(--stone);
+  letter-spacing: .04em;
+  line-height: 1.45;
+}
+.review .who strong{ color: var(--ink); font-weight: 600; }
+
+.rc-nav{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px; height: 44px;
+  background: var(--warm-white);
+  border: 0.5px solid var(--rule-strong);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink);
+  z-index: 2;
+  box-shadow: 0 2px 12px rgba(44,44,42,.06);
+  transition: background .2s ease, border-color .2s ease, color .2s ease, opacity .2s ease;
+}
+.rc-nav:hover{ background: var(--ink); color: var(--cream); border-color: var(--ink); }
+.rc-nav:disabled{ opacity: .25; cursor: default; }
+.rc-nav:disabled:hover{ background: var(--warm-white); color: var(--ink); border-color: var(--rule-strong); }
+.rc-nav.prev{ left: -22px; }
+.rc-nav.next{ right: -22px; }
+.rc-nav svg{ width: 14px; height: 14px; stroke: currentColor; stroke-width: 1.6; fill: none; }
+.rc-dots{ display: flex; justify-content: center; gap: 8px; margin-top: 24px; }
+.rc-dots button{
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--rule-strong);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background .25s ease, width .25s ease, border-radius .25s ease;
+}
+.rc-dots button.is-active{ background: var(--forest); width: 22px; border-radius: 3px; }
+
+.see-all{ margin-top: 44px; text-align: center; }
+.see-all a{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  padding: 14px 26px;
+  border: 0.5px solid var(--rule-strong);
+  border-radius: 999px;
+  transition: color .2s ease, border-color .2s ease;
+}
+.see-all a:hover{ color: var(--forest); border-color: var(--forest); }
+
+/* ----------------------- HOW IT WORKS (moved from per-collection) ----------------------- */
+.how-it-works{
+  background: var(--warm-white);
+  border-top: 0.5px solid var(--rule);
+  border-bottom: 0.5px solid var(--rule);
+}
+.how-it-works-inner{ max-width: 1280px; margin: 0 auto; }
+.how-head{
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 6fr);
+  gap: clamp(28px, 4vw, 56px);
+  margin-bottom: 56px;
+}
+.how-head .eyebrow{ color: var(--forest); display: block; margin-bottom: 18px; }
+.how-head h3{
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(32px, 3.6vw, 46px);
+  line-height: 1.08;
+  letter-spacing: -.008em;
+  color: var(--ink);
+  margin: 0;
+}
+.how-head h3 .it{ font-style: italic; color: var(--forest); }
+.how-head p{
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--ink-soft);
+  margin: 0;
+}
+.steps{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.step{
+  padding: 28px 32px 32px;
+  background: var(--cream);
+  border: 0.5px solid var(--rule);
+  border-radius: 2px;
+}
+.step .num{
+  display: inline-block;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 32px;
+  color: var(--forest);
+  margin-bottom: 14px;
+  line-height: 1;
+}
+.step h4{
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 1.2;
+  color: var(--ink);
+  margin: 0 0 12px;
+  letter-spacing: -.005em;
+}
+.step h4 .it{ font-style: italic; }
+.step p{
+  font-family: var(--sans);
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  margin: 0 0 12px;
+}
+.step .more{
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--forest);
+  text-decoration: none;
+  padding-top: 6px;
+  border-bottom: 0.5px solid var(--forest);
+  padding-bottom: 2px;
+}
+
+/* ----------------------- KLAVIYO STRIP (Stay close to the seasons) ----------------------- */
+.klaviyo-strip{
+  background: var(--card-bg);
+  border-top: 0.5px solid var(--rule);
+  border-bottom: 0.5px solid var(--rule);
+}
+.klaviyo-strip-inner{
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(40px, 5vw, 88px);
+  align-items: center;
+}
+.klaviyo-strip .eyebrow{ display: block; margin-bottom: 16px; color: var(--ink); }
+.klaviyo-strip h3{
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(32px, 3.4vw, 44px);
+  line-height: 1.08;
+  letter-spacing: -.008em;
+  color: var(--ink);
+  margin: 0 0 16px;
+}
+.klaviyo-strip h3 em{ font-style: italic; color: var(--ink); }
+.klaviyo-strip .lede{
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 19px;
+  line-height: 1.45;
+  color: var(--ink-soft);
+  margin: 0 0 22px;
+  max-width: 50ch;
+}
+.klaviyo-strip ul{
+  list-style: none;
+  display: grid;
+  gap: 10px;
+  font-family: var(--sans);
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--ink);
+}
+.klaviyo-strip li{ position: relative; padding-left: 18px; }
+.klaviyo-strip li::before{
+  content: "";
+  position: absolute;
+  left: 0; top: 9px;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--ink);
+  opacity: .55;
+}
+
+.klaviyo-form{
+  background: var(--warm-white);
+  border: 0.5px solid var(--rule);
+  border-radius: 2px;
+  padding: 28px 32px 32px;
+}
+.klaviyo-form-row{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+.klaviyo-form .field{ display: flex; flex-direction: column; gap: 6px; }
+.klaviyo-form label{
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+.klaviyo-form input,
+.klaviyo-form select{
+  font-family: var(--sans);
+  font-size: 14.5px;
+  padding: 12px 14px;
+  background: var(--cream);
+  border: 0.5px solid var(--rule-strong);
+  border-radius: 2px;
+  color: var(--ink);
+  width: 100%;
+}
+.klaviyo-form input:focus,
+.klaviyo-form select:focus{ outline: none; border-color: var(--ink); background: var(--warm-white); }
+.klaviyo-form-submit{ margin-top: 18px; display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+.klaviyo-form-submit button{
+  padding: 14px 28px;
+  background: var(--ink);
+  color: var(--cream);
+  border: none;
+  border-radius: 999px;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background .2s ease;
+}
+.klaviyo-form-submit button:hover{ background: var(--forest); }
+.klaviyo-form-submit .note{
+  font-family: var(--sans);
+  font-size: 12px;
+  color: var(--stone);
+  margin: 0;
+}
+
+/* ----------------------- SIGN-IN BAND ----------------------- */
+.signin-band{
+  background: var(--ink);
+  color: var(--cream);
+  padding: clamp(56px, 7vw, 88px) clamp(20px, 5vw, 64px);
+  text-align: center;
+}
+.signin-band-inner{ max-width: 56ch; margin: 0 auto; }
+.signin-band .eyebrow{ color: rgba(245,240,229,.6); margin-bottom: 18px; display: block; }
+.signin-band h2{
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(36px, 4vw, 56px);
+  line-height: 1.06;
+  letter-spacing: -.008em;
+  margin: 0 0 18px;
+}
+.signin-band h2 em{ font-style: italic; }
+.signin-band p{
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 19px;
+  line-height: 1.5;
+  color: rgba(245,240,229,.75);
+  margin: 0 0 32px;
+}
+.signin-band a.btn{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 32px;
+  background: var(--cream);
+  color: var(--ink);
+  text-decoration: none;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  transition: background .2s ease, color .2s ease;
+}
+.signin-band a.btn:hover{ background: var(--forest); color: var(--cream); }
+
+/* ----------------------- FOOTER ----------------------- */
+footer{
+  background: var(--ink);
+  color: rgba(245,240,229,.78);
+  padding: 64px clamp(20px, 5vw, 64px) 0;
+}
+footer .wrap{
+  max-width: 1440px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(40px, 5vw, 88px);
+  padding-bottom: 56px;
+  border-bottom: 0.5px solid rgba(245,240,229,.16);
+}
+footer .left{ font-family: var(--sans); font-size: 14px; line-height: 1.65; }
+footer .left .foot-mark{ height: 40px; width: auto; margin-bottom: 20px; opacity: .85; }
+footer .left p{ margin: 0 0 18px; max-width: 36ch; color: rgba(245,240,229,.65); }
+footer .left .foot-contact{ display: grid; gap: 6px; font-size: 13px; color: rgba(245,240,229,.78); }
+footer .left .foot-contact a{ color: var(--cream); text-decoration: none; }
+footer .left .foot-contact a:hover{ color: color-mix(in oklab, var(--forest) 80%, white); }
+footer .left .hours{ color: rgba(245,240,229,.55); font-size: 12px; }
+footer .cols{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+footer h6{
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--cream);
+  margin: 0 0 18px;
+}
+footer ul{ list-style: none; display: grid; gap: 10px; }
+footer ul a{
+  color: rgba(245,240,229,.65);
+  text-decoration: none;
+  font-family: var(--sans);
+  font-size: 13.5px;
+  transition: color .2s ease;
+}
+footer ul a:hover{ color: var(--cream); }
+.foot-bottom{
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 28px 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  font-family: var(--sans);
+  font-size: 12px;
+  color: rgba(245,240,229,.5);
+}
+.foot-bottom em{ font-style: italic; color: rgba(245,240,229,.7); margin-right: 14px; }
+.foot-bottom a{ color: rgba(245,240,229,.65); text-decoration: none; margin-left: 18px; }
+.foot-bottom a:hover{ color: var(--cream); }
+
+/* ----------------------- RESPONSIVE ----------------------- */
+@media (max-width: 1440px){
+  .volumes-grid{ grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  .vol-card .vol-img{ aspect-ratio: 4 / 5; }
+  .vol-card .vol-img .vol-tag{ display: block; }
+  .vol-card .vol-lede{ font-size: 15.5px; }
+}
+@media (max-width: 1180px){
+  .volumes-grid{ grid-template-columns: repeat(3, 1fr); }
+  .rc-track .review{ flex: 0 0 calc((100% - 22px) / 2); }
+}
+@media (max-width: 880px){
+  .edu-hero-inner{ grid-template-columns: 1fr; gap: 40px; }
+  .volumes-grid{ grid-template-columns: repeat(2, 1fr); }
+  .how-head{ grid-template-columns: 1fr; }
+  .steps{ grid-template-columns: 1fr; }
+  .klaviyo-strip-inner{ grid-template-columns: 1fr; }
+  .klaviyo-form-row{ grid-template-columns: 1fr; }
+  footer .wrap{ grid-template-columns: 1fr; }
+  footer .cols{ grid-template-columns: repeat(2, 1fr); }
+  .rc-track .review{ flex: 0 0 86%; }
+  .rc-nav{ display: none; }
+  .foot-bottom{ flex-direction: column; }
+}
+@media (max-width: 540px){
+  .volumes-grid{ grid-template-columns: 1fr; }
+  .nav__search{ display: none; }
+  .nav{ grid-template-columns: auto 1fr auto; }
+}
+
+
+/* Pillar/eyebrow + body alignment, fixes uneven row heights when eyebrow
+   text wraps to 2 lines on some pillars but not others. Sets a minimum height
+   on the eyebrow so all 4 pillar bodies start at the same y-position. */
+.pillars .p{ display: flex; flex-direction: column; gap: 12px; }
+.pillars .p .label{
+  min-height: 2.4em;
+  display: flex;
+  align-items: flex-start;
+  line-height: 1.25;
+}
+.pillars .p p{ margin: 0; }
+
+
+/* Layout alternation, editorial rhythm.
+   .split.image-right flips the standard split so content-left, image-right.
+   Apply to Featured 2 (Letter Tracing) and Featured 3 (My Forest Floor) on
+   Sensory Play, and to Featured 2 on Woodland and Small World, for rhythm. */
+.split.image-right{ direction: rtl; }
+.split.image-right > *{ direction: ltr; }
+@media (max-width: 980px){ .split.image-right{ direction: ltr; } }
+
+/* Section divider, magazine TOC-entry style.
+   Used between major editorial sections to mark transition. */
+.section-divider{
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 36px clamp(20px, 5vw, 56px) 0;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 24px;
+  align-items: center;
+}
+.section-divider .num{
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--accent-deep);
+  letter-spacing: .04em;
+}
+.section-divider .line{
+  height: 0.5px;
+  background: var(--rule-strong);
+}
+.section-divider .label{
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+
+
+/* =================================================================
+   LAYOUT ROTATION SYSTEM
+   Three split variants (Featured Product) and three gallery
+   variants (Collection Grid), applied in a fixed alternating
+   pattern across each section page so no two adjacent blocks
+   share the same geometry. Editorial rhythm without bespoke
+   per-section markup.
+   
+   SPLIT VARIANTS (Featured Product):
+     .split            — default: image-left, content-right
+     .split.image-right — mirror: image-right, content-left
+     .split.stage      — stacked: full-width image, content centered below
+   
+   GALLERY VARIANTS (Collection Grid):
+     .gallery          — default: 5-card grid with hero/tall/std
+     .gallery.even     — 5 equal columns, no hero sizing
+     .gallery.strip    — 3 across hero row + 2 across detail row
+   
+   ROTATION PER SECTION PAGE:
+     Featured 1 (Hero)    → default split
+     Gallery 1            → default gallery (hero+4)
+     Featured 2           → .image-right
+     Gallery 2            → .even
+     Featured 3 (if any)  → .stage
+     Gallery 3 (if any)   → .strip
+   ================================================================= */
+
+/* Variant B — Mirror split: content-left, image-right.
+   Uses CSS grid column reordering so text direction stays LTR. */
+.split.image-right .img-side{ order: 2; }
+.split.image-right .content{ order: 1; }
+.split.image-right{ direction: ltr; }
+.split.image-right > *{ direction: ltr; }
+
+/* Variant C — Stage split: full-width image hero, content centered beneath.
+   Different visual rhythm from the side-by-side splits. */
+.split.stage{
+  display: block !important;
+  padding: 0 0 clamp(56px, 7vw, 96px);
+}
+.split.stage .img-side{
+  width: 100%;
+  height: auto;
+  padding: 0;
+}
+.split.stage .img-side .tile{
+  width: 100%;
+  aspect-ratio: 16 / 7;
+  height: auto;
+}
+.split.stage .content{
+  max-width: 920px;
+  margin: clamp(40px, 5vw, 64px) auto 0;
+  padding: 0 clamp(20px, 5vw, 56px);
+}
+
+/* Variant Y — Even gallery: 5 equal columns, override hero/tall/std sizing.
+   Reads as a "collection" rather than a featured spread. */
+.gallery.even .homes{ grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 18px; }
+.gallery.even .home.size-hero,
+.gallery.even .home.size-tall,
+.gallery.even .home.size-std{ grid-column: auto; }
+.gallery.even .home .tile-wrap{ aspect-ratio: 3 / 4; }
+.gallery.even .home .tile-wrap .tile{ height: 100%; }
+@media (max-width: 1080px){ .gallery.even .homes{ grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 720px){ .gallery.even .homes{ grid-template-columns: repeat(2, 1fr); } }
+
+/* Variant Z — Strip gallery: 3 hero across the top, 2 wide detail below.
+   Magazine "feature spread" geometry. */
+.gallery.strip .homes{ grid-template-columns: repeat(6, 1fr); gap: 18px; }
+.gallery.strip .home:nth-child(1),
+.gallery.strip .home:nth-child(2),
+.gallery.strip .home:nth-child(3){ grid-column: span 2; }
+.gallery.strip .home:nth-child(4),
+.gallery.strip .home:nth-child(5){ grid-column: span 3; }
+.gallery.strip .home:nth-child(4) .tile-wrap,
+.gallery.strip .home:nth-child(5) .tile-wrap{ aspect-ratio: 16 / 9; }
+@media (max-width: 1080px){
+  .gallery.strip .homes{ grid-template-columns: repeat(2, 1fr); }
+  .gallery.strip .home:nth-child(1),
+  .gallery.strip .home:nth-child(2),
+  .gallery.strip .home:nth-child(3),
+  .gallery.strip .home:nth-child(4),
+  .gallery.strip .home:nth-child(5){ grid-column: auto; }
+}
+
+
+/* Row alignment, gallery cards.
+   Stretches every card in a row to match the tallest, then floats the
+   procurement footer (SKU, price, add-to-cart row) to card bottom so
+   they land at a single horizontal line across the row. */
+.gallery .homes{ grid-auto-rows: 1fr; align-items: stretch; }
+.gallery .home{ height: 100%; }
+.gallery .home .cap{ flex: 1 1 auto; display: flex; flex-direction: column; }
+.gallery .home .cap > .meta{ margin-top: auto; }
+.gallery .home .cap .price + .add-row,
+.gallery .home .cap .add-row{ margin-top: auto; }
+
+/* Even variant, equal columns so the row-stretch effect is most visible. */
+.gallery.even .homes{ grid-auto-rows: 1fr; }
+.gallery.even .home{ height: 100%; }
+
+/* Strip variant, two-row pattern. Stretch within each row. */
+.gallery.strip .homes{ grid-auto-rows: 1fr; }
+.gallery.strip .home{ height: 100%; }
+
+
+/* Standards row — sits below the .craft 3-cell block on Featured Product splits.
+   Holds curriculum/standards alignment codes (CCSS, NGSS, EYFS, etc.) as
+   small chip-pills. Kept separate from .craft to avoid cramming long codes
+   into the 3-column grid and to keep the row alignment crisp. */
+.split .content .standards-row{
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--rule);
+  display: grid;
+  grid-template-columns: minmax(140px, auto) 1fr;
+  gap: 24px;
+  align-items: start;
+}
+.split .content .standards-row .label{
+  color: var(--muted);
+  font-size: 10.5px;
+  letter-spacing: .18em;
+  display: block;
+  padding-top: 6px;
+}
+.split .content .standards-row .codes{
+  display: flex; flex-wrap: wrap; gap: 8px;
+}
+.split .content .standards-row .code{
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  color: var(--accent-deep);
+  padding: 6px 12px;
+  background: color-mix(in oklab, var(--accent-deep) 6%, transparent);
+  border: 0.5px solid color-mix(in oklab, var(--accent-deep) 28%, transparent);
+  border-radius: 999px;
+  white-space: nowrap;
+}
+@media (max-width: 720px){
+  .split .content .standards-row{ grid-template-columns: 1fr; gap: 12px; }
+  .split .content .standards-row .label{ padding-top: 0; }
+}
+
+
+/* Breadcrumb, retail-parallel.
+   Replaces the .back link in .subnav with a Home > Educator Catalog > Section
+   trail. Mirrors retail's Home > Collection > Product logic, optimized for B2B
+   buyers who navigate by program tier first, then section. */
+.breadcrumb{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: .04em;
+  color: var(--stone);
+}
+.breadcrumb a{
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color .2s ease;
+}
+.breadcrumb a:hover{ color: var(--forest); }
+.breadcrumb .sep{
+  color: var(--rule-strong);
+  font-size: 11px;
+  user-select: none;
+}
+.breadcrumb [aria-current="page"]{
+  color: var(--stone);
+  font-weight: 400;
+}
+@media (max-width: 720px){
+  .breadcrumb{ font-size: 11px; gap: 8px; }
+  .breadcrumb .home-crumb{ display: none; }
+}
+
+</style>
+</head>
+<body>
+  {% section 'mtw-educator-header' %}
+
+<!-- =========================== UTILITY BAR =========================== -->
+<div class="utility">
+  <div class="utility-inner">
+    <div class="utility-left">
+      <a href="tel:6268410421">(626) 841-0421</a>
+      <a href="/pages/educator-dashboard">Track an order</a>
+    </div>
+    <div class="utility-center">
+      <span>Net-30, tax-exempt, and approved-vendor accounts for schools.</span>
+    </div>
+    <div class="utility-right">
+      <a href="/pages/educator-program">Apply for an account</a>
+      <a href="/pages/educator-dashboard">Dashboard</a>
+    </div>
+  </div>
+</div>
+
+<!-- =========================== NAV =========================== -->
+<nav class="nav" id="nav">
+  <div class="nav__search" role="search">
+    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <span>Search the educator catalog&hellip;</span>
+  </div>
+  <a href="/pages/educator-dashboard" class="nav__logo">
+    <img src="{{ 'mtw-logo-full.png' | asset_url }}" alt="My Toy Wagon, Los Angeles, California, est. 2020" class="mark"/>
+  </a>
+  <div class="nav__actions">
+    <a href="/pages/educator-dashboard" class="nav__action" aria-label="Dashboard">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20a8 8 0 0 1 16 0"/></svg>
+      <span class="label">Dashboard</span>
+    </a>
+    <a href="/pages/new-quote" class="nav__action" aria-label="Quote">
+      <svg viewBox="0 0 24 24"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
+      <span class="label">Quote</span>
+    </a>
+  </div>
+</nav>
+
+<!-- =========================== PROMO STRIP =========================== -->
+<div class="promo-strip">
+  <strong>Fall booking</strong>
+  Limited production &middot; POs by <span class="vol">July 15</span> for September arrival
+  <span class="sep"></span>
+  Pre-paid orders ship first. Window closes when the bench fills.
+</div>
+
+<div style="background: var(--cream); border-bottom: 0.5px solid var(--rule); padding: 14px clamp(20px, 4vw, 44px);">
+  <div style="max-width: 1440px; margin: 0 auto;">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/pages/educator-dashboard" class="home-crumb">Dashboard</a>
+      <span class="sep" aria-hidden="true">/</span>
+      <span aria-current="page">Educator Catalog</span>
+    </nav>
+  </div>
+</div>
+
+<!-- =========================== HERO =========================== -->
+<section class="edu-hero" data-screen-label="01 Hero">
+  <div class="edu-hero-inner">
+    <div>
+      <span class="label">The Educator Catalog &middot; The Autumn Edit · 2026</span>
+      <h1><span class="it">Eight sections</span> of a working classroom.</h1>
+    </div>
+    <div>
+      <p class="dek">A working bench of hand-made materials, ordered the way schools actually buy.</p>
+      <p class="body">Each volume below is a section of our 2026 Autumn Catalog, carved hardwoods, hand-felted wool, sensory trays, dramatic-play kitchens, and the slow goods in between. All on purchase orders, Net-30, tax-exempt. One quote, one PO, one shipment.</p>
+      <div class="hero-meta">Volumes 01, 08 &nbsp;&middot;&nbsp; Pre-K to Grade 5 &nbsp;&middot;&nbsp; LA workshop &nbsp;&middot;&nbsp; Order by July 15 to ship in August or September</div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================== BRAND LINE =========================== -->
+<aside class="brand-line" aria-label="Why we curate">
+  <p>You trust <em>our picks</em> more than you trust your research time.</p>
+</aside>
+
+<!-- =========================== THE EIGHT VOLUMES =========================== -->
+<section class="volumes gut" data-screen-label="02 Eight Volumes">
+  <div class="volumes-inner">
+    <div class="volumes-head">
+      <span class="eyebrow">The Eight Sections</span>
+      <h2>Pick a section, <span class="it">open the catalog.</span></h2>
+      <p>Each section opens to its own editorial page with featured products, classroom bundles, and a quote form pre-filled for that section. Browse all eight, or jump to the one your program needs first.</p>
+      <p class="map-note">Curated bundles ship together at 10% off the individual price. Single items hold their full price so the makers we represent stay supported.</p>
+    </div>
+
+    <div class="volumes-grid">
+
+      <!-- 01 Sensory Play -->
+      <a class="vol-card vol-01" href="/pages/educator-sensory-play">
+        <div class="vol-img">
+          <img src="{{ 'sensory-play-rainbow-imaginative-play-tray-cover.webp' | file_url }}" alt="Rainbow Imaginative Play Tray with curated sensory elements on linen, overhead flatlay" loading="lazy"/>
+          <span class="vol-stripe"></span>
+          <span class="vol-num">Section 01</span>
+          <span class="vol-savings">Saves 10%</span>
+        </div>
+        <div class="vol-body">
+          <span class="vol-name">Sensory <span class="it">Play</span></span>
+          <p class="vol-lede">The hand remembers what the mind forgets. These materials are made for that memory.</p>
+          <span class="vol-cta">Open section &rarr;</span>
+        </div>
+      </a>
+
+      <!-- 02 Nature Play -->
+      <a class="vol-card vol-02" href="/pages/educator-nature-play">
+        <div class="vol-img">
+          <img src="{{ 'np-busy-bee-tray-hero_webp.webp' | file_url }}" alt="Busy Bee Tray nature-play arrangement with felted honeybees, pinecones, and a woodland tray" loading="lazy"/>
+          <span class="vol-stripe"></span>
+          <span class="vol-num">Section 02</span>
+          <span class="vol-savings">Saves 10%</span>
+        </div>
+        <div class="vol-body">
+          <span class="vol-name">Nature <span class="it">Play</span></span>
+          <p class="vol-lede">The garden has always been the best classroom. These are the tools that bring it inside.</p>
+          <span class="vol-cta">Open section &rarr;</span>
+        </div>
+      </a>
+
+      <!-- 03 Woodland -->
+      <a class="vol-card vol-03" href="/pages/educator-woodland">
+        <div class="vol-img">
+          <img src="{{ 'bumbu-birch-trees-set-of-two.webp' | file_url }}" alt="Bumbu hand-carved birch trees, set of two, soft yellow-green canopy" loading="lazy"/>
+          <span class="vol-stripe"></span>
+          <span class="vol-num">Section 03</span>
+          <span class="vol-savings">Saves 10%</span>
+        </div>
+        <div class="vol-body">
+          <span class="vol-name">Woodland <span class="it">Habitats</span></span>
+          <p class="vol-lede">Every child knows the forest is alive. These pieces agree.</p>
+          <span class="vol-cta">Open section &rarr;</span>
+        </div>
+      </a>
+
+      <!-- 04 Small World -->
+      <a class="vol-card vol-04" href="/pages/educator-small-world">
+        <div class="vol-img">
+          <img src="{{ 'sw-cover-lifestyle.png' | file_url }}" alt="Papoose Forest Caves felt play mat with a child placing wooden dinosaurs and felt acorns by a mossy cave" loading="lazy"/>
+          <span class="vol-stripe"></span>
+          <span class="vol-num">Section 04</span>
+          <span class="vol-savings">Saves 10%</span>
+        </div>
+        <div class="vol-body">
+          <span class="vol-name">Small World &amp; <span class="it">Storytelling</span></span>
+          <p class="vol-lede">Small hands, vast worlds. The stories children need to tell can&rsquo;t always wait for words.</p>
+          <span class="vol-cta">Open section &rarr;</span>
+        </div>
+      </a>
+
+      <!-- 05 Fairy Villages -->
+      <a class="vol-card vol-05" href="/pages/educator-fairy-villages">
+        <div class="vol-img">
+          <img src="{{ 'mushroom-garden-fairy-home.png' | asset_url }}" alt="Mushroom Garden Fairy Home, hero of the Fairy Villages collection, hand-felted toadstool home on a round wool play mat"/>
+          <span class="vol-stripe"></span>
+          <span class="vol-num">Section 05</span>
+          <span class="vol-savings">Saves 10%</span>
+        </div>
+        <div class="vol-body">
+          <span class="vol-name">Fairy <span class="it">Villages</span></span>
+          <p class="vol-lede">A child who has a fairy village has a world she can hold, arrange, and return to.</p>
+          <span class="vol-cta">Open section &rarr;</span>
+        </div>
+      </a>
+
+      <!-- 06 STEAM -->
+      <a class="vol-card vol-06" href="/pages/educator-steam">
+        <div class="vol-img">
+          <img src="{{ 'Bauspiel_lucent_cubes.png' | file_url }}" alt="Bauspiel Lucent Cubes glowing on a light table for color-mixing exploration" loading="lazy"/>
+          <span class="vol-stripe"></span>
+          <span class="vol-num">Section 06</span>
+          <span class="vol-savings">Saves 10%</span>
+        </div>
+        <div class="vol-body">
+          <span class="vol-name">STEAM <span class="it">Wonder &amp; Investigation</span></span>
+          <p class="vol-lede">Wonder comes before vocabulary. These tools invite the questions that begin real inquiry.</p>
+          <span class="vol-cta">Open section &rarr;</span>
+        </div>
+      </a>
+
+      <!-- 07 Dramatic Play -->
+      <a class="vol-card vol-07" href="/pages/educator-dramatic-play">
+        <div class="vol-img">
+          <img src="{{ 'Dramatic_Play_Cover.webp' | file_url }}" alt="Drewart cow shed dramatic-play scene with hand-carved farm animals and a harvest of felt vegetables" loading="lazy"/>
+          <span class="vol-stripe"></span>
+          <span class="vol-num">Section 07</span>
+          <span class="vol-savings">Saves 10%</span>
+        </div>
+        <div class="vol-body">
+          <span class="vol-name">Dramatic <span class="it">Play</span></span>
+          <p class="vol-lede">The kitchen, the shop, the farmyard at dawn. Children learn the world by playing it first.</p>
+          <span class="vol-cta">Open section &rarr;</span>
+        </div>
+      </a>
+
+      <!-- 08 Creative Arts -->
+      <a class="vol-card vol-08" href="/pages/educator-creative-arts">
+        <div class="vol-img">
+          <img src="{{ 'weaving_2_b9bdb840-2976-4bf0-9a23-a8ae54a259dc.png' | file_url }}" alt="Weaving station with a handcrafted loom and natural fibers for creative arts practice" loading="lazy"/>
+          <span class="vol-stripe"></span>
+          <span class="vol-num">Section 08</span>
+          <span class="vol-savings">Saves 10%</span>
+        </div>
+        <div class="vol-body">
+          <span class="vol-name">Creative <span class="it">Arts</span></span>
+          <p class="vol-lede">The slow work of making something with your hands. Patience, attention, and a little mess.</p>
+          <span class="vol-cta">Open section &rarr;</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- =========================== REVIEWS (moved from per-collection) =========================== -->
+<!-- This rolling carousel of MTW-wide educator reviews lives here now,
+     once per logged-in catalog landing instead of repeating on each of
+     the 8 section pages. Klaviyo Reviews replaces these seed cards. -->
+<!-- =========================== REVIEWS (placeholder — will be populated by Klaviyo Reviews after launch) =========================== -->
+<!-- The fake seed reviews were removed pre-launch. The carousel HTML, CSS, and JS remain in
+     the file (commented out below). When Klaviyo Reviews is wired up and the first verified
+     educator reviews come in, restore the <section class="reviews-section gut"> block from git
+     history and swap the static cards for the Klaviyo web component. -->
+<section class="reviews-placeholder gut" data-screen-label="03 Reviews">
+  <div class="reviews-head" style="text-align:center;max-width:64ch;margin:0 auto;padding:24px 20px;">
+    <span class="eyebrow">From the schools we serve</span>
+    <p style="margin-top:18px;color:var(--stone);">Verified educator reviews appear here once approved educators publish them. We seed nothing.</p>
+  </div>
+</section>
+
+<!-- =========================== HOW IT WORKS (moved from per-collection) =========================== -->
+<section class="how-it-works gut" data-screen-label="04 How It Works">
+  <div class="how-it-works-inner">
+    <div class="how-head">
+      <div>
+        <span class="eyebrow">First time buying for a school?</span>
+        <h3>Three steps to your <span class="it">first classroom order.</span></h3>
+      </div>
+      <div>
+        <p>Browse the catalog, build a cart, and check out with a purchase order. We have approved educator accounts ready within one business day.</p>
+      </div>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <span class="num">01</span>
+        <h4>Browse and add to cart.</h4>
+        <p>Prices are visible across the catalog and updated monthly. The cart saves between sessions, so you can build it over a week as your budget moves through approvals.</p>
+      </div>
+      <div class="step">
+        <span class="num">02</span>
+        <h4>Sign in, or apply.</h4>
+        <p>Approved educator accounts get school pricing, Net-30, and automatic tax-exempt. New schools apply once. Most are approved within one business day.</p>
+        <a href="/pages/educator-program" class="more">Apply for an account &rarr;</a>
+      </div>
+      <div class="step">
+        <span class="num">03</span>
+        <h4>Check out with a PO.</h4>
+        <p>Pay by purchase order, or use a school card. We ship from our Los Angeles workshop, packed by hand. Larger sets ship from our partner warehouses with the same care.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================== KLAVIYO SIGNUP (moved from per-collection) =========================== -->
+<!-- WIRE UP: replace `LIST_ID` below with the Klaviyo list ID for the educator
+     announcements list. The form posts to Klaviyo's hosted endpoint and adds
+     the subscriber with role/grade-band metadata. -->
+<section class="klaviyo-strip gut" data-screen-label="05 Educator Letter">
+  <div class="klaviyo-strip-inner">
+    <div>
+      <span class="eyebrow">The Educator Letter</span>
+      <h3>Stay close to <em>the seasons</em>.</h3>
+      <p class="lede">A short letter from the workshop, written for the way schools actually buy. No marketing fluff, no fundraising asks.</p>
+      <ul>
+        <li>When the next ordering window opens, and when it closes.</li>
+        <li>New ecosystems and seasonal restocks.</li>
+        <li>Procurement updates: W-9, terms, document deadlines.</li>
+        <li>The occasional curriculum note from our co-op partners.</li>
+      </ul>
+    </div>
+
+    <form class="klaviyo-form" action="https://manage.kmail-lists.com/subscriptions/subscribe" method="POST" data-form-id="LIST_ID" onsubmit="event.preventDefault(); alert('Subscribed. The next letter will arrive when our Fall booking window opens.');">
+      <input type="hidden" name="g" value="LIST_ID"/>
+      <input type="hidden" name="$source" value="educator-catalog-landing"/>
+
+      <div class="klaviyo-form-row">
+        <div class="field">
+          <label for="kl-email">School email *</label>
+          <input type="email" id="kl-email" name="email" required placeholder="you@school.edu" autocomplete="email"/>
+        </div>
+        <div class="field">
+          <label for="kl-school">School or program</label>
+          <input type="text" id="kl-school" name="organization" placeholder="Maple Tree Montessori"/>
+        </div>
+        <div class="field">
+          <label for="kl-role">Role</label>
+          <select id="kl-role" name="role">
+            <option value="">Select a role</option>
+            <option>Educator</option>
+            <option>Director or Head of School</option>
+            <option>Procurement Officer</option>
+            <option>Therapist</option>
+            <option>Homeschool Parent</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="kl-grade">Grade band</label>
+          <select id="kl-grade" name="grade_band">
+            <option value="">All grade bands</option>
+            <option>Infant and toddler</option>
+            <option>Pre-K to Kindergarten</option>
+            <option>Grades 1 to 3</option>
+            <option>Grades 4 to 6</option>
+            <option>Mixed-age classroom</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="klaviyo-form-submit">
+        <button type="submit">Subscribe to the Educator Letter</button>
+        <p class="note">Sent ~6 times a year. Unsubscribe in one click.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- =========================== SIGN-IN BAND =========================== -->
+<section class="signin-band" data-screen-label="06 Sign-in Band" id="quote">
+  <div class="signin-band-inner">
+    <span class="eyebrow">Have an approved account?</span>
+    <h2>Open your <em>dashboard</em>.</h2>
+    <p>Saved quotes, document uploads, purchase orders in progress, and a direct line to our team.</p>
+    <a href="/pages/educator-dashboard" class="btn">Open the dashboard &rarr;</a>
+  </div>
+</section>
+
+<!-- =========================== CATALOG REQUEST =========================== -->
+<section class="catalog-req" data-screen-label="06 Catalog request">
+  <div class="catalog-req-inner">
+    <h3>Want a printed catalog <span class="it">mailed to you?</span></h3>
+    <p>We mail the Autumn Educator Catalog (the 2026 print edition) within three business days. Free, no obligation.</p>
+    <form action="/contact#contact_form" method="post" id="catalog-request" accept-charset="UTF-8">
+      <input type="hidden" name="form_type" value="contact"/>
+      <input type="hidden" name="utf8" value="&#x2713;"/>
+      <input type="hidden" name="contact[subject]" value="Print catalog request"/>
+      <input type="hidden" name="contact[mailing_address]" value="REQUEST_PRINT_CATALOG"/>
+      <input type="email" name="contact[email]" required placeholder="your email" aria-label="Email"/>
+      <button type="submit">Mail me a catalog</button>
+    </form>
+    <p class="micro">We&rsquo;ll email you to confirm your shipping address before sending.</p>
+  </div>
+</section>
+
+<!-- =========================== FOOTER =========================== -->
+<footer>
+  <div class="wrap">
+    <div class="left">
+      <img src="{{ 'mtw-wagon-only.png' | asset_url }}" alt="My Toy Wagon" class="foot-mark"/>
+      <p>Natural toys made for years of small hands. A small family shop in Los Angeles, online since 2020.</p>
+      <div class="foot-contact">
+        <a href="/cdn-cgi/l/email-protection#315455445250455e4342715c48455e484650565e5f1f525e5c"><span class="__cf_email__" data-cfemail="07626372646673687574476a7e73687e70666068692964686a">[email&#160;protected]</span></a>
+        <a href="tel:6268410421">(626) 841-0421</a>
+        <span class="hours">Mon to Fri, 9 am to 5 pm PT</span>
+        <span class="hours">37 W Huntington Drive, Arcadia, CA 91007</span>
+      </div>
+    </div>
+    <div class="cols">
+      <div>
+        <h6>The Catalog</h6>
+        <ul>
+          <li><a href="/pages/educator-sensory-play">01 &middot; Sensory Play</a></li>
+          <li><a href="/pages/educator-nature-play">02 &middot; Nature Play</a></li>
+          <li><a href="/pages/educator-woodland">03 &middot; Woodland</a></li>
+          <li><a href="/pages/educator-small-world">04 &middot; Small World &amp; Storytelling</a></li>
+          <li><a href="/pages/educator-fairy-villages">05 &middot; Fairy Villages</a></li>
+          <li><a href="/pages/educator-steam">06 &middot; STEAM</a></li>
+          <li><a href="/pages/educator-dramatic-play">07 &middot; Dramatic Play</a></li>
+          <li><a href="/pages/educator-creative-arts">08 &middot; Creative Arts</a></li>
+        </ul>
+      </div>
+      <div>
+        <h6>Educator Program</h6>
+        <ul>
+          <li><a href="/pages/new-quote">Start a new quote</a></li>
+          <li><a href="/pages/educator-dashboard">Educator dashboard</a></li>
+          <li><a href="/pages/educator-program">Apply for an account</a></li>
+          
+        </ul>
+      </div>
+      <div>
+        <h6>Resources</h6>
+        <ul>
+          <li><a href="/pages/vendor-profile">Vendor profile</a></li>
+          <li><a href="/pages/procurement-guide">Procurement guide</a></li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span><em>Natural toys, curated by hand.</em> &copy; 2026 My Toy Wagon. All rights reserved.</span>
+    <div>
+      <a href="/pages/vendor-profile">Vendor profile</a>
+      <a href="/policies/terms-of-service">Terms</a>
+      <a href="/policies/privacy-policy">Privacy</a>
+      <a href="/account/logout">Sign out</a>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Nav: solid background after scroll
+  (function(){
+    var nav = document.getElementById('nav');
+    if(!nav) return;
+    function onScroll(){
+      if(window.scrollY > 60){ nav.classList.add('scrolled'); }
+      else { nav.classList.remove('scrolled'); }
+    }
+    window.addEventListener('scroll', onScroll, {passive:true});
+    onScroll();
+  })();
+
+  // Reviews carousel, same component used on the per-section pages,
+  // moved here as the canonical home. When Klaviyo Reviews goes live,
+  // swap the static .review cards in .rc-track for the web component.
+  (function(){
+    document.querySelectorAll('[data-reviews-carousel]').forEach(function(carousel){
+      var track = carousel.querySelector('.rc-track');
+      var prev  = carousel.querySelector('.rc-nav.prev');
+      var next  = carousel.querySelector('.rc-nav.next');
+      var dotsHost = carousel.querySelector('.rc-dots');
+      if (!track) return;
+      function pageCount(){ return Math.max(1, Math.ceil(track.scrollWidth / track.clientWidth)); }
+      function currentPage(){ return Math.round(track.scrollLeft / track.clientWidth); }
+      function buildDots(){
+        if (!dotsHost) return;
+        var count = pageCount();
+        dotsHost.innerHTML = '';
+        for (var i = 0; i < count; i++){
+          var b = document.createElement('button');
+          b.type = 'button'; b.setAttribute('role','tab');
+          b.setAttribute('aria-label','Go to reviews page ' + (i+1));
+          (function(idx){
+            b.addEventListener('click', function(){
+              track.scrollTo({ left: idx * track.clientWidth, behavior: 'smooth' });
+            });
+          })(i);
+          dotsHost.appendChild(b);
+        }
+        syncDots();
+      }
+      function syncDots(){
+        if (!dotsHost) return;
+        var p = currentPage();
+        Array.prototype.forEach.call(dotsHost.children, function(d,i){
+          d.classList.toggle('is-active', i === p);
+        });
+      }
+      function syncNav(){
+        if (prev) prev.disabled = track.scrollLeft <= 2;
+        if (next) next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 2;
+      }
+      function scrollByPage(dir){ track.scrollBy({ left: dir * track.clientWidth, behavior: 'smooth' }); }
+      if (prev) prev.addEventListener('click', function(){ scrollByPage(-1); });
+      if (next) next.addEventListener('click', function(){ scrollByPage(1); });
+      track.addEventListener('scroll', function(){ syncDots(); syncNav(); }, { passive: true });
+      window.addEventListener('resize', function(){ buildDots(); syncNav(); });
+      buildDots(); syncNav();
+    });
+  })();
+</script>
+
+  {% section 'mtw-educator-footer' %}
+</body>
+</html>
+{%- else -%}
+{% render 'educator-gate' %}
+{%- endif -%}
+
+

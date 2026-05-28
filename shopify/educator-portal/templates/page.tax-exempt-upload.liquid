@@ -1,0 +1,205 @@
+{% layout none %}
+{%- comment -%}
+  Tax-exempt certificate upload page. Gated to approved educators only.
+  Embeds a Helium Customer Fields form (configured in Helium admin) that
+  uploads the cert PDF to Shopify Files and writes the resulting URL to
+  the customer metafield educator.tax_exempt_cert_url.
+
+  On form submit, Helium is configured to add the customer tag
+  'tax-exempt-pending'. Staff reviews the cert, then manually:
+    1. Adds tag 'tax-exempt-verified' (removes pending)
+    2. Notes expiration date in customer.metafields.educator.tax_exempt_expires
+    3. Applies the tax exemption in Shopify Customers > Tax settings
+
+  See LAUNCH-FOLLOW-UPS.md for the full Helium config spec.
+{%- endcomment -%}
+{%- assign is_approved = false -%}
+{%- if customer and customer.tags contains 'educator-approved' -%}{%- assign is_approved = true -%}{%- endif -%}
+{%- if customer.b2b? -%}{%- assign is_approved = true -%}{%- endif -%}
+{%- if is_approved -%}
+<!doctype html>
+<html lang="en">
+<head>
+{{ content_for_header }}
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex,nofollow"/>
+<title>Tax-Exempt Certificate Upload &middot; Educator Portal &middot; My Toy Wagon</title>
+<link rel="canonical" href="https://mytoywagon.com/pages/tax-exempt-upload" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+:root{--cream:#F5F0E5;--warm-white:#FFFCF7;--ink:#2C2C2A;--forest:#3B6D11;--amber:#854F0B;--stone:#5F5E5A;--rule:rgba(44,44,42,0.12);--rule-strong:rgba(44,44,42,0.22);--serif:'Cormorant Garamond',Georgia,serif;--sans:'Mulish',system-ui,sans-serif}
+*{box-sizing:border-box}html,body{margin:0;padding:0}
+body{font-family:var(--sans);color:var(--ink);background:var(--cream);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+
+.crumbs{padding:20px clamp(20px,4vw,44px) 0;max-width:1000px;margin:0 auto;font-size:12px;letter-spacing:.08em;color:var(--stone)}
+.crumbs a{color:var(--forest);text-decoration:underline;text-underline-offset:3px}
+.crumbs .sep{margin:0 8px;color:var(--rule-strong)}
+
+.hero{padding:40px clamp(20px,4vw,44px) 32px;max-width:1000px;margin:0 auto}
+.hero .eyebrow{font-size:11.5px;font-weight:600;text-transform:uppercase;letter-spacing:.22em;color:var(--forest);display:block;margin-bottom:18px}
+.hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(30px,3.6vw,42px);line-height:1.15;letter-spacing:-.01em;margin:0 0 18px;color:var(--ink)}
+.hero h1 .it{font-style:italic;color:var(--forest)}
+.hero p.dek{font-size:16px;line-height:1.6;color:var(--stone);max-width:62ch;margin:0 0 6px}
+
+/* status pill if customer already has cert on file */
+.status{padding:0 clamp(20px,4vw,44px);max-width:1000px;margin:8px auto 24px}
+.status-pill{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;font-size:12.5px;font-weight:600}
+.status-pill.verified{background:#e8f0dc;color:var(--forest);border:1px solid rgba(59,109,17,.22)}
+.status-pill.pending{background:#f5ecd6;color:var(--amber);border:1px solid rgba(133,79,11,.22)}
+.status-pill svg{width:14px;height:14px;flex-shrink:0}
+
+/* main grid: form on left, sidebar on right */
+.main{padding:0 clamp(20px,4vw,44px) 60px;max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr;gap:36px}
+@media(max-width:820px){.main{grid-template-columns:1fr;gap:28px}}
+
+/* form panel */
+.panel{background:var(--warm-white);border:0.5px solid var(--rule);border-radius:2px;padding:32px 30px}
+.panel h2{font-family:var(--serif);font-weight:500;font-size:24px;line-height:1.2;color:var(--ink);margin:0 0 8px;letter-spacing:-.005em}
+.panel h2 .it{font-style:italic;color:var(--forest)}
+.panel .panel-lede{font-size:14px;color:var(--stone);line-height:1.55;margin:0 0 22px}
+
+/* HELIUM FORM EMBED CONTAINER — Helium app renders its configured
+   form inside this div. See instructions in the comment block at top of file.
+   While Helium is being configured, the fallback content below is displayed. */
+.helium-form-host{min-height:200px;padding:24px 22px;background:var(--cream);border:1px dashed var(--rule-strong);border-radius:2px;margin:8px 0}
+.helium-form-host .placeholder{font-size:13.5px;color:var(--stone);line-height:1.6}
+.helium-form-host .placeholder strong{color:var(--ink)}
+.helium-form-host .placeholder code{font-family:ui-monospace,monospace;font-size:12.5px;background:rgba(0,0,0,.04);padding:1px 5px;border-radius:2px;color:var(--ink)}
+
+/* email fallback */
+.fallback{margin-top:20px;padding-top:18px;border-top:0.5px solid var(--rule);font-size:13.5px;color:var(--stone);line-height:1.6}
+.fallback a{color:var(--forest);text-decoration:underline;text-underline-offset:3px}
+
+/* sidebar */
+.side{display:flex;flex-direction:column;gap:18px}
+.side-card{background:var(--warm-white);border:0.5px solid var(--rule);border-radius:2px;padding:22px 20px}
+.side-card h3{font-family:var(--serif);font-weight:500;font-size:18px;color:var(--ink);margin:0 0 10px;line-height:1.25}
+.side-card p, .side-card li{font-size:13.5px;color:var(--stone);line-height:1.6;margin:0}
+.side-card ol{padding-left:18px;margin:0;display:flex;flex-direction:column;gap:6px}
+.side-card ol li::marker{color:var(--forest);font-weight:600}
+
+/* what we accept */
+.accept-list{padding-left:0;list-style:none;margin:8px 0 0;display:flex;flex-direction:column;gap:8px}
+.accept-list li{font-size:13.5px;color:var(--ink);display:flex;gap:10px;align-items:flex-start;line-height:1.55}
+.accept-list li::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--forest);margin-top:7px;flex-shrink:0}
+
+/* footer note */
+.disclosure{background:var(--cream);border-top:0.5px solid var(--rule);padding:28px clamp(20px,4vw,44px);text-align:center}
+.disclosure p{font-size:12.5px;color:var(--stone);line-height:1.55;max-width:62ch;margin:0 auto}
+.disclosure p strong{color:var(--ink)}
+</style>
+</head>
+<body>
+  {% section 'mtw-educator-header' %}
+
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="/pages/educator-dashboard">Dashboard</a>
+    <span class="sep">&rsaquo;</span>
+    <span>Tax-exempt certificate</span>
+  </nav>
+
+  <section class="hero">
+    <span class="eyebrow">For approved educators &middot; Tax-exempt setup</span>
+    <h1>Upload your <span class="it">tax-exempt certificate.</span></h1>
+    <p class="dek">Schools, libraries, 501(c)(3) organizations, and government entities don&rsquo;t pay sales tax on classroom materials. Upload your state-issued certificate and we&rsquo;ll apply the exemption to your future orders.</p>
+  </section>
+
+  {%- comment -%} Status pill — shows current cert status from customer tags {%- endcomment -%}
+  {%- if customer.tags contains 'tax-exempt-verified' -%}
+  <div class="status">
+    <span class="status-pill verified">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>
+      Certificate on file &middot; tax-exempt at checkout
+    </span>
+  </div>
+  {%- elsif customer.tags contains 'tax-exempt-pending' -%}
+  <div class="status">
+    <span class="status-pill pending">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+      Certificate received &middot; under review (1&ndash;2 business days)
+    </span>
+  </div>
+  {%- endif -%}
+
+  <div class="main">
+
+    <div class="panel">
+      <h2>Upload <span class="it">certificate.</span></h2>
+      <p class="panel-lede">PDF, JPG, or PNG. Up to 10 MB. Most state-issued certs are 1&ndash;2 pages.</p>
+
+      {%- comment -%}
+        HELIUM CUSTOMER FIELDS FORM EMBED
+        =================================
+        Configure the form in Helium admin:
+          - Form type: Customer Profile Edit (or Custom Form)
+          - Title: "Tax-Exempt Certificate Upload"
+          - Fields:
+              1. Issuing state (dropdown, required) → metafield: educator.tax_exempt_state
+              2. Certificate type (dropdown: school/library/501c3/government) → metafield: educator.tax_exempt_type
+              3. Effective date (date, required) → metafield: educator.tax_exempt_effective
+              4. Expiration date (date, optional) → metafield: educator.tax_exempt_expires
+              5. Certificate file (file upload, required, PDF/JPG/PNG, 10MB max) → metafield: educator.tax_exempt_cert_url
+              6. Notes (textarea, optional)
+          - On submit:
+              - Add customer tag: tax-exempt-pending
+              - Show success message: "Thanks. We will verify within 1-2 business days and email you."
+              - Optional: fire Klaviyo event "Tax exempt cert uploaded"
+          - Embed mode: "Custom container" → render inside #helium-tax-exempt-form
+        Then in your live theme, ensure the Helium app embed is enabled in
+        Online Store > Themes > Customize > App embeds.
+      {%- endcomment -%}
+      <div id="helium-tax-exempt-form" class="helium-form-host" data-helium-form="tax-exempt-upload">
+        <p class="placeholder">
+          <strong>Form not yet configured.</strong> The Helium Customer Fields form named <code>tax-exempt-upload</code> needs to be created and bound to this container in Helium admin. See the comments in this template for the field spec.
+        </p>
+      </div>
+
+      <div class="fallback">
+        <strong style="color:var(--ink)">Prefer email?</strong> You can email your certificate directly to <a href="mailto:accounting@mytoywagon.com?subject=Tax-exempt%20certificate%20%E2%80%94%20{{ customer.first_name | url_encode }}%20{{ customer.last_name | url_encode }}&body=Hi%20MTW%20accounting%2C%0A%0AAttaching%20our%20tax-exempt%20certificate.%0A%0AAccount%20email%3A%20{{ customer.email | url_encode }}%0AIssuing%20state%3A%20%0AEffective%20date%3A%20%0AExpiration%20date%3A%20%0A%0AThank%20you.%0A">accounting@mytoywagon.com</a> &mdash; either path works. We verify by hand either way.
+      </div>
+    </div>
+
+    <aside class="side">
+      <div class="side-card">
+        <h3>What we accept</h3>
+        <ul class="accept-list">
+          <li>State-issued tax-exempt certificate (sales tax)</li>
+          <li>501(c)(3) IRS determination letter</li>
+          <li>School district or public-school exemption letter</li>
+          <li>Government purchase exemption authorization</li>
+        </ul>
+      </div>
+
+      <div class="side-card">
+        <h3>How verification works</h3>
+        <ol>
+          <li><strong style="color:var(--ink)">You upload</strong> &mdash; using the form, or by email to accounting@</li>
+          <li><strong style="color:var(--ink)">We verify</strong> within 1&ndash;2 business days &mdash; we check that the certificate state matches your ship-to state, that the cert is current, and that it covers our product category</li>
+          <li><strong style="color:var(--ink)">We confirm by email</strong> and apply the exemption to your account in Shopify Tax settings &mdash; future orders are tax-free at checkout</li>
+          <li><strong style="color:var(--ink)">If we have questions</strong> we email you before rejecting anything &mdash; never a silent reject</li>
+        </ol>
+      </div>
+
+      <div class="side-card">
+        <h3>What might delay it</h3>
+        <p>Expired certificates, certificates from a state different from your ship-to state, or "resale" certs (which don&rsquo;t apply to classroom-use purchases) cannot be accepted. We&rsquo;ll email you within 1&ndash;2 business days if any of these apply &mdash; usually it&rsquo;s an easy fix on your end.</p>
+      </div>
+    </aside>
+  </div>
+
+  <section class="disclosure">
+    <p><strong>One disclosure:</strong> Tax-exemption rules are state-by-state and category-specific. We verify each certificate before applying the exemption. If a verified certificate later expires or is revoked by the issuing authority, sales tax will resume on subsequent orders until a new certificate is on file. Annual cert renewal is your responsibility &mdash; we&rsquo;ll email a reminder 30 days before the expiration date on file.</p>
+  </section>
+
+  {% section 'mtw-educator-footer' %}
+</body>
+</html>
+{%- else -%}
+{% render 'educator-gate' %}
+{%- endif -%}

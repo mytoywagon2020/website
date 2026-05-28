@@ -1,0 +1,88 @@
+{% layout none %}
+{%- comment -%}
+  Closed educator portal gate.
+  A page is "closed" if its handle is in closed_handles OR page.metafields.educator.gated == true.
+  Setting page.metafields.educator.gated == false force-opens a page even if its handle is listed.
+  Closed pages render only for a signed-in customer tagged 'educator-approved', and carry noindex.
+  Public funnel/apply/marketing pages are unaffected and stay indexable.
+{%- endcomment -%}
+{%- assign closed_handles = ',educator-dashboard,new-quote,newquote,educator-quote,educator-quotes,' -%}
+{%- assign handle_token = ',' | append: page.handle | append: ',' -%}
+{%- assign is_closed = false -%}
+{%- if closed_handles contains handle_token -%}{%- assign is_closed = true -%}{%- endif -%}
+{%- if page.metafields.educator.gated == true -%}{%- assign is_closed = true -%}{%- endif -%}
+{%- if page.metafields.educator.gated == false -%}{%- assign is_closed = false -%}{%- endif -%}
+{%- assign is_approved = false -%}
+{%- if customer and customer.tags contains 'educator-approved' -%}{%- assign is_approved = true -%}{%- endif -%}
+{%- assign show_content = true -%}
+{%- if is_closed and is_approved == false -%}{%- assign show_content = false -%}{%- endif -%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {{ content_for_header }}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }} | {{ shop.name }}</title>
+  {%- if is_closed -%}
+    <meta name="robots" content="noindex, nofollow">
+  {%- elsif page.metafields.global.description_tag != blank -%}
+    <meta name="description" content="{{ page.metafields.global.description_tag | escape }}">
+  {%- elsif page.content != blank -%}
+    <meta name="description" content="{{ page.content | strip_html | truncatewords: 30 | escape }}">
+  {%- endif -%}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--cream:#F5F0E5;--warm-white:#FFFCF7;--ink:#2C2C2A;--forest:#3B6D11;--amber:#854F0B;--stone:#5F5E5A;--card-bg:#EDE3CD;--rule:rgba(44,44,42,0.12);--rule-strong:rgba(44,44,42,0.22);}
+    *{box-sizing:border-box;}html,body{margin:0;padding:0;}
+    body{font-family:'Mulish',sans-serif;color:var(--ink);background:var(--cream);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+    img{max-width:100%;display:block;}a{color:inherit;text-decoration:none;}
+    .mtw-gate{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:48px 20px;}
+    .mtw-gate__card{max-width:520px;width:100%;background:var(--warm-white);border:1px solid var(--rule-strong);border-radius:2px;padding:48px 44px;text-align:center;}
+    .mtw-gate__eyebrow{font-family:'Mulish',sans-serif;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.18em;color:var(--stone);margin:0 0 18px;}
+    .mtw-gate__title{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:30px;line-height:1.25;color:var(--ink);margin:0 0 16px;}
+    .mtw-gate__body{font-family:'Mulish',sans-serif;font-size:15px;line-height:1.7;color:var(--stone);margin:0 0 28px;}
+    .mtw-gate__actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:0 0 22px;}
+    .mtw-gate__btn{display:inline-block;font-family:'Mulish',sans-serif;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;padding:13px 26px;border-radius:2px;border:1px solid var(--ink);}
+    .mtw-gate__btn--solid{background:var(--ink);color:var(--cream);}
+    .mtw-gate__btn--ghost{background:transparent;color:var(--ink);}
+    .mtw-gate__note{font-family:'Mulish',sans-serif;font-size:13px;line-height:1.6;color:var(--stone);margin:0;}
+    .mtw-gate__note a{color:var(--forest);}
+    @media(max-width:560px){.mtw-gate__card{padding:36px 24px;}.mtw-gate__title{font-size:26px;}}
+  </style>
+</head>
+<body data-screen-label="{{ page.title }}">
+  {% section 'mtw-educator-header' %}
+  {%- if show_content -%}
+    {{ page.content }}
+  {%- elsif customer == nil -%}
+    <div class="mtw-gate">
+      <div class="mtw-gate__card">
+        <p class="mtw-gate__eyebrow">Educator Portal</p>
+        <h1 class="mtw-gate__title">This area is for approved educators.</h1>
+        <p class="mtw-gate__body">Sign in with your approved educator account to continue. If you do not have an account yet, you can apply for educator access. Approval usually takes one to two business days.</p>
+        <div class="mtw-gate__actions">
+          <a class="mtw-gate__btn mtw-gate__btn--solid" href="{{ routes.account_login_url }}">Sign in</a>
+          <a class="mtw-gate__btn mtw-gate__btn--ghost" href="{{ routes.account_register_url }}">Apply for access</a>
+        </div>
+        <p class="mtw-gate__note">Questions about your application can go to <a href="mailto:educators@mytoywagon.com">educators@mytoywagon.com</a>.</p>
+      </div>
+    </div>
+  {%- else -%}
+    <div class="mtw-gate">
+      <div class="mtw-gate__card">
+        <p class="mtw-gate__eyebrow">Educator Portal</p>
+        <h1 class="mtw-gate__title">Your educator access is being reviewed.</h1>
+        <p class="mtw-gate__body">Thank you for applying. Our team is verifying your account, which usually takes one to two business days. You will receive an email as soon as your access is approved.</p>
+        <div class="mtw-gate__actions">
+          <a class="mtw-gate__btn mtw-gate__btn--ghost" href="{{ routes.root_url }}">Return to shop</a>
+        </div>
+        <p class="mtw-gate__note">If you have a question in the meantime, contact <a href="mailto:educators@mytoywagon.com">educators@mytoywagon.com</a>.</p>
+      </div>
+    </div>
+  {%- endif -%}
+  {% section 'mtw-educator-footer' %}
+</body>
+</html>
+
