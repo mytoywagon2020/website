@@ -385,6 +385,16 @@
       assign terms_line = 'Approved educator &middot; Net-30 / Net-60 on file'
     endif
 
+    # ---- Tax-exempt status (committed source of truth = customer tags) ----
+    # tax-exempt-verified -> active; tax-exempt-pending -> under review;
+    # neither -> prompt to submit a cert on /pages/tax-exempt-upload.
+    assign tax_state = 'none'
+    if customer.tags contains 'tax-exempt-verified'
+      assign tax_state = 'verified'
+    elsif customer.tags contains 'tax-exempt-pending'
+      assign tax_state = 'pending'
+    endif
+
     # ---- Featured catalog tiles ----
     # Source of truth: shop.metafields.educator.featured_handles (list of 3 product handles).
     # Fallback: empty list → generic browse-the-catalog tile.
@@ -532,8 +542,9 @@
           {%- if customer.first_name != blank -%}{{ customer.first_name }} {{ customer.last_name }}<br/>{%- endif -%}
           {{ customer.email }}<br/>
           Net-30 / Net-60 &middot;
-          {%- if customer.tax_exempt %} 🟢 Tax-exempt active
-          {%- else %} 🟡 Tax certificate pending<br/><span style="font-size:11.5px;color:var(--stone);">Email your certificate to <a href="mailto:educators@mytoywagon.com" style="color:var(--forest);">educators@mytoywagon.com</a></span>
+          {%- if tax_state == 'verified' %} 🟢 Tax-exempt active
+          {%- elsif tax_state == 'pending' %} 🟡 Tax certificate under review<br/><span style="font-size:11.5px;color:var(--stone);">We're verifying your certificate — you'll be notified once it's active.</span>
+          {%- else %} 🟡 Tax certificate needed<br/><span style="font-size:11.5px;color:var(--stone);"><a href="/pages/tax-exempt-upload" style="color:var(--forest);">Submit your exemption certificate &rarr;</a></span>
           {%- endif %}
         </div>
         <div class="acct-card__links">
@@ -560,8 +571,9 @@
           {%- if customer.first_name != blank -%}{{ customer.first_name }} {{ customer.last_name }} &middot; {%- endif -%}
           {{ customer.email }}<br/>
           Net-30 / Net-60 &middot;
-          {%- if customer.tax_exempt %} 🟢 Tax-exempt active
-          {%- else %} 🟡 Tax certificate pending (email yours to <a href="mailto:educators@mytoywagon.com" style="color:var(--forest);">educators@mytoywagon.com</a>)
+          {%- if tax_state == 'verified' %} 🟢 Tax-exempt active
+          {%- elsif tax_state == 'pending' %} 🟡 Tax certificate under review
+          {%- else %} 🟡 <a href="/pages/tax-exempt-upload" style="color:var(--forest);">Submit your exemption certificate &rarr;</a>
           {%- endif %}
           <div class="links">
             <a href="{{ routes.account_url }}">Addresses &rarr;</a>
