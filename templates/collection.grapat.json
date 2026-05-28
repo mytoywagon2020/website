@@ -1,0 +1,34 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "grapat_hero": {
+      "type": "background-image-text",
+      "settings": {
+        "subtitle": "WOODEN LOOSE PARTS FROM CATALONIA, SINCE 2015",
+        "title": "Grapat",
+        "heading_size": "h2",
+        "text": "<p>Grapat's family workshop in rural Catalonia has produced wooden loose parts since 2015, when Casiana and Jordi Monczar left the city, moved into Jordi's grandmother's farmhouse, and turned the old barn into a toy workshop. Their bowls, mandalas, nins, rings, and coins are hand-dyed with plant-based stains, finished with natural oils, and packaged plastic-free.</p>",
+        "button_label": "",
+        "button_link": "",
+        "image": "shopify://shop_images/2400x1200..jpg",
+        "layout": "left",
+        "height": 750,
+        "framed": false,
+        "parallax": false,
+        "parallax_direction": "top"
+      }
+    },
+    "main-collection": {"type":"main-collection","blocks":{"product_grid":{"type":"product_grid","settings":{"enable_collection_count":true,"per_row":3,"rows_per_page":20,"mobile_flush_grid":true}}},"block_order":["product_grid"],"settings":{"enable_sidebar":false,"collapsed":false,"filter_style":"sidebar","enable_color_swatches":false,"enable_swatch_labels":true,"enable_sort":true}},
+    "grapat_reviews": {"type":"apps","blocks":{"jdg_carousel":{"type":"shopify://apps/judge-me-reviews/blocks/featured_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8","settings":{"maxwidth":1080}}},"block_order":["jdg_carousel"],"settings":{"full_width":false,"space_around":true}},
+    "grapat_content": {"type":"rich-text","blocks":{"h1":{"type":"heading","settings":{"title":"Open-Ended by Design","heading_size":"h2"}},"t1":{"type":"text","settings":{"enlarge_text":true,"text":"<p>Grapat pieces have no fixed purpose. A bowl can hold treasures, balance on a tower, or become a hat for a peg doll. Mandalas form patterns one day and a feast the next. The lack of prescription is the point: children bring the meaning, then change it tomorrow.</p>"}},"h2":{"type":"heading","settings":{"title":"Beautiful for Adults, Endless for Children","heading_size":"h2"}},"t2":{"type":"text","settings":{"enlarge_text":true,"text":"<p>Grapat's understated wood tones and gentle natural stains make their pieces as pleasant on a shelf as they are on the floor. Families integrate Grapat into shared play spaces, nature tables, and quiet corners. The toys themselves invite calm focus rather than overstimulation.</p>"}},"h3":{"type":"heading","settings":{"title":"Why Families Choose My Toy Wagon for Grapat","heading_size":"h2"}},"t3":{"type":"text","settings":{"enlarge_text":true,"text":"<p>We curate Grapat because their commitment to open-ended play, natural finishes, and small-batch production aligns with what we believe a toy should be. Every Grapat order ships from our Los Angeles warehouse, with free shipping on orders $150 and over within the contiguous US. Returns are simple, and customer questions go to a real person on our team.</p>"}},"h4":{"type":"heading","settings":{"title":"Grapat Bestsellers","heading_size":"h2"}},"t4":{"type":"text","settings":{"enlarge_text":true,"text":"<p>Browse the collection above for nins, mandalas, bowls, rings, coins, and seasonal pieces. Grapat sets are infinitely combinable, so each addition extends the play possibilities of every previous piece.</p>"}}},"block_order":["h1","t1","h2","t2","h3","t3","h4","t4"],"settings":{"align_text":"left","narrow_column":true,"divider":false}}
+  },
+  "order": ["grapat_hero","main-collection","grapat_reviews","grapat_content"]
+}

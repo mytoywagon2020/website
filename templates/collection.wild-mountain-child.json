@@ -1,0 +1,155 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "wildmountainchild_hero": {
+      "type": "background-image-text",
+      "settings": {
+        "subtitle": "NATURE PLAY FROM THE BLUE MOUNTAINS OF AUSTRALIA",
+        "title": "Wild Mountain Child",
+        "heading_size": "h2",
+        "text": "<p>Wild Mountain Child is the work of Elise Clarkson, who founded the brand in Hazelbrook in the Blue Mountains of Australia. What began as a small handmade and fair-trade shop has grown into a curated collection of nature-play tools, made to put children's hands into mud kitchens, sensory bins, and the wonder of the natural world. Every piece reflects a commitment to organic materials, plant-based dyes, and gentle impact on the planet.</p>",
+        "button_label": "",
+        "button_link": "",
+        "image": "shopify://shop_images/IMG_1110_392cdd2c-2ce1-4293-9c32-72dcdb60364a.webp",
+        "layout": "left",
+        "height": 750,
+        "framed": false,
+        "parallax": false,
+        "parallax_direction": "top"
+      }
+    },
+    "main-collection": {
+      "type": "main-collection",
+      "blocks": {
+        "product_grid": {
+          "type": "product_grid",
+          "settings": {
+            "enable_collection_count": true,
+            "per_row": 3,
+            "rows_per_page": 20,
+            "mobile_flush_grid": true
+          }
+        }
+      },
+      "block_order": [
+        "product_grid"
+      ],
+      "settings": {
+        "enable_sidebar": false,
+        "collapsed": false,
+        "filter_style": "sidebar",
+        "enable_color_swatches": false,
+        "enable_swatch_labels": true,
+        "enable_sort": true
+      }
+    },
+    "wildmountainchild_reviews": {
+      "type": "apps",
+      "blocks": {
+        "jdg_carousel": {
+          "type": "shopify://apps/judge-me-reviews/blocks/featured_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "maxwidth": 1080
+          }
+        }
+      },
+      "block_order": [
+        "jdg_carousel"
+      ],
+      "settings": {
+        "full_width": false,
+        "space_around": true
+      }
+    },
+    "wildmountainchild_content": {
+      "type": "rich-text",
+      "blocks": {
+        "h1": {
+          "type": "heading",
+          "settings": {
+            "title": "Designed in Australia, Crafted with Care",
+            "heading_size": "h2"
+          }
+        },
+        "t1": {
+          "type": "text",
+          "settings": {
+            "enlarge_text": true,
+            "text": "<p>Elise designs Wild Mountain Child's products from her studio in Hazelbrook in the Blue Mountains. The Wild Tree Tools line is then hand-carved, hand-sanded, and hand-polished by Vietnamese artisans in a traditional craft village, using FSC-certified plantation Doussie wood and finished with food-grade oil. Fair Trade certified, the partnership supports work-from-home opportunities for young mothers and preserves ancient craft traditions passed through generations.</p>"
+          }
+        },
+        "h2": {
+          "type": "heading",
+          "settings": {
+            "title": "PlayFizz and the Magic of Mess",
+            "heading_size": "h2"
+          }
+        },
+        "t2": {
+          "type": "text",
+          "settings": {
+            "enlarge_text": true,
+            "text": "<p>PlayFizz is Wild Mountain Child's own line of natural, no-waste fizzy sensory eggs, handmade in small batches in a studio overlooking the Blue Mountains. Coloured with organic plant-based dyes, scented with essential oils, and free of plastic and artificial additives, each egg bubbles and fizzes to reveal a tiny natural treasure inside. It is an open-ended sensory experience built for curiosity, with no chocolate wrappers, no plastic toys, and no waste.</p>"
+          }
+        },
+        "h3": {
+          "type": "heading",
+          "settings": {
+            "title": "Why Families Choose My Toy Wagon for Wild Mountain Child",
+            "heading_size": "h2"
+          }
+        },
+        "t3": {
+          "type": "text",
+          "settings": {
+            "enlarge_text": true,
+            "text": "<p>We curate Wild Mountain Child because their nature-play philosophy, FSC-certified materials, and partnership with Vietnamese artisans align with what we believe a toy should be: useful, beautiful, and gentle on the earth. Wild Mountain Child orders ship promptly with free shipping on orders $150 and over within the contiguous US. Returns are simple, and customer questions go to a real person on our team.</p>"
+          }
+        },
+        "h4": {
+          "type": "heading",
+          "settings": {
+            "title": "Wild Mountain Child Bestsellers",
+            "heading_size": "h2"
+          }
+        },
+        "t4": {
+          "type": "text",
+          "settings": {
+            "enlarge_text": true,
+            "text": "<p>Browse the collection above for wooden sensory tools, mud-kitchen scoops and rolling pins, potion mixers, and PlayFizz sensory eggs. Wild Mountain Child pieces pair beautifully with felt play foods, peg dolls, and other natural-materials play that invites children outside, into the dirt, and into a slower kind of wonder.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "h1",
+        "t1",
+        "h2",
+        "t2",
+        "h3",
+        "t3",
+        "h4",
+        "t4"
+      ],
+      "settings": {
+        "align_text": "left",
+        "narrow_column": true,
+        "divider": false
+      }
+    }
+  },
+  "order": [
+    "wildmountainchild_hero",
+    "main-collection",
+    "wildmountainchild_reviews",
+    "wildmountainchild_content"
+  ]
+}

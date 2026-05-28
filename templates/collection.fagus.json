@@ -1,0 +1,155 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "fagus_hero": {
+      "type": "background-image-text",
+      "settings": {
+        "subtitle": "GERMAN WOODEN VEHICLES, MADE SINCE 1969",
+        "title": "Fagus",
+        "heading_size": "h2",
+        "text": "<p>Fagus's German workshop has manufactured wooden products since 1969, with dedicated toy production beginning in 1981. Their trucks, trains, and cranes are built from solid beech without varnish or paint, finished by hand and engineered with real working features: cranes that lift, dump beds that tip, trailers that detach and reattach across decades of active play.</p>",
+        "button_label": "",
+        "button_link": "",
+        "image": "shopify://shop_images/FB7FEE53-692C-44B9-8BFA-4401D900A16B.webp",
+        "layout": "left",
+        "height": 750,
+        "framed": false,
+        "parallax": true,
+        "parallax_direction": "top"
+      }
+    },
+    "main-collection": {
+      "type": "main-collection",
+      "blocks": {
+        "product_grid": {
+          "type": "product_grid",
+          "settings": {
+            "enable_collection_count": true,
+            "per_row": 3,
+            "rows_per_page": 20,
+            "mobile_flush_grid": true
+          }
+        }
+      },
+      "block_order": [
+        "product_grid"
+      ],
+      "settings": {
+        "enable_sidebar": false,
+        "collapsed": false,
+        "filter_style": "sidebar",
+        "enable_color_swatches": false,
+        "enable_swatch_labels": true,
+        "enable_sort": true
+      }
+    },
+    "fagus_reviews": {
+      "type": "apps",
+      "blocks": {
+        "jdg_carousel": {
+          "type": "shopify://apps/judge-me-reviews/blocks/featured_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "maxwidth": 1080
+          }
+        }
+      },
+      "block_order": [
+        "jdg_carousel"
+      ],
+      "settings": {
+        "full_width": false,
+        "space_around": true
+      }
+    },
+    "fagus_content": {
+      "type": "rich-text",
+      "blocks": {
+        "h1": {
+          "type": "heading",
+          "settings": {
+            "title": "Built for the Long Haul",
+            "heading_size": "h2"
+          }
+        },
+        "t1": {
+          "type": "text",
+          "settings": {
+            "enlarge_text": true,
+            "text": "<p>Fagus vehicles use real working features. Cranes lift loads. Dump trucks tip. Trailers detach and reattach. The simple beech construction means the wood ages beautifully over decades of use, developing patina rather than wearing down. Many Fagus trucks are still in active play after twenty or thirty years.</p>"
+          }
+        },
+        "h2": {
+          "type": "heading",
+          "settings": {
+            "title": "Engineered Like Real Vehicles",
+            "heading_size": "h2"
+          }
+        },
+        "t2": {
+          "type": "text",
+          "settings": {
+            "enlarge_text": true,
+            "text": "<p>Fagus designers study real construction vehicles, trucks, and trains, then translate them into solid-wood toys that capture the essential mechanics. Children operate cranes, load dump beds, hitch trailers, and learn how machines work through their hands. The result is play that builds spatial reasoning and mechanical intuition.</p>"
+          }
+        },
+        "h3": {
+          "type": "heading",
+          "settings": {
+            "title": "Why Families Choose My Toy Wagon for Fagus",
+            "heading_size": "h2"
+          }
+        },
+        "t3": {
+          "type": "text",
+          "settings": {
+            "enlarge_text": true,
+            "text": "<p>We curate Fagus because their toys are built to be played with hard and passed down whole. Every Fagus order ships from our Los Angeles warehouse, with free shipping on orders $150 and over within the contiguous US. Returns are simple, and customer questions go to a real person on our team.</p>"
+          }
+        },
+        "h4": {
+          "type": "heading",
+          "settings": {
+            "title": "Fagus Bestsellers",
+            "heading_size": "h2"
+          }
+        },
+        "t4": {
+          "type": "text",
+          "settings": {
+            "enlarge_text": true,
+            "text": "<p>Browse the collection above for trucks, trains, cranes, fire engines, and construction vehicles. Fagus toys grow with children, from a toddler's first rolling truck to a school-aged child's elaborate construction site.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "h1",
+        "t1",
+        "h2",
+        "t2",
+        "h3",
+        "t3",
+        "h4",
+        "t4"
+      ],
+      "settings": {
+        "align_text": "left",
+        "narrow_column": true,
+        "divider": false
+      }
+    }
+  },
+  "order": [
+    "fagus_hero",
+    "main-collection",
+    "fagus_reviews",
+    "fagus_content"
+  ]
+}

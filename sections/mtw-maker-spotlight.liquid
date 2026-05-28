@@ -1,0 +1,96 @@
+{%- comment -%} MTW Maker Spotlight — ink-on-cream brand feature with 9:16 video. {%- endcomment -%}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+{%- style -%}
+  .mtw-maker {
+    --cream:#F5F0E5; --ink:#2C2C2A; --forest:#3B6D11; --stone:#5F5E5A;
+    background:var(--ink); color:var(--cream); box-sizing:border-box;
+    font-family:'Mulish',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  }
+  .mtw-maker *, .mtw-maker *::before, .mtw-maker *::after { box-sizing:border-box; }
+  .mtw-maker__inner { max-width:1440px; margin:0 auto; padding:100px 40px; display:grid; grid-template-columns:1fr 360px; gap:80px; align-items:center; }
+  .mtw-maker__label { font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:rgba(245,240,229,0.55); font-weight:500; }
+  .mtw-maker__title { font-family:'Cormorant Garamond',Georgia,serif; font-size:56px; font-weight:500; line-height:1.02; margin:18px 0 28px; letter-spacing:-0.005em; color:var(--cream); }
+  .mtw-maker__title em { font-style:italic; }
+  .mtw-maker__body, .mtw-maker__body p { font-size:16.5px; line-height:1.75; color:rgba(245,240,229,0.82); max-width:540px; margin:0 0 20px; }
+  .mtw-maker__quote { font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-size:22px; line-height:1.45; margin:32px 0 36px; padding-left:18px; border-left:2px solid var(--forest); max-width:520px; color:var(--cream); }
+  .mtw-maker__cta { display:inline-flex; align-items:center; gap:8px; padding:13px 26px; background:var(--cream); color:var(--ink); font-size:12px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; border-radius:2px; text-decoration:none; transition:background 200ms ease,color 200ms ease; }
+  .mtw-maker__cta:hover { background:var(--forest); color:var(--cream); }
+  .mtw-maker__stats { margin-top:36px; display:grid; grid-template-columns:repeat(2,1fr); gap:24px 40px; max-width:520px; padding-top:32px; border-top:0.5px solid rgba(245,240,229,0.18); }
+  .mtw-maker__stat-num { font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-size:26px; line-height:1; margin-bottom:6px; color:var(--cream); }
+  .mtw-maker__stat-label { font-size:10.5px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(245,240,229,0.6); font-weight:500; }
+  .mtw-maker__media { width:100%; aspect-ratio:9 / 16; background:#3a3a36; border-radius:2px; position:relative; overflow:hidden; }
+  .mtw-maker__media video, .mtw-maker__media img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
+  @media (max-width:900px) {
+    .mtw-maker__inner { grid-template-columns:1fr; gap:40px; padding:64px 24px; }
+    .mtw-maker__media { max-width:320px; }
+    .mtw-maker__title { font-size:38px; }
+  }
+{%- endstyle -%}
+<div class="mtw-maker">
+  <div class="mtw-maker__inner">
+    <div>
+      {%- if section.settings.label != blank -%}<span class="mtw-maker__label">{{ section.settings.label }}</span>{%- endif -%}
+      {%- if section.settings.heading != blank -%}<h2 class="mtw-maker__title">{{ section.settings.heading }}</h2>{%- endif -%}
+      {%- if section.settings.body != blank -%}<div class="mtw-maker__body">{{ section.settings.body }}</div>{%- endif -%}
+      {%- if section.settings.quote != blank -%}<blockquote class="mtw-maker__quote">{{ section.settings.quote }}</blockquote>{%- endif -%}
+      {%- if section.settings.cta_text != blank and section.settings.cta_link != blank -%}
+        <a class="mtw-maker__cta" href="{{ section.settings.cta_link }}">{{ section.settings.cta_text }}</a>
+      {%- endif -%}
+      {%- if section.blocks.size > 0 -%}
+        <div class="mtw-maker__stats">
+          {%- for block in section.blocks -%}
+            <div {{ block.shopify_attributes }}>
+              <div class="mtw-maker__stat-num">{{ block.settings.num }}</div>
+              <div class="mtw-maker__stat-label">{{ block.settings.label }}</div>
+            </div>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+    {%- if section.settings.cta_link != blank -%}<a class="mtw-maker__media" href="{{ section.settings.cta_link }}" aria-label="{{ section.settings.cta_text | default: section.settings.heading | strip_html }}">{%- else -%}<div class="mtw-maker__media">{%- endif -%}
+      {%- if section.settings.video != blank -%}
+        {{ section.settings.video | video_tag: autoplay: true, loop: true, muted: true, controls: false, playsinline: true }}
+      {%- elsif section.settings.video_url != blank -%}
+        <video autoplay muted loop playsinline preload="metadata"><source src="{{ section.settings.video_url }}" type="video/mp4"></video>
+      {%- elsif section.settings.poster != blank -%}
+        {{ section.settings.poster | image_url: width: 720 | image_tag: loading: 'lazy', alt: section.settings.heading }}
+      {%- endif -%}
+    {%- if section.settings.cta_link != blank -%}</a>{%- else -%}</div>{%- endif -%}
+  </div>
+</div>
+{% schema %}
+{
+  "name": "MTW Maker Spotlight",
+  "tag": "section",
+  "class": "mtw-maker-section",
+  "max_blocks": 6,
+  "settings": [
+    { "type": "text", "id": "label", "label": "Eyebrow", "default": "Featured brand" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Hand-carved in Romania, by the makers at <em>Bumbu Toys</em>." },
+    { "type": "richtext", "id": "body", "label": "Body", "default": "<p>Each piece in the Bumbu line is shaped from maple and basswood, with beech and oak for heavier landscape elements. All timber is FSC-certified, harvested from responsibly managed European forests.</p><p>Pieces are hand-painted in small batches with water-based, non-toxic stains, then finished with organic oils and beeswax.</p>" },
+    { "type": "textarea", "id": "quote", "label": "Pull quote", "default": "Hand-carved wood, painted in small batches. A line that scales across childhood, and back onto the shelf each season." },
+    { "type": "text", "id": "cta_text", "label": "Button text", "default": "Shop Bumbu Toys" },
+    { "type": "text", "id": "cta_link", "label": "Button / image link", "default": "/collections/bumbu-toys" },
+    { "type": "header", "content": "Media (9:16)" },
+    { "type": "video", "id": "video", "label": "Video (from Files)" },
+    { "type": "text", "id": "video_url", "label": "Or external MP4 URL" },
+    { "type": "image_picker", "id": "poster", "label": "Fallback image" }
+  ],
+  "blocks": [
+    { "type": "stat", "name": "Stat", "settings": [
+      { "type": "text", "id": "num", "label": "Value", "default": "FSC-certified" },
+      { "type": "text", "id": "label", "label": "Label", "default": "European forests" }
+    ] }
+  ],
+  "presets": [
+    { "name": "MTW Maker Spotlight", "blocks": [
+      { "type": "stat", "settings": { "num": "Non-toxic", "label": "Hand-painted stains" } },
+      { "type": "stat", "settings": { "num": "FSC-certified", "label": "European forests" } },
+      { "type": "stat", "settings": { "num": "Maple", "label": "+ basswood, beech, oak" } },
+      { "type": "stat", "settings": { "num": "Beeswax", "label": "+ organic oil finish" } }
+    ] }
+  ]
+}
+{% endschema %}

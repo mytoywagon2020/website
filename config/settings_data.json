@@ -1,0 +1,354 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "current": {
+    "color_body_bg": "#f5f0e5",
+    "color_body_text": "#2c2c2a",
+    "color_price": "#2C2C2A",
+    "color_savings_text": "#854f0b",
+    "color_borders": "#EDE3CD",
+    "color_button": "#2C2C2A",
+    "color_button_text": "#f5f0e5",
+    "color_sale_tag": "#2c2c2a",
+    "color_sale_tag_text": "#f5f0e5",
+    "color_cart_dot": "#a72c29",
+    "color_small_image_bg": "#ffffff",
+    "color_large_image_bg": "#2c2c2a",
+    "color_header": "#F5F0E5",
+    "color_header_text": "#2C2C2A",
+    "color_announcement": "#2C2C2A",
+    "color_announcement_text": "#f5f0e5",
+    "color_footer": "#F5F0E5",
+    "color_footer_text": "#2C2C2A",
+    "color_drawer_background": "#FFFCF7",
+    "color_drawer_text": "#2C2C2A",
+    "color_drawer_border": "#EDE3CD",
+    "color_drawer_button": "#2C2C2A",
+    "color_drawer_button_text": "#FFFCF7",
+    "color_modal_overlays": "#e6e6e6",
+    "color_image_text": "#ffffff",
+    "color_image_overlay": "#000000",
+    "color_image_overlay_text_shadow": 20,
+    "type_header_font_family": "cormorant_n4",
+    "type_header_spacing": "0",
+    "type_header_base_size": 28,
+    "type_header_line_height": 1.2,
+    "type_header_capitalize": false,
+    "type_base_font_family": "nunito_sans_n4",
+    "type_base_spacing": "0",
+    "type_base_size": 16,
+    "type_base_line_height": 1.6,
+    "type_navigation_style": "body",
+    "type_navigation_size": 13,
+    "type_navigation_capitalize": true,
+    "type_product_style": "body",
+    "type_collection_font": "heading",
+    "type_collection_size": 16,
+    "button_style": "round-slight",
+    "icon_weight": "2px",
+    "icon_linecaps": "round",
+    "product_save_amount": true,
+    "vendor_enable": true,
+    "quick_shop_enable": true,
+    "quick_shop_text": "Quick view",
+    "product_grid_image_size": "square",
+    "product_grid_image_fill": true,
+    "product_hover_image": true,
+    "enable_swatches": false,
+    "collection_grid_style": "overlaid-box",
+    "collection_grid_image": "collection",
+    "collection_grid_text_align": "center",
+    "collection_grid_tint": "#000000",
+    "collection_grid_opacity": 10,
+    "collection_grid_gutter": true,
+    "cart_type": "drawer",
+    "cart_notes_enable": true,
+    "cart_terms_conditions_enable": true,
+    "cart_terms_conditions_page": "shopify://policies/terms-of-service",
+    "search_enable": true,
+    "predictive_search_enabled": true,
+    "predictive_search_show_vendor": false,
+    "predictive_search_show_price": true,
+    "social_facebook_link": "https://www.facebook.com/mytoywagon",
+    "social_pinterest_link": "https://www.pinterest.com/pin/467178161354992111/",
+    "social_instagram_link": "https://www.instagram.com/mytoywagon/",
+    "social_tiktok_link": "https://www.tiktok.com/@mytoywagon",
+    "social_youtube_link": "https://www.youtube.com/channel/UC8WnpjrbB5czeQyysxTp6bQ",
+    "share_twitter": true,
+    "favicon": "shopify://shop_images/favicon-32x32.png",
+    "show_breadcrumbs": false,
+    "checkout_logo_position": "center",
+    "checkout_logo_size": "large",
+    "checkout_body_background_color": "#FFFCF7",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_color": "#F5F0E5",
+    "checkout_accent_color": "#2C2C2A",
+    "checkout_button_color": "#2C2C2A",
+    "checkout_error_color": "#ff6d6d",
+    "breadcrumb": false,
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "main_menu_link_list": "main-menu",
+          "main_menu_alignment": "left",
+          "header_style": "normal",
+          "sticky_index": false,
+          "sticky_collection": false,
+          "toolbar_menu": "",
+          "toolbar_social": false,
+          "show_currency_selector": false,
+          "show_currency_flags": false,
+          "show_locale_selector": false
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "footer_logo_social": {
+            "type": "logo_social",
+            "settings": {
+              "logo": "",
+              "desktop_logo_height": 40,
+              "container_width": 25
+            }
+          },
+          "1494301487049": {
+            "type": "menu",
+            "settings": {
+              "show_footer_title": true,
+              "menu": "footer",
+              "container_width": 25
+            }
+          },
+          "b04d3c56-ef3d-48eb-a1f6-461183410e1c": {
+            "type": "menu",
+            "settings": {
+              "show_footer_title": true,
+              "menu": "about-us",
+              "container_width": 25
+            }
+          },
+          "custom_m3DnKj": {
+            "type": "custom",
+            "settings": {
+              "show_footer_title": true,
+              "title": "Contact Us",
+              "text": "<p>contact@mytoywagon.com</p><p><a href=\"tel:16268410421\" title=\"tel:16268410421\">626.841.0421</a></p><p>Monday to Friday, 9am to 5pm Pacific</p><p>Arcadia, CA 91007</p>",
+              "container_width": 25
+            }
+          }
+        },
+        "block_order": [
+          "footer_logo_social",
+          "1494301487049",
+          "b04d3c56-ef3d-48eb-a1f6-461183410e1c",
+          "custom_m3DnKj"
+        ],
+        "settings": {
+          "show_currency_selector": false,
+          "show_currency_flags": false,
+          "show_locale_selector": false,
+          "show_payment_icons": true,
+          "show_copyright": true,
+          "copyright_text": "© 2026 My Toy Wagon LLC. All rights reserved."
+        }
+      },
+      "newsletter-popup": {
+        "type": "newsletter-popup",
+        "settings": {
+          "disable_for_account_holders": true,
+          "popup_seconds": 5,
+          "popup_days": 2,
+          "popup_title": "Welcome to My Toy Wagon",
+          "popup_text": "<p>Get $10 off your first order when you join our newsletter, plus first dibs on new arrivals from independent toymakers around the world.</p>",
+          "popup_image": "",
+          "image_position": "left",
+          "show_social_icons": true,
+          "enable_newsletter": true,
+          "button_label": "",
+          "button_link": ""
+        }
+      },
+      "collection-header": {
+        "type": "collection-header",
+        "settings": {
+          "enable": false,
+          "collection_image_enable": true,
+          "parallax": true
+        }
+      },
+      "footer-promotions": {
+        "type": "footer-promotions",
+        "settings": {
+          "hide_homepage": false
+        }
+      },
+      "age-verification-popup": {
+        "type": "age-verification-popup",
+        "settings": {
+          "enable_test_mode": false,
+          "blur_image": false,
+          "heading": "Confirm your age",
+          "text": "<p>Are you 18 years old or older?</p>",
+          "decline_button_label": "No I'm not",
+          "approve_button_label": "Yes I am",
+          "decline_heading": "Come back when you're older",
+          "decline_text": "<p>Sorry, the content of this store can't be seen by a younger audience. Come back when you're older.</p>",
+          "return_button_label": "Oops, I entered incorrectly"
+        }
+      }
+    },
+    "content_for_index": [],
+    "blocks": {
+      "14060646107696862457": {
+        "type": "shopify://apps/judge-me-product-reviews/blocks/judgeme_core/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+        "disabled": false,
+        "settings": {}
+      },
+      "11191292979190559851": {
+        "type": "shopify://apps/now-in-stock-3/blocks/app-embed/903cdcfc-ae13-4f06-ac24-538c4ad9c9fc",
+        "disabled": false,
+        "settings": {
+          "allow_preorder": false,
+          "allow_resubscribe": true
+        }
+      },
+      "12608439564960700138": {
+        "type": "shopify://apps/sezzle-widget/blocks/widget-embed/f3a53793-e118-4764-a86b-a79bfedb0d5f",
+        "disabled": false,
+        "settings": {
+          "heading": "Sezzle Widget",
+          "font_size": 14,
+          "font_family": "inherit"
+        }
+      },
+      "11468047240823483236": {
+        "type": "shopify://apps/sezzle-widget/blocks/checkout-embed/f3a53793-e118-4764-a86b-a79bfedb0d5f",
+        "disabled": false,
+        "settings": {
+          "heading": "Sezzle Checkout Button",
+          "template": "Checkout with %%logo%%",
+          "mode": "light"
+        }
+      },
+      "855628211100114053": {
+        "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/klaviyo-onsite-embed/2632fe16-c075-4321-a88b-50b567f42507",
+        "disabled": false,
+        "settings": {}
+      },
+      "13969055170449783870": {
+        "type": "shopify://apps/bss-b2b-solution/blocks/config-header/451233f2-9631-4c49-8b6f-057e4ebcde7f",
+        "disabled": false,
+        "settings": {}
+      },
+      "15683396631634586217": {
+        "type": "shopify://apps/inbox/blocks/chat/841fc607-4181-4ad1-842d-e24d7f8bad6b",
+        "disabled": false,
+        "settings": {
+          "button_color": "#854F0B",
+          "secondary_color": "#FFFCF7",
+          "ternary_color": "#F5F0E5",
+          "button_icon": "chat_bubble",
+          "button_text": "chat_with_us",
+          "button_horizontal_position": "bottom_right",
+          "button_vertical_position": "higher",
+          "greeting_message": "Hello, Dear Wagoneers,\n\nHello Dear Wagoneers, we are here to assist. How is your day going so far?\n\nOur team is always happy to help.\nPhone: 626-841-0421\nemail: contact@mytoywagon.com\n\nThank you for making My Toy Wagon a trusted choice for parents and educators. We're truly honored to be on this journey with you.\n\nLos Angeles, California\nHours of Operation (PST)\nMonday to Friday: 9:00am - 5:00pm\nSaturday: 9:00am - 5:00pm\nSunday: Closed"
+        }
+      },
+      "7870687481494312845": {
+        "type": "shopify://apps/wishlist-hero/blocks/app-embed/a9a5079b-59e8-47cb-b659-ecf1c60b9b72",
+        "disabled": false,
+        "settings": {
+          "additionalWLButtonCssClasses": "",
+          "additionalWLCartBubbleCssClasses": ""
+        }
+      },
+      "6174324309569838175": {
+        "type": "shopify://apps/smile-io/blocks/smile-shopify-app/2fae4e25-1841-4ea2-bc02-bd548478c4f6",
+        "disabled": false,
+        "settings": {}
+      },
+      "10486658301671024706": {
+        "type": "shopify://apps/wishlist-hero/blocks/collection-embed/a9a5079b-59e8-47cb-b659-ecf1c60b9b72",
+        "disabled": false,
+        "settings": {
+          "customThemeName": "~",
+          "wlIconPlacementInCard": "auto",
+          "iconHorizontalOffset": 0,
+          "iconVerticalOffset": 0,
+          "iconBackgroundSize": 40,
+          "iconFontSize": 0,
+          "enableCustomColors": false,
+          "wishlistIconColor": "",
+          "wishlistIconBgColor": "",
+          "wishlistIconBgColorAlpha": 100,
+          "addedWishlistIconColor": "",
+          "addedWishlistIconBgColor": "",
+          "addedWishlistIconBgColorAlpha": 100,
+          "wlCollectionCardSelectorClass": "",
+          "wlIconPlacementInCardSelector": "",
+          "wlIconPlacementInCardMode": "I",
+          "wlProductHandleExtractor": "",
+          "enableSortMutation": false,
+          "searchAndFilterApp": "none"
+        }
+      },
+      "1366455014531238847": {
+        "type": "shopify://apps/wishlist-hero/blocks/customize-style-block/a9a5079b-59e8-47cb-b659-ecf1c60b9b72",
+        "disabled": false,
+        "settings": {
+          "Btn_color": "",
+          "WishlistButtonTextColor": "",
+          "Ico_color": "",
+          "HeaderFontSize": 30,
+          "HeaderColor": "",
+          "ProductNameFontSize": 18,
+          "PriceFontSize": 16,
+          "PriceColor": ""
+        }
+      },
+      "140237710760941474": {
+        "type": "shopify://apps/persistent-cart/blocks/script_js/4ce05194-341e-4641-aaf4-5a8dad5444cb",
+        "disabled": false,
+        "settings": {}
+      },
+      "2200952712151285029": {
+        "type": "shopify://apps/microsoft-clarity/blocks/brandAgents_js/31c3d126-8116-4b4a-8ba1-baeda7c4aeea",
+        "disabled": false,
+        "settings": {}
+      },
+      "2567389343055140935": {
+        "type": "shopify://apps/microsoft-clarity/blocks/clarity_js/31c3d126-8116-4b4a-8ba1-baeda7c4aeea",
+        "disabled": false,
+        "settings": {}
+      },
+      "12120936241911852800": {
+        "type": "shopify://apps/judge-me-reviews/blocks/reviews_tab/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+        "disabled": true,
+        "settings": {
+          "position": "right"
+        }
+      },
+      "9776720720251544092": {
+        "type": "shopify://apps/helium-customer-fields/blocks/app-embed/bab58598-3e6a-4377-aaaa-97189b15f131",
+        "disabled": false,
+        "settings": {
+          "registration_form_id": "",
+          "edit_account_form_id": "",
+          "edit_account_link_text": "Edit account",
+          "edit_account_heading": "Edit account",
+          "edit_account_back_link_text": "Back to account",
+          "enable_js_api": false
+        }
+      }
+    }
+  }
+}

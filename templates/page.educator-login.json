@@ -1,0 +1,42 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "advanced_content_6nzxHr": {
+      "type": "advanced-content",
+      "blocks": {
+        "liquid_rFpTGe": {
+          "type": "liquid",
+          "settings": {
+            "code": "<div class=\"page-width page-width--tiny page-content\">\n  <header class=\"section-header\">\n    <h1 class=\"section-header__title\">Educator Login</h1>\n  </header>\n\n  <div class=\"note note--success hide\" id=\"ResetSuccess\">\n    {{ 'customer.recover_password.success' | t }}\n  </div>\n\n  <div id=\"CustomerLoginForm\" class=\"form-vertical\">\n    {%- form 'customer_login' -%}\n\n      {{ form.errors | default_errors }}\n\n      <label for=\"CustomerEmail\">{{ 'customer.login.email' | t }}</label>\n      <input type=\"email\" name=\"customer[email]\" id=\"CustomerEmail\" class=\"input-full{% if form.errors contains 'email' %} error{% endif %}\" autocorrect=\"off\" autocapitalize=\"off\" autofocus>\n\n      {%- if form.password_needed -%}\n        <div class=\"grid\">\n          <div class=\"grid__item one-half\">\n            <label for=\"CustomerPassword\">{{ 'customer.login.password' | t }}</label>\n          </div>\n          <div class=\"grid__item one-half text-right\">\n            <small class=\"label-info\">\n              <a href=\"#recover\" id=\"RecoverPassword\">\n                {{ 'customer.login.forgot_password' | t }}\n              </a>\n            </small>\n          </div>\n        </div>\n        <input type=\"password\" value=\"\" name=\"customer[password]\" id=\"CustomerPassword\" class=\"input-full{% if form.errors contains 'password' %} error{% endif %}\">\n      {%- endif -%}\n\n      <p>\n        <button type=\"submit\" class=\"btn btn--full\">\n          {{ 'customer.login.sign_in' | t }}\n        </button>\n      </p>\n     \n\n    {%- endform -%}\n  </div>\n\n  <div id=\"RecoverPasswordForm\" class=\"hide\">\n    <div class=\"form-vertical\">\n      <h2>{{ 'customer.recover_password.title' | t }}</h2>\n      <p>{{ 'customer.recover_password.subtext' | t }}</p>\n\n      {%- form 'recover_customer_password' -%}\n\n        {{ form.errors | default_errors }}\n\n        {%- if form.posted_successfully? -%}\n          <span class=\"hide reset-password-success\"></span>\n        {%- endif -%}\n\n        <label for=\"RecoverEmail\">{{ 'customer.recover_password.email' | t }}</label>\n        <input type=\"email\" value=\"\" name=\"email\" id=\"RecoverEmail\" class=\"input-full\" autocorrect=\"off\" autocapitalize=\"off\">\n\n        <p>\n          <button type=\"submit\" class=\"btn\">\n            {{ 'customer.recover_password.submit' | t }}\n          </button>\n        </p>\n        <button type=\"button\" id=\"HideRecoverPasswordLink\">{{ 'customer.recover_password.cancel' | t }}</button>\n      {%- endform -%}\n    </div>\n\n  </div>\n\n  {%- if shop.checkout.guest_login -%}\n    <hr class=\"hr--clear\">\n\n    <h1>{{ 'customer.login.guest_title' | t }}</h1>\n    <hr class=\"hr--small\">\n\n    {%- form 'guest_login' -%}\n      <button type=\"submit\" class=\"btn\">\n        {{ 'customer.login.guest_continue' | t }}\n      </button>\n    {%- endform -%}\n  {%- endif -%}\n</div>",
+            "width": "100%",
+            "alignment": "center"
+          }
+        }
+      },
+      "block_order": [
+        "liquid_rFpTGe"
+      ],
+      "settings": {
+        "full_width": false,
+        "space_around": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "advanced_content_6nzxHr"
+  ]
+}

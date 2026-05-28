@@ -1,0 +1,63 @@
+{%- comment -%} MTW Newsletter — Letters signup band (Shopify customer form). {%- endcomment -%}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+{%- style -%}
+  .mtw-letter {
+    --cream:#F5F0E5; --warm-white:#FFFCF7; --ink:#2C2C2A; --stone:#5F5E5A;
+    --rule:rgba(44,44,42,0.12); --rule-strong:rgba(44,44,42,0.22); --forest:#3B6D11;
+    background:var(--warm-white); border-top:0.5px solid var(--rule); border-bottom:0.5px solid var(--rule);
+    box-sizing:border-box; font-family:'Mulish',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; color:var(--ink);
+  }
+  .mtw-letter *, .mtw-letter *::before, .mtw-letter *::after { box-sizing:border-box; }
+  .mtw-letter__inner { max-width:1100px; margin:0 auto; padding:88px 40px; text-align:center; }
+  .mtw-letter__label { font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--stone); font-weight:500; }
+  .mtw-letter__title { font-family:'Cormorant Garamond',Georgia,serif; font-size:56px; font-weight:500; line-height:1.05; margin:14px auto 22px; max-width:660px; letter-spacing:-0.005em; }
+  .mtw-letter__title em { font-style:italic; }
+  .mtw-letter__text { font-size:16px; color:var(--stone); max-width:520px; margin:0 auto 36px; line-height:1.7; }
+  .mtw-letter__form { display:flex; gap:0; max-width:480px; margin:0 auto; border:0.5px solid var(--rule-strong); border-radius:2px; overflow:hidden; background:var(--cream); }
+  .mtw-letter__form input { flex:1; min-width:0; border:none; background:transparent; padding:16px 20px; font-family:inherit; font-size:14px; color:var(--ink); outline:none; }
+  .mtw-letter__form input::placeholder { color:var(--stone); }
+  .mtw-letter__form button { background:var(--ink); color:var(--cream); border:none; padding:16px 28px; flex-shrink:0; white-space:nowrap; font-family:inherit; font-size:13px; font-weight:500; letter-spacing:0.06em; text-transform:uppercase; cursor:pointer; }
+  .mtw-letter__form button:hover { background:var(--forest); }
+  .mtw-letter__note { font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-size:14px; color:var(--stone); margin-top:18px; }
+  .mtw-letter__ok { color:var(--forest); font-size:14px; margin-top:14px; }
+  @media (max-width:700px) { .mtw-letter__inner { padding:56px 24px; } .mtw-letter__title { font-size:38px; } }
+  @media (max-width:560px) {
+    .mtw-letter__form { flex-direction:column; max-width:360px; }
+    .mtw-letter__form input { width:100%; text-align:center; border-bottom:0.5px solid var(--rule-strong); }
+    .mtw-letter__form button { width:100%; padding:15px 20px; }
+  }
+{%- endstyle -%}
+<div class="mtw-letter">
+  <div class="mtw-letter__inner">
+    {%- if section.settings.label != blank -%}<span class="mtw-letter__label">{{ section.settings.label }}</span>{%- endif -%}
+    {%- if section.settings.title != blank -%}<h2 class="mtw-letter__title">{{ section.settings.title }}</h2>{%- endif -%}
+    {%- if section.settings.text != blank -%}<p class="mtw-letter__text">{{ section.settings.text }}</p>{%- endif -%}
+    {%- form 'customer' -%}
+      <input type="hidden" name="contact[tags]" value="newsletter">
+      <div class="mtw-letter__form">
+        <input type="email" name="contact[email]" placeholder="{{ section.settings.placeholder }}" required>
+        <button type="submit">{{ section.settings.button_text }}</button>
+      </div>
+      {%- if form.posted_successfully? -%}<p class="mtw-letter__ok">Thanks. Watch your inbox.</p>{%- endif -%}
+    {%- endform -%}
+    {%- if section.settings.note != blank -%}<p class="mtw-letter__note">{{ section.settings.note }}</p>{%- endif -%}
+  </div>
+</div>
+{% schema %}
+{
+  "name": "MTW Newsletter",
+  "tag": "section",
+  "class": "mtw-letter-section",
+  "settings": [
+    { "type": "text", "id": "label", "label": "Eyebrow", "default": "Letters from My Toy Wagon" },
+    { "type": "inline_richtext", "id": "title", "label": "Title", "default": "Curated <em>collections</em>, in your inbox." },
+    { "type": "text", "id": "text", "label": "Text", "default": "Regular edits from the shop: fresh restocks, new arrivals, seasonal collections, and the pieces caregivers can't stop reordering. A short, beautiful letter." },
+    { "type": "text", "id": "placeholder", "label": "Input placeholder", "default": "your@email.com" },
+    { "type": "text", "id": "button_text", "label": "Button text", "default": "Subscribe" },
+    { "type": "text", "id": "note", "label": "Note", "default": "Curated by hand. Unsubscribe in one click, any time." }
+  ],
+  "presets": [{ "name": "MTW Newsletter" }]
+}
+{% endschema %}

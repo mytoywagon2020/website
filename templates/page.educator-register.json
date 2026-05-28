@@ -1,0 +1,104 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "rich_text_QbHAkE": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_CcLHRX": {
+          "type": "heading",
+          "settings": {
+            "title": "Apply to the Educator Catalog",
+            "heading_size": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "heading_CcLHRX"
+      ],
+      "settings": {
+        "align_text": "center",
+        "narrow_column": true,
+        "divider": false
+      }
+    },
+    "rich_text_body": {
+      "type": "rich-text",
+      "blocks": {
+        "text_body_1": {
+          "type": "text",
+          "settings": {
+            "enlarge_text": false,
+            "text": "<p>For schools, therapists, homeschool co-ops, and library or community programs. Educator pricing on every product. Net-30 purchase orders. Tax-exempt checkout for qualified accounts. Procurement documents on request.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_body_1"
+      ],
+      "settings": {
+        "align_text": "left",
+        "narrow_column": true,
+        "divider": false
+      }
+    },
+    "17797727731f6372f9": {
+      "type": "apps",
+      "blocks": {
+        "helium_customer_fields_app_block_QmRUqa": {
+          "type": "shopify://apps/helium-customer-fields/blocks/app-block/bab58598-3e6a-4377-aaaa-97189b15f131",
+          "settings": {
+            "form_id": "pvtAWd",
+            "width": 600,
+            "vertical_spacing": 20,
+            "horizontal_spacing": 0
+          }
+        }
+      },
+      "block_order": [
+        "helium_customer_fields_app_block_QmRUqa"
+      ],
+      "settings": {
+        "full_width": false,
+        "space_around": false
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "74ccd63c-e17c-40f5-b7f7-68cc1b809881": {
+      "type": "background-image-text",
+      "disabled": true,
+      "settings": {
+        "subtitle": "",
+        "title": "Not a Member Yet?",
+        "heading_size": "h2",
+        "text": "",
+        "button_label": "Join for Free",
+        "button_link": "https://mytoywagon.com/account/register",
+        "image": "shopify://shop_images/275601307_1020706432209766_3433100283118805353_n.jpg",
+        "layout": "left",
+        "height": 750,
+        "framed": false,
+        "parallax": true,
+        "parallax_direction": "top"
+      }
+    }
+  },
+  "order": [
+    "rich_text_QbHAkE",
+    "rich_text_body",
+    "17797727731f6372f9",
+    "main",
+    "74ccd63c-e17c-40f5-b7f7-68cc1b809881"
+  ]
+}

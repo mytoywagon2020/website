@@ -1,0 +1,115 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "educator_header": {
+      "type": "mtw-educator-header",
+      "settings": {}
+    },
+    "sub": {
+      "type": "product-full-width",
+      "settings": {
+        "max_width": true
+      }
+    },
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "made_to_order": {
+          "type": "custom",
+          "settings": {
+            "code": "<div style='display:inline-flex;align-items:center;gap:.5rem;padding:.6rem .9rem;border:1px solid rgba(0,0,0,.08);border-radius:2px;background:#F5F0E5;margin:14px 0 6px;font-family:Mulish,sans-serif;'><span aria-hidden='true' style='width:.55rem;height:.55rem;border-radius:50%;background:#3B6D11;display:inline-block;'></span><span style='font-size:.95rem;color:#2C2C2A;'><strong>Made to order.</strong> Order on your school schedule.</span></div>"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "variant_labels": true,
+            "picker_type": "button",
+            "product_dynamic_variants_enable": true,
+            "color_swatches": false
+          }
+        },
+        "request_quote_cta": {
+          "type": "custom",
+          "settings": {
+            "code": "<style>.mtw-edu-cta{display:block;background:#2C2C2A;color:#F5F0E5 !important;font-family:Mulish,sans-serif;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:18px 32px;border-radius:2px;border:1px solid #2C2C2A;text-decoration:none;margin:18px 0 12px;text-align:center;}.mtw-edu-cta:hover{background:#3B6D11;border-color:#3B6D11;}.mtw-edu-cta-note{font-family:Mulish,sans-serif;font-size:13px;line-height:1.6;color:#5F5E5A;margin:0 0 18px;}</style><a class='mtw-edu-cta' href='/pages/new-quote?product={{ product.handle }}'>Request a quote</a><p class='mtw-edu-cta-note'>Educator pricing is confirmed on your quote. Net-30 purchase orders and tax-exempt checkout are available for approved schools. Quotes are held for 45 days.</p>"
+          }
+        },
+        "procurement_trust": {
+          "type": "custom",
+          "settings": {
+            "code": "<div style='border:1px solid rgba(0,0,0,.08);border-radius:2px;background:#FFFCF7;padding:20px 22px;margin:14px 0 10px;font-family:Mulish,sans-serif;'><h3 style='font-family:\"Cormorant Garamond\",serif;font-style:italic;font-weight:500;font-size:20px;color:#2C2C2A;margin:0 0 12px;'>Procurement made simple.</h3><ul style='margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:10px 22px;font-size:13.5px;line-height:1.55;color:#2C2C2A;'><li><strong>Net-30</strong> purchase orders</li><li><strong>Tax-exempt</strong> checkout</li><li><strong>W-9 and COI</strong> on request</li><li><strong>Sole-source</strong> letters provided</li><li><strong>Replacement parts</strong> available</li><li><strong>Bulk shipping</strong> consolidated</li></ul></div>"
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+            "is_tab": false
+          }
+        },
+        "separator": {
+          "type": "separator",
+          "settings": {}
+        },
+        "educator_policies": {
+          "type": "custom",
+          "settings": {
+            "code": "<style>.mtw-edu-acc{border-top:1px solid rgba(0,0,0,.1);font-family:Mulish,sans-serif;}.mtw-edu-acc details{border-bottom:1px solid rgba(0,0,0,.1);padding:16px 0;}.mtw-edu-acc summary{cursor:pointer;font-weight:600;font-size:14px;color:#2C2C2A;list-style:none;display:flex;justify-content:space-between;align-items:center;letter-spacing:.04em;}.mtw-edu-acc summary::-webkit-details-marker{display:none;}.mtw-edu-acc summary::after{content:'+';font-size:18px;color:#5F5E5A;}.mtw-edu-acc details[open] summary::after{content:'–';}.mtw-edu-acc .body{font-size:13.5px;line-height:1.65;color:#5F5E5A;padding:12px 0 0;}.mtw-edu-acc .body p{margin:0 0 8px;}.mtw-edu-acc .body p:last-child{margin:0;}.mtw-edu-acc a{color:#3B6D11;}</style><div class='mtw-edu-acc'><details><summary>Fulfillment and delivery</summary><div class='body'><p>Educator orders are made to order. Once a purchase order is placed, we confirm lead time and ship date in writing. Most orders are produced and shipped within four to six weeks. Rush windows are available on a case by case basis.</p><p>Freight is quoted per order. We consolidate items where we can and bill shipping at our cost. Delivery to your school address is included for orders within the contiguous United States.</p></div></details><details><summary>Payment and terms</summary><div class='body'><p>Net-30 purchase orders are the default for verified schools and districts. Tax-exempt checkout is available once a valid resale or exemption certificate is on file. Prepaid card and ACH are also accepted.</p><p>Quotes are held for 45 days. Pricing is confirmed on the quote and is not subject to retail promotions.</p></div></details><details><summary>Procurement documents</summary><div class='body'><p>W-9, certificate of insurance, sole-source letters, and curriculum-alignment letters are all available on request. Email <a href='mailto:educators@mytoywagon.com'>educators@mytoywagon.com</a> with your need and we will send the document within one business day.</p></div></details><details><summary>Replacement parts and care</summary><div class='body'><p>Most pieces in our educator catalog have replacement parts available. We can also send care guides and classroom storage suggestions on request.</p></div></details></div>"
+          }
+        }
+      },
+      "block_order": [
+        "made_to_order",
+        "price",
+        "variant_picker",
+        "request_quote_cta",
+        "procurement_trust",
+        "description",
+        "separator",
+        "educator_policies"
+      ],
+      "settings": {
+        "sku_enable": true,
+        "image_position": "left",
+        "image_size": "large",
+        "product_zoom_enable": true,
+        "thumbnail_position": "below",
+        "thumbnail_height": "fixed",
+        "thumbnail_arrows": true,
+        "mobile_layout": "partial",
+        "enable_video_looping": true,
+        "product_video_style": "muted"
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "product_recommendations_heading": "More for the classroom",
+        "related_count": 3
+      }
+    },
+    "educator_footer": {
+      "type": "mtw-educator-footer",
+      "settings": {}
+    }
+  },
+  "order": [
+    "educator_header",
+    "sub",
+    "main",
+    "product-recommendations",
+    "educator_footer"
+  ]
+}

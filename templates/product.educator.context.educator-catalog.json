@@ -1,0 +1,32 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "context": {
+    "market": "educator-catalog"
+  },
+  "parent": "product.educator.json",
+  "sections": {
+    "main": {
+      "settings": {
+        "image_size": "medium",
+        "image_position": "left",
+        "thumbnail_position": "below",
+        "thumbnail_height": "fixed",
+        "sku_enable": true
+      },
+      "blocks": {},
+      "block_order": [
+        "variant_picker",
+        "description",
+        "separator"
+      ]
+    }
+  }
+}

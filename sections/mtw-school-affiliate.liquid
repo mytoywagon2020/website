@@ -1,0 +1,185 @@
+{%- comment -%}
+  MTW School Affiliate — page content section. Header/footer come from
+  the theme. Namespaced .mtw-sa so it can't collide with Impulse.
+  Apply form posts via Shopify's native contact form (emails the shop).
+{%- endcomment -%}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+{{ 'mtw-school-affiliate.css' | asset_url | stylesheet_tag }}
+
+<div class="mtw-sa">
+  <section class="mtw-sa__hero">
+    <div class="mtw-sa__hero-text">
+      <a href="{{ routes.root_url }}" class="mtw-sa__back">Back to the shop</a>
+      <span class="mtw-sa__label">{{ section.settings.eyebrow }}</span>
+      <div class="mtw-sa__pct">{{ section.settings.percent }}</div>
+      <div class="mtw-sa__pct-sub">{{ section.settings.percent_sub }}</div>
+      {%- if section.settings.heading != blank -%}<h1>{{ section.settings.heading }}</h1>{%- endif -%}
+      {%- if section.settings.dek != blank -%}<p class="mtw-sa__dek">{{ section.settings.dek }}</p>{%- endif -%}
+      <div class="mtw-sa__ctas">
+        <a href="#mtw-sa-apply" class="mtw-sa__btn mtw-sa__btn--primary">{{ section.settings.cta1 | default: 'Join the program' }}</a>
+        <a href="#mtw-sa-how" class="mtw-sa__btn mtw-sa__btn--ghost">{{ section.settings.cta2 | default: 'How it works' }}</a>
+      </div>
+    </div>
+    <div class="mtw-sa__hero-img">
+      {%- if section.settings.hero_image != blank -%}
+        {{ section.settings.hero_image | image_url: width: 1000 | image_tag: loading: 'eager', alt: section.settings.hero_tag_text }}
+      {%- endif -%}
+      {%- if section.settings.hero_tag_label != blank or section.settings.hero_tag_text != blank -%}
+        <div class="mtw-sa__hero-tag">
+          {%- if section.settings.hero_tag_label != blank -%}<span class="mtw-sa__label">{{ section.settings.hero_tag_label }}</span>{%- endif -%}
+          {%- if section.settings.hero_tag_text != blank -%}<p>{{ section.settings.hero_tag_text }}</p>{%- endif -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </section>
+
+  {%- if section.settings.band_heading != blank -%}
+  <section class="mtw-sa__band">
+    <div class="mtw-sa__band-inner">
+      <div class="mtw-sa__band-img">
+        {%- if section.settings.band_image != blank -%}{{ section.settings.band_image | image_url: width: 900 | image_tag: loading: 'lazy', alt: section.settings.band_heading }}{%- endif -%}
+      </div>
+      <div class="mtw-sa__band-text">
+        {%- if section.settings.band_label != blank -%}<span class="mtw-sa__label">{{ section.settings.band_label }}</span>{%- endif -%}
+        <h2>{{ section.settings.band_heading }}</h2>
+        {%- if section.settings.band_body != blank -%}{{ section.settings.band_body }}{%- endif -%}
+        {%- if section.settings.band_quote != blank -%}<p class="mtw-sa__quote">{{ section.settings.band_quote }}{%- if section.settings.band_quote_cite != blank -%}<cite>{{ section.settings.band_quote_cite }}</cite>{%- endif -%}</p>{%- endif -%}
+      </div>
+    </div>
+  </section>
+  {%- endif -%}
+
+  <section class="mtw-sa__steps-sec" id="mtw-sa-how">
+    <div class="mtw-sa__steps-head">
+      <h2>{{ section.settings.steps_heading | default: 'How it works.' }}</h2>
+      {%- if section.settings.steps_sub != blank -%}<p>{{ section.settings.steps_sub }}</p>{%- endif -%}
+    </div>
+    <div class="mtw-sa__steps">
+      {%- for block in section.blocks -%}{%- if block.type == 'step' -%}
+        <div class="mtw-sa__step" {{ block.shopify_attributes }}>
+          <div class="mtw-sa__step-num">{{ block.settings.num }}</div>
+          <h3>{{ block.settings.title }}</h3>
+          <p>{{ block.settings.text }}</p>
+        </div>
+      {%- endif -%}{%- endfor -%}
+    </div>
+  </section>
+
+  <section class="mtw-sa__benefits">
+    <div class="mtw-sa__benefits-inner">
+      <div class="mtw-sa__benefits-head">
+        <h2>{{ section.settings.benefits_heading | default: 'What we provide your school.' }}</h2>
+        {%- if section.settings.benefits_sub != blank -%}<p>{{ section.settings.benefits_sub }}</p>{%- endif -%}
+      </div>
+      <div class="mtw-sa__benefits-grid">
+        {%- for block in section.blocks -%}{%- if block.type == 'benefit' -%}
+          <div class="mtw-sa__benefit" {{ block.shopify_attributes }}>
+            <span class="num">{{ block.settings.num }}</span>
+            <h3>{{ block.settings.title }}</h3>
+            <p>{{ block.settings.text }}</p>
+          </div>
+        {%- endif -%}{%- endfor -%}
+      </div>
+    </div>
+  </section>
+
+  <section class="mtw-sa__apply" id="mtw-sa-apply">
+    <h2>{{ section.settings.apply_heading | default: 'Join the Affiliate Program.' }}</h2>
+    {%- if section.settings.apply_lead != blank -%}<p class="mtw-sa__lead">{{ section.settings.apply_lead }}</p>{%- endif -%}
+    {%- form 'contact', class: 'mtw-sa__form' -%}
+      {%- if form.posted_successfully? -%}
+        <p class="mtw-sa__ok">Thank you. We will be in touch within one business day.</p>
+      {%- endif -%}
+      <div class="mtw-sa__row">
+        <div class="mtw-sa__field"><label for="sa-name">Your name</label><input type="text" id="sa-name" name="contact[name]" required></div>
+        <div class="mtw-sa__field"><label for="sa-role">Your role</label><input type="text" id="sa-role" name="contact[Role]" placeholder="Director, parent volunteer, etc." required></div>
+      </div>
+      <div class="mtw-sa__row">
+        <div class="mtw-sa__field"><label for="sa-school">School name</label><input type="text" id="sa-school" name="contact[School]" required></div>
+        <div class="mtw-sa__field"><label for="sa-type">School type</label>
+          <select id="sa-type" name="contact[School type]" required>
+            <option value="">Choose one…</option><option>Waldorf</option><option>Montessori</option><option>Reggio</option><option>Independent</option><option>Public</option><option>Homeschool co-op</option><option>Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="mtw-sa__row">
+        <div class="mtw-sa__field"><label for="sa-email">Email</label><input type="email" id="sa-email" name="contact[email]" required></div>
+        <div class="mtw-sa__field"><label for="sa-size">Approximate number of families</label><input type="text" id="sa-size" name="contact[Families]" placeholder="e.g. 80"></div>
+      </div>
+      <div class="mtw-sa__row">
+        <div class="mtw-sa__field full"><label for="sa-notes">Anything you'd like us to know</label><textarea id="sa-notes" name="contact[body]" placeholder="Curriculum focus, what you'd use the earnings for, anything else."></textarea></div>
+      </div>
+      <div class="mtw-sa__submit">
+        <p>Most schools are approved within one business day.</p>
+        <button type="submit" class="mtw-sa__btn mtw-sa__btn--primary">Submit application</button>
+      </div>
+    {%- endform -%}
+  </section>
+
+  {%- if section.settings.note_text != blank -%}
+  <section class="mtw-sa__note">
+    {%- if section.settings.note_label != blank -%}<span class="mtw-sa__label">{{ section.settings.note_label }}</span>{%- endif -%}
+    <p>{{ section.settings.note_text }}</p>
+  </section>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "MTW School Affiliate",
+  "settings": [
+    { "type": "header", "content": "Hero" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "School Affiliate Program" },
+    { "type": "text", "id": "percent", "label": "Big number", "default": "5%" },
+    { "type": "text", "id": "percent_sub", "label": "Number subtitle", "default": "Back to your school, on every parent purchase" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "The <em>Heartwood</em> School Affiliate." },
+    { "type": "text", "id": "dek", "label": "Dek", "default": "A simple way for schools to earn from a community already shopping with us. Five percent of every parent purchase, returned to your classrooms, for materials, scholarships, or whatever your school needs most." },
+    { "type": "text", "id": "cta1", "label": "Primary CTA", "default": "Join the program" },
+    { "type": "text", "id": "cta2", "label": "Secondary CTA", "default": "How it works" },
+    { "type": "image_picker", "id": "hero_image", "label": "Hero image" },
+    { "type": "text", "id": "hero_tag_label", "label": "Hero tag label", "default": "Featured maker" },
+    { "type": "text", "id": "hero_tag_text", "label": "Hero tag text", "default": "Tara Treasures, hand-felted in Nepal, designed in Melbourne" },
+    { "type": "header", "content": "Featured maker band" },
+    { "type": "text", "id": "band_label", "label": "Label", "default": "Featured maker · Tara Treasures" },
+    { "type": "inline_richtext", "id": "band_heading", "label": "Heading", "default": "Designed in Melbourne. Hand-felted in Nepal. <em>Fair Trade Certified.</em>" },
+    { "type": "richtext", "id": "band_body", "label": "Body" },
+    { "type": "image_picker", "id": "band_image", "label": "Band image" },
+    { "type": "text", "id": "band_quote", "label": "Pull quote", "default": "Every child deserves to play with toys that are safe, beautiful, and fair trade." },
+    { "type": "text", "id": "band_quote_cite", "label": "Quote attribution", "default": "Jooli Chan, co-founder · Tara Treasures" },
+    { "type": "header", "content": "Steps section" },
+    { "type": "text", "id": "steps_heading", "label": "Heading", "default": "How it works." },
+    { "type": "text", "id": "steps_sub", "label": "Subtitle", "default": "Approval is same-day. Earnings are paid quarterly to your school directly." },
+    { "type": "header", "content": "Benefits section" },
+    { "type": "text", "id": "benefits_heading", "label": "Heading", "default": "What we provide your school." },
+    { "type": "text", "id": "benefits_sub", "label": "Subtitle", "default": "The marketing materials and resources to make this easy." },
+    { "type": "header", "content": "Apply section" },
+    { "type": "text", "id": "apply_heading", "label": "Heading", "default": "Join the Affiliate Program." },
+    { "type": "text", "id": "apply_lead", "label": "Lead", "default": "A short form. Most schools are approved within one business day. There is no fee to join, no minimum, and no obligation." },
+    { "type": "header", "content": "Partner note" },
+    { "type": "text", "id": "note_label", "label": "Label", "default": "Affiliate partner" },
+    { "type": "text", "id": "note_text", "label": "Text", "default": "School payouts are sent quarterly by check or ACH." }
+  ],
+  "blocks": [
+    { "type": "step", "name": "Step", "settings": [
+      { "type": "text", "id": "num", "label": "Numeral", "default": "i." },
+      { "type": "text", "id": "title", "label": "Title", "default": "Apply below." },
+      { "type": "text", "id": "text", "label": "Text", "default": "One short form. We approve schools within one business day." }
+    ] },
+    { "type": "benefit", "name": "Benefit", "settings": [
+      { "type": "text", "id": "num", "label": "Numeral", "default": "i." },
+      { "type": "inline_richtext", "id": "title", "label": "Title", "default": "Custom <em>landing page</em>." },
+      { "type": "text", "id": "text", "label": "Text", "default": "A curated page on mytoywagon.com with your school's most-loved products." }
+    ] }
+  ],
+  "presets": [
+    { "name": "MTW School Affiliate", "blocks": [
+      { "type": "step" }, { "type": "step" }, { "type": "step" }, { "type": "step" },
+      { "type": "benefit" }, { "type": "benefit" }, { "type": "benefit" }, { "type": "benefit" }
+    ] }
+  ]
+}
+{% endschema %}

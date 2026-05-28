@@ -1,0 +1,56 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "35c46b1e-d2d3-446e-8034-a1653729276c": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_0": {
+          "type": "image",
+          "settings": {
+            "top_subheading": "",
+            "title": "My Toy Wagon\nRewards Program",
+            "title_size": 80,
+            "subheading": "Earn 1 point per $1 spent",
+            "link": "https://mytoywagon.com/account/register",
+            "link_text": "Join Now",
+            "link_2": "https://mytoywagon.com/account/login",
+            "link_text_2": "Sign In",
+            "color_accent": "#000000",
+            "text_align": "vertical-center horizontal-center",
+            "image": "shopify://shop_images/275601307_1020706432209766_3433100283118805353_n.jpg",
+            "image_mobile": "shopify://shop_images/275601307_1020706432209766_3433100283118805353_n.jpg",
+            "parallax_direction": "top",
+            "overlay_opacity": 0
+          }
+        }
+      },
+      "block_order": [
+        "slide_0"
+      ],
+      "settings": {
+        "section_height": "650px",
+        "mobile_height": "auto",
+        "parallax": true,
+        "style": "bars",
+        "autoplay": true,
+        "autoplay_speed": 5
+      }
+    },
+    "main": {
+      "type": "main-page-full-width",
+      "settings": {}
+    }
+  },
+  "order": [
+    "35c46b1e-d2d3-446e-8034-a1653729276c",
+    "main"
+  ]
+}

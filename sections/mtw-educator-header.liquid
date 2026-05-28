@@ -1,0 +1,153 @@
+{%- comment -%}MTW Educator Header — wagon logo + brand + nav. Hides retail chrome, retail apps, Shop-AI launcher, rewards launchers (Smile/Yotpo/LoyaltyLion), and chat widgets (Klaviyo/Gorgias/Tidio/Drift/Intercom/Crisp).{%- endcomment -%}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* Retail chrome + retail apps */
+  #shopify-section-mtw_header_b,
+  #shopify-section-mtw_footer,
+  #shopify-section-popup-group,
+  header.site-header,
+  footer.site-footer,
+  .promo-bar,
+  .free-shipping-bar,
+  .sezzle-shopify-info-button,
+  .szl-button,
+  .sezzle-checkout-button-wrapper,
+  sezzle-checkout-button,
+  [class*="szl-"],
+  .product__price__sezzle,
+  .jdgm-widget,
+  .jdgm-prev-badge,
+  .jdgm-rev-widg,
+  .jdgm-form-wrapper,
+  .judgeme-preview-badge,
+  .product-share,
+  .add-to-wishlist,
+  .product__wishlist,
+  /* Shopify Shop-with-AI / Shop chat launcher */
+  shop-chat-launcher,
+  shopify-chat,
+  shopify-ai-shopping-assistant,
+  [id^="shop-chat"],
+  [id^="ShopChat"],
+  [class*="shop-chat-launcher"],
+  [class*="shop-ai"],
+  [class*="ShopAI"],
+  [class*="shopify-chat"],
+  [data-app="shop-ai"],
+  [data-shop-ai],
+  button[aria-label*="Shop with AI" i],
+  iframe[src*="shop-chat"],
+  iframe[src*="shop-ai"],
+  iframe[src*="shopify.com/chat"],
+  iframe[title*="Shop with AI" i],
+  iframe[title*="Shop chat" i],
+  /* Rewards launchers */
+  smile-launcher,
+  #smile-ui-container,
+  .smile-ui-container,
+  [id^="smile-"],
+  [class^="smile-"],
+  [class*=" smile-"],
+  iframe[id^="smile-"],
+  iframe[src*="smile.io"],
+  iframe[src*="sweettooth"],
+  yotpo-loyalty-rewards,
+  .yotpo-loyalty-rewards-widget,
+  [class*="yotpo-loyalty"],
+  [id*="yotpo-loyalty"],
+  iframe[src*="yotpo.com"],
+  loyaltylion-launcher,
+  #loyaltylion-launcher,
+  [class*="loyaltylion"],
+  [id*="loyaltylion"],
+  iframe[src*="loyaltylion"],
+  swell-launcher,
+  [class*="swell-launcher"],
+  [id*="swell-loyalty"],
+  /* Chat widgets */
+  klaviyo-inbox-button,
+  #klaviyo-inbox-button,
+  [id^="klaviyo-inbox"],
+  [class*="klaviyo-inbox"],
+  iframe[src*="klaviyo.com/inbox"],
+  #gorgias-chat-container,
+  iframe[id^="gorgias-chat"],
+  [class*="gorgias-chat"],
+  #tidio-chat,
+  #tidio-chat-iframe,
+  iframe[id^="tidio-chat"],
+  iframe#drift-chat,
+  iframe#drift-frame-chat,
+  iframe#drift-frame-controller,
+  div#drift-widget,
+  div#drift-frame-controller,
+  .intercom-launcher,
+  .intercom-launcher-frame,
+  #intercom-container,
+  #intercom-frame,
+  .intercom-lightweight-app,
+  iframe[name^="intercom-"],
+  #crisp-chatbox,
+  #crisp-client,
+  [class*="crisp-client"],
+  #zsiq_float,
+  .zsiq_floatmain,
+  [class*="zsiq"],
+  iframe[src*="zopim"],
+  iframe[src*="olark"],
+  iframe[src*="livechatinc"],
+  iframe[src*="liveperson"],
+  iframe[src*="hubspot"][title*="Chat" i],
+  iframe[title*="chat" i][title*="widget" i] { display: none !important; visibility: hidden !important; opacity: 0 !important; pointer-events: none !important; }
+
+  .mtw-edu-h{background:#F5F0E5;border-bottom:1px solid rgba(44,44,42,.12);font-family:'Mulish',sans-serif;color:#2C2C2A;}
+  .mtw-edu-h__bar{max-width:1440px;margin:0 auto;padding:18px 40px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+  .mtw-edu-h__brand{display:flex;flex-direction:row;align-items:center;gap:14px;text-decoration:none;color:inherit;}
+  .mtw-edu-h__mark{height:44px;width:auto;display:block;opacity:.92;}
+  .mtw-edu-h__brand-text{display:flex;flex-direction:column;line-height:1.1;}
+  .mtw-edu-h__eyebrow{font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#5F5E5A;margin:0 0 4px;}
+  .mtw-edu-h__word{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:22px;color:#2C2C2A;}
+  .mtw-edu-h__nav{display:flex;gap:30px;align-items:center;flex-wrap:wrap;}
+  .mtw-edu-h__nav a{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#2C2C2A;text-decoration:none;}
+  .mtw-edu-h__nav a:hover{color:#3B6D11;}
+  .mtw-edu-h__cta{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#F5F0E5;background:#2C2C2A;padding:11px 18px;border-radius:2px;text-decoration:none;border:1px solid #2C2C2A;}
+  .mtw-edu-h__cta:hover{background:#3B6D11;border-color:#3B6D11;}
+  @media(max-width:720px){.mtw-edu-h__bar{padding:14px 20px;gap:10px;}.mtw-edu-h__nav{gap:14px;font-size:11px;}.mtw-edu-h__word{font-size:18px;}.mtw-edu-h__mark{height:36px;}}
+</style>
+<header class="mtw-edu-h" role="banner">
+  <div class="mtw-edu-h__bar">
+    <a class="mtw-edu-h__brand" href="/pages/educators" aria-label="My Toy Wagon Educator Catalog">
+      <img src="{{ 'mtw-wagon-only.png' | asset_url }}" alt="My Toy Wagon" class="mtw-edu-h__mark">
+      <span class="mtw-edu-h__brand-text">
+        <span class="mtw-edu-h__eyebrow">Educator Catalog</span>
+        <span class="mtw-edu-h__word">My Toy Wagon</span>
+      </span>
+    </a>
+    <nav class="mtw-edu-h__nav" aria-label="Educator">
+      <a href="/pages/educators">Catalog</a>
+      <a href="/pages/educator-dashboard">Dashboard</a>
+      <a href="/pages/new-quote">Quotes</a>
+      <a href="/account">Account</a>
+    </nav>
+    <a class="mtw-edu-h__cta" href="/pages/new-quote">Request a quote</a>
+  </div>
+</header>
+<script>
+(function(){
+  var sels=['shop-chat-launcher','shopify-chat','shopify-ai-shopping-assistant','[class*="shop-chat-launcher"]','[class*="shop-ai"]','[class*="ShopAI"]','[class*="shopify-chat"]','[data-app="shop-ai"]','[data-shop-ai]','iframe[src*="shop-chat"]','iframe[src*="shop-ai"]','smile-launcher','[id^="smile-"]','[class^="smile-"]','iframe[src*="smile.io"]','iframe[src*="sweettooth"]','yotpo-loyalty-rewards','[class*="yotpo-loyalty"]','iframe[src*="yotpo.com"]','loyaltylion-launcher','[class*="loyaltylion"]','iframe[src*="loyaltylion"]','swell-launcher','[class*="swell-launcher"]','klaviyo-inbox-button','[id^="klaviyo-inbox"]','[class*="klaviyo-inbox"]','#gorgias-chat-container','iframe[id^="gorgias-chat"]','#tidio-chat','iframe[id^="tidio-chat"]','iframe#drift-chat','iframe#drift-frame-chat','iframe#drift-frame-controller','div#drift-widget','.intercom-launcher','.intercom-launcher-frame','#intercom-container','#intercom-frame','.intercom-lightweight-app','iframe[name^="intercom-"]','#crisp-chatbox','#crisp-client','#zsiq_float','.zsiq_floatmain','iframe[src*="zopim"]','iframe[src*="olark"]','iframe[src*="livechatinc"]'];
+  function nuke(){sels.forEach(function(s){try{document.querySelectorAll(s).forEach(function(el){el.remove();});}catch(e){}});}
+  if(document.readyState!=='loading')nuke();else document.addEventListener('DOMContentLoaded',nuke);
+  var obs=new MutationObserver(nuke);
+  obs.observe(document.documentElement,{childList:true,subtree:true});
+  setTimeout(function(){obs.disconnect();},15000);
+})();
+</script>
+{% schema %}
+{
+  "name": "MTW Educator Header",
+  "settings": [],
+  "presets": [{ "name": "MTW Educator Header" }]
+}
+{% endschema %}

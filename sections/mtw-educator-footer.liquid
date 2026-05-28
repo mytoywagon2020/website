@@ -1,0 +1,75 @@
+{%- comment -%}MTW Educator Footer — replaces the retail footer on educator templates.{%- endcomment -%}
+<style>
+  .mtw-edu-f{background:#F5F0E5;border-top:1px solid rgba(44,44,42,.12);font-family:'Mulish',sans-serif;color:#2C2C2A;padding:56px 0 28px;margin-top:64px;}
+  .mtw-edu-f__in{max-width:1440px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;}
+  .mtw-edu-f__brand h3{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:24px;color:#2C2C2A;margin:0 0 10px;}
+  .mtw-edu-f__brand p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:#5F5E5A;margin:0 0 16px;line-height:1.55;max-width:380px;}
+  .mtw-edu-f__brand a{display:inline-block;font-size:13px;font-weight:600;color:#2C2C2A;text-decoration:none;}
+  .mtw-edu-f__brand a:hover{color:#3B6D11;}
+  .mtw-edu-f__col h4{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:18px;color:#2C2C2A;margin:0 0 16px;}
+  .mtw-edu-f__col ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;}
+  .mtw-edu-f__col a{font-size:13.5px;color:#2C2C2A;text-decoration:none;}
+  .mtw-edu-f__col a:hover{color:#3B6D11;}
+  .mtw-edu-f__bot{max-width:1440px;margin:36px auto 0;padding:24px 40px 0;border-top:1px solid rgba(44,44,42,.1);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;}
+  .mtw-edu-f__bot span{font-size:11.5px;color:#5F5E5A;letter-spacing:.06em;}
+  .mtw-edu-f__legal{display:flex;gap:18px;}
+  .mtw-edu-f__legal a{font-size:11.5px;color:#5F5E5A;text-decoration:none;}
+  .mtw-edu-f__legal a:hover{color:#2C2C2A;}
+  @media(max-width:720px){.mtw-edu-f{padding:40px 0 22px;margin-top:40px;}.mtw-edu-f__in{grid-template-columns:1fr;padding:0 24px;gap:28px;}.mtw-edu-f__bot{padding:20px 24px 0;}}
+</style>
+<footer class="mtw-edu-f" role="contentinfo">
+  <div class="mtw-edu-f__in">
+    <div class="mtw-edu-f__brand">
+      <h3>The Educator Catalog</h3>
+      <p>Hand curated, made to order, and built for the classroom. Net-30 and tax-exempt purchasing for approved schools.</p>
+      <a href="mailto:educators@mytoywagon.com">educators@mytoywagon.com</a>
+    </div>
+    <div class="mtw-edu-f__col">
+      <h4>Catalog</h4>
+      <ul>
+        <li><a href="/pages/educator-sensory-play">01 &middot; Sensory Play</a></li>
+        <li><a href="/pages/educator-nature-play">02 &middot; Nature Play</a></li>
+        <li><a href="/pages/educator-woodland">03 &middot; Woodland</a></li>
+        <li><a href="/pages/educator-small-world">04 &middot; Small World &amp; Storytelling</a></li>
+        <li><a href="/pages/educator-fairy-villages">05 &middot; Fairy Villages</a></li>
+        <li><a href="/pages/educator-steam">06 &middot; STEAM</a></li>
+        <li><a href="/pages/educator-dramatic-play">07 &middot; Dramatic Play</a></li>
+        <li><a href="/pages/educator-creative-arts">08 &middot; Creative Arts</a></li>
+      </ul>
+    </div>
+    <div class="mtw-edu-f__col">
+      <h4>Account</h4>
+      <ul>
+        <li><a href="/pages/educators">Catalog home</a></li>
+        <li><a href="/pages/educator-dashboard">Dashboard</a></li>
+        <li><a href="/pages/new-quote">Request a quote</a></li>
+        <li><a href="/pages/educator-login">Sign in</a></li>
+        <li><a href="/pages/educator-register">Apply for access</a></li>
+      </ul>
+    </div>
+    <div class="mtw-edu-f__col">
+      <h4>Procurement</h4>
+      <ul>
+        <li><a href="/pages/procurement-guide">Procurement guide</a></li>
+        <li><a href="/pages/vendor-profile">Vendor profile</a></li>
+        <li><a href="/pages/educator-catalog-guide">Catalog guide</a></li>
+        <li><a href="mailto:educators@mytoywagon.com">W-9, COI, sole-source letters</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="mtw-edu-f__bot">
+    <span>&copy; {{ 'now' | date: '%Y' }} My Toy Wagon. Heirloom toys, curated by hand.</span>
+    <div class="mtw-edu-f__legal">
+      <a href="/policies/privacy-policy">Privacy</a>
+      <a href="/policies/terms-of-service">Terms</a>
+      <a href="/pages/accessibility">Accessibility</a>
+    </div>
+  </div>
+</footer>
+{% schema %}
+{
+  "name": "MTW Educator Footer",
+  "settings": [],
+  "presets": [{ "name": "MTW Educator Footer" }]
+}
+{% endschema %}

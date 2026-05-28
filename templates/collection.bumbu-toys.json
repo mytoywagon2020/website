@@ -1,0 +1,155 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "bumbutoys_hero": {
+      "type": "background-image-text",
+      "settings": {
+        "subtitle": "HANDCARVED WOODEN TOYS FROM ROMANIA, SINCE 2018",
+        "title": "Bumbu Toys",
+        "heading_size": "h2",
+        "text": "<p>Bumbu Toys' workshop in Bran, Romania has handcarved wooden figures since 2018, where Vitalie and Marina Bumbu shape and hand-paint each piece using maple wood and non-toxic, water-based paints. Their folk-art figures, animals, and miniature playscapes carry the marks of traditional Transylvanian craftsmanship, made in a workshop a few steps from Bran Castle.</p>",
+        "button_label": "",
+        "button_link": "",
+        "image": "shopify://shop_images/BumbuToys_Wooden_House_-_Acorn_3fcdd132-5e29-4e93-a15e-e254dfa74f9a.png",
+        "layout": "left",
+        "height": 750,
+        "framed": false,
+        "parallax": false,
+        "parallax_direction": "top"
+      }
+    },
+    "main-collection": {
+      "type": "main-collection",
+      "blocks": {
+        "product_grid": {
+          "type": "product_grid",
+          "settings": {
+            "enable_collection_count": true,
+            "per_row": 3,
+            "rows_per_page": 20,
+            "mobile_flush_grid": true
+          }
+        }
+      },
+      "block_order": [
+        "product_grid"
+      ],
+      "settings": {
+        "enable_sidebar": false,
+        "collapsed": false,
+        "filter_style": "sidebar",
+        "enable_color_swatches": false,
+        "enable_swatch_labels": true,
+        "enable_sort": true
+      }
+    },
+    "bumbutoys_reviews": {
+      "type": "apps",
+      "blocks": {
+        "jdg_carousel": {
+          "type": "shopify://apps/judge-me-reviews/blocks/featured_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "maxwidth": 1080
+          }
+        }
+      },
+      "block_order": [
+        "jdg_carousel"
+      ],
+      "settings": {
+        "full_width": false,
+        "space_around": true
+      }
+    },
+    "bumbutoys_content": {
+      "type": "rich-text",
+      "blocks": {
+        "h1": {
+          "type": "heading",
+          "settings": {
+            "title": "Handcarved With Care",
+            "heading_size": "h2"
+          }
+        },
+        "t1": {
+          "type": "text",
+          "settings": {
+            "enlarge_text": true,
+            "text": "<p>Bumbu's artisans work in small batches, often carving each piece by hand from a single block of maple wood. Vitalie shapes the figures using techniques passed through a carpenter family for generations, while Marina hand-paints each piece with water-based natural paints. The tactile finishes and soft colors come from stains that highlight the grain rather than hide it, so every Bumbu toy carries the marks of the hands that made it.</p>"
+          }
+        },
+        "h2": {
+          "type": "heading",
+          "settings": {
+            "title": "Stories Carved in Wood",
+            "heading_size": "h2"
+          }
+        },
+        "t2": {
+          "type": "text",
+          "settings": {
+            "enlarge_text": true,
+            "text": "<p>Bumbu Toys invite open-ended play in miniature worlds. Fairies tuck under mushroom caps. Forest animals gather around woodland scenes. Romanian folk-art knights, peasants, and historical figures bring the country's storytelling tradition into a child's play. Bumbu pairs beautifully with felt mats, silk play scarves, and other natural-materials toys for layered imaginative play.</p>"
+          }
+        },
+        "h3": {
+          "type": "heading",
+          "settings": {
+            "title": "Why Families Choose My Toy Wagon for Bumbu Toys",
+            "heading_size": "h2"
+          }
+        },
+        "t3": {
+          "type": "text",
+          "settings": {
+            "enlarge_text": true,
+            "text": "<p>We curate Bumbu because their commitment to handwork, maple wood, and non-toxic paints aligns with what we believe a toy should be: tactile, beautiful, and built to last. Every Bumbu order ships from our Los Angeles warehouse, with free shipping on orders $150 and over within the contiguous US. Returns are simple, and customer questions go to a real person on our team.</p>"
+          }
+        },
+        "h4": {
+          "type": "heading",
+          "settings": {
+            "title": "Bumbu Bestsellers",
+            "heading_size": "h2"
+          }
+        },
+        "t4": {
+          "type": "text",
+          "settings": {
+            "enlarge_text": true,
+            "text": "<p>Browse the collection above for handcarved fairies, woodland animals, Romanian folk figures, mushrooms, and miniature playscape pieces. Whether you are building a fairy garden, a Waldorf nature table, or a small-world play setup, Bumbu Toys bring quiet folk-art charm to every story.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "h1",
+        "t1",
+        "h2",
+        "t2",
+        "h3",
+        "t3",
+        "h4",
+        "t4"
+      ],
+      "settings": {
+        "align_text": "left",
+        "narrow_column": true,
+        "divider": false
+      }
+    }
+  },
+  "order": [
+    "bumbutoys_hero",
+    "main-collection",
+    "bumbutoys_reviews",
+    "bumbutoys_content"
+  ]
+}

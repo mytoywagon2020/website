@@ -1,0 +1,155 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "drewart_hero": {
+      "type": "background-image-text",
+      "settings": {
+        "subtitle": "HEIRLOOM WOODEN TOYS FROM POLAND, SINCE 1982",
+        "title": "Drewart",
+        "heading_size": "h2",
+        "text": "<p>Drewart's Polish workshop has used traditional joinery and hand-applied finishes since 1982, building each toy to outlast trends and pass between siblings, cousins, and generations. The brand's dollhouses are designed to be played in, not behind glass, with classic proportions that welcome any family of dolls and any era of decor.</p>",
+        "button_label": "",
+        "button_link": "",
+        "image": "shopify://shop_images/DrewartdollhouseMTW_3.webp",
+        "layout": "left",
+        "height": 750,
+        "framed": false,
+        "parallax": true,
+        "parallax_direction": "top"
+      }
+    },
+    "main-collection": {
+      "type": "main-collection",
+      "blocks": {
+        "product_grid": {
+          "type": "product_grid",
+          "settings": {
+            "enable_collection_count": true,
+            "per_row": 3,
+            "rows_per_page": 20,
+            "mobile_flush_grid": true
+          }
+        }
+      },
+      "block_order": [
+        "product_grid"
+      ],
+      "settings": {
+        "enable_sidebar": false,
+        "collapsed": false,
+        "filter_style": "sidebar",
+        "enable_color_swatches": false,
+        "enable_swatch_labels": true,
+        "enable_sort": true
+      }
+    },
+    "drewart_reviews": {
+      "type": "apps",
+      "blocks": {
+        "jdg_carousel": {
+          "type": "shopify://apps/judge-me-reviews/blocks/featured_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "maxwidth": 1080
+          }
+        }
+      },
+      "block_order": [
+        "jdg_carousel"
+      ],
+      "settings": {
+        "full_width": false,
+        "space_around": true
+      }
+    },
+    "drewart_content": {
+      "type": "rich-text",
+      "blocks": {
+        "h1": {
+          "type": "heading",
+          "settings": {
+            "title": "Heirloom Wooden Toys",
+            "heading_size": "h2"
+          }
+        },
+        "t1": {
+          "type": "text",
+          "settings": {
+            "enlarge_text": true,
+            "text": "<p>Drewart's workshop has used the same hand-applied finishing techniques since 1982, building each toy to outlast trends and pass between siblings, cousins, and generations. The brand's dollhouses are designed to be played in, not behind glass, with classic proportions that welcome any family of dolls and any era of decor.</p>"
+          }
+        },
+        "h2": {
+          "type": "heading",
+          "settings": {
+            "title": "Built for the Way Children Play",
+            "heading_size": "h2"
+          }
+        },
+        "t2": {
+          "type": "text",
+          "settings": {
+            "enlarge_text": true,
+            "text": "<p>Drewart toys are designed by people who watched their own children play. Dollhouses with open sides invite group play. Wooden vehicles feature simple silhouettes that double as story props. Stacking sets and pull toys hold up to the kind of enthusiastic play that defeats lesser toys.</p>"
+          }
+        },
+        "h3": {
+          "type": "heading",
+          "settings": {
+            "title": "Why Families Choose My Toy Wagon for Drewart",
+            "heading_size": "h2"
+          }
+        },
+        "t3": {
+          "type": "text",
+          "settings": {
+            "enlarge_text": true,
+            "text": "<p>We curate Drewart because their dollhouses, vehicles, and natural-finish toys are made the way good toys used to be made: by hand, with care, from materials that age beautifully. Every Drewart order ships from our Los Angeles warehouse, with free shipping on orders $150 and over within the contiguous US. Returns are simple, and customer questions go to a real person on our team.</p>"
+          }
+        },
+        "h4": {
+          "type": "heading",
+          "settings": {
+            "title": "Drewart Bestsellers",
+            "heading_size": "h2"
+          }
+        },
+        "t4": {
+          "type": "text",
+          "settings": {
+            "enlarge_text": true,
+            "text": "<p>Browse the collection above for dollhouses, dolls, kitchen sets, vehicles, and natural-finish wooden classics. Drewart's dollhouses are heirlooms in waiting, designed for years of imaginative play and ready to welcome any family of dolls.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "h1",
+        "t1",
+        "h2",
+        "t2",
+        "h3",
+        "t3",
+        "h4",
+        "t4"
+      ],
+      "settings": {
+        "align_text": "left",
+        "narrow_column": true,
+        "divider": false
+      }
+    }
+  },
+  "order": [
+    "drewart_hero",
+    "main-collection",
+    "drewart_reviews",
+    "drewart_content"
+  ]
+}

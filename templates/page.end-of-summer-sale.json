@@ -1,0 +1,183 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "slideshow_dtRLnK": {
+      "type": "slideshow",
+      "blocks": {
+        "image_9fennJ": {
+          "type": "image",
+          "settings": {
+            "top_subheading": "",
+            "title": "Endless\npossibilities.",
+            "title_size": 80,
+            "subheading": "Bring your brand to life",
+            "link": "",
+            "link_text": "Optional button",
+            "link_2": "",
+            "link_text_2": "",
+            "color_accent": "rgba(0,0,0,0)",
+            "text_align": "vertical-center horizontal-center",
+            "parallax_direction": "top",
+            "overlay_opacity": 0
+          }
+        },
+        "image_z3yPXJ": {
+          "type": "image",
+          "settings": {
+            "top_subheading": "",
+            "title": "",
+            "title_size": 80,
+            "subheading": "The More You Shop, The More You Save",
+            "link": "",
+            "link_text": "Shop Now",
+            "link_2": "",
+            "link_text_2": "",
+            "color_accent": "rgba(0,0,0,0)",
+            "text_align": "vertical-center horizontal-center",
+            "image": "shopify://shop_images/fairyshadowstudio_1694704962_3191739020945093001_1647928065_1000897b-d543-4f2e-b904-a7d911f2c1cb.jpg",
+            "parallax_direction": "top",
+            "overlay_opacity": 0
+          }
+        }
+      },
+      "block_order": [
+        "image_9fennJ",
+        "image_z3yPXJ"
+      ],
+      "disabled": true,
+      "settings": {
+        "section_height": "650px",
+        "mobile_height": "auto",
+        "parallax": true,
+        "style": "bars",
+        "autoplay": true,
+        "autoplay_speed": 5
+      }
+    },
+    "background_image_text_Kq6cFi": {
+      "type": "background-image-text",
+      "settings": {
+        "subtitle": "End of Summer Sale*",
+        "title": "",
+        "text": "<p>Spend $100+, Save $15    </p><p>Code: 15OFF</p><p></p><p>Spend $175+, Save $25</p><p>Code: 25OFF</p><p></p><p>Spend $250+, Save $50</p><p>Code: 50OFF</p>",
+        "button_label": "Discover the Perfect Toy Today",
+        "button_link": "shopify://collections/end-of-summer",
+        "image": "shopify://shop_images/dddddd_2_145cd9a5-d25c-493f-911d-280887e42325.png",
+        "layout": "left",
+        "height": 750,
+        "framed": true,
+        "parallax": false,
+        "parallax_direction": "top"
+      }
+    },
+    "rich_text_jQAUfH": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_aMqYKg": {
+          "type": "heading",
+          "settings": {
+            "title": "Spend More, Save More"
+          }
+        },
+        "text_9aPdG9": {
+          "type": "text",
+          "settings": {
+            "enlarge_text": true,
+            "text": "<p>*Excluded from Sale: </p><p>Atelier des Peupliers, Connetix Tiles, Drewart, Stapelstein, and E-Gift Cards</p><p>Save 10% on Connetix Tiles | Code: CONNETIX10</p><p>Save 10% on Stapelstein | Code: STAPELSTEIN</p><p>Discount codes (including rewards codes) cannot be combined. Offer  does not apply to purchases already made. Sale ends Wednesday, Sept 5 at 11:59 PM.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_aMqYKg",
+        "text_9aPdG9"
+      ],
+      "settings": {
+        "align_text": "center",
+        "narrow_column": true,
+        "divider": false
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "custom_css": [
+        "h1 {font-size: 32px;}"
+      ],
+      "settings": {}
+    },
+    "countdown_4RbXge": {
+      "type": "countdown",
+      "blocks": {
+        "content_KYUaFy": {
+          "type": "content",
+          "settings": {
+            "heading": "Sale Ends",
+            "heading_size": "h2",
+            "text": "",
+            "content_alignment": "left"
+          }
+        },
+        "timer_akDmHj": {
+          "type": "timer",
+          "settings": {
+            "month": "09",
+            "day": "5",
+            "hour": "23",
+            "minute": "59",
+            "hide_timer": true,
+            "text": ""
+          }
+        },
+        "button_kGyPJK": {
+          "type": "button",
+          "settings": {
+            "button_link": "shopify://collections/end-of-summer",
+            "button": "Shop Now",
+            "button_style": "solid"
+          }
+        }
+      },
+      "block_order": [
+        "content_KYUaFy",
+        "timer_akDmHj",
+        "button_kGyPJK"
+      ],
+      "settings": {
+        "layout": "banner",
+        "full_width": false,
+        "text_color": "#a72c29",
+        "background_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0
+      }
+    },
+    "featured_collection_jtktHg": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "",
+        "home_featured_products": "end-of-summer",
+        "per_row": 3,
+        "rows": 5,
+        "mobile_scrollable": true,
+        "view_all": true,
+        "divider": true
+      }
+    }
+  },
+  "order": [
+    "slideshow_dtRLnK",
+    "background_image_text_Kq6cFi",
+    "rich_text_jQAUfH",
+    "main",
+    "countdown_4RbXge",
+    "featured_collection_jtktHg"
+  ]
+}

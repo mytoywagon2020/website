@@ -1,0 +1,144 @@
+{%- comment -%}
+  MTW Utility + free-shipping progress bars. Renders above the header
+  via header-group.json. Namespaced .mtw-utility / .mtw-ship so it
+  can't collide with Impulse. Progress is computed from the live cart
+  subtotal and hidden for AK/HI/PR/international shipping addresses
+  (the $150 threshold only applies to the contiguous U.S.).
+{%- endcomment -%}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+{%- liquid
+  assign threshold = section.settings.free_ship_threshold | times: 100
+  assign subtotal = cart.total_price
+  assign remaining = threshold | minus: subtotal
+  assign progress = 0
+  if threshold > 0
+    assign progress = subtotal | times: 100 | divided_by: threshold
+  endif
+  if progress > 100
+    assign progress = 100
+  endif
+
+  assign show_progress = section.settings.show_progress_bar
+  if cart.shipping_address
+    assign st = cart.shipping_address.province_code
+    if st == 'AK' or st == 'HI' or st == 'PR' or cart.shipping_address.country_code != 'US'
+      assign show_progress = false
+    endif
+  endif
+-%}
+
+{%- style -%}
+  .mtw-utility {
+    --cream:#F5F0E5; --warm-white:#FFFCF7; --ink:#2C2C2A; --forest:#3B6D11;
+    --stone:#5F5E5A; --card-bg:#EDE3CD; --rule:rgba(44,44,42,0.12);
+    background:var(--ink); color:var(--cream); font-size:12px; letter-spacing:0.06em;
+    font-family:'Mulish',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  }
+  .mtw-utility *, .mtw-utility *::before, .mtw-utility *::after { box-sizing:border-box; }
+  .mtw-utility__inner {
+    max-width:1440px; margin:0 auto; padding:9px 40px;
+    display:flex; justify-content:space-between; align-items:center; gap:24px;
+  }
+  .mtw-utility__center {
+    flex:1; text-align:center; font-family:'Cormorant Garamond',Georgia,serif;
+    font-style:italic; font-size:14px; letter-spacing:0;
+  }
+  .mtw-utility__links { display:flex; gap:22px; color:rgba(245,240,229,0.7); }
+  .mtw-utility__links--end { justify-content:flex-end; }
+  .mtw-utility__links a { color:inherit; text-decoration:none; }
+  .mtw-utility__links a:hover { color:var(--cream); }
+
+  .mtw-ship {
+    --cream:#F5F0E5; --ink:#2C2C2A; --forest:#3B6D11; --card-bg:#EDE3CD;
+    --rule:rgba(44,44,42,0.12);
+    background:var(--card-bg); border-bottom:0.5px solid var(--rule);
+    font-family:'Cormorant Garamond',Georgia,serif; font-style:italic;
+    font-size:14px; color:var(--ink); text-align:center; padding:9px 40px; letter-spacing:0;
+  }
+  .mtw-ship strong { font-weight:500; color:var(--forest); }
+  .mtw-ship__bar {
+    display:inline-block; vertical-align:middle; width:120px; height:4px;
+    background:rgba(44,44,42,0.12); border-radius:2px; margin:0 10px;
+    position:relative; overflow:hidden;
+  }
+  .mtw-ship__fill {
+    display:block; height:100%; background:var(--forest); border-radius:2px;
+    transition:width 400ms ease;
+  }
+  @media (max-width:700px) {
+    .mtw-ship { font-size:12.5px; padding:8px 16px; }
+    .mtw-ship__bar { width:70px; margin:0 8px; }
+    .mtw-utility__inner { padding:9px 16px; gap:14px; flex-wrap:wrap; }
+    .mtw-utility__links { gap:14px; font-size:11.5px; }
+    .mtw-utility__center { font-size:13px; order:-1; flex-basis:100%; }
+  }
+
+  /* Rewards page hero. Makes the photo read through more (less opaque
+     card, lighter blur), frames the gift boxes/bear with a deliberate
+     crop, and gives the hero a touch more height. Targets the rewards
+     page's own unique .rewards-* classes only, with !important so it
+     overrides that page's inline style without editing the live page. */
+  .rewards-hero { min-height:640px !important; }
+  .rewards-hero-bg { object-position:center 38% !important; }
+  .rewards-hero-inner {
+    background:rgba(255,252,247,0.85) !important;
+    backdrop-filter:blur(6px) !important;
+    -webkit-backdrop-filter:blur(6px) !important;
+  }
+{%- endstyle -%}
+
+<div class="mtw-utility" data-section-id="{{ section.id }}">
+  <div class="mtw-utility__inner">
+    <div class="mtw-utility__links">
+      {%- if section.settings.link1_text != blank -%}<a href="{{ section.settings.link1_url }}">{{ section.settings.link1_text }}</a>{%- endif -%}
+      {%- if section.settings.link2_text != blank -%}<a href="{{ section.settings.link2_url }}">{{ section.settings.link2_text }}</a>{%- endif -%}
+    </div>
+    {%- if section.settings.announcement_text != blank -%}
+      <div class="mtw-utility__center">{{ section.settings.announcement_text }}</div>
+    {%- endif -%}
+    <div class="mtw-utility__links mtw-utility__links--end">
+      {%- if section.settings.link3_text != blank -%}<a href="{{ section.settings.link3_url }}">{{ section.settings.link3_text }}</a>{%- endif -%}
+      {%- if section.settings.link4_text != blank -%}<a href="{{ section.settings.link4_url }}">{{ section.settings.link4_text }}</a>{%- endif -%}
+    </div>
+  </div>
+</div>
+
+{%- if show_progress -%}
+  <div class="mtw-ship" data-show-for="contiguous-us-only">
+    {%- if subtotal <= 0 -%}
+      Free shipping on orders <strong>{{ section.settings.free_ship_threshold | times: 100 | money_without_trailing_zeros }}+</strong> within the contiguous U.S.<span class="mtw-ship__bar"><span class="mtw-ship__fill" style="width:0%;"></span></span>
+    {%- elsif remaining > 0 -%}
+      You're <strong>{{ remaining | money_without_trailing_zeros }} away</strong> from free shipping to the contiguous U.S.<span class="mtw-ship__bar"><span class="mtw-ship__fill" style="width:{{ progress }}%;"></span></span>Free at <strong>{{ section.settings.free_ship_threshold | times: 100 | money_without_trailing_zeros }}+</strong>.
+    {%- else -%}
+      <strong>Free shipping unlocked.</strong> Your order ships free to the contiguous U.S.<span class="mtw-ship__bar"><span class="mtw-ship__fill" style="width:100%;"></span></span>
+    {%- endif -%}
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "MTW Utility Bar",
+  "settings": [
+    { "type": "header", "content": "Announcement" },
+    { "type": "text", "id": "announcement_text", "label": "Center message", "default": "Free shipping on orders $150+ within the contiguous U.S.", "info": "For a launch, switch to e.g. \"Pre-order opening soon · Tiny Fox Hole Birthday Ring\"." },
+    { "type": "header", "content": "Left links" },
+    { "type": "text", "id": "link1_text", "label": "Link 1 text", "default": "Track order" },
+    { "type": "text", "id": "link1_url", "label": "Link 1 URL", "default": "/account" },
+    { "type": "text", "id": "link2_text", "label": "Link 2 text", "default": "Educator program" },
+    { "type": "text", "id": "link2_url", "label": "Link 2 URL", "default": "/pages/educator-register" },
+    { "type": "header", "content": "Right links" },
+    { "type": "text", "id": "link3_text", "label": "Link 3 text", "default": "Gift cards" },
+    { "type": "text", "id": "link3_url", "label": "Link 3 URL", "default": "/products/gift-card" },
+    { "type": "text", "id": "link4_text", "label": "Link 4 text", "default": "Sign in" },
+    { "type": "text", "id": "link4_url", "label": "Link 4 URL", "default": "/account" },
+    { "type": "header", "content": "Free-shipping progress bar" },
+    { "type": "checkbox", "id": "show_progress_bar", "label": "Show progress bar", "default": true },
+    { "type": "range", "id": "free_ship_threshold", "label": "Free-shipping threshold", "min": 25, "max": 500, "step": 5, "unit": "$", "default": 150, "info": "Match your real Shopify free-shipping setting." }
+  ],
+  "presets": [{ "name": "MTW Utility Bar" }]
+}
+{% endschema %}

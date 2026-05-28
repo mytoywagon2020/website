@@ -1,0 +1,166 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "sub": {
+      "type": "product-full-width",
+      "settings": {
+        "max_width": true
+      }
+    },
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "7c2b5993-b532-49f3-abfa-34a47ef1b508": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "inventory_status": {
+          "type": "inventory_status",
+          "settings": {
+            "inventory_threshold": 2,
+            "inventory_transfers_enable": false
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "variant_labels": true,
+            "picker_type": "button",
+            "product_dynamic_variants_enable": true,
+            "color_swatches": false
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "surface_pickup_enable": false
+          }
+        },
+        "5aac81ac-468b-4a9d-b33e-534e3db43c11": {
+          "type": "shopify://apps/sezzle-widget/blocks/widget-block/f3a53793-e118-4764-a86b-a79bfedb0d5f",
+          "settings": {
+            "heading": "Sezzle Widget",
+            "font_size": 14,
+            "font_family": "inherit"
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+            "is_tab": false
+          }
+        },
+        "separator": {
+          "type": "separator",
+          "disabled": true,
+          "settings": {}
+        },
+        "sales_point": {
+          "type": "sales_point",
+          "settings": {
+            "icon": "globe",
+            "text": ""
+          }
+        },
+        "tab": {
+          "type": "tab",
+          "settings": {
+            "title": "Shipping",
+            "content": "<p>Orders ship from our warehouse in Los Angeles in 1-4 business days, unless otherwise stated. For pre-orders, please see the product listing for expected shipping dates. </p><p>Free Shipping on orders of $150 or more within the contiguous 48 USA. Shipping rates to Hawaii, Alaska, Puerto Rico, Guam, and APO/FPO/DPO are calculated at checkout. </p><p>See our <a href=\"https://mytoywagon.com/pages/shipping-policy\" target=\"_blank\" title=\"https://mytoywagon.com/pages/shipping-policy\">Shipping Policy</a> for more details. </p>",
+            "page": ""
+          }
+        },
+        "052232a8-4552-4f2d-9960-7f1c76cbd69f": {
+          "type": "tab",
+          "settings": {
+            "title": "Returns",
+            "content": "<p>If you are unhappy with your purchase for any reason, you may return it within 30 days for a refund (less promotional discounts and shipping charges).</p><p>At this time, we only offer free returns in cases of damage or defect from transit or manufacturing. All purchases will be subject to a return fee based on return shipping charges. </p>",
+            "page": ""
+          }
+        },
+        "8ae3e568-1c52-46e1-87ad-b7671c068054": {
+          "type": "contact",
+          "settings": {
+            "title": "Ask a question",
+            "phone": false
+          }
+        },
+        "share": {
+          "type": "share",
+          "settings": {}
+        },
+        "klaviyo_bis": {
+          "type": "custom",
+          "settings": {
+            "code": "{%- unless product.available -%}\n<div class=\"mtw-bis\" style=\"margin:14px 0;padding:14px 16px;border:1px solid var(--color-borders,#e7e7e7);border-radius:6px;background:#fafafa;\">\n  <p style=\"margin:0 0 8px;font-weight:600;font-size:15px;\">Sold out — get notified when it's back</p>\n  <form data-mtw-bis style=\"display:flex;gap:8px;flex-wrap:wrap;align-items:center;\">\n    <input type=\"email\" name=\"email\" placeholder=\"you@email.com\" required style=\"flex:1 1 200px;min-width:0;height:44px;padding:0 12px;border:1px solid #ccc;border-radius:4px;font-size:14px;\">\n    <button type=\"submit\" style=\"height:44px;padding:0 20px;border:0;border-radius:4px;background:var(--color-button,#2c2c2a);color:var(--color-button-text,#fff);font-size:14px;cursor:pointer;\">Notify me</button>\n  </form>\n  <p data-mtw-bis-msg style=\"margin:8px 0 0;font-size:13px;color:#666;\"></p>\n</div>\n<script>\n(function(){\n  var f=document.querySelector('[data-mtw-bis]'); if(!f) return;\n  f.addEventListener('submit',function(e){\n    e.preventDefault();\n    var m=document.querySelector('[data-mtw-bis-msg]');\n    var email=f.querySelector('input[name=\"email\"]').value;\n    var idEl=document.querySelector('form[action*=\"/cart/add\"] [name=\"id\"]')||document.querySelector('[name=\"id\"]');\n    var vid=idEl?idEl.value:'{{ product.selected_or_first_available_variant.id }}';\n    if(m)m.textContent='Adding you to the list…';\n    fetch('https://a.klaviyo.com/client/back-in-stock-subscriptions/?company_id=SZm3nN',{\n      method:'POST',headers:{'Content-Type':'application/json','revision':'2024-10-15'},\n      body:JSON.stringify({data:{type:'back-in-stock-subscription',attributes:{profile:{data:{type:'profile',attributes:{email:email}}},channels:['EMAIL']},relationships:{variant:{data:{type:'catalog-variant',id:'$shopify:::$default:::'+vid}}}}})\n    }).then(function(r){\n      if(m)m.textContent=(r.ok||r.status===202)?\"You're on the list — we'll email you when it's back.\":'Something went wrong. Please try again.';\n      if(r.ok||r.status===202)f.reset();\n    }).catch(function(){if(m)m.textContent='Something went wrong. Please try again.';});\n  });\n})();\n</script>\n{%- endunless -%}\n"
+          }
+        }
+      },
+      "block_order": [
+        "7c2b5993-b532-49f3-abfa-34a47ef1b508",
+        "price",
+        "inventory_status",
+        "variant_picker",
+        "buy_buttons",
+        "klaviyo_bis",
+        "5aac81ac-468b-4a9d-b33e-534e3db43c11",
+        "description",
+        "separator",
+        "sales_point",
+        "tab",
+        "052232a8-4552-4f2d-9960-7f1c76cbd69f",
+        "8ae3e568-1c52-46e1-87ad-b7671c068054",
+        "share"
+      ],
+      "settings": {
+        "sku_enable": false,
+        "image_position": "left",
+        "image_size": "large",
+        "product_zoom_enable": true,
+        "thumbnail_position": "below",
+        "thumbnail_height": "fixed",
+        "thumbnail_arrows": true,
+        "mobile_layout": "partial",
+        "enable_video_looping": true,
+        "product_video_style": "muted"
+      }
+    },
+    "recently-viewed": {
+      "type": "recently-viewed",
+      "settings": {
+        "recent_count": 5
+      }
+    },
+    "collection-return": {
+      "type": "collection-return",
+      "settings": {}
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "product_recommendations_heading": "You may also like",
+        "related_count": 3
+      }
+    }
+  },
+  "order": [
+    "sub",
+    "main",
+    "recently-viewed",
+    "collection-return",
+    "product-recommendations"
+  ]
+}

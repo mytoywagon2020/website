@@ -1,0 +1,78 @@
+{%- comment -%} MTW Shop by Age — 5 circular age cards. {%- endcomment -%}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+{%- style -%}
+  #shopify-section-{{ section.id }} { background:#F5F0E5; }
+  .mtw-age {
+    --cream:#F5F0E5; --ink:#2C2C2A; --stone:#5F5E5A; --card-bg:#EDE3CD;
+    --rule:rgba(44,44,42,0.12); --rule-strong:rgba(44,44,42,0.22);
+    max-width:1440px; margin:0 auto; padding:80px 40px; box-sizing:border-box;
+    font-family:'Mulish',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; color:var(--ink);
+  }
+  .mtw-age *, .mtw-age *::before, .mtw-age *::after { box-sizing:border-box; }
+  .mtw-age__head { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:48px; gap:40px; }
+  .mtw-age__num { font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-size:16px; color:var(--stone); margin:0 0 12px; }
+  .mtw-age__title { font-family:'Cormorant Garamond',Georgia,serif; font-size:56px; font-weight:500; line-height:1; margin:0; letter-spacing:-0.005em; }
+  .mtw-age__lead { font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; color:var(--stone); font-size:18px; max-width:340px; line-height:1.45; margin:0; }
+  .mtw-age__grid { display:grid; grid-template-columns:repeat(5,1fr); gap:24px; }
+  .mtw-age__card { text-align:center; display:flex; flex-direction:column; align-items:center; text-decoration:none; color:inherit; }
+  .mtw-age__circle { width:100%; aspect-ratio:1 / 1; border-radius:50%; background:var(--card-bg); margin-bottom:18px; position:relative; overflow:hidden; transition:transform 220ms ease; border:0.5px solid var(--rule); }
+  .mtw-age__card:hover .mtw-age__circle { transform:translateY(-3px); border-color:var(--rule-strong); }
+  .mtw-age__circle img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .mtw-age__name { font-family:'Cormorant Garamond',Georgia,serif; font-size:24px; font-weight:500; margin:0 0 4px; letter-spacing:-0.005em; }
+  .mtw-age__range { font-size:11.5px; letter-spacing:0.14em; text-transform:uppercase; color:var(--stone); font-weight:500; }
+  @media (max-width:1100px) { .mtw-age__grid { grid-template-columns:repeat(3,1fr); gap:28px; } }
+  @media (max-width:900px) { .mtw-age__head { flex-direction:column; align-items:flex-start; gap:14px; } .mtw-age { padding:48px 24px; } .mtw-age__title { font-size:42px; } }
+  @media (max-width:560px) { .mtw-age__grid { grid-template-columns:repeat(2,1fr); } }
+{%- endstyle -%}
+<div class="mtw-age">
+  <div class="mtw-age__head">
+    <div>
+      {%- if section.settings.eyebrow != blank -%}<p class="mtw-age__num">{{ section.settings.eyebrow }}</p>{%- endif -%}
+      {%- if section.settings.heading != blank -%}<h2 class="mtw-age__title">{{ section.settings.heading }}</h2>{%- endif -%}
+    </div>
+    {%- if section.settings.lead != blank -%}<p class="mtw-age__lead">{{ section.settings.lead }}</p>{%- endif -%}
+  </div>
+  <div class="mtw-age__grid">
+    {%- for block in section.blocks -%}
+      <a class="mtw-age__card" href="{{ block.settings.link | default: '#' }}" {{ block.shopify_attributes }}>
+        <div class="mtw-age__circle">
+          {%- if block.settings.image != blank -%}{{ block.settings.image | image_url: width: 600 | image_tag: loading: 'lazy', alt: block.settings.name, widths: '300, 450, 600' }}{%- endif -%}
+        </div>
+        <h3 class="mtw-age__name">{{ block.settings.name }}</h3>
+        <span class="mtw-age__range">{{ block.settings.range }}</span>
+      </a>
+    {%- endfor -%}
+  </div>
+</div>
+{% schema %}
+{
+  "name": "MTW Shop by Age",
+  "tag": "section",
+  "class": "mtw-age-section",
+  "max_blocks": 8,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "05 / Shop by age" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "The right toy, by the year." },
+    { "type": "text", "id": "lead", "label": "Lead" }
+  ],
+  "blocks": [
+    { "type": "age", "name": "Age", "settings": [
+      { "type": "image_picker", "id": "image", "label": "Image" },
+      { "type": "text", "id": "name", "label": "Name", "default": "Age" },
+      { "type": "text", "id": "range", "label": "Range", "default": "0 to 12 months" },
+      { "type": "url", "id": "link", "label": "Link" }
+    ] }
+  ],
+  "presets": [
+    { "name": "MTW Shop by Age", "blocks": [
+      { "type": "age", "settings": { "name": "First year", "range": "0 to 12 months" } },
+      { "type": "age", "settings": { "name": "Toddler", "range": "1 to 3 years" } },
+      { "type": "age", "settings": { "name": "Preschool", "range": "3 to 5 years" } },
+      { "type": "age", "settings": { "name": "Early school", "range": "5 to 8 years" } },
+      { "type": "age", "settings": { "name": "School age", "range": "8 years and up" } }
+    ] }
+  ]
+}
+{% endschema %}

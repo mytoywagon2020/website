@@ -1,0 +1,89 @@
+{%- comment -%} MTW Gifting — gift-card feature with collection tag pills. {%- endcomment -%}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+{%- style -%}
+  .mtw-gift {
+    --cream:#F5F0E5; --warm-white:#FFFCF7; --ink:#2C2C2A; --stone:#5F5E5A;
+    --card-bg:#EDE3CD; --rule:rgba(44,44,42,0.12); --rule-strong:rgba(44,44,42,0.22); --forest:#3B6D11;
+    background:var(--card-bg); box-sizing:border-box;
+    font-family:'Mulish',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; color:var(--ink);
+  }
+  .mtw-gift *, .mtw-gift *::before, .mtw-gift *::after { box-sizing:border-box; }
+  .mtw-gift__inner { max-width:1440px; margin:0 auto; padding:100px 40px; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+  .mtw-gift__label { display:block; margin-bottom:18px; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--stone); font-weight:500; }
+  .mtw-gift__title { font-family:'Cormorant Garamond',Georgia,serif; font-size:58px; font-weight:500; line-height:1; margin:0 0 24px; letter-spacing:-0.008em; }
+  .mtw-gift__title em { font-style:italic; }
+  .mtw-gift__text p { font-size:16.5px; line-height:1.7; margin:0 0 28px; max-width:460px; }
+  .mtw-gift__tags { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:36px; }
+  .mtw-gift__tag { padding:9px 18px; background:var(--warm-white); border:0.5px solid var(--rule-strong); border-radius:999px; font-size:12.5px; font-weight:500; letter-spacing:0.04em; color:var(--ink); text-decoration:none; transition:all 180ms ease; }
+  .mtw-gift__tag:hover { background:var(--ink); color:var(--cream); border-color:var(--ink); }
+  .mtw-gift__btn { display:inline-flex; align-items:center; gap:10px; padding:14px 24px; font-size:13.5px; font-weight:500; letter-spacing:0.04em; border-radius:2px; background:var(--ink); color:var(--cream); text-decoration:none; transition:background 160ms ease; border:0.5px solid transparent; }
+  .mtw-gift__btn:hover { background:var(--forest); }
+  .mtw-gift__arrow { width:14px; height:8px; position:relative; display:inline-block; }
+  .mtw-gift__arrow::before,.mtw-gift__arrow::after { content:""; position:absolute; background:currentColor; }
+  .mtw-gift__arrow::before { left:0; top:50%; width:100%; height:1px; transform:translateY(-50%); }
+  .mtw-gift__arrow::after { right:0; top:50%; width:6px; height:6px; border-top:1px solid currentColor; border-right:1px solid currentColor; background:none; transform:translateY(-50%) rotate(45deg); }
+  .mtw-gift__media { height:520px; background:var(--warm-white); border-radius:2px; border:0.5px solid var(--rule); position:relative; overflow:hidden; }
+  .mtw-gift__media img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .mtw-gift__note { position:absolute; bottom:24px; right:24px; background:var(--ink); color:var(--cream); font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; padding:12px 18px; font-size:15px; max-width:220px; border-radius:2px; line-height:1.4; }
+  @media (max-width:900px) { .mtw-gift__inner { grid-template-columns:1fr; gap:40px; padding:64px 24px; } .mtw-gift__title { font-size:40px; } .mtw-gift__media { height:340px; } }
+{%- endstyle -%}
+<div class="mtw-gift">
+  <div class="mtw-gift__inner">
+    <div class="mtw-gift__text">
+      {%- if section.settings.label != blank -%}<span class="mtw-gift__label">{{ section.settings.label }}</span>{%- endif -%}
+      {%- if section.settings.title != blank -%}<h2 class="mtw-gift__title">{{ section.settings.title }}</h2>{%- endif -%}
+      {%- if section.settings.text != blank -%}<div>{{ section.settings.text }}</div>{%- endif -%}
+      {%- if section.blocks.size > 0 -%}
+        <div class="mtw-gift__tags">
+          {%- for block in section.blocks -%}
+            <a class="mtw-gift__tag" href="{{ block.settings.link | default: '#' }}" {{ block.shopify_attributes }}>{{ block.settings.label }}</a>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+      {%- if section.settings.button_text != blank -%}
+        <a class="mtw-gift__btn" href="{{ section.settings.button_link | default: '/products/my-toy-wagon-e-gift-card' }}">{{ section.settings.button_text }} <span class="mtw-gift__arrow"></span></a>
+      {%- endif -%}
+    </div>
+    <div class="mtw-gift__media">
+      {%- if section.settings.image != blank -%}
+        {{ section.settings.image | image_url: width: 900 | image_tag: loading: 'lazy', alt: section.settings.title, widths: '450, 700, 900' }}
+      {%- endif -%}
+      {%- if section.settings.note != blank -%}<div class="mtw-gift__note">{{ section.settings.note }}</div>{%- endif -%}
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "MTW Gifting",
+  "tag": "section",
+  "class": "mtw-gift-section",
+  "max_blocks": 8,
+  "settings": [
+    { "type": "text", "id": "label", "label": "Eyebrow", "default": "Gifts that arrive ready" },
+    { "type": "inline_richtext", "id": "title", "label": "Title", "default": "Chosen, written, and on its way <em>in seconds</em>." },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Tell us at checkout it's a gift and we'll leave the price off the packing slip. For gifts you need now, our digital gift cards include a personal note from you, delivered to their inbox in seconds.</p>" },
+    { "type": "text", "id": "button_text", "label": "Button text", "default": "Send a digital gift card" },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    { "type": "header", "content": "Image" },
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "text", "id": "note", "label": "Overlay note", "default": "Delivered by email, redeemable any time." }
+  ],
+  "blocks": [
+    { "type": "tag", "name": "Tag", "settings": [
+      { "type": "text", "id": "label", "label": "Label", "default": "Gifts under $50" },
+      { "type": "url", "id": "link", "label": "Link" }
+    ] }
+  ],
+  "presets": [
+    { "name": "MTW Gifting", "blocks": [
+      { "type": "tag", "settings": { "label": "Gifts under $30" } },
+      { "type": "tag", "settings": { "label": "Gifts under $75" } },
+      { "type": "tag", "settings": { "label": "For new babies" } },
+      { "type": "tag", "settings": { "label": "For grandparents" } },
+      { "type": "tag", "settings": { "label": "Last-minute gifts" } }
+    ] }
+  ]
+}
+{% endschema %}

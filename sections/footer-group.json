@@ -1,0 +1,37 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "footer",
+  "name": "t:sections.footer-group.name",
+  "sections": {
+    "mtw_footer": {
+      "type": "mtw-footer",
+      "settings": {
+        "tagline": "Heirloom toys, curated by hand. A family-owned boutique, online since 2020.",
+        "location": "Los Angeles, California",
+        "hours": "Mon to Fri, 9 am to 5 pm PT",
+        "email": "contact@mytoywagon.com",
+        "phone": "(626) 841-0421",
+        "instagram": "https://www.instagram.com/mytoywagon/",
+        "pinterest": "https://www.pinterest.com/pin/638596422187468644/",
+        "youtube": "https://www.youtube.com/@mytoywagon",
+        "tiktok": "https://www.tiktok.com/@mytoywagon",
+        "show_badge": false,
+        "badge_title": "",
+        "badge_sub": "",
+        "bottom_tagline": "Heirloom toys, curated by hand.",
+        "copyright_suffix": "All rights reserved."
+      }
+    }
+  },
+  "order": [
+    "mtw_footer"
+  ]
+}

@@ -1,0 +1,60 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "mtw-maker",
+      "blocks": {
+        "st1": { "type": "stat", "settings": { "num": "Wool-blend", "lbl": "Pressed felt", "sub": "Soft, dense, holds its shape" } },
+        "st2": { "type": "stat", "settings": { "num": "Hand-cut", "lbl": "& hand-stitched", "sub": "Small batches, by hand" } },
+        "st3": { "type": "stat", "settings": { "num": "Australia", "lbl": "Designed & made", "sub": "A small family studio" } },
+        "st4": { "type": "stat", "settings": { "num": "Open-ended", "lbl": "Small-world play", "sub": "No screens, no batteries" } }
+      },
+      "block_order": ["st1", "st2", "st3", "st4"],
+      "settings": {
+        "eyebrow": "Inside the makers",
+        "heading": "Gus + Mabel",
+        "dek": "Soft felt worlds — ponds, meadows, and fairy streams — hand-cut and stitched to be played in for years.",
+        "founder_label": "A maker story",
+        "founder_heading": "A small Australian studio, working in felt.",
+        "founder_body": "<p>Gus + Mabel is a family studio in Australia that makes felt play mats, habitats, and loose pieces for small-world play. Each scene is designed to be open-ended: a pond becomes an ocean, a meadow becomes a fairy kingdom, the same mat returns to the floor season after season.</p><p>The pieces are cut and stitched in small batches from a dense wool-blend felt that keeps its shape under real play. There are no screens, no batteries, and nothing that wears out the imagination.</p>",
+        "founder_image": "shopify://shop_images/brand-gus-mabel-fairy-scene.webp",
+        "founder_quote": "A felt mat doesn't tell a child what to do with it. That's the whole point.",
+        "founder_quote_cite": "The Gus + Mabel studio",
+        "name_label": "Why it lasts",
+        "name_heading": "Felt is quiet, durable, and endlessly re-imagined — the kind of toy a younger sibling inherits.",
+        "name_body": "",
+        "stats_heading": "What it's made of.",
+        "stats_sub": "The materials, kept simple on purpose.",
+        "mat_label": "How it is made",
+        "mat_heading": "Cut, layered, and stitched by hand.",
+        "mat_image": "shopify://shop_images/product-gus-mabel-fairy-streamlet-playmat.webp",
+        "mat_list": "<ul><li>Dense wool-blend felt, chosen to resist pilling and hold a crisp edge</li><li>Each scene cut and layered by hand, then stitched in small batches</li><li>Loose pieces sized for small hands and open-ended storytelling</li><li>Designed to roll up, store flat, and come back out for years</li></ul>",
+        "products_heading": "What we carry from Gus + Mabel.",
+        "products_collection": "gus-mabel",
+        "t_label": "Why we carry it",
+        "t_heading": "The playmat that keeps coming back to the floor.",
+        "t_image": "shopify://shop_images/product-gus-mabel-coralwhim-cove-felt-playmat.webp",
+        "t_quote": "We keep one on our own playroom floor. It survives toddlers, scales up to elaborate fairy games, and rolls away clean at the end of the day. It's the rare set that earns its shelf space twice.",
+        "t_cite": "My Toy Wagon",
+        "t_quote2": "",
+        "t_cite2": "",
+        "close_label": "Bring it home",
+        "close_heading": "Start a felt world of your own.",
+        "close_text": "Browse the full Gus + Mabel range, or see every maker we carry.",
+        "close_cta1_text": "Shop Gus + Mabel",
+        "close_cta1_link": "/collections/gus-mabel",
+        "close_cta2_text": "All makers",
+        "close_cta2_link": "/collections"
+      }
+    }
+  },
+  "order": ["main"]
+}

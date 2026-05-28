@@ -1,0 +1,80 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "taratreasures_hero": {
+      "type": "background-image-text",
+      "settings": {
+        "subtitle": "AUSTRALIA'S FIRST FAIRTRADE CERTIFIED CHILDREN'S BRAND",
+        "title": "Tara Treasures",
+        "heading_size": "h2",
+        "text": "<p>Tara Treasures is Australia's first Fairtrade Certified children's brand, designed in Melbourne by Jooli Chan and Jag Gurung and handmade by approximately 450 women artisans in Nepal. Named after Tara, the Nepalese goddess of compassion, the brand has supported fair wages, safe working conditions, and traditional Nepali felting techniques for years, using New Zealand wool dyed with eco-friendly, non-toxic colors.</p>",
+        "button_label": "",
+        "button_link": "",
+        "image": "shopify://shop_images/farm_felt_animals.png",
+        "layout": "left",
+        "height": 550,
+        "framed": false,
+        "parallax": false,
+        "parallax_direction": "top"
+      }
+    },
+    "main-collection": {
+      "type": "main-collection",
+      "blocks": {
+        "product_grid": {
+          "type": "product_grid",
+          "settings": {
+            "enable_collection_count": true,
+            "per_row": 3,
+            "rows_per_page": 20,
+            "mobile_flush_grid": true
+          }
+        }
+      },
+      "block_order": ["product_grid"],
+      "settings": {
+        "enable_sidebar": false,
+        "collapsed": false,
+        "filter_style": "sidebar",
+        "enable_color_swatches": false,
+        "enable_swatch_labels": true,
+        "enable_sort": true
+      }
+    },
+    "taratreasures_reviews": {
+      "type": "apps",
+      "blocks": {
+        "jdg_carousel": {
+          "type": "shopify://apps/judge-me-reviews/blocks/featured_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {"maxwidth": 1080}
+        }
+      },
+      "block_order": ["jdg_carousel"],
+      "settings": {"full_width": false, "space_around": true}
+    },
+    "taratreasures_content": {
+      "type": "rich-text",
+      "blocks": {
+        "h1": {"type": "heading", "settings": {"title": "Fair Trade, Hand-Felted in Nepal", "heading_size": "h2"}},
+        "t1": {"type": "text", "settings": {"enlarge_text": true, "text": "<p>Tara Treasures partners with approximately 450 women artisans in Nepal who work from home and in small community workshops, balancing their work with family responsibilities. Every felt mushroom, play mat, and felt animal is hand-shaped using traditional Nepali felting techniques passed down through generations. The wool itself comes from New Zealand, supporting a trade link between New Zealand and Nepal that benefits both economies.</p>"}},
+        "h2": {"type": "heading", "settings": {"title": "Felt That Tells Stories", "heading_size": "h2"}},
+        "t2": {"type": "text", "settings": {"enlarge_text": true, "text": "<p>Wool felt holds dye beautifully, softens with use, and stands up to years of handling without pilling or fading. Tara Treasures' felt play mats unfold into entire worlds: farms, fairy gardens, dollhouses, mermaid lagoons. Felt fruits, vegetables, and food sets bring tactile play to pretend kitchens. The brand also produces beloved licensed collections including May Gibbs, The Gruffalo, and Wombat Stew.</p>"}},
+        "h3": {"type": "heading", "settings": {"title": "Why Families Choose My Toy Wagon for Tara Treasures", "heading_size": "h2"}},
+        "t3": {"type": "text", "settings": {"enlarge_text": true, "text": "<p>We curate Tara Treasures because their Fair Trade certification, women-led Nepali workshops, and natural wool felt construction align with what we believe a toy should be: ethically made, beautiful, and built to last. Every Tara Treasures order ships from our Los Angeles warehouse, with free shipping on orders $150 and over within the contiguous US. Returns are simple, and customer questions go to a real person on our team.</p>"}},
+        "h4": {"type": "heading", "settings": {"title": "Tara Treasures Bestsellers", "heading_size": "h2"}},
+        "t4": {"type": "text", "settings": {"enlarge_text": true, "text": "<p>Browse the collection above for felt play mats, felt food sets, felt animals, princess crowns, finger puppet sets, cot mobiles, and seasonal decorations. Tara Treasures pieces pair beautifully with wooden toys, peg dolls, and other natural-materials play.</p>"}}
+      },
+      "block_order": ["h1", "t1", "h2", "t2", "h3", "t3", "h4", "t4"],
+      "settings": {"align_text": "left", "narrow_column": true, "divider": false}
+    }
+  },
+  "order": ["taratreasures_hero", "main-collection", "taratreasures_reviews", "taratreasures_content"]
+}

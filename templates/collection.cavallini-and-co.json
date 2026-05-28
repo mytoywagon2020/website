@@ -1,0 +1,510 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "1664433887680f2ecd": {
+      "type": "slideshow",
+      "blocks": {
+        "1664433886b22b6ac8-0": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "top_subheading": "",
+            "title": "Endless\npossibilities.",
+            "title_size": 80,
+            "subheading": "Bring your brand to life",
+            "link": "",
+            "link_text": "Optional button",
+            "link_2": "",
+            "link_text_2": "",
+            "color_accent": "rgba(0,0,0,0)",
+            "text_align": "vertical-center horizontal-center",
+            "parallax_direction": "top",
+            "overlay_opacity": 0
+          }
+        },
+        "1664433886b22b6ac8-1": {
+          "type": "image",
+          "settings": {
+            "top_subheading": "",
+            "title": "SMALL WORLD PLAY",
+            "title_size": 80,
+            "subheading": "",
+            "link": "shopify://collections/bumbu-toys",
+            "link_text": "shop bumbu",
+            "link_2": "",
+            "link_text_2": "",
+            "color_accent": "#ffffff",
+            "text_align": "vertical-center horizontal-center",
+            "image": "shopify://shop_images/298300925_624214912569313_894294779052485243_n_1.jpg",
+            "image_mobile": "shopify://shop_images/275466037_376571277644282_3974235836382697062_n.jpg",
+            "parallax_direction": "left",
+            "overlay_opacity": 0
+          }
+        }
+      },
+      "block_order": [
+        "1664433886b22b6ac8-0",
+        "1664433886b22b6ac8-1"
+      ],
+      "disabled": true,
+      "settings": {
+        "section_height": "650px",
+        "mobile_height": "auto",
+        "parallax": true,
+        "style": "bars",
+        "autoplay": true,
+        "autoplay_speed": 5
+      }
+    },
+    "collection-header": {
+      "type": "collection-header",
+      "disabled": true,
+      "settings": {
+        "enable": true,
+        "collection_image_enable": true,
+        "parallax": true,
+        "parallax_direction": "top"
+      }
+    },
+    "166442809012b5795b": {
+      "type": "apps",
+      "disabled": true,
+      "settings": {
+        "full_width": false,
+        "space_around": true
+      }
+    },
+    "1664560457de56450a": {
+      "type": "rich-text",
+      "blocks": {
+        "1664560457dcdba2e9-0": {
+          "type": "heading",
+          "settings": {
+            "title": "Cavallini & Co"
+          }
+        },
+        "533682ab-36c6-4750-b5d5-a56c163afef8": {
+          "type": "page",
+          "disabled": true,
+          "settings": {
+            "page_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "1664560457dcdba2e9-0",
+        "533682ab-36c6-4750-b5d5-a56c163afef8"
+      ],
+      "settings": {
+        "align_text": "center",
+        "narrow_column": false,
+        "divider": false
+      }
+    },
+    "main-collection": {
+      "type": "main-collection",
+      "blocks": {
+        "product_grid": {
+          "type": "product_grid",
+          "settings": {
+            "enable_collection_count": true,
+            "per_row": 3,
+            "rows_per_page": 20,
+            "mobile_flush_grid": true
+          }
+        }
+      },
+      "block_order": [
+        "product_grid"
+      ],
+      "settings": {
+        "enable_sidebar": false,
+        "collapsed": false,
+        "filter_style": "sidebar",
+        "enable_color_swatches": false,
+        "enable_sort": true
+      }
+    },
+    "16645649820a7c7670": {
+      "type": "featured-collections",
+      "blocks": {
+        "1664564982d76c659e-0": {
+          "type": "collection",
+          "settings": {
+            "collection": "ambosstoys",
+            "title": "",
+            "focal_point": "center center"
+          }
+        },
+        "1664564982d76c659e-1": {
+          "type": "collection",
+          "settings": {
+            "collection": "ambrosius-fairies",
+            "title": "",
+            "focal_point": "center center"
+          }
+        },
+        "1664564982d76c659e-2": {
+          "type": "collection",
+          "settings": {
+            "collection": "atelier-des-peupliers",
+            "title": "",
+            "focal_point": "center center"
+          }
+        },
+        "1664564982d76c659e-3": {
+          "type": "collection",
+          "settings": {
+            "collection": "baby-noise",
+            "title": "",
+            "focal_point": "center center"
+          }
+        },
+        "9e49ebb4-6f97-4fc0-a9e5-ce921ca4a88a": {
+          "type": "collection",
+          "settings": {
+            "collection": "baghera",
+            "title": "",
+            "focal_point": "center center"
+          }
+        },
+        "8597859b-3b30-4b35-bf54-68a3c4bfbba3": {
+          "type": "collection",
+          "settings": {
+            "collection": "bajo",
+            "title": "",
+            "focal_point": "center center"
+          }
+        },
+        "bde068b4-3d3c-4740-8695-83f7526af639": {
+          "type": "collection",
+          "settings": {
+            "collection": "bauspiel",
+            "title": "",
+            "focal_point": "center center"
+          }
+        },
+        "0ab8080a-3e99-4c20-8fd3-e8cb67615a2f": {
+          "type": "collection",
+          "settings": {
+            "collection": "bumbu-toys",
+            "title": "",
+            "focal_point": "center center"
+          }
+        },
+        "f326d3fc-93a5-4d3f-8b0b-a5a65587b99e": {
+          "type": "collection",
+          "settings": {
+            "collection": "cavallini-co",
+            "title": "",
+            "focal_point": "center center"
+          }
+        },
+        "2c0feb67-90e1-4914-bb26-3f85ff016a9a": {
+          "type": "collection",
+          "settings": {
+            "collection": "connetix-tiles",
+            "title": "",
+            "focal_point": "center center"
+          }
+        },
+        "bc99c09d-15e6-455b-a86d-14f22405f241": {
+          "type": "collection",
+          "settings": {
+            "collection": "dollbelge",
+            "title": "",
+            "focal_point": "center center"
+          }
+        },
+        "7e8423e9-17b6-4ec8-98bd-fd08cae824c7": {
+          "type": "collection",
+          "settings": {
+            "collection": "drewart",
+            "title": "",
+            "focal_point": "center center"
+          }
+        },
+        "43d6de8b-e23e-49de-8a47-2f82fe917e83": {
+          "type": "collection",
+          "settings": {
+            "collection": "fagus",
+            "title": "",
+            "focal_point": "center center"
+          }
+        },
+        "52023727-2baf-4f02-a5dd-525af2e9aed8": {
+          "type": "collection",
+          "settings": {
+            "collection": "gnezdo-toys",
+            "title": "",
+            "focal_point": "center center"
+          }
+        },
+        "14dfd187-d1ee-4d7d-b272-5e5ff14a6fc2": {
+          "type": "collection",
+          "settings": {
+            "collection": "goki-and-heimess",
+            "title": "",
+            "focal_point": "center center"
+          }
+        }
+      },
+      "block_order": [
+        "1664564982d76c659e-0",
+        "1664564982d76c659e-1",
+        "1664564982d76c659e-2",
+        "1664564982d76c659e-3",
+        "9e49ebb4-6f97-4fc0-a9e5-ce921ca4a88a",
+        "8597859b-3b30-4b35-bf54-68a3c4bfbba3",
+        "bde068b4-3d3c-4740-8695-83f7526af639",
+        "0ab8080a-3e99-4c20-8fd3-e8cb67615a2f",
+        "f326d3fc-93a5-4d3f-8b0b-a5a65587b99e",
+        "2c0feb67-90e1-4914-bb26-3f85ff016a9a",
+        "bc99c09d-15e6-455b-a86d-14f22405f241",
+        "7e8423e9-17b6-4ec8-98bd-fd08cae824c7",
+        "43d6de8b-e23e-49de-8a47-2f82fe917e83",
+        "52023727-2baf-4f02-a5dd-525af2e9aed8",
+        "14dfd187-d1ee-4d7d-b272-5e5ff14a6fc2"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "Featured Collections",
+        "divider": false,
+        "per_row": 3
+      }
+    },
+    "16645654864a3c5976": {
+      "type": "featured-collections",
+      "blocks": {
+        "1664565486062e461f-0": {
+          "type": "collection",
+          "settings": {
+            "collection": "grapat",
+            "title": "",
+            "focal_point": "center center"
+          }
+        },
+        "1664565486062e461f-1": {
+          "type": "collection",
+          "settings": {
+            "collection": "holztiger",
+            "title": "",
+            "focal_point": "center center"
+          }
+        },
+        "1664565486062e461f-2": {
+          "type": "collection",
+          "settings": {
+            "collection": "kiko-gg-1",
+            "title": "",
+            "focal_point": "center center"
+          }
+        },
+        "1664565486062e461f-3": {
+          "type": "collection",
+          "settings": {
+            "collection": "land-of-dough",
+            "title": "",
+            "focal_point": "center center"
+          }
+        },
+        "eaf65c05-f61c-45e0-b0ec-4f9a61f97357": {
+          "type": "collection",
+          "settings": {
+            "collection": "magic-wood",
+            "title": "",
+            "focal_point": "center center"
+          }
+        },
+        "0f53755c-c410-43ad-8ec5-36ef813e3ff9": {
+          "type": "collection",
+          "settings": {
+            "collection": "milton-goose",
+            "title": "",
+            "focal_point": "center center"
+          }
+        },
+        "379cdf58-51f2-40fe-966f-1e7b7eecebeb": {
+          "type": "collection",
+          "settings": {
+            "collection": "nanchen-natur",
+            "title": "",
+            "focal_point": "center center"
+          }
+        },
+        "d437ebaa-8fc2-4b31-804a-1e4d74d55ee1": {
+          "type": "collection",
+          "settings": {
+            "collection": "olli-ella",
+            "title": "",
+            "focal_point": "center center"
+          }
+        },
+        "5b540b8b-0f4d-4d6b-9e8c-17c715c86eeb": {
+          "type": "collection",
+          "settings": {
+            "collection": "oshkin-wooden-craft",
+            "title": "",
+            "focal_point": "center center"
+          }
+        },
+        "c7fa45a8-866f-4a10-a392-889074ae9544": {
+          "type": "collection",
+          "settings": {
+            "collection": "montessori-art-puzzles",
+            "title": "",
+            "focal_point": "center center"
+          }
+        },
+        "29af98ce-ba2f-4f9b-ac8c-ea282d4dc354": {
+          "type": "collection",
+          "settings": {
+            "collection": "pashom",
+            "title": "",
+            "focal_point": "center center"
+          }
+        },
+        "cb3d09c3-1459-408f-90e2-654e6a4879a1": {
+          "type": "collection",
+          "settings": {
+            "collection": "poems-for-buttercup",
+            "title": "",
+            "focal_point": "center center"
+          }
+        },
+        "e241e1bb-af29-48f9-8d4e-7c47aef4c2ca": {
+          "type": "collection",
+          "settings": {
+            "collection": "plan-toys",
+            "title": "",
+            "focal_point": "center center"
+          }
+        },
+        "42272f2e-c84c-4d36-bd95-2b105e9b5172": {
+          "type": "collection",
+          "settings": {
+            "collection": "puzzle-michele-wilson",
+            "title": "",
+            "focal_point": "center center"
+          }
+        },
+        "a7f49f04-958a-488a-8a4c-567f65a4cc15": {
+          "type": "collection",
+          "settings": {
+            "collection": "q-toys",
+            "title": "",
+            "focal_point": "center center"
+          }
+        }
+      },
+      "block_order": [
+        "1664565486062e461f-0",
+        "1664565486062e461f-1",
+        "1664565486062e461f-2",
+        "1664565486062e461f-3",
+        "eaf65c05-f61c-45e0-b0ec-4f9a61f97357",
+        "0f53755c-c410-43ad-8ec5-36ef813e3ff9",
+        "379cdf58-51f2-40fe-966f-1e7b7eecebeb",
+        "d437ebaa-8fc2-4b31-804a-1e4d74d55ee1",
+        "5b540b8b-0f4d-4d6b-9e8c-17c715c86eeb",
+        "c7fa45a8-866f-4a10-a392-889074ae9544",
+        "29af98ce-ba2f-4f9b-ac8c-ea282d4dc354",
+        "cb3d09c3-1459-408f-90e2-654e6a4879a1",
+        "e241e1bb-af29-48f9-8d4e-7c47aef4c2ca",
+        "42272f2e-c84c-4d36-bd95-2b105e9b5172",
+        "a7f49f04-958a-488a-8a4c-567f65a4cc15"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "",
+        "divider": false,
+        "per_row": 3
+      }
+    },
+    "1664565501377292e8": {
+      "type": "featured-collections",
+      "blocks": {
+        "1664565501cb3ac1ae-0": {
+          "type": "collection",
+          "settings": {
+            "collection": "quelle-est-belle",
+            "title": "",
+            "focal_point": "center center"
+          }
+        },
+        "1664565501cb3ac1ae-1": {
+          "type": "collection",
+          "settings": {
+            "collection": "senger-naturwelt",
+            "title": "",
+            "focal_point": "center center"
+          }
+        },
+        "1664565501cb3ac1ae-2": {
+          "type": "collection",
+          "settings": {
+            "collection": "skandico-toys",
+            "title": "",
+            "focal_point": "center center"
+          }
+        },
+        "1664565501cb3ac1ae-3": {
+          "type": "collection",
+          "settings": {
+            "collection": "tara-treasures",
+            "title": "",
+            "focal_point": "center center"
+          }
+        },
+        "c786b20a-bace-4e51-bf6e-90d1f697870d": {
+          "type": "collection",
+          "settings": {
+            "collection": "tender-leaf-toys",
+            "title": "",
+            "focal_point": "center center"
+          }
+        },
+        "2275f3c7-56c3-4ce6-b63b-9c1471c1f386": {
+          "type": "collection",
+          "settings": {
+            "collection": "tiny-fox-hole",
+            "title": "",
+            "focal_point": "center center"
+          }
+        }
+      },
+      "block_order": [
+        "1664565501cb3ac1ae-0",
+        "1664565501cb3ac1ae-1",
+        "1664565501cb3ac1ae-2",
+        "1664565501cb3ac1ae-3",
+        "c786b20a-bace-4e51-bf6e-90d1f697870d",
+        "2275f3c7-56c3-4ce6-b63b-9c1471c1f386"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "",
+        "divider": false,
+        "per_row": 3
+      }
+    }
+  },
+  "order": [
+    "1664433887680f2ecd",
+    "collection-header",
+    "166442809012b5795b",
+    "1664560457de56450a",
+    "main-collection",
+    "16645649820a7c7670",
+    "16645654864a3c5976",
+    "1664565501377292e8"
+  ]
+}

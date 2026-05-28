@@ -1,0 +1,215 @@
+{%- comment -%}
+  MTW Maker — reusable maker/brand story page template. Assign the
+  "maker" template to a page per maker and fill the settings. Header
+  & footer come from the theme. Namespaced .mtw-mk.
+{%- endcomment -%}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+{{ 'mtw-maker.css' | asset_url | stylesheet_tag }}
+
+<div class="mtw-mk">
+  <section class="mtw-mk__hero">
+    <div class="mtw-mk__hero-inner">
+      <a href="{{ routes.root_url }}" class="mtw-mk__back">Back to the shop</a>
+      {%- if section.settings.eyebrow != blank -%}<span class="label">{{ section.settings.eyebrow }}</span>{%- endif -%}
+      <h1>{{ section.settings.heading | default: page.title }}</h1>
+      {%- if section.settings.dek != blank -%}<p class="mtw-mk__dek">{{ section.settings.dek }}</p>{%- endif -%}
+    </div>
+  </section>
+
+  {%- if section.settings.founder_heading != blank -%}
+  <section class="mtw-mk__founder">
+    <div class="mtw-mk__fimg">{%- if section.settings.founder_image != blank -%}{{ section.settings.founder_image | image_url: width: 900 | image_tag: loading: 'lazy', alt: section.settings.founder_heading }}{%- endif -%}</div>
+    <div class="mtw-mk__ftext">
+      {%- if section.settings.founder_label != blank -%}<span class="label">{{ section.settings.founder_label }}</span>{%- endif -%}
+      <h2>{{ section.settings.founder_heading }}</h2>
+      {%- if section.settings.founder_body != blank -%}<div class="rte">{{ section.settings.founder_body }}</div>{%- endif -%}
+      {%- if section.settings.founder_quote != blank -%}<p class="mtw-mk__quote">{{ section.settings.founder_quote }}{%- if section.settings.founder_quote_cite != blank -%}<cite>{{ section.settings.founder_quote_cite }}</cite>{%- endif -%}</p>{%- endif -%}
+    </div>
+  </section>
+  {%- endif -%}
+
+  {%- if section.settings.name_heading != blank -%}
+  <section class="mtw-mk__name">
+    <div class="mtw-mk__name-inner">
+      {%- if section.settings.name_label != blank -%}<span class="label">{{ section.settings.name_label }}</span>{%- endif -%}
+      <h2>{{ section.settings.name_heading }}</h2>
+      {%- if section.settings.name_body != blank -%}<div class="rte">{{ section.settings.name_body }}</div>{%- endif -%}
+    </div>
+  </section>
+  {%- endif -%}
+
+  {%- assign stats = section.blocks | where: 'type', 'stat' -%}
+  {%- if stats.size > 0 -%}
+  <section class="mtw-mk__stats">
+    <div class="mtw-mk__stats-head">
+      <h2>{{ section.settings.stats_heading | default: 'The work, by the numbers.' }}</h2>
+      {%- if section.settings.stats_sub != blank -%}<p>{{ section.settings.stats_sub }}</p>{%- endif -%}
+    </div>
+    <div class="mtw-mk__stats-grid">
+      {%- for b in stats -%}
+        <div class="mtw-mk__stat" {{ b.shopify_attributes }}>
+          <div class="mtw-mk__stat-num">{{ b.settings.num }}</div>
+          <div class="mtw-mk__stat-lbl">{{ b.settings.lbl }}</div>
+          {%- if b.settings.sub != blank -%}<p class="mtw-mk__stat-sub">{{ b.settings.sub }}</p>{%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </section>
+  {%- endif -%}
+
+  {%- if section.settings.mat_heading != blank -%}
+  <section class="mtw-mk__mat">
+    <div class="mtw-mk__mat-inner">
+      <div class="mtw-mk__mat-img">{%- if section.settings.mat_image != blank -%}{{ section.settings.mat_image | image_url: width: 900 | image_tag: loading: 'lazy', alt: section.settings.mat_heading }}{%- endif -%}</div>
+      <div class="mtw-mk__mat-text">
+        {%- if section.settings.mat_label != blank -%}<span class="label">{{ section.settings.mat_label }}</span>{%- endif -%}
+        <h2>{{ section.settings.mat_heading }}</h2>
+        {%- if section.settings.mat_list != blank -%}<div class="rte">{{ section.settings.mat_list }}</div>{%- endif -%}
+      </div>
+    </div>
+  </section>
+  {%- endif -%}
+
+  {%- assign mc = section.settings.products_collection -%}
+  {%- if mc != blank and mc.products.size > 0 -%}
+  <section class="mtw-mk__spot">
+    <div class="mtw-mk__spot-head">
+      <h2>{{ section.settings.products_heading | default: 'What we carry.' }}</h2>
+      <a href="{{ mc.url }}">See the full collection &rarr;</a>
+    </div>
+    <div class="mtw-mk__spot-grid">
+      {%- for p in mc.products limit: 8 -%}
+        <a class="mtw-mk__pcard" href="{{ p.url }}">
+          <div class="mtw-mk__p-img">{%- if p.featured_image -%}{{ p.featured_image | image_url: width: 600 | image_tag: loading: 'lazy', alt: p.title }}{%- endif -%}</div>
+          {%- if p.type != blank -%}<p class="mtw-mk__p-maker">{{ p.type }}</p>{%- elsif p.vendor != blank -%}<p class="mtw-mk__p-maker">{{ p.vendor }}</p>{%- endif -%}
+          <h3 class="mtw-mk__p-name">{{ p.title }}</h3>
+          <div class="mtw-mk__p-meta"><span>{{ p.type }}</span><span class="mtw-mk__p-price">{{ p.price | money }}</span></div>
+        </a>
+      {%- endfor -%}
+    </div>
+  </section>
+  {%- endif -%}
+
+  {%- if section.settings.t_heading != blank or section.settings.t_quote != blank -%}
+  <section class="mtw-mk__t">
+    <div class="mtw-mk__t-inner">
+      <div class="mtw-mk__t-img">{%- if section.settings.t_image != blank -%}{{ section.settings.t_image | image_url: width: 900 | image_tag: loading: 'lazy', alt: section.settings.t_heading }}{%- endif -%}</div>
+      <div class="mtw-mk__t-text">
+        {%- if section.settings.t_label != blank -%}<span class="label">{{ section.settings.t_label }}</span>{%- endif -%}
+        {%- if section.settings.t_heading != blank -%}<h2>{{ section.settings.t_heading }}</h2>{%- endif -%}
+        {%- if section.settings.t_quote != blank -%}<blockquote>{{ section.settings.t_quote }}</blockquote>{%- endif -%}
+        {%- if section.settings.t_cite != blank -%}<p class="mtw-mk__t-cite">{{ section.settings.t_cite }}</p>{%- endif -%}
+      </div>
+    </div>
+    {%- if section.settings.t_quote2 != blank -%}
+    <div class="mtw-mk__t2">
+      <blockquote>{{ section.settings.t_quote2 }}</blockquote>
+      {%- if section.settings.t_cite2 != blank -%}<p class="mtw-mk__t-cite">{{ section.settings.t_cite2 }}</p>{%- endif -%}
+    </div>
+    {%- endif -%}
+  </section>
+  {%- endif -%}
+
+  {%- assign endorse = section.blocks | where: 'type', 'endorse' -%}
+  {%- if endorse.size > 0 -%}
+  <section class="mtw-mk__endorse">
+    <div class="mtw-mk__endorse-inner">
+      {%- if section.settings.endorse_label != blank -%}<span class="label">{{ section.settings.endorse_label }}</span>{%- endif -%}
+      <h2>{{ section.settings.endorse_heading | default: 'The work is vouched for.' }}</h2>
+      <div class="mtw-mk__endorse-grid">
+        {%- for b in endorse -%}
+          <div class="mtw-mk__endorse-card" {{ b.shopify_attributes }}>
+            {%- if b.settings.kind != blank -%}<span class="mtw-mk__endorse-type">{{ b.settings.kind }}</span>{%- endif -%}
+            <h3>{{ b.settings.name }}</h3>
+            {%- if b.settings.text != blank -%}<p>{{ b.settings.text }}</p>{%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+  {%- endif -%}
+
+  {%- if section.settings.close_heading != blank -%}
+  <section class="mtw-mk__close">
+    {%- if section.settings.close_label != blank -%}<span class="label">{{ section.settings.close_label }}</span>{%- endif -%}
+    <h2>{{ section.settings.close_heading }}</h2>
+    {%- if section.settings.close_text != blank -%}<p>{{ section.settings.close_text }}</p>{%- endif -%}
+    {%- if section.settings.close_cta1_text != blank -%}<a href="{{ section.settings.close_cta1_link }}" class="mtw-mk__btn mtw-mk__btn--primary">{{ section.settings.close_cta1_text }}</a>{%- endif -%}
+    {%- if section.settings.close_cta2_text != blank -%}<a href="{{ section.settings.close_cta2_link }}" class="mtw-mk__btn mtw-mk__btn--ghost">{{ section.settings.close_cta2_text }}</a>{%- endif -%}
+  </section>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "MTW Maker",
+  "settings": [
+    { "type": "header", "content": "Hero" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Inside the makers" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading (defaults to page title)" },
+    { "type": "text", "id": "dek", "label": "Dek" },
+    { "type": "header", "content": "Founder story" },
+    { "type": "text", "id": "founder_label", "label": "Label", "default": "A founder story" },
+    { "type": "inline_richtext", "id": "founder_heading", "label": "Heading" },
+    { "type": "richtext", "id": "founder_body", "label": "Body" },
+    { "type": "image_picker", "id": "founder_image", "label": "Image" },
+    { "type": "text", "id": "founder_quote", "label": "Pull quote" },
+    { "type": "text", "id": "founder_quote_cite", "label": "Quote attribution" },
+    { "type": "header", "content": "Statement band (dark)" },
+    { "type": "text", "id": "name_label", "label": "Label" },
+    { "type": "inline_richtext", "id": "name_heading", "label": "Heading" },
+    { "type": "richtext", "id": "name_body", "label": "Body" },
+    { "type": "header", "content": "Stats" },
+    { "type": "text", "id": "stats_heading", "label": "Heading", "default": "The work, by the numbers." },
+    { "type": "text", "id": "stats_sub", "label": "Subtitle" },
+    { "type": "header", "content": "How it is made" },
+    { "type": "text", "id": "mat_label", "label": "Label", "default": "How it is made" },
+    { "type": "inline_richtext", "id": "mat_heading", "label": "Heading" },
+    { "type": "image_picker", "id": "mat_image", "label": "Image" },
+    { "type": "richtext", "id": "mat_list", "label": "List (use a bulleted list)" },
+    { "type": "header", "content": "Products spotlight" },
+    { "type": "inline_richtext", "id": "products_heading", "label": "Heading", "default": "What we carry." },
+    { "type": "collection", "id": "products_collection", "label": "Collection" },
+    { "type": "header", "content": "Testimonial" },
+    { "type": "text", "id": "t_label", "label": "Label", "default": "In the classroom" },
+    { "type": "inline_richtext", "id": "t_heading", "label": "Heading" },
+    { "type": "image_picker", "id": "t_image", "label": "Image" },
+    { "type": "text", "id": "t_quote", "label": "Quote" },
+    { "type": "text", "id": "t_cite", "label": "Attribution" },
+    { "type": "text", "id": "t_quote2", "label": "Second quote (centered)" },
+    { "type": "text", "id": "t_cite2", "label": "Second attribution" },
+    { "type": "header", "content": "Endorsements" },
+    { "type": "text", "id": "endorse_label", "label": "Label", "default": "Recognized by" },
+    { "type": "inline_richtext", "id": "endorse_heading", "label": "Heading", "default": "The work is vouched for." },
+    { "type": "header", "content": "Closing band" },
+    { "type": "text", "id": "close_label", "label": "Label" },
+    { "type": "inline_richtext", "id": "close_heading", "label": "Heading" },
+    { "type": "text", "id": "close_text", "label": "Text" },
+    { "type": "text", "id": "close_cta1_text", "label": "CTA 1 text", "default": "Apply for Educator pricing" },
+    { "type": "url", "id": "close_cta1_link", "label": "CTA 1 link" },
+    { "type": "text", "id": "close_cta2_text", "label": "CTA 2 text", "default": "School Affiliate Program" },
+    { "type": "url", "id": "close_cta2_link", "label": "CTA 2 link" }
+  ],
+  "blocks": [
+    { "type": "stat", "name": "Stat", "settings": [
+      { "type": "text", "id": "num", "label": "Number", "default": "350+" },
+      { "type": "text", "id": "lbl", "label": "Label", "default": "Women artisans" },
+      { "type": "text", "id": "sub", "label": "Sub" }
+    ] },
+    { "type": "endorse", "name": "Endorsement", "settings": [
+      { "type": "text", "id": "kind", "label": "Kind", "default": "Humanitarian" },
+      { "type": "text", "id": "name", "label": "Name" },
+      { "type": "text", "id": "text", "label": "Text" }
+    ] }
+  ],
+  "presets": [
+    { "name": "MTW Maker", "blocks": [
+      { "type": "stat" }, { "type": "stat" }, { "type": "stat" }, { "type": "stat" },
+      { "type": "endorse" }, { "type": "endorse" }, { "type": "endorse" }
+    ] }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,117 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "background_image_text_Q9eCYn": {
+      "type": "background-image-text",
+      "settings": {
+        "subtitle": "",
+        "title": "",
+        "text": "",
+        "button_label": "",
+        "button_link": "",
+        "image": "shopify://shop_images/Baghera_ride_on_racer_20a7c0c3-6f10-4c3d-84ea-f886cebfeb73.jpg",
+        "layout": "left",
+        "height": 750,
+        "framed": false,
+        "parallax": true,
+        "parallax_direction": "top"
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "17239618944631100c": {
+      "type": "apps",
+      "blocks": {
+        "wishlist_hero_header_icon_Q3JR6b": {
+          "type": "shopify://apps/wishlist-hero/blocks/header-icon/a9a5079b-59e8-47cb-b659-ecf1c60b9b72",
+          "settings": {
+            "customThemeName": "~",
+            "useCustomHeaderColor": false,
+            "customHeaderColor": "",
+            "useCustomHeaderSize": false,
+            "customHeaderIconSize": 22,
+            "additionalIconCssClassNames": "",
+            "additionalIconStyle": "",
+            "additionalContainerClasses": "",
+            "additionalContainerStyle": "",
+            "replaceExistingClasses": false
+          }
+        }
+      },
+      "block_order": [
+        "wishlist_hero_header_icon_Q3JR6b"
+      ],
+      "settings": {
+        "full_width": false,
+        "space_around": true
+      }
+    },
+    "rich_text_wHGDyW": {
+      "type": "rich-text",
+      "blocks": {
+        "text_jNmxkx": {
+          "type": "text",
+          "settings": {
+            "enlarge_text": true,
+            "text": "<h1>Wishlist<br/></h1><p>Add your favorites to your wishlist for easy access around birthdays, celebrations, and holidays.</p><p>Simply <a href=\"https://mytoywagon.com/account/login?return_url=%2Faccount\">login</a> to start creating your wishlist. If you do not have an account, you will need to <a href=\"https://mytoywagon.com/account/register?return_url=%2Faccount\">create an account</a>. Click on the heart on the product page to add an item to your Wishlist. Don't forget to share your favorites with family and friends!</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_jNmxkx"
+      ],
+      "settings": {
+        "align_text": "center",
+        "narrow_column": true,
+        "divider": false
+      }
+    },
+    "featured_collection_Ex8amm": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Start Your List with Customer Favorites",
+        "home_featured_products": "bestsellers",
+        "per_row": 4,
+        "rows": 1,
+        "mobile_scrollable": true,
+        "view_all": true,
+        "divider": true
+      }
+    },
+    "1723961840c0fa2900": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_medals_gMcVhP": {
+          "type": "shopify://apps/judge-me-reviews/blocks/medals/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_medals_gMcVhP"
+      ],
+      "settings": {
+        "full_width": false,
+        "space_around": true
+      }
+    }
+  },
+  "order": [
+    "background_image_text_Q9eCYn",
+    "main",
+    "17239618944631100c",
+    "rich_text_wHGDyW",
+    "featured_collection_Ex8amm",
+    "1723961840c0fa2900"
+  ]
+}

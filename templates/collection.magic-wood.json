@@ -1,0 +1,143 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "magicwood_hero": {
+      "type": "background-image-text",
+      "settings": {
+        "subtitle": "SCULPTURAL WOODEN TOYS FROM POLAND, MORE THAN 25 YEARS",
+        "title": "Magic Wood",
+        "text": "<p>Magic Wood's workshop near the Polish-German border has handcrafted wooden toys for over 25 years, employing skilled carpenters, painters, and home workers to produce tree-blocks, treehouses, and bark-covered playscapes from FSC-certified timber and reclaimed branches. Pieces are sanded smooth, finished with flaxseed oil, and dyed with natural plant colors that age beautifully alongside the wood.</p>",
+        "button_label": "",
+        "button_link": "",
+        "image": "",
+        "layout": "left",
+        "height": 750,
+        "framed": false,
+        "parallax": true,
+        "parallax_direction": "top"
+      }
+    },
+    "main-collection": {
+      "type": "main-collection",
+      "blocks": {
+        "product_grid": {
+          "type": "product_grid",
+          "settings": {
+            "enable_collection_count": true,
+            "per_row": 3,
+            "rows_per_page": 20,
+            "mobile_flush_grid": true
+          }
+        }
+      },
+      "block_order": [
+        "product_grid"
+      ],
+      "settings": {
+        "enable_sidebar": false,
+        "collapsed": false,
+        "filter_style": "sidebar",
+        "enable_color_swatches": false,
+        "enable_sort": true
+      }
+    },
+    "magicwood_reviews": {
+      "type": "apps",
+      "blocks": {
+        "jdg_carousel": {
+          "type": "shopify://apps/judge-me-reviews/blocks/featured_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "jdg_carousel"
+      ],
+      "settings": {
+        "full_width": false,
+        "space_around": true
+      }
+    },
+    "magicwood_content": {
+      "type": "rich-text",
+      "blocks": {
+        "h1": {
+          "type": "heading",
+          "settings": {
+            "title": "Sculpted, Not Stamped"
+          }
+        },
+        "t1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Each Magic Wood toy is shaped by hand in a Polish workshop, then sanded and finished without varnish. The result is a tactile, three-dimensional figure that children can grip, group, and pose. Magic Wood animals fit naturally into small-world play setups, dollhouse scenes, and nature tables.</p>"
+          }
+        },
+        "h2": {
+          "type": "heading",
+          "settings": {
+            "title": "Made for Small Hands"
+          }
+        },
+        "t2": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Magic Wood pieces are sized and weighted with children in mind. Small enough to clutch, heavy enough to feel substantial, smooth enough to be safe. Many Magic Wood pieces have rounded forms that toddlers can mouth safely while older children pose them in elaborate scenes.</p>"
+          }
+        },
+        "h3": {
+          "type": "heading",
+          "settings": {
+            "title": "Why Families Choose My Toy Wagon for Magic Wood"
+          }
+        },
+        "t3": {
+          "type": "text",
+          "settings": {
+            "text": "<p>We curate Magic Wood because their Polish craftspeople treat each toy as a small sculpture rather than a mass-produced item, and because their reclaimed-branch and FSC-certified materials reflect a sustainability commitment we share. Every Magic Wood order ships from our Los Angeles warehouse, with free shipping on orders $150 and over within the contiguous US. Returns are simple, and customer questions go to a real person on our team.</p>"
+          }
+        },
+        "h4": {
+          "type": "heading",
+          "settings": {
+            "title": "Magic Wood Bestsellers"
+          }
+        },
+        "t4": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Browse the collection above for tree blocks, treehouses, eco blocks, forest animals, and bark-covered playscapes. Magic Wood toys pair beautifully with felt play mats, silk scarves, and other open-ended natural-materials toys.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "h1",
+        "t1",
+        "h2",
+        "t2",
+        "h3",
+        "t3",
+        "h4",
+        "t4"
+      ],
+      "settings": {
+        "align_text": "left",
+        "narrow_column": true,
+        "divider": false
+      }
+    }
+  },
+  "order": [
+    "magicwood_hero",
+    "main-collection",
+    "magicwood_reviews",
+    "magicwood_content"
+  ]
+}

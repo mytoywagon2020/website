@@ -1,0 +1,155 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "monami_hero": {
+      "type": "background-image-text",
+      "settings": {
+        "subtitle": "EUROPEAN-INSPIRED PLUSH, DESIGNED IN ATLANTA SINCE 2018",
+        "title": "Mon Ami",
+        "heading_size": "h2",
+        "text": "<p>Mon Ami has designed European-inspired plush toys, dolls, and home decor from Atlanta since 2018, working in soft natural fabrics and whimsical, storybook character designs. Each plush companion features hand-embroidered details and storybook proportions, with production handled overseas to brand specifications.</p>",
+        "button_label": "",
+        "button_link": "",
+        "image": "shopify://shop_images/IMG_0650_jpg2.webp",
+        "layout": "left",
+        "height": 750,
+        "framed": false,
+        "parallax": false,
+        "parallax_direction": "top"
+      }
+    },
+    "main-collection": {
+      "type": "main-collection",
+      "blocks": {
+        "product_grid": {
+          "type": "product_grid",
+          "settings": {
+            "enable_collection_count": true,
+            "per_row": 3,
+            "rows_per_page": 20,
+            "mobile_flush_grid": true
+          }
+        }
+      },
+      "block_order": [
+        "product_grid"
+      ],
+      "settings": {
+        "enable_sidebar": false,
+        "collapsed": false,
+        "filter_style": "sidebar",
+        "enable_color_swatches": false,
+        "enable_swatch_labels": true,
+        "enable_sort": true
+      }
+    },
+    "monami_reviews": {
+      "type": "apps",
+      "blocks": {
+        "jdg_carousel": {
+          "type": "shopify://apps/judge-me-reviews/blocks/featured_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "maxwidth": 1080
+          }
+        }
+      },
+      "block_order": [
+        "jdg_carousel"
+      ],
+      "settings": {
+        "full_width": false,
+        "space_around": true
+      }
+    },
+    "monami_content": {
+      "type": "rich-text",
+      "blocks": {
+        "h1": {
+          "type": "heading",
+          "settings": {
+            "title": "European-Inspired Design From Atlanta",
+            "heading_size": "h2"
+          }
+        },
+        "t1": {
+          "type": "text",
+          "settings": {
+            "enlarge_text": true,
+            "text": "<p>Mon Ami's design team works from Atlanta, drawing on European storybook aesthetics and folk-art whimsy. Their plush characters feature soft natural fabrics, hand-embroidered details, and storybook proportions that make them as appealing on a nursery shelf as they are in a child's arms. Production happens overseas to brand specifications.</p>"
+          }
+        },
+        "h2": {
+          "type": "heading",
+          "settings": {
+            "title": "Soft Companions That Last",
+            "heading_size": "h2"
+          }
+        },
+        "t2": {
+          "type": "text",
+          "settings": {
+            "enlarge_text": true,
+            "text": "<p>A favorite plush companion does real work in a child's emotional life. Mon Ami plush toys become the friends that go on trips, sleep in the bed, and absorb a thousand small worries. The brand designs with this purpose in mind, giving each character expressive features and a posable softness that invites attachment.</p>"
+          }
+        },
+        "h3": {
+          "type": "heading",
+          "settings": {
+            "title": "Why Families Choose My Toy Wagon for Mon Ami",
+            "heading_size": "h2"
+          }
+        },
+        "t3": {
+          "type": "text",
+          "settings": {
+            "enlarge_text": true,
+            "text": "<p>We curate Mon Ami because their plush companions blend European storybook charm with soft natural fabrics, designed to be cherished. Every Mon Ami order ships from our Los Angeles warehouse, with free shipping on orders $150 and over within the contiguous US. Returns are simple, and customer questions go to a real person on our team.</p>"
+          }
+        },
+        "h4": {
+          "type": "heading",
+          "settings": {
+            "title": "Mon Ami Bestsellers",
+            "heading_size": "h2"
+          }
+        },
+        "t4": {
+          "type": "text",
+          "settings": {
+            "enlarge_text": true,
+            "text": "<p>Browse the collection above for plush companions, character dolls, and soft home decor. Whether you are choosing a first lovey or adding to a small collection of cherished friends, Mon Ami pairs whimsical character design with soft fabrics built for love.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "h1",
+        "t1",
+        "h2",
+        "t2",
+        "h3",
+        "t3",
+        "h4",
+        "t4"
+      ],
+      "settings": {
+        "align_text": "left",
+        "narrow_column": true,
+        "divider": false
+      }
+    }
+  },
+  "order": [
+    "monami_hero",
+    "main-collection",
+    "monami_reviews",
+    "monami_content"
+  ]
+}

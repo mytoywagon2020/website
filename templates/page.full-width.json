@@ -1,0 +1,75 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "45ffc913-33f3-4506-83c1-8fe1fefccb8c": {
+      "type": "slideshow",
+      "blocks": {
+        "template--15926803693738__45ffc913-33f3-4506-83c1-8fe1fefccb8c-1668913588f4476b32-0": {
+          "type": "image",
+          "settings": {
+            "top_subheading": "",
+            "title": "My Toy Wagon \nRewards Program",
+            "title_size": 80,
+            "subheading": "Earn 1 point for every $1 you spend",
+            "link": "https://mytoywagon.com/account/register",
+            "link_text": "Join Now",
+            "link_2": "https://mytoywagon.com/account/login",
+            "link_text_2": "Sign In",
+            "color_accent": "#000000",
+            "text_align": "vertical-center horizontal-center",
+            "image": "shopify://shop_images/275601307_1020706432209766_3433100283118805353_n.jpg",
+            "image_mobile": "shopify://shop_images/275601307_1020706432209766_3433100283118805353_n.jpg",
+            "parallax_direction": "top",
+            "overlay_opacity": 0
+          }
+        },
+        "template--15926803693738__45ffc913-33f3-4506-83c1-8fe1fefccb8c-1668913588f4476b32-1": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "top_subheading": "",
+            "title": "Two line\ntitle slide.",
+            "title_size": 80,
+            "subheading": "And big, beautiful imagery",
+            "link": "",
+            "link_text": "Optional button",
+            "link_2": "",
+            "link_text_2": "",
+            "color_accent": "rgba(0,0,0,0)",
+            "text_align": "vertical-center horizontal-center",
+            "parallax_direction": "top",
+            "overlay_opacity": 0
+          }
+        }
+      },
+      "block_order": [
+        "template--15926803693738__45ffc913-33f3-4506-83c1-8fe1fefccb8c-1668913588f4476b32-0",
+        "template--15926803693738__45ffc913-33f3-4506-83c1-8fe1fefccb8c-1668913588f4476b32-1"
+      ],
+      "settings": {
+        "section_height": "650px",
+        "mobile_height": "auto",
+        "parallax": true,
+        "style": "bars",
+        "autoplay": true,
+        "autoplay_speed": 5
+      }
+    },
+    "main": {
+      "type": "main-page-full-width",
+      "settings": {}
+    }
+  },
+  "order": [
+    "45ffc913-33f3-4506-83c1-8fe1fefccb8c",
+    "main"
+  ]
+}

@@ -1,0 +1,34 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "header",
+  "name": "t:sections.header-group.name",
+  "sections": {
+    "mtw_header_b": {
+      "type": "mtw-header-b",
+      "settings": {
+        "phone": "(626) 841-0421",
+        "track_order_url": "/account",
+        "giftcards_url": "/products/my-toy-wagon-digital-gift-card",
+        "signin_url": "/account/login",
+        "utility_messages": "$10 off your first order with SMS signup",
+        "show_progress_bar": true,
+        "free_ship_threshold": 150,
+        "logo_width": 280,
+        "logo_width_mobile": 160,
+        "menu": "",
+        "search_placeholder": "Search wooden blocks, plush, age 4..."
+      }
+    }
+  },
+  "order": [
+    "mtw_header_b"
+  ]
+}

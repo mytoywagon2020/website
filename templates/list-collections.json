@@ -1,0 +1,665 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "list-collections-template",
+      "blocks": {
+        "19f88f55-9960-469b-a095-c109b830ab22": {
+          "type": "collection",
+          "disabled": true,
+          "settings": {
+            "collection": "ambosstoys"
+          }
+        },
+        "0504c338-54b5-41e9-9f93-ac3bda161837": {
+          "type": "collection",
+          "settings": {
+            "collection": "ambrosius-fairies"
+          }
+        },
+        "fe36f5b4-31db-4c09-961a-31e523d39142": {
+          "type": "collection",
+          "settings": {
+            "collection": "atelier-des-peupliers"
+          }
+        },
+        "8e3d1548-639b-4193-a8e2-246aa24432f8": {
+          "type": "collection",
+          "settings": {
+            "collection": "baghera"
+          }
+        },
+        "63e6988f-a886-48d7-abf8-d2b8fffe5810": {
+          "type": "collection",
+          "settings": {
+            "collection": "bajo"
+          }
+        },
+        "014b9ebb-ea87-4999-aba8-99a2b662a302": {
+          "type": "collection",
+          "settings": {
+            "collection": "bauspiel"
+          }
+        },
+        "6d03518c-f7d3-4f49-b9bb-14c95439f026": {
+          "type": "collection",
+          "settings": {
+            "collection": "bumbu-toys"
+          }
+        },
+        "d29e0f6a-cbda-4d31-a319-2bedb139c322": {
+          "type": "collection",
+          "settings": {
+            "collection": "connetix-tiles"
+          }
+        },
+        "fca2cc54-06df-419a-9a0a-acac328ad625": {
+          "type": "collection",
+          "settings": {
+            "collection": "dollbelge"
+          }
+        },
+        "2feae524-fdb8-4d64-a603-ae359d2a4ba8": {
+          "type": "collection",
+          "settings": {
+            "collection": "drewart"
+          }
+        },
+        "d6575584-3755-4594-a500-3e0d816be94a": {
+          "type": "collection",
+          "settings": {
+            "collection": "fagus"
+          }
+        },
+        "aa1d2da2-b80c-43ea-a469-6a4f7fbef032": {
+          "type": "collection",
+          "settings": {
+            "collection": "gnezdo-toys"
+          }
+        },
+        "bccf8d01-8b7b-4ac5-bb4c-57c3314b8792": {
+          "type": "collection",
+          "settings": {
+            "collection": "goki-and-heimess"
+          }
+        },
+        "ed8ba081-2e13-44a2-95d5-9e297b32132c": {
+          "type": "collection",
+          "settings": {
+            "collection": "grapat"
+          }
+        },
+        "a853f669-3710-49f7-82f1-11ef18db9001": {
+          "type": "collection",
+          "settings": {
+            "collection": "haba-usa"
+          }
+        },
+        "eee13eca-61a7-4fef-b450-7b67e69b8226": {
+          "type": "collection",
+          "settings": {
+            "collection": "holztiger"
+          }
+        },
+        "885ab9ee-291a-482c-be2f-1b3ea544560f": {
+          "type": "collection",
+          "settings": {
+            "collection": "kiko-gg-1"
+          }
+        },
+        "5354959b-e2e4-4f92-bedb-37b519abd364": {
+          "type": "collection",
+          "settings": {
+            "collection": "land-of-dough"
+          }
+        },
+        "f2991aa3-2817-416f-a2b3-50ae03bc0a3b": {
+          "type": "collection",
+          "settings": {
+            "collection": "magic-wood"
+          }
+        },
+        "d3b1085b-9270-4544-81ea-56817c34b1a1": {
+          "type": "collection",
+          "settings": {
+            "collection": "milton-goose"
+          }
+        },
+        "0ea69850-7dce-4735-8ee6-091f58ac8e74": {
+          "type": "collection",
+          "settings": {
+            "collection": "nanchen-natur"
+          }
+        },
+        "7ea07da5-e97d-4552-99d0-5c8efe9ee3ad": {
+          "type": "collection",
+          "settings": {
+            "collection": "olli-ella"
+          }
+        },
+        "45dcfde1-19ca-4191-a868-ee6d81d8aeae": {
+          "type": "collection",
+          "settings": {
+            "collection": "oshkin-wooden-craft"
+          }
+        },
+        "fc5784ea-a6e5-47fb-91a6-39f3366dc852": {
+          "type": "collection",
+          "settings": {
+            "collection": "montessori-art-puzzles"
+          }
+        },
+        "7f8418da-27c7-43ab-b365-7c3acbae17cf": {
+          "type": "collection",
+          "settings": {
+            "collection": "pashom"
+          }
+        },
+        "80ecbaee-92ce-4e32-9286-85ea4864daaf": {
+          "type": "collection",
+          "settings": {
+            "collection": "poems-for-buttercup"
+          }
+        },
+        "948a51ca-dbd8-4d41-babe-b0e0104de8cc": {
+          "type": "collection",
+          "settings": {
+            "collection": "plan-toys"
+          }
+        },
+        "ee902296-494f-4151-8c22-04d66e3e0339": {
+          "type": "collection",
+          "settings": {
+            "collection": "puzzle-michele-wilson"
+          }
+        },
+        "33c26520-ce7d-466f-a482-a3ed0ee6cbd6": {
+          "type": "collection",
+          "settings": {
+            "collection": "q-toys"
+          }
+        },
+        "7dbced7e-481e-45b8-bb80-ffe26e0d780b": {
+          "type": "collection",
+          "settings": {
+            "collection": "quelle-est-belle"
+          }
+        },
+        "04e67e4a-c433-44d2-8f51-3ff8668ff6a4": {
+          "type": "collection",
+          "settings": {
+            "collection": "senger-naturwelt"
+          }
+        },
+        "8d3f68f1-8dbf-4af4-8d09-c89ed4d6a64e": {
+          "type": "collection",
+          "settings": {
+            "collection": "skandico-toys"
+          }
+        },
+        "3ed5b733-fb78-482a-95d5-f29d21564333": {
+          "type": "collection",
+          "settings": {
+            "collection": "tara-treasures"
+          }
+        },
+        "9382a801-e3dd-41c4-84fe-1417783e1ab9": {
+          "type": "collection",
+          "settings": {
+            "collection": "tender-leaf-toys"
+          }
+        },
+        "5efad549-474d-4fa6-876c-7fb70e7948e3": {
+          "type": "collection",
+          "settings": {
+            "collection": "tiny-fox-hole"
+          }
+        }
+      },
+      "block_order": [
+        "19f88f55-9960-469b-a095-c109b830ab22",
+        "0504c338-54b5-41e9-9f93-ac3bda161837",
+        "fe36f5b4-31db-4c09-961a-31e523d39142",
+        "8e3d1548-639b-4193-a8e2-246aa24432f8",
+        "63e6988f-a886-48d7-abf8-d2b8fffe5810",
+        "014b9ebb-ea87-4999-aba8-99a2b662a302",
+        "6d03518c-f7d3-4f49-b9bb-14c95439f026",
+        "d29e0f6a-cbda-4d31-a319-2bedb139c322",
+        "fca2cc54-06df-419a-9a0a-acac328ad625",
+        "2feae524-fdb8-4d64-a603-ae359d2a4ba8",
+        "d6575584-3755-4594-a500-3e0d816be94a",
+        "aa1d2da2-b80c-43ea-a469-6a4f7fbef032",
+        "bccf8d01-8b7b-4ac5-bb4c-57c3314b8792",
+        "ed8ba081-2e13-44a2-95d5-9e297b32132c",
+        "a853f669-3710-49f7-82f1-11ef18db9001",
+        "eee13eca-61a7-4fef-b450-7b67e69b8226",
+        "885ab9ee-291a-482c-be2f-1b3ea544560f",
+        "5354959b-e2e4-4f92-bedb-37b519abd364",
+        "f2991aa3-2817-416f-a2b3-50ae03bc0a3b",
+        "d3b1085b-9270-4544-81ea-56817c34b1a1",
+        "0ea69850-7dce-4735-8ee6-091f58ac8e74",
+        "7ea07da5-e97d-4552-99d0-5c8efe9ee3ad",
+        "45dcfde1-19ca-4191-a868-ee6d81d8aeae",
+        "fc5784ea-a6e5-47fb-91a6-39f3366dc852",
+        "7f8418da-27c7-43ab-b365-7c3acbae17cf",
+        "80ecbaee-92ce-4e32-9286-85ea4864daaf",
+        "948a51ca-dbd8-4d41-babe-b0e0104de8cc",
+        "ee902296-494f-4151-8c22-04d66e3e0339",
+        "33c26520-ce7d-466f-a482-a3ed0ee6cbd6",
+        "7dbced7e-481e-45b8-bb80-ffe26e0d780b",
+        "04e67e4a-c433-44d2-8f51-3ff8668ff6a4",
+        "8d3f68f1-8dbf-4af4-8d09-c89ed4d6a64e",
+        "3ed5b733-fb78-482a-95d5-f29d21564333",
+        "9382a801-e3dd-41c4-84fe-1417783e1ab9",
+        "5efad549-474d-4fa6-876c-7fb70e7948e3"
+      ],
+      "settings": {
+        "title_enable": false,
+        "display_type": "selected",
+        "sort": "alphabetical",
+        "grid": "3"
+      }
+    },
+    "logo-list": {
+      "type": "logo-list",
+      "blocks": {
+        "logo1": {
+          "type": "logo_image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "logo2": {
+          "type": "logo_image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "logo3": {
+          "type": "logo_image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "logo4": {
+          "type": "logo_image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "logo5": {
+          "type": "logo_image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "logo6": {
+          "type": "logo_image",
+          "settings": {
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo1",
+        "logo2",
+        "logo3",
+        "logo4",
+        "logo5",
+        "logo6"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "Our brands",
+        "heading_size": "h2",
+        "logo_opacity": 76,
+        "divider": false
+      }
+    },
+    "df201027-e83b-4fc2-8da0-585cff8de7bc": {
+      "type": "featured-collections",
+      "blocks": {
+        "template--15926803562666__df201027-e83b-4fc2-8da0-585cff8de7bc-1666226842f6debbdf-0": {
+          "type": "collection",
+          "settings": {
+            "collection": "ambrosius-fairies",
+            "title": "Ambrosius Fairies",
+            "focal_point": "center center"
+          }
+        },
+        "template--15926803562666__df201027-e83b-4fc2-8da0-585cff8de7bc-1666226842f6debbdf-1": {
+          "type": "collection",
+          "settings": {
+            "collection": "atelier-des-peupliers",
+            "title": "Atelier des Peupliers",
+            "focal_point": "center center"
+          }
+        },
+        "template--15926803562666__df201027-e83b-4fc2-8da0-585cff8de7bc-1666226842f6debbdf-2": {
+          "type": "collection",
+          "settings": {
+            "collection": "baby-noise",
+            "title": "Babynoise",
+            "focal_point": "center center"
+          }
+        },
+        "template--15926803562666__df201027-e83b-4fc2-8da0-585cff8de7bc-1666226842f6debbdf-3": {
+          "type": "collection",
+          "settings": {
+            "collection": "bajo",
+            "title": "Bajo",
+            "focal_point": "center center"
+          }
+        },
+        "0cc63ae4-b6ee-4fee-b90b-637228ad4fa4": {
+          "type": "collection",
+          "settings": {
+            "collection": "bauspiel",
+            "title": "Bauspiel",
+            "focal_point": "center center"
+          }
+        },
+        "66f25d21-18d6-4a24-a98a-36e85101cbb1": {
+          "type": "collection",
+          "settings": {
+            "collection": "bumbu-toys",
+            "title": "Bumbu Toys",
+            "focal_point": "center center"
+          }
+        },
+        "3d9207d2-932b-404a-ac3d-6aba82f9c4c7": {
+          "type": "collection",
+          "settings": {
+            "collection": "cavallini-co",
+            "title": "Cavallini & Co",
+            "focal_point": "center center"
+          }
+        },
+        "16677750-6bc4-4862-9c15-1749e7e9dd1f": {
+          "type": "collection",
+          "settings": {
+            "collection": "connetix-tiles",
+            "title": "Connetix Tiles",
+            "focal_point": "center center"
+          }
+        },
+        "87014259-466c-4ebb-ae7e-f43385cca456": {
+          "type": "collection",
+          "settings": {
+            "collection": "dollbelge",
+            "title": "Dollbelge",
+            "focal_point": "center center"
+          }
+        },
+        "51d23193-96a2-4c1a-933d-736cde96e23f": {
+          "type": "collection",
+          "settings": {
+            "collection": "drewart",
+            "title": "Drewart",
+            "focal_point": "center center"
+          }
+        },
+        "77a9086c-1aab-4b7c-960a-df4557a70918": {
+          "type": "collection",
+          "settings": {
+            "collection": "fagus",
+            "title": "Fagus",
+            "focal_point": "center center"
+          }
+        },
+        "9e8c57c6-a96a-4aae-a6cb-f9dbd3931e89": {
+          "type": "collection",
+          "settings": {
+            "collection": "gnezdo-toys",
+            "title": "Gnezdo Toys",
+            "focal_point": "center center"
+          }
+        }
+      },
+      "block_order": [
+        "template--15926803562666__df201027-e83b-4fc2-8da0-585cff8de7bc-1666226842f6debbdf-0",
+        "template--15926803562666__df201027-e83b-4fc2-8da0-585cff8de7bc-1666226842f6debbdf-1",
+        "template--15926803562666__df201027-e83b-4fc2-8da0-585cff8de7bc-1666226842f6debbdf-2",
+        "template--15926803562666__df201027-e83b-4fc2-8da0-585cff8de7bc-1666226842f6debbdf-3",
+        "0cc63ae4-b6ee-4fee-b90b-637228ad4fa4",
+        "66f25d21-18d6-4a24-a98a-36e85101cbb1",
+        "3d9207d2-932b-404a-ac3d-6aba82f9c4c7",
+        "16677750-6bc4-4862-9c15-1749e7e9dd1f",
+        "87014259-466c-4ebb-ae7e-f43385cca456",
+        "51d23193-96a2-4c1a-933d-736cde96e23f",
+        "77a9086c-1aab-4b7c-960a-df4557a70918",
+        "9e8c57c6-a96a-4aae-a6cb-f9dbd3931e89"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "",
+        "heading_size": "h2",
+        "divider": false,
+        "per_row": 4
+      }
+    },
+    "85e157d6-2f7f-4e56-a496-a774a4270c64": {
+      "type": "featured-collections",
+      "blocks": {
+        "db1efe27-f4c3-438e-8aff-5ef38734c52d": {
+          "type": "collection",
+          "settings": {
+            "collection": "goki-and-heimess",
+            "title": "Goki and Heimess",
+            "focal_point": "center center"
+          }
+        },
+        "8f324829-0182-41e1-bdd5-554e7dd6bea1": {
+          "type": "collection",
+          "settings": {
+            "collection": "grapat",
+            "title": "Grapat",
+            "focal_point": "center center"
+          }
+        },
+        "344bf9ae-7072-49f7-a279-d1c12f3d6bbf": {
+          "type": "collection",
+          "settings": {
+            "collection": "holztiger",
+            "title": "Holztiger",
+            "focal_point": "center center"
+          }
+        },
+        "template--15926803562666__85e157d6-2f7f-4e56-a496-a774a4270c64-16662268998eb3f3ad-0": {
+          "type": "collection",
+          "settings": {
+            "collection": "kiko-gg-1",
+            "title": "kiko+ & gg*",
+            "focal_point": "center center"
+          }
+        },
+        "template--15926803562666__85e157d6-2f7f-4e56-a496-a774a4270c64-16662268998eb3f3ad-1": {
+          "type": "collection",
+          "settings": {
+            "collection": "land-of-dough",
+            "title": "Land of Dough",
+            "focal_point": "center center"
+          }
+        },
+        "template--15926803562666__85e157d6-2f7f-4e56-a496-a774a4270c64-16662268998eb3f3ad-2": {
+          "type": "collection",
+          "settings": {
+            "collection": "magic-wood",
+            "title": "Magic Wood (Decor Spielzeug) Wooden Toys",
+            "focal_point": "center center"
+          }
+        },
+        "template--15926803562666__85e157d6-2f7f-4e56-a496-a774a4270c64-16662268998eb3f3ad-3": {
+          "type": "collection",
+          "settings": {
+            "collection": "milton-goose",
+            "title": "Milton & Goose",
+            "focal_point": "center center"
+          }
+        },
+        "5f240bf5-1166-4417-a232-64f6ad23ff2b": {
+          "type": "collection",
+          "settings": {
+            "collection": "nanchen-natur",
+            "title": "Nanchen Natur",
+            "focal_point": "center center"
+          }
+        },
+        "8399cee0-a0cd-4351-8bad-69e3c90e5616": {
+          "type": "collection",
+          "settings": {
+            "collection": "olli-ella",
+            "title": "Olli Ella",
+            "focal_point": "center center"
+          }
+        },
+        "9fed25f1-21cf-4ff1-b254-7f164f7df61b": {
+          "type": "collection",
+          "settings": {
+            "collection": "oshkin-wooden-craft",
+            "title": "Oshkin Wooden Craft",
+            "focal_point": "center center"
+          }
+        },
+        "145f8a26-bddf-4d1a-ad60-b17d80f3e5bb": {
+          "type": "collection",
+          "settings": {
+            "collection": "montessori-art-puzzles",
+            "title": "Papaslon",
+            "focal_point": "center center"
+          }
+        },
+        "cf607827-b284-46ab-95db-745d82c70319": {
+          "type": "collection",
+          "settings": {
+            "collection": "pashom",
+            "title": "Pashom",
+            "focal_point": "center center"
+          }
+        }
+      },
+      "block_order": [
+        "db1efe27-f4c3-438e-8aff-5ef38734c52d",
+        "8f324829-0182-41e1-bdd5-554e7dd6bea1",
+        "344bf9ae-7072-49f7-a279-d1c12f3d6bbf",
+        "template--15926803562666__85e157d6-2f7f-4e56-a496-a774a4270c64-16662268998eb3f3ad-0",
+        "template--15926803562666__85e157d6-2f7f-4e56-a496-a774a4270c64-16662268998eb3f3ad-1",
+        "template--15926803562666__85e157d6-2f7f-4e56-a496-a774a4270c64-16662268998eb3f3ad-2",
+        "template--15926803562666__85e157d6-2f7f-4e56-a496-a774a4270c64-16662268998eb3f3ad-3",
+        "5f240bf5-1166-4417-a232-64f6ad23ff2b",
+        "8399cee0-a0cd-4351-8bad-69e3c90e5616",
+        "9fed25f1-21cf-4ff1-b254-7f164f7df61b",
+        "145f8a26-bddf-4d1a-ad60-b17d80f3e5bb",
+        "cf607827-b284-46ab-95db-745d82c70319"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "",
+        "heading_size": "h2",
+        "divider": false,
+        "per_row": 4
+      }
+    },
+    "004733a0-9f8b-460d-8da9-0151cccd594b": {
+      "type": "featured-collections",
+      "blocks": {
+        "72a0520e-0ac2-4c23-b7fb-71053a1fc057": {
+          "type": "collection",
+          "settings": {
+            "collection": "plan-toys",
+            "title": "Plan Toys",
+            "focal_point": "center center"
+          }
+        },
+        "83b288b4-3c6c-4ffb-ab19-a830a346eb98": {
+          "type": "collection",
+          "settings": {
+            "collection": "poems-for-buttercup",
+            "title": "Poems for Buttercup",
+            "focal_point": "center center"
+          }
+        },
+        "43cf669e-4118-4be7-9f01-85fa58fef2dd": {
+          "type": "collection",
+          "settings": {
+            "collection": "puzzle-michele-wilson",
+            "title": "Puzzle Michèle Wilson",
+            "focal_point": "center center"
+          }
+        },
+        "a4a41e08-c260-4e6e-9f47-ae83f8bafa6e": {
+          "type": "collection",
+          "settings": {
+            "collection": "q-toys",
+            "title": "Q Toys",
+            "focal_point": "center center"
+          }
+        },
+        "template--15926803562666__004733a0-9f8b-460d-8da9-0151cccd594b-16662268998eb3f3ad-3": {
+          "type": "collection",
+          "settings": {
+            "collection": "quelle-est-belle",
+            "title": "Quelle est Belle",
+            "focal_point": "center center"
+          }
+        },
+        "template--15926803562666__004733a0-9f8b-460d-8da9-0151cccd594b-16662268998eb3f3ad-2": {
+          "type": "collection",
+          "settings": {
+            "collection": "senger-naturwelt",
+            "title": "Senger Naturwelt",
+            "focal_point": "center center"
+          }
+        },
+        "template--15926803562666__004733a0-9f8b-460d-8da9-0151cccd594b-16662268998eb3f3ad-1": {
+          "type": "collection",
+          "settings": {
+            "collection": "tara-treasures",
+            "title": "Tara Treasures",
+            "focal_point": "center center"
+          }
+        },
+        "template--15926803562666__004733a0-9f8b-460d-8da9-0151cccd594b-16662268998eb3f3ad-0": {
+          "type": "collection",
+          "settings": {
+            "collection": "tiny-fox-hole",
+            "title": "Tiny Fox Hole",
+            "focal_point": "center center"
+          }
+        }
+      },
+      "block_order": [
+        "72a0520e-0ac2-4c23-b7fb-71053a1fc057",
+        "83b288b4-3c6c-4ffb-ab19-a830a346eb98",
+        "43cf669e-4118-4be7-9f01-85fa58fef2dd",
+        "a4a41e08-c260-4e6e-9f47-ae83f8bafa6e",
+        "template--15926803562666__004733a0-9f8b-460d-8da9-0151cccd594b-16662268998eb3f3ad-3",
+        "template--15926803562666__004733a0-9f8b-460d-8da9-0151cccd594b-16662268998eb3f3ad-2",
+        "template--15926803562666__004733a0-9f8b-460d-8da9-0151cccd594b-16662268998eb3f3ad-1",
+        "template--15926803562666__004733a0-9f8b-460d-8da9-0151cccd594b-16662268998eb3f3ad-0"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "",
+        "heading_size": "h2",
+        "divider": false,
+        "per_row": 4
+      }
+    }
+  },
+  "order": [
+    "main",
+    "logo-list",
+    "df201027-e83b-4fc2-8da0-585cff8de7bc",
+    "85e157d6-2f7f-4e56-a496-a774a4270c64",
+    "004733a0-9f8b-460d-8da9-0151cccd594b"
+  ]
+}

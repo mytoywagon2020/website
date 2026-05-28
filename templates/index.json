@@ -1,0 +1,605 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "mtw_hero": {
+      "type": "mtw-hero",
+      "settings": {
+        "eyebrow": "",
+        "title": "Toys meant <em>to be kept</em>, not outgrown.",
+        "body": "<p>A family-run shop in Los Angeles, California, online since 2020. We carry wooden toys, Waldorf dolls, and open-ended play sets, sourced from makers we know by name. Each piece is chosen to scale across a childhood, and to last for the sibling who comes after.</p>",
+        "cta1_text": "Find a gift under $50",
+        "cta1_link": "/collections/gifts-under-50",
+        "cta2_text": "Read our story",
+        "cta2_link": "/pages/our-story",
+        "footnote": "<p>Pre-order opening soon: Tiny Fox Hole Birthday Ring. Sign up to be notified.</p>",
+        "image": "shopify://shop_images/hero-amber-kaleidoscope.webp",
+        "image_alt": "A child looking through an amber kaleidoscope at home",
+        "show_feature_tag": true,
+        "feature_eyebrow": "Featured this week",
+        "feature_name": "Amber Kaleidoscope",
+        "feature_price": "$38",
+        "feature_link": "/products/amber-kaleidoscope"
+      }
+    },
+    "mtw_trust": {
+      "type": "mtw-trust-strip",
+      "blocks": {
+        "card_ship": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/trust-shipping-with-sign_1.png",
+            "badge": "",
+            "title": "Free U.S. shipping",
+            "subtitle": "On orders $150 and up, lower 48 only.",
+            "link": "shopify://pages/shipping"
+          }
+        },
+        "card_returns": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/trust-30day-returns.svg",
+            "badge": "",
+            "title": "30-day returns",
+            "subtitle": "If the toy isn't right, send it back, with our love.",
+            "link": "shopify://pages/returns"
+          }
+        },
+        "card_packed": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/trust-packed-with-care.svg",
+            "badge": "",
+            "title": "Packed with care",
+            "subtitle": "Carefully packed for the journey.",
+            "link": "shopify://pages/our-story"
+          }
+        },
+        "card_rewards": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/trust-earn-rewards.svg",
+            "badge": "",
+            "title": "Earn Rewards",
+            "subtitle": "Points on every order, redeem on the next.",
+            "link": "shopify://pages/rewards"
+          }
+        }
+      },
+      "block_order": [
+        "card_ship",
+        "card_returns",
+        "card_packed",
+        "card_rewards"
+      ],
+      "settings": {}
+    },
+    "mtw_rail_new": {
+      "type": "mtw-product-rail",
+      "settings": {
+        "eyebrow": "01 / Shop new items",
+        "heading": "New and quietly loved.",
+        "lead": "A few from the shop this week, including pieces from our range of felt florals.",
+        "collection": "new-arrivals",
+        "preorder_collection": "pre-order",
+        "products_to_show": 4,
+        "view_all_text": "See more new arrivals",
+        "view_all_link": "/collections/new-arrivals",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "mtw_rail_best": {
+      "type": "mtw-product-rail",
+      "settings": {
+        "eyebrow": "02 / Bestsellers",
+        "heading": "What keeps coming home.",
+        "lead": "Four pieces we restock more often than the rest. Tested by your neighbors, kept on every shelf.",
+        "collection": "bestsellers",
+        "preorder_collection": "pre-order",
+        "products_to_show": 4,
+        "view_all_text": "See all Bestsellers",
+        "view_all_link": "",
+        "padding_top": 24,
+        "padding_bottom": 80
+      }
+    },
+    "mtw_rail_gifts": {
+      "type": "mtw-product-rail",
+      "settings": {
+        "eyebrow": "03 / Gifts under $50",
+        "heading": "Small, but kept for years.",
+        "lead": "For aunts, grandparents, and last-minute baskets. Each one heirloom enough to outlast the season.",
+        "collection": "gifts-under-50",
+        "preorder_collection": "pre-order",
+        "products_to_show": 4,
+        "view_all_text": "See all gifts under $50",
+        "view_all_link": "",
+        "padding_top": 24,
+        "padding_bottom": 80
+      }
+    },
+    "mtw_rail_heirloom": {
+      "type": "mtw-product-rail",
+      "settings": {
+        "eyebrow": "04 / Heirloom favorites",
+        "heading": "For the next sibling, and the next.",
+        "lead": "The pieces parents tell us they'll keep. Hand-stitched, hand-carved, and built to be passed down.",
+        "collection": "customer-favorites",
+        "preorder_collection": "pre-order",
+        "products_to_show": 4,
+        "view_all_text": "See all heirloom toys",
+        "view_all_link": "",
+        "padding_top": 24,
+        "padding_bottom": 80
+      }
+    },
+    "mtw_age": {
+      "type": "mtw-age",
+      "blocks": {
+        "a1": {
+          "type": "age",
+          "settings": {
+            "image": "shopify://shop_images/age-first-year-haba-fish-rattle.webp",
+            "name": "First year",
+            "range": "0 to 12 months",
+            "link": "shopify://collections/0-12-months"
+          }
+        },
+        "a2": {
+          "type": "age",
+          "settings": {
+            "image": "shopify://shop_images/age-toddler-sabo-alphabet-blocks.webp",
+            "name": "Toddler",
+            "range": "1 to 3 years",
+            "link": "shopify://collections/age-1-3-years"
+          }
+        },
+        "a3": {
+          "type": "age",
+          "settings": {
+            "image": "shopify://shop_images/age-preschool-sisters-building-blocks.webp",
+            "name": "Preschool",
+            "range": "3 to 5 years",
+            "link": "shopify://collections/age-3-5-years"
+          }
+        },
+        "a4": {
+          "type": "age",
+          "settings": {
+            "image": "shopify://shop_images/age-early-school-fagus-firetruck.webp",
+            "name": "Early school",
+            "range": "5 to 8 years",
+            "link": "shopify://collections/age-5-8-years"
+          }
+        },
+        "a5": {
+          "type": "age",
+          "settings": {
+            "image": "shopify://shop_images/age-school-girls-huckleberry-magnifier.webp",
+            "name": "School age",
+            "range": "8 years and up",
+            "link": "shopify://collections/8-years"
+          }
+        }
+      },
+      "block_order": [
+        "a1",
+        "a2",
+        "a3",
+        "a4",
+        "a5"
+      ],
+      "settings": {
+        "eyebrow": "05 / Shop by age",
+        "heading": "The right toy, by the year.",
+        "lead": "Most parents shop by age. We sort by the developmental window each toy actually opens, so the gift lands in the right season."
+      }
+    },
+    "mtw_category": {
+      "type": "mtw-category",
+      "blocks": {
+        "c1": {
+          "type": "cat",
+          "settings": {
+            "collection": "sensory-discovery",
+            "title": "Sensory & discovery",
+            "caption": "Loose parts, sorting trays, felt",
+            "link": "/collections/sensory-discovery"
+          }
+        },
+        "c2": {
+          "type": "cat",
+          "settings": {
+            "collection": "wooden-animals",
+            "title": "Wooden animals",
+            "caption": "Bumbu, hand-carved in Romania",
+            "link": "/collections/wooden-animals"
+          }
+        },
+        "c3": {
+          "type": "cat",
+          "settings": {
+            "collection": "kitchen-play",
+            "title": "Kitchen play",
+            "caption": "Felt food, wooden produce",
+            "link": "/collections/kitchen-play"
+          }
+        },
+        "c4": {
+          "type": "cat",
+          "settings": {
+            "collection": "felt-play-mats-and-playscapes",
+            "title": "Felt mats & playscapes",
+            "caption": "Gus + Mabel, Papoose, Tara Treasures",
+            "link": "/collections/felt-play-mats-and-playscapes"
+          }
+        },
+        "c5": {
+          "type": "cat",
+          "settings": {
+            "collection": "ride-on-toys-and-accessories",
+            "title": "Ride-ons",
+            "caption": "Baghera, Plan Toys",
+            "link": "/collections/ride-on-toys-and-accessories"
+          }
+        },
+        "c6": {
+          "type": "cat",
+          "settings": {
+            "collection": "woodland-homes-and-fairy-houses",
+            "title": "Woodland homes & fairy houses",
+            "caption": "Felt, wool, hand-stitched",
+            "link": "/collections/woodland-homes-and-fairy-houses"
+          }
+        },
+        "c7": {
+          "type": "cat",
+          "settings": {
+            "collection": "nature-play",
+            "title": "Nature play",
+            "caption": "Botanicals, stones, wood",
+            "link": "/collections/natural-baby-toys"
+          }
+        },
+        "c8": {
+          "type": "cat",
+          "settings": {
+            "collection": "nursery-and-playroom",
+            "title": "Nursery & playroom",
+            "caption": "Cribside, first toys",
+            "link": "/collections/nursery-and-playroom"
+          }
+        },
+        "c9": {
+          "type": "cat",
+          "settings": {
+            "collection": "build-and-construct",
+            "title": "Build & construct",
+            "caption": "Bauspiel, blocks, marble runs",
+            "link": "shopify://collections/build-and-construct"
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6",
+        "c7",
+        "c8",
+        "c9"
+      ],
+      "settings": {
+        "eyebrow": "06 / Shop by category",
+        "heading": "The shelves, sorted by hand.",
+        "lead": "Nine collections, curated against a single criterion: a toy is worth keeping if it scales across childhood and across a sibling."
+      }
+    },
+    "mtw_brands": {
+      "type": "mtw-brands",
+      "blocks": {
+        "b1": {
+          "type": "brand",
+          "settings": {
+            "collection": "bauspiel",
+            "label": "Bauspiel",
+            "image": "shopify://shop_images/pg46_cell02_papoose-sushi-bento-box.jpg",
+            "link": "/collections/bauspiel"
+          }
+        },
+        "b2": {
+          "type": "brand",
+          "settings": {
+            "collection": "bumbu-toys",
+            "label": "Bumbu Toys",
+            "image": "shopify://shop_images/BumbuToys_Wooden_House_-_Acorn.png",
+            "link": "/collections/bumbu-toys"
+          }
+        },
+        "b3": {
+          "type": "brand",
+          "settings": {
+            "collection": "drewart",
+            "label": "Drewart",
+            "image": "shopify://shop_images/brand-drewart-kitchen-cupboard.webp",
+            "link": "/collections/drewart"
+          }
+        },
+        "b4": {
+          "type": "brand",
+          "settings": {
+            "collection": "fairyshadow",
+            "label": "Fairyshadow",
+            "image": "shopify://shop_images/brand-tile-fairyshadow.webp",
+            "link": "/collections/fairyshadow"
+          }
+        },
+        "b5": {
+          "type": "brand",
+          "settings": {
+            "collection": "gus-mabel",
+            "label": "Gus + Mabel",
+            "image": "shopify://shop_images/brand-gus-mabel-fairy-scene.webp",
+            "link": "/collections/gus-mabel"
+          }
+        },
+        "b6": {
+          "type": "brand",
+          "settings": {
+            "collection": "papoose-toys",
+            "label": "Papoose",
+            "image": "shopify://shop_images/brand-tile-papoose-forest-caves.png",
+            "link": "/collections/papoose-toys"
+          }
+        },
+        "b7": {
+          "type": "brand",
+          "settings": {
+            "collection": "tara-treasures",
+            "label": "Tara Treasures",
+            "image": "shopify://shop_images/brand-tara-treasures-felt-lollipops.png",
+            "link": "/collections/tara-treasures"
+          }
+        },
+        "b8": {
+          "type": "brand",
+          "settings": {
+            "collection": "tender-leaf",
+            "label": "Tender Leaf Toys",
+            "link": "/collections/tender-leaf"
+          }
+        },
+        "b9": {
+          "type": "brand",
+          "settings": {
+            "collection": "wild-mountain-child",
+            "label": "Wild Mountain Child",
+            "image": "shopify://shop_images/brand-tile-wild-mountain-child-cup.jpg",
+            "link": "/collections/wild-mountain-child"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6",
+        "b7",
+        "b8",
+        "b9"
+      ],
+      "settings": {
+        "eyebrow": "07 / Favorite brands",
+        "heading": "The makers <em>we keep coming back to</em>.",
+        "lead": "Heirloom workshops from Europe, family studios from Australia and the U.S., and small makers we found ourselves. Every brand vetted for safety, materials, and a finish that survives a sibling.",
+        "button_text": "Browse all brands",
+        "button_link": "/collections"
+      }
+    },
+    "mtw_maker": {
+      "type": "mtw-maker-spotlight",
+      "blocks": {
+        "s1": {
+          "type": "stat",
+          "settings": {
+            "num": "Non-toxic",
+            "label": "Hand-painted stains"
+          }
+        },
+        "s2": {
+          "type": "stat",
+          "settings": {
+            "num": "FSC-certified",
+            "label": "European forests"
+          }
+        },
+        "s3": {
+          "type": "stat",
+          "settings": {
+            "num": "Maple",
+            "label": "+ basswood, beech, oak"
+          }
+        },
+        "s4": {
+          "type": "stat",
+          "settings": {
+            "num": "Beeswax",
+            "label": "+ organic oil finish"
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ],
+      "settings": {
+        "label": "Featured brand",
+        "heading": "Hand-carved in Romania, by the makers at <em>Bumbu Toys</em>.",
+        "body": "<p>Each piece in the Bumbu line is shaped from maple and basswood, with beech and oak for heavier landscape elements. All timber is FSC-certified, harvested from responsibly managed European forests.</p><p>Pieces are hand-painted in small batches with water-based, non-toxic stains, then finished with organic oils and beeswax. Safe for the toddler who mouths the horse, durable for the older sibling who builds it into a story.</p>",
+        "quote": "Hand-carved wood, painted in small batches. A line that scales across childhood, and back onto the shelf each season.",
+        "cta_text": "Shop Bumbu Toys",
+        "cta_link": "/collections/bumbu-toys",
+        "video": "shopify://files/videos/video-bumbu-workshop-romania_fd611223-8999-438d-a22b-d9df0374ec6c.mp4",
+        "video_url": ""
+      }
+    },
+    "mtw_story": {
+      "type": "mtw-story",
+      "settings": {
+        "label": "Our Story",
+        "title": "A small toy shop, with a <em>big heart</em>.",
+        "lead": "<p>My Toy Wagon began with a simple inspiration: our two daughters, Hafsa and Noor. They are the heartbeat of the shop, the reminders that childhood is fleeting, and that the toys we choose for it matter.</p>",
+        "body": "<p>We carefully curate wooden and felt toys that hold up to real play, that scale across ages, and that pass quietly to a younger sibling. Most orders are packed and shipped by hand from our shop in Los Angeles.</p>",
+        "signature": "Irfana & Rashid",
+        "role": "Founders, My Toy Wagon",
+        "button_text": "Read our full story",
+        "button_link": "/pages/our-story"
+      }
+    },
+    "mtw_gift": {
+      "type": "mtw-gift",
+      "blocks": {
+        "g1": {
+          "type": "tag",
+          "settings": {
+            "label": "Gifts under $30",
+            "link": "/collections/gifts-under-30"
+          }
+        },
+        "g2": {
+          "type": "tag",
+          "settings": {
+            "label": "Gifts under $75",
+            "link": "/collections/gifts-under-75"
+          }
+        },
+        "g3": {
+          "type": "tag",
+          "settings": {
+            "label": "For new babies",
+            "link": "/collections/0-12-months"
+          }
+        },
+        "g4": {
+          "type": "tag",
+          "settings": {
+            "label": "For grandparents",
+            "link": "/collections/customer-favorites"
+          }
+        },
+        "g5": {
+          "type": "tag",
+          "settings": {
+            "label": "Last-minute gifts",
+            "link": "/collections/gifts-under-50"
+          }
+        }
+      },
+      "block_order": [
+        "g1",
+        "g2",
+        "g3",
+        "g4",
+        "g5"
+      ],
+      "settings": {
+        "label": "Gifts that arrive ready",
+        "title": "Chosen, written, and on its way <em>in seconds</em>.",
+        "text": "<p>Tell us at checkout it's a gift and we'll leave the price off the packing slip. For gifts you need now, our digital gift cards include a personal note from you, delivered to their inbox in seconds.</p>",
+        "button_text": "Send a digital gift card",
+        "button_link": "/products/my-toy-wagon-e-gift-card",
+        "image": "shopify://shop_images/MTWE-GiftCard.png",
+        "note": "Delivered by email, redeemable any time."
+      }
+    },
+    "mtw_blog": {
+      "type": "mtw-blog",
+      "blocks": {
+        "e2": {
+          "type": "entry",
+          "settings": {
+            "image": "shopify://shop_images/product-gus-mabel-busy-bee-tray_96f25077-68cd-4267-b780-cbe8323af4f1.webp",
+            "category": "Field note (Coming Soon)",
+            "title": "What's arrived: a quiet introduction to Gus + Mabel.",
+            "date": "May 14, 2026",
+            "read_time": "4 min read",
+            "link": "shopify://pages/gus-mabel"
+          }
+        },
+        "e3": {
+          "type": "entry",
+          "settings": {
+            "image": "shopify://shop_images/product-drewart-wooden-camper-van-natural_dd5a33c8-7186-4995-b111-ad1c936471eb.png",
+            "category": "Care & storage (Coming Soon)",
+            "title": "How to clean a wooden toy without ruining the finish.",
+            "date": "Coming May 21",
+            "read_time": "4 min read",
+            "link": ""
+          }
+        },
+        "e1": {
+          "type": "entry",
+          "settings": {
+            "image": "shopify://shop_images/blog-hero-bumbu-enchanted-treehouse_aaafe241-3772-428f-9472-1dd503d045e9.jpg",
+            "category": "From the maker",
+            "title": "Inside the Bumbu workshop: maple, hand-painted, finished with beeswax.",
+            "date": "Coming May 28",
+            "read_time": "6 min read",
+            "link": "shopify://blogs/news/make-your-own-magical-fairy-door"
+          }
+        }
+      },
+      "block_order": [
+        "e2",
+        "e3",
+        "e1"
+      ],
+      "settings": {
+        "eyebrow": "08 / The blog",
+        "heading": "Reading, slowly.",
+        "lead": "A new post every other Thursday. Care guides, maker stories, and notes from the shop."
+      }
+    },
+    "mtw_letter": {
+      "type": "mtw-newsletter",
+      "settings": {
+        "label": "Letters from My Toy Wagon",
+        "title": "Curated <em>collections</em>, in your inbox.",
+        "text": "Regular edits from the shop: fresh restocks, new arrivals, seasonal collections, and the pieces caregivers can't stop reordering. A short, beautiful letter.",
+        "placeholder": "your@email.com",
+        "button_text": "Subscribe",
+        "note": "Curated by hand. Unsubscribe in one click, any time."
+      }
+    }
+  },
+  "order": [
+    "mtw_hero",
+    "mtw_trust",
+    "mtw_rail_new",
+    "mtw_rail_best",
+    "mtw_rail_gifts",
+    "mtw_rail_heirloom",
+    "mtw_age",
+    "mtw_category",
+    "mtw_brands",
+    "mtw_maker",
+    "mtw_story",
+    "mtw_gift",
+    "mtw_blog",
+    "mtw_letter"
+  ]
+}

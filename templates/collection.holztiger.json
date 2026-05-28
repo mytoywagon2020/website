@@ -1,0 +1,143 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "holztiger_hero": {
+      "type": "background-image-text",
+      "settings": {
+        "subtitle": "HAND-PAINTED WOODEN ANIMALS FROM EUROPE",
+        "title": "Holztiger",
+        "text": "<p>Holztiger figures have been handmade from solid maple wood in Europe for decades, hand-painted with water-based paints and finished with carefully rounded edges. The brand is owned by Germany's Gollnest & Kiesel (Goki), the family-owned toy maker founded in 1981 by Gerhard Gollnest and Fritz-Rüdiger Kiesel. Holztiger figures have received Germany's 'spiel gut' seal of approval more than 200 times.</p>",
+        "button_label": "",
+        "button_link": "",
+        "image": "",
+        "layout": "left",
+        "height": 750,
+        "framed": false,
+        "parallax": true,
+        "parallax_direction": "top"
+      }
+    },
+    "main-collection": {
+      "type": "main-collection",
+      "blocks": {
+        "product_grid": {
+          "type": "product_grid",
+          "settings": {
+            "enable_collection_count": true,
+            "per_row": 3,
+            "rows_per_page": 20,
+            "mobile_flush_grid": true
+          }
+        }
+      },
+      "block_order": [
+        "product_grid"
+      ],
+      "settings": {
+        "enable_sidebar": false,
+        "collapsed": false,
+        "filter_style": "sidebar",
+        "enable_color_swatches": false,
+        "enable_sort": true
+      }
+    },
+    "holztiger_reviews": {
+      "type": "apps",
+      "blocks": {
+        "jdg_carousel": {
+          "type": "shopify://apps/judge-me-reviews/blocks/featured_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "jdg_carousel"
+      ],
+      "settings": {
+        "full_width": false,
+        "space_around": true
+      }
+    },
+    "holztiger_content": {
+      "type": "rich-text",
+      "blocks": {
+        "h1": {
+          "type": "heading",
+          "settings": {
+            "title": "Hand-Painted Wooden Animals from Europe"
+          }
+        },
+        "t1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Holztiger animals are individually handcrafted from solid maple wood, with edges carefully rounded for safe play. Each figure is hand-painted in Europe with water-based, non-toxic paints. The range spans farm animals, wild animals, dinosaurs, knights, fairy-tale figures, and Noah's Ark sets, all sized for little hands and weighted to feel substantial.</p>"
+          }
+        },
+        "h2": {
+          "type": "heading",
+          "settings": {
+            "title": "Quality Recognized by German Toy Juries"
+          }
+        },
+        "t2": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Holztiger figures have received the 'spiel gut' seal of approval more than 200 times. This independent German toy evaluation, funded by the Ministry of Family Affairs, recognizes toys that support children's play and development. Holztiger has also won multiple Golden Rocking Horse awards from the German family magazine 'familie&co' and the German Association of the Toy Industry.</p>"
+          }
+        },
+        "h3": {
+          "type": "heading",
+          "settings": {
+            "title": "Why Families Choose My Toy Wagon for Holztiger"
+          }
+        },
+        "t3": {
+          "type": "text",
+          "settings": {
+            "text": "<p>We curate Holztiger because their European-made wooden figures pair quality craftsmanship with a parent company committed to reforestation and sustainability: Goki has planted over 460,000 trees since 2004 to support Germany's forests. Every Holztiger order ships from our Los Angeles warehouse, with free shipping on orders $150 and over within the contiguous US. Returns are simple, and customer questions go to a real person on our team.</p>"
+          }
+        },
+        "h4": {
+          "type": "heading",
+          "settings": {
+            "title": "Holztiger Bestsellers"
+          }
+        },
+        "t4": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Browse the collection above for farm animals, wild animals, dinosaurs, fairy-tale figures, knights, and Noah's Ark sets. Holztiger pairs beautifully with Bumbu Toys, wooden block sets, and other natural-materials play.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "h1",
+        "t1",
+        "h2",
+        "t2",
+        "h3",
+        "t3",
+        "h4",
+        "t4"
+      ],
+      "settings": {
+        "align_text": "left",
+        "narrow_column": true,
+        "divider": false
+      }
+    }
+  },
+  "order": [
+    "holztiger_hero",
+    "main-collection",
+    "holztiger_reviews",
+    "holztiger_content"
+  ]
+}
