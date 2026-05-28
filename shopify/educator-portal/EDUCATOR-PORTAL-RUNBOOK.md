@@ -91,7 +91,7 @@ The only part that needs dev/token is auto-creating the Company. Skip it. Everyt
 Precise model (don't conflate these):
 - **`educator-approved` tag** → opens the **gated catalog** (login + browse). One click, manual.
 - **Educator pricing** → confirmed on the **quote** (your volume-based pricing), **not** a live storefront discount. The tag gets them *in*; you price the quote.
-- **B2B Company** → carries **PO / Net-30 terms** + native self-serve quoting. In the easy path this is **manual, as-needed** — created only when a school is actually ready to order on terms (their details are already on the customer profile from Helium → quick copy-paste). Auto-creating it (Flow) is the **deferred automation**.
+- **B2B Company** → carries **PO / Net-30 or Net-60 terms** + native self-serve quoting. In the easy path this is **manual, as-needed** — created only when a school is actually ready to order on terms (their details are already on the customer profile from Helium → quick copy-paste). Auto-creating it (Flow) is the **deferred automation**.
 
 **So: the Company is NOT automated in the easy path — manual, on an as-needed basis.** The Flow that auto-creates a pending Company on every application is the piece that's deferred.
 
@@ -112,7 +112,7 @@ Frictionless apply; **documents collected at verification, not on the form** (th
 
 **Approval/verification email (template):**
 > Subject: Your My Toy Wagon educator application — one quick step
-> Hi [name], thanks for applying! You're approved for **[organization]** — educator pricing and **Net-30 on purchase orders** are on. If you'd like **tax-exempt checkout**, reply with your **sales-tax exemption / resale certificate** and we'll add it (required by law to skip sales tax). Otherwise you're all set.
+> Hi [name], thanks for applying! You're approved for **[organization]** — educator pricing and **Net-30 or Net-60 on purchase orders** are on. If you'd like **tax-exempt checkout**, reply with your **sales-tax exemption / resale certificate** and we'll add it (required by law to skip sales tax; it applies automatically while you're logged into your educator account). Otherwise you're all set.
 
 ### How we verify (lightest → strongest; doc optional)
 - **Institutional email domain** (`.edu`, `.gov`, `.k12.*`, school/district domain) — strongest low-friction signal; OK to fast-track.
@@ -122,6 +122,23 @@ Frictionless apply; **documents collected at verification, not on the form** (th
 - **Optional document** — tax-exempt/resale cert, school ID, or PO on letterhead. **Required only to enable tax-exempt checkout** (legal: a valid exemption certificate must be on file to not charge sales tax). Account + pricing + Net-30 do NOT require it.
 - **Behavioral guardrail** — first order prepaid/small; extend Net-30 after a clean payment.
 - **Tiered rule:** auto-trust institutional-domain emails → light public lookup for personal emails → require the cert only for tax-exempt checkout.
+
+## Procurement workflow (customer-facing) — tax exemption + PO / Net terms
+Two independent mechanisms on the customer record. **The `educator-approved` tag does NOT make anyone tax-exempt, and vice-versa** — set each on its own.
+
+**Tax exemption (native, manual, login-dependent):**
+1. Educator emails their **state sales-tax exemption / resale certificate** to educators@mytoywagon.com.
+2. Staff verify it, then in **Admin → Customers → [customer] → Tax exemptions / "Collect tax"** turn off tax collection (or select specific state exemptions). This flips the native `taxExempt` flag — **no app, all plans.**
+3. From then on, sales tax is **$0 at checkout — but only while the educator is logged into their approved account.** If they check out with a generic school email *without* logging in, Shopify will calculate tax by address. Make this dependency explicit in all customer-facing copy.
+4. The dashboard "Tax-exempt on file" line is **display copy only** — the real exemption is the native flag. Do not promise auto-exemption before the cert is verified and the flag is set.
+
+**PO / Net terms (draft-order invoice — bypasses the locked Grow checkout):**
+1. Wagon loaded → educator clicks **Request a quote / pay by PO** → `/pages/new-quote` (emails the team).
+2. Staff reply within 1 business day with an itemized **draft-order quote** (pricing held **45 days** — match the portal/PDP; do not write 30).
+3. Educator emails the PO referencing the quote (the dashboard "Email your PO" mailto pre-fills it) — **send to educators@mytoywagon.com or reply to the digital quote/invoice thread.** Do not route POs to a separate accounting inbox; the buyer replies to the team they've been talking to.
+4. Staff send the draft order as a **Net-30 or Net-60 invoice** (terms set on the B2B Company / draft order), fulfil in Shopify, tag `invoice-sent` then `po-paid-external` when funds clear (Red Flag #1). **No card required; no Grow checkout restriction hit.**
+
+**Terms:** we offer **Net-30 or Net-60** to approved institutions (set on the Company record). Quote validity is **45 days**.
 
 ## Auto-populate Companies + one-click approve — Flow wiring spec
 **Goal:** applicant data auto-creates a **pending Company**; staff review + approve with one tag. **No app, no code — built in admin (Flow). Needs Shopify Plus.** (Claude cannot build Flows / mint the token / create metafield defs — these are admin steps.)
@@ -193,7 +210,7 @@ Frictionless apply; **documents collected at verification, not on the form** (th
 1. Copy the retail listing's **full description + all images**.
 2. **Clean** it: delete shipping/stock/dropship lines ("ships from our partner warehouse", "two shipping options", "limited quantity in stock", "pre-order for [holiday]"); drop the maker brand from the body **unless it's marquee** (Connetix, Bauspiel, Grimm's, Holztiger, Tara Treasures).
 3. **Fill catalog gaps from the vendor's official website** — when the retail listing is missing specs (dimensions, materials, certifications, set contents, age range, country of origin), cross-reference the maker's site before writing copy. Primary vendors to check: **Wooden Story, Mindful & Co (mindfulandcokids.com), Tender Leaf (tenderleaftoys.com), ButtonandBug, Gus + Mabel, Wonderheart, Bumbu (bumbutoys.com), Connetix (connetixtiles.com), Bauspiel, Tara Treasures**. Use WebFetch with a targeted prompt ("extract dimensions, materials, certifications, age range, set contents"). Never invent specs.
-4. Append the **educator note**: *"Made to order for classroom use — always available to order on your school schedule. Net-30 and tax-exempt purchasing available for approved educators."*
+4. Append the **educator note**: *"Made to order for classroom use — always available to order on your school schedule. Net-30/Net-60 and tax-exempt purchasing available for approved educators."*
 
 **The 5 markers — apply to EVERY educator listing:**
 | Field | Value |
