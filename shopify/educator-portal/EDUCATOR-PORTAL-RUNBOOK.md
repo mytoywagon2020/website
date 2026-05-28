@@ -304,3 +304,42 @@ These cannot be automated by Claude or any AI agent; the underlying APIs don't e
 4. **Klaviyo: delete old template `QUtJd5`.** Done by owner 2026-05-26. Use `XLJeUa` going forward.
 
 5. **Educator login page (optional polish).** `/pages/educator-login` is published with `educator-portal` templateSuffix (the gate). To replace with a fully branded sign-in form wrapping `{% form 'customer_login' %}`, build `templates/page.educator-login.liquid` and re-point the page's templateSuffix to `educator-login`. Low priority — native `/account/login` works today.
+
+---
+
+## Sole-Source Provider Certification — draft letter (employee template)
+
+Use when a district's purchasing office or board requires a sole-source / non-competitive justification letter to process a PO. Put it on My Toy Wagon letterhead, update the date and recipient, sign as the founders, and send as a PDF. Keep claims accurate — only list configurations that are genuinely exclusive to our catalog. Draft added 2026-05-28; review with current product lineup before sending.
+
+```
+[MY TOY WAGON LETTERHEAD]
+My Toy Wagon
+Los Angeles, California
+educators@mytoywagon.com | (626) 841-0421
+
+Date: May 28, 2026
+
+To: Purchasing Department / Board of Education Procurement Officer
+Subject: Sole-Source Provider Certification
+
+This letter serves as official notification and certification that My Toy Wagon is the exclusive institutional provider and sole-source vendor for the specific curated educational configurations, brand assortments, and custom therapeutic materials listed below.
+
+These proprietary products are designed, manufactured, or packaged exclusively for our catalog and cannot be procured through any other commercial educational distributor, wholesaler, or mass-market retailer:
+
+1. Button & Bug Hardwood Sensory Trays: Handcrafted in the United States from furniture-grade hard maple, featuring proprietary pediatric occupational therapist-designed layouts engineered specifically for early childhood fine-motor benchmarks and IKEA Flisat table compatibility.
+
+2. Análú Aromatherapy Therapy Dough Bundles: Small-batch, hand-blended sensory putty utilizing specific plant-based vegetable pigments, organic essential oil profiles, and eco-friendly wheat-straw bioplastic storage tins structured specifically for institutional emotional regulation and calm-corner setups.
+
+3. My Toy Wagon Curated Institutional Play Sets: Specialized, multi-brand developmental configurations aggregating premium European heirloom woodcraft (including Wooden Story and Bumbu Toys) and fine-motor tactile mediums into unified, single-SKU classroom kits.
+
+Because of the specialized manufacturing processes, exclusive artisan partnerships, and strict non-toxic therapeutic standards required to produce these items, no corporate equivalent or substitute exists that meets these identical specifications.
+
+True competitive bidding is precluded due to the proprietary nature of these configurations. All purchasing, invoicing, warranty support, and component replacement operations must be conducted directly through My Toy Wagon.
+
+Please contact our procurement office if your business bureau requires additional documentation to process this non-competitive allocation.
+
+Sincerely,
+
+Rashid and Irfana
+Founders, My Toy Wagon
+```
