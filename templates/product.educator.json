@@ -59,6 +59,12 @@
             "is_tab": false
           }
         },
+        "structured_specs": {
+          "type": "custom",
+          "settings": {
+            "code": "{%- assign mp = product.metafields.custom -%}{%- if mp.material_spec != blank or mp.learning_connections != blank or mp.extend_play_products != blank -%}<div class='mpm'>{%- if mp.material_spec != blank or mp.table_compatibility != blank or mp.classroom_use != blank or mp.target_age != blank or mp.origin != blank -%}<div class='mpm-grid'>{%- if mp.material_spec != blank -%}<div class='mpm-cell'><span class='mpm-lbl'>Material</span><span class='mpm-val'>{{ mp.material_spec.value }}</span></div>{%- endif -%}{%- if mp.table_compatibility != blank -%}<div class='mpm-cell'><span class='mpm-lbl'>Fit</span><span class='mpm-val'>{{ mp.table_compatibility.value }}</span></div>{%- endif -%}{%- if mp.classroom_use != blank -%}<div class='mpm-cell'><span class='mpm-lbl'>Use</span><span class='mpm-val'>{{ mp.classroom_use.value }}</span></div>{%- endif -%}{%- if mp.target_age != blank -%}<div class='mpm-cell'><span class='mpm-lbl'>Ages</span><span class='mpm-val'>{{ mp.target_age.value }}</span></div>{%- endif -%}{%- if mp.origin != blank -%}<div class='mpm-cell'><span class='mpm-lbl'>Origin</span><span class='mpm-val'>{{ mp.origin.value }}</span></div>{%- endif -%}</div>{%- endif -%}{%- if mp.learning_connections != blank -%}<div class='mpm-tags'><span class='mpm-lbl'>Learning connections</span><div class='mpm-pills'>{%- for t in mp.learning_connections.value -%}<span class='mpm-pill'>{{ t }}</span>{%- endfor -%}</div></div>{%- endif -%}{%- if mp.extend_play_products != blank -%}<div class='mpm-extend'><span class='mpm-lbl'>Extend the play</span><div class='mpm-cards'>{%- for rp in mp.extend_play_products.value -%}<a class='mpm-card' href='{{ rp.url }}'>{%- if rp.featured_image -%}<img src='{{ rp.featured_image | image_url: width: 240 }}' alt='{{ rp.title | escape }}'>{%- endif -%}<span class='mpm-ct'>{{ rp.title }}</span><span class='mpm-cp'>{{ rp.price | money }}</span></a>{%- endfor -%}</div></div>{%- endif -%}</div><style>.mpm{font-family:Mulish,sans-serif;margin:16px 0;}.mpm-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 28px;padding:18px 0;border-top:1px solid rgba(159,79,97,.22);border-bottom:1px solid rgba(159,79,97,.22);}.mpm-cell{display:flex;flex-direction:column;gap:3px;}.mpm-lbl{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#9a8f86;}.mpm-val{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;color:#2C2C2A;line-height:1.4;}.mpm-tags{padding:16px 0;}.mpm-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}.mpm-pill{font-size:11.5px;padding:6px 13px;border-radius:999px;background:#EFEADD;color:#3B4A2F;}.mpm-extend{padding:16px 0;border-top:1px solid rgba(159,79,97,.22);}.mpm-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:14px;margin-top:12px;}.mpm-card{display:flex;flex-direction:column;gap:6px;text-decoration:none;color:#2C2C2A;}.mpm-card img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:2px;}.mpm-ct{font-size:12.5px;line-height:1.3;}.mpm-cp{font-size:12px;color:#5F5E5A;}</style>{%- endif -%}"
+          }
+        },
         "separator": {
           "type": "separator",
           "settings": {}
@@ -77,6 +83,7 @@
         "request_quote_cta",
         "procurement_trust",
         "description",
+        "structured_specs",
         "separator",
         "educator_policies"
       ],
