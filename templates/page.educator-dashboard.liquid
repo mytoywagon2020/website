@@ -114,6 +114,12 @@
     .wagon-card__meta--strong{color:rgba(245,240,229,.78);margin-bottom:6px;}
     .wagon-card__cta{display:inline-block;background:var(--cream);color:var(--ink);padding:10px 16px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border-radius:2px;border:0;cursor:pointer;font-family:inherit;transition:background 160ms ease;}
     .wagon-card__cta:hover{background:var(--warm-white);}
+    .wagon-card__actions{display:flex;flex-direction:column;gap:8px;margin-bottom:10px;}
+    .wagon-card__cta--solid{background:var(--cream);color:var(--ink);text-align:center;}
+    .wagon-card__cta--solid:hover{background:var(--warm-white);}
+    .wagon-card__cta--ghost{background:transparent;color:var(--cream);border:1px solid rgba(245,240,229,.45);text-align:center;}
+    .wagon-card__cta--ghost:hover{background:rgba(245,240,229,.12);}
+    .wagon-card__hint{font-size:11px;line-height:1.5;color:rgba(245,240,229,.7);margin:0;}
     .wagon-card__progress{display:flex;gap:4px;margin-bottom:14px;}
     .wagon-card__progress span{flex:1;height:3px;background:rgba(245,240,229,.25);border-radius:1px;}
     .wagon-card__progress span.is-active{background:#7a9355;}
@@ -465,13 +471,20 @@
           </svg>
         </div>
         <div class="wagon-card__title">{{ cart.item_count }} item{% if cart.item_count != 1 %}s{% endif %} &middot; <em>{{ cart.total_price | money_without_trailing_zeros }}</em></div>
-        <div class="wagon-card__meta">Draft quote &middot; {{ cart.item_count }} line{% if cart.item_count != 1 %}s{% endif %} in your wagon</div>
+        <div class="wagon-card__meta">{{ cart.item_count }} line{% if cart.item_count != 1 %}s{% endif %} in your wagon &middot; educator pricing applied</div>
         {%- comment -%}
-          "Send for quote" submits the cart to the existing Tally educator-quote
-          form. The form embed lives on /pages/new-quote; webhook writes
-          customer.metafields.educator.open_quote_id on submission.
+          Dual checkout path:
+          - "Check out & pay" goes to native Shopify checkout (card / Shop Pay /
+            Apple Pay / Google Pay / ACH). Educator pricing already applied via
+            the Educators Market, so no quote needed for card buyers.
+          - "Request a quote" submits the cart to the educator-quote form on
+            /pages/new-quote for buyers who need a PO / Net-30 / grant reimbursement.
         {%- endcomment -%}
-        <a class="wagon-card__cta" href="/pages/new-quote">Send for quote &rarr;</a>
+        <div class="wagon-card__actions">
+          <a class="wagon-card__cta wagon-card__cta--solid" href="/checkout">Check out &amp; pay &rarr;</a>
+          <a class="wagon-card__cta wagon-card__cta--ghost" href="/pages/new-quote">Request a quote / pay by PO</a>
+        </div>
+        <p class="wagon-card__hint">Paying by card, Shop Pay, or ACH? Check out now. Need Net-30 or a PO for your school? Request a quote.</p>
       </div>
 
       {%- elsif wagon_state == 'awaiting' -%}
