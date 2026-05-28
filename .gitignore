@@ -1,0 +1,4 @@
+# Scratch / working data written by analysis agents — not part of this repo
+*.jsonl
+collections.json
+vendor_*.json
