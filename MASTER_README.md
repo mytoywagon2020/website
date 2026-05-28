@@ -20,18 +20,34 @@
 
 ## 2. Branch map
 
+> ### ⭐ SOURCE OF TRUTH = `staging-theme`
+> As of **2026-05-28**, the `staging-theme` branch is the **single source
+> of truth**. All edits happen here and flow forward to Shopify. The old
+> session branches (Bardeen/Curie) were a ONE-TIME reconciliation source
+> and are now **frozen history** — their latest work was already merged
+> into `staging-theme`.
+>
+> **DO NOT pull/copy from Bardeen or Curie into `staging-theme` again.**
+> Doing so could overwrite newer edits and move the site backwards. There
+> is no automatic sync from those branches (git never auto-merges), so
+> `staging-theme` is safe by default — just don't do it manually.
+
 | Branch | Purpose |
 |---|---|
 | `main` | Repo default. Docs only: `README.md` (design handoff), `SHOPIFY_NOTES.md`, this file, `designs/`. **No theme code.** |
-| `staging-theme` | The **full Shopify theme**. Connected to Shopify via the GitHub integration → syncs to the `website/staging-theme` draft theme. Edits here flow to Shopify automatically *once an import succeeds*. |
-| `claude/kind-bardeen-*` | "Bardeen" session: educator-portal source (dashboard v2, funding pages, SEO lockdown, tax-exempt upload, category page templates). Source/working branch, not theme-structured. |
-| `claude/friendly-curie-*` | "Curie" session: design bundle (HTML mockups), image→WebP optimization. |
+| `staging-theme` | ⭐ **SOURCE OF TRUTH.** The full Shopify theme, connected to Shopify via the GitHub integration → auto-syncs to the `website/staging-theme` draft theme (one direction). All current/future edits go here. |
+| `claude/kind-bardeen-*` | "Bardeen" — **FROZEN/ARCHIVED.** Was the educator-portal source; fully reconciled into `staging-theme` on 2026-05-28. Do not pull from it. |
+| `claude/friendly-curie-*` | "Curie" — **FROZEN/ARCHIVED.** Design mockups (`designs/`) + image→WebP work; its theme edits were committed onto Bardeen and are already in `staging-theme`. Do not pull from it. |
 | `claude/vigilant-fermi-*` | A Claude working branch. |
-| other `claude/*` | Prior session work. |
+| other `claude/*` | Prior session work (archived). |
 
 **Naming note:** Claude session/branch names use scientist surnames
 (fermi, curie, bardeen…). When someone says "Curie" or "Bardeen" they
 mean those branches.
+
+**Edit workflow:** make changes on `staging-theme` → commit → push →
+Shopify auto-syncs to the draft theme → preview with
+`?preview_theme_id=<id>`. Never reconcile backward from an archived branch.
 
 ---
 
