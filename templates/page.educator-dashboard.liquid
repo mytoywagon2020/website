@@ -637,8 +637,14 @@
               <a class="tile" href="{{ featured.url }}">
                 <div class="tile__art {{ hue_class }}">
                   <div class="tile__art-overlay"></div>
+                  {%- assign _tile_asset = '' -%}
+                  {%- if featured.handle contains 'deer' -%}{%- assign _tile_asset = 'wd-deer-family-hero.webp' -%}{%- endif -%}
+                  {%- if featured.handle contains 'squirrel' -%}{%- assign _tile_asset = 'wd-squirrel-family.webp' -%}{%- endif -%}
+                  {%- if featured.handle contains 'brown-bear' or featured.handle == 'bumbu-brown-bear-family-educator-set' -%}{%- assign _tile_asset = 'wd-bear-family.webp' -%}{%- endif -%}
                   {%- if featured.featured_image -%}
                     <img src="{{ featured.featured_image | image_url: width: 800 }}" alt="{{ featured.title | escape }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.95;z-index:0;">
+                  {%- elsif _tile_asset != '' -%}
+                    <img src="{{ _tile_asset | file_url }}" alt="{{ featured.title | escape }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.95;z-index:0;">
                   {%- else -%}
                     <svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
                       <g opacity=".55" stroke="#FFFCF7" stroke-width="2" fill="none">
