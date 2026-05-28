@@ -1,15 +1,20 @@
 {%- liquid
   assign is_educator_cart = false
-  for item in cart.items
-    if item.product.template_suffix contains 'educator'
-      assign is_educator_cart = true
-      break
-    endif
-    if item.product.tags contains 'educator-only' or item.product.tags contains 'educator-sensory-play'
-      assign is_educator_cart = true
-      break
-    endif
-  endfor
+  if customer.tags contains 'educator'
+    assign is_educator_cart = true
+  endif
+  unless is_educator_cart
+    for item in cart.items
+      if item.product.template_suffix contains 'educator'
+        assign is_educator_cart = true
+        break
+      endif
+      if item.product.tags contains 'educator-only' or item.product.tags contains 'educator-sensory-play'
+        assign is_educator_cart = true
+        break
+      endif
+    endfor
+  endunless
 -%}
 
 <div class="page-width page-content{% if is_educator_cart %} cart--educator{% endif %}">
@@ -73,7 +78,12 @@
             </div>
           {% endif %}
 
-          {% if settings.cart_terms_conditions_enable and is_educator_cart == false %}
+          {% if is_educator_cart %}
+            <div class="cart__item-row cart__terms">
+              <input type="checkbox" id="CartTerms" class="cart__terms-checkbox">
+              <label for="CartTerms">I confirm that this order aligns with our district procurement policies and that a valid tax exemption certificate is on file if applicable.</label>
+            </div>
+          {% elsif settings.cart_terms_conditions_enable %}
             <div class="cart__item-row cart__terms">
               <input type="checkbox" id="CartTerms" class="cart__terms-checkbox">
               <label for="CartTerms">
@@ -87,7 +97,7 @@
           {% endif %}
 
           <div class="cart__item-row cart__checkout-wrapper">
-            <button type="submit" name="checkout" data-terms-required="{% if is_educator_cart %}false{% else %}{{ settings.cart_terms_conditions_enable }}{% endif %}" class="btn cart__checkout">
+            <button type="submit" name="checkout" data-terms-required="{% if is_educator_cart %}true{% else %}{{ settings.cart_terms_conditions_enable }}{% endif %}" class="btn cart__checkout">
               {% if is_educator_cart %}Proceed with purchase order / card{% else %}{{ 'cart.general.checkout' | t }}{% endif %}
             </button>
 

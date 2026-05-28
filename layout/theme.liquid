@@ -375,6 +375,17 @@
     <script src="https://api.archetypethemes.co/design-mode.js" defer="defer"></script>
   {% endif %}
 
+  {%- if customer.tags contains 'educator' -%}
+    {%- comment -%} Suppress consumer loyalty/rewards popups for institutional buyers. Update selectors to match the live rewards app. {%- endcomment -%}
+    <style>
+      #smile-ui-container,
+      .yotpo-widget-instance,
+      .loyalty-popup-container,
+      [class*="rewards-popup"],
+      [class*="sezzle-shopify-info"]{ display:none !important; }
+    </style>
+  {%- endif -%}
+
 </head>
 
 <body class="template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}{% if request.path == '/challenge' %} template-challange{% endif %}{% if page.handle == 'our-story' %} page-our-story{% endif %}" data-center-text="{{ settings.type_body_align_text }}" data-button_style="{{ settings.button_style }}" data-type_header_capitalize="{{ settings.type_header_capitalize }}" data-type_headers_align_text="{{ settings.type_header_capitalize }}" data-type_product_capitalize="{{ settings.type_product_capitalize }}" data-swatch_style="{{ settings.swatch_style }}" {% if settings.disable_animations %}data-disable-animations="true"{% endif %}>
