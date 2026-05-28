@@ -47,6 +47,27 @@ Fulfillment/tracking is read **natively** (Fulfilled / Partially shipped / Proce
 
 ---
 
+## To-do queue — Vendor Profile, Procurement Guide & compliance (2026-05-28)
+Customer-facing pages are Shopify **pages** (`/pages/vendor-profile`, `/pages/procurement-guide`), edited in admin via the Admin API — NOT theme files.
+
+**Decisions locked (do NOT revisit without owner):**
+- **Compliance badges: OMITTED.** Owner is **not** SAM.gov UEI registered; **DUNS is deprecated** (govt phased it out, replaced by UEI 2022). Do not display SAM/DUNS/"state vendor registry" badges — fabricating or showing a dead DUNS hurts trust. Revisit only if owner registers for a SAM.gov UEI.
+- **Banking stays two-tier (security).** Never publish ACH/routing/account or a voided check as a public download — fraud vector. Bank details are sent securely **on request, to the verified individual who requested them** at their institutional email (not a generic/shared inbox). EIN public is fine.
+- **Tax-exempt is manual.** Cert verified by a human before the native Shopify exemption is set + the `tax-exempt-verified` tag is added. No auto-approval. **Full workflow already mapped: see `HELIUM-TAX-EXEMPT-CONFIG.md` Steps 7–9.**
+
+**Parked — blocked on owner inputs:**
+- ⏳ **Instant document downloads + "All-In-One vendor packet" (ZIP)** on the vendor profile — blocked until the **W-9 / COI / resale cert** PDFs exist and are uploaded to Shopify Files (ties to Red Flag #4). When URLs land: flip the doc-status chips from "Email only" to "Download" and add the packet card. The packet must contain NO bank info.
+- ⏳ **Blank ACH enrollment form** (letterhead, NO account numbers) as a download once that PDF exists — actual routing/account still sent on request to the verified individual.
+- ⏳ **Tax-exempt status display reconciliation:** committed source of truth is the tags `tax-exempt-verified` / `tax-exempt-pending` (LAUNCH-FOLLOW-UPS). A native-`customer.tax_exempt` indicator was added to the dashboard 2026-05-28 — align it to read the tags (pending = amber, verified = green, neither = submit-cert prompt).
+
+**Safe wins — ready, awaiting go-ahead:**
+- Darken light label text on the vendor profile for mobile readability.
+- Soften "verified domain email only" wording so a legitimate PTA on Gmail isn't locked out (send to the verified individual we can confirm).
+
+**Queued (last):**
+- 📱 **Mobile version of the Procurement Guide** — it's a fixed 8.5in letter document (print layout) with no responsive breakpoints; renders tiny on phones. Needs a phone-friendly stacked layout.
+- 📱 **Vendor Profile mobile polish** — has 900/560px breakpoints already; pass for contrast + tap targets.
+
 ## App recommendations (where native isn't enough)
 - **Saved/named classroom lists (wishlist/shopping lists):** native Shopify has no multi-list "saved lists." Recommend **Swym Wishlist Plus** (multiple named lists, reorder, B2B-friendly) or a B2B ordering suite like **BSS B2B/Wholesale Solution** (quick-order + lists). *Reorder alone may not need an app — the B2B account supports reordering past orders.*
 - **PO file upload (customer-facing):** Shopify contact form can't attach files. Use **Shopify Forms** (native, supports file upload) or **Helium** (matches existing portal embeds). Staff attach emailed POs to the order/draft in admin.
