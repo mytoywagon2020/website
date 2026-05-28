@@ -389,7 +389,7 @@
   <div id="PageContainer" class="page-container">
     <div class="transition-body">
 
-    {%- sections 'header-group' -%}
+    {%- unless template.suffix contains 'educator' -%}{%- sections 'header-group' -%}{%- endunless -%}
     {%- sections 'popup-group' -%}
 
       <main class="main-content" id="MainContent">
