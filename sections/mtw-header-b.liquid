@@ -27,6 +27,17 @@
     assign progress = 100
   endif
   assign show_ship = section.settings.show_progress_bar
+  assign is_educator = false
+  if template.suffix contains 'educator'
+    assign is_educator = true
+  endif
+  if is_educator
+    assign show_ship = false
+  endif
+  assign utility_msg = section.settings.utility_messages | newline_to_br | strip_newlines | split: '<br />' | first | strip
+  if is_educator
+    assign utility_msg = 'Net-30 · Tax-exempt · Itemized PO quotes · Ships in 4 to 6 weeks'
+  endif
   if cart.shipping_address
     assign st = cart.shipping_address.province_code
     if st == 'AK' or st == 'HI' or st == 'PR' or cart.shipping_address.country_code != 'US'
@@ -153,7 +164,7 @@
           {%- if section.settings.phone != blank -%}<a href="tel:{{ phone_digits }}">{{ section.settings.phone }}</a>{%- endif -%}
           <a href="{{ section.settings.track_order_url }}">Track order</a>
         </div>
-        <div class="mtwhb-utility__center"><span class="mtwhb-rot" data-mtwhb-rot>{{ section.settings.utility_messages | newline_to_br | strip_newlines | split: '<br />' | first | strip }}</span></div>
+        <div class="mtwhb-utility__center"><span class="mtwhb-rot" data-mtwhb-rot>{{ utility_msg }}</span></div>
         <div class="mtwhb-utility__links mtwhb-utility__links--end">
           <a href="{{ section.settings.giftcards_url }}">Gift cards</a>
           <a href="{{ section.settings.signin_url }}">Sign in</a>
@@ -222,7 +233,7 @@
 
   {%- comment -%} ===== Mobile ===== {%- endcomment -%}
   <div class="mtwhb-m-wrap">
-    <div class="mtwhb-m-utility"><span class="mtwhb-rot" data-mtwhb-rot>{{ section.settings.utility_messages | newline_to_br | strip_newlines | split: '<br />' | first | strip }}</span></div>
+    <div class="mtwhb-m-utility"><span class="mtwhb-rot" data-mtwhb-rot>{{ utility_msg }}</span></div>
 
     {%- if show_ship -%}
       <div class="mtwhb-m-ship" data-show-for="contiguous-us-only">
@@ -333,7 +344,7 @@
   }
 
   // Rotating utility messages (one per line in the section setting).
-  var raw = {{ section.settings.utility_messages | json }};
+  var raw = {% if template.suffix contains 'educator' %}''{% else %}{{ section.settings.utility_messages | json }}{% endif %};
   var msgs = (raw || '').split('\n').map(function (s) { return s.trim(); }).filter(Boolean);
   if (msgs.length > 1) {
     var slots = root.querySelectorAll('[data-mtwhb-rot]');
