@@ -170,9 +170,9 @@
     .tile__art--moss{background-color:#5A7240;}
     .tile__art--forest{background-color:#3B6D11;}
     .tile__art--amber{background-color:#854F0B;}
-    .tile__art-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.22) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,0) 70%,rgba(0,0,0,.18) 100%);z-index:1;}
+    .tile__art-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.45) 0%,rgba(0,0,0,.12) 26%,rgba(0,0,0,0) 55%,rgba(0,0,0,0) 70%,rgba(0,0,0,.18) 100%);z-index:1;}
     .tile__art svg{position:absolute;inset:0;width:100%;height:100%;}
-    .tile__section{position:absolute;top:14px;left:16px;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--cream);font-weight:700;z-index:2;text-shadow:0 1px 2px rgba(0,0,0,.3);}
+    .tile__section{position:absolute;top:12px;left:12px;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:#fff;font-weight:700;z-index:2;background:rgba(20,20,18,.62);padding:5px 10px;border-radius:3px;text-shadow:0 1px 2px rgba(0,0,0,.45);}
     .tile__body{padding:18px 20px 22px;}
     .tile__title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;margin:0;line-height:1.15;}
     .tile__blurb{color:var(--stone);font-size:13px;line-height:1.5;margin:8px 0 14px;}
@@ -198,7 +198,8 @@
     .pill{display:inline-block;font-size:10.5px;font-weight:600;letter-spacing:.04em;padding:3px 10px;border-radius:999px;}
     .pill.paid{background:#e7f0e0;color:#3B6D11;}
     .pill.pending{background:#f6ecd8;color:#854F0B;}
-    .pill.other{background:#ececec;color:var(--stone);}
+    .pill.other{background:#e4e2dd;color:#3a3a37;}
+    .pill.due{background:#f7e0c4;color:#7a3d05;}
     .lk{color:var(--forest);font-weight:600;}
     .lk:hover{color:var(--ink);}
 
@@ -471,6 +472,9 @@
           </svg>
         </div>
         <div class="wagon-card__title">{{ cart.item_count }} item{% if cart.item_count != 1 %}s{% endif %} &middot; <em>{{ cart.total_price | money_without_trailing_zeros }}</em></div>
+        {%- if cart.total_discount > 0 -%}
+        <div class="wagon-card__meta wagon-card__meta--strong">Bundle savings &middot; &minus;{{ cart.total_discount | money }}</div>
+        {%- endif -%}
         <div class="wagon-card__meta">{{ cart.item_count }} line{% if cart.item_count != 1 %}s{% endif %} in your wagon &middot; educator pricing applied</div>
         {%- comment -%}
           Dual checkout path:
@@ -727,7 +731,7 @@
                 <td>
                   {%- if o_paid -%}<span class="pill paid">Paid</span>
                   {%- elsif order.tags contains 'invoice-sent' -%}<span class="pill pending">Invoiced</span>
-                  {%- else -%}<span class="pill other">Payment due</span>{%- endif -%}
+                  {%- else -%}<span class="pill due">Payment due</span>{%- endif -%}
                 </td>
                 <td>
                   {%- if fstat == 'fulfilled' or order.tags contains 'fulfilled-external' -%}<span class="pill paid">Fulfilled</span>
