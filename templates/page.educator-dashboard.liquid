@@ -531,7 +531,10 @@
         <div class="acct-card__lines">
           {%- if customer.first_name != blank -%}{{ customer.first_name }} {{ customer.last_name }}<br/>{%- endif -%}
           {{ customer.email }}<br/>
-          Net-30 &middot; Tax-exempt
+          Net-30 / Net-60 &middot;
+          {%- if customer.tax_exempt %} 🟢 Tax-exempt active
+          {%- else %} 🟡 Tax certificate pending<br/><span style="font-size:11.5px;color:var(--stone);">Email your certificate to <a href="mailto:educators@mytoywagon.com" style="color:var(--forest);">educators@mytoywagon.com</a></span>
+          {%- endif %}
         </div>
         <div class="acct-card__links">
           <a href="{{ routes.account_url }}">Addresses &amp; contacts &rarr;</a>
@@ -556,7 +559,10 @@
         <div class="body">
           {%- if customer.first_name != blank -%}{{ customer.first_name }} {{ customer.last_name }} &middot; {%- endif -%}
           {{ customer.email }}<br/>
-          Net-30 &middot; Tax-exempt on file
+          Net-30 / Net-60 &middot;
+          {%- if customer.tax_exempt %} 🟢 Tax-exempt active
+          {%- else %} 🟡 Tax certificate pending (email yours to <a href="mailto:educators@mytoywagon.com" style="color:var(--forest);">educators@mytoywagon.com</a>)
+          {%- endif %}
           <div class="links">
             <a href="{{ routes.account_url }}">Addresses &rarr;</a>
             <a href="/pages/vendor-profile">W-9 / COI &rarr;</a>
