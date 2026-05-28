@@ -4625,6 +4625,47 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       document.body.appendChild(flash);
       return flash;
     }
+    var PDP = {
+      "MTW-SP-IPT":{h:"rainbow-imaginative-play-tray-educator",v:"48345465258154",s:"Solid American maple, food-safe finish · Made in the USA · designed by a pediatric OT"},
+      "MTW-SP-BEAR":{h:"bear-sensory-tray-educator",v:"48345465356458",s:"Solid American maple, food-safe finish · Made in the USA · designed by a pediatric OT"},
+      "MTW-SP-CAKE":{h:"cake-sensory-tray-educator",v:"48345465487530",s:"Solid American maple, food-safe finish · Made in the USA · designed by a pediatric OT"},
+      "MTW-SP-CSTL":{h:"castle-sensory-tray-educator",v:"48345465585834",s:"Solid American maple, food-safe finish · Made in the USA · designed by a pediatric OT"},
+      "MTW-SP-GDN":{h:"garden-sensory-tray-educator",v:"48345465684138",s:"Solid American maple, food-safe finish · Made in the USA · designed by a pediatric OT"},
+      "MTW-SP-MTN":{h:"mountain-sensory-tray-educator",v:"48345465815210",s:"Solid American maple, food-safe finish · Made in the USA · designed by a pediatric OT"},
+      "MTW-SP-LTI":{h:"letter-tracing-insert-educator",v:"48345465946282",s:"Dual-sided maple, food-safe finish · Made in the USA · pre-writing OT tool"},
+      "MTW-SP-MBALL":{h:"mindfulness-magic-ball-educator",v:"48345466241194",s:"Breathing + self-regulation tool · OT & SEL · Ages 3+"},
+      "MTW-SP-SAND":{h:"sand-tray-with-accessories-educator",v:"48345466437802",s:"Wooden Story solid beech · made in Poland · Ages 3+"},
+      "MTW-SP-2PART":{h:"sand-tray-with-flashcard-holder-educator",v:"48345466568874",s:"Wooden Story solid beech · made in Poland · Ages 3+"},
+      "MTW-SP-TOOLS":{h:"sand-tray-tools-set-of-4-educator",v:"48345466732714",s:"Wooden Story beech sand tools · set of 4"},
+      "MTW-SP-PRT":{h:"rockpool-tray-tongs-educator",v:"48345466863786",s:"Carved teak rockpool tray with tongs"},
+      "MTW-SP-BTR":{h:"the-tray-range-educator-classroom-set",v:"48345467224234",s:"All six Button & Bug maple trays · Net-30 · tax-exempt"},
+      "MTW-SP-CRS":{h:"the-self-regulation-set-educator-calm-corner-set",v:"48345467388074",s:"Calm-corner self-regulation set · Net-30 · tax-exempt"},
+      "MTW-NP-TLF":{h:"my-forest-floor-tinker-tray-educator",v:"48345477054634",s:"Tender Leaf tinker tray · cross-listed from Nature Play"},
+      "MTW-CA-ANO":{h:"analu-sweet-orange-aromatherapy-dough-educator",v:"48345503137962",s:"Análú plant-based dough · Raleigh, NC · contains wheat, gluten, soy"},
+      "MTW-CA-ANE":{h:"analu-eucalyptus-aromatherapy-dough-educator",v:"48345503269034",s:"Análú plant-based dough · Raleigh, NC · contains wheat, gluten, soy"},
+      "MTW-CA-ANL":{h:"analu-lemon-aromatherapy-dough-educator",v:"48345503301802",s:"Análú plant-based dough · Raleigh, NC · contains wheat, gluten, soy"},
+      "MTW-CA-ANV":{h:"analu-lavender-aromatherapy-dough-educator",v:"48345503334570",s:"Análú plant-based dough · Raleigh, NC · contains wheat, gluten, soy"},
+      "MTW-CA-ANR":{h:"analu-peppermint-aromatherapy-dough-educator",v:"48345503367338",s:"Análú plant-based dough · Raleigh, NC · contains wheat, gluten, soy"},
+      "MTW-CA-ANM":{h:"analu-mojito-aromatherapy-dough-educator",v:"48345503400106",s:"Análú plant-based dough · Raleigh, NC · contains wheat, gluten, soy"},
+      "MTW-CA-ANP":{h:"analu-pumpkin-spice-aromatherapy-dough-educator",v:"48345503432874",s:"Análú plant-based dough · Raleigh, NC · contains wheat, gluten, soy"},
+      "MTW-CA-ANS":{h:"the-seven-scents-set-educator-aromatherapy-set",v:"48345503531178",s:"All seven Análú scents · Net-30 · tax-exempt"}
+    };
+    document.querySelectorAll('.add-btn[data-sku]').forEach(function(ab){
+      var sku = ab.getAttribute('data-sku'); var p = PDP[sku]; if(!p) return;
+      if(!ab.getAttribute('data-variant-id')) ab.setAttribute('data-variant-id', p.v);
+      var card = ab.closest('article') || ab.closest('.home') || ab.closest('.kit');
+      var tw = card ? card.querySelector('.tile-wrap') : null;
+      if(tw && !tw.querySelector('.card-pdp-link')){
+        var nmEl = card.querySelector('.name') || card.querySelector('.float-name');
+        var prEl = card.querySelector('.price');
+        var nm = nmEl ? nmEl.textContent.trim() : 'View product';
+        var a = document.createElement('a'); a.className='card-pdp-link'; a.href='/products/'+p.h; a.setAttribute('aria-label', nm);
+        tw.insertBefore(a, tw.firstChild);
+        var qs = document.createElement('div'); qs.className='quick-spec'; qs.setAttribute('aria-hidden','true');
+        qs.innerHTML = '<strong>'+nm+'</strong><span>'+p.s+'</span>'+(prEl?'<span>'+prEl.textContent.trim()+'</span>':'');
+        tw.appendChild(qs);
+      }
+    });
     document.querySelectorAll('.add-btn').forEach(function(btn){
       btn.addEventListener('click', function(){
         var sku = btn.getAttribute('data-sku') || 'item';
