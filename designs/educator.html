@@ -24,7 +24,7 @@ header.nav{border-bottom:0.5px solid var(--rule);background:var(--cream);positio
 .nav-link{font-size:13.5px;font-weight:500;letter-spacing:0.02em;padding:4px 0;}.nav-link:hover{color:var(--forest);}
 .nav-link.has-caret::after{content:"";display:inline-block;width:5px;height:5px;border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:rotate(45deg);margin-left:6px;vertical-align:2px;}
 .logo{display:inline-flex;align-items:center;gap:16px;line-height:1;}
-.logo-mark{width:100px;height:100px;background-color:var(--ink);-webkit-mask:url('assets/logo-mark.png') center/contain no-repeat;mask:url('assets/logo-mark.png') center/contain no-repeat;flex-shrink:0;}
+.logo-mark{width:100px;height:100px;background-color:var(--ink);-webkit-mask:url('{{ 'logo-mark.png' | asset_url }}') center/contain no-repeat;mask:url('{{ 'logo-mark.png' | asset_url }}') center/contain no-repeat;flex-shrink:0;}
 .logo-text{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;letter-spacing:0.24em;text-transform:uppercase;line-height:1;color:var(--ink);white-space:nowrap;}
 .logo small{display:block;font-family:'Mulish',sans-serif;font-style:normal;font-size:9.5px;letter-spacing:0.22em;text-transform:uppercase;color:var(--stone);margin-top:8px;font-weight:500;white-space:nowrap;}
 .nav-icon{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;}
@@ -115,9 +115,9 @@ footer{background:var(--cream);border-top:0.5px solid var(--rule);}
 
 <div class="utility">
   <div class="utility-inner">
-    <div class="utility-links"><a href="#">Track order</a><a href="educator.html">Educator program</a></div>
-    <div class="utility-center">Free shipping on orders $150+ within the contiguous U.S.</div>
-    <div class="utility-links" style="justify-content:flex-end;"><a href="#">Gift cards</a><a href="#">Sign in</a></div>
+    <div class="utility-links"><a href="educator.html">Apply for an account</a><a href="educator-dashboard.html">Sign in</a></div>
+    <div class="utility-center">Net-30 invoicing, tax-exempt orders, and approved-vendor accounts for schools.</div>
+    <div class="utility-links" style="justify-content:flex-end;"><a href="https://mytoywagon.com">For families</a></div>
   </div>
 </div>
 
@@ -152,7 +152,7 @@ footer{background:var(--cream);border-top:0.5px solid var(--rule);}
     </div>
   </div>
   <div class="edu-hero-image">
-    <img src="assets/age-school.webp" alt="Two children examining a wildflower with a wooden magnifier">
+    <img src="{{ 'age-school.webp' | asset_url }}" alt="Two children examining a wildflower with a wooden magnifier">
   </div>
 </section>
 
@@ -289,14 +289,14 @@ footer{background:var(--cream);border-top:0.5px solid var(--rule);}
   <div class="signin-band-inner">
     <span class="label">Already a member</span>
     <h2>Sign in to the <em>Educator catalog</em>.</h2>
-    <p>Educator pricing, your saved quotes, document uploads, and direct line to our team.</p>
+    <p>Your saved quotes, document uploads, and direct line to our team.</p>
     <a href="educator-dashboard.html" class="btn">Sign in to your account <span class="btn-arrow"></span></a>
   </div>
 </section>
 
 <footer>
   <div class="foot-bottom-band">
-    <span><em>Heirloom toys, curated by hand.</em>© 2026 My Toy Wagon. All rights reserved.</span>
+    <span><em>Natural toys, curated by hand.</em>© 2026 My Toy Wagon. All rights reserved.</span>
     <div class="foot-bottom-links">
       <a href="MTW Homepage v3.html">Back to the shop</a>
       <a href="shipping.html">Shipping</a>
