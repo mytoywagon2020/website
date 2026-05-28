@@ -1,0 +1,6 @@
+# Agent working scratch files (transient page/theme body dumps and helper
+# scripts, not deliverables). Underscore-prefixed = agent scratch convention.
+_*
+replace.py
+*.scratch
+*.tmp

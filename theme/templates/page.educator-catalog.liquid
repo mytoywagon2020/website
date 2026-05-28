@@ -1,0 +1,133 @@
+{% layout none %}
+{%- comment -%}
+  Bespoke educator catalog shell. Phase B vertical slice: Fairy Villages ecosystem.
+  This catalog is a public lead magnet, not gated. It is indexable.
+  The template provides the document shell, fonts, and the Fairy Villages palette.
+  Page.content holds the ecosystem content markup.
+{%- endcomment -%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {{ content_for_header }}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index,follow">
+  <title>{{ page.title }} | {{ shop.name }}</title>
+  {%- if page.metafields.global.description_tag != blank -%}
+    <meta name="description" content="{{ page.metafields.global.description_tag | escape }}">
+  {%- elsif page.content != blank -%}
+    <meta name="description" content="{{ page.content | strip_html | truncatewords: 30 | escape }}">
+  {%- endif -%}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --fv:#C97A8A;--fv-soft:#E3B6C0;
+      --cream:#FAF6ED;--cream-deep:#EDE3D2;
+      --ink:#2C1A0E;--muted:#7A6B5C;
+      --rule:rgba(44,26,14,0.14);--rule-strong:rgba(44,26,14,0.24);
+    }
+    *{box-sizing:border-box;}
+    html,body{margin:0;padding:0;}
+    body{font-family:'Mulish',sans-serif;color:var(--ink);background:var(--cream);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;}
+    img{max-width:100%;display:block;}
+    a{color:inherit;text-decoration:none;}
+    h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:500;margin:0;color:var(--ink);}
+    p{margin:0;}
+    .cat-wrap{width:100%;overflow-x:hidden;}
+    .cat-shell{max-width:1180px;margin:0 auto;padding:0 32px;}
+    .cat-eyebrow{font-family:'Mulish',sans-serif;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.2em;color:var(--fv);margin:0;}
+    .cat-em{font-style:italic;color:var(--fv);}
+    .cat-btn{display:inline-block;font-family:'Mulish',sans-serif;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.12em;padding:16px 34px;border-radius:2px;border:1px solid var(--fv);background:var(--fv);color:var(--cream);}
+    .cat-btn--ghost{background:transparent;color:var(--fv);}
+    .cat-link{font-family:'Mulish',sans-serif;font-size:13px;font-weight:600;letter-spacing:0.05em;color:var(--fv);border-bottom:1px solid var(--fv-soft);padding-bottom:2px;}
+
+    /* Hero */
+    .fv-hero{position:relative;width:100%;min-height:88vh;display:flex;align-items:flex-end;background:var(--cream-deep);}
+    .fv-hero__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+    .fv-hero__scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(44,26,14,0.10) 0%,rgba(44,26,14,0.18) 40%,rgba(44,26,14,0.62) 100%);}
+    .fv-hero__inner{position:relative;width:100%;max-width:1180px;margin:0 auto;padding:0 32px 84px;}
+    .fv-hero__eyebrow{color:var(--fv-soft);margin:0 0 22px;}
+    .fv-hero__title{color:var(--cream);font-size:clamp(44px,7vw,86px);line-height:1.04;letter-spacing:-0.01em;max-width:14ch;}
+    .fv-hero__statement{color:var(--cream);font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(20px,2.4vw,30px);line-height:1.4;max-width:30ch;margin:26px 0 0;opacity:0.95;}
+
+    /* Intro */
+    .fv-intro{padding:96px 0 24px;}
+    .fv-intro__grid{display:grid;grid-template-columns:0.85fr 1.15fr;gap:64px;align-items:start;}
+    .fv-intro__label{font-family:'Mulish',sans-serif;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.18em;color:var(--muted);margin:0;}
+    .fv-intro__lead{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3.4vw,40px);line-height:1.32;color:var(--ink);margin:0 0 24px;}
+    .fv-intro__body{font-size:17px;line-height:1.8;color:var(--muted);margin:0 0 18px;}
+    .fv-meta{display:flex;flex-wrap:wrap;gap:14px;margin:28px 0 0;}
+    .fv-meta__chip{font-family:'Mulish',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.06em;color:var(--ink);background:var(--cream-deep);border:1px solid var(--rule);border-radius:2px;padding:9px 16px;}
+
+    /* Section heads */
+    .fv-sec{padding:88px 0;}
+    .fv-sec__head{max-width:60ch;margin:0 0 52px;}
+    .fv-sec__kicker{margin:0 0 16px;}
+    .fv-sec__title{font-size:clamp(32px,4.4vw,52px);line-height:1.12;}
+    .fv-sec__sub{font-size:17px;line-height:1.8;color:var(--muted);margin:18px 0 0;max-width:54ch;}
+
+    /* Hero product feature */
+    .fv-feature{background:var(--cream-deep);}
+    .fv-feature__grid{display:grid;grid-template-columns:1.05fr 0.95fr;gap:0;align-items:stretch;}
+    .fv-feature__media{position:relative;min-height:560px;background:var(--cream);}
+    .fv-feature__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+    .fv-feature__body{padding:88px 72px;display:flex;flex-direction:column;justify-content:center;}
+    .fv-feature__name{font-size:clamp(30px,3.6vw,46px);line-height:1.16;margin:14px 0 22px;}
+    .fv-feature__copy{font-size:17px;line-height:1.8;color:var(--muted);margin:0 0 18px;}
+    .fv-feature__list{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 30px;padding:0;list-style:none;}
+    .fv-feature__list li{font-family:'Mulish',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.05em;color:var(--fv);border:1px solid var(--fv-soft);border-radius:2px;padding:8px 14px;}
+    .fv-quote{border-left:2px solid var(--fv);padding:6px 0 6px 22px;margin:8px 0 30px;}
+    .fv-quote p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:21px;line-height:1.45;color:var(--ink);margin:0 0 10px;}
+    .fv-quote cite{font-family:'Mulish',sans-serif;font-style:normal;font-size:13px;font-weight:600;letter-spacing:0.04em;color:var(--muted);}
+    .fv-price-note{font-family:'Mulish',sans-serif;font-size:13px;font-weight:600;letter-spacing:0.04em;color:var(--muted);margin:0 0 22px;}
+    .fv-actions{display:flex;flex-wrap:wrap;gap:16px;align-items:center;}
+
+    /* Homes gallery */
+    .fv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+    .fv-card{display:flex;flex-direction:column;background:var(--cream);border:1px solid var(--rule);border-radius:2px;overflow:hidden;}
+    .fv-card__media{position:relative;aspect-ratio:4/5;background:var(--cream-deep);}
+    .fv-card__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+    .fv-card__body{padding:26px 26px 30px;display:flex;flex-direction:column;flex:1;}
+    .fv-card__name{font-size:24px;line-height:1.2;margin:0 0 12px;}
+    .fv-card__desc{font-size:15px;line-height:1.7;color:var(--muted);margin:0 0 20px;flex:1;}
+    .fv-card__link{margin-top:auto;}
+
+    /* Folk */
+    .fv-folk{background:var(--cream-deep);}
+    .fv-folk__grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:64px;align-items:center;}
+    .fv-folk__body p{font-size:17px;line-height:1.8;color:var(--muted);margin:0 0 18px;}
+    .fv-folk__sets{display:flex;flex-direction:column;gap:14px;margin:28px 0 0;}
+    .fv-folk__set{display:flex;align-items:center;justify-content:space-between;gap:20px;background:var(--cream);border:1px solid var(--rule);border-radius:2px;padding:20px 24px;}
+    .fv-folk__set strong{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:21px;color:var(--ink);}
+
+    /* Closing */
+    .fv-close{padding:120px 0;text-align:center;}
+    .fv-close__quote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(28px,4vw,46px);line-height:1.3;color:var(--ink);max-width:22ch;margin:0 auto 40px;}
+    .fv-close__actions{display:flex;flex-wrap:wrap;gap:18px;justify-content:center;align-items:center;}
+
+    /* Footer */
+    .fv-footer{border-top:1px solid var(--rule);padding:40px 0 64px;}
+    .fv-footer p{font-family:'Mulish',sans-serif;font-size:13px;line-height:1.7;color:var(--muted);margin:0;}
+
+    @media(max-width:1024px){
+      .fv-intro__grid,.fv-feature__grid,.fv-folk__grid{grid-template-columns:1fr;gap:40px;}
+      .fv-feature__body{padding:56px 32px;}
+      .fv-feature__media{min-height:420px;}
+      .fv-grid{grid-template-columns:repeat(2,1fr);}
+    }
+    @media(max-width:680px){
+      .cat-shell,.fv-hero__inner{padding-left:22px;padding-right:22px;}
+      .fv-hero__inner{padding-bottom:56px;}
+      .fv-grid{grid-template-columns:1fr;}
+      .fv-sec,.fv-intro{padding:60px 0;}
+      .fv-close{padding:80px 0;}
+      .fv-folk__set{flex-direction:column;align-items:flex-start;}
+    }
+  </style>
+</head>
+<body data-screen-label="{{ page.title }}">
+  {{ page.content }}
+</body>
+</html>
