@@ -25,7 +25,7 @@
         "made_to_order": {
           "type": "custom",
           "settings": {
-            "code": "<div style='display:inline-flex;align-items:center;gap:.5rem;padding:.6rem .9rem;border:1px solid rgba(0,0,0,.08);border-radius:2px;background:#F5F0E5;margin:14px 0 6px;font-family:Mulish,sans-serif;'><span aria-hidden='true' style='width:.55rem;height:.55rem;border-radius:50%;background:#3B6D11;display:inline-block;'></span><span style='font-size:.95rem;color:#2C2C2A;'><strong>Made to order.</strong> Order on your school schedule.</span></div>"
+            "code": "{%- assign _fn = product.metafields.custom.fulfillment_note | default: '' -%}{%- if _fn != blank -%}<div style='display:inline-flex;align-items:center;gap:.5rem;padding:.6rem .9rem;border:1px solid rgba(0,0,0,.08);border-radius:2px;background:#F5F0E5;margin:14px 0 6px;font-family:Mulish,sans-serif;'><span aria-hidden='true' style='width:.55rem;height:.55rem;border-radius:50%;background:#3B6D11;display:inline-block;'></span><span style='font-size:.95rem;color:#2C2C2A;'>{{ _fn }}</span></div>{%- endif -%}"
           }
         },
         "price": {
