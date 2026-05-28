@@ -1,9 +1,23 @@
-<div class="page-width page-content">
+{%- liquid
+  assign is_educator_cart = false
+  for item in cart.items
+    if item.product.template_suffix contains 'educator'
+      assign is_educator_cart = true
+      break
+    endif
+    if item.product.tags contains 'educator-only' or item.product.tags contains 'educator-sensory-play'
+      assign is_educator_cart = true
+      break
+    endif
+  endfor
+-%}
+
+<div class="page-width page-content{% if is_educator_cart %} cart--educator{% endif %}">
 
   {%- render 'breadcrumbs' -%}
 
   <header class="section-header text-center{% if cart.item_count == 0 %} section-header--404{% endif %}">
-    <h1 class="section-header__title">{{ 'cart.general.title' | t }}</h1>
+    <h1 class="section-header__title">{% if is_educator_cart %}Requisition List{% else %}{{ 'cart.general.title' | t }}{% endif %}</h1>
     <div class="rte text-spacing">
       {%- if cart.item_count == 0 -%}
         <p>{{ 'cart.general.empty' | t }}</p>
@@ -23,7 +37,11 @@
         <div class="cart__page-col">
           {% if settings.cart_notes_enable %}
             <div>
-              <label for="CartNote">{{ 'cart.general.note' | t }}</label>
+              {% if is_educator_cart %}
+                <label for="CartNote">District / school internal notes <span style="font-weight:400;color:#5F5E5A;">(room numbers, PO reference, or recipient name)</span></label>
+              {% else %}
+                <label for="CartNote">{{ 'cart.general.note' | t }}</label>
+              {% endif %}
               <textarea name="note" class="input-full cart-notes" id="CartNote">{{ cart.note }}</textarea>
             </div>
           {% endif %}
@@ -48,7 +66,14 @@
             <div data-subtotal>{{ cart.total_price | money }}</div>
           </div>
 
-          {% if settings.cart_terms_conditions_enable %}
+          {% if is_educator_cart %}
+            <div class="cart__item-sub cart__item-row cart-edu__tax">
+              <div>Estimated tax</div>
+              <div>$0.00 <span>Tax-exempt</span></div>
+            </div>
+          {% endif %}
+
+          {% if settings.cart_terms_conditions_enable and is_educator_cart == false %}
             <div class="cart__item-row cart__terms">
               <input type="checkbox" id="CartTerms" class="cart__terms-checkbox">
               <label for="CartTerms">
@@ -62,18 +87,26 @@
           {% endif %}
 
           <div class="cart__item-row cart__checkout-wrapper">
-            <button type="submit" name="checkout" data-terms-required="{{ settings.cart_terms_conditions_enable }}" class="btn cart__checkout">
-              {{ 'cart.general.checkout' | t }}
+            <button type="submit" name="checkout" data-terms-required="{% if is_educator_cart %}false{% else %}{{ settings.cart_terms_conditions_enable }}{% endif %}" class="btn cart__checkout">
+              {% if is_educator_cart %}Proceed with purchase order / card{% else %}{{ 'cart.general.checkout' | t }}{% endif %}
             </button>
 
-            {% if additional_checkout_buttons and settings.cart_additional_buttons %}
+            {% if is_educator_cart %}
+              <a href="/pages/new-quote" class="btn cart__checkout cart-edu__quote">Convert cart to a formal quote (PDF)</a>
+            {% endif %}
+
+            {% if additional_checkout_buttons and settings.cart_additional_buttons and is_educator_cart == false %}
               <div class="additional-checkout-buttons">{{ content_for_additional_checkout_buttons }}</div>
             {% endif %}
           </div>
 
           <div class="cart__item-row text-center">
             <small>
-              {{ 'cart.general.shipping_at_checkout' | t }}<br />
+              {% if is_educator_cart %}
+                Net-30 terms for approved institutions &middot; Pricing held 45 days on generated quotes
+              {% else %}
+                {{ 'cart.general.shipping_at_checkout' | t }}
+              {% endif %}<br />
             </small>
           </div>
         </div>
@@ -81,6 +114,23 @@
     </form>
   {%- endif -%}
 </div>
+
+{%- if is_educator_cart -%}
+<style>
+  .cart-edu__tax span{display:inline-block;margin-left:6px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#3B6D11;}
+  .cart-edu__quote{background:transparent !important;color:#2C2C2A !important;border:1px solid #2C2C2A !important;margin-top:10px;text-decoration:none;display:flex;align-items:center;justify-content:center;}
+  .cart-edu__quote:hover{background:#2C2C2A !important;color:#F5F0E5 !important;}
+  /* Suppress consumer financing + loyalty/reward widgets in the institutional cart */
+  body.mtw-educator-cart .sezzle-checkout-button-wrapper,
+  body.mtw-educator-cart [class*="sezzle-shopify-info-button"],
+  body.mtw-educator-cart [id*="sezzle-smart-button"],
+  body.mtw-educator-cart [class*="loyalty"],
+  body.mtw-educator-cart [class*="rewards-popup"],
+  body.mtw-educator-cart [id*="smile-"],
+  body.mtw-educator-cart [class*="smile-"]{display:none !important;}
+</style>
+<script>document.body.classList.add('mtw-educator-cart');</script>
+{%- endif -%}
 
 {% schema %}
 {

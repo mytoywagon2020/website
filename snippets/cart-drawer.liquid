@@ -1,9 +1,22 @@
 {%- if settings.cart_type == 'drawer' -%}
-  <div id="CartDrawer" class="drawer drawer--right">
+  {%- liquid
+    assign is_educator_cart = false
+    for item in cart.items
+      if item.product.template_suffix contains 'educator'
+        assign is_educator_cart = true
+        break
+      endif
+      if item.product.tags contains 'educator-only' or item.product.tags contains 'educator-sensory-play'
+        assign is_educator_cart = true
+        break
+      endif
+    endfor
+  -%}
+  <div id="CartDrawer" class="drawer drawer--right{% if is_educator_cart %} cart--educator{% endif %}">
     <form id="CartDrawerForm" action="{{ routes.cart_url }}" method="post" novalidate class="drawer__contents" data-location="cart-drawer">
       <div class="drawer__fixed-header">
         <div class="drawer__header appear-animation appear-delay-1">
-          <div class="h2 drawer__title">{{ 'cart.general.title' | t }}</div>
+          <div class="h2 drawer__title">{% if is_educator_cart %}Your Wagon{% else %}{{ 'cart.general.title' | t }}{% endif %}</div>
           <div class="drawer__close">
             <button type="button" class="drawer__close-button js-drawer-close">
               <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-close" viewBox="0 0 64 64"><title>icon-X</title><path d="m19 17.61 27.12 27.13m0-27.12L19 44.74"/></svg>
@@ -19,7 +32,11 @@
 
           {% if settings.cart_notes_enable %}
             <div class="appear-animation appear-delay-3">
-              <label for="CartNoteDrawer">{{ 'cart.general.note' | t }}</label>
+              {% if is_educator_cart %}
+                <label for="CartNoteDrawer">District / school internal notes <span style="font-weight:400;color:#5F5E5A;">(room numbers, PO reference, or recipient name)</span></label>
+              {% else %}
+                <label for="CartNoteDrawer">{{ 'cart.general.note' | t }}</label>
+              {% endif %}
               <textarea name="note" class="input-full cart-notes" id="CartNoteDrawer">{{ cart.note }}</textarea>
             </div>
           {% endif %}
@@ -46,13 +63,24 @@
             <div data-subtotal>{{ cart.total_price | money }}</div>
           </div>
 
+          {% if is_educator_cart %}
+            <div class="cart__item-sub cart__item-row cart-edu__tax">
+              <div>Estimated tax</div>
+              <div>$0.00 <span>Tax-exempt</span></div>
+            </div>
+          {% endif %}
+
           <div class="cart__item-row text-center">
             <small>
-              {{ 'cart.general.shipping_at_checkout' | t }}<br />
+              {% if is_educator_cart %}
+                Net-30 terms for approved institutions &middot; Pricing held 45 days on generated quotes
+              {% else %}
+                {{ 'cart.general.shipping_at_checkout' | t }}
+              {% endif %}<br />
             </small>
           </div>
 
-          {% if settings.cart_terms_conditions_enable %}
+          {% if settings.cart_terms_conditions_enable and is_educator_cart == false %}
             <div class="cart__item-row cart__terms">
               <input type="checkbox" id="CartTermsDrawer" class="cart__terms-checkbox">
               <label for="CartTermsDrawer">
@@ -66,16 +94,29 @@
           {% endif %}
 
           <div class="cart__checkout-wrapper">
-            <button type="submit" name="checkout" data-terms-required="{{ settings.cart_terms_conditions_enable }}" class="btn cart__checkout">
-              {{ 'cart.general.checkout' | t }}
+            <button type="submit" name="checkout" data-terms-required="{% if is_educator_cart %}false{% else %}{{ settings.cart_terms_conditions_enable }}{% endif %}" class="btn cart__checkout">
+              {% if is_educator_cart %}Proceed with purchase order / card{% else %}{{ 'cart.general.checkout' | t }}{% endif %}
             </button>
 
-            {% if additional_checkout_buttons and settings.cart_additional_buttons %}
+            {% if is_educator_cart %}
+              <a href="/pages/new-quote" class="btn cart__checkout cart-edu__quote">Convert cart to a formal quote (PDF)</a>
+            {% endif %}
+
+            {% if additional_checkout_buttons and settings.cart_additional_buttons and is_educator_cart == false %}
               <div class="additional-checkout-buttons additional-checkout-buttons--vertical">{{ content_for_additional_checkout_buttons }}</div>
             {% endif %}
           </div>
         </div>
       </div>
+
+      {%- if is_educator_cart -%}
+        <style>
+          #CartDrawer .cart-edu__tax span{display:inline-block;margin-left:6px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#3B6D11;}
+          #CartDrawer .cart-edu__quote{background:transparent !important;color:#2C2C2A !important;border:1px solid #2C2C2A !important;margin-top:10px;text-decoration:none;display:flex;align-items:center;justify-content:center;}
+          #CartDrawer .cart-edu__quote:hover{background:#2C2C2A !important;color:#F5F0E5 !important;}
+        </style>
+        <script>document.body.classList.add('mtw-educator-cart');</script>
+      {%- endif -%}
 
       <div class="drawer__cart-empty appear-animation appear-delay-2">
         <div class="drawer__scrollable">
