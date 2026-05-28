@@ -85,7 +85,7 @@
     </section>
 
     <div class="q-note">
-      <strong>No payment now, and nothing is reserved yet.</strong> Inventory is allocated only once your purchase order is confirmed (or by prior arrangement for established accounts). Need it faster? You can also <a href="{{ routes.cart_url }}" style="color:var(--forest);font-weight:700;">pay now &mdash; card, Shop Pay, Apple Pay, Google Pay, or ACH</a> at checkout.
+      <strong>No payment now, and nothing is reserved yet.</strong> Inventory is allocated only once your purchase order is confirmed (or by prior arrangement for established accounts). Need it faster? You can also <a href="/checkout" style="color:var(--forest);font-weight:700;">pay now &mdash; card, Shop Pay, Apple Pay, Google Pay, or ACH</a> at checkout.
     </div>
 
     <div class="q-note" style="background:#fbf6ec;border-color:var(--amber);">
@@ -111,7 +111,7 @@
             {%- endfor -%}
           </table>
           <div class="q-sub"><span>Estimated subtotal</span><strong>{{ cart.total_price | money }}</strong></div>
-          <p style="font-size:12px;color:var(--stone);margin:10px 8px 0;">Estimate only. Final educator pricing, <strong>shipping, tax,</strong> and terms are calculated by our team and confirmed on your quote. <a href="{{ routes.cart_url }}" style="color:var(--forest);font-weight:600;">Edit basket &rarr;</a></p>
+          <p style="font-size:12px;color:var(--stone);margin:10px 8px 0;">Estimate only. Final educator pricing, <strong>shipping, tax,</strong> and terms are calculated by our team and confirmed on your quote. <a href="/pages/educator-dashboard" style="color:var(--forest);font-weight:600;">Edit basket &rarr;</a></p>
         {%- else -%}
           <div class="q-empty">Your quote basket is empty. <a href="/pages/educators" style="color:var(--forest);font-weight:600;">Browse the Educator Catalog &rarr;</a></div>
         {%- endif -%}
@@ -166,7 +166,7 @@
             <textarea class="q-ta" name="contact[body]" placeholder="Ship-to address(es), tax-exempt status, anything we should know."></textarea>
 
             <button class="q-btn" type="submit">Submit quote request</button>
-            <a class="q-alt" href="{{ routes.cart_url }}">Or pay now &mdash; card, Shop Pay, Apple Pay &amp; ACH &rarr;</a>
+            <a class="q-alt" href="/checkout">Or pay now &mdash; card, Shop Pay, Apple Pay &amp; ACH &rarr;</a>
           {%- endform -%}
         {%- else -%}
           <p style="color:var(--stone);">Add items to your basket first, then come back to send your quote.</p>
