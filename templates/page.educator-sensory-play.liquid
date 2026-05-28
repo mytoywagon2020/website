@@ -795,6 +795,11 @@ a{ color:inherit; }
 }
 .view-pdp:hover{ color: var(--ink); border-color: var(--ink); }
 .view-pdp[href="#"]{ display: none; }
+.home .tile-wrap{ position: relative; }
+.card-pdp-link{ position:absolute; inset:0; z-index:4; display:block; }
+.quick-spec{ position:absolute; inset:0; z-index:5; pointer-events:none; display:flex; flex-direction:column; justify-content:center; gap:6px; padding:26px; background:rgba(28,28,26,.84); color:var(--cream); opacity:0; transition:opacity .25s ease; font-family:var(--sans); font-size:12.5px; line-height:1.5; }
+.quick-spec strong{ font-family:var(--serif); font-size:16px; margin-bottom:4px; }
+.home .tile-wrap:hover .quick-spec{ opacity:1; }
 .stock-pill{
   font-family: var(--sans);
   font-size: 10.5px;
@@ -3550,6 +3555,14 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       <!-- 01 Bear Tray -->
       <article class="home size-hero">
         <div class="tile-wrap">
+          <a class="card-pdp-link" href="/products/bear-sensory-tray-educator" aria-label="Bear Imaginative Play Tray"></a>
+          <div class="quick-spec" aria-hidden="true">
+            <strong>Bear Imaginative Play Tray</strong>
+            <span>Maple hardwood, food-safe finish</span>
+            <span>Made in the USA, cut to order</span>
+            <span>Designed by a certified pediatric OT</span>
+            <span>Ages 3+ &middot; $98</span>
+          </div>
           <div class="tile t-hue3-deep dark has-photo">
       <img src="{{ 'sensory-play-bear-tray-cream.png' | file_url }}" alt="Button &amp; Bug bear-shaped sensory tray in cream maple with felted snow, mossy stones, and small wooden bears." loading="lazy"/>
             <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
@@ -3566,7 +3579,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
           <!-- PRICE: MTW-SP-BEAR -->
           <span class="price">$98</span>
           <div class="add-row">
-            <button class="add-btn" type="button" data-sku="MTW-SP-BEAR"><span class="plus"></span>Add to cart</button>
+            <button class="add-btn" type="button" data-sku="MTW-SP-BEAR" data-variant-id="48345465356458"><span class="plus"></span>Add to cart</button>
             <a href="#" class="view-pdp">View product &rarr;</a>
           </div>
         </div>
@@ -4614,14 +4627,28 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
     }
     document.querySelectorAll('.add-btn').forEach(function(btn){
       btn.addEventListener('click', function(){
-        count += 1;
-        if (badge) badge.textContent = count;
         var sku = btn.getAttribute('data-sku') || 'item';
+        var vid = btn.getAttribute('data-variant-id');
         var fl = ensureFlash();
-        fl.innerHTML = '<span class="added">Added to cart.</span> <span>' + sku.replace(/-/g,' ') + '</span>';
-        fl.classList.add('show');
-        clearTimeout(window.__cartFlashT);
-        window.__cartFlashT = setTimeout(function(){ fl.classList.remove('show'); }, 2400);
+        var show = function(html){
+          fl.innerHTML = html;
+          fl.classList.add('show');
+          clearTimeout(window.__cartFlashT);
+          window.__cartFlashT = setTimeout(function(){ fl.classList.remove('show'); }, 2600);
+        };
+        if (vid) {
+          btn.disabled = true;
+          fetch('/cart/add.js', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ id: Number(vid), quantity: 1 }) })
+            .then(function(r){ if(!r.ok) throw new Error('add'); return r.json(); })
+            .then(function(){ return fetch('/cart.js').then(function(r){return r.json();}); })
+            .then(function(c){ if (badge) badge.textContent = c.item_count; show('<span class="added">Added to cart.</span> <span>' + sku.replace(/-/g,' ') + '</span>'); })
+            .catch(function(){ show('<span class="added">Could not add.</span> <span>Open the product page</span>'); })
+            .finally(function(){ btn.disabled = false; });
+        } else {
+          count += 1;
+          if (badge) badge.textContent = count;
+          show('<span class="added">Added to cart.</span> <span>' + sku.replace(/-/g,' ') + '</span>');
+        }
       });
     });
   })();
