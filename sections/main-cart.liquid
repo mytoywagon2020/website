@@ -1,6 +1,11 @@
+{%- if customer and customer.tags contains 'educator-approved' -%}
+  <script>window.location.replace('/pages/educator-dashboard');</script>
+  <noscript><meta http-equiv="refresh" content="0;url=/pages/educator-dashboard"></noscript>
+{%- endif -%}
+
 {%- liquid
   assign is_educator_cart = false
-  if customer.tags contains 'educator'
+  if customer.tags contains 'educator-approved'
     assign is_educator_cart = true
   endif
   unless is_educator_cart
