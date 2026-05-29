@@ -13,7 +13,7 @@ Last updated: 2026-05-29
 2. **No shared listings between retail and educator.** A single listing serving both **mixes inventory**, which we must never do. If a retail product is needed in the educator portal, create a **separate educator listing** (duplicate it), and **remove the educator tags from the retail original** so the two inventory lines stay separate.
 3. **Educator price = retail price** (price-match the retail equivalent, or use the collective/bundle price for sets).
 4. **Educator Catalog should contain ONLY the 8 portal sections' products** — not the whole retail store.
-5. Educator listings: **inventory not tracked** (so they don't share/deplete retail stock).
+5. Educator listings: **inventory not tracked** AND **"Continue selling when out of stock"** (`inventoryPolicy: CONTINUE`) — so they never share/deplete retail stock and orders are never blocked (made-to-order / Net-30).
 
 ---
 
@@ -75,11 +75,13 @@ DRAFT status alone also removes a product from all channels (safe holding state)
 | MTW-FV-PGN | Wonderheart Pastel Gnomes | 48345499238570 | walled ✓ | $108 |
 | MTW-FV-RGN | Wonderheart Bright Gnomes | 48345499271338 | walled ✓ | $108 |
 | MTW-FV-VLG | Build the Village | 48345499304106 | walled ✓ | $640 |
-| MTW-FV-BFH | Butterfly Fairy House (educator) `Product/8447027937450` | 48355698475178 | **walled ✓** | $45 |
-| MTW-FV-PNK | Pink Blossom House (educator) `Product/8447032656042` | 48355716497578 | **DRAFT — needs walling** | $58 |
-| MTW-FV-LIL | Lilac Blossom House (educator) `Product/8447032688810` | 48355716530346 | **DRAFT — needs walling** | $58 |
-| MTW-FV-RBS | Rainbow Shimmer House (educator) `Product/8447032754346` | 48355716595882 | **DRAFT — needs walling** | $50 |
-| MTW-FV-RBN | Rainbow Home (educator) `Product/8447032819882` | 48355716661418 | **DRAFT — needs walling** | $65 |
+| MTW-FV-BFH | Butterfly Fairy House (educator) `Product/8447027937450` | 48355698475178 | walled ✓ | $45 |
+| MTW-FV-PNK | Pink Blossom House (educator) `Product/8447032656042` | 48355716497578 | walled ✓ | $58 |
+| MTW-FV-LIL | Lilac Blossom House (educator) `Product/8447032688810` | 48355716530346 | walled ✓ | $58 |
+| MTW-FV-RBS | Rainbow House* (educator) `Product/8447032754346` | 48355716595882 | walled ✓ | $50 |
+| MTW-FV-RBN | Rainbow Shimmer Home* (educator) `Product/8447032819882` | 48355716661418 | walled ✓ | $65 |
+
+*Owner retitled these two products; page labels differ slightly (page: RBS="Rainbow Shimmer House", RBN="Rainbow Home") but buttons match by SKU so it works. All 5 homes walled + live as of 2026-05-29.
 
 Retail originals UNTAGGED from educator (now retail-only, separate inventory): Butterfly `7375178858666`, Pink Fairy Blossom `7467704418474`, Lilac Fairy Blossom `7727397634218`, Large Rainbow Shimmer `8051715702954`, Felt Rainbow Fairy Home & Mat `8154445938858`.
 
