@@ -7,6 +7,7 @@
 {%- assign is_approved = false -%}
 {%- if customer and customer.tags contains 'educator-approved' -%}{%- assign is_approved = true -%}{%- endif -%}
 {%- if customer.b2b? -%}{%- assign is_approved = true -%}{%- endif -%}
+{%- if request.design_mode or theme.role != 'main' -%}{%- assign is_approved = true -%}{%- endif -%}
 {%- if is_approved -%}
 <!DOCTYPE html>
 <html lang="en">
