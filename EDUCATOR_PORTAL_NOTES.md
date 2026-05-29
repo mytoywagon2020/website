@@ -73,6 +73,21 @@ DRAFT status alone also removes a product from all channels (safe holding state)
 - **Confirmed AGAIN via test:** API activation (`productUpdate status:ACTIVE`) auto-republishes to Online Store AND drops the Educator publication → must be done in admin, not API. Do NOT bulk-activate Connetix via API.
 - Bauspiel (live retail) remain the shared-listing problem to split later.
 
+## 8. Section-by-section completion ledger
+
+**Section 1 — Sensory Play (audited 2026-05-29):** 23 page items ↔ 23 dedicated educator products — COMPLETE match, nothing missing to create. All 23 PRICED. Walled (no leaks). IMAGES: pulled retail images for MBALL (Mindful&Co) + PRT (Papoose Rockpool). REMAINING 3 missing images = Wooden Story sand trays w/ NO retail twin → **OWNER must supply photos**: Sand Tray w/ Accessories (MTW-SP-SAND), Sand Tray w/ Flashcard Holder (MTW-SP-2PART), Sand Tray Tools Set of 4 (MTW-SP-TOOLS). Otherwise Section 1 COMPLETE. (Page also pulls 8 aromatherapy doughs MTW-CA-AN* + forest-floor tray MTW-NP-TLF — all priced + present.)
+**Section 2 — Nature Play (audited 2026-05-29):** 19 page SKUs; 20 products tagged. NO listings missing to create. BUT **18 of 20 are $0 unpriced AND missing images** (only TLF priced+imaged; HRV too maybe). These are felt/wooden nature items (acorns, leaves, pinecones, pumpkins, mushrooms, turkeys, bird eggs, nesting bowls, tongs, spoons, sieve) + bundles (Autumn Set, Nature Tools Set, Everything Play Bundle). Need retail-twin price+image pulls. NOT YET DONE.
+Sections 3-8: not reliably audited yet (per-product featuredMedia needed; bulk media_count query is UNRELIABLE — returns null for all, do not trust it).
+
+CAVEAT: `media_count:0` search filter is BROKEN here (false positives). Audit images via per-product `featuredMedia{id}` instead.
+
+---
+
+## 9. Section order (from page.educators.liquid hub)
+1 Sensory · 2 Nature Play · 3 Woodland · 4 Small World · 5 Fairy Villages · 6 STEAM · 7 Dramatic Play · 8 Creative Arts
+
+---
+
 ### Inventory (2026-05-29)
 - `inventoryPolicy: CONTINUE` applied to **all 117 dedicated educator products** (tag:educator AND created_at>=2026-05-25). Retail-tagged shared listings (Bauspiel etc.) intentionally excluded — they'll get CONTINUE when split into dedicated educator listings.
 
