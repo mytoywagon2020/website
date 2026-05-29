@@ -11,9 +11,10 @@
   .mtw-edu-f__col a{font-size:13.5px;color:#2C2C2A;text-decoration:none;}
   .mtw-edu-f__col a:hover{color:#3B6D11;}
   .mtw-edu-f__pay{max-width:1440px;margin:36px auto 0;padding:22px 40px 0;border-top:1px solid rgba(44,44,42,.1);display:flex;align-items:center;flex-wrap:wrap;gap:12px 20px;}
-  .mtw-edu-f__pay-label{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:#5F5E5A;}
+  .mtw-edu-f__pay-label{font-family:'Mulish',sans-serif;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#5F5E5A;}
   .mtw-edu-f__terms{display:flex;gap:8px;flex-wrap:wrap;}
-  .mtw-edu-f__term{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#3B6D11;background:#edf4e6;border-radius:3px;padding:5px 9px;white-space:nowrap;}
+  .mtw-edu-f__term{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#3B6D11;background:#edf4e6;border-radius:3px;padding:5px 9px;white-space:nowrap;text-decoration:none;transition:background .15s,color .15s;}
+  a.mtw-edu-f__term:hover{background:#3B6D11;color:#fff;}
   .mtw-edu-f__cards{display:flex;gap:7px;flex-wrap:wrap;margin-left:auto;}
   .mtw-edu-f__cards .pc{display:inline-flex;align-items:center;justify-content:center;width:44px;height:28px;border:1px solid rgba(44,44,42,.16);border-radius:4px;background:#FFFCF7;color:#5F5E5A;}
   .mtw-edu-f__cards .pc--wide{width:56px;}
@@ -68,9 +69,9 @@
   <div class="mtw-edu-f__pay">
     <span class="mtw-edu-f__pay-label">We accept</span>
     <div class="mtw-edu-f__terms">
-      <span class="mtw-edu-f__term">Purchase orders</span>
-      <span class="mtw-edu-f__term">Net-30</span>
-      <span class="mtw-edu-f__term">Tax-exempt</span>
+      <a class="mtw-edu-f__term" href="/pages/procurement-guide">Purchase orders</a>
+      <a class="mtw-edu-f__term" href="/pages/procurement-guide">Net-30</a>
+      <a class="mtw-edu-f__term" href="/pages/procurement-guide#tax-exempt">Tax-exempt</a>
     </div>
     <div class="mtw-edu-f__cards" aria-label="Accepted cards and wallets">
       <span class="pc" role="img" aria-label="Visa"><svg viewBox="0 0 40 14" fill="currentColor"><text x="20" y="11.5" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-style="italic" font-size="13" letter-spacing="1">VISA</text></svg></span>

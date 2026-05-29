@@ -3312,8 +3312,28 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 
 /* ---- Card: clickable image -> modal (no hover panel) + View full details link ---- */
 .tile-wrap{ position: relative; }
-.card-pdp-link{ position: absolute; inset: 0; z-index: 3; display: block; background: transparent; border: 0; cursor: pointer; }
+.card-pdp-link{ position: absolute; inset: 0; z-index: 6; display: block; background: transparent; border: 0; cursor: pointer; }
 .card-pdp-link:hover{ box-shadow: inset 0 0 0 2px var(--forest); }
+
+/* Hover quick-view (short form) inside the image; click opens full modal */
+.home .tile-wrap .tile img{ transition: transform .45s ease; }
+.home:hover .tile-wrap .tile img{ transform: scale(1.045); }
+.home .tile-wrap .quick-view{
+  position: absolute; inset: 0; z-index: 5; pointer-events: none;
+  display: flex; flex-direction: column; justify-content: flex-end; padding: 16px;
+  background: linear-gradient(to top, rgba(20,16,12,.93) 0%, rgba(20,16,12,.74) 44%, rgba(20,16,12,0) 80%);
+  opacity: 0; transition: opacity .3s ease;
+}
+.home:hover .tile-wrap .quick-view{ opacity: 1; }
+.home .tile-wrap .quick-view .qv-head{ font-family: var(--serif); font-size: 19px; font-weight: 500; color: #fff; margin: 0 0 6px; line-height: 1.15; }
+.home .tile-wrap .quick-view .qv-body{ color: #fdf8ef; font-family: var(--sans); font-size: 11.5px; line-height: 1.5; max-height: 9.5em; overflow: hidden; }
+.home .tile-wrap .quick-view .qv-body p{ margin: 0 0 5px; }
+.home .tile-wrap .quick-view .qv-body strong{ color: #fff; }
+.home .tile-wrap .quick-view .qv-more{ margin-top: 9px; font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #fff; }
+#qvSpecs p{ margin: 0 0 10px; }
+#qvSpecs ul{ margin: 0 0 14px; padding-left: 18px; }
+#qvSpecs li{ margin: 0 0 5px; }
+#qvSpecs strong{ font-weight: 700; }
 /* Persistent "View full details" link under each add-to-wagon */
 .add-row .view-pdp{
   appearance:none; background:none; border:0; cursor:pointer; padding:0;
@@ -3520,7 +3540,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
   <div class="wrap">
     <div class="col-img">
       <div class="tile t-hue3 has-photo">
-        <img src="{{ 'toadstool-house-context.png' | file_url }}" alt="Felt toadstool fairy home, hand-felted in Nepal"/>
+        <img src="https://cdn.shopify.com/s/files/1/0522/0882/8586/files/LilacFairyBlossomHouse2.jpg?v=1775874905" alt="Lilac Blossom House, a hand-felted cottage with a curled lilac petal roof, for the classroom nature table"/>
       </div>
     </div>
     <div class="col-txt">
@@ -4202,7 +4222,8 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       lastFocus=document.activeElement;
       qvImg.src=sp.img||''; qvImg.alt=sp.t||'';
       qvTitle.textContent=sp.t||''; qvPrice.textContent=sp.p||''; qvSku.textContent=sku;
-      qvSpecs.innerHTML=sp.h||''; qvQty.value=1;
+      var full=document.querySelector('template[data-fv-spec="'+sku+'"]');
+      qvSpecs.innerHTML=full?full.innerHTML:(sp.h||''); qvQty.value=1;
       qvAdd.setAttribute('data-sku',sku); if(p)qvAdd.setAttribute('data-variant-id',p.v);
       modal.classList.add('open'); modal.setAttribute('aria-hidden','false');
       document.body.style.overflow='hidden';
@@ -4257,11 +4278,20 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       if(sp&&sp.p){ var prEl=card?card.querySelector('.price'):null; if(prEl){ prEl.textContent=sp.p; } }
       // Set the real product image from spec data (theme file_url images don't exist -> blank tiles)
       if(sp&&sp.img&&tw){ var im=tw.querySelector('img'); if(im){ im.removeAttribute('srcset'); im.src=sp.img; if(!im.getAttribute('alt'))im.setAttribute('alt',nm); im.loading='lazy'; } }
-      // Clickable image overlay -> modal (no hover panel; cleaner, touch-friendly UX)
-      if(tw&&available&&!tw.querySelector('.card-pdp-link')){
-        var ov=document.createElement('button'); ov.type='button'; ov.className='card-pdp-link'; ov.setAttribute('aria-label',nm+' — view full details');
-        ov.addEventListener('click',function(){ openModal(sku); });
-        tw.insertBefore(ov,tw.firstChild);
+      // Hover quick-view (short form) + clickable image -> full details modal
+      if(tw&&available){
+        if(!tw.querySelector('.quick-view')){
+          var fn=tw.querySelector('.float-name'); if(fn) fn.style.display='none';
+          var ovl=tw.querySelector('.overlay'); if(ovl) ovl.style.display='none';
+          var qv=document.createElement('div'); qv.className='quick-view';
+          qv.innerHTML='<div class="qv-head">'+esc(nm)+'</div><div class="qv-body">'+((sp&&sp.h)||'')+'</div><span class="qv-more">View full details &rarr;</span>';
+          tw.appendChild(qv);
+        }
+        if(!tw.querySelector('.card-pdp-link')){
+          var ov=document.createElement('button'); ov.type='button'; ov.className='card-pdp-link'; ov.setAttribute('aria-label',nm+' — view full details');
+          ov.addEventListener('click',function(){ openModal(sku); });
+          tw.appendChild(ov);
+        }
       }
 
       // add-row: qty stepper + View details (quote items keep button, no qty/coming-soon)
@@ -4427,13 +4457,139 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
     "MTW-FV-PGN": {"t":"Wonderheart Pastel Gnomes","p":"$108","img":"https://cdn.shopify.com/s/files/1/0522/0882/8586/files/PastelGnomes9_f2c357ae-3221-4f47-8837-35c5b3fe6e40.jpg?v=1780030148","h":"<p>Six wooden gnome adults plus six matching mini gnomes — the pastel set in blush, peach, butter, sage, mist-blue, and lavender.</p><p><strong>Specs:</strong> 12 gnomes (6 adults 4″ + 6 minis 2″) · solid birch, beeswax finish, wool-felt coats · made in USA (Vermont) · Ages 3–8.</p>"},
     "MTW-FV-RGN": {"t":"Wonderheart Bright Gnomes","p":"$108","img":"https://cdn.shopify.com/s/files/1/0522/0882/8586/files/WonderheartMay20256_be730604-fdda-4e34-a9c1-96cc457f29c0.jpg?v=1780030149","h":"<p>Six wooden gnome adults plus six matching mini gnomes in the bright rainbow palette — the cast for a complete small-world fairy village.</p><p><strong>Specs:</strong> 12 gnomes (6 adults 4″ + 6 minis 2″) · solid birch, beeswax finish, wool-felt coats · made in USA (Vermont) · Ages 3–8.</p>"},
     "MTW-FV-VLG": {"t":"Build the Village Fairy Village Set","p":"$640","img":"https://cdn.shopify.com/s/files/1/0522/0882/8586/files/MushroomHousewithCarrotGardenMat2_39b838cb-ec42-45de-964b-28fce68096bc.jpg?v=1780030149","h":"<p>A purchase-order-ready set of five hand-felted homes for a full small-world village. Net-30 available.</p><p><strong>Includes:</strong> Pink Blossom, Lilac, Violet, Mushroom Garden, and the Whimsical Flower Fairy House centerpiece. Gnomes &amp; accessories sold separately.</p><p><strong>Specs:</strong> hand-stitched wool felt · each ~7–8″ tall · handmade in Nepal · Ages 3–8.</p>"},
-    "MTW-FV-BFH": {"t":"Butterfly Fairy House","p":"$45","img":"https://cdn.shopify.com/s/files/1/0522/0882/8586/files/ButterflyFairyHouse_55e18330-7d96-4c58-9039-86a75908fde0.jpg?v=1744153545","h":"<p>A hand-felted spring-into-summer cottage with embroidered butterflies and a curling petal roof. The doorway opens onto a hollow interior sized for a small fairy or gnome.</p><p><strong>Specs:</strong> hand-stitched wool felt with embroidered butterflies · ~7″ tall · spot-clean · fair-trade, handmade in Nepal · Ages 3+.</p>"},
+    "MTW-FV-BFH": {"t":"Butterfly Fairy House","p":"$45","img":"https://cdn.shopify.com/s/files/1/0522/0882/8586/files/ButterflyFairyHouse2.jpg?v=1744153545","h":"<p>A hand-felted spring-into-summer cottage with embroidered butterflies and a curling petal roof. The doorway opens onto a hollow interior sized for a small fairy or gnome.</p><p><strong>Specs:</strong> hand-stitched wool felt with embroidered butterflies · ~7″ tall · spot-clean · fair-trade, handmade in Nepal · Ages 3+.</p>"},
     "MTW-FV-PNK": {"t":"Pink Blossom House","p":"$58","img":"https://cdn.shopify.com/s/files/1/0522/0882/8586/files/pink-blossom-fairy-house.jpg?v=1779662621","h":"<p>A hand-felted pink blossom cottage — the signature piece of the Fairy Villages line. Overlapping wool-petal roof; doorway opens onto a hollow interior for a small fairy or gnome.</p><p><strong>Specs:</strong> hand-stitched wool felt over an internal armature · ~7″ tall · spot-clean · fair-trade, handmade in Nepal · Ages 3+.</p>"},
     "MTW-FV-LIL": {"t":"Lilac Blossom House","p":"$58","img":"https://cdn.shopify.com/s/files/1/0522/0882/8586/files/LilacFairyBlossomHouse2.jpg?v=1775874905","h":"<p>A hand-felted lilac blossom cottage — the dusk-toned sibling of the Pink Blossom House, with a curled wool-petal roof and a hollow interior for a small fairy or gnome.</p><p><strong>Specs:</strong> hand-stitched wool felt over an internal armature · ~7″ tall · spot-clean · fair-trade, handmade in Nepal · Ages 3+.</p>"},
     "MTW-FV-RBN": {"t":"Rainbow House","p":"$50","img":"https://cdn.shopify.com/s/files/1/0522/0882/8586/files/LargeRainbowShimmerHome.png?v=1774074543","h":"<p>A large hand-felted shimmer home in rainbow tones on a round felt base. The door opens and closes; the cone roof rises high enough to receive a small fairy, gnome, or doll.</p><p><strong>Specs:</strong> Himalayan Felt Co. · 100% sheep's wool · 12.59″ base × 16.5″ tall · CE-certified · fair-trade, handmade in Nepal · Ages 3+.</p>"},
     "MTW-FV-RBS": {"t":"Rainbow Shimmer Home","p":"$65","img":"https://cdn.shopify.com/s/files/1/0522/0882/8586/files/rainbow-shimmer-fairy-house.png?v=1779662621","h":"<p>A hand-felted fairy house with cone roof and stitched-flower detailing, anchored to a round wool-felt mat — a ready-to-play landscape. Door opens and closes.</p><p><strong>Specs:</strong> Himalayan Felt Co. · 100% sheep's wool · 12.59″ base × 17.71″ tall · CE-certified · fair-trade, handmade in Nepal · Ages 3+.</p>"}
   };
   </script>
+
+  <!-- Full product details (click-through modal). The SHORT form for hover lives in MTW_FV_SPECS above. -->
+  <template data-fv-spec="MTW-FV-MUS">
+    <p>A felt toadstool home opens onto a carrot garden, a stepping-stone path, a companion mushroom, and a tiny resident fairy, all fixed to a round play mat. A small inhabitable world ready for arrangement, return, and quiet story-rich play.</p>
+    <p><strong>Learning connections:</strong> Small-World Play · Narrative Play · Sensory · Expressive Arts.</p>
+    <p><strong>Classroom specifications</strong></p>
+    <ul>
+      <li><strong>Dimensions:</strong> House 6″ × 8″; Mat 11.5″ × 9″</li>
+      <li><strong>Material:</strong> Hand-stitched wool felt</li>
+      <li><strong>Origin:</strong> Hand-made in Nepal by a women's felting cooperative</li>
+      <li><strong>Ages:</strong> 3–8</li>
+    </ul>
+    <p><strong>Pairs with:</strong> Wonderheart Bright or Pastel Gnomes for the village's people; The Forest Caves Play Mat for an extended woodland landscape; Bumbu mushrooms and Tara Treasures finger puppets for cross-vendor small-world scenes.</p>
+  </template>
+  <template data-fv-spec="MTW-FV-PGN">
+    <p>Every fairy village needs its people. Six wooden gnome adults plus six matching mini gnomes — the pastel sibling of the bright set, in muted blush, peach, butter, sage, mist-blue, and lavender for Reggio-inspired classrooms and natural-tone homes.</p>
+    <p>Hand-turned solid birch with a natural beeswax finish. Coats are hand-stitched 100% wool felt — each gnome unique in grain and stitch.</p>
+    <p><strong>Learning connections:</strong> Small-World Play · Narrative Play · Family Play · Symbolic Thinking · Seasonal Rhythms.</p>
+    <p><strong>Classroom specifications</strong></p>
+    <ul>
+      <li><strong>Set:</strong> 6 adults + 6 minis (12 gnomes total)</li>
+      <li><strong>Material:</strong> Solid birch · natural beeswax finish · 100% wool felt coat, hand-stitched</li>
+      <li><strong>Size:</strong> Standard 4″ · Mini 2″</li>
+      <li><strong>Origin:</strong> Made in USA by Wonderheart (Vermont)</li>
+      <li><strong>Ages:</strong> 3–8</li>
+    </ul>
+    <p><strong>Pairs with:</strong> Mushroom Garden Fairy Home for the village center; Build the Village for the full five-home set; Bumbu mushrooms and trees for landscape additions.</p>
+  </template>
+  <template data-fv-spec="MTW-FV-RGN">
+    <p>Every fairy village needs its people. Six wooden gnome adults plus six matching mini gnomes — the cast for a complete small-world fairy village, dressed in the bright rainbow palette.</p>
+    <p>Hand-turned solid birch with a natural beeswax finish. Coats are hand-stitched 100% wool felt — each gnome unique in grain and stitch.</p>
+    <p><strong>Learning connections:</strong> Small-World Play · Narrative Play · Family Play · Symbolic Thinking · Seasonal Rhythms.</p>
+    <p><strong>Classroom specifications</strong></p>
+    <ul>
+      <li><strong>Set:</strong> 6 adults + 6 minis (12 gnomes total)</li>
+      <li><strong>Material:</strong> Solid birch · natural beeswax finish · 100% wool felt coat, hand-stitched</li>
+      <li><strong>Size:</strong> Standard 4″ · Mini 2″</li>
+      <li><strong>Origin:</strong> Made in USA by Wonderheart (Vermont)</li>
+      <li><strong>Ages:</strong> 3–8</li>
+    </ul>
+    <p><strong>Pairs with:</strong> Mushroom Garden Fairy Home for the village center; Build the Village for the full five-home set; Bumbu mushrooms and trees for landscape additions.</p>
+  </template>
+  <template data-fv-spec="MTW-FV-VLG">
+    <p>A purchase-order-ready fairy village set of five hand-felted homes for a full small-world village. Net-30 available. The set schools order when they want one PO to outfit a complete Fairy Villages station — five houses, with gnome inhabitants and accessories sold separately.</p>
+    <p><strong>Includes (5 fairy homes):</strong></p>
+    <ul>
+      <li>Pink Blossom House</li>
+      <li>Lilac Fairy Blossom House</li>
+      <li>Violet Fairy Blossom House</li>
+      <li>Mushroom Garden Fairy Home</li>
+      <li>Whimsical Flower Fairy House (the village centerpiece)</li>
+    </ul>
+    <p><strong>Developmental benefits</strong></p>
+    <ul>
+      <li>Five distinct homes create a full village for sustained small-world play</li>
+      <li>Petal roofs, embroidered details, hand-stitched wool — every house unique</li>
+      <li>Supports cooperative play as multiple children inhabit different homes</li>
+      <li>Heirloom-quality felt construction — handles years of daily classroom use</li>
+    </ul>
+    <p><strong>Classroom specifications</strong></p>
+    <ul>
+      <li><strong>Material:</strong> Hand-stitched wool felt on internal armatures</li>
+      <li><strong>Heights:</strong> Each ~7–8″ tall</li>
+      <li><strong>Origin:</strong> Hand-made in Nepal by a women's felting cooperative</li>
+      <li><strong>Ages:</strong> 3–8</li>
+    </ul>
+    <p><strong>Pairs with:</strong> Wonderheart Bright or Pastel Gnomes (the village's residents); Bumbu Flower Children for woodland inhabitants; The Forest Caves Play Mat for an extended landscape.</p>
+  </template>
+  <template data-fv-spec="MTW-FV-BFH">
+    <p>A hand-felted spring-into-summer cottage — the Butterfly Fairy House carries embroidered butterflies across its felt walls and a curling petal roof in soft pastels. The doorway opens onto a hollow interior sized for a small fairy or gnome.</p>
+    <p>Hand-stitched in Nepal by a women's felting cooperative. Wool is sourced from Australia and New Zealand and felted by hand without molds, so no two houses are identical — the embroidered butterflies vary in placement and color from house to house.</p>
+    <p><strong>Educator notes:</strong> A favorite for late-spring nature tables, life-cycle science work (pair with a felt caterpillar-to-butterfly set), and small-world dramatic play.</p>
+    <p><strong>Specifications:</strong> Hand-stitched wool felt with embroidered butterflies · approximately 7″ tall · spot-clean only · fair-trade · handmade in Nepal · Ages 3+.</p>
+  </template>
+  <template data-fv-spec="MTW-FV-PNK">
+    <p>A hand-felted pink blossom cottage — the signature piece of our Fairy Villages line. The pointed roof is built of overlapping wool petals stitched one at a time; the doorway opens onto a hollow interior where a small fairy or gnome can live, sit, or sleep.</p>
+    <p>Every house is hand-stitched in Nepal by a women's felting cooperative. Wool is sourced from Australia and New Zealand, hand-rolled and shaped without molds — meaning no two houses are identical. Tiny differences in petal angle and curve mark each one as the work of a particular maker.</p>
+    <p><strong>Educator notes:</strong> The anchor piece for spring nature tables, small-world play, and the Fairy Villages classroom set. Pairs naturally with Wonderheart wooden gnomes (4″ or mini) — the open doorway is sized to receive both.</p>
+    <p><strong>Specifications:</strong> Hand-stitched wool felt over an internal armature · approximately 7″ tall · spot-clean only · fair-trade · handmade in Nepal · Ages 3+.</p>
+  </template>
+  <template data-fv-spec="MTW-FV-LIL">
+    <p>A hand-felted lilac blossom cottage — the dusk-toned sibling of the Pink Blossom House. The roof of curled wool petals reads as lilac at one angle and pale violet at another; the doorway opens onto a hollow interior big enough to seat a small fairy or wooden gnome.</p>
+    <p>Hand-stitched in Nepal by a women's felting cooperative. Wool is sourced from Australia and New Zealand and felted by hand without molds, so no two houses are identical — petal angles, curve depths, and color saturation all carry the maker's fingerprint.</p>
+    <p><strong>Educator notes:</strong> A favorite for spring–early summer nature tables. Pairs with the Wonderheart Mini Pastel Purple Gnome or Mini Pastel Pink Gnome for the most natural color story.</p>
+    <p><strong>Specifications:</strong> Hand-stitched wool felt over an internal armature · approximately 7″ tall · spot-clean only · fair-trade · handmade in Nepal · Ages 3+.</p>
+  </template>
+  <template data-fv-spec="MTW-FV-RBN">
+    <p>A large hand-felted shimmer home in rainbow tones, fixed to a round felt base. The door opens and closes; the cone roof rises high enough to receive a small fairy, gnome, or doll inside. The hero piece for a rainbow-themed nature shelf.</p>
+    <p><strong>Developmental benefits</strong></p>
+    <ul>
+      <li>Large-scale fairy home supports sustained small-world play and multi-child rotation</li>
+      <li>Working door (opens/closes) develops fine motor and supports threshold-story play</li>
+      <li>Rainbow palette invites color-sorting and pattern-matching with felt loose parts</li>
+      <li>Open-ended interior receives any small figures — fairies, gnomes, dolls, peg people</li>
+    </ul>
+    <p><strong>Classroom specifications</strong></p>
+    <ul>
+      <li><strong>Maker:</strong> Himalayan Felt Co.</li>
+      <li><strong>Material:</strong> 100% sheep's wool sourced from Australia &amp; New Zealand</li>
+      <li><strong>Dimensions:</strong> 12.59″ base diameter · 16.5″ total height</li>
+      <li><strong>Safety:</strong> CE-certified · child-safe non-toxic dyes</li>
+      <li><strong>Origin:</strong> Hand-felted in Nepal by a women's cooperative under Fair Trade</li>
+      <li><strong>Ages:</strong> 3+ · Note: roof does not detach; house attached to base</li>
+    </ul>
+    <p><strong>Pairs with:</strong> Wonderheart Pastel Gnomes · Bumbu Flower Children · Papoose Fairy Door · felt loose parts.</p>
+  </template>
+  <template data-fv-spec="MTW-FV-RBS">
+    <p>A hand-felted fairy house with a cone roof and stitched-flower detailing, anchored to a round wool-felt mat. The door opens and closes onto a hollow interior ready for fairies, gnomes, or dolls. Colors range across the rainbow spectrum.</p>
+    <p><strong>Developmental benefits</strong></p>
+    <ul>
+      <li>House + mat as a single ready-to-play landscape — no setup required</li>
+      <li>Working door (opens/closes) develops fine motor and supports threshold-story play</li>
+      <li>Rainbow palette invites color-sorting and pattern-matching with felt loose parts</li>
+      <li>Round mat anchors the play space without overwhelming the table</li>
+    </ul>
+    <p><strong>Classroom specifications</strong></p>
+    <ul>
+      <li><strong>Maker:</strong> Himalayan Felt Co.</li>
+      <li><strong>Material:</strong> 100% sheep's wool sourced from Australia &amp; New Zealand</li>
+      <li><strong>Dimensions:</strong> 12.59″ base diameter · 17.71″ total height</li>
+      <li><strong>Safety:</strong> CE-certified · child-safe non-toxic dyes</li>
+      <li><strong>Origin:</strong> Hand-felted in Nepal by a women's cooperative under Fair Trade</li>
+      <li><strong>Ages:</strong> 3+ · Note: colors may range pink to purple by availability; roof does not detach</li>
+    </ul>
+    <p><strong>Pairs with:</strong> Wonderheart Pastel Gnomes · Bumbu Flower Children · Papoose Fairy Door.</p>
+  </template>
 </body>
 </html>
 {%- else -%}
