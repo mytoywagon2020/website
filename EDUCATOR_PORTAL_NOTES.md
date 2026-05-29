@@ -53,7 +53,9 @@ DRAFT status alone also removes a product from all channels (safe holding state)
 
 - 8 section tags: `educator-sensory-play`, `educator-woodland`, `educator-nature-play`, `educator-small-world`, `educator-fairy-villages`, `educator-steam`, `educator-dramatic-play`, `educator-creative-arts`
 - Umbrella tag **`educator`** added to all section-tagged products (2026-05-29) for a single smart-collection / filter.
-- **WARNING:** the `educator`/section tags currently also sit on some **live retail products** (shared listings not yet split). **Do NOT bulk-remove sales channels by tag** until those retail products are split off, or you'll pull real retail products off retail. See Backlog.
+- **DECISION (2026-05-29): keep BOTH** — the 8 section tags (drive each portal page + a per-section smart collection) **and** the `educator` umbrella (one-filter bulk edits + a single Educator Catalog smart collection).
+- **INVARIANT:** `educator` (and any `educator-<section>`) tag = "this is a dedicated walled educator listing." A **retail** product must NEVER carry it. Treat `tag:educator` as the yes/no test for "walled educator listing."
+- **WARNING (until Backlog #3 done):** the tag currently still sits on some **live retail products** (shared listings not yet split: Bauspiel ×4, Fairy Door, Wishing Well, retail Mushroom). **Do NOT bulk-remove sales channels by tag** until those are split, or you'll pull real retail products off retail.
 
 ---
 
