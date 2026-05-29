@@ -3296,6 +3296,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 </head>
 <body>
   {% section 'mtw-educator-header' %}
+  {% render 'educator-wagon-cart' %}
 
 <!-- =========================== UTILITY BAR =========================== -->
 <div class="utility">
@@ -4231,28 +4232,29 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
   // For Shopify port: replace this with a real fetch to /cart/add.js and
   // re-render the cart count from {{ cart.item_count }} on response.
   (function(){
-    var count = 0;
-    var badge = document.getElementById('cartCount');
     var flash = null;
-    function ensureFlash(){
-      if (flash) return flash;
-      flash = document.createElement('div');
-      flash.className = 'cart-flash';
-      document.body.appendChild(flash);
-      return flash;
-    }
+    function ensureFlash(){ if(flash) return flash; flash=document.createElement('div'); flash.className='cart-flash'; document.body.appendChild(flash); return flash; }
+    function cardData(el){var card=el.closest('article')||el.closest('.home')||el.closest('.kit');var nmEl=card&&(card.querySelector('.name')||card.querySelector('.float-name'));var prEl=card&&card.querySelector('.price');var imEl=card&&card.querySelector('.tile-wrap img');return{card:card,nm:nmEl?nmEl.textContent.trim():'',pr:prEl?prEl.textContent.trim():'',img:imEl?imEl.getAttribute('src'):''};}
+    document.querySelectorAll('.add-btn[data-sku]').forEach(function(ab){
+      var sku=ab.getAttribute('data-sku');if(!sku)return;
+      var d=cardData(ab);var tw=d.card?d.card.querySelector('.tile-wrap'):null;
+      var href='/pages/educator-product?sku='+encodeURIComponent(sku);
+      if(tw&&!tw.querySelector('.card-pdp-link')){var a=document.createElement('a');a.className='card-pdp-link';a.href=href;a.setAttribute('aria-label',(d.nm||'View full details'));tw.insertBefore(a,tw.firstChild);}
+      var vp=d.card?d.card.querySelector('.view-pdp'):null;if(vp){vp.href=href;}
+      var row=ab.closest('.add-row');var vp2=row?row.querySelector('.view-pdp'):null;if(vp2){vp2.href=href;}
+    });
+    function sync(items){items=items||(window.MTWWagon?MTWWagon.items():[]);var byVar={};items.forEach(function(it){byVar[String(it.variantId)]=it.qty;});document.querySelectorAll('.add-btn[data-variant-id]').forEach(function(b){var lbl=b.querySelector('.lbl');if(!lbl){lbl=document.createElement('span');lbl.className='lbl';var t='';Array.prototype.slice.call(b.childNodes).forEach(function(nd){if(nd.nodeType===3){t+=nd.textContent;b.removeChild(nd);}});lbl.textContent=(t.replace(/\s+/g,' ').trim()||'Add to wagon');b.setAttribute('data-lbl0',lbl.textContent);b.appendChild(lbl);}var q=byVar[String(b.getAttribute('data-variant-id'))]||0;if(q>0){b.classList.add('has-qty');lbl.textContent='✓ In wagon';}else{b.classList.remove('has-qty');lbl.textContent=b.getAttribute('data-lbl0')||'Add to wagon';}});}
     document.querySelectorAll('.add-btn').forEach(function(btn){
       btn.addEventListener('click', function(){
-        count += 1;
-        if (badge) badge.textContent = count;
-        var sku = btn.getAttribute('data-sku') || 'item';
-        var fl = ensureFlash();
-        fl.innerHTML = '<span class="added">Added to cart.</span> <span>' + sku.replace(/-/g,' ') + '</span>';
-        fl.classList.add('show');
-        clearTimeout(window.__cartFlashT);
-        window.__cartFlashT = setTimeout(function(){ fl.classList.remove('show'); }, 2400);
+        var sku=btn.getAttribute('data-sku')||'item';var vid=btn.getAttribute('data-variant-id');
+        var fl=ensureFlash();var show=function(html){fl.innerHTML=html;fl.classList.add('show');clearTimeout(window.__cartFlashT);window.__cartFlashT=setTimeout(function(){fl.classList.remove('show');},2400);};
+        if(!vid){show('<span class="added">Coming soon.</span> <span>'+sku.replace(/-/g,' ')+'</span>');return;}
+        if(!window.MTWWagon){show('<span class="added">Wagon unavailable.</span> <span>Please refresh.</span>');return;}
+        var d=cardData(btn);MTWWagon.add({variantId:vid,sku:sku,title:(d.nm||sku.replace(/-/g,' ')),price:d.pr||'',img:d.img||'',qty:1});
+        show('<span class="added">Added to your wagon!</span> <span>'+(d.nm||sku.replace(/-/g,' '))+'</span>');
       });
     });
+    if(window.MTWWagon){MTWWagon.subscribe(sync);}else{sync([]);}
   })();
 
   // Rotating utility-bar announcement (3 messages, ~5s each).
