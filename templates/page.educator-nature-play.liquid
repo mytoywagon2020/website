@@ -4559,7 +4559,7 @@ section[data-screen-label="08 The Everything Play Bundle"] .content .eyebrow{
         if(p.s){var qv=document.createElement('div');qv.className='quick-view';qv.innerHTML='<div class="qv-head">'+esc(d.nm)+'</div><div class="qv-body"><p>'+esc(p.s)+'</p></div>';tw.appendChild(qv);}
       }
       var vp=d.card?d.card.querySelector('.view-pdp'):null;if(vp){vp.href=href;}
-      var row=ab.closest('.add-row');var vp2=row?row.querySelector('.view-pdp'):null;if(vp2){vp2.href=href;}
+      var row=ab.closest('.add-row'); if(row){ var vp2=row.querySelector('.view-pdp'); if(!vp2){ vp2=document.createElement('a'); vp2.className='view-pdp'; row.appendChild(vp2); } vp2.href=href; vp2.textContent='View full details →'; }
     });
     function sync(items){
       items=items||(window.MTWWagon?MTWWagon.items():[]);
