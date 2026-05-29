@@ -70,6 +70,9 @@
     /* Path A */
     .wgn-path{background:var(--warm-white);border:.5px solid var(--rule);border-radius:3px;padding:24px;}
     .wgn-path__label{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--stone);margin:0 0 6px;}
+    .wgn-po-label{display:block;font-size:11.5px;color:var(--stone);margin:0 0 6px;}
+    .wgn-po-input{width:100%;height:42px;border:1px solid var(--rule-strong);border-radius:2px;background:var(--warm-white);padding:0 12px;font-family:'Mulish',sans-serif;font-size:13.5px;color:var(--ink);margin:0 0 12px;}
+    .wgn-po-input:focus{outline:2px solid var(--forest);outline-offset:1px;}
     .wgn-path h3{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:500;margin:0 0 8px;}
     .wgn-path p{font-size:12.5px;color:var(--stone);margin:0 0 16px;line-height:1.5;}
     .wgn-path__sub{font-size:11.5px;color:var(--stone);margin-top:8px;text-align:center;line-height:1.4;}
@@ -203,9 +206,11 @@
           '</div>'+
           '<div class="wgn-path">'+
             '<p class="wgn-path__label">Path B &mdash; District approval</p>'+
-            '<h3>Submit purchase order / request a quote</h3>'+
-            '<p>For Net-30, board-approved POs, and budget requisitions. We generate a formal itemized quote your procurement office can countersign.</p>'+
-            '<button type="button" class="wgn-btn wgn-btn--ghost" id="wgnPayPO">Generate official quote / submit PO &rarr;</button>'+
+            '<h3>Submit for district approval</h3>'+
+            '<p>For Net-30, board-approved POs, and budget requisitions. We generate a formal itemized invoice your procurement office can countersign.</p>'+
+            '<label class="wgn-po-label" for="wgnPONum">Have an official PO number? Enter it here (optional):</label>'+
+            '<input class="wgn-po-input" id="wgnPONum" type="text" autocomplete="off" placeholder="e.g. PO-2026-0142">'+
+            '<button type="button" class="wgn-btn wgn-btn--ghost" id="wgnPayPO">Submit for district approval &rarr;</button>'+
             '<p class="wgn-path__sub">Pricing held 45 days. Inventory reserved on PO confirmation.</p>'+
             '<p class="wgn-error" id="wgnPOErr" hidden></p>'+
           '</div>'+
@@ -219,7 +224,9 @@
     function doPay(method, btn, errEl){
       if(!window.MTWWagon) return;
       err(errEl,''); setBusy(btn,true);
-      MTWWagon.checkout(method).then(function(url){
+      var opts={};
+      if(method==='po'){ var pn=document.getElementById('wgnPONum'); if(pn && pn.value.trim()) opts.poNumber=pn.value.trim(); }
+      MTWWagon.checkout(method, opts).then(function(url){
         if(method==='po'){
           grid.innerHTML='<div class="wgn-grid"><div class="wgn-confirm"><h2>Purchase order request sent</h2><p>We&rsquo;ve created your itemized order. Our team confirms Net-30 terms and emails your countersign-ready quote within one business day.</p><p><a class="lnk" href="'+esc(url)+'">View your itemized quote &rarr;</a></p></div></div>';
           MTWWagon.clear();

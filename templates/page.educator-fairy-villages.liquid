@@ -4300,8 +4300,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
           tw.appendChild(qv);
         }
         if(!tw.querySelector('.card-pdp-link')){
-          var ov=document.createElement('button'); ov.type='button'; ov.className='card-pdp-link'; ov.setAttribute('aria-label',nm+' — view full details');
-          ov.addEventListener('click',function(){ openModal(sku); });
+          var ov=document.createElement('a'); ov.className='card-pdp-link'; ov.href='/pages/educator-product?sku='+encodeURIComponent(sku); ov.setAttribute('aria-label',nm+' — view full details');
           tw.appendChild(ov);
         }
       }
@@ -4316,8 +4315,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
           var qi=qty.querySelector('input');
           qty.children[0].addEventListener('click',function(){ qi.value=Math.max(1,(parseInt(qi.value,10)||1)-1); });
           qty.children[2].addEventListener('click',function(){ qi.value=(parseInt(qi.value,10)||1)+1; });
-          var vd=document.createElement('button'); vd.type='button'; vd.className='view-pdp'; vd.textContent='View full details →';
-          vd.addEventListener('click',function(){ openModal(sku); });
+          var vd=document.createElement('a'); vd.className='view-pdp'; vd.href='/pages/educator-product?sku='+encodeURIComponent(sku); vd.textContent='View full details →';
           row.appendChild(vd);
         } else {
           ab.style.display='none';

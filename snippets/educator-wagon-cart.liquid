@@ -43,10 +43,11 @@
     clear: function(){ write([]); },
     qtyOf: function(variantId){ var f=read().filter(function(it){return String(it.variantId)===String(variantId);})[0]; return f?f.qty:0; },
     subscribe: function(fn){ subs.push(fn); try{fn(read());}catch(e){} },
-    checkout: function(method){
+    checkout: function(method, opts){
       var items=read();
       if(!items.length) return Promise.reject(new Error('empty'));
       var payload={ paymentMethod: method==='po'?'po':'card', items: items.map(function(it){ return { variantId:String(it.variantId), quantity:it.qty||1 }; }) };
+      if(opts && opts.poNumber) payload.poNumber=String(opts.poNumber);
       return fetch(PROXY, { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify(payload) })
         .then(function(r){ return r.json().catch(function(){ throw new Error('proxy '+r.status); }).then(function(d){ if(!r.ok) throw new Error((d&&d.error)||('proxy '+r.status)); return d; }); })
         .then(function(d){ if(!d||!d.invoiceUrl) throw new Error((d&&d.error)||'no invoice'); return d.invoiceUrl; });
