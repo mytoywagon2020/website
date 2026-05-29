@@ -268,6 +268,43 @@ district planning, formal pre-commit quote doc). Do NOT route standard orders th
 terms/payment band (PO · Net-30 · Tax-exempt text badges + monochrome card logos) — it was lost
 in the switch but is B2B-conversion-relevant.
 
+### Educator PDP page (gated, walled) — added 2026-05-29
+- `templates/page.educator-product.liquid` + Shopify Page handle `educator-product`
+  (templateSuffix `educator-product`, Page id 116049641642). URL:
+  `/pages/educator-product?sku=MTW-FV-PNK`. It's a PAGE (not a product) → never in
+  /products.json. Renders premium PDP (image gallery + thumbnails, value badges,
+  accordion sections) from a data island keyed by ?sku=. Gated like the section pages.
+- ROADMAP (use metafields / live data): Liquid can't read walled products' metafields
+  (off-channel). Plan: add a READ endpoint to the app proxy `/apps/wagon/product?sku=`
+  returning title/price/media/metafields from Admin API; page fetches live, same markup,
+  still off /products.json. Until then the data island is baked (FV 9 SKUs done; PNK/LIL
+  have full accordion bodies, others fall back to short body).
+
+### PRE-MORTEM / launch risks (consultant review 2026-05-29) — MUST address before launch
+- **FM1 App JS clash:** storefront-optimization apps (sticky cart, upsell sliders,
+  exit-intent) can hijack the custom Add-to-wagon / draft-order flow and force the native
+  cart → wall failure. PREVENT: do NOT install storefront apps without dev review; keep
+  MTWWagon isolated.
+- **FM2 Fulfillment/accounting:** orders are DRAFT ORDERS; ShipStation/QuickBooks/Xero may
+  treat drafts as invoices and not import until completed. PREVENT: run a real test order
+  end-to-end (pay-link → warehouse software → accounting ledger) before launch.
+- **FM3 Metafield/content trap:** the single dynamic PDP relies on complete data per SKU;
+  a missing field / bad SKU / wrong-ratio image breaks the layout. PREVENT: strict product
+  creation checklist; treat metafields as mandatory; validate before pushing a SKU live.
+- **FM4 Abandoned-draft black hole:** Shopify abandoned-checkout automations DON'T see
+  draft-order pay links → Klaviyo/Shopify won't recover them. PREVENT (already in runbook):
+  Shopify Flow flag drafts pending/invoice-sent >48h for manual follow-up.
+
+### PDP UX gaps (consultant 2026-05-29) — status
+- DONE: #4 removed "✓N" from Add button (now clean "Add to wagon"; in-wagon count shown as
+  a separate line). #5 stronger "Back to Fairy Villages" (larger, padded, top rule).
+  #2 thumbnails + main both 1:1 (consistent). #3 badges are bordered pills (scannable).
+- OPEN: #1 PO PDF upload field — needs the app proxy to accept multipart + file storage
+  (e.g., upload to a bucket/Files, attach URL to the draft order note/metafield). Best
+  placed on the WAGON Path-B (PO) flow, not the PDP. Build with the proxy.
+- App blocks (reviews/upsell): most need a native /products/ URL or product on Online
+  Store → conflict with walling. Verify per-app (Judge.me/Loox/etc.) before injecting.
+
 **STATUS (2026-05-29):** Front-end client-cart + Worker + setup doc = NOT yet built (next).
 Already done this session: wagon link added to sticky nav on all 8 pages (live count), double
 footer removed on all 8, preview bypass unified on all 8. NOTE: the nav wagon link currently
