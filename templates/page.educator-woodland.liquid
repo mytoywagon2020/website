@@ -3,6 +3,7 @@
 {%- assign is_approved = false -%}
 {%- if customer and customer.tags contains 'educator-approved' -%}{%- assign is_approved = true -%}{%- endif -%}
 {%- if customer.b2b? -%}{%- assign is_approved = true -%}{%- endif -%}
+{%- if request.design_mode or theme.role != 'main' -%}{%- assign is_approved = true -%}{%- endif -%}
 {%- if is_approved -%}
 <!doctype html>
 <html lang="en">
@@ -3454,6 +3455,11 @@ section[data-screen-label="07 Papoose Seasonal Trees"] .content{
       <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20a8 8 0 0 1 16 0"/></svg>
       <span class="label">Account</span>
     </a>
+    <a href="/pages/educator-wagon" class="nav__action" aria-label="Your wagon">
+      <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.2 11.2a1 1 0 0 0 1 .8h8.4a1 1 0 0 0 1-.8L21 7H6"/></svg>
+      <span class="label">Wagon</span>
+      <span class="pill" id="wagonCount" data-count="{{ cart.item_count }}">{{ cart.item_count }}</span>
+    </a>
     <a href="/pages/new-quote" class="nav__action" aria-label="Quote builder">
       <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="14" height="16" rx="1"/><path d="M9 9h6M9 13h6M9 17h4"/></svg>
       <span class="label">Quote</span>
@@ -4272,91 +4278,6 @@ section[data-screen-label="07 Papoose Seasonal Trees"] .content{
   </div>
 </section>
 
-<!-- =========================== FOOTER =========================== -->
-<footer>
-  <div class="wrap">
-    <div class="left">
-      <img src="{{ 'mtw-wagon-only.png' | asset_url }}" alt="My Toy Wagon" class="foot-mark"/>
-      <p>Natural toys made for years of small hands. A small family shop in Los Angeles, online since 2020.</p>
-
-      <div class="foot-contact">
-        <a href="mailto:educators@mytoywagon.com">educators@mytoywagon.com</a>
-        <a href="tel:6268410421">(626) 841-0421</a>
-        <span class="hours">Mon to Fri, 9 am to 5 pm PT</span>
-        <span class="hours">37 W Huntington Drive, Arcadia, CA 91007</span>
-      </div>
-
-      <div class="foot-social">
-        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg></a>
-        <a href="#" aria-label="Pinterest"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M11 8c-2 .5-3.5 2.5-3 4.5.3 1.3 1.5 1.6 1.5.5 0-1 .5-2 1.5-2.5 1.5-.8 3.5 0 4 1.5.5 2-.5 4-2.5 4-1 0-1.5-.5-1.3-1.5L12 11"/><path d="M11 13.5 9.5 19"/></svg></a>
-        <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="3"/><path d="M10 9.5v5l4.5-2.5z" fill="currentColor"/></svg></a>
-        <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M14 4v10.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 4c0 2 1.5 4 4 4"/></svg></a>
-      </div>
-    </div>
-    <div class="cols">
-      <div>
-        <h6>The Catalog</h6>
-        <ul class="catalog-list">
-          <li><a href="/pages/educator-sensory-play">01 &middot; Sensory Play</a></li>
-          <li><a href="/pages/educator-nature-play">02 &middot; Nature Play</a></li>
-          <li><a href="/pages/educator-woodland">03 &middot; Woodland</a></li>
-          <li><a href="/pages/educator-small-world">04 &middot; Small World &amp; Storytelling</a></li>
-          <li><a href="/pages/educator-fairy-villages">05 &middot; Fairy Villages</a></li>
-          <li><a href="/pages/educator-steam">06 &middot; STEAM</a></li>
-          <li><a href="/pages/educator-dramatic-play">07 &middot; Dramatic Play</a></li>
-          <li><a href="/pages/educator-creative-arts">08 &middot; Creative Arts</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h6>Educator Program</h6>
-        <ul>
-          <li><a href="/pages/new-quote">Start a new quote</a></li>
-          <li><a href="/pages/educator-dashboard">Educator dashboard</a></li>
-          <li><a href="/pages/educators">Apply for an account</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h6>Resources</h6>
-        <ul class="downloads">
-          <li><a href="/pages/vendor-profile">Vendor profile</a></li>
-          <li><a href="/pages/procurement-guide">Procurement guide</a></li>
-          <li><a href="/pages/schools">Ordering for schools</a></li>
-          <li><a href="#" data-ext="XLSX">SKU list and prices</a></li>
-          <li><a href="#" data-ext="PDF">Catalog spread</a></li>
-          <li><a href="#" data-ext="PDF">Materials and safety</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <div class="foot-mid">
-    <span class="pay-label">We accept</span>
-    <div class="pay-methods">
-      <span class="pay-chip po">Purchase orders</span>
-      <span class="pay-chip">Net-30</span>
-      <span class="pay-chip">Tax-exempt</span>
-      <span class="pay-chip">Visa</span>
-      <span class="pay-chip">Mastercard</span>
-      <span class="pay-chip">Amex</span>
-      <span class="pay-chip">Discover</span>
-      <span class="pay-chip">Apple&nbsp;Pay</span>
-      <span class="pay-chip">Google&nbsp;Pay</span>
-      <span class="pay-chip">PayPal</span>
-      <span class="pay-chip">Shop&nbsp;Pay</span>
-    </div>
-  </div>
-
-  <div class="legal">
-    <span>© 2026 My Toy Wagon &nbsp;·&nbsp; Educator Catalog &nbsp;·&nbsp; All rights reserved</span>
-    <div class="legal-links">
-      <a href="#">Privacy policy</a>
-      <a href="#">Terms of service</a>
-      <a href="#">Accessibility</a>
-      <a href="#">Returns &amp; shipping</a>
-    </div>
-  </div>
-</footer>
 
 <script src="image-slot.js"></script>
 <script>
@@ -4430,6 +4351,7 @@ section[data-screen-label="07 Papoose Seasonal Trees"] .content{
 
   (function(){
     var badge=document.querySelector('.mtw-edu-h__wagon-count');
+    var navWagon=document.getElementById('wagonCount');
     var flash=null;
     function ensureFlash(){if(flash)return flash;flash=document.createElement('div');flash.className='cart-flash';document.body.appendChild(flash);return flash;}
     var PDP={
@@ -4478,7 +4400,7 @@ section[data-screen-label="07 Papoose Seasonal Trees"] .content{
           fetch('/cart/add.js',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id:Number(vid),quantity:1})})
             .then(function(r){if(!r.ok)throw new Error('add');return r.json();})
             .then(function(){return fetch('/cart.js').then(function(r){return r.json();});})
-            .then(function(c){if(badge){badge.textContent=c.item_count;badge.setAttribute('data-count',c.item_count);}show('<span class="added">Added to your wagon!</span> <span>'+sku.replace(/-/g,' ')+'</span>');})
+            .then(function(c){if(badge){badge.textContent=c.item_count;badge.setAttribute('data-count',c.item_count);}if(navWagon){navWagon.textContent=c.item_count;navWagon.setAttribute('data-count',c.item_count);}show('<span class="added">Added to your wagon!</span> <span>'+sku.replace(/-/g,' ')+'</span>');})
             .catch(function(){show('<span class="added">Could not add.</span> <span>Open the product page</span>');})
             .finally(function(){btn.disabled=false;});
         }else{show('<span class="added">Added to your wagon!</span> <span>'+sku.replace(/-/g,' ')+'</span>');}

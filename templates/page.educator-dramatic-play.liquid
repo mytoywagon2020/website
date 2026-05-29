@@ -3,6 +3,7 @@
 {%- assign is_approved = false -%}
 {%- if customer and customer.tags contains 'educator-approved' -%}{%- assign is_approved = true -%}{%- endif -%}
 {%- if customer.b2b? -%}{%- assign is_approved = true -%}{%- endif -%}
+{%- if request.design_mode or theme.role != 'main' -%}{%- assign is_approved = true -%}{%- endif -%}
 {%- if is_approved -%}
 <!doctype html>
 <html lang="en">
@@ -3315,6 +3316,11 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20a8 8 0 0 1 16 0"/></svg>
       <span class="label">Account</span>
     </a>
+    <a href="/pages/educator-wagon" class="nav__action" aria-label="Your wagon">
+      <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.2 11.2a1 1 0 0 0 1 .8h8.4a1 1 0 0 0 1-.8L21 7H6"/></svg>
+      <span class="label">Wagon</span>
+      <span class="pill" id="wagonCount" data-count="{{ cart.item_count }}">{{ cart.item_count }}</span>
+    </a>
     <a href="/pages/new-quote" class="nav__action" aria-label="Quote builder">
       <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="14" height="16" rx="1"/><path d="M9 9h6M9 13h6M9 17h4"/></svg>
       <span class="label">Quote</span>
@@ -4092,90 +4098,6 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
   </div>
 </section>
 
-<!-- =========================== FOOTER =========================== -->
-<footer>
-  <div class="wrap">
-    <div class="left">
-      <img src="{{ 'mtw-wagon-only.png' | asset_url }}" alt="My Toy Wagon" class="foot-mark"/>
-      <p>Natural toys made for years of small hands. A small family shop in Los Angeles, online since 2020.</p>
-
-      <div class="foot-contact">
-        <a href="mailto:educator@mytoywagon.com">educator@mytoywagon.com</a>
-        <a href="tel:6268410421">(626) 841-0421</a>
-        <span class="hours">Mon to Fri, 9 am to 5 pm PT</span>
-        <span class="hours">Los Angeles, California</span>
-      </div>
-
-      <div class="foot-procurement" style="margin-top:22px;display:flex;flex-direction:column;gap:9px;font-size:13px;">
-        <a href="/pages/procurement-guide" style="color:rgba(250,246,237,.75);text-decoration:none;">Procurement guide</a>
-        <a href="/pages/vendor-profile" style="color:rgba(250,246,237,.75);text-decoration:none;">Vendor profile</a>
-        <a href="mailto:educator@mytoywagon.com?subject=Reference%20request" style="color:rgba(250,246,237,.75);text-decoration:none;">References on request</a>
-      </div>
-    </div>
-    <div class="cols">
-      <div>
-        <h6>The Catalog</h6>
-        <ul class="catalog-list">
-          <li><a href="/pages/educator-sensory-play">01 &middot; Sensory Play</a></li>
-          <li><a href="/pages/educator-nature-play">02 &middot; Nature Play</a></li>
-          <li><a href="/pages/educator-woodland">03 &middot; Woodland</a></li>
-          <li><a href="/pages/educator-small-world">04 &middot; Small World &amp; Storytelling</a></li>
-          <li><a href="/pages/educator-fairy-villages">05 &middot; Fairy Villages</a></li>
-          <li><a href="/pages/educator-steam">06 &middot; STEAM</a></li>
-          <li><a href="/pages/educator-dramatic-play">07 &middot; Dramatic Play</a></li>
-          <li><a href="/pages/educator-creative-arts">08 &middot; Creative Arts</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h6>Educator Program</h6>
-        <ul>
-          <li><a href="/pages/new-quote">Start a new quote</a></li>
-          <li><a href="/pages/educator-dashboard">Educator dashboard</a></li>
-          <li><a href="/pages/educator-program">Apply for an account</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h6>Resources</h6>
-        <ul class="downloads">
-          <li><a href="/pages/vendor-profile">Vendor profile</a></li>
-          <li><a href="/pages/procurement-guide">Procurement guide</a></li>
-          <li><a href="/pages/schools">Ordering for schools</a></li>
-          <li><a href="#" data-ext="XLSX">SKU list and prices</a></li>
-          <li><a href="#" data-ext="PDF">Catalog spread</a></li>
-          <li><a href="#" data-ext="PDF">Materials and safety</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <div class="foot-mid">
-    <span class="pay-label">We accept</span>
-    <div class="pay-methods">
-      <span class="pay-chip po">Purchase orders</span>
-      <span class="pay-chip">Net-30</span>
-      <span class="pay-chip">Tax-exempt</span>
-      <span class="pay-chip">Visa</span>
-      <span class="pay-chip">Mastercard</span>
-      <span class="pay-chip">Amex</span>
-      <span class="pay-chip">Discover</span>
-      <span class="pay-chip">Apple&nbsp;Pay</span>
-      <span class="pay-chip">Google&nbsp;Pay</span>
-      <span class="pay-chip">PayPal</span>
-      <span class="pay-chip">Shop&nbsp;Pay</span>
-    </div>
-  </div>
-
-  <div class="legal">
-    <span>© 2026 My Toy Wagon &nbsp;·&nbsp; Educator Catalog &nbsp;·&nbsp; All rights reserved</span>
-    <div class="legal-links">
-      <a href="#">Privacy policy</a>
-      <a href="#">Terms of service</a>
-      <a href="#">Accessibility</a>
-      <a href="#">Returns &amp; shipping</a>
-    </div>
-  </div>
-</footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="image-slot.js"></script>
 <script>
