@@ -305,6 +305,20 @@ in the switch but is B2B-conversion-relevant.
 - App blocks (reviews/upsell): most need a native /products/ URL or product on Online
   Store → conflict with walling. Verify per-app (Judge.me/Loox/etc.) before injecting.
 
+### FV "Complete the Village" accessories — created 2026-05-29
+- **MTW-FV-FLC Bumbu Flower Children** — prod 8444833726634 / variant 48345339297962. Already
+  WALLED (off Online Store), ACTIVE, CONTINUE. Just SKU'd. **PRICE = $78** (the FV page card
+  previously said $42 — DISCREPANCY; owner verify which is correct in admin).
+- **MTW-FV-FDR Papoose Fairy Door** — split from retail twin 8159792267434. Educator copy prod
+  8447608979626 / variant 48359113818282, $26, CONTINUE, **DRAFT → OWNER WALL** (channels off,
+  Educator Catalog on, Active). Retail original untagged (retail-only now).
+- **MTW-FV-WSH Papoose Wishing Well** — split from retail twin 8159808290986. Educator copy prod
+  8447613730986 / variant 48359133511850, $20, CONTINUE, **DRAFT → OWNER WALL**. Retail original
+  untagged.
+- All 3 wired on FV page ("Complete the Village" cards now have add-to-wagon + content-page
+  links) and on the content page (data island + full accordion templates). Content page now
+  covers 12 FV SKUs.
+
 **STATUS (2026-05-29):** Front-end client-cart + Worker + setup doc = NOT yet built (next).
 Already done this session: wagon link added to sticky nav on all 8 pages (live count), double
 footer removed on all 8, preview bypass unified on all 8. NOTE: the nav wagon link currently

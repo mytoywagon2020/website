@@ -2649,16 +2649,21 @@ footer .cols .downloads a::after{
   color: rgba(245,240,229,.55);
   margin-left: 6px;
 }
-.companions .folk .add-btn.icon{
+.companions .folk .add-btn.icon,
+.companions .add-btn.icon{
   padding: 7px 10px;
   background: transparent;
   border: 1px solid rgba(245,240,229,.4);
   color: var(--cream);
 }
-.companions .folk .add-btn.icon:hover{
+.companions .folk .add-btn.icon:hover,
+.companions .add-btn.icon:hover{
   background: var(--cream); color: var(--ink); border-color: var(--cream);
 }
-.companions .folk .add-btn.icon .plus{ width: 11px; height: 11px; }
+.companions .folk .add-btn.icon .plus,
+.companions .add-btn.icon .plus{ width: 11px; height: 11px; }
+.companions .cv-row{ display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:8px; }
+.companions .cv-row .add-btn.icon.has-qty{ background:#3B6D11; border-color:#3B6D11; color:#fff; }
 .companions .price-line{
   margin-top: 36px;
   font-family: var(--sans);
@@ -3849,30 +3854,45 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
         <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;">
           <div style="display: flex; flex-direction: column;">
             <div class="tile t-gilt has-photo" style="aspect-ratio: 1 / 1; width: 100%;">
-              <img src="{{ 'Bumbu_Flower_Children.webp' | file_url }}" alt="Bumbu Flower Children, five carved wooden figures with flower-head caps (red poppy, white daisy, yellow sunflower, pink tulip, blue cornflower) on green leaf bodies"/>
+              <a class="card-pdp-link" href="/pages/educator-product?sku=MTW-FV-FLC" aria-label="Flower Children — view full details"></a>
+              <img src="https://cdn.shopify.com/s/files/1/0522/0882/8586/files/Bumbu_Flower_Children.webp?v=1779679269" alt="Bumbu Flower Children, five carved wooden figures with flower-head caps (red poppy, white daisy, yellow sunflower, pink tulip, blue cornflower) on green leaf bodies"/>
               <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
               <span class="tag">[ FLOWER CHILDREN ]</span>
             </div>
             <span style="margin-top:10px; font-family:var(--serif); font-size:15px; color:var(--cream); line-height:1.3;">Flower Children <span style="font-family:var(--sans); font-size:10px; letter-spacing:.08em; color:rgba(245,240,229,.55); font-weight:500;">&middot; set of 5</span></span>
-            <span style="margin-top:4px; font-family:var(--sans); font-size:10px; letter-spacing:.14em; text-transform:uppercase; font-weight:500; color:rgba(245,240,229,.55);">$42 &nbsp;&middot;&nbsp; MTW-FV-FLC</span>
+            <div class="cv-row">
+              <span style="font-family:var(--sans); font-size:13px; color:var(--cream); font-weight:600;">$78</span>
+              <button class="add-btn icon" type="button" data-sku="MTW-FV-FLC" aria-label="Add Flower Children to wagon"><span class="plus"></span></button>
+            </div>
+            <span style="margin-top:6px; font-family:var(--sans); font-size:10px; letter-spacing:.14em; text-transform:uppercase; font-weight:500; color:rgba(245,240,229,.55);">MTW-FV-FLC</span>
           </div>
           <div style="display: flex; flex-direction: column;">
             <div class="tile t-cream has-photo" style="aspect-ratio: 1 / 1; width: 100%;">
-              <img src="{{ 'Papoose_Fairy_Door.png' | file_url }}" alt="Fairy Door, a rounded natural-wood Papoose door with two black arrow-shaped iron hinges and a small knob"/>
+              <a class="card-pdp-link" href="/pages/educator-product?sku=MTW-FV-FDR" aria-label="Fairy Door — view full details"></a>
+              <img src="https://cdn.shopify.com/s/files/1/0522/0882/8586/files/Papoose_Fairy_Door.png?v=1771724680" alt="Fairy Door, a rounded natural-wood Papoose door with two black arrow-shaped iron hinges and a small knob"/>
               <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
               <span class="tag">[ FAIRY DOOR ]</span>
             </div>
             <span style="margin-top:10px; font-family:var(--serif); font-size:15px; color:var(--cream); line-height:1.3;">Fairy Door <span style="font-family:var(--sans); font-size:10px; letter-spacing:.08em; color:rgba(245,240,229,.55); font-weight:500;">&middot; Papoose</span></span>
-            <span style="margin-top:4px; font-family:var(--sans); font-size:10px; letter-spacing:.14em; text-transform:uppercase; font-weight:500; color:rgba(245,240,229,.55);">$28 &nbsp;&middot;&nbsp; MTW-FV-FDR</span>
+            <div class="cv-row">
+              <span style="font-family:var(--sans); font-size:13px; color:var(--cream); font-weight:600;">$26</span>
+              <button class="add-btn icon" type="button" data-sku="MTW-FV-FDR" aria-label="Add Fairy Door to wagon"><span class="plus"></span></button>
+            </div>
+            <span style="margin-top:6px; font-family:var(--sans); font-size:10px; letter-spacing:.14em; text-transform:uppercase; font-weight:500; color:rgba(245,240,229,.55);">MTW-FV-FDR</span>
           </div>
           <div style="display: flex; flex-direction: column;">
             <div class="tile t-hue3 has-photo" style="aspect-ratio: 1 / 1; width: 100%;">
-              <img src="{{ 'papoose-wishing-well.webp' | file_url }}" alt="Papoose wooden wishing well, a hardwood barrel with an arched roof and a tiny bucket on a string, photographed on weathered logs"/>
+              <a class="card-pdp-link" href="/pages/educator-product?sku=MTW-FV-WSH" aria-label="Wishing Well — view full details"></a>
+              <img src="https://cdn.shopify.com/s/files/1/0522/0882/8586/files/Papoose_Woodland_Fairy_Wishing_Well.png?v=1771724379" alt="Papoose wooden wishing well, a hardwood barrel with an arched roof and a tiny bucket on a string, photographed on weathered logs"/>
               <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
               <span class="tag">[ WISHING WELL ]</span>
             </div>
             <span style="margin-top:10px; font-family:var(--serif); font-size:15px; color:var(--cream); line-height:1.3;">Wishing Well <span style="font-family:var(--sans); font-size:10px; letter-spacing:.08em; color:rgba(245,240,229,.55); font-weight:500;">&middot; Papoose</span></span>
-            <span style="margin-top:4px; font-family:var(--sans); font-size:10px; letter-spacing:.14em; text-transform:uppercase; font-weight:500; color:rgba(245,240,229,.55);">$32 &nbsp;&middot;&nbsp; MTW-FV-WSH</span>
+            <div class="cv-row">
+              <span style="font-family:var(--sans); font-size:13px; color:var(--cream); font-weight:600;">$20</span>
+              <button class="add-btn icon" type="button" data-sku="MTW-FV-WSH" aria-label="Add Wishing Well to wagon"><span class="plus"></span></button>
+            </div>
+            <span style="margin-top:6px; font-family:var(--sans); font-size:10px; letter-spacing:.14em; text-transform:uppercase; font-weight:500; color:rgba(245,240,229,.55);">MTW-FV-WSH</span>
           </div>
         </div>
       </div>
@@ -4224,6 +4244,9 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       "MTW-FV-PGN":{v:"48345499238570",s:"Wonderheart Pastel Gnomes · pure wool felt · made in Nepal"},
       "MTW-FV-RGN":{v:"48345499271338",s:"Wonderheart Bright Gnomes · pure wool felt · made in Nepal"},
       "MTW-FV-VLG":{v:"48345499304106",s:"Build the Village fairy village set · Net-30 · tax-exempt"},
+      "MTW-FV-FLC":{v:"48345339297962",s:"Bumbu Flower Children · set of 5 · made in Romania"},
+      "MTW-FV-FDR":{v:"48359113818282",s:"Papoose Fairy Door · hand-carved teak"},
+      "MTW-FV-WSH":{v:"48359133511850",s:"Papoose Wishing Well · handcrafted in Nepal"},
       "MTW-FV-LFS":{quote:true,s:"Little Folk Set · custom educator combo · request at quote"}
     };
 
@@ -4484,7 +4507,10 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
     "MTW-FV-PNK": {"t":"Pink Blossom House","p":"$58","img":"https://cdn.shopify.com/s/files/1/0522/0882/8586/files/pink-blossom-fairy-house.jpg?v=1779662621","h":"<p>A hand-felted pink blossom cottage — the signature piece of the Fairy Villages line. Overlapping wool-petal roof; doorway opens onto a hollow interior for a small fairy or gnome.</p><p><strong>Specs:</strong> hand-stitched wool felt over an internal armature · ~7″ tall · spot-clean · fair-trade, handmade in Nepal · Ages 3–8.</p>"},
     "MTW-FV-LIL": {"t":"Lilac Blossom House","p":"$58","img":"https://cdn.shopify.com/s/files/1/0522/0882/8586/files/LilacFairyBlossomHouse2.jpg?v=1775874905","h":"<p>A hand-felted lilac blossom cottage — the dusk-toned sibling of the Pink Blossom House, with a curled wool-petal roof and a hollow interior for a small fairy or gnome.</p><p><strong>Specs:</strong> hand-stitched wool felt over an internal armature · ~7″ tall · spot-clean · fair-trade, handmade in Nepal · Ages 3–8.</p>"},
     "MTW-FV-RBN": {"t":"Rainbow House","p":"$50","img":"https://cdn.shopify.com/s/files/1/0522/0882/8586/files/LargeRainbowShimmerHome.png?v=1774074543","h":"<p>A large hand-felted shimmer home in rainbow tones on a round felt base. The door opens and closes; the cone roof rises high enough to receive a small fairy, gnome, or doll.</p><p><strong>Specs:</strong> Himalayan Felt Co. · 100% sheep's wool · 12.59″ base × 16.5″ tall · CE-certified · fair-trade, handmade in Nepal · Ages 3–8.</p>"},
-    "MTW-FV-RBS": {"t":"Rainbow Shimmer Home","p":"$65","img":"https://cdn.shopify.com/s/files/1/0522/0882/8586/files/rainbow-shimmer-fairy-house.png?v=1779662621","h":"<p>A hand-felted fairy house with cone roof and stitched-flower detailing, anchored to a round wool-felt mat — a ready-to-play landscape. Door opens and closes.</p><p><strong>Specs:</strong> Himalayan Felt Co. · 100% sheep's wool · 12.59″ base × 17.71″ tall · CE-certified · fair-trade, handmade in Nepal · Ages 3–8.</p>"}
+    "MTW-FV-RBS": {"t":"Rainbow Shimmer Home","p":"$65","img":"https://cdn.shopify.com/s/files/1/0522/0882/8586/files/rainbow-shimmer-fairy-house.png?v=1779662621","h":"<p>A hand-felted fairy house with cone roof and stitched-flower detailing, anchored to a round wool-felt mat — a ready-to-play landscape. Door opens and closes.</p><p><strong>Specs:</strong> Himalayan Felt Co. · 100% sheep's wool · 12.59″ base × 17.71″ tall · CE-certified · fair-trade, handmade in Nepal · Ages 3–8.</p>"},
+    "MTW-FV-FLC": {"t":"Bumbu Flower Children","p":"$78","img":"https://cdn.shopify.com/s/files/1/0522/0882/8586/files/Bumbu_Flower_Children.webp?v=1779679269","h":"<p>A set of five hand-painted wooden flower children with flower-head caps.</p>"},
+    "MTW-FV-FDR": {"t":"Papoose Fairy Door","p":"$26","img":"https://cdn.shopify.com/s/files/1/0522/0882/8586/files/Papoose_Fairy_Door.png?v=1771724680","h":"<p>A hand-carved teak fairy door — the threshold piece for a fairy home.</p>"},
+    "MTW-FV-WSH": {"t":"Papoose Woodland Fairy Wishing Well","p":"$20","img":"https://cdn.shopify.com/s/files/1/0522/0882/8586/files/Papoose_Woodland_Fairy_Wishing_Well.png?v=1771724379","h":"<p>A miniature driftwood wishing well with a wooden roof and a tiny bucket on a rope.</p>"}
   };
   </script>
 
