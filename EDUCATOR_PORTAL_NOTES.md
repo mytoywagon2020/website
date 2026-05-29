@@ -114,6 +114,11 @@ CAVEAT: `media_count:0` search filter is BROKEN here (false positives). Audit im
 
 ---
 
+### Image+spec completeness audit (2026-05-29)
+- Split-created products (Bauspiel, World Foods, Chocolate Cake, fairy homes, etc.): VERIFIED have real retail image + full retail spec description.
+- FIXED: Wooden Binoculars (MTW-ST-QTBINO) now full Q Toys spec + 4 imgs; Magnifier Set (MTW-ST-HBMS) now both component imgs + combined spec.
+- STILL skeletal (no retail twin): Bean Plant Life Cycle (MTW-ST-BEN) — short agent-written desc, NO image. Owner buildout (or use sibling life-cycle hero).
+
 ## DRAMATIC PLAY — creating 34 missing page products (owner approved "create all 34", 2026-05-29)
 - DP1 DONE: 8 World Foods split from Papoose twins (DRAFT, owner wall): MTW-DP-BNS Beef Noodle Soup $42 (8447076925610), MTW-DP-MEM Middle Eastern Mezze $82 (8447076958378), MTW-DP-MSR Mixed Sushi Rolls $56 (8447076991146), MTW-DP-SBB Sushi Bento Box $36 (8447077023914), MTW-DP-ERH Egg Rolls&Hand Rolls $46 (8447077056682), MTW-DP-YUM Yum Cha Dim Sum $114 (8447077089450), MTW-DP-PSF Peruvian Street Food $94 (8447077122218), MTW-DP-EFE Ethiopian Feast $108 (8447077154986). Twins not educator-tagged, no cleanup.
 - DP2 DONE: 3 bakery split from clean twins (DRAFT): MTW-DP-DON Felt Donuts Set of 4 $30 (8447077187754), MTW-DP-TPV Pavlova $10 (8447077220522), MTW-DP-HOT Hot Drinks Set 16pc $50 (8447077253290).
