@@ -114,6 +114,12 @@ CAVEAT: `media_count:0` search filter is BROKEN here (false positives). Audit im
 
 ---
 
+## IMAGE BACKFILL PROGRESS (from retail twins; per owner rule #6)
+- Audit: ~90 of 117 dedicated educator products had NO image (all the ones built from scratch by the original process; split-created ones already have images). media_count filter is broken — use per-product featuredMedia.
+- NO SUBAGENTS (owner instruction 2026-05-29) — do image backfill directly.
+- **Woodland (§3) DONE 13/14:** added hero images from Bumbu/retail twins (Deer, Raccoon via earlier; Bear, Fox, Hedgehog, Oak, Birch, Fir, Willow, Acacia, Squirrel, + 2 bundles Woodland Family Set=deer hero, Woodland Tree Set=oak hero). **OPEN: Papoose Seasonal Trees Set (MTW-WD-PST 8444883730602) — no confident retail twin found, owner to image.** Squirrel used single "running squirrel" image (no family twin exists).
+- STILL TO BACKFILL: Small World (22), Nature Play (most), Fairy gnomes/village (4) + Kaleidoscope, Creative Arts (~14), Dramatic Play bundles (PWF/TLS/FYS/SH), STEAM Magnifier/Bean. Specs (descriptions) still generic on many — owner rule wants real specs too; revisit.
+
 ## 9. Section order (from page.educators.liquid hub)
 1 Sensory · 2 Nature Play · 3 Woodland · 4 Small World · 5 Fairy Villages · 6 STEAM · 7 Dramatic Play · 8 Creative Arts
 
