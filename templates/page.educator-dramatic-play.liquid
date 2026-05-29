@@ -3274,6 +3274,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 </head>
 <body>
   {% section 'mtw-educator-header' %}
+  {% render 'educator-wagon-cart' %}
 
 <!-- =========================== UTILITY BAR =========================== -->
 <div class="utility">
@@ -4174,7 +4175,6 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
   // For Shopify port: replace this with a real fetch to /cart/add.js and
   // re-render the cart count from {{ cart.item_count }} on response.
   (function(){
-    var badge = document.getElementById('cartCount');
     var flash = null;
     function ensureFlash(){
       if (flash) return flash;
@@ -4183,6 +4183,8 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       document.body.appendChild(flash);
       return flash;
     }
+    function esc(t){var d=document.createElement('div');d.textContent=t==null?'':t;return d.innerHTML;}
+    function cardData(el){var card=el.closest('article')||el.closest('.home')||el.closest('.kit');var nmEl=card&&(card.querySelector('.name')||card.querySelector('.float-name'));var prEl=card&&card.querySelector('.price');var imEl=card&&card.querySelector('.tile-wrap img');return{card:card,nm:nmEl?nmEl.textContent.trim():'',pr:prEl?prEl.textContent.trim():'',img:imEl?imEl.getAttribute('src'):''};}
     var PDP={
       "MTW-DP-DCS":{v:"48345500811434",s:"The Cow Shed · alder wood · made in Poland"},
       "MTW-DP-TFV":{v:"48345500844202",s:"The Harvest · 52 hand-felted pieces"},
@@ -4216,28 +4218,42 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       "MTW-DP-CHC":{v:"48357830164650",s:"Chocolate Cake on a Stand · Sabo Concept"}
     };
     document.querySelectorAll('.add-btn[data-sku]').forEach(function(ab){
-      var p=PDP[ab.getAttribute('data-sku')];
-      if(p&&!ab.getAttribute('data-variant-id'))ab.setAttribute('data-variant-id',p.v);
+      var sku=ab.getAttribute('data-sku');var p=PDP[sku];if(!p)return;
+      if(!ab.getAttribute('data-variant-id'))ab.setAttribute('data-variant-id',p.v);
+      var d=cardData(ab);var tw=d.card?d.card.querySelector('.tile-wrap'):null;
+      var href='/pages/educator-product?sku='+encodeURIComponent(sku);
+      if(tw&&!tw.querySelector('.card-pdp-link')){
+        var a=document.createElement('a');a.className='card-pdp-link';a.href=href;a.setAttribute('aria-label',(d.nm||'View full details'));
+        tw.insertBefore(a,tw.firstChild);
+        if(p.s){var qv=document.createElement('div');qv.className='quick-view';qv.innerHTML='<div class="qv-head">'+esc(d.nm)+'</div><div class="qv-body"><p>'+esc(p.s)+'</p></div><span class="qv-more">View full details &rarr;</span>';tw.appendChild(qv);}
+      }
+      var vp=d.card?d.card.querySelector('.view-pdp'):null;if(vp){vp.href=href;}
+      var row=ab.closest('.add-row');var vp2=row?row.querySelector('.view-pdp'):null;if(vp2){vp2.href=href;}
     });
+    function sync(items){
+      items=items||(window.MTWWagon?MTWWagon.items():[]);
+      var byVar={};items.forEach(function(it){byVar[String(it.variantId)]=it.qty;});
+      document.querySelectorAll('.add-btn[data-variant-id]').forEach(function(b){
+        var lbl=b.querySelector('.lbl');
+        if(!lbl){lbl=document.createElement('span');lbl.className='lbl';var t='';Array.prototype.slice.call(b.childNodes).forEach(function(nd){if(nd.nodeType===3){t+=nd.textContent;b.removeChild(nd);}});lbl.textContent=(t.replace(/\s+/g,' ').trim()||'Add to wagon');b.setAttribute('data-lbl0',lbl.textContent);b.appendChild(lbl);}
+        var q=byVar[String(b.getAttribute('data-variant-id'))]||0;
+        if(q>0){b.classList.add('has-qty');lbl.textContent='✓ In wagon';}else{b.classList.remove('has-qty');lbl.textContent=b.getAttribute('data-lbl0')||'Add to wagon';}
+      });
+    }
     document.querySelectorAll('.add-btn').forEach(function(btn){
       btn.addEventListener('click', function(){
         var sku = btn.getAttribute('data-sku') || 'item';
         var vid = btn.getAttribute('data-variant-id');
         var fl = ensureFlash();
         var show = function(html){ fl.innerHTML=html; fl.classList.add('show'); clearTimeout(window.__cartFlashT); window.__cartFlashT=setTimeout(function(){ fl.classList.remove('show'); },2600); };
-        if(vid){
-          btn.disabled=true;
-          fetch('/cart/add.js',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id:Number(vid),quantity:1})})
-            .then(function(r){ if(!r.ok) throw new Error('add'); return r.json(); })
-            .then(function(){ return fetch('/cart.js').then(function(r){ return r.json(); }); })
-            .then(function(c){ if(badge){ badge.textContent=c.item_count; badge.setAttribute('data-count',c.item_count); } show('<span class="added">Added to your wagon!</span> <span>'+sku.replace(/-/g,' ')+'</span>'); })
-            .catch(function(){ show('<span class="added">Could not add.</span> <span>Try again</span>'); })
-            .finally(function(){ btn.disabled=false; });
-        } else {
-          show('<span class="added">Added to your wagon!</span> <span>'+sku.replace(/-/g,' ')+'</span>');
-        }
+        if(!vid){ show('<span class="added">Coming soon.</span> <span>'+sku.replace(/-/g,' ')+'</span>'); return; }
+        if(!window.MTWWagon){ show('<span class="added">Wagon unavailable.</span> <span>Please refresh.</span>'); return; }
+        var d=cardData(btn);
+        MTWWagon.add({variantId:vid,sku:sku,title:(d.nm||sku.replace(/-/g,' ')),price:d.pr||'',img:d.img||'',qty:1});
+        show('<span class="added">Added to your wagon!</span> <span>'+(d.nm||sku.replace(/-/g,' '))+'</span>');
       });
     });
+    if(window.MTWWagon){MTWWagon.subscribe(sync);}else{sync([]);}
   })();
 
   // Rotating utility-bar announcement (3 messages, ~5s each).
