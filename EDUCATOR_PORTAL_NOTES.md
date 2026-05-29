@@ -201,3 +201,75 @@ DCS Cow Shed `48345500811434` · TFV Harvest `48345500844202` · TFM Felt Farm M
 - Confirm walled: `product(id){ publishedOnPublication(publicationId:"...69325422762") publishedOnPublication(publicationId:"...152026382506") }`
 - Educator set count: `productsCount(query:"tag:educator")`
 - Dedicated (new) vs older: `productsCount(query:"tag:educator AND created_at:>='2026-05-25'")` (117 dedicated) vs `<` (53 older, includes retail to split)
+
+---
+
+## 10. Wagon / Checkout architecture — DECIDED 2026-05-29
+
+**CONTEXT / THE BUG:** Educator products are WALLED (off Online Store). Shopify's native cart
+(`/cart/add.js`) and checkout permalinks ONLY work for Online-Store-published variants — so the
+native cart CANNOT be used for walled products. Verified: MTW-FV-MGF variant 48345499205802 has
+`onlineStoreUrl=null`, `availableForSale=true` (CONTINUE), published only to "Microsoft Copilot".
+`/cart/add.js` silently fails → wagon stays at 0 / shows empty (the bug owner reported).
+
+**OWNER DECISIONS:**
+- Keep products FULLY WALLED. Do NOT publish to Online Store. (`/products.json`, `/search`,
+  `/sitemap.xml`, `/collections/all` must stay empty — confirmed via gate test that price/spec
+  data (`MTW_FV_SPECS`) is INSIDE the server-side `{% if is_approved %}` block, so non-approved
+  visitors never receive catalog HTML/prices. Server-side Liquid gate = real protection.)
+- Rejected "publish to Online Store + page gate" because `/products.json` would leak prices.
+- Rejected separate/multi-store (2nd subscription + permanent duplication overhead).
+- Plan is "Shopify" (NOT Plus, `shopifyPlus:false`) → native B2B (company catalogs, price lists,
+  self-serve Net-30 at checkout) NOT available. `customer.b2b?` is always false → the
+  `educator-approved` TAG is the real gate (b2b? branch is dead weight on this plan).
+
+**CHOSEN APPROACH: instant app-proxy DRAFT ORDER flow ("slow goods" pace is fine per owner).**
+1. Client-side wagon: "Add to wagon" stores items in `localStorage` (sku, variantId, title,
+   price, qty, img). Nav count + wagon page read localStorage. Across all 8 section pages.
+2. "Pay now" POSTs the cart to a Shopify APP PROXY (`mytoywagon.com/apps/wagon/checkout`) →
+   backend (Cloudflare Worker, free tier) VERIFIES Shopify signature → Admin GraphQL
+   `draftOrderCreate` (line items by variantId — works for walled products, Admin API not gated
+   by sales channel) → returns `invoiceUrl` → browser redirects to NATIVE Shopify checkout
+   (Shop Pay/Apple/Google/card + PO). Draft-order origin is invisible to buyer.
+
+**BOTH PATHS THROUGH THE DRAFT ORDER (owner rec accepted):**
+- Card: instant — redirect to invoice checkout.
+- PO/Net-30: SAME draft order, flagged (tag `po-request` + note); OWNER applies payment terms in
+  admin (self-serve Net-30 at checkout needs B2B/Plus).
+
+**QUOTE BUILDER vs DRAFT:** Draft order is the SPINE for standard catalog orders (itemized,
+tax-exempt, becomes a real order, has pay link). Keep `page.new-quote.liquid` + the in-page
+"tell us about your classroom" form ONLY as the custom/consultation intake (custom mixes,
+district planning, formal pre-commit quote doc). Do NOT route standard orders through it.
+
+**BUILD INTO WORKER (conversion + correctness):**
+- Pass `logged_in_customer_id` (proxy appends it, signed) → attach customer to draft order
+  (pre-fills checkout) + read customer tags.
+- `taxExempt:true` on the draft order ONLY for tax-exempt-tagged educators.
+- Show running total on wagon page before redirect.
+
+**PROVISIONING (OWNER — touches account/billing; agent owns the code):**
+1. Custom app (Settings→Apps→Develop apps): scopes `write_draft_orders`, `read_products`,
+   `read_customers` → Admin API token.
+2. App Proxy on that app: prefix `apps`, subpath `wagon` → Worker URL.
+3. Deploy Cloudflare Worker (free tier); set `ADMIN_TOKEN` + `APP_SECRET` (app shared secret) as
+   Worker secrets.
+
+**RUNBOOK / MAINTENANCE:**
+- The Worker is now part of the stack: needs uptime + occasional Admin TOKEN ROTATION.
+- Shopify FLOW to auto-expire abandoned (unpaid) draft orders (owner approved 2026-05-29): each
+  Pay click creates a new draft; double-clicks / non-completions leave unpaid drafts. Flow:
+  trigger "Draft order created" → wait N days → if still unpaid, delete (or tag for cleanup).
+- PREVIEW BYPASS caveat: `theme.role!='main'` / `request.design_mode` shows the catalog on
+  PREVIEW links to anyone — staging only, not live. Don't share preview links publicly.
+
+**FOOTER:** Switched from heavy BLACK inline footer to the cream `mtw-educator-footer` section
+(deduped the double-footer across all 8 pages). Cream is on-brand & kept. TODO: RE-ADD a compact
+terms/payment band (PO · Net-30 · Tax-exempt text badges + monochrome card logos) — it was lost
+in the switch but is B2B-conversion-relevant.
+
+**STATUS (2026-05-29):** Front-end client-cart + Worker + setup doc = NOT yet built (next).
+Already done this session: wagon link added to sticky nav on all 8 pages (live count), double
+footer removed on all 8, preview bypass unified on all 8. NOTE: the nav wagon link currently
+points to `/pages/educator-wagon`; the wagon page still uses the broken native-cart assumption
+and must be rebuilt to the client-side localStorage cart.
