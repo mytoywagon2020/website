@@ -1,0 +1,59 @@
+{%- comment -%}
+  Shared client-side wagon for WALLED educator products.
+  Walled products are off the Online Store, so Shopify's native /cart/add.js
+  cannot be used. Items live in localStorage; "Pay" posts to the app proxy
+  (/apps/wagon/checkout), which creates a draft order and returns invoiceUrl.
+  Exposes window.MTWWagon and keeps the header/nav wagon counts in sync.
+{%- endcomment -%}
+<script>
+(function(){
+  var KEY='mtw_wagon_v1';
+  var PROXY='/apps/wagon/checkout';
+  function read(){ try{ var v=JSON.parse(localStorage.getItem(KEY)); return Array.isArray(v)?v:[]; }catch(e){ return []; } }
+  function write(items){ try{ localStorage.setItem(KEY, JSON.stringify(items)); }catch(e){} fire(); }
+  var subs=[];
+  function fire(){ var items=read(); paintBadges(items); subs.forEach(function(fn){ try{fn(items);}catch(e){} }); }
+  function centsOf(it){ if(typeof it.priceCents==='number') return it.priceCents; var n=parseFloat(String(it.price||'').replace(/[^0-9.]/g,'')); return isNaN(n)?0:Math.round(n*100); }
+  function count(items){ items=items||read(); return items.reduce(function(n,it){return n+(it.qty||1);},0); }
+  function subtotal(items){ items=items||read(); return items.reduce(function(s,it){return s+centsOf(it)*(it.qty||1);},0); }
+  function paintBadges(items){
+    var c=count(items);
+    document.querySelectorAll('.mtw-edu-h__wagon-count, #wagonCount').forEach(function(el){ el.textContent=c; el.setAttribute('data-count',c); });
+  }
+  var API={
+    items: read,
+    count: function(){ return count(); },
+    subtotalCents: function(){ return subtotal(); },
+    money: function(cents){ var d=(cents||0)/100; return '$'+(d%1===0?d.toFixed(0):d.toFixed(2)); },
+    add: function(item){
+      if(!item||!item.variantId) return API;
+      var items=read(), found=null;
+      for(var i=0;i<items.length;i++){ if(String(items[i].variantId)===String(item.variantId)){ found=items[i]; break; } }
+      var addQty=Math.max(1, parseInt(item.qty,10)||1);
+      if(found){ found.qty=(found.qty||1)+addQty; }
+      else { items.push({ variantId:String(item.variantId), sku:item.sku||'', title:item.title||'', price:item.price||'', priceCents:centsOf(item), img:item.img||'', qty:addQty }); }
+      write(items); return API;
+    },
+    setQty: function(variantId, qty){
+      qty=parseInt(qty,10)||0;
+      var items=read().map(function(it){ if(String(it.variantId)===String(variantId)) it.qty=qty; return it; }).filter(function(it){ return (it.qty||0)>0; });
+      write(items);
+    },
+    remove: function(variantId){ write(read().filter(function(it){ return String(it.variantId)!==String(variantId); })); },
+    clear: function(){ write([]); },
+    qtyOf: function(variantId){ var f=read().filter(function(it){return String(it.variantId)===String(variantId);})[0]; return f?f.qty:0; },
+    subscribe: function(fn){ subs.push(fn); try{fn(read());}catch(e){} },
+    checkout: function(method){
+      var items=read();
+      if(!items.length) return Promise.reject(new Error('empty'));
+      var payload={ paymentMethod: method==='po'?'po':'card', items: items.map(function(it){ return { variantId:String(it.variantId), quantity:it.qty||1 }; }) };
+      return fetch(PROXY, { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify(payload) })
+        .then(function(r){ return r.json().catch(function(){ throw new Error('proxy '+r.status); }).then(function(d){ if(!r.ok) throw new Error((d&&d.error)||('proxy '+r.status)); return d; }); })
+        .then(function(d){ if(!d||!d.invoiceUrl) throw new Error((d&&d.error)||'no invoice'); return d.invoiceUrl; });
+    }
+  };
+  window.MTWWagon=API;
+  window.addEventListener('storage', function(e){ if(e.key===KEY) fire(); });
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', function(){ paintBadges(); }); else paintBadges();
+})();
+</script>

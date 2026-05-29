@@ -1585,7 +1585,7 @@ footer .cols .downloads a::after{
 .cover .bg.has-photo::before{
   display: block; content: "";
   position: absolute; inset: 0; z-index: 0;
-  background: url("https://cdn.shopify.com/s/files/1/0522/0882/8586/files/lilac-blossom-fairy-house.jpg?v=1779662621") center / cover no-repeat;
+  background: url("https://cdn.shopify.com/s/files/1/0522/0882/8586/files/Mushroom_House_with_carrot_garden_cover.png?v=1780075080") center / cover no-repeat;
   filter: blur(34px) saturate(1.08);
   transform: scale(1.12);
 }
@@ -3388,6 +3388,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 </head>
 <body>
   {% section 'mtw-educator-header' %}
+  {% render 'educator-wagon-cart' %}
 
 <!-- =========================== UTILITY BAR =========================== -->
 <div class="utility">
@@ -3471,9 +3472,9 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 <!-- =========================== COVER =========================== -->
 <section class="cover" data-screen-label="01 Cover">
   <div class="bg tile t-mood has-photo">
-    <img src="https://cdn.shopify.com/s/files/1/0522/0882/8586/files/lilac-blossom-fairy-house.jpg?v=1779662621" alt="Lilac Blossom Fairy House, a hand-felted cottage with a green bell-flower spire roof and a wreath of violets around the door, photographed in a meadow"/>
+    <img src="https://cdn.shopify.com/s/files/1/0522/0882/8586/files/Mushroom_House_with_carrot_garden_cover.png?v=1780075080" alt="A hand-felted Mushroom Garden fairy home with a green spotted cap roof on a round wool play mat with a carrot garden, a child's hand placing a little felt folk at the door"/>
     <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-    <span class="tag dark">[ COVER &nbsp;·&nbsp; PINK BLOSSOM HOUSE ]</span>
+    <span class="tag dark">[ COVER &nbsp;·&nbsp; MUSHROOM GARDEN ]</span>
   </div>
   <div class="veil"></div>
 
@@ -4174,8 +4175,6 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
   })();
 
   function initFVCards(){
-    var badge=document.querySelector('.mtw-edu-h__wagon-count');
-    var navWagon=document.getElementById('wagonCount');
     var flash=null;
     function ensureFlash(){if(flash)return flash;flash=document.createElement('div');flash.className='cart-flash';document.body.appendChild(flash);return flash;}
     function esc(t){var d=document.createElement('div');d.textContent=t==null?'':t;return d.innerHTML;}
@@ -4219,13 +4218,11 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
     }
 
     // ---- Cart add (shared; qty-aware, loading + retry, in-wagon count) ----
-    function counts(){ return fetch('/cart.js').then(function(r){return r.json();}); }
-    function syncBadges(cart){
-      if(badge){ badge.textContent=cart.item_count; badge.setAttribute('data-count',cart.item_count); }
-      if(navWagon){ navWagon.textContent=cart.item_count; navWagon.setAttribute('data-count',cart.item_count); }
-      var byVar={}; (cart.items||[]).forEach(function(it){ byVar[it.variant_id]=it.quantity; });
+    function syncBadges(items){
+      items = items || (window.MTWWagon ? MTWWagon.items() : []);
+      var byVar={}; items.forEach(function(it){ byVar[String(it.variantId)]=it.qty; });
       document.querySelectorAll('.add-btn[data-variant-id]').forEach(function(b){
-        var q=byVar[Number(b.getAttribute('data-variant-id'))]||0;
+        var q=byVar[String(b.getAttribute('data-variant-id'))]||0;
         var t=b.querySelector('.in-wagon'); if(!t){t=document.createElement('span');t.className='in-wagon';b.appendChild(t);}
         if(q>0){ b.classList.add('has-qty'); t.textContent='✓ '+q; } else { b.classList.remove('has-qty'); }
       });
@@ -4234,18 +4231,12 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       var fl=ensureFlash();
       var show=function(html){fl.innerHTML=html;fl.classList.add('show');clearTimeout(window.__cartFlashT);window.__cartFlashT=setTimeout(function(){fl.classList.remove('show');},2800);};
       if(!vid){ show('<span class="added">Coming soon.</span> <span>'+esc(sku)+'</span>'); return; }
-      btn.classList.add('is-busy');
-      fetch('/cart/add.js',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id:Number(vid),quantity:qty||1})})
-        .then(function(r){if(!r.ok)throw new Error('add');return r.json();})
-        .then(counts)
-        .then(function(c){ syncBadges(c); show('<span class="added">Added to your wagon!</span> <span>'+esc((SPECS[sku]&&SPECS[sku].t)||sku.replace(/-/g,' '))+'</span>'); track('add_to_cart',{sku:sku,quantity:qty||1}); })
-        .catch(function(){
-          var f=ensureFlash();
-          f.innerHTML='<span class="added">Could not add.</span> <button type="button" class="cf-retry" style="text-decoration:underline;background:none;border:0;color:inherit;cursor:pointer;">Retry</button>';
-          f.classList.add('show'); clearTimeout(window.__cartFlashT);
-          var rb=f.querySelector('.cf-retry'); if(rb)rb.addEventListener('click',function(){ addToCart(btn,sku,vid,qty); });
-        })
-        .finally(function(){ btn.classList.remove('is-busy'); });
+      if(!window.MTWWagon){ show('<span class="added">Wagon unavailable.</span> <span>Please refresh the page.</span>'); return; }
+      var sp=SPECS[sku]||{};
+      MTWWagon.add({ variantId:vid, sku:sku, title:sp.t||sku.replace(/-/g,' '), price:sp.p||'', img:sp.img||'', qty:qty||1 });
+      syncBadges(MTWWagon.items());
+      show('<span class="added">Added to your wagon!</span> <span>'+esc(sp.t||sku.replace(/-/g,' '))+'</span>');
+      track('add_to_cart',{sku:sku,quantity:qty||1});
     }
 
     // ---- Enhance each product card ----
@@ -4308,8 +4299,8 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       });
     });
 
-    // ---- Initial badge sync (reflect items already in cart on load) ----
-    counts().then(syncBadges).catch(function(){});
+    // ---- Initial badge sync + keep buttons live as the wagon changes ----
+    if(window.MTWWagon){ MTWWagon.subscribe(syncBadges); } else { syncBadges([]); }
   }
   // Run after the whole document (incl. after-footer SPECS data + modal) has parsed.
   if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded',initFVCards); } else { initFVCards(); }

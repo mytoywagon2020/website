@@ -93,6 +93,22 @@
     .wgn-compliance__links a:hover{color:var(--ink);}
     .wgn-compliance__note{font-size:11.5px;color:var(--stone);margin-top:10px;line-height:1.5;}
 
+    /* ── Client wagon: qty stepper, remove, busy, confirm ── */
+    .wgn-qstep{display:inline-flex;align-items:center;border:1px solid var(--rule-strong);border-radius:3px;overflow:hidden;}
+    .wgn-qstep button{width:26px;height:26px;border:0;background:var(--warm-white);color:var(--ink);font-size:15px;line-height:1;cursor:pointer;}
+    .wgn-qstep button:hover{background:var(--card-bg);}
+    .wgn-qstep input{width:34px;height:26px;border:0;border-left:1px solid var(--rule);border-right:1px solid var(--rule);text-align:center;font-family:inherit;font-size:13px;color:var(--ink);background:#fff;-moz-appearance:textfield;}
+    .wgn-qstep input::-webkit-outer-spin-button,.wgn-qstep input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0;}
+    .wgn-remove{display:block;margin-top:6px;font-size:11px;color:var(--stone);background:none;border:0;cursor:pointer;text-decoration:underline;text-underline-offset:2px;padding:0;}
+    .wgn-remove:hover{color:var(--amber);}
+    .wgn-btn[disabled]{opacity:.6;cursor:default;pointer-events:none;}
+    .wgn-btn.is-busy{opacity:.7;cursor:progress;pointer-events:none;}
+    .wgn-error{color:var(--amber);font-size:12px;margin-top:10px;text-align:center;line-height:1.45;}
+    .wgn-confirm{background:var(--warm-white);border:.5px solid var(--rule);border-radius:3px;padding:48px 40px;text-align:center;grid-column:1/-1;}
+    .wgn-confirm h2{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:500;margin:0 0 12px;}
+    .wgn-confirm p{font-size:14px;color:var(--stone);margin:0 auto 8px;max-width:48ch;}
+    .wgn-confirm a.lnk{color:var(--forest);font-weight:600;text-decoration:underline;text-underline-offset:2px;}
+
     @media(max-width:800px){
       .wgn-grid{grid-template-columns:1fr;}
       .wrap{padding:0 20px;}
@@ -101,6 +117,7 @@
 </head>
 <body>
   {% section 'mtw-educator-header' %}
+  {% render 'educator-wagon-cart' %}
 
   <main class="wrap">
     <section class="wgn-hero">
@@ -120,93 +137,8 @@
     </div>
     {%- endunless -%}
 
-    {%- if cart.item_count > 0 -%}
-    <div class="wgn-grid">
-
-      <!-- Cart summary -->
-      <div class="wgn-card">
-        <h2>{{ cart.item_count }} item{% if cart.item_count != 1 %}s{% endif %} in your wagon</h2>
-        <table class="wgn-items">
-          <thead>
-            <tr>
-              <th style="width:54px;"></th>
-              <th>Item</th>
-              <th style="text-align:center;">Qty</th>
-              <th>Educator rate</th>
-            </tr>
-          </thead>
-          <tbody>
-            {%- for item in cart.items -%}
-            <tr>
-              <td>
-                {%- if item.image -%}
-                  <img class="wgn-thumb" src="{{ item.image | image_url: width: 120 }}" alt="{{ item.product.title | escape }}">
-                {%- endif -%}
-              </td>
-              <td>
-                <div class="wgn-it-title">{{ item.product.title }}</div>
-                {%- unless item.variant.title contains 'Default' -%}
-                  <div class="wgn-it-meta">{{ item.variant.title }}</div>
-                {%- endunless -%}
-                {%- if item.sku != blank -%}
-                  <div class="wgn-it-meta">SKU {{ item.sku }}</div>
-                {%- endif -%}
-              </td>
-              <td class="wgn-qty">&times; {{ item.quantity }}</td>
-              <td class="wgn-price">
-                {{ item.final_line_price | money }}
-                <span class="wgn-rate">Educator rate</span>
-              </td>
-            </tr>
-            {%- endfor -%}
-          </tbody>
-        </table>
-        <div class="wgn-totals">
-          <div class="wgn-totals__row">
-            <span>{{ cart.item_count }} item{% if cart.item_count != 1 %}s{% endif %}</span>
-            <span>{{ cart.total_price | money }}</span>
-          </div>
-          <div class="wgn-totals__row wgn-totals__row--total">
-            <span>Estimated total</span>
-            <span>{{ cart.total_price | money }}</span>
-          </div>
-          <p class="wgn-totals__note">Shipping, final educator pricing adjustments, and applicable tax are confirmed on your quote or at checkout. Bundles qualify for 10% savings.</p>
-        </div>
-        <a class="wgn-edit" href="/pages/educator-dashboard">&#8592; Edit wagon on dashboard</a>
-      </div>
-
-      <!-- Action paths -->
-      <div class="wgn-actions">
-
-        <!-- Path A: Pay now -->
-        <div class="wgn-path">
-          <p class="wgn-path__label">Path A &mdash; Pay immediately</p>
-          <h3>Proceed to secure checkout</h3>
-          <p>Pay by credit card, P-card, Shop Pay, or Apple Pay. Best for site-funded purchases, PTA accounts, or reimbursement orders.</p>
-          <a class="wgn-btn" href="/checkout">Proceed to secure checkout &rarr;</a>
-          <p class="wgn-path__sub">
-            {%- unless customer.tags contains 'tax-exempt' -%}
-              Tax will be calculated at checkout.
-              <a href="mailto:educators@mytoywagon.com">Submit your cert to waive it.</a>
-            {%- else -%}
-              Tax-exempt status active on your account.
-            {%- endunless -%}
-          </p>
-        </div>
-
-        <!-- Path B: PO / Quote -->
-        <div class="wgn-path">
-          <p class="wgn-path__label">Path B &mdash; District approval</p>
-          <h3>Submit purchase order or request a quote</h3>
-          <p>For Net-30, board-approved POs, and budget requisitions. We generate a formal itemized quote your procurement office can countersign.</p>
-          <a class="wgn-btn wgn-btn--ghost" href="/pages/new-quote">Generate official quote / submit PO &rarr;</a>
-          <p class="wgn-path__sub">
-            Pricing held 45 days. Inventory reserved on PO confirmation.
-          </p>
-        </div>
-
-      </div>
-    </div>
+    <!-- Wagon (client-side; walled products use a draft-order checkout) -->
+    <div id="wgnGrid"></div>
 
     <!-- Compliance strip -->
     <div class="wgn-compliance">
@@ -221,19 +153,103 @@
       </p>
     </div>
 
-    {%- else -%}
-    <div class="wgn-grid" style="padding:24px 0 56px;">
-      <div class="wgn-empty">
-        <h2>Your wagon is empty</h2>
-        <p>Add items from the educator catalog, then come back here to check out or request a quote.</p>
-        <a class="wgn-btn" href="/pages/educators" style="display:inline-block;width:auto;padding:14px 32px;">Browse the catalog &rarr;</a>
-      </div>
-    </div>
-    {%- endif -%}
-
   </main>
 
   {% section 'mtw-educator-footer' %}
+
+  <script>
+  (function(){
+    var grid=document.getElementById('wgnGrid');
+    if(!grid) return;
+    function money(c){ return window.MTWWagon ? MTWWagon.money(c) : '$'+((c||0)/100).toFixed(2); }
+    function esc(t){ var d=document.createElement('div'); d.textContent=t==null?'':t; return d.innerHTML; }
+
+    function render(items){
+      if(!window.MTWWagon){ grid.innerHTML=''; return; }
+      items = items || MTWWagon.items();
+      if(!items.length){
+        grid.innerHTML='<div class="wgn-grid"><div class="wgn-empty"><h2>Your wagon is empty</h2><p>Add items from the educator catalog, then come back here to check out or submit a purchase order.</p><a class="wgn-btn" href="/pages/educators" style="display:inline-block;width:auto;padding:14px 32px;">Browse the catalog &rarr;</a></div></div>';
+        return;
+      }
+      var n=MTWWagon.count(), sub=MTWWagon.subtotalCents();
+      var rows=items.map(function(it){
+        var vid=esc(it.variantId);
+        return '<tr data-vid="'+vid+'">'+
+          '<td>'+(it.img?'<img class="wgn-thumb" src="'+esc(it.img)+'" alt="'+esc(it.title)+'">':'')+'</td>'+
+          '<td><div class="wgn-it-title">'+esc(it.title)+'</div>'+(it.sku?'<div class="wgn-it-meta">SKU '+esc(it.sku)+'</div>':'')+'<button type="button" class="wgn-remove" data-remove="'+vid+'">Remove</button></td>'+
+          '<td class="wgn-qty"><span class="wgn-qstep"><button type="button" data-dec="'+vid+'" aria-label="Decrease quantity">&minus;</button><input type="number" min="1" value="'+(it.qty||1)+'" data-qty="'+vid+'" aria-label="Quantity"><button type="button" data-inc="'+vid+'" aria-label="Increase quantity">+</button></span></td>'+
+          '<td class="wgn-price">'+money((it.priceCents||0)*(it.qty||1))+'<span class="wgn-rate">Educator rate</span></td>'+
+        '</tr>';
+      }).join('');
+      grid.innerHTML=
+      '<div class="wgn-grid">'+
+        '<div class="wgn-card">'+
+          '<h2>'+n+' item'+(n!==1?'s':'')+' in your wagon</h2>'+
+          '<table class="wgn-items"><thead><tr><th style="width:54px;"></th><th>Item</th><th style="text-align:center;">Qty</th><th>Educator rate</th></tr></thead><tbody>'+rows+'</tbody></table>'+
+          '<div class="wgn-totals">'+
+            '<div class="wgn-totals__row"><span>'+n+' item'+(n!==1?'s':'')+'</span><span>'+money(sub)+'</span></div>'+
+            '<div class="wgn-totals__row wgn-totals__row--total"><span>Estimated total</span><span>'+money(sub)+'</span></div>'+
+            '<p class="wgn-totals__note">Shipping, final educator pricing adjustments, and applicable tax are confirmed on your quote or at checkout. Bundles qualify for 10% savings.</p>'+
+          '</div>'+
+        '</div>'+
+        '<div class="wgn-actions">'+
+          '<div class="wgn-path">'+
+            '<p class="wgn-path__label">Path A &mdash; Pay immediately</p>'+
+            '<h3>Proceed to secure checkout</h3>'+
+            '<p>Pay by credit card, P-card, Shop Pay, or Apple Pay. Best for site-funded purchases, PTA accounts, or reimbursement orders.</p>'+
+            '<button type="button" class="wgn-btn" id="wgnPayCard">Proceed to secure checkout &rarr;</button>'+
+            '<p class="wgn-path__sub">You&rsquo;ll land on our secure Shopify checkout. Tax-exempt status is applied automatically for verified accounts.</p>'+
+            '<p class="wgn-error" id="wgnCardErr" hidden></p>'+
+          '</div>'+
+          '<div class="wgn-path">'+
+            '<p class="wgn-path__label">Path B &mdash; District approval</p>'+
+            '<h3>Submit purchase order / request a quote</h3>'+
+            '<p>For Net-30, board-approved POs, and budget requisitions. We generate a formal itemized quote your procurement office can countersign.</p>'+
+            '<button type="button" class="wgn-btn wgn-btn--ghost" id="wgnPayPO">Generate official quote / submit PO &rarr;</button>'+
+            '<p class="wgn-path__sub">Pricing held 45 days. Inventory reserved on PO confirmation.</p>'+
+            '<p class="wgn-error" id="wgnPOErr" hidden></p>'+
+          '</div>'+
+        '</div>'+
+      '</div>';
+    }
+
+    function setBusy(btn,on){ if(!btn)return; btn.classList.toggle('is-busy',on); btn.disabled=on; }
+    function err(el,msg){ if(!el)return; el.textContent=msg||''; el.hidden=!msg; }
+
+    function doPay(method, btn, errEl){
+      if(!window.MTWWagon) return;
+      err(errEl,''); setBusy(btn,true);
+      MTWWagon.checkout(method).then(function(url){
+        if(method==='po'){
+          grid.innerHTML='<div class="wgn-grid"><div class="wgn-confirm"><h2>Purchase order request sent</h2><p>We&rsquo;ve created your itemized order. Our team confirms Net-30 terms and emails your countersign-ready quote within one business day.</p><p><a class="lnk" href="'+esc(url)+'">View your itemized quote &rarr;</a></p></div></div>';
+          MTWWagon.clear();
+        } else {
+          window.location.href=url;
+        }
+      }).catch(function(e){
+        setBusy(btn,false);
+        var msg=(e&&e.message==='empty') ? 'Your wagon is empty.' : 'We couldn&rsquo;t reach checkout. Please try again, or email educators@mytoywagon.com.';
+        err(errEl, msg);
+      });
+    }
+
+    grid.addEventListener('click', function(e){
+      var t=e.target; if(!t.getAttribute) return;
+      var inc=t.getAttribute('data-inc'), dec=t.getAttribute('data-dec'), rm=t.getAttribute('data-remove');
+      if(inc){ MTWWagon.setQty(inc, MTWWagon.qtyOf(inc)+1); }
+      else if(dec){ MTWWagon.setQty(dec, Math.max(1, MTWWagon.qtyOf(dec)-1)); }
+      else if(rm){ MTWWagon.remove(rm); }
+      else if(t.id==='wgnPayCard'){ doPay('card', t, document.getElementById('wgnCardErr')); }
+      else if(t.id==='wgnPayPO'){ doPay('po', t, document.getElementById('wgnPOErr')); }
+    });
+    grid.addEventListener('change', function(e){
+      var v=e.target.getAttribute && e.target.getAttribute('data-qty');
+      if(v){ MTWWagon.setQty(v, Math.max(1, parseInt(e.target.value,10)||1)); }
+    });
+
+    if(window.MTWWagon){ MTWWagon.subscribe(render); } else { render([]); }
+  })();
+  </script>
 </body>
 </html>
 {%- else -%}
