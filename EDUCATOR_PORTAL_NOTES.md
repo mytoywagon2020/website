@@ -62,6 +62,9 @@ DRAFT status alone also removes a product from all channels (safe holding state)
 
 ## 5. State as of 2026-05-29
 
+### Inventory (2026-05-29)
+- `inventoryPolicy: CONTINUE` applied to **all 117 dedicated educator products** (tag:educator AND created_at>=2026-05-25). Retail-tagged shared listings (Bauspiel etc.) intentionally excluded — they'll get CONTINUE when split into dedicated educator listings.
+
 ### Theme (committed + pushed to `staging-theme`)
 - Removed all "View product" links across all 8 sections (they 404 — educator products have no public PDP).
 - Disabled the 404 clickable-image overlay (`card-pdp-link`) on the 5 wired pages.
