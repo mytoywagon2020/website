@@ -4327,6 +4327,8 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 
       // Sync the real price onto the card (overwrite stale hardcoded text)
       if(sp&&sp.p){ var prEl=card?card.querySelector('.price'):null; if(prEl){ prEl.textContent=sp.p; } }
+      // Set the real product image from spec data (theme file_url images don't exist -> blank tiles)
+      if(sp&&sp.img&&tw){ var im=tw.querySelector('img'); if(im){ im.removeAttribute('srcset'); im.src=sp.img; if(!im.getAttribute('alt'))im.setAttribute('alt',nm); im.loading='lazy'; } }
       // Clickable image overlay -> modal (no hover panel; cleaner, touch-friendly UX)
       if(tw&&available&&!tw.querySelector('.card-pdp-link')){
         var ov=document.createElement('button'); ov.type='button'; ov.className='card-pdp-link'; ov.setAttribute('aria-label',nm+' — view full details');
