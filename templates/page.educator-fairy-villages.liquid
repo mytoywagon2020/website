@@ -3,6 +3,8 @@
 {%- assign is_approved = false -%}
 {%- if customer and customer.tags contains 'educator-approved' -%}{%- assign is_approved = true -%}{%- endif -%}
 {%- if customer.b2b? -%}{%- assign is_approved = true -%}{%- endif -%}
+{%- comment -%} PREVIEW BYPASS: allow viewing on non-live (staging/preview) themes & theme editor, where the customer session is often not carried. Live (main) theme keeps the full gate. {%- endcomment -%}
+{%- if request.design_mode or theme.role != 'main' -%}{%- assign is_approved = true -%}{%- endif -%}
 {%- if is_approved -%}
 <!doctype html>
 <html lang="en">
