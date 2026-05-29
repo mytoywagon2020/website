@@ -3302,6 +3302,40 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
   .breadcrumb .home-crumb{ display: none; }
 }
 
+/* ---- Card quick-view (hover) + View full details link ---- */
+.tile-wrap{ position: relative; }
+.card-pdp-link{ position: absolute; inset: 0; z-index: 3; display: block; }
+.tile-wrap .quick-spec{
+  position: absolute; left: 0; right: 0; bottom: 0; z-index: 4;
+  display: flex; flex-direction: column; gap: 4px;
+  padding: 16px 16px 14px;
+  background: linear-gradient(to top, rgba(20,16,12,.92) 0%, rgba(20,16,12,.78) 60%, rgba(20,16,12,0) 100%);
+  color: #fff; opacity: 0; transform: translateY(8px);
+  transition: opacity .22s ease, transform .22s ease;
+  pointer-events: none;
+}
+.tile-wrap:hover .quick-spec,
+.tile-wrap:focus-within .quick-spec{ opacity: 1; transform: translateY(0); }
+.quick-spec strong{ font-family: var(--serif); font-size: 15px; font-weight: 500; line-height: 1.2; }
+.quick-spec .qs-spec{ font-family: var(--sans); font-size: 11.5px; line-height: 1.45; color: rgba(255,255,255,.82); }
+.quick-spec .qs-price{ font-family: var(--sans); font-size: 13px; font-weight: 600; margin-top: 2px; }
+.quick-spec .qs-view{
+  pointer-events: auto; align-self: flex-start; margin-top: 6px;
+  font-family: var(--sans); font-size: 11px; font-weight: 600;
+  letter-spacing: .08em; text-transform: uppercase;
+  color: #fff; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,.6); padding-bottom: 1px;
+}
+.quick-spec .qs-view:hover{ border-bottom-color: #fff; }
+/* Persistent "View full details" link under each add-to-wagon */
+.add-row .view-pdp{
+  font-family: var(--sans); font-size: 11px; font-weight: 600;
+  letter-spacing: .06em; text-transform: uppercase;
+  color: var(--forest); text-decoration: none; white-space: nowrap;
+  border-bottom: 1px solid transparent;
+}
+.add-row .view-pdp:hover{ border-bottom-color: var(--forest); }
+@media (hover: none){ .tile-wrap .quick-spec{ position: static; opacity: 1; transform: none; background: rgba(20,16,12,.92); } }
+
 </style>
 </head>
 <body>
@@ -4187,24 +4221,35 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       "MTW-FV-RGN":{h:"wonderheart-bright-gnomes-educator-set",v:"48345499271338",s:"Wonderheart Bright Gnomes · pure wool felt · made in Nepal"},
       "MTW-FV-VLG":{h:"build-the-village-educator-fairy-village-set",v:"48345499304106",s:"Build the Village fairy village set · Net-30 · tax-exempt"}
     };
+    function esc(t){var d=document.createElement('div');d.textContent=t==null?'':t;return d.innerHTML;}
     document.querySelectorAll('.add-btn[data-sku]').forEach(function(ab){
       var sku=ab.getAttribute('data-sku');var p=PDP[sku];if(!p)return;
       if(!ab.getAttribute('data-variant-id'))ab.setAttribute('data-variant-id',p.v);
       var card=ab.closest('article')||ab.closest('.home')||ab.closest('.kit');
       var tw=card?card.querySelector('.tile-wrap'):null;
+      var nmEl=card?(card.querySelector('.name')||card.querySelector('.float-name')):null;
+      var prEl=card?card.querySelector('.price'):null;
+      var nm=nmEl?nmEl.textContent.trim():'View product';
+      var href='/products/'+p.h;
       if(tw&&!tw.querySelector('.card-pdp-link')){
-        var nmEl=card.querySelector('.name')||card.querySelector('.float-name');
-        var prEl=card.querySelector('.price');
-        var nm=nmEl?nmEl.textContent.trim():'View product';
-        var a=document.createElement('a');a.className='card-pdp-link';a.setAttribute('aria-label',nm);
+        // Clickable image overlay -> full PDP (all viewers are logged-in educators)
+        var a=document.createElement('a');a.className='card-pdp-link';a.href=href;a.setAttribute('aria-label',nm+' — view full details');
         tw.insertBefore(a,tw.firstChild);
-        var vp=card?card.querySelector('.view-pdp'):null;if(vp)vp.href='/products/'+p.h;
-        var qs=document.createElement('div');qs.className='quick-spec';qs.setAttribute('aria-hidden','true');
-        qs.innerHTML='<strong>'+nm+'</strong><span>'+p.s+'</span>'+(prEl?'<span>'+prEl.textContent.trim()+'</span>':'');
+        // Hover quick-view panel with name, spec, price, and a details link
+        var qs=document.createElement('div');qs.className='quick-spec';
+        qs.innerHTML='<strong>'+esc(nm)+'</strong>'+
+          '<span class="qs-spec">'+esc(p.s)+'</span>'+
+          (prEl?'<span class="qs-price">'+esc(prEl.textContent.trim())+'</span>':'')+
+          '<a class="qs-view" href="'+href+'">View full details &rarr;</a>';
         tw.appendChild(qs);
       }
-      var row=ab.closest('.add-row');var vp2=row?row.querySelector('.view-pdp'):null;
-      if(vp2&&vp2.getAttribute('href')==='#')vp2.href='/products/'+p.h;
+      // Persistent "View full details" link beside the add-to-wagon button
+      var row=ab.closest('.add-row');
+      if(row){
+        var vp=row.querySelector('.view-pdp');
+        if(vp){ vp.href=href; }
+        else{ vp=document.createElement('a'); vp.className='view-pdp'; vp.href=href; vp.textContent='View full details →'; row.appendChild(vp); }
+      }
     });
     document.querySelectorAll('.add-btn').forEach(function(btn){
       btn.addEventListener('click',function(){
