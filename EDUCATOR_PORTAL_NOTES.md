@@ -62,6 +62,11 @@ DRAFT status alone also removes a product from all channels (safe holding state)
 
 ## 5. State as of 2026-05-29
 
+### Walling verified (2026-05-29)
+- Confirmed **zero leaks**: no dedicated educator product (tag:educator, created>=2026-05-25) is visible on the Online Store. Owner completed the per-product sales-channel-off.
+- Leak-check query that WORKS: `products(query:"tag:educator AND created_at:>='2026-05-25' AND published_status:'online_store:visible'")` — should return empty.
+- Still $0 / unpriced (owner handling): PWF (fences), TLS (Let's Go Shopping), FYS + SH (bundles).
+
 ### Inventory (2026-05-29)
 - `inventoryPolicy: CONTINUE` applied to **all 117 dedicated educator products** (tag:educator AND created_at>=2026-05-25). Retail-tagged shared listings (Bauspiel etc.) intentionally excluded — they'll get CONTINUE when split into dedicated educator listings.
 
