@@ -379,3 +379,12 @@ Paints:
 Dough:
 - MTW-CA-ELS Eco-Kids Eco-Dough Set of 3 $19 (8447743918250/48360043741354, twin 7275311464618 — page says "4-pack" but only Set of 3 found)
 CA page now wired: 12 cards total (5 eco-cutters + 7 these). Owner wall each.
+
+### CA Round 3 — 6 more (2026-05-29) DRAFT → OWNER WALL
+- MTW-CA-VBS Veggie Baby Edible Sculpting Dough $17 (prod 8447744278698 / var 48360044593322, twin 6643628015786)
+- MTW-CA-TBP Tender Leaf My Botanical Press $22.50 (8447744311466/48360044626090, twin 6741613510826 DRAFT)
+- MTW-CA-QPD Q Toys Wooden Play Dough Set $41 (8447744344234/48360044658858, twin 7694423294122 DRAFT)
+- MTW-CA-EMD Eco-Kids Make Your Own Eco-Dough $30 (8447744999594/48360046330026, twin Elseware 7933537157290)
+- MTW-CA-EWT Eco-Kids Wooden Play Dough Tools $15 (8447745032362/48360046362794, twin 7933565272234) — for "Play Dough Tool Set · 3"
+- MTW-CA-EMP Eco-Kids Cookie Cutters Set of 3 $11.50 (8447745097898/48360046559402, twin 7933560127658) — for "Mini Pastry Cutters"
+CA total wired: 18 cards (5 eco-cutters + 7 round 2 + 6 round 3).
