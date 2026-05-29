@@ -80,6 +80,7 @@
     .acc[open] summary::after{content:"\2212";}
     .acc__body{padding:0 2px 16px;font-size:14px;line-height:1.7;}
     .acc__body p{margin:0 0 10px;} .acc__body ul{margin:0 0 10px;padding-left:18px;} .acc__body li{margin:0 0 6px;} .acc__body strong{font-weight:700;}
+    .pdp-xlink{color:var(--forest);text-decoration:underline;text-underline-offset:2px;}
 
     .pdp-empty{padding:80px 0;text-align:center;color:var(--stone);}
     .pdp-empty h1{font-family:var(--serif);font-size:28px;color:var(--ink);font-weight:500;margin:0 0 12px;}
@@ -207,6 +208,37 @@
     var app=document.getElementById('pdpApp'), crumb=document.getElementById('pdpCrumb');
     function param(n){ try{ return new URLSearchParams(window.location.search).get(n); }catch(e){ return null; } }
     function esc(t){var d=document.createElement('div');d.textContent=t==null?'':t;return d.innerHTML;}
+    // Auto-link known product names in the description to their content pages.
+    var NAMEMAP=[
+      ['Wonderheart Pastel Gnomes','MTW-FV-PGN'],['Wonderheart Bright Gnomes','MTW-FV-RGN'],
+      ['Bumbu Flower Children','MTW-FV-FLC'],['Flower Children','MTW-FV-FLC'],
+      ['Papoose Fairy Door','MTW-FV-FDR'],['Fairy Door','MTW-FV-FDR'],
+      ['Papoose Woodland Fairy Wishing Well','MTW-FV-WSH'],['Papoose Wishing Well','MTW-FV-WSH'],['Wishing Well','MTW-FV-WSH'],
+      ['Mushroom Garden Fairy Home','MTW-FV-MUS'],['Mushroom Garden','MTW-FV-MUS'],
+      ['Build the Village','MTW-FV-VLG'],['Pink Blossom House','MTW-FV-PNK'],
+      ['Lilac Fairy Blossom House','MTW-FV-LIL'],['Lilac Blossom House','MTW-FV-LIL'],
+      ['Rainbow Shimmer Home','MTW-FV-RBS'],['Rainbow House','MTW-FV-RBN'],
+      ['Butterfly Fairy House','MTW-FV-BFH'],['The Forest Caves Play Mat','MTW-SW-FCV'],['Forest Caves Play Mat','MTW-SW-FCV']
+    ];
+    function linkify(root, selfSku){
+      if(!root) return;
+      var pairs=NAMEMAP.filter(function(p){return p[1]!==selfSku;}).slice().sort(function(a,b){return b[0].length-a[0].length;});
+      if(!pairs.length) return;
+      var skuOf={}; pairs.forEach(function(p){ skuOf[p[0].toLowerCase()]=p[1]; });
+      var rx=new RegExp(pairs.map(function(p){return p[0].replace(/[.*+?^${}()|[\]\\]/g,'\\$&');}).join('|'),'g');
+      var walker=document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null), nodes=[], n;
+      while((n=walker.nextNode())){ if(n.parentNode && n.parentNode.closest('a')) continue; rx.lastIndex=0; if(rx.test(n.nodeValue)) nodes.push(n); }
+      nodes.forEach(function(tn){
+        var s=tn.nodeValue, frag=document.createDocumentFragment(), last=0, m; rx.lastIndex=0;
+        while((m=rx.exec(s))){
+          if(m.index>last) frag.appendChild(document.createTextNode(s.slice(last,m.index)));
+          var a=document.createElement('a'); a.className='pdp-xlink'; a.href='/pages/educator-product?sku='+encodeURIComponent(skuOf[m[0].toLowerCase()]); a.textContent=m[0];
+          frag.appendChild(a); last=m.index+m[0].length;
+        }
+        if(last<s.length) frag.appendChild(document.createTextNode(s.slice(last)));
+        tn.parentNode.replaceChild(frag, tn);
+      });
+    }
     function notFound(){ app.innerHTML='<div class="pdp-empty"><h1>Product not found</h1><p>This item may have moved. <a class="pdp__wagonlink" href="/pages/educators">Return to the catalog &rarr;</a></p></div>'; }
     function sectionFromSku(s){
       var m={'MTW-SP-':['Sensory Play','/pages/educator-sensory-play'],'MTW-NP-':['Nature Play','/pages/educator-nature-play'],'MTW-WD-':['Woodland','/pages/educator-woodland'],'MTW-SW-':['Small World & Storytelling','/pages/educator-small-world'],'MTW-FV-':['Fairy Villages','/pages/educator-fairy-villages'],'MTW-ST-':['STEAM','/pages/educator-steam'],'MTW-CX-':['STEAM','/pages/educator-steam'],'MTW-DP-':['Dramatic Play','/pages/educator-dramatic-play'],'MTW-CA-':['Creative Arts','/pages/educator-creative-arts']};
@@ -246,6 +278,8 @@
             '<a class="pdp__back" href="'+esc(P.back||'/pages/educators')+'">&larr; Back to '+esc(P.section||'the catalog')+'</a>'+
           '</div>'+
         '</div>';
+
+      Array.prototype.forEach.call(app.querySelectorAll('.pdp__lead, .acc__body'), function(el){ linkify(el, sku); });
 
       var main=document.getElementById('pdpMain'), thumbs=document.getElementById('pdpThumbs');
       if(thumbs){ thumbs.addEventListener('click',function(e){ var b=e.target.closest('button[data-i]'); if(!b)return; var i=+b.getAttribute('data-i'); main.src=imgs[i]; Array.prototype.forEach.call(thumbs.children,function(c){c.classList.remove('is-active');}); b.classList.add('is-active'); }); }
