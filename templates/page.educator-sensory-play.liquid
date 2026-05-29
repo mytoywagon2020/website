@@ -4611,12 +4611,8 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
     onScroll();
   })();
 
-  // Add-to-cart: increment the cart count badge in the nav.
-  // For Shopify port: replace this with a real fetch to /cart/add.js and
-  // re-render the cart count from {{ cart.item_count }} on response.
   (function(){
-    var count = 0;
-    var badge = document.getElementById('cartCount');
+    var badge = document.querySelector('.mtw-edu-h__wagon-count');
     var flash = null;
     function ensureFlash(){
       if (flash) return flash;
@@ -4683,12 +4679,10 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
           fetch('/cart/add.js', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ id: Number(vid), quantity: 1 }) })
             .then(function(r){ if(!r.ok) throw new Error('add'); return r.json(); })
             .then(function(){ return fetch('/cart.js').then(function(r){return r.json();}); })
-            .then(function(c){ if (badge) badge.textContent = c.item_count; show('<span class="added">Added to your wagon!</span> <span>' + sku.replace(/-/g,' ') + '</span>'); })
+            .then(function(c){ if(badge){badge.textContent=c.item_count;badge.setAttribute('data-count',c.item_count);}show('<span class="added">Added to your wagon!</span> <span>' + sku.replace(/-/g,' ') + '</span>'); })
             .catch(function(){ show('<span class="added">Could not add.</span> <span>Open the product page</span>'); })
             .finally(function(){ btn.disabled = false; });
         } else {
-          count += 1;
-          if (badge) badge.textContent = count;
           show('<span class="added">Added to your wagon!</span> <span>' + sku.replace(/-/g,' ') + '</span>');
         }
       });
