@@ -4,7 +4,23 @@
   cannot be used. Items live in localStorage; "Pay" posts to the app proxy
   (/apps/wagon/checkout), which creates a draft order and returns invoiceUrl.
   Exposes window.MTWWagon and keeps the header/nav wagon counts in sync.
+  Also ships the shared product-card styles (click overlay -> content page,
+  hover quick-view, in-wagon button state) used across all 8 section pages.
 {%- endcomment -%}
+<style>
+  .tile-wrap{ position: relative; }
+  .card-pdp-link{ position:absolute; inset:0; z-index:6; display:block; background:transparent; border:0; cursor:pointer; }
+  .card-pdp-link:hover{ box-shadow: inset 0 0 0 2px #3B6D11; }
+  .home .tile-wrap .tile img{ transition: transform .45s ease; }
+  .home:hover .tile-wrap .tile img{ transform: scale(1.045); }
+  .home .tile-wrap .quick-view{ position:absolute; inset:0; z-index:5; pointer-events:none; display:flex; flex-direction:column; justify-content:flex-end; padding:16px; background:linear-gradient(to top, rgba(20,16,12,.93) 0%, rgba(20,16,12,.74) 44%, rgba(20,16,12,0) 80%); opacity:0; transition:opacity .3s ease; }
+  .home:hover .tile-wrap .quick-view{ opacity:1; }
+  .home .tile-wrap .quick-view .qv-head{ font-family:'Cormorant Garamond',serif; font-size:19px; font-weight:500; color:#fff; margin:0 0 6px; line-height:1.15; }
+  .home .tile-wrap .quick-view .qv-body{ color:#fdf8ef; font-family:'Mulish',sans-serif; font-size:11.5px; line-height:1.5; max-height:9.5em; overflow:hidden; }
+  .home .tile-wrap .quick-view .qv-body p{ margin:0 0 5px; }
+  .home .tile-wrap .quick-view .qv-more{ margin-top:9px; font-size:10px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#fff; }
+  .add-btn.has-qty{ background:#3B6D11; border-color:#3B6D11; }
+</style>
 <script>
 (function(){
   var KEY='mtw_wagon_v1';
