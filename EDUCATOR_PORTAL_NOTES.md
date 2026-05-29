@@ -344,3 +344,12 @@ Already done this session: wagon link added to sticky nav on all 8 pages (live c
 footer removed on all 8, preview bypass unified on all 8. NOTE: the nav wagon link currently
 points to `/pages/educator-wagon`; the wagon page still uses the broken native-cart assumption
 and must be rebuilt to the client-side localStorage cart.
+
+### DP missing-items creation (2026-05-29)
+Only 1 of the 18 had a clean single twin → created **MTW-DP-BSB Bumbu Straw Bale** $37
+(prod 8447739592874 / var 48360026669226, DRAFT → OWNER WALL; split from retail Bumbu Straw
+Bales Set 7798643458218). The other ~17 NEED OWNER SPECS (can't guess price/twin per rule):
+- Ambiguous twin (pick + price): COO Cookies, CUP Cupcakes, MLK Milkshakes, ICE Ice Cream+Holder,
+  BND Bundt Cake, BPG Pumpkins & Gourds (5 Bumbu candidates $49–$80.50), TEA Tea Set, TFG Food Groups.
+- No twin (create + price + photo): GMT Grapat Mandala Tulips, WAJ West African Jollof, SWF Swedish Fika.
+- Bundles (define contents + price): BAK, TRT, WK, WEA, PNT, BPB.
