@@ -67,6 +67,12 @@ DRAFT status alone also removes a product from all channels (safe holding state)
 - Leak-check query that WORKS: `products(query:"tag:educator AND created_at:>='2026-05-25' AND published_status:'online_store:visible'")` — should return empty.
 - Still $0 / unpriced (owner handling): PWF (fences), TLS (Let's Go Shopping), FYS + SH (bundles).
 
+### STEAM / Connetix decision (2026-05-29)
+- The `educator-steam` tag is a MIX: (a) ~36 **Connetix** = DEDICATED EDUCATOR listings (own SKUs `MTW-ST-*`/`MTW-CX-*`, classroom descriptions, currently DRAFT, priced; no separate retail Connetix exist — these ARE the educator ones); (b) **Bauspiel** ×4-5 = live RETAIL shared listings (supplier SKUs 0245/150/etc., ACTIVE) — still need splitting; (c) Felt lifecycle/Anatomy (Tara) = retail, DRAFT; (d) Kaleidoscopes Trio = 1 dedicated educator ($0).
+- **Owner decision: Connetix are EDUCATOR-ONLY for now** (may add to retail later → would then make separate retail copies). Plan: owner activates the ~36 DRAFT Connetix in admin and turns sales channels OFF (wall). They're DRAFT now = already off all channels (no leak).
+- **Confirmed AGAIN via test:** API activation (`productUpdate status:ACTIVE`) auto-republishes to Online Store AND drops the Educator publication → must be done in admin, not API. Do NOT bulk-activate Connetix via API.
+- Bauspiel (live retail) remain the shared-listing problem to split later.
+
 ### Inventory (2026-05-29)
 - `inventoryPolicy: CONTINUE` applied to **all 117 dedicated educator products** (tag:educator AND created_at>=2026-05-25). Retail-tagged shared listings (Bauspiel etc.) intentionally excluded — they'll get CONTINUE when split into dedicated educator listings.
 
