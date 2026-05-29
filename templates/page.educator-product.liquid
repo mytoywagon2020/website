@@ -176,19 +176,22 @@
 
     // Qty + add to wagon
     var qv=document.getElementById('qVal');
-    document.getElementById('qInc').addEventListener('click',function(){ qv.value=(parseInt(qv.value,10)||1)+1; });
-    document.getElementById('qDec').addEventListener('click',function(){ qv.value=Math.max(1,(parseInt(qv.value,10)||1)-1); });
+    function curQty(){ return window.MTWWagon?MTWWagon.qtyOf(p.vid):0; }
+    function syncIfInWagon(){ if(window.MTWWagon && curQty()>0){ MTWWagon.setQty(p.vid, Math.max(1,parseInt(qv.value,10)||1)); } }
+    document.getElementById('qInc').addEventListener('click',function(){ qv.value=(parseInt(qv.value,10)||1)+1; syncIfInWagon(); });
+    document.getElementById('qDec').addEventListener('click',function(){ qv.value=Math.max(1,(parseInt(qv.value,10)||1)-1); syncIfInWagon(); });
+    qv.addEventListener('change',function(){ qv.value=Math.max(1,parseInt(qv.value,10)||1); syncIfInWagon(); });
     var flash=null;
     function show(html){ if(!flash){flash=document.createElement('div');flash.className='cart-flash';document.body.appendChild(flash);} flash.innerHTML=html;flash.classList.add('show');clearTimeout(window.__t);window.__t=setTimeout(function(){flash.classList.remove('show');},2600); }
     var addBtn=document.getElementById('pdpAdd');
-    function paint(){ var n=window.MTWWagon?MTWWagon.qtyOf(p.vid):0; var el=document.getElementById('pdpInWagon'); if(el) el.textContent=n>0?('✓ '+n+' in your wagon'):''; }
+    function paint(){ var n=curQty(); var el=document.getElementById('pdpInWagon'); if(el) el.textContent=n>0?('✓ '+n+' in your wagon'):''; if(addBtn) addBtn.textContent=n>0?'Update wagon':'Add to wagon'; }
     addBtn.addEventListener('click',function(){
       if(!window.MTWWagon){ show('<span class="added">Wagon unavailable.</span> Please refresh.'); return; }
       var q=Math.max(1,parseInt(qv.value,10)||1);
-      MTWWagon.add({variantId:p.vid,sku:sku,title:p.t,price:p.p,img:imgs[0],qty:q});
-      show('<span class="added">Added to your wagon!</span> '+esc(p.t));
+      if(curQty()>0){ MTWWagon.setQty(p.vid,q); show('<span class="added">Wagon updated.</span> '+esc(p.t)+' &times; '+q); }
+      else { MTWWagon.add({variantId:p.vid,sku:sku,title:p.t,price:p.p,img:imgs[0],qty:q}); show('<span class="added">Added to your wagon!</span> '+esc(p.t)); }
     });
-    if(window.MTWWagon){ MTWWagon.subscribe(paint); } else { paint(); }
+    if(window.MTWWagon){ var ex=curQty(); if(ex>0) qv.value=ex; MTWWagon.subscribe(paint); } else { paint(); }
   })();
   </script>
 </body>
