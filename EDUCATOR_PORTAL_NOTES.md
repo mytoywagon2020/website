@@ -93,7 +93,7 @@ DRAFT status alone also removes a product from all channels (safe holding state)
   - MTW-ST-BMB Mirror Blocks 12 $97 — prod 8447063720106 / variant 48356002169002
   - MTW-ST-BTW Transparent Windows 25 $152 — prod 8447063752874 / variant 48356002201770
   Retail originals untagged (retail-only now): 6746569212074, 6751337414826, 6763702517930, 6887026393258.
-  STILL NEEDED Bauspiel: MTW-ST-BSOB Optical Blocks 12 — NO retail twin found, create new in a later batch.
+  MTW-ST-BSOB Optical Blocks 12 $179 — DONE: split from retail twin 8297775792298 → educator prod 8447064637610 / variant 48356069048490 (DRAFT, owner wall). Retail original was NOT educator-tagged, no cleanup needed.
 - BUILD PLAN (batches <=10): B1 Bauspiel split (BCT/BFW/BLC/BMB/BTW have retail twins; BOB/Optical no twin). B2 science tools (microscope exists; create binoculars/magnifier/bug box/compass/specimen kit/optical). B3 Papoose life cycles + anatomy. B4 dinosaurs/deep time (BPS/BDE/TLC/PDM). B5 Connetix specialty + bundle sets + kaleidoscope variants. Then wire page (it currently has 0 buttons — needs PDP map + buttons added).
 
 Sections 7-8: Dramatic Play (partly done, ~28 cafe/bakery SKUs missing) + Creative Arts (unwired, ~21 missing) — not yet fully audited.
