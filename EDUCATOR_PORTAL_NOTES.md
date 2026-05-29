@@ -429,3 +429,28 @@ EEP/ECR earlier this batch:
 - MTW-CA-ECR Road Eco-Cutter $8 (8447746572458 / 48360055144618)
 
 CA total: 39 educator listings, 39 cards wired on page (no empty add-rows). Owner must wall + add image/price for 15 placeholders.
+
+### DP Round 2 — wire 27 existing + create 11 missing (2026-05-29)
+Wired 27 existing DP cards that had data-sku but lacked data-variant-id + price element. All now show price + Add-to-wagon button correctly:
+- BSB→48360026669226 $37 (Bumbu); DCS→48345500811434 $420; TFM→48345500876970 $49; TFA→48345500909738 $107; FTT→48345500942506 $105; FHW→48345500975274 $74; PWF→48345501008042 (Price on request); TGS→48345501040810 $178.99; TLS→48345501073578 (Price on request); EBB→48345501106346 $150; TCR→48345501139114 $57.99; TSC→48345501171882 $104.99; BNS→48356547133610 $42; MEM→48356547166378 $82; MSR→48356547199146 $56; SBB→48356547231914 $36; ERH→48356547264682 $46; YUM→48356547297450 $114; PSF→48356547330218 $94; EFE→48356547362986 $108; DON→48356547395754 $30; TPV→48356547428522 $10; HOT→48356547461290 $50; LOL→48356567318698 $3; SCN→48356567384234 $32; PAS→48356567417002 $34; CCP→48356567449770 $34; CHC→48357830164650 $95.
+
+Created 11 new educator products for missing twins (DRAFT, $0 placeholder, "Price on request"). Owner walls + adds price/image:
+- BPG Bumbu Wooden Pumpkins & Gourds (8447752306858 / 48360069726378)
+- GMT Grapat Mandala Tulips (8447752339626 / 48360069759146)
+- TFG Felt Food Groups Nutrition Set (8447752372394 / 48360069791914) — Tara Treasures
+- BPB Felt Bread & Pantry Bundle (8447752405162 / 48360069824682) — Tara Treasures
+- COO Felt Cookies, 4 Styles (8447752437930 / 48360069857450)
+- BND Felt Bundt Cake Slices, 2 Sets (8447752470698 / 48360069890218)
+- CUP Felt Cupcakes, 5 Flavors (8447752503466 / 48360069922986)
+- ICE Felt Ice Cream & Holder (8447752536234 / 48360069955754)
+- MLK Felt Milkshakes (8447752569002 / 48360069988522)
+- WAJ Felt West African Jollof, 11pc (8447752634538 / 48360070054058)
+- SWF Felt Swedish Fika, 9pc (8447752700074 / 48360070348970)
+
+Dedup note: My initial 12-product batch included a Bumbu Straw Bale ($0, prod 8447752274090) that turned out to be an exact SKU twin of existing Bumbu Straw Bales Set ($37, prod 8447739592874). DELETED 8447752274090 (productDelete) and rewired BSB card to existing $37 listing.
+
+DP total: 39 educator listings, 39/39 cards wired with variant-id + price. Owner walls all + sets price/image for 11 placeholders.
+
+### Other sections (2026-05-29)
+Audited all educator templates for empty add-rows: Wood/Nature/SW/Sensory/FV/Catalog/Portal/Dashboard/Wagon all 0 empty → no work needed.
+STEAM has 30 empty add-rows — SKIPPED per user directive (owner taking closer look first).
