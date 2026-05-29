@@ -4600,30 +4600,66 @@ section[data-screen-label="08 The Everything Play Bundle"] .content .eyebrow{
     onScroll();
   })();
 
-  // Add-to-cart: increment the cart count badge in the nav.
-  // For Shopify port: replace this with a real fetch to /cart/add.js and
-  // re-render the cart count from {{ cart.item_count }} on response.
   (function(){
-    var count = 0;
-    var badge = document.getElementById('cartCount');
-    var flash = null;
-    function ensureFlash(){
-      if (flash) return flash;
-      flash = document.createElement('div');
-      flash.className = 'cart-flash';
-      document.body.appendChild(flash);
-      return flash;
-    }
+    var badge=document.querySelector('.mtw-edu-h__wagon-count');
+    var flash=null;
+    function ensureFlash(){if(flash)return flash;flash=document.createElement('div');flash.className='cart-flash';document.body.appendChild(flash);return flash;}
+    var PDP={
+      "MTW-NP-BBT":{h:"busy-bee-tray-educator",v:"48345475711146",s:"Tender Leaf Toys beech wood · Ages 3+"},
+      "MTW-NP-MSH":{h:"felt-forest-mushrooms-red-and-brown-educator",v:"48345475874986",s:"Papoose pure wool felt · made in Nepal"},
+      "MTW-NP-LVS-A":{h:"felt-autumn-leaves-educator",v:"48345476006058",s:"Papoose pure wool felt · made in Nepal"},
+      "MTW-NP-PNC":{h:"felt-pinecones-educator",v:"48345476137130",s:"Papoose pure wool felt · made in Nepal"},
+      "MTW-NP-PMP":{h:"felt-pumpkins-educator",v:"48345476235434",s:"Papoose pure wool felt · made in Nepal"},
+      "MTW-NP-ACN":{h:"felt-acorns-orange-and-green-educator",v:"48345476366506",s:"Papoose pure wool felt · made in Nepal"},
+      "MTW-NP-HRV":{h:"bumbu-pumpkin-harvest-educator",v:"48345476464810",s:"Bumbu hand-carved linden wood · made in Romania"},
+      "MTW-NP-TKY":{h:"wooden-turkey-pair-educator",v:"48345476563114",s:"Hand-painted wooden turkey pair"},
+      "MTW-NP-MNL":{h:"wooden-woodland-leaves-educator",v:"48345476661418",s:"Wooden woodland leaves loose parts"},
+      "MTW-NP-MNM":{h:"wooden-forest-mushrooms-basket-set-educator",v:"48345476759722",s:"Wooden forest mushrooms basket set"},
+      "MTW-NP-MNE":{h:"a-dozen-wooden-bird-eggs-educator",v:"48345476890794",s:"A dozen wooden bird eggs loose parts"},
+      "MTW-NP-BNB":{h:"baby-nesting-bowls-educator",v:"48345477349546",s:"Baby nesting bowls · natural wood"},
+      "MTW-NP-TNG":{h:"wooden-tongs-educator",v:"48345477480618",s:"Wooden tongs · fine motor tool"},
+      "MTW-NP-SPS":{h:"teak-spoon-set-educator",v:"48345477611690",s:"Teak spoon set · food-safe"},
+      "MTW-NP-MCS":{h:"mini-coconut-sieve-educator",v:"48345477775530",s:"Mini coconut sieve · fine motor"},
+      "MTW-NP-PSS":{h:"teak-slotted-spoon-educator",v:"48345477906602",s:"Teak slotted spoon · food-safe"},
+      "MTW-SP-WMC-EPB":{h:"the-everything-play-bundle-educator",v:"48345478037674",s:"Everything Play Bundle · Net-30 · tax-exempt"},
+      "MTW-NP-AUT":{h:"the-autumn-set-educator-nature-loose-parts-set",v:"48345478168746",s:"The Autumn Set · nature loose parts · Net-30 · tax-exempt"},
+      "MTW-NP-NTS":{h:"the-nature-tools-set-educator-set",v:"48345478332586",s:"The Nature Tools Set · educator classroom set"}
+    };
+    document.querySelectorAll('.add-btn[data-sku]').forEach(function(ab){
+      var sku=ab.getAttribute('data-sku');var p=PDP[sku];if(!p)return;
+      if(!ab.getAttribute('data-variant-id'))ab.setAttribute('data-variant-id',p.v);
+      var card=ab.closest('article')||ab.closest('.home')||ab.closest('.kit');
+      var tw=card?card.querySelector('.tile-wrap'):null;
+      if(tw&&!tw.querySelector('.card-pdp-link')){
+        var nmEl=card.querySelector('.name')||card.querySelector('.float-name');
+        var prEl=card.querySelector('.price');
+        var nm=nmEl?nmEl.textContent.trim():'View product';
+        var a=document.createElement('a');a.className='card-pdp-link';a.href='/products/'+p.h;a.setAttribute('aria-label',nm);
+        tw.insertBefore(a,tw.firstChild);
+        var vp=card?card.querySelector('.view-pdp'):null;if(vp)vp.href='/products/'+p.h;
+        var qs=document.createElement('div');qs.className='quick-spec';qs.setAttribute('aria-hidden','true');
+        qs.innerHTML='<strong>'+nm+'</strong><span>'+p.s+'</span>'+(prEl?'<span>'+prEl.textContent.trim()+'</span>':'');
+        tw.appendChild(qs);
+      }
+      var row=ab.closest('.add-row');var vp2=row?row.querySelector('.view-pdp'):null;
+      if(vp2&&vp2.getAttribute('href')==='#')vp2.href='/products/'+p.h;
+    });
     document.querySelectorAll('.add-btn').forEach(function(btn){
-      btn.addEventListener('click', function(){
-        count += 1;
-        if (badge) badge.textContent = count;
-        var sku = btn.getAttribute('data-sku') || 'item';
-        var fl = ensureFlash();
-        fl.innerHTML = '<span class="added">Added to your wagon!</span> <span>' + sku.replace(/-/g,' ') + '</span>';
-        fl.classList.add('show');
-        clearTimeout(window.__cartFlashT);
-        window.__cartFlashT = setTimeout(function(){ fl.classList.remove('show'); }, 2400);
+      btn.addEventListener('click',function(){
+        var sku=btn.getAttribute('data-sku')||'item';
+        var vid=btn.getAttribute('data-variant-id');
+        var fl=ensureFlash();
+        var show=function(html){fl.innerHTML=html;fl.classList.add('show');clearTimeout(window.__cartFlashT);window.__cartFlashT=setTimeout(function(){fl.classList.remove('show');},2600);};
+        if(vid){
+          btn.disabled=true;
+          fetch('/cart/add.js',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id:Number(vid),quantity:1})})
+            .then(function(r){if(!r.ok)throw new Error('add');return r.json();})
+            .then(function(){return fetch('/cart.js').then(function(r){return r.json();});})
+            .then(function(c){if(badge){badge.textContent=c.item_count;badge.setAttribute('data-count',c.item_count);}show('<span class="added">Added to your wagon!</span> <span>'+sku.replace(/-/g,' ')+'</span>');
+})
+            .catch(function(){show('<span class="added">Could not add.</span> <span>Open the product page</span>');})
+            .finally(function(){btn.disabled=false;});
+        }else{show('<span class="added">Added to your wagon!</span> <span>'+sku.replace(/-/g,' ')+'</span>');}
       });
     });
   })();

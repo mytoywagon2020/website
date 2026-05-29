@@ -4532,30 +4532,67 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
     onScroll();
   })();
 
-  // Add-to-cart: increment the cart count badge in the nav.
-  // For Shopify port: replace this with a real fetch to /cart/add.js and
-  // re-render the cart count from {{ cart.item_count }} on response.
   (function(){
-    var count = 0;
-    var badge = document.getElementById('cartCount');
-    var flash = null;
-    function ensureFlash(){
-      if (flash) return flash;
-      flash = document.createElement('div');
-      flash.className = 'cart-flash';
-      document.body.appendChild(flash);
-      return flash;
-    }
+    var badge=document.querySelector('.mtw-edu-h__wagon-count');
+    var flash=null;
+    function ensureFlash(){if(flash)return flash;flash=document.createElement('div');flash.className='cart-flash';document.body.appendChild(flash);return flash;}
+    var PDP={
+      "MTW-SW-FCV":{h:"forest-caves-play-mat-educator",v:"48345486459050",s:"Forest Caves play mat · pure wool felt · made in Nepal"},
+      "MTW-SW-TTT":{h:"tiny-tale-terrains-set-of-4-educator",v:"48345486590122",s:"Tiny Tale Terrains · set of 4 · pure wool felt"},
+      "MTW-SW-FST":{h:"fairy-streamlet-play-mat-educator",v:"48345486786730",s:"Fairy Streamlet play mat · pure wool felt · made in Nepal"},
+      "MTW-SW-FPP":{h:"featherfloat-pond-play-mat-educator",v:"48345486885034",s:"Featherfloat Pond play mat · pure wool felt · made in Nepal"},
+      "MTW-SW-CCV":{h:"coralwhim-cove-play-mat-educator",v:"48345487442090",s:"Coralwhim Cove play mat · pure wool felt · made in Nepal"},
+      "MTW-SW-WWW":{h:"wispy-waters-way-play-mat-educator",v:"48345487671466",s:"Wispy Waters Way play mat · pure wool felt"},
+      "MTW-SW-GOM":{h:"garden-of-the-moon-play-mat-educator",v:"48345487802538",s:"Garden of the Moon play mat · pure wool felt"},
+      "MTW-SW-HHB":{h:"hobbit-hollow-gnomes-educator",v:"48345487933610",s:"Hobbit Hollow Gnomes · hand-felted · made in Nepal"},
+      "MTW-SW-GRF":{h:"the-gruffalo-story-bundle-educator",v:"48345488326826",s:"The Gruffalo Story Bundle · book + figures · Ages 3+"},
+      "MTW-SW-ING":{h:"ingenious-insects-puppet-set-educator",v:"48345488457898",s:"Ingenious Insects puppet set · Ages 3+"},
+      "MTW-SW-CRL":{h:"coral-reef-under-the-sea-puppet-set-educator",v:"48345488621738",s:"Coral Reef puppet set · Ages 3+"},
+      "MTW-SW-POL":{h:"polar-animals-arctic-antarctic-puppet-set-educator",v:"48345488752810",s:"Polar Animals puppet set · Arctic and Antarctic · Ages 3+"},
+      "MTW-SW-BFY":{h:"butterfly-puppet-set-educator",v:"48345488883882",s:"Butterfly puppet set · Ages 3+"},
+      "MTW-SW-AUB":{h:"australiana-birds-puppet-set-educator",v:"48345489014954",s:"Australiana Birds puppet set · Ages 3+"},
+      "MTW-SW-IBS":{h:"itsy-bitsy-spider-puppet-set-educator",v:"48345489211562",s:"Itsy Bitsy Spider puppet set · Ages 3+"},
+      "MTW-SW-OMD":{h:"old-macdonald-farm-animals-puppet-set-educator",v:"48345489342634",s:"Old MacDonald farm animals puppet set · Ages 3+"},
+      "MTW-SW-FLM":{h:"five-little-monkeys-puppet-set-educator",v:"48345489506474",s:"Five Little Monkeys puppet set · Ages 3+"},
+      "MTW-SW-FLD":{h:"five-little-ducks-puppet-set-educator",v:"48345489637546",s:"Five Little Ducks puppet set · Ages 3+"},
+      "MTW-SW-FLF":{h:"five-little-speckled-frogs-puppet-set-educator",v:"48345489768618",s:"Five Little Speckled Frogs puppet set · Ages 3+"},
+      "MTW-SW-FB5":{h:"the-complete-felt-habitats-educator-classroom-set",v:"48345490129066",s:"Complete Felt Habitats classroom set · Net-30 · tax-exempt"}
+    };
+    document.querySelectorAll('.add-btn[data-sku]').forEach(function(ab){
+      var sku=ab.getAttribute('data-sku');var p=PDP[sku];if(!p)return;
+      if(!ab.getAttribute('data-variant-id'))ab.setAttribute('data-variant-id',p.v);
+      var card=ab.closest('article')||ab.closest('.home')||ab.closest('.kit');
+      var tw=card?card.querySelector('.tile-wrap'):null;
+      if(tw&&!tw.querySelector('.card-pdp-link')){
+        var nmEl=card.querySelector('.name')||card.querySelector('.float-name');
+        var prEl=card.querySelector('.price');
+        var nm=nmEl?nmEl.textContent.trim():'View product';
+        var a=document.createElement('a');a.className='card-pdp-link';a.href='/products/'+p.h;a.setAttribute('aria-label',nm);
+        tw.insertBefore(a,tw.firstChild);
+        var vp=card?card.querySelector('.view-pdp'):null;if(vp)vp.href='/products/'+p.h;
+        var qs=document.createElement('div');qs.className='quick-spec';qs.setAttribute('aria-hidden','true');
+        qs.innerHTML='<strong>'+nm+'</strong><span>'+p.s+'</span>'+(prEl?'<span>'+prEl.textContent.trim()+'</span>':'');
+        tw.appendChild(qs);
+      }
+      var row=ab.closest('.add-row');var vp2=row?row.querySelector('.view-pdp'):null;
+      if(vp2&&vp2.getAttribute('href')==='#')vp2.href='/products/'+p.h;
+    });
     document.querySelectorAll('.add-btn').forEach(function(btn){
-      btn.addEventListener('click', function(){
-        count += 1;
-        if (badge) badge.textContent = count;
-        var sku = btn.getAttribute('data-sku') || 'item';
-        var fl = ensureFlash();
-        fl.innerHTML = '<span class="added">Added to your wagon!</span> <span>' + sku.replace(/-/g,' ') + '</span>';
-        fl.classList.add('show');
-        clearTimeout(window.__cartFlashT);
-        window.__cartFlashT = setTimeout(function(){ fl.classList.remove('show'); }, 2400);
+      btn.addEventListener('click',function(){
+        var sku=btn.getAttribute('data-sku')||'item';
+        var vid=btn.getAttribute('data-variant-id');
+        var fl=ensureFlash();
+        var show=function(html){fl.innerHTML=html;fl.classList.add('show');clearTimeout(window.__cartFlashT);window.__cartFlashT=setTimeout(function(){fl.classList.remove('show');},2600);};
+        if(vid){
+          btn.disabled=true;
+          fetch('/cart/add.js',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id:Number(vid),quantity:1})})
+            .then(function(r){if(!r.ok)throw new Error('add');return r.json();})
+            .then(function(){return fetch('/cart.js').then(function(r){return r.json();});})
+            .then(function(c){if(badge){badge.textContent=c.item_count;badge.setAttribute('data-count',c.item_count);}show('<span class="added">Added to your wagon!</span> <span>'+sku.replace(/-/g,' ')+'</span>');
+})
+            .catch(function(){show('<span class="added">Could not add.</span> <span>Open the product page</span>');})
+            .finally(function(){btn.disabled=false;});
+        }else{show('<span class="added">Added to your wagon!</span> <span>'+sku.replace(/-/g,' ')+'</span>');}
       });
     });
   })();
