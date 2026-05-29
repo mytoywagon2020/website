@@ -361,3 +361,8 @@ Split 3 from retail twins → educator copies, DRAFT, CONTINUE, OWNER WALL:
 - **MTW-CA-ECF** Mini Fruit Eco-Cutter $10 (8447743131818/48360040956074, twin 6894292730026 DRAFT retail)
 Page cards EFM (Mini Farm) and ECI (Ice Cream) — NO clear twin found; owner buildout or substitute.
 ECBF "The Eco-Cutters Set" exists as $0 bundle on educator — owner to define contents+price.
+
+### CA Eco-Cutters — 2 more found (2026-05-29)
+- MTW-CA-ECI Ice Cream Eco-Cutter $11 (prod 8447743295658 / var 48360042070186, twin 8074320216234)
+- MTW-CA-EFM Mini Farm Eco-Cutter $15.50 (prod 8447743361194 / var 48360042135722, twin 7680727810218)
+Now 5/5 eco-cutters created. All DRAFT → OWNER WALL.
