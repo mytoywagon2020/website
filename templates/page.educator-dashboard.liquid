@@ -488,17 +488,16 @@
         <div class="wagon-card__meta">{{ cart.item_count }} line{% if cart.item_count != 1 %}s{% endif %} in your wagon &middot; educator pricing applied</div>
         {%- comment -%}
           Dual checkout path:
-          - "Check out & pay" goes to native Shopify checkout (card / Shop Pay /
-            Apple Pay / Google Pay / ACH). Educator pricing already applied via
-            the Educators Market, so no quote needed for card buyers.
-          - "Request a quote" submits the cart to the educator-quote form on
-            /pages/new-quote for buyers who need a PO / Net-30 / grant reimbursement.
+          - "Check out & pay" routes to /pages/educator-wagon (fork page) where the
+            tax-exempt interception fires and the buyer chooses card vs. PO.
+          - "Request a quote" submits the cart to /pages/new-quote for buyers who
+            already know they need a PO / Net-30 / grant reimbursement.
         {%- endcomment -%}
         <div class="wagon-card__actions">
-          <a class="wagon-card__cta wagon-card__cta--solid" href="/checkout">Check out &amp; pay &rarr;</a>
+          <a class="wagon-card__cta wagon-card__cta--solid" href="/pages/educator-wagon">Check out &amp; pay &rarr;</a>
           <a class="wagon-card__cta wagon-card__cta--ghost" href="/pages/new-quote">Request a quote / pay by PO</a>
         </div>
-        <p class="wagon-card__hint">Paying by card, Shop Pay, or ACH? Check out now. Need Net-30 or a PO for your school? Request a quote.</p>
+        <p class="wagon-card__hint">Ready to complete your order? Review your wagon to pay by card or submit a purchase order for district approval.</p>
       </div>
 
       {%- elsif wagon_state == 'awaiting' -%}
@@ -549,7 +548,7 @@
         </div>
         <div class="acct-card__links">
           <a href="{{ routes.account_url }}">Addresses &amp; contacts &rarr;</a>
-          <a href="/pages/vendor-profile">W-9 / COI / supplier docs &rarr;</a>
+          <a href="{{ 'vendor-onboarding-packet.pdf' | asset_url }}" download>W-9 / COI / supplier docs &rarr;</a>
           <a href="mailto:educators@mytoywagon.com?subject=Curriculum-alignment%20letter">Curriculum-alignment letter &rarr;</a>
         </div>
       </div>
@@ -577,7 +576,7 @@
           {%- endif %}
           <div class="links">
             <a href="{{ routes.account_url }}">Addresses &rarr;</a>
-            <a href="/pages/vendor-profile">W-9 / COI &rarr;</a>
+            <a href="{{ 'vendor-onboarding-packet.pdf' | asset_url }}" download>W-9 / COI &rarr;</a>
             <a href="mailto:educators@mytoywagon.com?subject=Curriculum-alignment%20letter">Curriculum letter &rarr;</a>
           </div>
         </div>
