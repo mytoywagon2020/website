@@ -114,6 +114,10 @@ CAVEAT: `media_count:0` search filter is BROKEN here (false positives). Audit im
 
 ---
 
+## DRAMATIC PLAY — creating 34 missing page products (owner approved "create all 34", 2026-05-29)
+- DP1 DONE: 8 World Foods split from Papoose twins (DRAFT, owner wall): MTW-DP-BNS Beef Noodle Soup $42 (8447076925610), MTW-DP-MEM Middle Eastern Mezze $82 (8447076958378), MTW-DP-MSR Mixed Sushi Rolls $56 (8447076991146), MTW-DP-SBB Sushi Bento Box $36 (8447077023914), MTW-DP-ERH Egg Rolls&Hand Rolls $46 (8447077056682), MTW-DP-YUM Yum Cha Dim Sum $114 (8447077089450), MTW-DP-PSF Peruvian Street Food $94 (8447077122218), MTW-DP-EFE Ethiopian Feast $108 (8447077154986). Twins not educator-tagged, no cleanup.
+- DP REMAINING ~26: World Foods no-twin (WAJ West African Jollof, SWF Swedish Fika) → new $0. Bakery/sweet shop (BND/CHC/COO/CUP/DON/LOL/MLK/PAS/SCN/TPV/ICE/HOT/BAK/TRT bundles). Pantry/farm extras (BPB/BPG/BSB/GMT/SBB done/PNT/TFG/WK/WEA bundles + WAJ). + existing $0: PWF/TLS/FYS/SH. Continue batches of 10.
+
 ## IMAGE BACKFILL PROGRESS (from retail twins; per owner rule #6)
 - Audit: ~90 of 117 dedicated educator products had NO image (all the ones built from scratch by the original process; split-created ones already have images). media_count filter is broken — use per-product featuredMedia.
 - NO SUBAGENTS (owner instruction 2026-05-29) — do image backfill directly.
