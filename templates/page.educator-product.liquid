@@ -1,0 +1,156 @@
+{% layout none %}
+{%- comment -%}
+  Educator PDP — a REAL gated page (not a product page) for WALLED educator items.
+  Walled products have no Online Store PDP; this content Page renders full details
+  client-side from a data island keyed by ?sku=. Gated to educator-approved/B2B.
+  It is a Page (not a product) so it never appears in /products.json or search feeds.
+{%- endcomment -%}
+{%- assign is_approved = false -%}
+{%- if customer and customer.tags contains 'educator-approved' -%}{%- assign is_approved = true -%}{%- endif -%}
+{%- if customer.b2b? -%}{%- assign is_approved = true -%}{%- endif -%}
+{%- if request.design_mode or theme.role != 'main' -%}{%- assign is_approved = true -%}{%- endif -%}
+{%- if is_approved -%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Educator Catalog | {{ shop.name }}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--cream:#F5F0E5;--warm-white:#FFFCF7;--ink:#2C2C2A;--forest:#3B6D11;--amber:#854F0B;--stone:#5F5E5A;--card-bg:#EDE3CD;--rule:rgba(44,44,42,.12);--rule-strong:rgba(44,44,42,.22);--serif:'Cormorant Garamond',serif;--sans:'Mulish',sans-serif;}
+    *{box-sizing:border-box;} html,body{margin:0;padding:0;}
+    body{font-family:var(--sans);color:var(--ink);background:var(--cream);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+    img{max-width:100%;display:block;} a{color:inherit;text-decoration:none;}
+    .wrap{max-width:1080px;margin:0 auto;padding:0 40px;}
+    .pdp-crumb{padding:22px 0 0;font-size:12px;color:var(--stone);}
+    .pdp-crumb a{color:var(--forest);text-decoration:underline;text-underline-offset:2px;}
+    .pdp{display:grid;grid-template-columns:1fr 1fr;gap:40px;padding:24px 0 40px;align-items:start;}
+    .pdp__media{position:relative;background:var(--card-bg);border-radius:4px;overflow:hidden;aspect-ratio:1/1;}
+    .pdp__media img{width:100%;height:100%;object-fit:cover;}
+    .pdp__eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--stone);font-weight:600;}
+    .pdp__title{font-family:var(--serif);font-size:34px;font-weight:500;margin:8px 0 6px;letter-spacing:-.01em;line-height:1.1;}
+    .pdp__price{font-family:var(--serif);font-size:26px;color:var(--forest);margin:0 0 2px;}
+    .pdp__sku{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);}
+    .pdp__rate{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--forest);background:#edf4e6;border-radius:2px;padding:3px 7px;margin-left:8px;}
+    .pdp__buy{display:flex;gap:12px;align-items:center;margin:22px 0 10px;flex-wrap:wrap;}
+    .qty{display:inline-flex;align-items:center;border:1px solid var(--rule-strong);border-radius:2px;overflow:hidden;}
+    .qty button{width:34px;height:46px;border:0;background:var(--warm-white);color:var(--ink);font-size:17px;cursor:pointer;}
+    .qty button:hover{background:var(--forest);color:#fff;}
+    .qty input{width:44px;height:46px;border:0;border-left:1px solid var(--rule);border-right:1px solid var(--rule);text-align:center;font-family:var(--sans);font-size:14px;-moz-appearance:textfield;}
+    .qty input::-webkit-outer-spin-button,.qty input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0;}
+    .add-btn{flex:1;min-width:200px;padding:15px 24px;font-family:var(--sans);font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;text-align:center;border-radius:2px;cursor:pointer;border:1.5px solid var(--ink);background:var(--ink);color:var(--cream);transition:background .15s,border-color .15s;}
+    .add-btn:hover{background:var(--forest);border-color:var(--forest);}
+    .add-btn.has-qty::after{content:" \2713 "attr(data-q);}
+    .pdp__sub{font-size:11.5px;color:var(--stone);margin:6px 0 0;}
+    .pdp__sub a{color:var(--forest);text-decoration:underline;text-underline-offset:2px;}
+    .pdp__wagonlink{display:inline-block;margin-top:14px;font-size:12px;font-weight:600;color:var(--forest);text-decoration:underline;text-underline-offset:2px;}
+    .pdp__details{border-top:.5px solid var(--rule);padding:18px 0 0;margin-top:18px;font-size:14px;line-height:1.7;}
+    .pdp__details p{margin:0 0 12px;} .pdp__details ul{margin:0 0 16px;padding-left:18px;} .pdp__details li{margin:0 0 6px;} .pdp__details strong{font-weight:700;}
+    .pdp-empty{padding:80px 0;text-align:center;color:var(--stone);}
+    .pdp-empty h1{font-family:var(--serif);font-size:28px;color:var(--ink);font-weight:500;margin:0 0 12px;}
+    .cart-flash{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);background:var(--ink);color:var(--cream);padding:12px 20px;border-radius:3px;font-size:13px;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;z-index:50;max-width:90vw;}
+    .cart-flash.show{opacity:1;transform:translateX(-50%) translateY(0);}
+    .cart-flash .added{font-weight:700;}
+    @media(max-width:800px){.pdp{grid-template-columns:1fr;gap:24px;}.wrap{padding:0 20px;}}
+  </style>
+</head>
+<body>
+  {% section 'mtw-educator-header' %}
+  {% render 'educator-wagon-cart' %}
+
+  <main class="wrap">
+    <div class="pdp-crumb"><a href="/pages/educators">Educator Catalog</a> &nbsp;/&nbsp; <span id="pdpCrumb">Product</span></div>
+    <div id="pdpApp"></div>
+  </main>
+
+  {% section 'mtw-educator-footer' %}
+
+  <script>
+  window.MTW_PDP = {
+    "MTW-FV-MUS":{t:"Mushroom Garden Fairy Home",p:"$228",vid:"48345499205802",img:"https://cdn.shopify.com/s/files/1/0522/0882/8586/files/MushroomHousewithCarrotGardenMat2_77cdd3e5-3c8d-4706-9ad5-461af3c88076.jpg?v=1780030149",back:"/pages/educator-fairy-villages"},
+    "MTW-FV-PGN":{t:"Wonderheart Pastel Gnomes",p:"$108",vid:"48345499238570",img:"https://cdn.shopify.com/s/files/1/0522/0882/8586/files/PastelGnomes9_f2c357ae-3221-4f47-8837-35c5b3fe6e40.jpg?v=1780030148",back:"/pages/educator-fairy-villages"},
+    "MTW-FV-RGN":{t:"Wonderheart Bright Gnomes",p:"$108",vid:"48345499271338",img:"https://cdn.shopify.com/s/files/1/0522/0882/8586/files/WonderheartMay20256_be730604-fdda-4e34-a9c1-96cc457f29c0.jpg?v=1780030149",back:"/pages/educator-fairy-villages"},
+    "MTW-FV-VLG":{t:"Build the Village Fairy Village Set",p:"$640",vid:"48345499304106",img:"https://cdn.shopify.com/s/files/1/0522/0882/8586/files/MushroomHousewithCarrotGardenMat2_39b838cb-ec42-45de-964b-28fce68096bc.jpg?v=1780030149",back:"/pages/educator-fairy-villages"},
+    "MTW-FV-BFH":{t:"Butterfly Fairy House",p:"$45",vid:"48355698475178",img:"https://cdn.shopify.com/s/files/1/0522/0882/8586/files/ButterflyFairyHouse2.jpg?v=1744153545",back:"/pages/educator-fairy-villages"},
+    "MTW-FV-PNK":{t:"Pink Blossom House",p:"$58",vid:"48355716497578",img:"https://cdn.shopify.com/s/files/1/0522/0882/8586/files/pink-blossom-fairy-house.jpg?v=1779662621",back:"/pages/educator-fairy-villages"},
+    "MTW-FV-LIL":{t:"Lilac Blossom House",p:"$58",vid:"48355716530346",img:"https://cdn.shopify.com/s/files/1/0522/0882/8586/files/LilacFairyBlossomHouse2.jpg?v=1775874905",back:"/pages/educator-fairy-villages"},
+    "MTW-FV-RBN":{t:"Rainbow House",p:"$50",vid:"48355716595882",img:"https://cdn.shopify.com/s/files/1/0522/0882/8586/files/LargeRainbowShimmerHome.png?v=1774074543",back:"/pages/educator-fairy-villages"},
+    "MTW-FV-RBS":{t:"Rainbow Shimmer Home",p:"$65",vid:"48355716661418",img:"https://cdn.shopify.com/s/files/1/0522/0882/8586/files/rainbow-shimmer-fairy-house.png?v=1779662621",back:"/pages/educator-fairy-villages"}
+  };
+  </script>
+
+  <!-- Full details, keyed by SKU (same source as the section-page modal). -->
+  <template data-pdp="MTW-FV-PNK">
+    <p>A hand-felted pink blossom cottage — the signature piece of our Fairy Villages line. The pointed roof is built of overlapping wool petals stitched one at a time; the doorway opens onto a hollow interior where a small fairy or gnome can live, sit, or sleep.</p>
+    <p>Every house is hand-stitched in Nepal by a women's felting cooperative. Wool is sourced from Australia and New Zealand, hand-rolled and shaped without molds — meaning no two houses are identical.</p>
+    <p><strong>Educator notes:</strong> The anchor piece for spring nature tables, small-world play, and the Fairy Villages classroom set. Pairs naturally with Wonderheart wooden gnomes (4″ or mini) — the open doorway is sized to receive both.</p>
+    <p><strong>Specifications:</strong> Hand-stitched wool felt over an internal armature · approximately 7″ tall · spot-clean only · fair-trade · handmade in Nepal · Ages 3+.</p>
+  </template>
+  <template data-pdp="MTW-FV-LIL">
+    <p>A hand-felted lilac blossom cottage — the dusk-toned sibling of the Pink Blossom House. The roof of curled wool petals reads as lilac at one angle and pale violet at another; the doorway opens onto a hollow interior big enough to seat a small fairy or wooden gnome.</p>
+    <p>Hand-stitched in Nepal by a women's felting cooperative. Wool is sourced from Australia and New Zealand and felted by hand without molds, so no two houses are identical.</p>
+    <p><strong>Educator notes:</strong> A favorite for spring–early summer nature tables. Pairs with the Wonderheart Mini Pastel Purple or Pink Gnome for the most natural color story.</p>
+    <p><strong>Specifications:</strong> Hand-stitched wool felt over an internal armature · approximately 7″ tall · spot-clean only · fair-trade · handmade in Nepal · Ages 3+.</p>
+  </template>
+
+  <script>
+  (function(){
+    var PDP=window.MTW_PDP||{};
+    var app=document.getElementById('pdpApp'), crumb=document.getElementById('pdpCrumb');
+    function param(n){ try{ return new URLSearchParams(window.location.search).get(n); }catch(e){ return null; } }
+    function esc(t){var d=document.createElement('div');d.textContent=t==null?'':t;return d.innerHTML;}
+    var sku=(param('sku')||'').toUpperCase().trim();
+    var p=PDP[sku];
+    if(!p){
+      app.innerHTML='<div class="pdp-empty"><h1>Product not found</h1><p>This item may have moved. <a class="pdp__wagonlink" href="/pages/educators">Return to the catalog &rarr;</a></p></div>';
+      return;
+    }
+    if(crumb) crumb.textContent=p.t;
+    document.title=p.t+' | Educator Catalog';
+    var bodyTpl=document.querySelector('template[data-pdp="'+sku+'"]');
+    var bodyHtml=bodyTpl?bodyTpl.innerHTML:'<p>Full classroom details available on request — contact educators@mytoywagon.com.</p>';
+    app.innerHTML=
+      '<div class="pdp">'+
+        '<div class="pdp__media"><img src="'+esc(p.img)+'" alt="'+esc(p.t)+'"></div>'+
+        '<div class="pdp__info">'+
+          '<span class="pdp__eyebrow">Educator Catalog &middot; Fairy Villages</span>'+
+          '<h1 class="pdp__title">'+esc(p.t)+'</h1>'+
+          '<div class="pdp__price">'+esc(p.p)+'<span class="pdp__rate">Educator rate</span></div>'+
+          '<div class="pdp__sku">'+esc(sku)+'</div>'+
+          '<div class="pdp__buy">'+
+            '<span class="qty"><button type="button" id="qDec" aria-label="Decrease">&minus;</button><input id="qVal" type="number" min="1" value="1" aria-label="Quantity"><button type="button" id="qInc" aria-label="Increase">+</button></span>'+
+            '<button type="button" class="add-btn" id="pdpAdd">Add to wagon</button>'+
+          '</div>'+
+          '<p class="pdp__sub">Educator pricing &middot; Net-30 &middot; tax-exempt. Pay by card or purchase order at your wagon.</p>'+
+          '<a class="pdp__wagonlink" href="/pages/educator-wagon">View your wagon &rarr;</a>'+
+          '<div class="pdp__details">'+bodyHtml+'</div>'+
+          '<a class="pdp__wagonlink" href="'+esc(p.back||'/pages/educators')+'">&larr; Back to Fairy Villages</a>'+
+        '</div>'+
+      '</div>';
+
+    var qv=document.getElementById('qVal');
+    document.getElementById('qInc').addEventListener('click',function(){ qv.value=(parseInt(qv.value,10)||1)+1; });
+    document.getElementById('qDec').addEventListener('click',function(){ qv.value=Math.max(1,(parseInt(qv.value,10)||1)-1); });
+
+    var flash=null;
+    function show(html){ if(!flash){flash=document.createElement('div');flash.className='cart-flash';document.body.appendChild(flash);} flash.innerHTML=html;flash.classList.add('show');clearTimeout(window.__t);window.__t=setTimeout(function(){flash.classList.remove('show');},2600); }
+    var addBtn=document.getElementById('pdpAdd');
+    function paint(){ var n=window.MTWWagon?MTWWagon.qtyOf(p.vid):0; if(n>0){addBtn.classList.add('has-qty');addBtn.setAttribute('data-q',n);}else{addBtn.classList.remove('has-qty');} }
+    addBtn.addEventListener('click',function(){
+      if(!window.MTWWagon){ show('<span class="added">Wagon unavailable.</span> Please refresh.'); return; }
+      var q=Math.max(1,parseInt(qv.value,10)||1);
+      MTWWagon.add({variantId:p.vid,sku:sku,title:p.t,price:p.p,img:p.img,qty:q});
+      show('<span class="added">Added to your wagon!</span> '+esc(p.t));
+    });
+    if(window.MTWWagon){ MTWWagon.subscribe(paint); } else { paint(); }
+  })();
+  </script>
+</body>
+</html>
+{%- else -%}
+{% render 'educator-gate' %}
+{%- endif -%}
