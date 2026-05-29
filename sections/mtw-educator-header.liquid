@@ -187,6 +187,33 @@
   var wlObs=new MutationObserver(relabelWishlist);
   wlObs.observe(document.body,{childList:true,subtree:true});
   setTimeout(function(){wlObs.disconnect();},12000);
+
+  // Relabel theme-injected "Added to cart" toasts → "Added to your wagon"
+  var cartPhrases=/added to cart|item added|add to cart/i;
+  function relabelCartToasts(nodes){
+    nodes.forEach(function(n){
+      if(n.nodeType!==1)return;
+      [n].concat(Array.from(n.querySelectorAll('*'))).forEach(function(el){
+        el.childNodes.forEach(function(child){
+          if(child.nodeType===3&&cartPhrases.test(child.textContent)){
+            child.textContent=child.textContent
+              .replace(/added to cart/gi,'added to your wagon')
+              .replace(/item added/gi,'item added to your wagon')
+              .replace(/add to cart/gi,'add to wagon');
+          }
+        });
+        if(el.tagName==='INPUT'||el.tagName==='BUTTON'){
+          if(cartPhrases.test(el.value))el.value=el.value.replace(/add to cart/gi,'add to wagon');
+          if(cartPhrases.test(el.getAttribute('aria-label')||''))el.setAttribute('aria-label',el.getAttribute('aria-label').replace(/add to cart/gi,'add to wagon'));
+        }
+      });
+    });
+  }
+  var toastObs=new MutationObserver(function(muts){
+    muts.forEach(function(m){if(m.addedNodes.length)relabelCartToasts(Array.from(m.addedNodes));});
+  });
+  toastObs.observe(document.body,{childList:true,subtree:true});
+  setTimeout(function(){toastObs.disconnect();},30000);
 })();
 </script>
 {% schema %}

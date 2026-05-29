@@ -720,7 +720,7 @@ a{ color:inherit; }
   margin-top: 6px;
 }
 
-/* ----------------------- ADD TO CART (per product card) ----------------------- */
+/* ----------------------- ADD TO WAGON (per product card) ----------------------- */
 .price{
   display: flex;
   align-items: baseline;
@@ -3504,7 +3504,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
     <!-- PRICE: mushroom-garden-fairy-home -->
     <span class="price">$228</span>
     <div class="add-row">
-      <button class="add-btn" type="button" data-sku="MTW-FV-MUS"><span class="plus"></span>Add to cart</button>
+      <button class="add-btn" type="button" data-sku="MTW-FV-MUS"><span class="plus"></span>Add to wagon</button>
       <a href="#" class="view-pdp">View product &rarr;</a>
     </div>
 
@@ -3558,7 +3558,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
           <!-- PRICE: MTW-FV-PNK -->
           <span class="price">$128</span>
           <div class="add-row">
-            <button class="add-btn" type="button" data-sku="MTW-FV-PNK"><span class="plus"></span>Add to cart</button>
+            <button class="add-btn" type="button" data-sku="MTW-FV-PNK"><span class="plus"></span>Add to wagon</button>
             <a href="#" class="view-pdp">View product &rarr;</a>
           </div>
         </div>
@@ -3581,7 +3581,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
           <!-- PRICE: MTW-FV-LIL -->
           <span class="price">$128</span>
           <div class="add-row">
-            <button class="add-btn" type="button" data-sku="MTW-FV-LIL"><span class="plus"></span>Add to cart</button>
+            <button class="add-btn" type="button" data-sku="MTW-FV-LIL"><span class="plus"></span>Add to wagon</button>
             <a href="#" class="view-pdp">View product &rarr;</a>
           </div>
         </div>
@@ -3606,7 +3606,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
           <!-- PRICE: MTW-FV-RBS -->
           <span class="price">$148</span>
           <div class="add-row">
-            <button class="add-btn" type="button" data-sku="MTW-FV-RBS"><span class="plus"></span>Add to cart</button>
+            <button class="add-btn" type="button" data-sku="MTW-FV-RBS"><span class="plus"></span>Add to wagon</button>
             <a href="#" class="view-pdp">View product &rarr;</a>
           </div>
         </div>
@@ -3631,7 +3631,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
           <!-- PRICE: MTW-FV-RBN -->
           <span class="price">$168</span>
           <div class="add-row">
-            <button class="add-btn" type="button" data-sku="MTW-FV-RBN"><span class="plus"></span>Add to cart</button>
+            <button class="add-btn" type="button" data-sku="MTW-FV-RBN"><span class="plus"></span>Add to wagon</button>
             <a href="#" class="view-pdp">View product &rarr;</a>
           </div>
         </div>
@@ -3656,7 +3656,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
           <!-- PRICE: MTW-FV-BFH -->
           <span class="price">$148</span>
           <div class="add-row">
-            <button class="add-btn" type="button" data-sku="MTW-FV-BFH"><span class="plus"></span>Add to cart</button>
+            <button class="add-btn" type="button" data-sku="MTW-FV-BFH"><span class="plus"></span>Add to wagon</button>
             <a href="#" class="view-pdp">View product &rarr;</a>
           </div>
         </div>
@@ -4193,7 +4193,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
         if (badge) badge.textContent = count;
         var sku = btn.getAttribute('data-sku') || 'item';
         var fl = ensureFlash();
-        fl.innerHTML = '<span class="added">Added to cart.</span> <span>' + sku.replace(/-/g,' ') + '</span>';
+        fl.innerHTML = '<span class="added">Added to your wagon!</span> <span>' + sku.replace(/-/g,' ') + '</span>';
         fl.classList.add('show');
         clearTimeout(window.__cartFlashT);
         window.__cartFlashT = setTimeout(function(){ fl.classList.remove('show'); }, 2400);
