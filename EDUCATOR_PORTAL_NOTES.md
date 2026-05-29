@@ -366,3 +366,16 @@ ECBF "The Eco-Cutters Set" exists as $0 bundle on educator — owner to define c
 - MTW-CA-ECI Ice Cream Eco-Cutter $11 (prod 8447743295658 / var 48360042070186, twin 8074320216234)
 - MTW-CA-EFM Mini Farm Eco-Cutter $15.50 (prod 8447743361194 / var 48360042135722, twin 7680727810218)
 Now 5/5 eco-cutters created. All DRAFT → OWNER WALL.
+
+### CA Round 2 — 7 more wired (2026-05-29) — DRAFT → OWNER WALL
+Flower presses:
+- MTW-CA-FFP Field Flower Press $38 (prod 8447743557802 / var 48360043249834, twin June&December 7898126811306)
+- MTW-CA-TSK Flower Silhouette Kit $25 (8447743721642/48360043544746, twin Toverlux 8156956983466)
+- MTW-CA-HCP Flower Paper Kit $20 (8447743754410/48360043577514, twin Huckleberry 7899224015018)
+Paints:
+- MTW-CA-SSP Sea & Sky Paint Set $22 (8447743819946/48360043643050, twin Eco-Kids 7933570318506)
+- MTW-CA-VBF Veggie Baby Edible Finger Paints $25 (8447743852714/48360043675818, twin 6643593838762)
+- MTW-CA-EUF Eco-Kids Finger Paint $19 (8447743885482/48360043708586, twin Elseware 7275315822762)
+Dough:
+- MTW-CA-ELS Eco-Kids Eco-Dough Set of 3 $19 (8447743918250/48360043741354, twin 7275311464618 — page says "4-pack" but only Set of 3 found)
+CA page now wired: 12 cards total (5 eco-cutters + 7 these). Owner wall each.
