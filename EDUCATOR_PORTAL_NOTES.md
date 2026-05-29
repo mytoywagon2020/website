@@ -353,3 +353,11 @@ Bales Set 7798643458218). The other ~17 NEED OWNER SPECS (can't guess price/twin
   BND Bundt Cake, BPG Pumpkins & Gourds (5 Bumbu candidates $49–$80.50), TEA Tea Set, TFG Food Groups.
 - No twin (create + price + photo): GMT Grapat Mandala Tulips, WAJ West African Jollof, SWF Swedish Fika.
 - Bundles (define contents + price): BAK, TRT, WK, WEA, PNT, BPB.
+
+### CA Eco-Cutters creation (2026-05-29)
+Split 3 from retail twins → educator copies, DRAFT, CONTINUE, OWNER WALL:
+- **MTW-CA-ECW** Mini Woodland Animals Eco-Cutter $15 (prod 8447743066282 / var 48360040890538, twin 6894277787818)
+- **MTW-CA-EBL** Monarch Butterfly Life Cycle Eco-Cutter $16.50 (8447743099050/48360040923306, twin 6583152804010)
+- **MTW-CA-ECF** Mini Fruit Eco-Cutter $10 (8447743131818/48360040956074, twin 6894292730026 DRAFT retail)
+Page cards EFM (Mini Farm) and ECI (Ice Cream) — NO clear twin found; owner buildout or substitute.
+ECBF "The Eco-Cutters Set" exists as $0 bundle on educator — owner to define contents+price.
