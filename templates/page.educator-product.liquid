@@ -131,66 +131,85 @@
     var app=document.getElementById('pdpApp'), crumb=document.getElementById('pdpCrumb');
     function param(n){ try{ return new URLSearchParams(window.location.search).get(n); }catch(e){ return null; } }
     function esc(t){var d=document.createElement('div');d.textContent=t==null?'':t;return d.innerHTML;}
-    var sku=(param('sku')||'').toUpperCase().trim();
-    var p=PDP[sku];
-    if(!p){ app.innerHTML='<div class="pdp-empty"><h1>Product not found</h1><p>This item may have moved. <a class="pdp__wagonlink" href="/pages/educators">Return to the catalog &rarr;</a></p></div>'; return; }
-    if(crumb) crumb.textContent=p.t;
-    document.title=p.t+' | Educator Catalog';
+    function notFound(){ app.innerHTML='<div class="pdp-empty"><h1>Product not found</h1><p>This item may have moved. <a class="pdp__wagonlink" href="/pages/educators">Return to the catalog &rarr;</a></p></div>'; }
 
-    var imgs=(p.imgs&&p.imgs.length)?p.imgs:[''];
-    var badges=(p.badges||[]).slice();
-    badges.push('Net-30 · tax-exempt');
-    var badgeHtml=badges.map(function(b){return '<span class="bdg">'+esc(b)+'</span>';}).join('<span class="sep">•</span>');
-    var thumbHtml=imgs.length>1 ? '<div class="pdp__thumbs" id="pdpThumbs">'+imgs.map(function(u,i){return '<button type="button" data-i="'+i+'" class="'+(i===0?'is-active':'')+'"><img src="'+esc(u)+'" alt="View '+(i+1)+'"></button>';}).join('')+'</div>' : '';
-    var bodyTpl=document.querySelector('template[data-pdp="'+sku+'"]');
-    var bodyHtml=bodyTpl?bodyTpl.innerHTML:'<div class="pdp__lead"><p>Full classroom details available on request — contact educators@mytoywagon.com.</p></div>';
+    function renderProduct(P){
+      var sku=P.sku;
+      if(crumb) crumb.textContent=P.t;
+      document.title=P.t+' | Educator Catalog';
+      var imgs=(P.imgs&&P.imgs.length)?P.imgs:[''];
+      var badges=(P.badges||[]).slice(); badges.push('Net-30 · tax-exempt');
+      var badgeHtml=badges.map(function(b){return '<span class="bdg">'+esc(b)+'</span>';}).join('<span class="sep">•</span>');
+      var thumbHtml=imgs.length>1 ? '<div class="pdp__thumbs" id="pdpThumbs">'+imgs.map(function(u,i){return '<button type="button" data-i="'+i+'" class="'+(i===0?'is-active':'')+'"><img src="'+esc(u)+'" alt="View '+(i+1)+'"></button>';}).join('')+'</div>' : '';
 
-    app.innerHTML=
-      '<div class="pdp">'+
-        '<div class="pdp__gallery">'+
-          '<div class="pdp__main"><img id="pdpMain" src="'+esc(imgs[0])+'" alt="'+esc(p.t)+'"></div>'+
-          thumbHtml+
-        '</div>'+
-        '<div class="pdp__info">'+
-          '<span class="pdp__eyebrow">Educator Catalog &middot; Fairy Villages</span>'+
-          '<h1 class="pdp__title">'+esc(p.t)+'</h1>'+
-          '<div class="pdp__price">'+esc(p.p)+'<span class="pdp__rate">Educator rate</span></div>'+
-          '<div class="pdp__sku">'+esc(sku)+'</div>'+
-          '<div class="pdp__badges">'+badgeHtml+'</div>'+
-          '<div class="pdp__buy">'+
-            '<span class="qty"><button type="button" id="qDec" aria-label="Decrease">&minus;</button><input id="qVal" type="number" min="1" value="1" aria-label="Quantity"><button type="button" id="qInc" aria-label="Increase">+</button></span>'+
-            '<button type="button" class="add-btn" id="pdpAdd">Add to wagon</button>'+
+      app.innerHTML=
+        '<div class="pdp">'+
+          '<div class="pdp__gallery">'+
+            '<div class="pdp__main"><img id="pdpMain" src="'+esc(imgs[0])+'" alt="'+esc(P.t)+'"></div>'+
+            thumbHtml+
           '</div>'+
-          '<p class="pdp__sub">Educator pricing &middot; Net-30 &middot; tax-exempt. Pay by card or purchase order at your wagon.</p>'+
-          '<a class="pdp__wagonlink" href="/pages/educator-wagon">View your wagon &rarr;</a>'+
-          bodyHtml+
-          '<a class="pdp__back" href="'+esc(p.back||'/pages/educators')+'">&larr; Back to Fairy Villages</a>'+
-        '</div>'+
-      '</div>';
+          '<div class="pdp__info">'+
+            '<span class="pdp__eyebrow">'+esc(P.eyebrow||'Educator Catalog')+'</span>'+
+            '<h1 class="pdp__title">'+esc(P.t)+'</h1>'+
+            '<div class="pdp__price">'+esc(P.p)+'<span class="pdp__rate">Educator rate</span></div>'+
+            '<div class="pdp__sku">'+esc(sku)+'</div>'+
+            '<div class="pdp__badges">'+badgeHtml+'</div>'+
+            '<div class="pdp__buy">'+
+              '<span class="qty"><button type="button" id="qDec" aria-label="Decrease">&minus;</button><input id="qVal" type="number" min="1" value="1" aria-label="Quantity"><button type="button" id="qInc" aria-label="Increase">+</button></span>'+
+              '<button type="button" class="add-btn" id="pdpAdd">Add to wagon</button>'+
+            '</div>'+
+            '<p class="pdp__sub">Educator pricing &middot; Net-30 &middot; tax-exempt. Pay by card or purchase order at your wagon.</p>'+
+            '<a class="pdp__wagonlink" href="/pages/educator-wagon">View your wagon &rarr;</a>'+
+            (P.bodyHtml||'')+
+            '<a class="pdp__back" href="'+esc(P.back||'/pages/educators')+'">&larr; Back to the catalog</a>'+
+          '</div>'+
+        '</div>';
 
-    // Gallery thumbnail swap
-    var main=document.getElementById('pdpMain'), thumbs=document.getElementById('pdpThumbs');
-    if(thumbs){ thumbs.addEventListener('click',function(e){ var b=e.target.closest('button[data-i]'); if(!b)return; var i=+b.getAttribute('data-i'); main.src=imgs[i]; Array.prototype.forEach.call(thumbs.children,function(c){c.classList.remove('is-active');}); b.classList.add('is-active'); }); }
+      var main=document.getElementById('pdpMain'), thumbs=document.getElementById('pdpThumbs');
+      if(thumbs){ thumbs.addEventListener('click',function(e){ var b=e.target.closest('button[data-i]'); if(!b)return; var i=+b.getAttribute('data-i'); main.src=imgs[i]; Array.prototype.forEach.call(thumbs.children,function(c){c.classList.remove('is-active');}); b.classList.add('is-active'); }); }
 
-    // Qty + add to wagon
-    var qv=document.getElementById('qVal');
-    function curQty(){ return window.MTWWagon?MTWWagon.qtyOf(p.vid):0; }
-    function syncIfInWagon(){ if(window.MTWWagon && curQty()>0){ MTWWagon.setQty(p.vid, Math.max(1,parseInt(qv.value,10)||1)); } }
-    document.getElementById('qInc').addEventListener('click',function(){ qv.value=(parseInt(qv.value,10)||1)+1; syncIfInWagon(); paint(); });
-    document.getElementById('qDec').addEventListener('click',function(){ qv.value=Math.max(1,(parseInt(qv.value,10)||1)-1); syncIfInWagon(); paint(); });
-    qv.addEventListener('change',function(){ qv.value=Math.max(1,parseInt(qv.value,10)||1); syncIfInWagon(); paint(); });
-    var flash=null;
-    function show(html){ if(!flash){flash=document.createElement('div');flash.className='cart-flash';document.body.appendChild(flash);} flash.innerHTML=html;flash.classList.add('show');clearTimeout(window.__t);window.__t=setTimeout(function(){flash.classList.remove('show');},2600); }
-    var addBtn=document.getElementById('pdpAdd');
-    function paint(){ if(!addBtn) return; var n=curQty(); if(n>0){ addBtn.textContent='✓ In wagon'; addBtn.classList.add('is-in'); } else { addBtn.textContent='Add to wagon'; addBtn.classList.remove('is-in'); } }
-    addBtn.addEventListener('click',function(){
-      if(!window.MTWWagon){ show('<span class="added">Wagon unavailable.</span> Please refresh.'); return; }
-      if(curQty()>0){ show('<span class="added">Already in your wagon.</span> Adjust the quantity above, or view your wagon.'); return; }
-      var q=Math.max(1,parseInt(qv.value,10)||1);
-      MTWWagon.add({variantId:p.vid,sku:sku,title:p.t,price:p.p,img:imgs[0],qty:q});
-      show('<span class="added">Added to your wagon!</span> '+esc(p.t));
-    });
-    if(window.MTWWagon){ var ex=curQty(); if(ex>0) qv.value=ex; MTWWagon.subscribe(paint); } else { paint(); }
+      var qv=document.getElementById('qVal');
+      function curQty(){ return window.MTWWagon?MTWWagon.qtyOf(P.vid):0; }
+      function syncIfInWagon(){ if(window.MTWWagon && curQty()>0){ MTWWagon.setQty(P.vid, Math.max(1,parseInt(qv.value,10)||1)); } }
+      document.getElementById('qInc').addEventListener('click',function(){ qv.value=(parseInt(qv.value,10)||1)+1; syncIfInWagon(); paint(); });
+      document.getElementById('qDec').addEventListener('click',function(){ qv.value=Math.max(1,(parseInt(qv.value,10)||1)-1); syncIfInWagon(); paint(); });
+      qv.addEventListener('change',function(){ qv.value=Math.max(1,parseInt(qv.value,10)||1); syncIfInWagon(); paint(); });
+      var flash=null;
+      function show(html){ if(!flash){flash=document.createElement('div');flash.className='cart-flash';document.body.appendChild(flash);} flash.innerHTML=html;flash.classList.add('show');clearTimeout(window.__t);window.__t=setTimeout(function(){flash.classList.remove('show');},2600); }
+      var addBtn=document.getElementById('pdpAdd');
+      function paint(){ if(!addBtn) return; var n=curQty(); if(n>0){ addBtn.textContent='✓ In wagon'; addBtn.classList.add('is-in'); } else { addBtn.textContent='Add to wagon'; addBtn.classList.remove('is-in'); } }
+      addBtn.addEventListener('click',function(){
+        if(!window.MTWWagon){ show('<span class="added">Wagon unavailable.</span> Please refresh.'); return; }
+        if(curQty()>0){ show('<span class="added">Already in your wagon.</span> Adjust the quantity above, or view your wagon.'); return; }
+        if(!P.vid){ show('<span class="added">Coming soon.</span> '+esc(P.t)); return; }
+        var q=Math.max(1,parseInt(qv.value,10)||1);
+        MTWWagon.add({variantId:P.vid,sku:sku,title:P.t,price:P.p,img:imgs[0],qty:q});
+        show('<span class="added">Added to your wagon!</span> '+esc(P.t));
+      });
+      if(window.MTWWagon){ var ex=curQty(); if(ex>0) qv.value=ex; MTWWagon.subscribe(paint); } else { paint(); }
+    }
+
+    var sku=(param('sku')||'').toUpperCase().trim();
+    var baked=PDP[sku];
+    if(baked){
+      var bodyTpl=document.querySelector('template[data-pdp="'+sku+'"]');
+      renderProduct({ sku:sku, t:baked.t, p:baked.p, vid:baked.vid, imgs:baked.imgs, badges:baked.badges, back:baked.back||'/pages/educators', eyebrow:'Educator Catalog · Fairy Villages', bodyHtml: bodyTpl?bodyTpl.innerHTML:'<div class="pdp__lead"><p>Full classroom details available on request — contact educators@mytoywagon.com.</p></div>' });
+    } else if(sku){
+      // Live fetch via the app proxy (works for ANY walled SKU once the Worker is deployed).
+      app.innerHTML='<div class="pdp-empty"><h1>Loading…</h1></div>';
+      fetch('/apps/wagon/product?sku='+encodeURIComponent(sku),{headers:{'Accept':'application/json'}})
+        .then(function(r){ return r.json(); })
+        .then(function(d){
+          if(!d||!d.title){ notFound(); return; }
+          var pr=''; if(d.price!=null && d.price!==''){ var nf=parseFloat(d.price); pr='$'+(nf%1===0?String(parseInt(nf,10)):nf.toFixed(2)); }
+          var mf=d.metafields||{}; var badges=[];
+          if(mf['custom.age_range']) badges.push('Ages '+mf['custom.age_range']);
+          if(mf['custom.material']) badges.push(mf['custom.material']);
+          if(mf['custom.origin']) badges.push(mf['custom.origin']);
+          renderProduct({ sku:(d.sku||sku), t:d.title, p:pr, vid:d.variantId, imgs:d.images, badges:badges, back:'/pages/educators', eyebrow:'Educator Catalog', bodyHtml: d.descriptionHtml?('<div class="pdp__lead">'+d.descriptionHtml+'</div>'):'' });
+        })
+        .catch(notFound);
+    } else { notFound(); }
   })();
   </script>
 </body>

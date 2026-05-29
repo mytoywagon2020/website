@@ -17,17 +17,21 @@ const API_VERSION = '2025-01';
 
 export default {
   async fetch(request, env) {
-    if (request.method !== 'POST') return json({ error: 'Method not allowed' }, 405);
-
     const url = new URL(request.url);
 
-    // 1) Verify the request actually came from Shopify's app proxy.
+    // Verify the request actually came from Shopify's app proxy.
     if (!(await verifyProxySignature(url.searchParams, env.APP_SECRET))) {
       return json({ error: 'Invalid signature' }, 401);
     }
 
     const shop = url.searchParams.get('shop');
     if (!shop) return json({ error: 'Missing shop' }, 400);
+
+    // GET → live product read (powers the content PDP page for ANY walled SKU).
+    if (request.method === 'GET') {
+      return handleProductRead(shop, env.ADMIN_TOKEN, url.searchParams.get('sku'));
+    }
+    if (request.method !== 'POST') return json({ error: 'Method not allowed' }, 405);
 
     let body;
     try { body = await request.json(); } catch { return json({ error: 'Bad JSON' }, 400); }
@@ -49,13 +53,13 @@ export default {
     }
 
     // 3) Build + create the draft order.
+    let note = isPO ? 'Educator wagon — purchase order / Net-30 requested' : 'Educator wagon — pay now (card)';
+    if (body.poNumber) note += ' | PO# ' + String(body.poNumber).slice(0, 60);
     const input = {
       lineItems,
       taxExempt,
       tags: isPO ? ['educator-wagon', 'po-request'] : ['educator-wagon'],
-      note: isPO
-        ? 'Educator wagon — purchase order / Net-30 requested'
-        : 'Educator wagon — pay now (card)',
+      note,
     };
     if (customerGid) input.purchasingEntity = { customerId: customerGid };
 
@@ -76,6 +80,42 @@ export default {
     return json({ invoiceUrl: draft.invoiceUrl, draftOrderId: draft.id, paymentMethod: isPO ? 'po' : 'card' });
   },
 };
+
+// Live product read for the content PDP page. Returns title/price/media/description/
+// metafields for a walled product by SKU. Products stay off the Online Store, so this
+// data never appears in /products.json — it's only reachable through the signed proxy.
+async function handleProductRead(shop, token, sku) {
+  if (!sku) return json({ error: 'Missing sku' }, 400);
+  const query = `query($q: String!) {
+    products(first: 1, query: $q) {
+      edges { node {
+        title
+        descriptionHtml
+        media(first: 10) { edges { node { ... on MediaImage { image { url } } } } }
+        variants(first: 1) { edges { node { id sku price } } }
+        metafields(first: 40) { edges { node { namespace key value } } }
+      } }
+    }
+  }`;
+  let data;
+  try { data = await adminGraphQL(shop, token, query, { q: 'sku:' + JSON.stringify(sku) }); }
+  catch (e) { return json({ error: 'Admin API error' }, 502); }
+  const node = data && data.products && data.products.edges[0] && data.products.edges[0].node;
+  if (!node) return json({ error: 'Not found' }, 404);
+  const v = node.variants && node.variants.edges[0] && node.variants.edges[0].node;
+  const images = (node.media ? node.media.edges : []).map(function (e) { return e.node && e.node.image && e.node.image.url; }).filter(Boolean);
+  const metafields = {};
+  (node.metafields ? node.metafields.edges : []).forEach(function (e) { metafields[e.node.namespace + '.' + e.node.key] = e.node.value; });
+  return json({
+    title: node.title,
+    sku: (v && v.sku) || sku,
+    variantId: v && v.id ? v.id.split('/').pop() : null,
+    price: v && v.price ? v.price : null,
+    descriptionHtml: node.descriptionHtml || '',
+    images: images,
+    metafields: metafields,
+  });
+}
 
 const DRAFT_MUTATION = `mutation CreateWagonDraft($input: DraftOrderInput!) {
   draftOrderCreate(input: $input) {
