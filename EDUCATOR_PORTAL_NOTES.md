@@ -114,6 +114,11 @@ CAVEAT: `media_count:0` search filter is BROKEN here (false positives). Audit im
 
 ---
 
+### FULL image+spec audit — 145 products, deduped, zero sampling (2026-05-29)
+- SPECS: 100% — all 145 have substantial descriptions, 0 thin/placeholder.
+- IMAGES: 123/145 have images. 22 WITHOUT images = exactly the no-retail-twin / owner-buildout items: CA maker items (JHP/ECBF/FFRN/FPET/FLVS/FBLO/FSTM/THB/EMB/TLM/FLC/THC), DP $0 bundles (PWF/TLS/FYS/SH), owner-supplied (SP-SAND/2PART/TOOLS sand trays, NP-MSH forest mushrooms), no-twin (WD-PST Papoose Seasonal Trees, ST-BEN Bean Plant). Nothing pullable-from-twin is missing.
+- DP page WIRED: 27 buy buttons (PDP map extended to 30 SKUs). 12 cards still button-less pending owner-created products.
+
 ### Image+spec completeness audit (2026-05-29)
 - Split-created products (Bauspiel, World Foods, Chocolate Cake, fairy homes, etc.): VERIFIED have real retail image + full retail spec description.
 - FIXED: Wooden Binoculars (MTW-ST-QTBINO) now full Q Toys spec + 4 imgs; Magnifier Set (MTW-ST-HBMS) now both component imgs + combined spec.
