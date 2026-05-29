@@ -14,6 +14,7 @@ Last updated: 2026-05-29
 3. **Educator price = retail price** (price-match the retail equivalent, or use the collective/bundle price for sets).
 4. **Educator Catalog should contain ONLY the 8 portal sections' products** — not the whole retail store.
 5. Educator listings: **inventory not tracked** AND **"Continue selling when out of stock"** (`inventoryPolicy: CONTINUE`) — so they never share/deplete retail stock and orders are never blocked (made-to-order / Net-30).
+6. **IMAGES + SPECS across the board (owner rule 2026-05-29):** EVERY educator listing must carry the real product **images** AND **specs** pulled from its source/retail listing. Splits via productDuplicate get these automatically; products created blank or SKU-assigned-in-place need images+specs pulled manually. Audit by per-product `featuredMedia` (NOT media_count — that filter is broken).
 
 ---
 
@@ -101,7 +102,8 @@ DRAFT status alone also removes a product from all channels (safe holding state)
   - MTW-ST-LCF Felt Lifecycle Toy Frog $39.50 (7690046668970/44405657862314) [we DO have a frog]
   - MTW-ST-TLC Dinosaur Life Cycle $42 (7708337537194/44537077825706)
   - MTW-ST-ANA Felt Anatomy Set $54 (7787483725994/44891631059114)
-  STILL OPEN in B3:
+  B3 CLOSED: MTW-ST-BEE Honey Bee split from retail twin 7437680476330 ($26) → educator 8447070994602/48356354818218, retail original untagged. MTW-ST-BEN created NEW "Felt Lifecycle of a Bean Plant" $0 (8447070929066/48356353605802) from specs — OWNER adds image + price.
+  (was) STILL OPEN in B3:
   - MTW-ST-BEE Bee Life Cycle = Felt Lifecycle of a Honey Bee (Tara, prod 7437680476330, $26) is a LIVE RETAIL listing (onOnline true, not educator-tagged) -> needs SPLIT, not direct tag.
   - MTW-ST-BEN "Bean Life Cycle" — does NOT exist. We have Chicken/Sea Turtle/Redback Spider/Honey Bee life cycles instead. OWNER decision: create a felt bean life cycle, or substitute?
 - BUILD PLAN (batches <=10): B1 Bauspiel split (BCT/BFW/BLC/BMB/BTW have retail twins; BOB/Optical no twin). B2 science tools (microscope exists; create binoculars/magnifier/bug box/compass/specimen kit/optical). B3 Papoose life cycles + anatomy. B4 dinosaurs/deep time (BPS/BDE/TLC/PDM). B5 Connetix specialty + bundle sets + kaleidoscope variants. Then wire page (it currently has 0 buttons — needs PDP map + buttons added).
