@@ -95,6 +95,15 @@ DRAFT status alone also removes a product from all channels (safe holding state)
   Retail originals untagged (retail-only now): 6746569212074, 6751337414826, 6763702517930, 6887026393258.
   MTW-ST-BSOB Optical Blocks 12 $179 — DONE: split from retail twin 8297775792298 → educator prod 8447064637610 / variant 48356069048490 (DRAFT, owner wall). Retail original was NOT educator-tagged, no cleanup needed.
 - B2 DONE (2026-05-29): Science tools — all DRAFT, OWNER must wall. Split from retail twins (twins NOT educator-tagged, no cleanup): MTW-ST-JDSB Specimen Collecting Kit $26 (prod 8447065456810/var 48356111319210, twin June&December 7705331794090); MTW-ST-HBLM My Little Museum Bug Box $18 (8447065915562/48356136878250, twin Huckleberry 7620700274858); MTW-ST-COMP Wooden Compass $16 (8447065948330/48356136911018, twin Huckleberry 7716802822314). Created NEW ($0, owner price): MTW-ST-QTBINO Wooden Binoculars Q Toys (8447066276010/48356157030570); MTW-ST-HBMS Magnifier Set of 2 = BUNDLE of Huckleberry Dual Magnifier $17 + Wooden Magnifying Glass $20 (8447066308778/48356157063338).
+- B2 FIX: MTW-ST-QTBINO Wooden Binoculars — was created blank, but retail twin EXISTS (Q Toys Wooden Binoculars, prod 7915296751786, SKU 425, $44, DRAFT, not educator-tagged). Updated educator copy to $44 + pulled image. Clean (twin not educator-tagged).
+- B3 DONE (2026-05-29): Life cycles + anatomy. KEY: Butterfly/Frog/Dino/Anatomy ALREADY EXISTED as Tara Treasures educator-steam DRAFTs (off retail, off edu catalog) — just assigned SKU + price + CONTINUE (NO split needed, not on retail). OWNER must wall:
+  - MTW-ST-LCB Felt Lifecycle Monarch Butterfly $32 (prod 7437808697514/var 43151518040234)
+  - MTW-ST-LCF Felt Lifecycle Toy Frog $39.50 (7690046668970/44405657862314) [we DO have a frog]
+  - MTW-ST-TLC Dinosaur Life Cycle $42 (7708337537194/44537077825706)
+  - MTW-ST-ANA Felt Anatomy Set $54 (7787483725994/44891631059114)
+  STILL OPEN in B3:
+  - MTW-ST-BEE Bee Life Cycle = Felt Lifecycle of a Honey Bee (Tara, prod 7437680476330, $26) is a LIVE RETAIL listing (onOnline true, not educator-tagged) -> needs SPLIT, not direct tag.
+  - MTW-ST-BEN "Bean Life Cycle" — does NOT exist. We have Chicken/Sea Turtle/Redback Spider/Honey Bee life cycles instead. OWNER decision: create a felt bean life cycle, or substitute?
 - BUILD PLAN (batches <=10): B1 Bauspiel split (BCT/BFW/BLC/BMB/BTW have retail twins; BOB/Optical no twin). B2 science tools (microscope exists; create binoculars/magnifier/bug box/compass/specimen kit/optical). B3 Papoose life cycles + anatomy. B4 dinosaurs/deep time (BPS/BDE/TLC/PDM). B5 Connetix specialty + bundle sets + kaleidoscope variants. Then wire page (it currently has 0 buttons — needs PDP map + buttons added).
 
 Sections 7-8: Dramatic Play (partly done, ~28 cafe/bakery SKUs missing) + Creative Arts (unwired, ~21 missing) — not yet fully audited.
