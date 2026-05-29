@@ -402,3 +402,30 @@ Harrisville Designs (CREATED from scratch, $0 placeholder, DRAFT → OWNER add i
 - MTW-CA-FRS12 Harrisville Fiber Exploration Roving Set (8447745786026/48360048427178)
 CA total: 22 educator listings, 22 cards wired (4 Harrisville show "Price on request" until owner sets).
 Wee Gallery 4 created but NOT yet added to CA page markup — page has 1 generic "Lacing Cards · 3 sets" card without SKU; needs restructure into 3 singles + bundle.
+
+### CA Round 5 — JHP price + 15 missing-twin creations (2026-05-29)
+JHP repriced: variant 48345502613674 $0 → $31 (existing prod), JHP hero card wired with $31 + Add button.
+Lacing Cards: single generic card replaced with 4 cards (LCJ/LCW/LCB singles + LCS bundle).
+
+15 new educator products created — DRAFT, $0 placeholder, untracked, owner-walls + sets price/image. All wired on page with "Price on request":
+- MTW-CA-DFP Drewart Flower Press (prod 8447750209706 / var 48360067236010)
+- MTW-CA-TFP Toverlux Flower Press (8447750242474 / 48360067268778)
+- MTW-CA-TMW Mixed Wildflowers Felt Bouquet — Gry & Sif (8447750275242 / 48360067301546)
+- MTW-CA-GSP Felt Poppies — Gry & Sif (8447750308010 / 48360067334314)
+- MTW-CA-FFL Felt Foliage — Gry & Sif (8447750340778 / 48360067367082)
+- MTW-CA-FGD Gerbera Daisy Felt Flower — Gry & Sif (8447750373546 / 48360067399850)
+- MTW-CA-GSF Felt Sunflower — Gry & Sif (8447750439082 / 48360067465386)
+- MTW-CA-RSP Rainbow Sparkles Mindful Magic Kit (8447750471850 / 48360067498154)
+- MTW-CA-MMK Moon Magic Mindful Magic Kit (8447750504618 / 48360067530922)
+- MTW-CA-MHB My Heart Blooms Self Love Pouch (8447750570154 / 48360067694762)
+- MTW-CA-OUP Once Upon A Potion Mindful Magic Kit (8447750602922 / 48360067727530)
+- MTW-CA-EAS Enchanted Accessories Set (8447750635690 / 48360067760298)
+- MTW-CA-FRS Flower Roller (vendor=Bumbu placeholder) (8447750701226 / 48360067858602)
+- MTW-CA-EKD Eco-Dough Rainbow Trio — Eco-Kids placeholder (8447750733994 / 48360067924138)
+- MTW-CA-MKR Mini Kiddough Rainbow Set (8447750766762 / 48360067956906)
+
+EEP/ECR earlier this batch:
+- MTW-CA-EEP Natural Earth Paint $39.99 (8447746539690 / 48360055079082)
+- MTW-CA-ECR Road Eco-Cutter $8 (8447746572458 / 48360055144618)
+
+CA total: 39 educator listings, 39 cards wired on page (no empty add-rows). Owner must wall + add image/price for 15 placeholders.
