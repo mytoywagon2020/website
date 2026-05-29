@@ -149,7 +149,7 @@
         <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10"><path d="M47.16 28.58A18.58 18.58 0 1 1 28.58 10a18.58 18.58 0 0 1 18.58 18.58zM54 54L41.94 42"/></svg>
       </button>
     </form>
-    <a class="mtw-edu-h__wagon" href="/pages/educator-dashboard" aria-label="Your wagon ({{ cart.item_count }} item{% if cart.item_count != 1 %}s{% endif %})">
+    <a class="mtw-edu-h__wagon" href="/pages/educator-wagon" aria-label="Your wagon ({{ cart.item_count }} item{% if cart.item_count != 1 %}s{% endif %})">
       <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="52" r="4"/><circle cx="48" cy="52" r="4"/><path d="M4 8h8l6 28h28l6-20H18"/></svg>
       <span class="mtw-edu-h__wagon-count" data-count="{{ cart.item_count }}">{{ cart.item_count }}</span>
     </a>

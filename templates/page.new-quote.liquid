@@ -60,6 +60,43 @@
     footer.foot{border-top:.5px solid var(--rule);margin-top:30px;background:var(--cream);}
     footer.foot .wrap{display:flex;justify-content:space-between;padding:26px 40px;font-size:12px;color:var(--stone);flex-wrap:wrap;gap:12px;}
     @media(max-width:860px){.q-grid{grid-template-columns:1fr;}.nav-links{display:none;}.q-row2{grid-template-columns:1fr;}.wrap,.utility .wrap,header.nav .wrap,footer.foot .wrap{padding-left:20px;padding-right:20px;}}
+
+    /* ── Print / Save-as-PDF ── */
+    @media print {
+      /* Hide everything except the quote document */
+      body{background:#fff !important;color:#000 !important;font-size:11pt;line-height:1.5;}
+      #shopify-section-mtw-educator-header,
+      .utility, header.nav, footer.foot,
+      #shopify-section-mtw-educator-footer,
+      .q-hero, .q-note, .q-btn, .q-alt,
+      form .q-l, form input, form select, form textarea, form button,
+      .no-print{display:none !important;}
+
+      .wrap{max-width:100%;padding:0;}
+      .q-grid{display:block;}
+      .q-card{background:#fff !important;border:none;padding:0;margin-bottom:24pt;}
+
+      /* Quote document header */
+      .q-print-header{display:block !important;}
+
+      /* Force black on white for office copiers */
+      *{color:#000 !important;background:transparent !important;border-color:#ccc !important;}
+      a{text-decoration:none;}
+
+      table.q-items{border-collapse:collapse;width:100%;font-size:10pt;}
+      table.q-items td{border:0.5pt solid #ccc;padding:7pt 8pt;}
+      .q-thumb{width:36pt;height:36pt;border:0.5pt solid #ccc;}
+      .q-sub{border-top:1pt solid #000;padding-top:8pt;font-weight:700;}
+
+      /* Signature block — only visible in print */
+      .q-sig{display:block !important;margin-top:36pt;page-break-inside:avoid;}
+
+      /* Keep items table together where possible */
+      table{page-break-inside:auto;}
+      tr{page-break-inside:avoid;page-break-after:auto;}
+    }
+    /* Hidden on screen, shown only in print */
+    .q-print-header, .q-sig{display:none;}
   </style>
 </head>
 <body>
@@ -76,6 +113,34 @@
       <a href="/pages/procurement-guide">Procurement</a>
     </nav>
   </div></header>
+
+  <!-- Print-only document header — hidden on screen -->
+  <div class="q-print-header" style="padding:0;margin-bottom:24pt;">
+    <table style="width:100%;border-collapse:collapse;border-bottom:2pt solid #000;padding-bottom:16pt;margin-bottom:16pt;">
+      <tr>
+        <td style="vertical-align:top;">
+          <div style="font-size:22pt;font-weight:700;letter-spacing:.15em;text-transform:uppercase;">My Toy Wagon</div>
+          <div style="font-size:9pt;margin-top:4pt;line-height:1.6;">
+            Educator Catalog &amp; Institutional Sales<br>
+            educators@mytoywagon.com &nbsp;&middot;&nbsp; mytoywagon.com/pages/educators
+          </div>
+        </td>
+        <td style="vertical-align:top;text-align:right;">
+          <div style="font-size:18pt;font-weight:700;text-transform:uppercase;letter-spacing:.1em;">Price Quote</div>
+          <div style="font-size:9pt;margin-top:4pt;line-height:1.6;">
+            Date: {{ 'now' | date: '%B %d, %Y' }}<br>
+            Quote valid for 45 calendar days<br>
+            Submitted by: {{ customer.name }}
+          </div>
+        </td>
+      </tr>
+    </table>
+    <div style="font-size:9pt;margin-bottom:12pt;">
+      <strong>Bill-to / Ship-to:</strong><br>
+      {{ customer.name }} &nbsp;&middot;&nbsp; {{ customer.email }}<br>
+      <em>Verified delivery address and tax status confirmed on order.</em>
+    </div>
+  </div>
 
   <main class="wrap">
     <section class="q-hero">
@@ -172,6 +237,36 @@
           <p style="color:var(--stone);">Add items to your basket first, then come back to send your quote.</p>
           <a class="q-btn" href="/pages/educators" style="text-decoration:none;">Browse the catalog</a>
         {%- endif -%}
+      </div>
+    </div>
+
+    <!-- Print-only signature block -->
+    <div class="q-sig">
+      <div style="border-top:1.5pt solid #000;padding-top:16pt;margin-top:24pt;">
+        <p style="font-size:9pt;margin:0 0 6pt;">
+          <strong>Payment Terms:</strong> Net-30 from confirmed purchase order. Checks and ACH accepted.<br>
+          <strong>Tax:</strong> Estimated sales tax of $0.00 (pending tax-exemption certificate verification).<br>
+          <strong>Note:</strong> This is a non-binding price quote. No inventory is reserved or payment charged until a purchase order is confirmed by My Toy Wagon.
+        </p>
+        <table style="width:100%;border-collapse:collapse;margin-top:20pt;">
+          <tr>
+            <td style="width:45%;border-bottom:0.5pt solid #000;padding-bottom:4pt;">
+              <div style="font-size:8pt;margin-top:6pt;">Authorized School / District Officer Signature</div>
+            </td>
+            <td style="width:10%;"></td>
+            <td style="width:20%;border-bottom:0.5pt solid #000;padding-bottom:4pt;">
+              <div style="font-size:8pt;margin-top:6pt;">Title</div>
+            </td>
+            <td style="width:5%;"></td>
+            <td style="width:20%;border-bottom:0.5pt solid #000;padding-bottom:4pt;">
+              <div style="font-size:8pt;margin-top:6pt;">Date</div>
+            </td>
+          </tr>
+        </table>
+        <div style="font-size:8pt;margin-top:16pt;color:#555;">
+          My Toy Wagon &nbsp;&middot;&nbsp; educators@mytoywagon.com &nbsp;&middot;&nbsp; mytoywagon.com/pages/vendor-profile<br>
+          W-9, Certificate of Insurance, and Sole-Source letters available at mytoywagon.com/pages/vendor-profile
+        </div>
       </div>
     </div>
   </main>
