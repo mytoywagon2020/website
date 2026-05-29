@@ -44,6 +44,9 @@
 
     /* Info */
     .pdp__eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--stone);font-weight:600;}
+    .pdp__eyebrow a{color:inherit;text-decoration:none;}
+    .pdp__eyebrow a:hover{color:var(--forest);text-decoration:underline;text-underline-offset:2px;}
+    .pdp__eyebrow .dot{margin:0 6px;color:var(--rule-strong);}
     .pdp__title{font-family:var(--serif);font-size:36px;font-weight:500;margin:8px 0 8px;letter-spacing:-.01em;line-height:1.08;}
     .pdp__price{font-family:var(--serif);font-size:27px;color:var(--forest);display:flex;align-items:center;gap:10px;}
     .pdp__rate{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--forest);background:#edf4e6;border-radius:2px;padding:3px 7px;font-family:var(--sans);}
@@ -132,6 +135,12 @@
     function param(n){ try{ return new URLSearchParams(window.location.search).get(n); }catch(e){ return null; } }
     function esc(t){var d=document.createElement('div');d.textContent=t==null?'':t;return d.innerHTML;}
     function notFound(){ app.innerHTML='<div class="pdp-empty"><h1>Product not found</h1><p>This item may have moved. <a class="pdp__wagonlink" href="/pages/educators">Return to the catalog &rarr;</a></p></div>'; }
+    function sectionFromSku(s){
+      var m={'MTW-SP-':['Sensory Play','/pages/educator-sensory-play'],'MTW-NP-':['Nature Play','/pages/educator-nature-play'],'MTW-WD-':['Woodland','/pages/educator-woodland'],'MTW-SW-':['Small World & Storytelling','/pages/educator-small-world'],'MTW-FV-':['Fairy Villages','/pages/educator-fairy-villages'],'MTW-ST-':['STEAM','/pages/educator-steam'],'MTW-CX-':['STEAM','/pages/educator-steam'],'MTW-DP-':['Dramatic Play','/pages/educator-dramatic-play'],'MTW-CA-':['Creative Arts','/pages/educator-creative-arts']};
+      s=String(s||'').toUpperCase();
+      for(var k in m){ if(s.indexOf(k)===0) return {name:m[k][0],href:m[k][1]}; }
+      return {name:'',href:'/pages/educators'};
+    }
 
     function renderProduct(P){
       var sku=P.sku;
@@ -149,7 +158,7 @@
             thumbHtml+
           '</div>'+
           '<div class="pdp__info">'+
-            '<span class="pdp__eyebrow">'+esc(P.eyebrow||'Educator Catalog')+'</span>'+
+            '<div class="pdp__eyebrow"><a href="/pages/educators">Educator Catalog</a>'+(P.section?'<span class="dot">&middot;</span><a href="'+esc(P.sectionHref||'/pages/educators')+'">'+esc(P.section)+'</a>':'')+'</div>'+
             '<h1 class="pdp__title">'+esc(P.t)+'</h1>'+
             '<div class="pdp__price">'+esc(P.p)+'<span class="pdp__rate">Educator rate</span></div>'+
             '<div class="pdp__sku">'+esc(sku)+'</div>'+
@@ -161,7 +170,7 @@
             '<p class="pdp__sub">Educator pricing &middot; Net-30 &middot; tax-exempt. Pay by card or purchase order at your wagon.</p>'+
             '<a class="pdp__wagonlink" href="/pages/educator-wagon">View your wagon &rarr;</a>'+
             (P.bodyHtml||'')+
-            '<a class="pdp__back" href="'+esc(P.back||'/pages/educators')+'">&larr; Back to the catalog</a>'+
+            '<a class="pdp__back" href="'+esc(P.back||'/pages/educators')+'">&larr; Back to '+esc(P.section||'the catalog')+'</a>'+
           '</div>'+
         '</div>';
 
@@ -193,7 +202,7 @@
     var baked=PDP[sku];
     if(baked){
       var bodyTpl=document.querySelector('template[data-pdp="'+sku+'"]');
-      renderProduct({ sku:sku, t:baked.t, p:baked.p, vid:baked.vid, imgs:baked.imgs, badges:baked.badges, back:baked.back||'/pages/educators', eyebrow:'Educator Catalog · Fairy Villages', bodyHtml: bodyTpl?bodyTpl.innerHTML:'<div class="pdp__lead"><p>Full classroom details available on request — contact educators@mytoywagon.com.</p></div>' });
+      renderProduct({ sku:sku, t:baked.t, p:baked.p, vid:baked.vid, imgs:baked.imgs, badges:baked.badges, back:baked.back||'/pages/educators', section:'Fairy Villages', sectionHref:(baked.back||'/pages/educator-fairy-villages'), bodyHtml: bodyTpl?bodyTpl.innerHTML:'<div class="pdp__lead"><p>Full classroom details available on request — contact educators@mytoywagon.com.</p></div>' });
     } else if(sku){
       // Live fetch via the app proxy (works for ANY walled SKU once the Worker is deployed).
       app.innerHTML='<div class="pdp-empty"><h1>Loading…</h1></div>';
@@ -206,7 +215,8 @@
           if(mf['custom.age_range']) badges.push('Ages '+mf['custom.age_range']);
           if(mf['custom.material']) badges.push(mf['custom.material']);
           if(mf['custom.origin']) badges.push(mf['custom.origin']);
-          renderProduct({ sku:(d.sku||sku), t:d.title, p:pr, vid:d.variantId, imgs:d.images, badges:badges, back:'/pages/educators', eyebrow:'Educator Catalog', bodyHtml: d.descriptionHtml?('<div class="pdp__lead">'+d.descriptionHtml+'</div>'):'' });
+          var sec=sectionFromSku(d.sku||sku);
+          renderProduct({ sku:(d.sku||sku), t:d.title, p:pr, vid:d.variantId, imgs:d.images, badges:badges, back:sec.href, section:sec.name, sectionHref:sec.href, bodyHtml: d.descriptionHtml?('<div class="pdp__lead">'+d.descriptionHtml+'</div>'):'' });
         })
         .catch(notFound);
     } else { notFound(); }

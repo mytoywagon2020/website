@@ -4225,7 +4225,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       if(tw&&!tw.querySelector('.card-pdp-link')){
         var a=document.createElement('a');a.className='card-pdp-link';a.href=href;a.setAttribute('aria-label',(d.nm||'View full details'));
         tw.insertBefore(a,tw.firstChild);
-        if(p.s){var qv=document.createElement('div');qv.className='quick-view';qv.innerHTML='<div class="qv-head">'+esc(d.nm)+'</div><div class="qv-body"><p>'+esc(p.s)+'</p></div><span class="qv-more">View full details &rarr;</span>';tw.appendChild(qv);}
+        if(p.s){var qv=document.createElement('div');qv.className='quick-view';qv.innerHTML='<div class="qv-head">'+esc(d.nm)+'</div><div class="qv-body"><p>'+esc(p.s)+'</p></div>';tw.appendChild(qv);}
       }
       var vp=d.card?d.card.querySelector('.view-pdp'):null;if(vp){vp.href=href;}
       var row=ab.closest('.add-row');var vp2=row?row.querySelector('.view-pdp'):null;if(vp2){vp2.href=href;}

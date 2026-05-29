@@ -4201,6 +4201,17 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
     function esc(t){var d=document.createElement('div');d.textContent=t==null?'':t;return d.innerHTML;}
     function track(name,params){ try{ if(window.dataLayer){window.dataLayer.push(Object.assign({event:name},params));} }catch(e){} }
     var SPECS=window.MTW_FV_SPECS||{};
+    var QSPEC={
+      "MTW-FV-MUS":"Hand-stitched wool felt<br>House 6″×8″ · Mat 11.5″×9″<br>Ages 3–8 · handmade in Nepal",
+      "MTW-FV-PGN":"Solid birch + wool felt<br>12 gnomes · 4″ &amp; 2″<br>Ages 3–8 · made in USA",
+      "MTW-FV-RGN":"Solid birch + wool felt<br>12 gnomes · 4″ &amp; 2″<br>Ages 3–8 · made in USA",
+      "MTW-FV-VLG":"Hand-stitched wool felt<br>5 homes · ~7–8″ each<br>Net-30 · Ages 3–8",
+      "MTW-FV-BFH":"Hand-stitched wool felt · embroidered<br>~7″ tall · spot-clean<br>Fair-trade · Ages 3–8",
+      "MTW-FV-PNK":"Hand-stitched wool felt<br>~7″ tall · spot-clean<br>Fair-trade · Ages 3–8",
+      "MTW-FV-LIL":"Hand-stitched wool felt<br>~7″ tall · spot-clean<br>Fair-trade · Ages 3–8",
+      "MTW-FV-RBN":"100% wool · CE-certified<br>12.59″ base × 16.5″ tall<br>Fair-trade · Ages 3–8",
+      "MTW-FV-RBS":"100% wool · CE-certified<br>12.59″ base × 17.71″ tall<br>Fair-trade · Ages 3–8"
+    };
     var PDP={
       "MTW-FV-MUS":{v:"48345499205802",s:"Mushroom Garden Fairy Home · hand-felted wool · made in Nepal"},
       "MTW-FV-PNK":{v:"48355716497578",s:"Pink Blossom House · hand-felted wool · made in Nepal"},
@@ -4296,7 +4307,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
           var fn=tw.querySelector('.float-name'); if(fn) fn.style.display='none';
           var ovl=tw.querySelector('.overlay'); if(ovl) ovl.style.display='none';
           var qv=document.createElement('div'); qv.className='quick-view';
-          qv.innerHTML='<div class="qv-head">'+esc(nm)+'</div><div class="qv-body">'+((sp&&sp.h)||'')+'</div><span class="qv-more">View full details &rarr;</span>';
+          qv.innerHTML='<div class="qv-head">'+esc(nm)+'</div><div class="qv-body"><p>'+(QSPEC[sku]||'')+'</p></div>';
           tw.appendChild(qv);
         }
         if(!tw.querySelector('.card-pdp-link')){

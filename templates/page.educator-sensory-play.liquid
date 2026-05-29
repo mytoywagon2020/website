@@ -4579,7 +4579,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
         var link=tw.querySelector('.card-pdp-link');
         if(!link){ link=document.createElement('a'); link.className='card-pdp-link'; tw.insertBefore(link,tw.firstChild); }
         link.href=href; link.setAttribute('aria-label',(d.nm||'View full details'));
-        if(p.s && !tw.querySelector('.quick-view')){ var qv=document.createElement('div'); qv.className='quick-view'; qv.innerHTML='<div class="qv-head">'+esc(d.nm)+'</div><div class="qv-body"><p>'+esc(p.s)+'</p></div><span class="qv-more">View full details &rarr;</span>'; tw.appendChild(qv); }
+        if(p.s && !tw.querySelector('.quick-view')){ var qv=document.createElement('div'); qv.className='quick-view'; qv.innerHTML='<div class="qv-head">'+esc(d.nm)+'</div><div class="qv-body"><p>'+esc(p.s)+'</p></div>'; tw.appendChild(qv); }
       }
       var vp=d.card?d.card.querySelector('.view-pdp'):null;if(vp){vp.href=href;}
       var row=ab.closest('.add-row');var vp2=row?row.querySelector('.view-pdp'):null;if(vp2){vp2.href=href;}
