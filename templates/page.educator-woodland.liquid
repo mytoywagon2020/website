@@ -4457,7 +4457,7 @@ section[data-screen-label="07 Papoose Seasonal Trees"] .content{
         var nmEl=card.querySelector('.name')||card.querySelector('.float-name');
         var prEl=card.querySelector('.price');
         var nm=nmEl?nmEl.textContent.trim():'View product';
-        var a=document.createElement('a');a.className='card-pdp-link';a.href='/products/'+p.h;a.setAttribute('aria-label',nm);
+        var a=document.createElement('a');a.className='card-pdp-link';a.setAttribute('aria-label',nm);
         tw.insertBefore(a,tw.firstChild);
         var vp=card?card.querySelector('.view-pdp'):null;if(vp)vp.href='/products/'+p.h;
         var qs=document.createElement('div');qs.className='quick-spec';qs.setAttribute('aria-hidden','true');
