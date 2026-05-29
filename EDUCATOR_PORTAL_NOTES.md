@@ -79,7 +79,24 @@ DRAFT status alone also removes a product from all channels (safe holding state)
 **Section 2 — Nature Play (PRICED 2026-05-29):** 19 page SKUs; 20 products. NO listings missing. 16/20 PRICED from retail twins (Acorns $24, Autumn Leaves $14, Pinecones $12, Pumpkins $16.50, Forest Mushrooms $28, Teak Spoon Set $28, Teak Slotted Spoon $22, Busy Bee Tray $165, Turkey Pair $42, Woodland Leaves $52, Forest Mushrooms Basket $62, Bird Eggs $65, Nesting Bowls $20, Tongs $9, Coconut Sieve $12, Forest Floor Tinker Tray $78). STILL $0: Bumbu Pumpkin Harvest (HRV, combined Bumbu trio+patch — owner/compute), + 3 bundles owner-handled (Autumn Set AUT, Nature Tools Set NTS, Everything Play Bundle WMC-EPB). Images: left per owner instruction.
 **Section 3 — Woodland (audited 2026-05-29):** 14 page SKUs ↔ 14 dedicated products, EXACT match. NO listings missing. ALL 14 PRICED already (incl. both bundles: Woodland Family Set $398, Woodland Tree Set $310). COMPLETE (images left per owner).
 **Section 4 — Small World (audited 2026-05-29):** 22 page SKUs ↔ 22 dedicated products, EXACT match. NO listings missing. ALL 22 PRICED (play mats $58-168, puppet sets $48-78, 3 bundles: Complete Felt Habitats $360, Natural World Set $278, Songs & Stories Set $268). COMPLETE (images left per owner).
-Sections 5-8: not reliably audited yet.
+**Section 5 — Fairy Villages (audited 2026-05-29):** 9 page buttons all map to dedicated priced products (homes + gnomes + Build the Village). COMPLETE for wired buttons. (MTW-FV-LFS was a false grep hit — text mention in bundle desc, not a real button.) 4 extra educator-tagged products exist but NOT on page: Bumbu Flower Children (walled, clean, no SKU — safe to add once SKU'd) + 3 SHARED RETAIL listings still on Online Store needing split: Papoose Fairy Door (W/P166, $26, prod 8159792267434), Papoose Wishing Well (W/P105, $20, 8159808290986), Mushroom House w/ Carrot Mat (blank SKU, $55, 7611596570794). Owner said "add them" — but 3 are retail; defer to shared-listing split.
+
+**Section 6 — STEAM (catalog = source of truth, pgs 34-44; audited 2026-05-29):**
+- DECISION (owner): KEEP the full Connetix line (all 37 existing MTW-CX/ST products) — selling entire line even though catalog lists only curated picks. OK to split Bauspiel from retail + create science/life-cycle items in batches of <=10.
+- Catalog STEAM has NO prices anywhere. Price Bauspiel from retail twins; new science/life-cycle items will be $0 until owner prices (like bundles).
+- Page lists 42 SKUs; only 6 have products (CMP, CBR, CCP, CGP, QTM, KAL). KAL=$0 needs price.
+- CATALOG STEAM GROUPS (43 SKUs): Kaleidoscopes AMB/FOR/BLU + KAL(trio set); Connetix singles CMP/CCP/CGP/CBR/CRR + specialty CPR/CGC/CGU/CLS/CBP + bundle sets CCS/CCM/CCF/SCT + CRM(overview, not sellable); Bauspiel BCT45/BCU(Lucent100)/BFW/BMB/BTW + BSOB(Optical); Q Toys QTM/QTBINO; observation HBMS/HBLM/COMP/JDSB + OBS(set); June&December JDB-S1/S2; Papoose life cycles BLC/BEE/FRG/BEN/ANA + CBS(set) + PDM(Jurassic set); Bumbu BPS/BDE; Tara TLC.
+- B1 DONE (2026-05-29): Bauspiel split — created 5 DRAFT educator copies + untagged retail originals. NEW educator products (OWNER must wall: Active + channels off in admin):
+  - MTW-ST-BCT45 Color Track 45 $290 — prod 8447063589034 / variant 48355998531754
+  - MTW-ST-BFW Fairytale Windows 12 $139 — prod 8447063621802 / variant 48355998564522
+  - MTW-ST-BLC Lucent Cubes 100 $225 — prod 8447063687338 / variant 48356002136234
+  - MTW-ST-BMB Mirror Blocks 12 $97 — prod 8447063720106 / variant 48356002169002
+  - MTW-ST-BTW Transparent Windows 25 $152 — prod 8447063752874 / variant 48356002201770
+  Retail originals untagged (retail-only now): 6746569212074, 6751337414826, 6763702517930, 6887026393258.
+  STILL NEEDED Bauspiel: MTW-ST-BSOB Optical Blocks 12 — NO retail twin found, create new in a later batch.
+- BUILD PLAN (batches <=10): B1 Bauspiel split (BCT/BFW/BLC/BMB/BTW have retail twins; BOB/Optical no twin). B2 science tools (microscope exists; create binoculars/magnifier/bug box/compass/specimen kit/optical). B3 Papoose life cycles + anatomy. B4 dinosaurs/deep time (BPS/BDE/TLC/PDM). B5 Connetix specialty + bundle sets + kaleidoscope variants. Then wire page (it currently has 0 buttons — needs PDP map + buttons added).
+
+Sections 7-8: Dramatic Play (partly done, ~28 cafe/bakery SKUs missing) + Creative Arts (unwired, ~21 missing) — not yet fully audited.
 
 CAVEAT: `media_count:0` search filter is BROKEN here (false positives). Audit images via per-product `featuredMedia{id}` instead.
 
