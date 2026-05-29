@@ -388,3 +388,17 @@ CA page now wired: 12 cards total (5 eco-cutters + 7 these). Owner wall each.
 - MTW-CA-EWT Eco-Kids Wooden Play Dough Tools $15 (8447745032362/48360046362794, twin 7933565272234) — for "Play Dough Tool Set · 3"
 - MTW-CA-EMP Eco-Kids Cookie Cutters Set of 3 $11.50 (8447745097898/48360046559402, twin 7933560127658) — for "Mini Pastry Cutters"
 CA total wired: 18 cards (5 eco-cutters + 7 round 2 + 6 round 3).
+
+### CA Round 4 — Wee Gallery + Harrisville (2026-05-29)
+Wee Gallery (split from retail twins, DRAFT → OWNER WALL):
+- MTW-CA-LCJ Lacing Cards Jungle Animals $25.49 (prod 8447745294506/var 48360047181994, twin 8017236328618)
+- MTW-CA-LCW Lacing Cards Woodland Animals $25.49 (8447745360042/48360047411370, twin 8017236394154)
+- MTW-CA-LCB Lacing Cards Baby Animals $25.49 (8447745392810/48360047444138, twin 8270263320746)
+- MTW-CA-LCS Wild Adventure Bundle (3-pack) $56 (8447745425578/48360047476906, twin 8017241014442)
+Harrisville Designs (CREATED from scratch, $0 placeholder, DRAFT → OWNER add image + price + WALL):
+- MTW-CA-QWS Harrisville Weaving Frame (prod 8447745589418/var 48360047739050)
+- MTW-CA-FLL Harrisville LapLoom (8447745654954/48360047968426)
+- MTW-CA-FLP Harrisville Potholder Loom Plus (8447745720490/48360048066730)
+- MTW-CA-FRS12 Harrisville Fiber Exploration Roving Set (8447745786026/48360048427178)
+CA total: 22 educator listings, 22 cards wired (4 Harrisville show "Price on request" until owner sets).
+Wee Gallery 4 created but NOT yet added to CA page markup — page has 1 generic "Lacing Cards · 3 sets" card without SKU; needs restructure into 3 singles + bundle.
