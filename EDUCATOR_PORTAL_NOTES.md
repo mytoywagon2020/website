@@ -320,6 +320,26 @@ in the switch but is B2B-conversion-relevant.
   covers 12 FV SKUs.
 
 **STATUS (2026-05-29):** Front-end client-cart + Worker + setup doc = NOT yet built (next).
+
+## 11. "Complete the section" audit — 2026-05-29 (page cards vs real products)
+- **COMPLETE (cards wired, products exist + priced):** Sensory Play (23), Woodland (14),
+  Small World (22), Nature Play (19). No action.
+- **Dramatic Play:** page shows ~48 SKUs; 27 wired. Products: 10 priced+ACTIVE (live);
+  16 DRAFT (World Foods/bakery I created — priced, need OWNER WALLING); 4 $0 ACTIVE
+  (PWF/TLS/FYS/SH — need price); ~18 page SKUs have NO product (café/bakery/bundles:
+  BAK/BND/BPB/BPG/BSB/COO/CUP/GMT/ICE/MLK/PNT/SWF/TEA/TFG/TRT/WAJ/WEA/WK — owner create).
+  My side is done; blocked on owner wall/price/create.
+- **STEAM:** page = 0 buy buttons; ~43 page SKUs (curated MTW-ST-* codes). ~50 products exist
+  but mostly **Connetix MTW-CX-*** variants (PCR120/PMG202/etc.) whose SKUs DON'T match the
+  page codes; ~16 page SKUs DO match products (CMP,CBR,CGP,CCP,KAL($0),QTM,BFW,BLC,BMB,BTW,
+  HBLM,JDSB,LCB,LCF,TLC + BCT→BCT45, BOB→BSOB mismatches). NEEDS: SKU reconciliation
+  (page↔product), price KAL, decide Connetix display, then add PDP map + buttons. Big job.
+- **Creative Arts:** page = 0 buy buttons; ~51 page SKUs. Only ~22 products, ~8 priced
+  (7 doughs $15 + Seven Scents $94.50); ~14 are $0; SKU schemes barely overlap (only
+  JHP/ECBF/FLC/THC + doughs + ANS match). Heavy OWNER buildout (price + create + reconcile).
+- CONCLUSION: the 4 complete sections need nothing. DP/STEAM/CA are blocked on OWNER-side
+  product work (walling drafts, pricing $0s, creating missing items, reconciling STEAM/CA SKU
+  schemes) — not front-end gaps. Wire each subset as its products become ready/priced.
 Already done this session: wagon link added to sticky nav on all 8 pages (live count), double
 footer removed on all 8, preview bypass unified on all 8. NOTE: the nav wagon link currently
 points to `/pages/educator-wagon`; the wagon page still uses the broken native-cart assumption
