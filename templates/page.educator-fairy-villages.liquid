@@ -3361,6 +3361,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
   background: var(--forest); color:#fff; font-size: 11px; font-weight: 700; line-height: 1.6;
 }
 .add-btn.has-qty .in-wagon{ display: inline-block; }
+.add-btn.has-qty{ background: var(--forest); border-color: var(--forest); }
 .add-btn.is-busy{ opacity: .65; pointer-events: none; }
 .add-btn .spin{ display:none; width:13px; height:13px; border:2px solid rgba(255,255,255,.4); border-top-color:#fff; border-radius:50%; animation:mtwspin .6s linear infinite; }
 .add-btn.is-busy .spin{ display:inline-block; }
@@ -4243,9 +4244,20 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       items = items || (window.MTWWagon ? MTWWagon.items() : []);
       var byVar={}; items.forEach(function(it){ byVar[String(it.variantId)]=it.qty; });
       document.querySelectorAll('.add-btn[data-variant-id]').forEach(function(b){
+        // Normalize the button label into a .lbl span once (preserve original text).
+        var lbl=b.querySelector('.lbl');
+        if(!lbl){
+          lbl=document.createElement('span'); lbl.className='lbl';
+          var txt='';
+          Array.prototype.slice.call(b.childNodes).forEach(function(nd){ if(nd.nodeType===3){ txt+=nd.textContent; b.removeChild(nd); } });
+          lbl.textContent=(txt.replace(/\s+/g,' ').trim()||'Add to wagon');
+          b.setAttribute('data-lbl0', lbl.textContent);
+          b.appendChild(lbl);
+        }
+        var legacy=b.querySelector('.in-wagon'); if(legacy) legacy.remove();
         var q=byVar[String(b.getAttribute('data-variant-id'))]||0;
-        var t=b.querySelector('.in-wagon'); if(!t){t=document.createElement('span');t.className='in-wagon';b.appendChild(t);}
-        if(q>0){ b.classList.add('has-qty'); t.textContent='✓ '+q; } else { b.classList.remove('has-qty'); }
+        if(q>0){ b.classList.add('has-qty'); lbl.textContent='✓ In wagon'; }
+        else { b.classList.remove('has-qty'); lbl.textContent=b.getAttribute('data-lbl0')||'Add to wagon'; }
       });
     }
     function addToCart(btn,sku,vid,qty){

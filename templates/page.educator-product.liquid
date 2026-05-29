@@ -35,10 +35,10 @@
 
     /* Gallery */
     .pdp__gallery{position:sticky;top:24px;}
-    .pdp__main{position:relative;background:var(--card-bg);border-radius:5px;overflow:hidden;aspect-ratio:1/1;}
+    .pdp__main{position:relative;background:var(--card-bg);border-radius:5px;overflow:hidden;aspect-ratio:3/4;}
     .pdp__main img{width:100%;height:100%;object-fit:cover;}
     .pdp__thumbs{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap;}
-    .pdp__thumbs button{width:64px;height:64px;border-radius:3px;overflow:hidden;border:1.5px solid transparent;background:var(--card-bg);cursor:pointer;padding:0;}
+    .pdp__thumbs button{width:60px;aspect-ratio:3/4;border-radius:3px;overflow:hidden;border:1.5px solid transparent;background:var(--card-bg);cursor:pointer;padding:0;}
     .pdp__thumbs button.is-active{border-color:var(--forest);}
     .pdp__thumbs img{width:100%;height:100%;object-fit:cover;}
 
@@ -48,9 +48,8 @@
     .pdp__price{font-family:var(--serif);font-size:27px;color:var(--forest);display:flex;align-items:center;gap:10px;}
     .pdp__rate{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--forest);background:#edf4e6;border-radius:2px;padding:3px 7px;font-family:var(--sans);}
     .pdp__sku{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);margin-top:4px;}
-    .pdp__badges{display:flex;flex-wrap:wrap;gap:7px;margin:18px 0 4px;}
-    .pdp__badge{font-size:10.5px;font-weight:600;letter-spacing:.04em;color:var(--ink);background:var(--warm-white);border:1px solid var(--rule);border-radius:999px;padding:5px 11px;display:inline-flex;align-items:center;gap:6px;}
-    .pdp__badge svg{width:12px;height:12px;color:var(--forest);}
+    .pdp__badges{margin:16px 0 4px;font-size:12px;font-weight:600;color:var(--stone);letter-spacing:.02em;line-height:1.7;}
+    .pdp__badges .sep{color:var(--rule-strong);margin:0 8px;}
     .pdp__buy{display:flex;gap:12px;align-items:stretch;margin:22px 0 10px;flex-wrap:wrap;}
     .qty{display:inline-flex;align-items:center;border:1px solid var(--rule-strong);border-radius:2px;overflow:hidden;}
     .qty button{width:36px;height:48px;border:0;background:var(--warm-white);color:var(--ink);font-size:17px;cursor:pointer;}
@@ -59,9 +58,9 @@
     .qty input::-webkit-outer-spin-button,.qty input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0;}
     .add-btn{flex:1;min-width:200px;padding:0 24px;font-family:var(--sans);font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;text-align:center;border-radius:2px;cursor:pointer;border:1.5px solid var(--ink);background:var(--ink);color:var(--cream);transition:background .15s,border-color .15s;}
     .add-btn:hover{background:var(--forest);border-color:var(--forest);}
+    .add-btn.is-in{background:var(--forest);border-color:var(--forest);cursor:default;}
     .pdp__sub{font-size:11.5px;color:var(--stone);margin:6px 0 0;}
     .pdp__sub a{color:var(--forest);text-decoration:underline;text-underline-offset:2px;}
-    .pdp__inwagon{font-size:12.5px;color:var(--forest);font-weight:600;margin:8px 0 0;min-height:1.1em;}
     .pdp__wagonlink{display:inline-block;margin-top:12px;font-size:12px;font-weight:600;color:var(--forest);text-decoration:underline;text-underline-offset:2px;}
     .pdp__back{display:inline-block;margin-top:28px;padding-top:20px;border-top:.5px solid var(--rule);width:100%;font-size:14px;font-weight:600;color:var(--forest);text-decoration:none;}
     .pdp__back:hover{text-decoration:underline;text-underline-offset:3px;}
@@ -138,10 +137,9 @@
     document.title=p.t+' | Educator Catalog';
 
     var imgs=(p.imgs&&p.imgs.length)?p.imgs:[''];
-    var leaf='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4C9 4 4 11 4 20c9 0 16-5 16-16z"/><path d="M4 20c4-6 8-8 12-9"/></svg>';
     var badges=(p.badges||[]).slice();
     badges.push('Net-30 · tax-exempt');
-    var badgeHtml=badges.map(function(b){return '<span class="pdp__badge">'+leaf+esc(b)+'</span>';}).join('');
+    var badgeHtml=badges.map(function(b){return esc(b);}).join('<span class="sep">•</span>');
     var thumbHtml=imgs.length>1 ? '<div class="pdp__thumbs" id="pdpThumbs">'+imgs.map(function(u,i){return '<button type="button" data-i="'+i+'" class="'+(i===0?'is-active':'')+'"><img src="'+esc(u)+'" alt="View '+(i+1)+'"></button>';}).join('')+'</div>' : '';
     var bodyTpl=document.querySelector('template[data-pdp="'+sku+'"]');
     var bodyHtml=bodyTpl?bodyTpl.innerHTML:'<div class="pdp__lead"><p>Full classroom details available on request — contact educators@mytoywagon.com.</p></div>';
@@ -163,7 +161,6 @@
             '<button type="button" class="add-btn" id="pdpAdd">Add to wagon</button>'+
           '</div>'+
           '<p class="pdp__sub">Educator pricing &middot; Net-30 &middot; tax-exempt. Pay by card or purchase order at your wagon.</p>'+
-          '<p class="pdp__inwagon" id="pdpInWagon"></p>'+
           '<a class="pdp__wagonlink" href="/pages/educator-wagon">View your wagon &rarr;</a>'+
           bodyHtml+
           '<a class="pdp__back" href="'+esc(p.back||'/pages/educators')+'">&larr; Back to Fairy Villages</a>'+
@@ -178,18 +175,19 @@
     var qv=document.getElementById('qVal');
     function curQty(){ return window.MTWWagon?MTWWagon.qtyOf(p.vid):0; }
     function syncIfInWagon(){ if(window.MTWWagon && curQty()>0){ MTWWagon.setQty(p.vid, Math.max(1,parseInt(qv.value,10)||1)); } }
-    document.getElementById('qInc').addEventListener('click',function(){ qv.value=(parseInt(qv.value,10)||1)+1; syncIfInWagon(); });
-    document.getElementById('qDec').addEventListener('click',function(){ qv.value=Math.max(1,(parseInt(qv.value,10)||1)-1); syncIfInWagon(); });
-    qv.addEventListener('change',function(){ qv.value=Math.max(1,parseInt(qv.value,10)||1); syncIfInWagon(); });
+    document.getElementById('qInc').addEventListener('click',function(){ qv.value=(parseInt(qv.value,10)||1)+1; syncIfInWagon(); paint(); });
+    document.getElementById('qDec').addEventListener('click',function(){ qv.value=Math.max(1,(parseInt(qv.value,10)||1)-1); syncIfInWagon(); paint(); });
+    qv.addEventListener('change',function(){ qv.value=Math.max(1,parseInt(qv.value,10)||1); syncIfInWagon(); paint(); });
     var flash=null;
     function show(html){ if(!flash){flash=document.createElement('div');flash.className='cart-flash';document.body.appendChild(flash);} flash.innerHTML=html;flash.classList.add('show');clearTimeout(window.__t);window.__t=setTimeout(function(){flash.classList.remove('show');},2600); }
     var addBtn=document.getElementById('pdpAdd');
-    function paint(){ var n=curQty(); var el=document.getElementById('pdpInWagon'); if(el) el.textContent=n>0?('✓ '+n+' in your wagon'):''; if(addBtn) addBtn.textContent=n>0?'Update wagon':'Add to wagon'; }
+    function paint(){ if(!addBtn) return; var n=curQty(); if(n>0){ addBtn.textContent='✓ In wagon'; addBtn.classList.add('is-in'); } else { addBtn.textContent='Add to wagon'; addBtn.classList.remove('is-in'); } }
     addBtn.addEventListener('click',function(){
       if(!window.MTWWagon){ show('<span class="added">Wagon unavailable.</span> Please refresh.'); return; }
+      if(curQty()>0){ show('<span class="added">Already in your wagon.</span> Adjust the quantity above, or view your wagon.'); return; }
       var q=Math.max(1,parseInt(qv.value,10)||1);
-      if(curQty()>0){ MTWWagon.setQty(p.vid,q); show('<span class="added">Wagon updated.</span> '+esc(p.t)+' &times; '+q); }
-      else { MTWWagon.add({variantId:p.vid,sku:sku,title:p.t,price:p.p,img:imgs[0],qty:q}); show('<span class="added">Added to your wagon!</span> '+esc(p.t)); }
+      MTWWagon.add({variantId:p.vid,sku:sku,title:p.t,price:p.p,img:imgs[0],qty:q});
+      show('<span class="added">Added to your wagon!</span> '+esc(p.t));
     });
     if(window.MTWWagon){ var ex=curQty(); if(ex>0) qv.value=ex; MTWWagon.subscribe(paint); } else { paint(); }
   })();

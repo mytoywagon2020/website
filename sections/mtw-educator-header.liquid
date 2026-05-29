@@ -142,28 +142,34 @@
       <a href="/pages/new-quote">Quotes</a>
       <a href="/account">Account</a>
     </nav>
-    <form class="mtw-edu-h__search" action="/search" method="get" role="search">
-      <input type="hidden" name="type" value="product">
-      <input class="mtw-edu-h__search-input" type="search" name="q" placeholder="Search educator catalog…" autocomplete="off" autocorrect="off" spellcheck="false" aria-label="Search educator catalog">
-      <button class="mtw-edu-h__search-btn" type="submit" aria-label="Submit search">
-        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10"><path d="M47.16 28.58A18.58 18.58 0 1 1 28.58 10a18.58 18.58 0 0 1 18.58 18.58zM54 54L41.94 42"/></svg>
-      </button>
-    </form>
     <a class="mtw-edu-h__wagon" href="/pages/educator-wagon" aria-label="Your wagon ({{ cart.item_count }} item{% if cart.item_count != 1 %}s{% endif %})">
       <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="52" r="4"/><circle cx="48" cy="52" r="4"/><path d="M4 8h8l6 28h28l6-20H18"/></svg>
       <span class="mtw-edu-h__wagon-count" data-count="{{ cart.item_count }}">{{ cart.item_count }}</span>
     </a>
-    <a class="mtw-edu-h__cta" href="/pages/new-quote">Request a quote</a>
+    <a class="mtw-edu-h__cta" href="/pages/educator-wagon">View my wagon</a>
   </div>
 </header>
 <script>
 (function(){
   var sels=['shop-chat-launcher','shopify-chat','shopify-ai-shopping-assistant','[class*="shop-chat-launcher"]','[class*="shop-ai"]','[class*="ShopAI"]','[class*="shopify-chat"]','[data-app="shop-ai"]','[data-shop-ai]','iframe[src*="shop-chat"]','iframe[src*="shop-ai"]','smile-launcher','[id^="smile-"]','[class^="smile-"]','iframe[src*="smile.io"]','iframe[src*="sweettooth"]','yotpo-loyalty-rewards','[class*="yotpo-loyalty"]','iframe[src*="yotpo.com"]','loyaltylion-launcher','[class*="loyaltylion"]','iframe[src*="loyaltylion"]','swell-launcher','[class*="swell-launcher"]','klaviyo-inbox-button','[id^="klaviyo-inbox"]','[class*="klaviyo-inbox"]','#gorgias-chat-container','iframe[id^="gorgias-chat"]','#tidio-chat','iframe[id^="tidio-chat"]','iframe#drift-chat','iframe#drift-frame-chat','iframe#drift-frame-controller','div#drift-widget','.intercom-launcher','.intercom-launcher-frame','#intercom-container','#intercom-frame','.intercom-lightweight-app','iframe[name^="intercom-"]','#crisp-chatbox','#crisp-client','#zsiq_float','.zsiq_floatmain','iframe[src*="zopim"]','iframe[src*="olark"]','iframe[src*="livechatinc"]'];
-  function nuke(){sels.forEach(function(s){try{document.querySelectorAll(s).forEach(function(el){el.remove();});}catch(e){}});}
+  function nuke(){
+    sels.forEach(function(s){try{document.querySelectorAll(s).forEach(function(el){el.remove();});}catch(e){}});
+    // Shop "Shop with AI" / Sidekick launcher is selector-resistant: also match by text/aria.
+    try{
+      document.querySelectorAll('button,a,[role="button"]').forEach(function(el){
+        var t=(el.textContent||'')+' '+(el.getAttribute('aria-label')||'');
+        if(/shop with ai|shopping assistant|sidekick/i.test(t)){
+          var host=el.closest('shop-chat-launcher,[class*="launcher" i],[class*="shop-ai" i],[id*="shop-chat" i],[class*="shop-chat" i]')||el;
+          host.remove();
+        }
+      });
+    }catch(e){}
+  }
   if(document.readyState!=='loading')nuke();else document.addEventListener('DOMContentLoaded',nuke);
   var obs=new MutationObserver(nuke);
   obs.observe(document.documentElement,{childList:true,subtree:true});
-  setTimeout(function(){obs.disconnect();},15000);
+  var nukeIv=setInterval(nuke,1500);
+  setTimeout(function(){obs.disconnect();clearInterval(nukeIv);},60000);
 
   // Relabel Wishlist Hero button → "Save to classroom list" on educator PDPs
   function relabelWishlist(){
