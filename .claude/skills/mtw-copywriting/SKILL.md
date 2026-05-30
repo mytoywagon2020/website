@@ -187,9 +187,11 @@ Lead with the most specific evidence available: verified-buyer reviews (with nam
 
 ---
 
-## 2.5 Voice-of-customer bank (mined from 2,500+ published reviews)
+## 2.5 Voice-of-customer bank (RETAIL — mined from 2,500+ published reviews)
 
-Source: the full published review export (≈2,527 reviews, ~93% five-star, ~95% four-or-five). This is the customers' own language — mirror it, don't invent a new vocabulary. **Lift the *register and specifics*, not whole sentences verbatim into marketing copy** (a real quote used *as* an attributed testimonial is fine; paraphrasing review phrasing into body copy is the goal).
+**This is RETAIL voice.** The export is retail-storefront reviews — written by **parents, grandparents, and gift-givers** ("my daughter loves it," "for my granddaughter," "Christmas," "birthday"), on retail bestsellers (Connetix magnetic tiles, Bumbu, Senger, Bauspiel, Drewart). Use it freely on **retail** product/collection pages and the story page. On **educator** pages, do **not** lift this language as-is (a teacher buyer isn't "my granddaughter"); translate the underlying proof into classroom outcomes and keep the educator tagline set (§1.6b) separate.
+
+Source: the full published retail export (≈2,527 reviews, ~93% five-star, ~95% four-or-five). This is the customers' own language — mirror it, don't invent a new vocabulary. **Lift the *register and specifics*, not whole sentences verbatim into marketing copy** (a real quote used *as* an attributed testimonial is fine; paraphrasing review phrasing into body copy is the goal).
 
 **What customers actually say (by frequency — these are the words to favor):**
 - **Quality / craft:** *well made* (by far the most repeated quality phrase), *beautiful*, *gorgeous*, *lovely*, *sturdy*, *quality*, *beautifully made*, *the quality is*… Lead proof copy on **"well made"** and **"beautiful"** — they're what buyers themselves reach for.
@@ -216,7 +218,7 @@ The critical reviews are remarkably consistent. These are the real friction poin
 
 | Recurring objection | What buyers actually wrote | How copy should pre-empt it |
 |---|---|---|
-| **Smaller than expected** (the #1 complaint by far) | "a lot smaller and thinner than expected", "I was surprised how small the items were" | State **real dimensions in plain inches** in the lede or spec line, and add a scale cue ("about the length of your hand"). Never let the photo imply size. |
+| **Smaller than expected** (the #1 complaint by far) | "a lot smaller and thinner than expected", "I was surprised how small the items were" | State **real dimensions in plain inches** in the lede or spec line, and add a scale cue ("about the length of your hand"). Never let the photo imply size. **Note the flip side:** in *positive* reviews, "bigger/larger than expected" (27×) is a recurring *delight* — so the fix is accurate scale, not "looks big." Get the dimension right and the surprise breaks in your favor. |
 | **Damaged in shipping / packaging** | "arrived broken", "basket came crushed in a small box", "limited packing material" | Don't over-promise, but where true, note careful/protective packaging; make the replacement path obvious. Flag fragile items. |
 | **Price vs. perceived value** | "way too expensive for what it is", "cute, def not worth $X" | Lead value with **material + longevity + what it does in play** (the heirloom/"years to come" frame buyers themselves use). Justify price with substance, never with hype. |
 | **Customer-service response time** | "emailed customer service but never got a response", "no replacement yet" | Set honest response expectations; make the contact path and turnaround visible. (Policy/ops, but copy shouldn't promise what ops can't meet.) |
