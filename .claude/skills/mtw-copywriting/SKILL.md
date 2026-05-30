@@ -213,6 +213,17 @@ Source: the full published retail export (≈2,527 reviews, ~93% five-star, ~95%
 
 > Use real quotes with a first name + "Verified buyer." Never fabricate a testimonial or attach a real name to words they didn't write.
 
+**Translating retail proof → educator copy (do this, don't lift):** the *evidence* carries over; the *framing* changes from home/gift to classroom/outcome.
+
+| Retail review says | Educator-page translation |
+|---|---|
+| "My daughter loves it, plays with it every day." | "Holds attention through a full work cycle — children return to it unprompted." |
+| "Well made and so sturdy, will last for years." | "Built to outlast classroom use; repaired, not replaced, year over year." |
+| "Bigger than expected — beautiful on the shelf." | "Generously scaled for group play; real dimensions on the spec line." |
+| "Perfect addition to our collection." | "Extends an existing small-world / block set; pairs into a provisioned center." |
+
+Keep the educator tagline set (§1.6b) and procurement framing; never carry the gift/grandparent register onto educator pages.
+
 ### Objection patterns (mined from the 1–3 star reviews — handle these *before* they're raised)
 The critical reviews are remarkably consistent. These are the real friction points; pre-empt them honestly in product copy and policy pages rather than hiding them.
 
