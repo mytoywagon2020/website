@@ -125,6 +125,25 @@ Use these verbatim. Do not invent new taglines without owner sign-off.
 
 **Identity words:** *niche* and *boutique* — small, selective, relationship-driven. Not "mega-store," not "marketplace."
 
+### Tagline usage by surface
+The locked taglines were set for the **retail/brand** voice. The educator catalog speaks to teachers *and* school business managers, so place them with care.
+
+| Surface | Lead with | Avoid as the lead |
+|---|---|---|
+| Retail storefront / brand | Any locked tagline | — |
+| Educator landing / marketing | *Curated, never collected.* or *Quality play. No philosophy required.* (*Come play with us.* is fine as a CTA) | *A small toy shop, with a big heart.* (reads as too small for an institution) |
+| Educator procurement / vendor profile / PO pages | Credibility first (curation + reliability); keep taglines minimal | *Come play with us.* (too casual here) |
+
+Educators trust rigor and reliability. Lead with curation and developmental value; let warmth close, not open. Never let "small shop" undercut your ability to fulfill a district order.
+
+### Educator hero line — DRAFT options (await owner sign-off; NOT yet locked)
+Proposals that keep the warmth but lead with curation/credibility for an educator reader. Promote one to locked, or none:
+1. **Classroom toys chosen by hand, from makers we know by name.** (leads with curation + sourcing credibility)
+2. **Natural materials and open-ended play, vetted for the way children really learn.** (leads with pillars 1 + 2; educator-literate)
+3. **Quality play for every classroom. No single philosophy required.** (the cross-pedagogy stance, reworked as a hero)
+
+Educator-tuned boilerplate variant (also draft): *A small family shop in Los Angeles, bringing the hard-to-find of the wooden and felt toy world to classrooms across the country.*
+
 ---
 
 ## 2. Conversion craft (adapted, MIT-attributed)
