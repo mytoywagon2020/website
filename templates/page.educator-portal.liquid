@@ -57,7 +57,7 @@
   {%- if show_content -%}
     {{ page.content }}
   {%- elsif customer == nil -%}
-    <div class="mtw-gate">
+    <main class="mtw-gate" aria-label="Educator portal access">
       <div class="mtw-gate__card">
         <p class="mtw-gate__eyebrow">Educator Portal</p>
         <h1 class="mtw-gate__title">This area is for approved educators.</h1>
@@ -68,9 +68,9 @@
         </div>
         <p class="mtw-gate__note">Questions about your application can go to <a href="mailto:educators@mytoywagon.com">educators@mytoywagon.com</a>.</p>
       </div>
-    </div>
+    </main>
   {%- else -%}
-    <div class="mtw-gate">
+    <main class="mtw-gate" aria-label="Educator portal access">
       <div class="mtw-gate__card">
         <p class="mtw-gate__eyebrow">Educator Portal</p>
         <h1 class="mtw-gate__title">Your educator access is being reviewed.</h1>
@@ -80,7 +80,7 @@
         </div>
         <p class="mtw-gate__note">If you have a question in the meantime, contact <a href="mailto:educators@mytoywagon.com">educators@mytoywagon.com</a>.</p>
       </div>
-    </div>
+    </main>
   {%- endif -%}
   {% section 'mtw-educator-footer' %}
 </body>
