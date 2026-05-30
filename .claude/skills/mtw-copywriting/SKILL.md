@@ -1,0 +1,165 @@
+---
+name: mtw-copywriting
+description: "My Toy Wagon's hybrid copywriting skill — the house voice (grounded in the 2026 Educator Catalog as source of truth) fused with proven high-conversion e-commerce frameworks and MTW's hard brand rules. Use for ALL customer-facing words on mytoywagon.com: educator portal (8 ecosystem pages + hubs), retail product pages, collection copy, hero/cover ledes, editorial intros, product blurbs, bundle copy, pull quotes, headlines, eyebrows, meta descriptions, email subjects, CTAs, and the about/story page. Combines: catalog-true voice (warm, sensory, unhurried, educator-literate), conversion craft (clarity over cleverness, benefit-led, voice-of-customer, objection handling, social proof, CTA formulas, product-page structure), and guardrails (Tara Treasures is NOT the felt-homes brand; 'Fair Trade conditions' not 'Fair Trade USA Certified'; 'Kathmandu valley workshops' plural; leave verified Wonderheart/Ambrosius/Papoose/Bumbu refs alone). Extends the editorial-copy base skill; on conflict, this skill wins."
+---
+
+# My Toy Wagon — Copywriting (Hybrid: Voice × Conversion × Brand Rules)
+
+The single source of truth for how MTW copy should read. It fuses three things:
+
+1. **Voice** — distilled from the *2026 Educator Catalog* (the canonical voice reference).
+2. **Conversion** — proven e-commerce/direct-response frameworks, adapted from the MIT-licensed [coreyhaines31/marketingskills](https://github.com/coreyhaines31/marketingskills) (`copywriting` + `cro`) and the direct-response canon, retuned for natural-toy e-commerce and B2B school procurement.
+3. **Brand rules** — non-negotiable naming and claims guardrails.
+
+> Builds on the general **`editorial-copy`** skill — apply that for prose craft, this for voice/conversion/brand. **On any conflict, this skill wins.** Pair with `EDUCATOR_PORTAL_HANDOFF.md` (live page status, file map) and the catalog HTML for voice calibration.
+
+## When to Apply
+
+### Must Use
+- Any copy on the educator portal (creative-arts, dramatic-play, fairy-villages, nature-play, sensory-play, small-world, steam, woodland) or hubs (educators, dashboard, portal, product, wagon, login).
+- Retail product/collection pages, the story/about page, emails, and meta.
+- Reviewing copy that mentions a brand, origin, material, certification, or price.
+
+### Recommended
+- Naming sections, bundles, or collections; writing CTAs; auditing a page for conversion + consistency.
+
+### Skip
+- Code/config with no human-readable copy; legal text that must be quoted verbatim.
+
+---
+
+## 1. The voice (catalog = source of truth)
+
+MTW sounds like a knowledgeable friend who runs a beautiful toy shop and respects both the child and the maker. Calibrate against these **gold-standard lines from the catalog** — new copy should sit beside them seamlessly:
+
+- *"We believe the best classrooms smell like wood, feel like wool, and sound like children absorbed in play."*
+- *"Wool warms in the hand. Wood holds the weight of the tree it came from."*
+- *"The hand remembers what the mind forgets. These materials are made for that memory."*
+- *"Fill it with rainbow rice on Monday morning. By Tuesday, children have sorted by color, built a story, and asked to refill it themselves."*
+- *"Real maple. Real wool. Real staying power."*
+- *"…beautifully imperfect, and full of the sensory detail plastic can never offer."*
+
+### Voice rules
+- **Warm, not cute.** Affection through observation. **No exclamation marks. No baby-talk.**
+- **Sensory and tactile.** Lead with materials, weight, grain, light, temperature, sound.
+- **Unhurried and declarative.** Short confident sentences. Vary the rhythm — a long textured line, then three words.
+- **Educator-literate.** Fluent in play patterns, developmental stages, open-ended play, OT/sensory regulation, curriculum frameworks (NGSS, Common Core, CASEL, Montessori, Reggio, EYFS) — used precisely, never as filler.
+- **Maker-respecting.** Name the craft and place *only when verified*.
+- **Quietly confident.** No hype, no urgency, no superlatives ("amazing", "premium", "best-ever").
+- **Punctuation tells:** em-dashes for asides, mid-dots (·) for spec/benefit separators, sentence case. Match the surrounding page.
+
+### Signature moves (use deliberately)
+- **The sensory triad** — three concrete senses in parallel ("smell like wood, feel like wool, sound like…").
+- **The time-lapse scene** — a small classroom moment that unfolds ("Monday morning… by Tuesday…"). The single most converting device in the catalog: it shows outcome through story.
+- **Material-as-proof** — state the material plainly; let durability/quality be implied ("Solid maple hardwood, non-toxic natural finish").
+- **The contrast with plastic** — MTW's core differentiator, stated calmly, never preachy.
+
+---
+
+## 2. Conversion craft (adapted, MIT-attributed)
+
+Premium voice and conversion are not in tension here — specificity does both. Apply these *underneath* the voice, never instead of it.
+
+### Core principles
+1. **Clarity beats cleverness.** If forced to choose between clear and clever, choose clear. Then make the clear line beautiful.
+2. **Feature → benefit → classroom outcome.** Don't stop at the benefit; land on what it means for the room. "Dual-sided maple insert" → "trace letters with a finger" → "pre-writing before the pencil ever does."
+3. **Voice-of-customer.** Mirror real language from the 2,521+ retail reviews and educator feedback ("the most requested toy in our classroom", "they ask for them every morning"). Lift specific lines, not generic praise.
+4. **One idea per section.** Each block earns its place and makes one point.
+5. **Match the entry point.** Catalog-QR visitors, organic search, and educator referrals arrive with different awareness — the headline should meet the traffic it's written for.
+
+### Objection handling (the real conversion levers for MTW)
+| Objection | Answer in copy |
+|---|---|
+| Price / "justify to my administrator" | Curriculum-alignment framing; "built to outlast classroom use"; offer the itemized curriculum-alignment letter; Title I/IDEA/Head Start eligibility (with the "final eligibility determined by your district" caveat). |
+| Durability | "Real staying power", "classroom-tested", "passed from one class to the next, repaired instead of replaced". |
+| Safety | "Non-toxic", "sustainably sourced wood & wool felt", material honesty. |
+| Procurement friction | "School POs accepted · W-9 on request · Net 30 / Net 60 · educators@mytoywagon.com". |
+
+### Social proof
+Lead with the most specific evidence available: verified-buyer reviews (with name + "Verified buyer"), review counts, districts/educators served since 2020, OT-recommended, framework alignment. Specific testimonials > star ratings.
+
+### CTA formula
+**[Action] + [what they get]** — and stay on-voice. "Buy as a set", "See current pricing", "Request a curriculum-alignment letter", "Start your vendor file". Never "Submit", "Click here", or urgency gimmicks.
+
+---
+
+## 3. Product-page / page structure (e-commerce)
+
+The catalog product card is the proven template — reuse its shape on-site:
+
+1. **Name** — plain and specific.
+2. **One tactile lede sentence** — material + what it does, in voice. *("A daily-use sensory tool. Pure, organic essential oils kneaded into soft dough — for fine-motor work, transitions, and the kind of repetitive tactile play that quietly resets a nervous system.")*
+3. **Benefit/skill bullets** — tied to curriculum/skills (fine motor, sorting, narrative, bilateral coordination…).
+4. **Spec line** — materials · group size · surface compatibility (mid-dot separated).
+5. **Proof** — one verified-buyer quote.
+6. **Pairs with** — cross-sell to adjacent SKUs/sets (drives AOV; already a catalog pattern).
+7. **Funding/eligibility note** where relevant (IDEA, Medicaid OT, Title I) with the eligibility caveat.
+
+For landing/collection pages, run the **7-point conversion check** (adapted from the `cro` skill): value-prop clear in 5 seconds · headline matches traffic · CTA strong & visible · scannable hierarchy · trust/social proof present · objections handled · friction removed.
+
+---
+
+## 4. HARD RULES — brand attribution (the Tara Treasures lesson)
+
+A wrong attribution reads as the whole shop being careless. Non-negotiable.
+
+| Brand | Status | Use for | Origin |
+|---|---|---|---|
+| **Tara Treasures** | ❌ **NOT** the brand of the felt fairy/woodland homes | Use generic *"woodland and fairy homes"* | — |
+| **Tara Treasures** finger puppets | ⚠️ **Ask owner before using** | Cross-vendor pairing only (TT does make puppets) | confirm |
+| **Wonderheart Little Folk** | ✅ Correct | Gnome SKUs (MTW-FV-RGN, MTW-FV-PGN) | Vermont, USA |
+| **Ambrosius** | ✅ Correct | Fairy figurines (NOT gnomes) | Germany / Bavaria |
+| **Papoose** | ✅ Correct | Fairy Door, Wishing Well, Forest Caves Play Mat | Indonesia / Bali |
+| **Bumbu** | ✅ Correct | Flower Children, Mushrooms, Trees | Romania |
+
+**Wrong attribution → drop the brand, don't substitute a guess.**
+- Chip: `<span class="label">SKU &middot; BrandName</span>` → `<span class="label">SKU</span>`
+- Eyebrow: `<span class="eyebrow">05. BrandName · Felt Homes</span>` → `<span class="eyebrow">05. Felt Homes</span>`
+
+**Leave verified references alone** — Wonderheart/Ambrosius/Papoose/Bumbu in eyebrows, product names, "pairs with" lines, alt text, and JSON catalog are correct. Don't "fix" what's right.
+
+## 5. HARD RULES — claims, certification, origin
+- ❌ Never *"Fair Trade USA Certified"* → ✅ *"made in Fair Trade conditions"* / *"Fair Trade conditions"*.
+- ✅ Felt-homes origin: *"Kathmandu valley workshops"* — **plural**.
+- **Every** origin, certification, material, and superlative claim must be verified before it ships. Unsure → omit and flag.
+- Funding/eligibility always carries the caveat: *"Final eligibility is determined by your school or district."*
+
+## 6. Flag-for-owner, never guess
+- The "Tara Treasures finger puppets" cross-reference.
+- Owner-flagged lines (e.g. Fairy Villages "wool keeps a child's body heat" sentence) — propose options; owner supplies final copy.
+- Any factual/origin/certification claim you can't verify.
+
+---
+
+## 7. Page conventions (8 ecosystem pages share one skeleton)
+
+| Element | Where | Copy job |
+|---|---|---|
+| SEO meta | head (~line 26) | ≤155 chars, mirrors the cover lede |
+| Cover lede | `<section class="cover">` (~3500) | 1–3 sensory sentences placing the reader in the section's world |
+| Quick facts | ~3525 | section number · ages · count — facts only |
+| Editorial intro | `<section class="intro gut">` (~3545) | dropcap long-form; open on a maker/scene detail, land on the educator's situation |
+| Product blurb | `<span class="desc">` in `<article class="home">` | the section-3 product template above |
+| Price | `<span class="price">` | "Price on request" when $0 |
+| Bundle copy | `<h2>` (e.g. *"Every Village Needs Its People"*) | the *idea* of the grouping, not the SKU list |
+| Pull quote | reviews carousel (~4400) | the most specific real review line |
+
+Keep meta description and cover lede in sync. Don't touch cart-sync JS (4200+) when editing copy.
+
+---
+
+## 8. Pre-ship checklist (run after editorial-copy's checklist)
+- [ ] Reads like the catalog — sensory, unhurried, no exclamation marks, no superlatives.
+- [ ] At least one concrete material/sensory noun per paragraph; benefit lands on a classroom outcome.
+- [ ] Voice-of-customer language mirrored where proof is used.
+- [ ] Relevant objection addressed (price/durability/safety/procurement) and one trust signal present.
+- [ ] CTA is action + outcome, on-voice.
+- [ ] Every brand name matches the attribution table (or brand dropped, not guessed).
+- [ ] No "Fair Trade USA Certified"; "Kathmandu valley workshops" (plural) where relevant; eligibility caveat present.
+- [ ] Verified Wonderheart/Ambrosius/Papoose/Bumbu refs intact; no owner-flagged line silently rewritten.
+- [ ] Meta description matches on-page copy.
+- [ ] Any unverifiable claim omitted and flagged for the owner.
+
+---
+
+*Conversion frameworks adapted from coreyhaines31/marketingskills (MIT) and the direct-response canon. Voice distilled from the My Toy Wagon 2026 Educator Catalog (source of truth).*
