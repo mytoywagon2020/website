@@ -3362,63 +3362,8 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
   display: none !important;
 }
 
-/* The Everything Play Bundle (Featured Product 2): photo is a busy, low-key
-   forest-floor lifestyle shot. Overlay text gets lost on the dark wood +
-   ferns. Stack: full-bleed photo banner on top, content below on cream. */
-section[data-screen-label="08 The Everything Play Bundle"]{
-  display: block !important;
-  height: auto !important;
-  min-height: 0 !important;
-  padding: 0 !important;
-}
-section[data-screen-label="08 The Everything Play Bundle"] .veil{ display: none !important; }
-section[data-screen-label="08 The Everything Play Bundle"] .img-side{
-  position: static !important;
-  width: 100% !important;
-  padding: 0 !important;
-  max-width: none !important;
-}
-section[data-screen-label="08 The Everything Play Bundle"] .img-side .tile{
-  position: static !important;
-  inset: auto !important;
-  width: 100% !important;
-  aspect-ratio: 16 / 9 !important;
-  height: auto !important;
-  border-radius: 0 !important;
-  background: var(--cream);
-}
-section[data-screen-label="08 The Everything Play Bundle"] .img-side .tile img{
-  object-fit: cover !important;
-  object-position: center !important;
-  width: 100% !important;
-  height: 100% !important;
-  display: block !important;
-}
-section[data-screen-label="08 The Everything Play Bundle"] .img-side::after,
-section[data-screen-label="08 The Everything Play Bundle"] .img-side .tile .corner{
-  display: none !important;
-}
-section[data-screen-label="08 The Everything Play Bundle"] .content{
-  display: block !important;
-  position: static !important;
-  height: auto !important;
-  background: transparent !important;
-  box-shadow: none !important;
-  backdrop-filter: none !important;
-  padding: clamp(48px, 6vw, 80px) clamp(28px, 5vw, 80px) clamp(40px, 5vw, 64px) !important;
-  max-width: 1100px;
-  margin: 0 auto !important;
-  color: var(--ink) !important;
-}
-section[data-screen-label="08 The Everything Play Bundle"] .content h2,
-section[data-screen-label="08 The Everything Play Bundle"] .content h3,
-section[data-screen-label="08 The Everything Play Bundle"] .content p,
-section[data-screen-label="08 The Everything Play Bundle"] .content li{
-  color: var(--ink) !important;
-}
-section[data-screen-label="08 The Everything Play Bundle"] .content .eyebrow{
-  color: var(--accent-deep) !important;
-}
+/* The Everything Play Bundle (Featured Product 2) uses the standard
+   .split.image-right layout so it matches Sensory Play's Featured Product 2. */
 
 </style>
 </head>
@@ -3799,6 +3744,20 @@ section[data-screen-label="08 The Everything Play Bundle"] .content .eyebrow{
   </div>
 </section>
 
+<!-- =========================== EVERYTHING PLAY BUNDLE NOTE (bridge from Nature Tools Set) =========================== -->
+<section data-screen-label="A note on the toolkit" style="background: var(--cream); border-top: 0.5px solid var(--rule); border-bottom: 0.5px solid var(--rule); padding: 64px clamp(20px, 5vw, 56px);">
+  <div style="max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(28px, 4vw, 56px); align-items: center;">
+    <div>
+      <span class="eyebrow" style="color: var(--accent-deep);">A note on the toolkit</span>
+      <h3 style="margin: 16px 0 0; font-family: var(--serif); font-weight: 400; font-size: clamp(28px, 3.2vw, 42px); line-height: 1.1; color: var(--ink); letter-spacing: -.01em;">Set out the bundle, and the tray <span style="font-style: italic; color: var(--accent-deep);">becomes a kitchen.</span></h3>
+    </div>
+    <div>
+      <p style="margin: 0 0 18px; font-family: var(--sans); font-size: 16px; line-height: 1.65; color: var(--ink-soft);">Where the Nature Tools Set covers the basics, the <strong style="color: var(--ink); font-weight: 600;">Everything Play Bundle</strong> goes further: fourteen hand-carved pieces, spoons, strainers, bowls, and a dish set, each sized for small hands. Set out a tray of lentils and a bowl of acorns, and a four-year-old becomes a chef, then an archaeologist, then a potion-maker, all before snack. Carved from FSC-certified Doussie in Vietnam under Fair Trade conditions, the tools move between sand table, mud kitchen, and loose-parts station, and last through cohort after cohort.</p>
+      <a href="#quote" style="display: inline-flex; align-items: center; gap: 8px; padding: 14px 24px; background: var(--ink); color: var(--cream); text-decoration: none; font-family: var(--sans); font-size: 13px; font-weight: 500; letter-spacing: .04em; border-radius: 999px; transition: background .2s ease;">Request the Everything Play Bundle &rarr;</a>
+    </div>
+  </div>
+</section>
+
 <div class="section-divider">
   <span class="line"></span>
   <span class="label">Nature Loose Parts &middot; Tara Treasures &amp; Papoose</span>
@@ -4098,7 +4057,7 @@ section[data-screen-label="08 The Everything Play Bundle"] .content .eyebrow{
 <!-- Featured 2, Wild Mountain Child The Everything Play Bundle. Catalog pg. 17.
      SKU is MTW-SP-WMC-EPB verbatim from the catalog (brand cross-listed under the
      SP section code in the source). No price in the catalog, so it is omitted. -->
-<section class="split stage" data-screen-label="08 The Everything Play Bundle" style="background: var(--cream);">
+<section class="split image-right" data-screen-label="08 The Everything Play Bundle" style="background: var(--cream);">
   <div class="img-side">
     <div class="tile t-soft has-photo">
       <img loading="lazy" src="{{ 'np-wmc-everything-bundle.jpg' | file_url }}" alt="Wild Mountain Child Everything Play Bundle: hand-carved wooden tools, sunflower spoons, a mushroom-stamped spoon, a leaf bowl, a heart, and a crescent moon, arranged on a dark mossy tree stump in the forest, framed by ferns and acorns."/>
@@ -4160,20 +4119,6 @@ section[data-screen-label="08 The Everything Play Bundle"] .content .eyebrow{
         <span class="pair-meta">Loose materials &middot; see the collections above</span>
         <a href="#homes" class="pair-action">See the loose parts &rarr;</a>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- =========================== WOODLAND BRIDGE (cross-collection to Woodland) =========================== -->
-<section data-screen-label="09 Woodland Bridge" style="background: var(--cream); border-top: 0.5px solid var(--rule); border-bottom: 0.5px solid var(--rule); padding: 64px clamp(20px, 5vw, 56px);">
-  <div style="max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(28px, 4vw, 56px); align-items: center;">
-    <div>
-      <span class="eyebrow" style="color: var(--accent-deep);">09. A note on the forest</span>
-      <h3 style="margin: 16px 0 0; font-family: var(--serif); font-weight: 400; font-size: clamp(28px, 3.2vw, 42px); line-height: 1.1; color: var(--ink); letter-spacing: -.01em;">The nature table is <span style="font-style: italic; color: var(--accent-deep);">the doorway.</span> The forest itself has its own volume.</h3>
-    </div>
-    <div>
-      <p style="margin: 0 0 18px; font-family: var(--sans); font-size: 16px; line-height: 1.65; color: var(--ink-soft);">Once the felt acorns and teak bowls are out, children start asking who lives here. The Papoose Seasonal Trees, the Bumbu hand-carved animal families, and the woodland trees live a volume on, in <strong style="color: var(--ink); font-weight: 600;">Section Three, Woodland</strong>. They move onto the nature table naturally: a felted toadstool beside the carved fox, a seed pod in a teak bowl. One small world.</p>
-      <a href="/pages/educator-woodland" style="display: inline-flex; align-items: center; gap: 8px; padding: 14px 24px; background: var(--ink); color: var(--cream); text-decoration: none; font-family: var(--sans); font-size: 13px; font-weight: 500; letter-spacing: .04em; border-radius: 999px; transition: background .2s ease;">See Section 03 &middot; Woodland &rarr;</a>
     </div>
   </div>
 </section>
