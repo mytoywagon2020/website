@@ -29,23 +29,31 @@
 
 ---
 
-## 2. Brand attribution rules (THE TARA TREASURES LESSON)
+## 2. Brand attribution rules (verified with owner 2026-05-30)
 
-These came up mid-session and apply across all sections — apply consistently when reviewing other ecosystem pages.
+| Brand | Status | Use for | Origin | Certification |
+|---|---|---|---|---|
+| **The Happy Women Handicraft** | ✅ Correct (newly added) | The felt fairy + woodland homes (FV) | Kathmandu, Nepal (women's cooperative) | "Fair Trade conditions" (no formal cert) |
+| **Tara Treasures** | ✅ Correct for: felt leaves/pinecones/acorns/feathers (Nature), Garden of the Moon WAS misattributed → actually Himalayan Felt Co (now corrected), story bundles + science/nature puppets + counting/songs (SW) | Per-product, not the fairy homes | Australia (workshops in Nepal) | **Fair Trade USA Certified** |
+| **Wonderheart Little Folk** | ✅ Correct | The gnome SKUs (MTW-FV-RGN, MTW-FV-PGN) | Vermont, USA | n/a |
+| **Ambrosius** | ✅ Correct | Fairy figurines (NOT gnomes) | Germany / Bavaria | n/a |
+| **Papoose** | ✅ Correct | Accessories: Fairy Door, Wishing Well, Forest Caves Play Mat, nature loose parts | Indonesia / Bali | **WFTO + Fair Trade USA Certified** |
+| **Himalayan Felt Co.** | ✅ Correct | Garden of the Moon felt playscape (SW) + narrative landscapes | Nepal | "Fair Trade conditions" (no formal cert) |
+| **Bumbu** | ✅ Correct | Flower Children, Mushrooms, Trees | Romania | n/a |
+| **Gus + Mabel** | ✅ Correct | Felt habitats (SW), Busy Bee Tray (NP) | n/a | n/a |
 
-| Brand | Status | Use for | Origin |
-|---|---|---|---|
-| **Tara Treasures** | ❌ **NOT the brand** of the felt fairy/woodland homes | Use generic *"woodland and fairy homes"* | n/a |
-| **Tara Treasures** finger puppets (line 4528 FV) | ⚠️ **Pending owner decision** | Cross-vendor pairing reference; may be legit since TT does make puppets | Owner to confirm |
-| **Wonderheart Little Folk** | ✅ Correct | The gnome SKUs (MTW-FV-RGN, MTW-FV-PGN) | Vermont, USA |
-| **Ambrosius** | ✅ Correct | Fairy figurines (NOT gnomes) | Germany / Bavaria |
-| **Papoose** | ✅ Correct | Accessories: Fairy Door, Wishing Well, Forest Caves Play Mat | Indonesia / Bali |
-| **Bumbu** | ✅ Correct | Flower Children, Mushrooms, Trees | Romania |
+### Certification phrasing rules
+| Brand | Use this exact phrasing | Don't use |
+|---|---|---|
+| Papoose | *"WFTO & Fair Trade USA Certified"* | n/a |
+| Tara Treasures | *"Fair Trade USA Certified"* | n/a |
+| The Happy Women Handicraft (FV felt homes) | *"in Fair Trade conditions"* / *"made in Fair Trade conditions"* | ❌ *"Fair Trade USA Certified"* |
+| Himalayan Felt Co. | *"in Fair Trade conditions"* | ❌ *"Fair Trade USA Certified"* |
 
-### Certification language
-- ❌ Don't say *"Fair Trade USA Certified"* (these homes aren't)
-- ✅ Say *"made in Fair Trade conditions"* or *"Fair Trade conditions"*
-- ✅ Origin: *"Kathmandu valley workshops"* (plural) for the felt homes
+### Geographic phrasing
+- ✅ *"Kathmandu valley workshops"* (plural) — for The Happy Women Handicraft + Himalayan Felt Co. felt work
+- ✅ *"hand-stitched from 100% New Zealand and Australian wool"* — Small World materials (SW pull paragraph)
+- ✅ *"100% natural sheep's wool"* — Fairy Villages materials (FV artisan paragraph)
 
 ---
 
