@@ -1,0 +1,20 @@
+{
+  "note": "Restore point before Fairy Villages -> Imaginative Worlds rename (display + SKU MTW-FV- -> MTW-IW- + URL slug). 12 educator products. Variant IDs are the stable cart key and are NOT changing.",
+  "sku_map": [
+    {"old": "MTW-FV-FLC", "new": "MTW-IW-FLC", "variantId": "48345339297962", "product": "Bumbu Flower Children"},
+    {"old": "MTW-FV-MGF", "new": "MTW-IW-MGF", "variantId": "48345499205802", "product": "Mushroom Garden Fairy Home"},
+    {"old": "MTW-FV-PGN", "new": "MTW-IW-PGN", "variantId": "48345499238570", "product": "Wonderheart Pastel Gnomes"},
+    {"old": "MTW-FV-RGN", "new": "MTW-IW-RGN", "variantId": "48345499271338", "product": "Wonderheart Bright Gnomes"},
+    {"old": "MTW-FV-VLG", "new": "MTW-IW-VLG", "variantId": "48345499304106", "product": "Build the Village"},
+    {"old": "MTW-FV-BFH", "new": "MTW-IW-BFH", "variantId": "48355698475178", "product": "Butterfly Fairy House"},
+    {"old": "MTW-FV-PNK", "new": "MTW-IW-PNK", "variantId": "48355716497578", "product": "Pink Blossom House"},
+    {"old": "MTW-FV-LIL", "new": "MTW-IW-LIL", "variantId": "48355716530346", "product": "Lilac Blossom House"},
+    {"old": "MTW-FV-RBN", "new": "MTW-IW-RBN", "variantId": "48355716595882", "product": "Large Rainbow House"},
+    {"old": "MTW-FV-RBS", "new": "MTW-IW-RBS", "variantId": "48355716661418", "product": "Rainbow Shimmer Home"},
+    {"old": "MTW-FV-FDR", "new": "MTW-IW-FDR", "variantId": "48359113818282", "product": "Papoose Fairy Door (DRAFT)"},
+    {"old": "MTW-FV-WSH", "new": "MTW-IW-WSH", "variantId": "48359133511850", "product": "Papoose Woodland Fairy Wishing Well (DRAFT)"}
+  ],
+  "known_preexisting_mismatch": "Liquid PDP map uses key 'MTW-FV-MUS' for the Mushroom Garden (Shopify SKU is MTW-FV-MGF). The FV page cart adds by variantId so this is cosmetic; carrying it forward as MTW-IW-MUS in liquid.",
+  "display_rename": "Fairy Villages -> Imaginative Worlds",
+  "slug_rename": "educator-fairy-villages -> educator-imaginative-worlds (301 redirect from old)"
+}
