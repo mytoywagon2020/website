@@ -132,14 +132,14 @@ The four retail taglines above stay **retail-only**. The educator catalog (teach
 
 | Line | Role | Status |
 |---|---|---|
-| **Natural toys for hands-on classrooms.** | Header / hero (names the thing: *toys*; "hands-on" = the play method, not an age, so it holds across the full Pre-K to Grade 5 range without a ceiling to defend) | ✅ Locked |
+| **Natural toys for early learning through Grade 5.** | Header / hero (names the thing: *toys*; "early learning through Grade 5" keeps the warm phrase and states the true upper range, so it covers every product type, including books and puppets, with no coverage gap or age ceiling) | ✅ Locked |
 | **The best classrooms smell like wood, feel like wool, and sound like children absorbed in play.** | Signature lede (the catalog's defining sentence; sits *under* the header, not as a header itself) | ✅ Locked |
 | **Open-ended play for any teaching approach.** | Positioning (cross-pedagogy, stated positively, max reach) | ✅ Locked |
 | **Bring the play to your classroom.** | Primary CTA | ✅ Locked |
 
 **Why these:** the header names *toys* (the noun a buyer scans for) and reads clearly to a teacher and a business manager alike; the signature lede carries the emotion as a full sentence beneath it (too long to be a header on its own — distill to *"Smell like wood. Feel like wool. Sound like play."* if a short triad is ever needed). Header + signature are catalog-grounded (pg 2–4). The positioning line leads with *open-ended play* (the one value every early-learning educator shares) and "any teaching approach" (broadest reach: Montessori, Reggio, play-based, public, homeschool co-op, therapy/OT, library) — stated positively, never "no philosophy required" (which can read as dismissive to educators who value their pedagogy).
 
-**Scope note (why "hands-on", not "early learning"):** the catalog's core is Pre-K to Grade 2, but STEAM and Creative Arts reach **Grade 5** (ages 3 to 10). An age-framed header ("early childhood" / "early learning") under-claims that upper range. "Hands-on" names the *method* every section shares, so it holds from Pre-K through Grade 5 with no ceiling to defend. State the exact range ("Pre-K to Grade 5") in meta lines and section pages, not the header.
+**Scope note (why "early learning through Grade 5"):** the catalog's core is Pre-K to Grade 2, but STEAM and Creative Arts reach **Grade 5** (ages 3 to 10). An age-framed header like "early childhood / early learning" alone under-claims that upper range; a method word like "hands-on" leaves out the story books and finger puppets. "Early learning through Grade 5" keeps the warm phrase, states the true ceiling, and frames by audience (so it covers every product type). On the educator landing page it appears as a subtitle under the page H1.
 
 **Word-balance note:** the set deliberately spreads its key words so no one term dominates (classroom ×2, play ×2, toys ×1, teaching ×1). Avoid edits that put "classroom" in three of the four lines again.
 
