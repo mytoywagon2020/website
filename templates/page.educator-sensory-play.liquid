@@ -1579,40 +1579,33 @@ footer .cols .downloads a::after{
 /* ============================== COVER ============================== */
 .cover{
   position: relative;
-  height: min(100vh, 920px);
-  min-height: 680px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 1440px;
+  min-height: min(82vh, 760px);
+  padding: clamp(48px, 7vw, 96px);
   overflow: hidden;
   isolation: isolate;
 }
+.cover > h1,
+.cover > .cover-subtitle,
+.cover > .footer{ width: 100%; max-width: 680px; }
 .cover .bg{ position:absolute; inset:0; z-index:0; }
 .cover .veil{
   position:absolute; inset:0; z-index:1; pointer-events:none;
   background:
-    linear-gradient(180deg, rgba(44,26,14,.12) 0%, rgba(44,26,14,0) 28%, rgba(44,26,14,.32) 60%, rgba(44,26,14,.72) 100%),
-    linear-gradient(180deg, rgba(159,79,97,.18) 0%, rgba(159,79,97,0) 50%);
+    linear-gradient(90deg, rgba(18,16,11,.62) 0%, rgba(18,16,11,.48) 32%, rgba(18,16,11,.22) 52%, rgba(18,16,11,.04) 72%, rgba(18,16,11,0) 88%);
 }
 .cover .frame{
   position:absolute; inset:28px; z-index:2; pointer-events:none;
   border: 1px solid rgba(250,246,237,.32);
 }
-.cover .head{
-  position: absolute;
-  top: 92px; left: clamp(28px, 5vw, 56px); right: clamp(28px, 5vw, 56px);
-  z-index: 3;
-  display: flex; justify-content: space-between; align-items: flex-start;
-  color: var(--cream);
-  text-shadow: 0 1px 12px rgba(0,0,0,.5);
-}
-.cover .head .vol{ text-align:right; }
-.cover .head .vol .num{
-  font-family: var(--serif); font-style: italic;
-  font-size: 38px; line-height: 1;
-}
+.cover .head{ display: none; }
 .cover h1{
-  position:absolute;
-  left: clamp(28px, 5vw, 56px);
-  right: clamp(28px, 5vw, 56px);
-  bottom: 220px;
+  position: relative;
   z-index: 3;
   margin: 0;
   font-family: var(--serif);
@@ -1621,22 +1614,34 @@ footer .cols .downloads a::after{
   font-size: clamp(48px, 8vw, 132px);
   line-height: .94;
   letter-spacing: -.012em;
-  text-shadow: 0 2px 30px rgba(0,0,0,.5), 0 1px 3px rgba(0,0,0,.32);
+  text-shadow: 0 2px 24px rgba(0,0,0,.7), 0 1px 4px rgba(0,0,0,.5);
 }
 .cover h1 .it{
   display: block;
   font-style: italic;
   color: color-mix(in oklab, var(--accent-soft) 80%, white);
 }
-.cover .footer{
-  position:absolute;
-  left: clamp(28px, 5vw, 56px);
-  right: clamp(28px, 5vw, 56px);
-  bottom: 48px;
+.cover .cover-subtitle{
+  position: relative;
   z-index: 3;
+  margin: 22px 0 0;
+  max-width: 54ch;
+  font-family: var(--sans);
+  font-size: clamp(14px, 1.4vw, 17px);
+  line-height: 1.55;
+  font-weight: 500;
+  letter-spacing: .01em;
+  color: rgba(250,246,237,.96);
+  text-shadow: 0 1px 3px rgba(0,0,0,.95), 0 1px 14px rgba(0,0,0,.85);
+}
+.cover .footer{
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  margin-top: 28px;
   color: var(--cream);
-  text-shadow: 0 1px 10px rgba(0,0,0,.5);
-  display: flex; justify-content: space-between; align-items: flex-end; gap: 24px;
+  text-shadow: 0 1px 3px rgba(0,0,0,.95), 0 1px 14px rgba(0,0,0,.85);
+  display: flex; justify-content: flex-start; align-items: flex-end; gap: 24px;
 }
 .cover .audience{ max-width: 540px; }
 .cover .audience .label{ color: rgba(250,246,237,.96); text-shadow: 0 1px 8px rgba(0,0,0,.55); }
@@ -2938,11 +2943,9 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
   body{ font-size: 16px; }
   .nav{ grid-template-columns: 1fr auto; padding: 12px 18px; }
   .nav__center{ display: none; }
-  .cover{ height: 88vh; min-height: 600px; }
+  .cover{ min-height: 80vh; padding: clamp(28px, 7vw, 48px); }
   .cover .frame{ inset: 14px; }
-  .cover .head{ top: 72px; left: 24px; right: 24px; }
-  .cover h1{ left: 24px; right: 24px; bottom: 112px; }
-  .cover .footer{ left: 24px; right: 24px; bottom: 28px; flex-direction: column; align-items: flex-start; gap: 16px; }
+  .cover .footer{ flex-direction: column; align-items: flex-start; gap: 16px; }
   .anchor, .intro, .gallery, .companions, .closing{ }
   .stage .top{ flex-direction: column; }
   .stage .top .right{ text-align: left; }
