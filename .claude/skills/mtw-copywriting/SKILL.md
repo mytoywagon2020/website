@@ -46,7 +46,27 @@ MTW sounds like a knowledgeable friend who runs a beautiful toy shop and respect
 - **Educator-literate.** Fluent in play patterns, developmental stages, open-ended play, OT/sensory regulation, curriculum frameworks (NGSS, Common Core, CASEL, Montessori, Reggio, EYFS) — used precisely, never as filler.
 - **Maker-respecting.** Name the craft and place *only when verified*.
 - **Quietly confident.** No hype, no urgency, no superlatives ("amazing", "premium", "best-ever").
-- **Punctuation tells:** em-dashes for asides, mid-dots (·) for spec/benefit separators, sentence case. Match the surrounding page.
+- **Punctuation:** **never em-dashes (—).** Use a period, a comma, parentheses, or a colon, or split the sentence. Mid-dots (·) are fine as spec/benefit separators; keep number ranges simple ("Pre-K to Grade 2"). Sentence case. Match the surrounding page.
+
+### Human voice — no AI tells (HARD RULE)
+MTW copy must read like a person who knows toys and classrooms wrote it by hand. In a market flooded with machine-generated sameness, **the human touch is the brand's edge** — slightly irregular rhythm, real specifics, a point of view. Protect it.
+
+**Banned — these are AI tells, strip every one:**
+- **Em-dashes (—)** as connectors. (See punctuation rule above.)
+- **"It's not just X, it's Y"** and **"not only… but also"** constructions.
+- **"In today's fast-paced/digital world…"** openers. (We can write *about* technology vs. handcraft — see below — but never with that cliché.)
+- **Overused triads / relentless rule-of-three.** One sensory triad as a deliberate device is fine; three-part parallelism in every sentence is a tell.
+- **LLM vocabulary:** delve, dive in, unleash, elevate, embark, navigate, realm, tapestry, testament, boasts, nestled, bustling, seamless, robust, leverage, game-changer, unlock, supercharge, "curated" (overused), "whether you're X or Y", "from X to Y" sweeping ranges.
+- **Hollow connectors / hedges:** "it's worth noting", "ultimately", "in conclusion", "that said", "when it comes to".
+- **Empty enthusiasm:** exclamation marks, emoji, "exciting", "wonderful" used as filler.
+- **Mechanical symmetry:** perfectly balanced clauses and uniform paragraph/sentence lengths. Vary it; let a three-word sentence sit next to a long one.
+
+**Artifacts to clean (never ship):**
+- Raw HTML entities in visible copy (`&ndash;`, `&times;`, `&amp;`, `&aacute;`) — render the real character (–, ×, &, á).
+- Curly/smart-quote mismatches, double spaces, stray markdown, placeholder text ("lorem", "TODO", "[brand]").
+- Leftover model scaffolding ("Sure, here's…", "Certainly!", "As an AI").
+
+**The human-vs-technology thread (use as substance, not slogan):** MTW's products are an antidote to screen-saturated childhood. Make that case the way a teacher would — through the concrete (wool that warms in the hand, the click of a latch, a child absorbed for forty quiet minutes), not through "in a world dominated by screens…". Show the analog warmth; let the contrast land on its own.
 
 ### Signature moves (use deliberately)
 - **The sensory triad** — three concrete senses in parallel ("smell like wood, feel like wool, sound like…").

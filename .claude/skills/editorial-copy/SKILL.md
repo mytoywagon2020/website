@@ -41,6 +41,23 @@ A discipline for writing copy that reads like a good magazine, not a brochure. U
 
 ---
 
+## Human voice — no AI tells
+
+Copy must read as if a person wrote it by hand. Machine-written sameness is the fastest way to look cheap. Strip these from any customer-facing copy (this applies to the words a customer reads, not to internal docs like this one):
+
+- **No em-dashes (—).** Use a period, comma, parentheses, or colon, or split the sentence.
+- **No formula constructions:** "it's not just X, it's Y", "not only… but also", "whether you're X or Y", "from X to Y" sweeping ranges, "in today's fast-paced world".
+- **No LLM vocabulary:** delve, unleash, elevate, embark, realm, tapestry, testament, boasts, nestled, seamless, robust, leverage, game-changer, unlock, supercharge, overused "curated".
+- **No hollow connectors/hedges:** "it's worth noting", "ultimately", "in conclusion", "that said", "when it comes to".
+- **No empty enthusiasm:** exclamation marks, emoji, filler "exciting"/"wonderful".
+- **No mechanical symmetry:** vary clause and paragraph length; avoid rule-of-three in every line.
+
+**Artifacts to clean (never ship):** raw HTML entities in visible text (`&ndash;`, `&times;`, `&amp;`), smart-quote mismatches, double spaces, stray markdown, placeholder text, and any leftover model scaffolding ("Sure, here's…", "Certainly!").
+
+The test: could a thoughtful human writer have produced this exact line? If it reads like a template, recut it.
+
+---
+
 ## Structures (with the job each does)
 
 **Hero / cover lede** — 1–3 sentences. Job: place the reader in a world and signal the category, fast. Lead with image-language, not a sales pitch. End on a line that earns a small breath.
