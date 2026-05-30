@@ -13,7 +13,7 @@
       {{ form.errors | default_errors }}
 
       <label for="CustomerEmail">{{ 'customer.login.email' | t }}</label>
-      <input type="email" name="customer[email]" id="CustomerEmail" class="input-full{% if form.errors contains 'email' %} error{% endif %}" autocorrect="off" autocapitalize="off" autofocus>
+      <input type="email" name="customer[email]" id="CustomerEmail" class="input-full{% if form.errors contains 'email' %} error{% endif %}" autocomplete="email" autocorrect="off" autocapitalize="off" autofocus>
 
       {%- if form.password_needed -%}
         <div class="grid">
@@ -28,7 +28,7 @@
             </small>
           </div>
         </div>
-        <input type="password" value="" name="customer[password]" id="CustomerPassword" class="input-full{% if form.errors contains 'password' %} error{% endif %}">
+        <input type="password" value="" name="customer[password]" id="CustomerPassword" class="input-full{% if form.errors contains 'password' %} error{% endif %}" autocomplete="current-password">
       {%- endif -%}
 
       <p>
@@ -55,7 +55,7 @@
         {%- endif -%}
 
         <label for="RecoverEmail">{{ 'customer.recover_password.email' | t }}</label>
-        <input type="email" value="" name="email" id="RecoverEmail" class="input-full" autocorrect="off" autocapitalize="off">
+        <input type="email" value="" name="email" id="RecoverEmail" class="input-full" autocomplete="email" autocorrect="off" autocapitalize="off">
 
         <p>
           <button type="submit" class="btn">

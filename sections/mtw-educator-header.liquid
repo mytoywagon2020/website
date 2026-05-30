@@ -126,7 +126,18 @@
   .mtw-edu-h__search-btn:hover{color:#3B6D11;}
   .mtw-edu-h__search-btn svg{width:16px;height:16px;}
   @media(max-width:720px){.mtw-edu-h__bar{padding:14px 20px;gap:10px;}.mtw-edu-h__nav{gap:14px;font-size:11px;}.mtw-edu-h__word{font-size:18px;}.mtw-edu-h__mark{height:36px;}.mtw-edu-h__search{min-width:120px;max-width:none;flex:1;}}
+
+  /* A11y: keyboard focus indicator (portal-wide, mouse clicks unaffected) */
+  :focus-visible{outline:2px solid #2C2C2A;outline-offset:2px;border-radius:2px;}
+  /* A11y: skip-link (visible only when keyboard-focused) */
+  .mtw-skip{position:absolute;top:8px;left:8px;padding:10px 14px;background:#2C2C2A;color:#F5F0E5;font-family:'Mulish',sans-serif;font-size:13px;font-weight:600;letter-spacing:.06em;text-decoration:none;border-radius:2px;transform:translateY(-200%);transition:transform .15s ease;z-index:9999;}
+  .mtw-skip:focus{transform:translateY(0);}
+  /* A11y: honor OS-level reduced-motion preference */
+  @media (prefers-reduced-motion: reduce){
+    *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important;}
+  }
 </style>
+<a href="#main-content" class="mtw-skip">Skip to content</a>
 <header class="mtw-edu-h" role="banner">
   <div class="mtw-edu-h__bar">
     <a class="mtw-edu-h__brand" href="/pages/educators" aria-label="My Toy Wagon Educator Catalog">
@@ -149,6 +160,7 @@
     <a class="mtw-edu-h__cta" href="/pages/educator-wagon">View my wagon</a>
   </div>
 </header>
+<a id="main-content" tabindex="-1" aria-hidden="true"></a>
 <script>
 (function(){
   var sels=['shop-chat-launcher','shopify-chat','shopify-ai-shopping-assistant','[class*="shop-chat-launcher"]','[class*="shop-ai"]','[class*="ShopAI"]','[class*="shopify-chat"]','[data-app="shop-ai"]','[data-shop-ai]','iframe[src*="shop-chat"]','iframe[src*="shop-ai"]','smile-launcher','[id^="smile-"]','[class^="smile-"]','iframe[src*="smile.io"]','iframe[src*="sweettooth"]','yotpo-loyalty-rewards','[class*="yotpo-loyalty"]','iframe[src*="yotpo.com"]','loyaltylion-launcher','[class*="loyaltylion"]','iframe[src*="loyaltylion"]','swell-launcher','[class*="swell-launcher"]','klaviyo-inbox-button','[id^="klaviyo-inbox"]','[class*="klaviyo-inbox"]','#gorgias-chat-container','iframe[id^="gorgias-chat"]','#tidio-chat','iframe[id^="tidio-chat"]','iframe#drift-chat','iframe#drift-frame-chat','iframe#drift-frame-controller','div#drift-widget','.intercom-launcher','.intercom-launcher-frame','#intercom-container','#intercom-frame','.intercom-lightweight-app','iframe[name^="intercom-"]','#crisp-chatbox','#crisp-client','#zsiq_float','.zsiq_floatmain','iframe[src*="zopim"]','iframe[src*="olark"]','iframe[src*="livechatinc"]'];
