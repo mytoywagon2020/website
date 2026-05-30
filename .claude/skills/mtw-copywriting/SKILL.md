@@ -258,6 +258,19 @@ The catalog product card is the proven template — reuse its shape on-site:
 
 For landing/collection pages, run the **7-point conversion check** (adapted from the `cro` skill): value-prop clear in 5 seconds · headline matches traffic · CTA strong & visible · scannable hierarchy · trust/social proof present · objections handled · friction removed.
 
+### 3.1 The "Therapist-Approved / OT-Friendly" designation (reusable pattern)
+
+When a product is genuinely designed or vetted by a licensed occupational therapist (or other clinician), surface it as a consistent, repeatable trust marker across the site. This is a strong conversion lever for the educator/SEL/therapy buyer, and a credibility signal for parents.
+
+**Two layers, use both where they fit:**
+1. **On-page badge + evidence (editorial pages).** A small eyebrow badge reading **"Therapist-Approved · OT-Friendly"**, paired with two short blocks:
+   - **Learning domains.** The specific skills the piece develops (e.g. hand-eye coordination, bilateral integration, fine-motor pincer-grasp refinement, sorting mechanics). Be precise, not generic.
+   - **Therapeutic value.** One plain sentence on *how* it helps and *who* designed it (e.g. "Designed by a licensed pediatric occupational therapist to give structured boundaries during tactile sensory work").
+   Place it **once at section level** when a whole range shares the credential (don't repeat the same paragraph on every card). Add a per-card one-liner only where a single item is the exception.
+2. **Product tag (collection filtering).** Add an `OT-Friendly` / `Therapist-Approved` **product tag** in Shopify so it becomes a filter/facet on retail collection pages (the educator catalog templates have no sidebar; the tag is what makes it filterable site-wide). This is a Shopify catalog task, not a liquid edit.
+
+**Rules:** only apply when the clinician involvement is **verified** for that item (it's a claim, governed by §5). Keep the badge wording consistent everywhere ("Therapist-Approved · OT-Friendly"); don't invent variants. Stay educator-neutral and concrete, no "magical/sacred" framing.
+
 ---
 
 ## 4. HARD RULES — brand attribution (the Tara Treasures lesson)
