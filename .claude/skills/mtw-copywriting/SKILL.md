@@ -106,6 +106,7 @@ Lead with **(1) open-ended / developmental value** and **(2) natural, non-toxic 
 - Say **"children,"** not "kids."
 - Reference Montessori, Reggio, Waldorf, NGSS, CASEL, EYFS as **pedagogy / frameworks** when relevant. Stay **educator-neutral**: no anthroposophy or spiritual / "sacred-childhood" framing. Keep wonder concrete, not mystical.
 - Favor "makers," "workshop," "handed down," "by hand," "pieces." Avoid generic "products / items" where "pieces" fits the story voice.
+- **Standardized spelling, always.** House spellings: **handmade** (one word, never "hand-made"). Keep other compounds hyphenated as conventional: hand-felted, hand-carved, hand-stitched, hand-finished, hand-picked. Use one spelling for a term across the whole site; if you see a variant, normalize it.
 
 ---
 
@@ -131,12 +132,15 @@ The four retail taglines above stay **retail-only**. The educator catalog (teach
 
 | Line | Role | Status |
 |---|---|---|
-| **Natural toys for early learning classrooms.** | Header / hero (names the thing: *toys*, made of natural materials) | ✅ Locked |
+| **Natural toys for the classroom** | Header line (warm, audience-clear; names *toys*) | ✅ Locked |
+| **Early learning through Grade 5.** | Range subtitle, set smaller/muted beneath the header line (states the true span; covers every product type, no age ceiling) | ✅ Locked |
 | **The best classrooms smell like wood, feel like wool, and sound like children absorbed in play.** | Signature lede (the catalog's defining sentence; sits *under* the header, not as a header itself) | ✅ Locked |
 | **Open-ended play for any teaching approach.** | Positioning (cross-pedagogy, stated positively, max reach) | ✅ Locked |
 | **Bring the play to your classroom.** | Primary CTA | ✅ Locked |
 
 **Why these:** the header names *toys* (the noun a buyer scans for) and reads clearly to a teacher and a business manager alike; the signature lede carries the emotion as a full sentence beneath it (too long to be a header on its own — distill to *"Smell like wood. Feel like wool. Sound like play."* if a short triad is ever needed). Header + signature are catalog-grounded (pg 2–4). The positioning line leads with *open-ended play* (the one value every early-learning educator shares) and "any teaching approach" (broadest reach: Montessori, Reggio, play-based, public, homeschool co-op, therapy/OT, library) — stated positively, never "no philosophy required" (which can read as dismissive to educators who value their pedagogy).
+
+**Scope note (why "early learning through Grade 5"):** the catalog's core is Pre-K to Grade 2, but STEAM and Creative Arts reach **Grade 5** (ages 3 to 10). An age-framed header like "early childhood / early learning" alone under-claims that upper range; a method word like "hands-on" leaves out the story books and finger puppets. "Early learning through Grade 5" keeps the warm phrase, states the true ceiling, and frames by audience (so it covers every product type). On the educator landing page it appears as a subtitle under the page H1.
 
 **Word-balance note:** the set deliberately spreads its key words so no one term dominates (classroom ×2, play ×2, toys ×1, teaching ×1). Avoid edits that put "classroom" in three of the four lines again.
 
@@ -166,7 +170,7 @@ Premium voice and conversion are not in tension here — specificity does both. 
 ### Core principles
 1. **Clarity beats cleverness.** If forced to choose between clear and clever, choose clear. Then make the clear line beautiful.
 2. **Feature → benefit → classroom outcome.** Don't stop at the benefit; land on what it means for the room. "Dual-sided maple insert" → "trace letters with a finger" → "pre-writing before the pencil ever does."
-3. **Voice-of-customer.** Mirror real language from the 2,521+ retail reviews and educator feedback ("the most requested toy in our classroom", "they ask for them every morning"). Lift specific lines, not generic praise.
+3. **Voice-of-customer.** Mirror real language from the retail reviews (2,500+ published, ~95% are 4 to 5 stars) and educator feedback. Lift specific lines, not generic praise. The phrase bank in **§2.5** is the source — use it.
 4. **One idea per section.** Each block earns its place and makes one point.
 5. **Match the entry point.** Catalog-QR visitors, organic search, and educator referrals arrive with different awareness — the headline should meet the traffic it's written for.
 
@@ -180,6 +184,60 @@ Premium voice and conversion are not in tension here — specificity does both. 
 
 ### Social proof
 Lead with the most specific evidence available: verified-buyer reviews (with name + "Verified buyer"), review counts, districts/educators served since 2020, OT-recommended, framework alignment. Specific testimonials > star ratings.
+
+---
+
+## 2.5 Voice-of-customer bank (RETAIL — mined from 2,500+ published reviews)
+
+**This is RETAIL voice.** The export is retail-storefront reviews — written by **parents, grandparents, and gift-givers** ("my daughter loves it," "for my granddaughter," "Christmas," "birthday"), on retail bestsellers (Connetix magnetic tiles, Bumbu, Senger, Bauspiel, Drewart). Use it freely on **retail** product/collection pages and the story page. On **educator** pages, do **not** lift this language as-is (a teacher buyer isn't "my granddaughter"); translate the underlying proof into classroom outcomes and keep the educator tagline set (§1.6b) separate.
+
+Source: the full published retail export (≈2,527 reviews, ~93% five-star, ~95% four-or-five). This is the customers' own language — mirror it, don't invent a new vocabulary. **Lift the *register and specifics*, not whole sentences verbatim into marketing copy** (a real quote used *as* an attributed testimonial is fine; paraphrasing review phrasing into body copy is the goal).
+
+**What customers actually say (by frequency — these are the words to favor):**
+- **Quality / craft:** *well made* (by far the most repeated quality phrase), *beautiful*, *gorgeous*, *lovely*, *sturdy*, *quality*, *beautifully made*, *the quality is*… Lead proof copy on **"well made"** and **"beautiful"** — they're what buyers themselves reach for.
+- **Affection / delight:** *love / loves / we love*, *obsessed*, *adorable*, *cute*, *so sweet*, *precious*, *favorite*. ("Love" appears in over a third of reviews.)
+- **Heirloom / longevity:** *for years to come*, *heirloom*, *handed down*, *stand the test of time*. Confirms the durability positioning — buyers think in years.
+- **Fit for child:** *the perfect size*, *for little hands*, *perfect for* [age], *my [N] year old*.
+- **Play value:** *open-ended play*, *small world play*, *imaginative play*, *can't wait to play with it*, *plays with it every day*.
+- **Collection-building:** *the perfect addition to our collection*, *great addition to*, *to go with our…*. (A huge recurring frame — supports the **"Pairs with" / buy-as-a-set** cross-sell.)
+- **Gifting:** *gift*, *for my grandson/granddaughter/daughter/son*, *Christmas*, *birthday*, *can't wait to give it*. Grandparents and gift-givers are a real, frequent voice — gift framing converts.
+
+**Approved verbatim testimonial lines** (real, representative, PII-free — safe to use as attributed proof):
+- "The most gorgeous wooden tree I have ever seen."
+- "Even prettier than I imagined."
+- "Beautifully made and the perfect addition to our collection."
+- "Such wonderful quality and my daughter loves it."
+- "Well made and absolutely gorgeous. Perfect for open-ended play."
+- "The colors are beautiful and it's the perfect size for little hands."
+- "We will treasure this for years to come."
+
+> Use real quotes with a first name + "Verified buyer." Never fabricate a testimonial or attach a real name to words they didn't write.
+
+**Translating retail proof → educator copy (do this, don't lift):** the *evidence* carries over; the *framing* changes from home/gift to classroom/outcome.
+
+| Retail review says | Educator-page translation |
+|---|---|
+| "My daughter loves it, plays with it every day." | "Holds attention through a full work cycle — children return to it unprompted." |
+| "Well made and so sturdy, will last for years." | "Built to outlast classroom use; repaired, not replaced, year over year." |
+| "Bigger than expected — beautiful on the shelf." | "Generously scaled for group play; real dimensions on the spec line." |
+| "Perfect addition to our collection." | "Extends an existing small-world / block set; pairs into a provisioned center." |
+
+Keep the educator tagline set (§1.6b) and procurement framing; never carry the gift/grandparent register onto educator pages.
+
+### Objection patterns (mined from the 1–3 star reviews — handle these *before* they're raised)
+The critical reviews are remarkably consistent. These are the real friction points; pre-empt them honestly in product copy and policy pages rather than hiding them.
+
+| Recurring objection | What buyers actually wrote | How copy should pre-empt it |
+|---|---|---|
+| **Smaller than expected** (the #1 complaint by far) | "a lot smaller and thinner than expected", "I was surprised how small the items were" | State **real dimensions in plain inches** in the lede or spec line, and add a scale cue ("about the length of your hand"). Never let the photo imply size. **Note the flip side:** in *positive* reviews, "bigger/larger than expected" (27×) is a recurring *delight* — so the fix is accurate scale, not "looks big." Get the dimension right and the surprise breaks in your favor. |
+| **Damaged in shipping / packaging** | "arrived broken", "basket came crushed in a small box", "limited packing material" | Don't over-promise, but where true, note careful/protective packaging; make the replacement path obvious. Flag fragile items. |
+| **Price vs. perceived value** | "way too expensive for what it is", "cute, def not worth $X" | Lead value with **material + longevity + what it does in play** (the heirloom/"years to come" frame buyers themselves use). Justify price with substance, never with hype. |
+| **Customer-service response time** | "emailed customer service but never got a response", "no replacement yet" | Set honest response expectations; make the contact path and turnaround visible. (Policy/ops, but copy shouldn't promise what ops can't meet.) |
+| **Surface finish — roughness / splinters / sanding** | "isn't smoothly sanded", "splinters", "rough to write on" | Only claim "smooth" / "baby-safe surface" when verified for that item. Material honesty over blanket claims. |
+| **Color / appearance vs. website** | "much darker IRL than the website", "clear tiles came yellowish" | Keep imagery color-true; describe finish honestly ("warm walnut tone, darker than it photographs"). |
+| **Assembly difficulty** | "assembly was completely unreasonable", "screws too tight for my child" | State assembly required + tools needed + adult-assembly up front. Don't call adult-assembly items child-buildable. |
+
+**The honesty dividend:** MTW's negative reviews overwhelmingly cite *expectations* (size, finish, ship time), not bad products. Accurate, specific copy (real dimensions, honest finish notes, clear ship/assembly expectations) removes most of them at the source — and that candor *is* the brand voice.
 
 ### CTA formula
 **[Action] + [what they get]** — and stay on-voice. "Buy as a set", "See current pricing", "Request a curriculum-alignment letter", "Start your vendor file". Never "Submit", "Click here", or urgency gimmicks.
@@ -199,6 +257,19 @@ The catalog product card is the proven template — reuse its shape on-site:
 7. **Funding/eligibility note** where relevant (IDEA, Medicaid OT, Title I) with the eligibility caveat.
 
 For landing/collection pages, run the **7-point conversion check** (adapted from the `cro` skill): value-prop clear in 5 seconds · headline matches traffic · CTA strong & visible · scannable hierarchy · trust/social proof present · objections handled · friction removed.
+
+### 3.1 The "Therapist-Approved / OT-Friendly" designation (reusable pattern)
+
+When a product is genuinely designed or vetted by a licensed occupational therapist (or other clinician), surface it as a consistent, repeatable trust marker across the site. This is a strong conversion lever for the educator/SEL/therapy buyer, and a credibility signal for parents.
+
+**Two layers, use both where they fit:**
+1. **On-page badge + evidence (editorial pages).** A small eyebrow badge reading **"Therapist-Approved · OT-Friendly"**, paired with two short blocks:
+   - **Learning domains.** The specific skills the piece develops (e.g. hand-eye coordination, bilateral integration, fine-motor pincer-grasp refinement, sorting mechanics). Be precise, not generic.
+   - **Therapeutic value.** One plain sentence on *how* it helps and *who* designed it (e.g. "Designed by a licensed pediatric occupational therapist to give structured boundaries during tactile sensory work").
+   Place it **once at section level** when a whole range shares the credential (don't repeat the same paragraph on every card). Add a per-card one-liner only where a single item is the exception.
+2. **Product tag (collection filtering).** Add an `OT-Friendly` / `Therapist-Approved` **product tag** in Shopify so it becomes a filter/facet on retail collection pages (the educator catalog templates have no sidebar; the tag is what makes it filterable site-wide). This is a Shopify catalog task, not a liquid edit.
+
+**Rules:** only apply when the clinician involvement is **verified** for that item (it's a claim, governed by §5). Keep the badge wording consistent everywhere ("Therapist-Approved · OT-Friendly"); don't invent variants. Stay educator-neutral and concrete, no "magical/sacred" framing.
 
 ---
 
