@@ -143,7 +143,7 @@
                 <p class="mtwft__nl-ok">Thank you. You're on the list.</p>
               {%- else -%}
                 <input type="hidden" name="contact[tags]" value="newsletter">
-                <input type="email" name="contact[email]" placeholder="you@email.com" required aria-label="Email">
+                <input type="email" name="contact[email]" autocomplete="email" placeholder="you@email.com" required aria-label="Email">
                 <button type="submit" name="commit">Sign up</button>
               {%- endif -%}
             {%- endform -%}
@@ -247,7 +247,7 @@
             <p class="mtwft__nl-ok">Thank you. You're on the list.</p>
           {%- else -%}
             <input type="hidden" name="contact[tags]" value="newsletter">
-            <input type="email" name="contact[email]" placeholder="you@email.com" required aria-label="Email">
+            <input type="email" name="contact[email]" autocomplete="email" placeholder="you@email.com" required aria-label="Email">
             <button type="submit" name="commit">Sign up</button>
           {%- endif -%}
         {%- endform -%}

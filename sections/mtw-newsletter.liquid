@@ -37,7 +37,7 @@
     {%- form 'customer' -%}
       <input type="hidden" name="contact[tags]" value="newsletter">
       <div class="mtw-letter__form">
-        <input type="email" name="contact[email]" placeholder="{{ section.settings.placeholder }}" required>
+        <input type="email" name="contact[email]" autocomplete="email" placeholder="{{ section.settings.placeholder }}" required>
         <button type="submit">{{ section.settings.button_text }}</button>
       </div>
       {%- if form.posted_successfully? -%}<p class="mtw-letter__ok">Thanks. Watch your inbox.</p>{%- endif -%}
