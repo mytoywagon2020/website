@@ -1,3 +1,10 @@
+<style>
+  .pw-wrap{position:relative;}
+  .pw-wrap .input-full{padding-right:64px;}
+  .pw-toggle{position:absolute;top:50%;right:8px;transform:translateY(-50%);background:transparent;border:0;padding:6px 10px;font:600 12px/1 'Mulish',sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#5F5E5A;cursor:pointer;border-radius:2px;}
+  .pw-toggle:hover{color:#2C2C2A;}
+  .pw-toggle:focus-visible{outline:2px solid #2C2C2A;outline-offset:2px;}
+</style>
 <div class="page-width page-width--tiny page-content">
   <header class="section-header">
     <h1 class="section-header__title">Educator Login</h1>
@@ -28,7 +35,10 @@
             </small>
           </div>
         </div>
-        <input type="password" value="" name="customer[password]" id="CustomerPassword" class="input-full{% if form.errors contains 'password' %} error{% endif %}" autocomplete="current-password">
+        <div class="pw-wrap">
+          <input type="password" value="" name="customer[password]" id="CustomerPassword" class="input-full{% if form.errors contains 'password' %} error{% endif %}" autocomplete="current-password">
+          <button type="button" class="pw-toggle" aria-controls="CustomerPassword" aria-pressed="false" aria-label="Show password">Show</button>
+        </div>
       {%- endif -%}
 
       <p>
@@ -81,6 +91,22 @@
     {%- endform -%}
   {%- endif -%}
 </div>
+
+<script>
+  (function(){
+    var btn = document.querySelector('.pw-toggle');
+    if (!btn) return;
+    var input = document.getElementById(btn.getAttribute('aria-controls'));
+    if (!input) return;
+    btn.addEventListener('click', function(){
+      var hidden = input.type === 'password';
+      input.type = hidden ? 'text' : 'password';
+      btn.setAttribute('aria-pressed', hidden ? 'true' : 'false');
+      btn.setAttribute('aria-label', hidden ? 'Hide password' : 'Show password');
+      btn.textContent = hidden ? 'Hide' : 'Show';
+    });
+  })();
+</script>
 
 {% schema %}
   {
