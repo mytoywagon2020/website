@@ -54,11 +54,19 @@ MTW sounds like a knowledgeable friend who runs a beautiful toy shop and respect
 - **Material-as-proof** — state the material plainly; let durability/quality be implied ("Solid maple hardwood, non-toxic natural finish").
 - **The contrast with plastic** — MTW's core differentiator, stated calmly, never preachy.
 
+### External voice references (benchmarks — NOT sources to copy)
+Study these for *directional* tone calibration only. The catalog remains the source of truth; **never lift, paraphrase, or closely imitate a competitor's sentences** — that risks plagiarism and brand confusion.
+
+- **Bella Luna Toys** (bellalunatoys.com blog/articles) — the closest voice cousin: warm, reverent toward childhood, unhurried contemplative rhythm, sensory vocabulary (warmth, wonder, simplicity, the senses), philosophy-forward (Waldorf/Steiner), gently persuasive rather than hard-sell, the wood-warmth-vs-plastic-cold contrast. Borrow the *register*, not the words.
+- **Where MTW must differ:** Bella Luna writes mostly to *parents* with nostalgia. MTW writes to *educators and school buyers* — so we keep the warmth and sensory reverence but add curriculum literacy, classroom-outcome benefit framing, evidence/social proof, and procurement fluency. Less nostalgia, more "here's what it does in your room — and how to fund it." And MTW uses **no exclamation marks**.
+
 ---
 
 ## 2. Conversion craft (adapted, MIT-attributed)
 
 Premium voice and conversion are not in tension here — specificity does both. Apply these *underneath* the voice, never instead of it.
+
+> **Adapt, don't import.** The frameworks below come from a SaaS/B2B copy skill. Take the *mechanics* (objection handling, social proof, benefit laddering, CTA shape) and translate every one into MTW's voice and the catalog's product-card patterns. Never carry over SaaS phrasing, "free trial" CTAs, or generic startup tone.
 
 ### Core principles
 1. **Clarity beats cleverness.** If forced to choose between clear and clever, choose clear. Then make the clear line beautiful.
