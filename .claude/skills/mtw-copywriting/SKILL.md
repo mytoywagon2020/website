@@ -131,14 +131,12 @@ The four retail taglines above stay **retail-only**. The educator catalog (teach
 
 | Line | Role | Status |
 |---|---|---|
-| **Chosen for what lasts and what it teaches.** | Signature (durability + learning) | ✅ Locked |
+| **Natural toys for early childhood classrooms.** | Header / hero (names the thing: *toys*, made of natural materials) | ✅ Locked |
+| **The best classrooms smell like wood, feel like wool, and sound like children absorbed in play.** | Signature lede (the catalog's defining sentence; sits *under* the header, not as a header itself) | ✅ Locked |
 | **Open-ended play that fits any classroom.** | Positioning (cross-pedagogy, stated positively) | ✅ Locked |
 | **Bring the play to your classroom.** | Primary CTA | ✅ Locked |
-| *(hero / header)* | Brand hero | ⏳ Owner choosing |
 
-**Hero, pending owner pick (two finalists):**
-1. **Natural classroom toys, chosen with a teacher's care.** (recommended: warmth + curation)
-2. **Toys teachers trust, from makers we know by name.** (alternative: social proof + the named-makers differentiator)
+**Why these:** the header names *toys* (the noun a buyer scans for) and reads clearly to a teacher and a business manager alike; the signature lede carries the emotion as a full sentence beneath it (too long to be a header on its own — distill to *"Smell like wood. Feel like wool. Sound like play."* if a short triad is ever needed). All four are catalog-grounded (pg 2–4).
 
 **CTA variants by context:**
 - Educator landing / hero: *"Bring the play to your classroom."* (locked); for more brand warmth, *"Bring the wagon to your classroom."*
