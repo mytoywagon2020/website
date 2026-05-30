@@ -125,24 +125,35 @@ Use these verbatim. Do not invent new taglines without owner sign-off.
 
 **Identity words:** *niche* and *boutique* — small, selective, relationship-driven. Not "mega-store," not "marketplace."
 
-### Tagline usage by surface
-The locked taglines were set for the **retail/brand** voice. The educator catalog speaks to teachers *and* school business managers, so place them with care.
+## 1.6b Educator-context taglines (separate set from retail)
 
-| Surface | Lead with | Avoid as the lead |
+The four retail taglines above stay **retail-only**. The educator catalog (teachers *and* school business managers) uses its own owner-approved set. Two retail lines were judged **not** school-appropriate and are retail-only: *"Quality play. No philosophy required."* (can read as dismissive to educators who value pedagogy) and *"Curated, never collected."* (too abstract/editorial for a procurement reader).
+
+| Line | Role | Status |
 |---|---|---|
-| Retail storefront / brand | Any locked tagline | — |
-| Educator landing / marketing | *Curated, never collected.* or *Quality play. No philosophy required.* (*Come play with us.* is fine as a CTA) | *A small toy shop, with a big heart.* (reads as too small for an institution) |
-| Educator procurement / vendor profile / PO pages | Credibility first (curation + reliability); keep taglines minimal | *Come play with us.* (too casual here) |
+| **Chosen for what lasts and what it teaches.** | Signature (durability + learning) | ✅ Locked |
+| **Open-ended play that fits any classroom.** | Positioning (cross-pedagogy, stated positively) | ✅ Locked |
+| **Bring the play to your classroom.** | Primary CTA | ✅ Locked |
+| *(hero / header)* | Brand hero | ⏳ Owner choosing |
 
-Educators trust rigor and reliability. Lead with curation and developmental value; let warmth close, not open. Never let "small shop" undercut your ability to fulfill a district order.
+**Hero, pending owner pick (two finalists):**
+1. **Natural classroom toys, chosen with a teacher's care.** (recommended: warmth + curation)
+2. **Toys teachers trust, from makers we know by name.** (alternative: social proof + the named-makers differentiator)
 
-### Educator hero line — DRAFT options (await owner sign-off; NOT yet locked)
-Proposals that keep the warmth but lead with curation/credibility for an educator reader. Promote one to locked, or none:
-1. **Classroom toys chosen by hand, from makers we know by name.** (leads with curation + sourcing credibility)
-2. **Natural materials and open-ended play, vetted for the way children really learn.** (leads with pillars 1 + 2; educator-literate)
-3. **Quality play for every classroom. No single philosophy required.** (the cross-pedagogy stance, reworked as a hero)
+**CTA variants by context:**
+- Educator landing / hero: *"Bring the play to your classroom."* (locked); for more brand warmth, *"Bring the wagon to your classroom."*
+- Procurement / vendor / PO pages: *"Start a classroom order."* / *"Open a school account."* (the play CTA is too casual here).
 
-Educator-tuned boilerplate variant (also draft): *A small family shop in Los Angeles, bringing the hard-to-find of the wooden and felt toy world to classrooms across the country.*
+**Educator boilerplate (draft, pending sign-off):** *A small family shop in Los Angeles, bringing hard-to-find wooden and felt toys from makers we know by name to classrooms across the country.*
+
+### Tagline usage by surface
+| Surface | Use |
+|---|---|
+| Retail storefront / brand | The four retail locked taglines (§1.6) |
+| Educator landing / marketing | Educator set; lead with hero + signature, CTA *"Bring the play to your classroom."* |
+| Educator procurement / vendor / PO pages | Credibility first (curation + reliability); minimal tagline; procurement CTA |
+
+Educators trust rigor and reliability: lead with curation and developmental value, and let warmth close rather than open. Never let "small shop" undercut your ability to fulfill a district order.
 
 ---
 
