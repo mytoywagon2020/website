@@ -288,6 +288,11 @@
       .po-section .btn{display:block;text-align:center;}
     }
     .season__more--mobile{display:none;}
+
+    /* Status indicator dots (replaces emoji for cross-device consistency) */
+    .status-dot{display:inline-block;width:10px;height:10px;border-radius:50%;vertical-align:1px;margin-right:6px;flex-shrink:0;}
+    .status-dot--ok{background:var(--forest);}
+    .status-dot--warn{background:var(--amber);}
   </style>
 </head>
 <body>
@@ -437,10 +442,10 @@
     <div class="dash-trust__sub">M&ndash;F &middot; 8am&ndash;5pm PT &middot; reply within 1 business day</div>
   </section>
 
-  <main class="dash-main">
+  <main class="dash-main" aria-label="Educator dashboard">
 
     {%- comment -%}LEFT RAIL{%- endcomment -%}
-    <aside class="dash-aside">
+    <aside class="dash-aside" aria-label="Account and wagon">
 
       {%- comment -%}Wagon card — three states{%- endcomment -%}
       {%- if wagon_state == 'empty' -%}
@@ -541,9 +546,9 @@
           {%- if customer.first_name != blank -%}{{ customer.first_name }} {{ customer.last_name }}<br/>{%- endif -%}
           {{ customer.email }}<br/>
           Net-30 / Net-60 &middot;
-          {%- if tax_state == 'verified' %} 🟢 Tax-exempt active
-          {%- elsif tax_state == 'pending' %} 🟡 Tax certificate under review<br/><span style="font-size:11.5px;color:var(--stone);">We're verifying your certificate — you'll be notified once it's active.</span>
-          {%- else %} 🟡 Tax certificate needed<br/><span style="font-size:11.5px;color:var(--stone);"><a href="/pages/tax-exempt-upload" style="color:var(--forest);">Submit your exemption certificate &rarr;</a></span>
+          {%- if tax_state == 'verified' %} <span class="status-dot status-dot--ok" aria-hidden="true"></span>Tax-exempt active
+          {%- elsif tax_state == 'pending' %} <span class="status-dot status-dot--warn" aria-hidden="true"></span>Tax certificate under review<br/><span style="font-size:11.5px;color:var(--stone);">We're verifying your certificate — you'll be notified once it's active.</span>
+          {%- else %} <span class="status-dot status-dot--warn" aria-hidden="true"></span>Tax certificate needed<br/><span style="font-size:11.5px;color:var(--stone);"><a href="/pages/tax-exempt-upload" style="color:var(--forest);">Submit your exemption certificate &rarr;</a></span>
           {%- endif %}
         </div>
         <div class="acct-card__links">
@@ -570,9 +575,9 @@
           {%- if customer.first_name != blank -%}{{ customer.first_name }} {{ customer.last_name }} &middot; {%- endif -%}
           {{ customer.email }}<br/>
           Net-30 / Net-60 &middot;
-          {%- if tax_state == 'verified' %} 🟢 Tax-exempt active
-          {%- elsif tax_state == 'pending' %} 🟡 Tax certificate under review
-          {%- else %} 🟡 <a href="/pages/tax-exempt-upload" style="color:var(--forest);">Submit your exemption certificate &rarr;</a>
+          {%- if tax_state == 'verified' %} <span class="status-dot status-dot--ok" aria-hidden="true"></span>Tax-exempt active
+          {%- elsif tax_state == 'pending' %} <span class="status-dot status-dot--warn" aria-hidden="true"></span>Tax certificate under review
+          {%- else %} <span class="status-dot status-dot--warn" aria-hidden="true"></span><a href="/pages/tax-exempt-upload" style="color:var(--forest);">Submit your exemption certificate &rarr;</a>
           {%- endif %}
           <div class="links">
             <a href="{{ routes.account_url }}">Addresses &rarr;</a>
