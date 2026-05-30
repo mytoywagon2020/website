@@ -1573,11 +1573,20 @@ footer .cols .downloads a::after{
 /* ============================== COVER ============================== */
 .cover{
   position: relative;
-  height: min(100vh, 920px);
-  min-height: 680px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 1440px;
+  min-height: min(82vh, 760px);
+  padding: clamp(48px, 7vw, 96px);
   overflow: hidden;
   isolation: isolate;
 }
+.cover > h1,
+.cover > .cover-subtitle,
+.cover > .footer{ width: 100%; max-width: 760px; }
 .cover .bg{ position:absolute; inset:0; z-index:0; }
 .cover .veil{
   position:absolute; inset:0; z-index:1; pointer-events:none;
@@ -1589,14 +1598,7 @@ footer .cols .downloads a::after{
   position:absolute; inset:28px; z-index:2; pointer-events:none;
   border: 1px solid rgba(250,246,237,.32);
 }
-.cover .head{
-  position: relative;
-  z-index: 3;
-  width: 100%;
-  margin-bottom: auto;
-  display: flex; justify-content: space-between; align-items: flex-start;
-  color: var(--cream);
-}
+.cover .head{ display: none; }
 .cover .head .vol{ text-align:right; }
 .cover .head .vol .num{
   font-family: var(--serif); font-style: italic;
@@ -1638,8 +1640,8 @@ footer .cols .downloads a::after{
   width: 100%;
   margin-top: 28px;
   color: var(--cream);
-  text-shadow: 0 1px 10px rgba(0,0,0,.5);
-  display: flex; justify-content: space-between; align-items: flex-end; gap: 24px;
+  text-shadow: 0 1px 10px rgba(0,0,0,.55);
+  display: flex; justify-content: flex-start; align-items: flex-end; gap: 24px;
 }
 .cover .audience{ max-width: 540px; }
 .cover .audience .label{ color: rgba(250,246,237,.96); text-shadow: 0 1px 8px rgba(0,0,0,.55); }
