@@ -1590,9 +1590,10 @@ footer .cols .downloads a::after{
   border: 1px solid rgba(250,246,237,.32);
 }
 .cover .head{
-  position: absolute;
-  top: 92px; left: clamp(28px, 5vw, 56px); right: clamp(28px, 5vw, 56px);
+  position: relative;
   z-index: 3;
+  width: 100%;
+  margin-bottom: auto;
   display: flex; justify-content: space-between; align-items: flex-start;
   color: var(--cream);
 }
@@ -1602,10 +1603,7 @@ footer .cols .downloads a::after{
   font-size: clamp(48px, 5.6vw, 88px); line-height: 1;
 }
 .cover h1{
-  position:absolute;
-  left: clamp(28px, 5vw, 56px);
-  right: clamp(28px, 5vw, 56px);
-  bottom: 220px;
+  position: relative;
   z-index: 3;
   margin: 0;
   font-family: var(--serif);
@@ -1621,12 +1619,24 @@ footer .cols .downloads a::after{
   font-style: italic;
   color: color-mix(in oklab, var(--accent-soft) 80%, white);
 }
-.cover .footer{
-  position:absolute;
-  left: clamp(28px, 5vw, 56px);
-  right: clamp(28px, 5vw, 56px);
-  bottom: 48px;
+.cover .cover-subtitle{
+  position: relative;
   z-index: 3;
+  margin: 22px 0 0;
+  max-width: 60ch;
+  font-family: var(--sans);
+  font-size: clamp(14px, 1.4vw, 17px);
+  line-height: 1.55;
+  font-weight: 500;
+  letter-spacing: .01em;
+  color: rgba(250,246,237,.86);
+  text-shadow: 0 1px 10px rgba(0,0,0,.45);
+}
+.cover .footer{
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  margin-top: 28px;
   color: var(--cream);
   text-shadow: 0 1px 10px rgba(0,0,0,.5);
   display: flex; justify-content: space-between; align-items: flex-end; gap: 24px;
@@ -2936,11 +2946,9 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
   body{ font-size: 16px; }
   .nav{ grid-template-columns: 1fr auto; padding: 12px 18px; }
   .nav__center{ display: none; }
-  .cover{ height: 88vh; min-height: 600px; }
+  .cover{ min-height: 80vh; padding-top: clamp(96px, 24vw, 140px); }
   .cover .frame{ inset: 14px; }
-  .cover .head{ top: 72px; left: 24px; right: 24px; }
-  .cover h1{ left: 24px; right: 24px; bottom: 112px; }
-  .cover .footer{ left: 24px; right: 24px; bottom: 28px; flex-direction: column; align-items: flex-start; gap: 16px; }
+  .cover .footer{ flex-direction: column; align-items: flex-start; gap: 16px; }
   .anchor, .intro, .gallery, .companions, .closing{ }
   .stage .top{ flex-direction: column; }
   .stage .top .right{ text-align: left; }
@@ -3479,7 +3487,7 @@ section[data-screen-label="08 The Everything Play Bundle"] .content .eyebrow{
       <span class="sep" aria-hidden="true">/</span>
       <a href="/pages/educators">Educator Catalog</a>
       <span class="sep" aria-hidden="true">/</span>
-      <span aria-current="page">Section 02 &middot; Nature Play</span>
+      <span aria-current="page">Section 02 &middot; Nature Play &amp; Inquiry</span>
     </nav>
     <div class="stepper" id="ecosystemStepper">
       <a class="prev" href="#"></a>
@@ -3512,12 +3520,13 @@ section[data-screen-label="08 The Everything Play Bundle"] .content .eyebrow{
     </div>
   </div>
 
-  <h1>Nature<span class="it">Play</span></h1>
+  <h1>02 &middot; Nature Play <span class="it">&amp; Inquiry</span></h1>
+  <p class="cover-subtitle">Supports early life science observation, reflective symmetry, and material sorting through the tactile exploration of natural textures, wooden utensils, and organic forms.</p>
 
   <div class="footer">
     <div class="audience">
       <span class="label">Section Two &nbsp;&middot;&nbsp; Pre-K to Grade 2</span>
-      <p>The garden has always been the best classroom. These are the tools that bring it inside. The Gus + Mabel Busy Bee Tray, hand-felted nature loose parts, and hand-finished Papoose teak tools, open-ended nature play a child can pour, sort, and arrange for a whole term.</p>
+      <p>The garden has always been the best classroom. Bring it inside with the Gus + Mabel Busy Bee Tray, hand-felted nature loose parts, and hand-finished Papoose teak tools. Open-ended nature inquiry a child can pour, sort, and arrange for a whole term.</p>
     </div>
   </div>
 </section>
@@ -3640,6 +3649,155 @@ section[data-screen-label="08 The Everything Play Bundle"] .content .eyebrow{
   </div>
 </section>
 
+<!-- =========================== GALLERY 2: NATURE TOOLS =========================== -->
+<!-- Papoose teak nature tools, catalog pg. 16. SKUs verbatim from the catalog.
+     No prices in the catalog source, so each card omits the price line. -->
+<div class="section-divider">
+  <span class="line"></span>
+  <span class="label">Nature Tools &middot; Papoose</span>
+</div>
+
+<section class="gallery even gut" id="tools" data-screen-label="07 Nature Tools" style="background: color-mix(in oklab, var(--accent-pale) 50%, var(--cream));">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <span class="eyebrow">05. Papoose &nbsp;&middot;&nbsp; Collection</span>
+        <h2>Nature <span class="it">tools.</span></h2>
+      </div>
+      <div class="right">
+        <p>Hand-finished teak scoops, coconut vessels, and pincer-grip tongs, open-ended nature tools that move between sand table, mud kitchen, and loose-parts station.</p>
+        <p style="margin-top: 18px; font-family: var(--sans); font-size: 13px; line-height: 1.6; color: var(--ink); font-weight: 500;">All Papoose teak nature tools. SVLK teak, Fair Trade conditions. CE / EN71 safety-tested. Made in Indonesia.</p>
+        <div class="index">NESTING BOWLS &nbsp;&middot;&nbsp; TONGS &nbsp;&middot;&nbsp; SPOON SET &nbsp;&middot;&nbsp; COCONUT SIEVE &nbsp;&middot;&nbsp; SLOTTED SPOON</div>
+      </div>
+    </div>
+
+    <div class="homes">
+      <!-- 01 Baby Nesting Bowls (hero cell) -->
+      <article class="home size-hero">
+        <div class="tile-wrap">
+          <div class="tile t-gilt has-photo">
+            <img loading="lazy" src="{{ 'np-nesting-bowls.webp' | file_url }}" alt="Papoose Teak Nesting Bowls: three graduated teak bowls on warm cream linen, filled with river stones and beads, acorns and pinecones, and sea glass and wooden buttons."/>
+            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+            <span class="tag">[ TOOL N&deg;01 &nbsp;&middot;&nbsp; BABY NESTING BOWLS ]</span>
+          </div>
+          <div class="overlay"></div>
+          <div class="float-name">Baby Nesting Bowls</div>
+        </div>
+        <div class="cap expanded">
+          <span class="no">01</span>
+          <span class="name">Baby Nesting Bowls</span>
+          <span class="desc">Three graduated teak bowls that nest inside one another, for ordering by size, volume, and capacity, or for staging loose parts as an invitation to play.</span>
+          <span class="meta">MTW-NP-BNB</span>
+          <div class="add-row">
+            <button class="add-btn" type="button" data-sku="MTW-NP-BNB"><span class="plus"></span>Add to wagon</button>
+            
+          </div>
+        </div>
+      </article>
+
+      <!-- 02 Tongs (tall) -->
+      <article class="home size-tall">
+        <div class="tile-wrap">
+          <div class="tile t-cream has-photo">
+            <img loading="lazy" src="{{ 'np-teak-tongs.png' | file_url }}" alt="Papoose teak tongs: long hand-finished pincer-grip tongs on warm maple, with three smooth river stones in sage, cream, and russet."/>
+            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+            <span class="tag">[ TOOL N&deg;02 &nbsp;&middot;&nbsp; TONGS ]</span>
+          </div>
+          <div class="overlay"></div>
+          <div class="float-name">Tongs</div>
+        </div>
+        <div class="cap">
+          <span class="no">02</span>
+          <span class="name">Tongs</span>
+          <span class="desc">Pincer-grip practice disguised as play, transferring acorns, seed pods, and loose parts between bowls.</span>
+          <span class="meta">MTW-NP-TNG</span>
+          <div class="add-row">
+            <button class="add-btn" type="button" data-sku="MTW-NP-TNG"><span class="plus"></span>Add to wagon</button>
+            
+          </div>
+        </div>
+      </article>
+
+      <!-- 03 Spoon Set -->
+      <article class="home size-std">
+        <div class="tile-wrap">
+          <div class="tile t-soft has-photo">
+            <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0522/0882/8586/files/spoon-set.webp?v=1779655428&amp;width=1100" alt="Papoose Teak Spoon Set: nine hand-finished teak spoons in varied sizes arrayed in a fan, fresh lavender sprigs between them on cream."/>
+            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+            <span class="tag">[ TOOL N&deg;03 &nbsp;&middot;&nbsp; SPOON SET ]</span>
+          </div>
+          <div class="overlay"></div>
+          <div class="float-name">Spoon Set</div>
+        </div>
+        <div class="cap">
+          <span class="no">03</span>
+          <span class="name">Spoon Set</span>
+          <span class="desc">Eight hand-finished teak spoons in assorted capacities, for scooping, pouring, transferring, and measuring.</span>
+          <span class="meta">MTW-NP-SPS</span>
+          <div class="add-row">
+            <button class="add-btn" type="button" data-sku="MTW-NP-SPS"><span class="plus"></span>Add to wagon</button>
+            
+          </div>
+        </div>
+      </article>
+
+      <!-- 04 Mini Coconut Sieve -->
+      <article class="home size-std">
+        <div class="tile-wrap">
+          <div class="tile t-hue3 has-photo">
+            <img loading="lazy" src="{{ 'np-coconut-sieve.webp' | file_url }}" alt="Papoose Mini Coconut Sieve: a halved coconut bowl with hand-drilled perforations and a long teak handle on weathered wood, beside a halved fresh coconut, scattered sea salt, and fresh waxflowers."/>
+            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+            <span class="tag">[ TOOL N&deg;04 &nbsp;&middot;&nbsp; MINI COCONUT SIEVE ]</span>
+          </div>
+          <div class="overlay"></div>
+          <div class="float-name">Mini Coconut Sieve</div>
+        </div>
+        <div class="cap">
+          <span class="no">04</span>
+          <span class="name">Mini Coconut Sieve</span>
+          <span class="desc">Halved coconut shells, hand-perforated, natural sieves for dry rice, sand, water, and seasonal fills.</span>
+          <span class="meta">MTW-NP-MCS</span>
+          <div class="add-row">
+            <button class="add-btn" type="button" data-sku="MTW-NP-MCS"><span class="plus"></span>Add to wagon</button>
+            
+          </div>
+        </div>
+      </article>
+
+      <!-- 05 Teak Slotted Spoon -->
+      <article class="home size-std">
+        <div class="tile-wrap">
+          <div class="tile t-soft has-photo">
+            <img loading="lazy" src="{{ 'np-slotted-spoon.png' | file_url }}" alt="Papoose Teak Slotted Spoon: a hand-finished teak ladle with a wide round perforated bowl and long slim handle, resting on a cream cable-knit wool surface beside a stoneware bowl and dried autumn leaves."/>
+            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+            <span class="tag">[ TOOL N&deg;05 &nbsp;&middot;&nbsp; TEAK SLOTTED SPOON ]</span>
+          </div>
+          <div class="overlay"></div>
+          <div class="float-name">Teak Slotted Spoon</div>
+        </div>
+        <div class="cap">
+          <span class="no">05</span>
+          <span class="name">Teak Slotted Spoon</span>
+          <span class="desc">Hand-finished teak with a perforated bowl, for sifting, scooping, and the slow rhythm of loose-parts work.</span>
+          <span class="meta">MTW-NP-PSS</span>
+          <div class="add-row">
+            <button class="add-btn" type="button" data-sku="MTW-NP-PSS"><span class="plus"></span>Add to wagon</button>
+            
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="collection-bridge">
+      <p>
+        <strong>The Nature Tools Set &nbsp;&middot;&nbsp; MTW-NP-NTS</strong>
+        Bowls, tongs, spoon set, coconut sieve, and slotted spoon, bundled for the loose-parts station. Buy as a set.
+      </p>
+      <a href="#quote" class="bridge-cta">Request the Nature Tools Set</a>
+    </div>
+  </div>
+</section>
+
 <div class="section-divider">
   <span class="line"></span>
   <span class="label">Nature Loose Parts &middot; Tara Treasures &amp; Papoose</span>
@@ -3652,8 +3810,9 @@ section[data-screen-label="08 The Everything Play Bundle"] .content .eyebrow{
   <div class="wrap">
     <div class="head">
       <div>
-        <span class="eyebrow">05. Seasonal Collection &nbsp;&middot;&nbsp; Autumn</span>
+        <span class="eyebrow">06. Seasonal Collection &nbsp;&middot;&nbsp; Autumn</span>
         <h2>Nature <span class="it">loose parts.</span></h2>
+        <p style="margin-top: 10px; font-family: var(--sans); font-size: 12px; letter-spacing: .04em; color: var(--accent-deep); font-weight: 600;">Natural manipulatives for pattern tracking, set counting, and classification inquiry.</p>
       </div>
       <div class="right">
         <p>Felt loose parts for the autumn nature shelf or back-to-school table. Mushrooms in red and brown, acorns in autumn tones, pinecones in evergreen and warm brown, and embroidered autumn leaves. Each set invites sorting, counting, and seasonal arranging, in colors that mark the season.</p>
@@ -3854,7 +4013,7 @@ section[data-screen-label="08 The Everything Play Bundle"] .content .eyebrow{
   <div class="wrap">
     <div class="head">
       <div>
-        <span class="eyebrow">06. Autumn Folk &amp; Small World</span>
+        <span class="eyebrow">07. Autumn Folk &amp; Small World</span>
         <h2>Autumn <span class="it">folk.</span></h2>
       </div>
       <div class="right">
@@ -3993,154 +4152,6 @@ section[data-screen-label="08 The Everything Play Bundle"] .content .eyebrow{
   </div>
 </section>
 
-<!-- =========================== GALLERY 2: NATURE TOOLS =========================== -->
-<!-- Papoose teak nature tools, catalog pg. 16. SKUs verbatim from the catalog.
-     No prices in the catalog source, so each card omits the price line. -->
-<div class="section-divider">
-  <span class="line"></span>
-  <span class="label">Nature Tools &middot; Papoose</span>
-</div>
-
-<section class="gallery even gut" id="tools" data-screen-label="07 Nature Tools" style="background: color-mix(in oklab, var(--accent-pale) 50%, var(--cream));">
-  <div class="wrap">
-    <div class="head">
-      <div>
-        <span class="eyebrow">07. Papoose &nbsp;&middot;&nbsp; Collection</span>
-        <h2>Nature <span class="it">tools.</span></h2>
-      </div>
-      <div class="right">
-        <p>Hand-finished teak scoops, coconut vessels, and pincer-grip tongs, open-ended nature tools that move between sand table, mud kitchen, and loose-parts station.</p>
-        <p style="margin-top: 18px; font-family: var(--sans); font-size: 13px; line-height: 1.6; color: var(--ink); font-weight: 500;">All Papoose teak nature tools. SVLK teak, Fair Trade conditions. CE / EN71 safety-tested. Made in Indonesia.</p>
-        <div class="index">NESTING BOWLS &nbsp;&middot;&nbsp; TONGS &nbsp;&middot;&nbsp; SPOON SET &nbsp;&middot;&nbsp; COCONUT SIEVE &nbsp;&middot;&nbsp; SLOTTED SPOON</div>
-      </div>
-    </div>
-
-    <div class="homes">
-      <!-- 01 Baby Nesting Bowls (hero cell) -->
-      <article class="home size-hero">
-        <div class="tile-wrap">
-          <div class="tile t-gilt has-photo">
-            <img loading="lazy" src="{{ 'np-nesting-bowls.webp' | file_url }}" alt="Papoose Teak Nesting Bowls: three graduated teak bowls on warm cream linen, filled with river stones and beads, acorns and pinecones, and sea glass and wooden buttons."/>
-            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-            <span class="tag">[ TOOL N&deg;01 &nbsp;&middot;&nbsp; BABY NESTING BOWLS ]</span>
-          </div>
-          <div class="overlay"></div>
-          <div class="float-name">Baby Nesting Bowls</div>
-        </div>
-        <div class="cap expanded">
-          <span class="no">01</span>
-          <span class="name">Baby Nesting Bowls</span>
-          <span class="desc">Three graduated teak bowls that nest inside one another, for ordering by size, volume, and capacity, or for staging loose parts as an invitation to play.</span>
-          <span class="meta">MTW-NP-BNB</span>
-          <div class="add-row">
-            <button class="add-btn" type="button" data-sku="MTW-NP-BNB"><span class="plus"></span>Add to wagon</button>
-            
-          </div>
-        </div>
-      </article>
-
-      <!-- 02 Tongs (tall) -->
-      <article class="home size-tall">
-        <div class="tile-wrap">
-          <div class="tile t-cream has-photo">
-            <img loading="lazy" src="{{ 'np-teak-tongs.png' | file_url }}" alt="Papoose teak tongs: long hand-finished pincer-grip tongs on warm maple, with three smooth river stones in sage, cream, and russet."/>
-            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-            <span class="tag">[ TOOL N&deg;02 &nbsp;&middot;&nbsp; TONGS ]</span>
-          </div>
-          <div class="overlay"></div>
-          <div class="float-name">Tongs</div>
-        </div>
-        <div class="cap">
-          <span class="no">02</span>
-          <span class="name">Tongs</span>
-          <span class="desc">Pincer-grip practice disguised as play, transferring acorns, seed pods, and loose parts between bowls.</span>
-          <span class="meta">MTW-NP-TNG</span>
-          <div class="add-row">
-            <button class="add-btn" type="button" data-sku="MTW-NP-TNG"><span class="plus"></span>Add to wagon</button>
-            
-          </div>
-        </div>
-      </article>
-
-      <!-- 03 Spoon Set -->
-      <article class="home size-std">
-        <div class="tile-wrap">
-          <div class="tile t-soft has-photo">
-            <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0522/0882/8586/files/spoon-set.webp?v=1779655428&amp;width=1100" alt="Papoose Teak Spoon Set: nine hand-finished teak spoons in varied sizes arrayed in a fan, fresh lavender sprigs between them on cream."/>
-            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-            <span class="tag">[ TOOL N&deg;03 &nbsp;&middot;&nbsp; SPOON SET ]</span>
-          </div>
-          <div class="overlay"></div>
-          <div class="float-name">Spoon Set</div>
-        </div>
-        <div class="cap">
-          <span class="no">03</span>
-          <span class="name">Spoon Set</span>
-          <span class="desc">Eight hand-finished teak spoons in assorted capacities, for scooping, pouring, transferring, and measuring.</span>
-          <span class="meta">MTW-NP-SPS</span>
-          <div class="add-row">
-            <button class="add-btn" type="button" data-sku="MTW-NP-SPS"><span class="plus"></span>Add to wagon</button>
-            
-          </div>
-        </div>
-      </article>
-
-      <!-- 04 Mini Coconut Sieve -->
-      <article class="home size-std">
-        <div class="tile-wrap">
-          <div class="tile t-hue3 has-photo">
-            <img loading="lazy" src="{{ 'np-coconut-sieve.webp' | file_url }}" alt="Papoose Mini Coconut Sieve: a halved coconut bowl with hand-drilled perforations and a long teak handle on weathered wood, beside a halved fresh coconut, scattered sea salt, and fresh waxflowers."/>
-            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-            <span class="tag">[ TOOL N&deg;04 &nbsp;&middot;&nbsp; MINI COCONUT SIEVE ]</span>
-          </div>
-          <div class="overlay"></div>
-          <div class="float-name">Mini Coconut Sieve</div>
-        </div>
-        <div class="cap">
-          <span class="no">04</span>
-          <span class="name">Mini Coconut Sieve</span>
-          <span class="desc">Halved coconut shells, hand-perforated, natural sieves for dry rice, sand, water, and seasonal fills.</span>
-          <span class="meta">MTW-NP-MCS</span>
-          <div class="add-row">
-            <button class="add-btn" type="button" data-sku="MTW-NP-MCS"><span class="plus"></span>Add to wagon</button>
-            
-          </div>
-        </div>
-      </article>
-
-      <!-- 05 Teak Slotted Spoon -->
-      <article class="home size-std">
-        <div class="tile-wrap">
-          <div class="tile t-soft has-photo">
-            <img loading="lazy" src="{{ 'np-slotted-spoon.png' | file_url }}" alt="Papoose Teak Slotted Spoon: a hand-finished teak ladle with a wide round perforated bowl and long slim handle, resting on a cream cable-knit wool surface beside a stoneware bowl and dried autumn leaves."/>
-            <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-            <span class="tag">[ TOOL N&deg;05 &nbsp;&middot;&nbsp; TEAK SLOTTED SPOON ]</span>
-          </div>
-          <div class="overlay"></div>
-          <div class="float-name">Teak Slotted Spoon</div>
-        </div>
-        <div class="cap">
-          <span class="no">05</span>
-          <span class="name">Teak Slotted Spoon</span>
-          <span class="desc">Hand-finished teak with a perforated bowl, for sifting, scooping, and the slow rhythm of loose-parts work.</span>
-          <span class="meta">MTW-NP-PSS</span>
-          <div class="add-row">
-            <button class="add-btn" type="button" data-sku="MTW-NP-PSS"><span class="plus"></span>Add to wagon</button>
-            
-          </div>
-        </div>
-      </article>
-    </div>
-
-    <div class="collection-bridge">
-      <p>
-        <strong>The Nature Tools Set &nbsp;&middot;&nbsp; MTW-NP-NTS</strong>
-        Bowls, tongs, spoon set, coconut sieve, and slotted spoon, bundled for the loose-parts station. Buy as a set.
-      </p>
-      <a href="#quote" class="bridge-cta">Request the Nature Tools Set</a>
-    </div>
-  </div>
-</section>
 
 <!-- =========================== FEATURED PRODUCT 2 (Wild Mountain Child · The Everything Play Bundle) =========================== -->
 <!-- Featured 2, Wild Mountain Child The Everything Play Bundle. Catalog pg. 17.
