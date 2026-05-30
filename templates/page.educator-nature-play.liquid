@@ -1590,9 +1590,10 @@ footer .cols .downloads a::after{
   border: 1px solid rgba(250,246,237,.32);
 }
 .cover .head{
-  position: absolute;
-  top: 92px; left: clamp(28px, 5vw, 56px); right: clamp(28px, 5vw, 56px);
+  position: relative;
   z-index: 3;
+  width: 100%;
+  margin-bottom: auto;
   display: flex; justify-content: space-between; align-items: flex-start;
   color: var(--cream);
 }
@@ -1602,10 +1603,7 @@ footer .cols .downloads a::after{
   font-size: clamp(48px, 5.6vw, 88px); line-height: 1;
 }
 .cover h1{
-  position:absolute;
-  left: clamp(28px, 5vw, 56px);
-  right: clamp(28px, 5vw, 56px);
-  bottom: 220px;
+  position: relative;
   z-index: 3;
   margin: 0;
   font-family: var(--serif);
@@ -1621,12 +1619,24 @@ footer .cols .downloads a::after{
   font-style: italic;
   color: color-mix(in oklab, var(--accent-soft) 80%, white);
 }
-.cover .footer{
-  position:absolute;
-  left: clamp(28px, 5vw, 56px);
-  right: clamp(28px, 5vw, 56px);
-  bottom: 48px;
+.cover .cover-subtitle{
+  position: relative;
   z-index: 3;
+  margin: 22px 0 0;
+  max-width: 60ch;
+  font-family: var(--sans);
+  font-size: clamp(14px, 1.4vw, 17px);
+  line-height: 1.55;
+  font-weight: 500;
+  letter-spacing: .01em;
+  color: rgba(250,246,237,.86);
+  text-shadow: 0 1px 10px rgba(0,0,0,.45);
+}
+.cover .footer{
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  margin-top: 28px;
   color: var(--cream);
   text-shadow: 0 1px 10px rgba(0,0,0,.5);
   display: flex; justify-content: space-between; align-items: flex-end; gap: 24px;
@@ -2936,11 +2946,9 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
   body{ font-size: 16px; }
   .nav{ grid-template-columns: 1fr auto; padding: 12px 18px; }
   .nav__center{ display: none; }
-  .cover{ height: 88vh; min-height: 600px; }
+  .cover{ min-height: 80vh; padding-top: clamp(96px, 24vw, 140px); }
   .cover .frame{ inset: 14px; }
-  .cover .head{ top: 72px; left: 24px; right: 24px; }
-  .cover h1{ left: 24px; right: 24px; bottom: 112px; }
-  .cover .footer{ left: 24px; right: 24px; bottom: 28px; flex-direction: column; align-items: flex-start; gap: 16px; }
+  .cover .footer{ flex-direction: column; align-items: flex-start; gap: 16px; }
   .anchor, .intro, .gallery, .companions, .closing{ }
   .stage .top{ flex-direction: column; }
   .stage .top .right{ text-align: left; }
