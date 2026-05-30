@@ -1,0 +1,26 @@
+{
+  "note": "Restore snapshot before adding 2/4/6 insert variants to the EDUCATOR Busy Bee Tray. Retail products intentionally untouched.",
+  "product": {
+    "id": "gid://shopify/Product/8444898803882",
+    "title": "Busy Bee Tray",
+    "handle": "busy-bee-tray-educator",
+    "status": "ACTIVE",
+    "vendor": "Gus + Mabel",
+    "productType": "Nature Trays",
+    "tags": ["educator", "educator-nature-play", "needs-price"],
+    "option_before": { "id": "gid://shopify/ProductOption/10733736525994", "name": "Title", "value": "Default Title (gid ProductOptionValue/4799440847018)" },
+    "variant_before": {
+      "id": "gid://shopify/ProductVariant/48345475711146",
+      "sku": "MTW-NP-BBT",
+      "price": "165.00",
+      "inventoryItem": "gid://shopify/InventoryItem/50415369978026",
+      "inventoryQuantity": 0
+    }
+  },
+  "retail_products_DO_NOT_TOUCH": [
+    "gid://shopify/Product/8390744604842 (2 Half)",
+    "gid://shopify/Product/8426482991274 (4 Quarter)",
+    "gid://shopify/Product/8426483089578 (6 Sixth)",
+    "gid://shopify/Product/8426490396842 (Reflective Mirror Insert accessory)"
+  ]
+}
