@@ -170,7 +170,7 @@ Premium voice and conversion are not in tension here — specificity does both. 
 ### Core principles
 1. **Clarity beats cleverness.** If forced to choose between clear and clever, choose clear. Then make the clear line beautiful.
 2. **Feature → benefit → classroom outcome.** Don't stop at the benefit; land on what it means for the room. "Dual-sided maple insert" → "trace letters with a finger" → "pre-writing before the pencil ever does."
-3. **Voice-of-customer.** Mirror real language from the 2,521+ retail reviews and educator feedback ("the most requested toy in our classroom", "they ask for them every morning"). Lift specific lines, not generic praise.
+3. **Voice-of-customer.** Mirror real language from the retail reviews (2,500+ published, ~95% are 4 to 5 stars) and educator feedback. Lift specific lines, not generic praise. The phrase bank in **§2.5** is the source — use it.
 4. **One idea per section.** Each block earns its place and makes one point.
 5. **Match the entry point.** Catalog-QR visitors, organic search, and educator referrals arrive with different awareness — the headline should meet the traffic it's written for.
 
@@ -184,6 +184,47 @@ Premium voice and conversion are not in tension here — specificity does both. 
 
 ### Social proof
 Lead with the most specific evidence available: verified-buyer reviews (with name + "Verified buyer"), review counts, districts/educators served since 2020, OT-recommended, framework alignment. Specific testimonials > star ratings.
+
+---
+
+## 2.5 Voice-of-customer bank (mined from 2,500+ published reviews)
+
+Source: the full published review export (≈2,527 reviews, ~93% five-star, ~95% four-or-five). This is the customers' own language — mirror it, don't invent a new vocabulary. **Lift the *register and specifics*, not whole sentences verbatim into marketing copy** (a real quote used *as* an attributed testimonial is fine; paraphrasing review phrasing into body copy is the goal).
+
+**What customers actually say (by frequency — these are the words to favor):**
+- **Quality / craft:** *well made* (by far the most repeated quality phrase), *beautiful*, *gorgeous*, *lovely*, *sturdy*, *quality*, *beautifully made*, *the quality is*… Lead proof copy on **"well made"** and **"beautiful"** — they're what buyers themselves reach for.
+- **Affection / delight:** *love / loves / we love*, *obsessed*, *adorable*, *cute*, *so sweet*, *precious*, *favorite*. ("Love" appears in over a third of reviews.)
+- **Heirloom / longevity:** *for years to come*, *heirloom*, *handed down*, *stand the test of time*. Confirms the durability positioning — buyers think in years.
+- **Fit for child:** *the perfect size*, *for little hands*, *perfect for* [age], *my [N] year old*.
+- **Play value:** *open-ended play*, *small world play*, *imaginative play*, *can't wait to play with it*, *plays with it every day*.
+- **Collection-building:** *the perfect addition to our collection*, *great addition to*, *to go with our…*. (A huge recurring frame — supports the **"Pairs with" / buy-as-a-set** cross-sell.)
+- **Gifting:** *gift*, *for my grandson/granddaughter/daughter/son*, *Christmas*, *birthday*, *can't wait to give it*. Grandparents and gift-givers are a real, frequent voice — gift framing converts.
+
+**Approved verbatim testimonial lines** (real, representative, PII-free — safe to use as attributed proof):
+- "The most gorgeous wooden tree I have ever seen."
+- "Even prettier than I imagined."
+- "Beautifully made and the perfect addition to our collection."
+- "Such wonderful quality and my daughter loves it."
+- "Well made and absolutely gorgeous. Perfect for open-ended play."
+- "The colors are beautiful and it's the perfect size for little hands."
+- "We will treasure this for years to come."
+
+> Use real quotes with a first name + "Verified buyer." Never fabricate a testimonial or attach a real name to words they didn't write.
+
+### Objection patterns (mined from the 1–3 star reviews — handle these *before* they're raised)
+The critical reviews are remarkably consistent. These are the real friction points; pre-empt them honestly in product copy and policy pages rather than hiding them.
+
+| Recurring objection | What buyers actually wrote | How copy should pre-empt it |
+|---|---|---|
+| **Smaller than expected** (the #1 complaint by far) | "a lot smaller and thinner than expected", "I was surprised how small the items were" | State **real dimensions in plain inches** in the lede or spec line, and add a scale cue ("about the length of your hand"). Never let the photo imply size. |
+| **Damaged in shipping / packaging** | "arrived broken", "basket came crushed in a small box", "limited packing material" | Don't over-promise, but where true, note careful/protective packaging; make the replacement path obvious. Flag fragile items. |
+| **Price vs. perceived value** | "way too expensive for what it is", "cute, def not worth $X" | Lead value with **material + longevity + what it does in play** (the heirloom/"years to come" frame buyers themselves use). Justify price with substance, never with hype. |
+| **Customer-service response time** | "emailed customer service but never got a response", "no replacement yet" | Set honest response expectations; make the contact path and turnaround visible. (Policy/ops, but copy shouldn't promise what ops can't meet.) |
+| **Surface finish — roughness / splinters / sanding** | "isn't smoothly sanded", "splinters", "rough to write on" | Only claim "smooth" / "baby-safe surface" when verified for that item. Material honesty over blanket claims. |
+| **Color / appearance vs. website** | "much darker IRL than the website", "clear tiles came yellowish" | Keep imagery color-true; describe finish honestly ("warm walnut tone, darker than it photographs"). |
+| **Assembly difficulty** | "assembly was completely unreasonable", "screws too tight for my child" | State assembly required + tools needed + adult-assembly up front. Don't call adult-assembly items child-buildable. |
+
+**The honesty dividend:** MTW's negative reviews overwhelmingly cite *expectations* (size, finish, ship time), not bad products. Accurate, specific copy (real dimensions, honest finish notes, clear ship/assembly expectations) removes most of them at the source — and that candor *is* the brand voice.
 
 ### CTA formula
 **[Action] + [what they get]** — and stay on-voice. "Buy as a set", "See current pricing", "Request a curriculum-alignment letter", "Start your vendor file". Never "Submit", "Click here", or urgency gimmicks.
