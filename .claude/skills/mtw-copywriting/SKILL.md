@@ -133,10 +133,12 @@ The four retail taglines above stay **retail-only**. The educator catalog (teach
 |---|---|---|
 | **Natural toys for early childhood classrooms.** | Header / hero (names the thing: *toys*, made of natural materials) | ✅ Locked |
 | **The best classrooms smell like wood, feel like wool, and sound like children absorbed in play.** | Signature lede (the catalog's defining sentence; sits *under* the header, not as a header itself) | ✅ Locked |
-| **Open-ended play that fits any classroom.** | Positioning (cross-pedagogy, stated positively) | ✅ Locked |
-| **Bring the play to your classroom.** | Primary CTA | ✅ Locked |
+| **Toys that fit any teacher's approach.** | Positioning (cross-pedagogy, stated positively) | ⏳ Pending owner approval |
+| **Bring open-ended play to your classroom.** | Primary CTA | ⏳ Pending owner approval |
 
-**Why these:** the header names *toys* (the noun a buyer scans for) and reads clearly to a teacher and a business manager alike; the signature lede carries the emotion as a full sentence beneath it (too long to be a header on its own — distill to *"Smell like wood. Feel like wool. Sound like play."* if a short triad is ever needed). All four are catalog-grounded (pg 2–4).
+**Why these:** the header names *toys* (the noun a buyer scans for) and reads clearly to a teacher and a business manager alike; the signature lede carries the emotion as a full sentence beneath it (too long to be a header on its own — distill to *"Smell like wood. Feel like wool. Sound like play."* if a short triad is ever needed). Header + signature are catalog-grounded (pg 2–4).
+
+**Word-balance note:** the set deliberately spreads its key words so no one term dominates (classroom ×2, toys ×2, play ×2, teacher ×1). Avoid edits that put "classroom" in three of the four lines again.
 
 **CTA variants by context:**
 - Educator landing / hero: *"Bring the play to your classroom."* (locked); for more brand warmth, *"Bring the wagon to your classroom."*
