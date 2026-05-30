@@ -2812,9 +2812,10 @@ html[dir=rtl] .grid--center .grid__item{
 
 .clearfix:after{clear:both;content:"";display:table;}
 
-html:not(.no-js):not(.tab-outline) :focus{
-  outline:none;
-}
+/* (Removed: html:not(.no-js):not(.tab-outline) :focus { outline:none; }
+   — this old pattern stripped focus rings globally and relied on JS to add
+   a .tab-outline class for keyboard navigation. Modern :focus-visible
+   below handles this natively without JS, with cleaner browser semantics.) */
 
 .is-transitioning{
   display:block !important;
@@ -5863,6 +5864,7 @@ form+.footer__social{
 .site-header__search-input:focus{
     border:0;
     outline:0;
+    box-shadow:inset 0 -2px 0 0 var(--color-body-text,#1c1c1c);
   }
 
 .site-header__search-btn{
