@@ -82,6 +82,29 @@ Study these for *directional* tone calibration only. The catalog remains the sou
 
 ---
 
+## 1.5 Founders, story & positioning (source: Our Story page)
+
+**The founders.** My Toy Wagon is a small family business in Los Angeles, run by **Irfana and Rashid**, parents of two daughters, **Hafsa and Noor** (the reason the shop exists). Irfana trained as a **historian** and works as a college-level educator and researcher; she studies *"what lasts and what gets left behind."* That historian's lens is the shop's curation logic: every piece is weighed like a source — for how it was made, who made it, and whether it survives the way a child actually plays.
+
+**How it began.** They could not find the handmade wooden and felt toys they wanted for their own daughters, so they wrote letters to makers directly and stocked only what came back. The shop opened in Los Angeles in **January 2021**. ⚠️ The Educator Catalog says *"since 2020."* Treat 2021 as the shop opening; **flag the founding year to the owner before publishing it.**
+
+**Origin-story voice signatures** (use this register for story/About/brand moments):
+- Plain, short, declarative. *"We do not carry everything. We carry what we would give our own children."*
+- *"Curated, never collected."* · *"The shop is small on purpose."*
+- Named makers, real relationships, honest tone. No marketing gloss.
+
+**Founder voice in the Educator Catalog (the guidance you asked for):** default to the brand **"we"** for product, section, and procurement copy — institutions trust an organization, not a personality. Reserve the founders' **first person** for the About/story page, email sign-offs (*"With care, Irfana & Rashid"*), and one credibility beat where it earns trust (Irfana's historian's eye for what lasts). Never force the personal voice into product cards or procurement pages.
+
+### Positioning pillars (default order)
+Lead with **(1) open-ended / developmental value** and **(2) natural, non-toxic materials**. Layer the ethics underneath as proof of *how* the shop works: **the practice of small shops and named makers** (letters to workshops, curated-not-collected, made to be handed down) and **sustainability / Fair Trade conditions**. Ethics support the sale; they rarely lead it.
+
+### Lexicon
+- Say **"children,"** not "kids."
+- Reference Montessori, Reggio, Waldorf, NGSS, CASEL, EYFS as **pedagogy / frameworks** when relevant. Stay **educator-neutral**: no anthroposophy or spiritual / "sacred-childhood" framing. Keep wonder concrete, not mystical.
+- Favor "makers," "workshop," "handed down," "by hand," "pieces." Avoid generic "products / items" where "pieces" fits the story voice.
+
+---
+
 ## 2. Conversion craft (adapted, MIT-attributed)
 
 Premium voice and conversion are not in tension here — specificity does both. Apply these *underneath* the voice, never instead of it.
@@ -145,6 +168,20 @@ A wrong attribution reads as the whole shop being careless. Non-negotiable.
 - Eyebrow: `<span class="eyebrow">05. BrandName · Felt Homes</span>` → `<span class="eyebrow">05. Felt Homes</span>`
 
 **Leave verified references alone** — Wonderheart/Ambrosius/Papoose/Bumbu in eyebrows, product names, "pairs with" lines, alt text, and JSON catalog are correct. Don't "fix" what's right.
+
+### Verified maker origins (from the Our Story page — safe to use)
+| Maker | Origin | Makes |
+|---|---|---|
+| Bumbu | Romania | Hand-carved animals, trees |
+| Bauspiel | Germany | Gem / color blocks |
+| Ambrosius | Germany | Fairy figurines |
+| Magic Wood | Europe | Wooden play pieces |
+| Drewart | Poznań, Poland | Jeeps, campers |
+| Little Lights | Poland | — |
+| Wild Mountain Child | USA | Artisan tools |
+| Tara Treasures | Kathmandu, Nepal | Felt goods (incl. puppets); women's cooperatives |
+
+**Tara Treasures nuance (resolves the earlier confusion):** Tara Treasures *is* a genuine MTW partner maker (Kathmandu cooperatives) and does make felt goods including puppets. The rule is narrower than "never say Tara Treasures": the **felt fairy/woodland homes are NOT a Tara Treasures product** and must not be attributed to them. Tara Treasures may be named for items it actually makes. When unsure which product is whose, flag to the owner.
 
 ## 5. HARD RULES — claims, certification, origin
 - ❌ Never *"Fair Trade USA Certified"* → ✅ *"made in Fair Trade conditions"* / *"Fair Trade conditions"*.
