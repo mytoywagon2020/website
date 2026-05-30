@@ -131,7 +131,7 @@ The four retail taglines above stay **retail-only**. The educator catalog (teach
 
 | Line | Role | Status |
 |---|---|---|
-| **Natural toys for early childhood classrooms.** | Header / hero (names the thing: *toys*, made of natural materials) | ✅ Locked |
+| **Natural toys for early learning classrooms.** | Header / hero (names the thing: *toys*, made of natural materials) | ✅ Locked |
 | **The best classrooms smell like wood, feel like wool, and sound like children absorbed in play.** | Signature lede (the catalog's defining sentence; sits *under* the header, not as a header itself) | ✅ Locked |
 | **Toys that fit any teacher's approach.** | Positioning (cross-pedagogy, stated positively) | ⏳ Pending owner approval |
 | **Bring open-ended play to your classroom.** | Primary CTA | ⏳ Pending owner approval |
