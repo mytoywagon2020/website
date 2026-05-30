@@ -132,7 +132,8 @@ The four retail taglines above stay **retail-only**. The educator catalog (teach
 
 | Line | Role | Status |
 |---|---|---|
-| **Natural toys for early learning through Grade 5.** | Header / hero (names the thing: *toys*; "early learning through Grade 5" keeps the warm phrase and states the true upper range, so it covers every product type, including books and puppets, with no coverage gap or age ceiling) | ✅ Locked |
+| **Natural toys for the classroom** | Header line (warm, audience-clear; names *toys*) | ✅ Locked |
+| **Early learning through Grade 5.** | Range subtitle, set smaller/muted beneath the header line (states the true span; covers every product type, no age ceiling) | ✅ Locked |
 | **The best classrooms smell like wood, feel like wool, and sound like children absorbed in play.** | Signature lede (the catalog's defining sentence; sits *under* the header, not as a header itself) | ✅ Locked |
 | **Open-ended play for any teaching approach.** | Positioning (cross-pedagogy, stated positively, max reach) | ✅ Locked |
 | **Bring the play to your classroom.** | Primary CTA | ✅ Locked |

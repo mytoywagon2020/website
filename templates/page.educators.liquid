@@ -249,12 +249,21 @@ a{ color:inherit; }
 }
 .edu-hero h1 .it{ color: var(--forest); }
 .edu-hero .hero-sub{
+  font-family: var(--serif);
+  font-size: clamp(19px, 2vw, 26px);
+  letter-spacing: .01em;
+  color: var(--ink-soft);
+  font-weight: 400;
+  margin: 18px 0 0;
+}
+.edu-hero .hero-range{
   font-family: var(--sans);
-  font-size: clamp(14px, 1.4vw, 17px);
-  letter-spacing: .02em;
+  font-size: clamp(12px, 1.2vw, 14px);
+  letter-spacing: .14em;
+  text-transform: uppercase;
   color: var(--stone);
   font-weight: 500;
-  margin: 18px 0 0;
+  margin: 8px 0 0;
 }
 .edu-hero .dek{
   font-family: var(--serif);
@@ -1314,7 +1323,8 @@ footer ul a:hover{ color: var(--cream); }
     <div>
       <span class="label">The Educator Catalog &middot; The Autumn Edit · 2026</span>
       <h1><span class="it">Eight sections</span> of a working classroom.</h1>
-      <p class="hero-sub">Natural toys for early learning through Grade 5.</p>
+      <p class="hero-sub">Natural toys for the classroom</p>
+      <p class="hero-range">Early learning through Grade 5.</p>
     </div>
     <div>
       <p class="dek">The best classrooms smell like wood, feel like wool, and sound like children absorbed in play.</p>
