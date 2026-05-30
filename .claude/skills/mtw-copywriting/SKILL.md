@@ -109,6 +109,24 @@ Lead with **(1) open-ended / developmental value** and **(2) natural, non-toxic 
 
 ---
 
+## 1.6 Taglines & identity lines (LOCKED)
+
+Use these verbatim. Do not invent new taglines without owner sign-off.
+
+| Line | Role |
+|---|---|
+| **Come play with us.** | Primary CTA voice (warm, ownable) |
+| **A small toy shop, with a big heart.** | Brand hero / header tagline |
+| **Curated, never collected.** | Editorial signature (the research-led differentiator) |
+| **Quality play. No philosophy required.** | Positioning line — MTW is *not* locked to a single pedagogy (reinforces the educator-neutral, no-spiritual-framing lexicon above) |
+
+**One-sentence brand story (canonical boilerplate — meta, footer, email):**
+> A small family shop in Los Angeles, bringing the hard-to-find of the wooden and felt toy world from makers we know by name.
+
+**Identity words:** *niche* and *boutique* — small, selective, relationship-driven. Not "mega-store," not "marketplace."
+
+---
+
 ## 2. Conversion craft (adapted, MIT-attributed)
 
 Premium voice and conversion are not in tension here — specificity does both. Apply these *underneath* the voice, never instead of it.
