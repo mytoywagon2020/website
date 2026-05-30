@@ -133,12 +133,12 @@ The four retail taglines above stay **retail-only**. The educator catalog (teach
 |---|---|---|
 | **Natural toys for early learning classrooms.** | Header / hero (names the thing: *toys*, made of natural materials) | ✅ Locked |
 | **The best classrooms smell like wood, feel like wool, and sound like children absorbed in play.** | Signature lede (the catalog's defining sentence; sits *under* the header, not as a header itself) | ✅ Locked |
-| **Toys that fit any teacher's approach.** | Positioning (cross-pedagogy, stated positively) | ⏳ Pending owner approval |
-| **Bring open-ended play to your classroom.** | Primary CTA | ⏳ Pending owner approval |
+| **Open-ended play for any teaching approach.** | Positioning (cross-pedagogy, stated positively, max reach) | ✅ Locked |
+| **Bring the play to your classroom.** | Primary CTA | ✅ Locked |
 
-**Why these:** the header names *toys* (the noun a buyer scans for) and reads clearly to a teacher and a business manager alike; the signature lede carries the emotion as a full sentence beneath it (too long to be a header on its own — distill to *"Smell like wood. Feel like wool. Sound like play."* if a short triad is ever needed). Header + signature are catalog-grounded (pg 2–4).
+**Why these:** the header names *toys* (the noun a buyer scans for) and reads clearly to a teacher and a business manager alike; the signature lede carries the emotion as a full sentence beneath it (too long to be a header on its own — distill to *"Smell like wood. Feel like wool. Sound like play."* if a short triad is ever needed). Header + signature are catalog-grounded (pg 2–4). The positioning line leads with *open-ended play* (the one value every early-learning educator shares) and "any teaching approach" (broadest reach: Montessori, Reggio, play-based, public, homeschool co-op, therapy/OT, library) — stated positively, never "no philosophy required" (which can read as dismissive to educators who value their pedagogy).
 
-**Word-balance note:** the set deliberately spreads its key words so no one term dominates (classroom ×2, toys ×2, play ×2, teacher ×1). Avoid edits that put "classroom" in three of the four lines again.
+**Word-balance note:** the set deliberately spreads its key words so no one term dominates (classroom ×2, play ×2, toys ×1, teaching ×1). Avoid edits that put "classroom" in three of the four lines again.
 
 **CTA variants by context:**
 - Educator landing / hero: *"Bring the play to your classroom."* (locked); for more brand warmth, *"Bring the wagon to your classroom."*
