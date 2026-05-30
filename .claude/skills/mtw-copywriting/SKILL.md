@@ -106,6 +106,7 @@ Lead with **(1) open-ended / developmental value** and **(2) natural, non-toxic 
 - Say **"children,"** not "kids."
 - Reference Montessori, Reggio, Waldorf, NGSS, CASEL, EYFS as **pedagogy / frameworks** when relevant. Stay **educator-neutral**: no anthroposophy or spiritual / "sacred-childhood" framing. Keep wonder concrete, not mystical.
 - Favor "makers," "workshop," "handed down," "by hand," "pieces." Avoid generic "products / items" where "pieces" fits the story voice.
+- **Standardized spelling, always.** House spellings: **handmade** (one word, never "hand-made"). Keep other compounds hyphenated as conventional: hand-felted, hand-carved, hand-stitched, hand-finished, hand-picked. Use one spelling for a term across the whole site; if you see a variant, normalize it.
 
 ---
 
@@ -131,12 +132,14 @@ The four retail taglines above stay **retail-only**. The educator catalog (teach
 
 | Line | Role | Status |
 |---|---|---|
-| **Natural toys for early learning classrooms.** | Header / hero (names the thing: *toys*, made of natural materials) | ✅ Locked |
+| **Natural toys for hands-on classrooms.** | Header / hero (names the thing: *toys*; "hands-on" = the play method, not an age, so it holds across the full Pre-K to Grade 5 range without a ceiling to defend) | ✅ Locked |
 | **The best classrooms smell like wood, feel like wool, and sound like children absorbed in play.** | Signature lede (the catalog's defining sentence; sits *under* the header, not as a header itself) | ✅ Locked |
 | **Open-ended play for any teaching approach.** | Positioning (cross-pedagogy, stated positively, max reach) | ✅ Locked |
 | **Bring the play to your classroom.** | Primary CTA | ✅ Locked |
 
 **Why these:** the header names *toys* (the noun a buyer scans for) and reads clearly to a teacher and a business manager alike; the signature lede carries the emotion as a full sentence beneath it (too long to be a header on its own — distill to *"Smell like wood. Feel like wool. Sound like play."* if a short triad is ever needed). Header + signature are catalog-grounded (pg 2–4). The positioning line leads with *open-ended play* (the one value every early-learning educator shares) and "any teaching approach" (broadest reach: Montessori, Reggio, play-based, public, homeschool co-op, therapy/OT, library) — stated positively, never "no philosophy required" (which can read as dismissive to educators who value their pedagogy).
+
+**Scope note (why "hands-on", not "early learning"):** the catalog's core is Pre-K to Grade 2, but STEAM and Creative Arts reach **Grade 5** (ages 3 to 10). An age-framed header ("early childhood" / "early learning") under-claims that upper range. "Hands-on" names the *method* every section shares, so it holds from Pre-K through Grade 5 with no ceiling to defend. State the exact range ("Pre-K to Grade 5") in meta lines and section pages, not the header.
 
 **Word-balance note:** the set deliberately spreads its key words so no one term dominates (classroom ×2, play ×2, toys ×1, teaching ×1). Avoid edits that put "classroom" in three of the four lines again.
 
