@@ -3399,6 +3399,9 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 .hub-card .hub-price{ font-family: var(--serif); font-style: italic; font-size: 15px; color: var(--ink-soft); }
 @media (max-width: 860px){ .hub-grid3{ grid-template-columns: 1fr; } }
 @media (max-width: 760px){ .hub-split{ grid-template-columns: 1fr; } }
+.split-po{ font-family: var(--sans); font-size: 10.5px; font-weight: 600; letter-spacing: .04em; color: var(--accent-deep); text-decoration: none; border-bottom: 1px solid var(--accent-pale); padding-bottom: 1px; white-space: nowrap; transition: color .2s ease, border-color .2s ease; }
+.split-po::before{ content: "\\21C4"; margin-right: 5px; font-weight: 400; }
+.split-po:hover{ color: var(--ink); border-color: var(--accent-deep); }
 </style>
 </head>
 <body>
@@ -4138,6 +4141,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
             <p class="hub-desc">A comprehensive classroom workspace packed with 72 high-density timber cylinders, nesting pillars, stacking cones, and concentric rings, neatly organized inside a sectioned hardwood display tray. Calibrated in a soft earth palette to support deep, focused investigation, this multi-child station develops spatial reasoning and material-tracking milestones over multiple school terms. Papoose, handcrafted in Indonesia under Fair Trade conditions. EN71 tested.</p>
             <div class="add-row">
               <button class="add-btn" type="button" data-sku="MTW-NP-MCH-72"><span class="plus"></span>Add to wagon</button>
+              <a href="#quote" class="split-po" data-split-po="MTW-NP-MCH-72">Request a split-PO quote</a>
             </div>
           </div>
         </article>
@@ -4152,6 +4156,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
               <p class="hub-card-desc">A massive, un-dyed multi-child resource center: 72 pieces of hand-finished raw hardwood, clean geometric cylinders, nesting rings, stacking pillars, and fluid-curve arches, with a heavy-duty distressed grid tray. A permanent engineering workspace for balance, gravity tolerances, and spatial configuration. Papoose, handcrafted in Indonesia under Fair Trade conditions. EN71 tested.</p>
               <div class="add-row">
                 <button class="add-btn" type="button" data-sku="MTW-NP-GAC-72"><span class="plus"></span>Add to wagon</button>
+                <a href="#quote" class="split-po" data-split-po="MTW-NP-GAC-72">Request a split-PO quote</a>
               </div>
             </div>
           </article>
@@ -4170,7 +4175,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 
         <div class="hub-grid3">
           <article class="hub-card">
-            <div class="hub-card-media"><img loading="lazy" src="{{ 'hub-nested-tubes-12.png' | file_url }}" alt="Concentric Nested Tubes &middot; 12-Piece"/></div>
+            <div class="hub-card-media"><img loading="lazy" src="{{ 'Papoose_Earth_Concentric_Nested_Circles_12pc_Set.png' | file_url }}" alt="Papoose Earth Concentric Nested Circles: a 12-piece set of hollow timber rings that slide concentrically into nesting subsets, for tracking diameters, exploring spatial volume, and testing geometric alignment."/></div>
             <div class="hub-card-body">
               <span class="hub-tag">[ TIER 3 &middot; CONCENTRIC PHYSICS ]</span>
               <h5>Concentric Nested Tubes &middot; 12-Piece</h5>
@@ -4689,6 +4694,26 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       var anchor = card.querySelector('.add-row, .add-btn, .price-line, .price');
       if (anchor) anchor.parentNode.insertBefore(pill, anchor);
       else card.appendChild(pill);
+    });
+  })();
+
+  /* Split-PO quote: big-ticket items (> $300 line cap) deep-link to the quote
+     form with the SKU prefilled in Notes, so the team can split the invoice. */
+  (function(){
+    document.querySelectorAll('.split-po[data-split-po]').forEach(function(link){
+      link.addEventListener('click', function(){
+        var sku = link.getAttribute('data-split-po');
+        var card = link.closest('article');
+        var nameEl = card && card.querySelector('h4, h5, .name');
+        var name = nameEl ? nameEl.textContent.replace(/\s+/g,' ').trim() : sku;
+        var kitCustom = document.querySelector('input[name="kit"][value="custom"]');
+        if (kitCustom) kitCustom.checked = true;
+        var notes = document.getElementById('qf-notes');
+        if (notes) {
+          var line = 'Split-PO request: ' + name + ' (' + sku + '). Please split this order across multiple line-item invoices to fit our purchasing thresholds.';
+          notes.value = notes.value ? (notes.value.replace(/\s+$/,'') + '\n' + line) : line;
+        }
+      });
     });
   })();
 </script>
