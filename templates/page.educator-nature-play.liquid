@@ -3365,6 +3365,26 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 /* The Everything Play Bundle (Featured Product 2) uses the standard
    .split.image-right layout so it matches Sensory Play's Featured Product 2. */
 
+
+/* ===== Inquiry Hub: classroom packs & labs ===== */
+.inquiry-hub{ margin: 44px 0 4px; padding-top: 38px; border-top: 1px solid var(--rule); }
+.hub-head{ text-align: center; max-width: 64ch; margin: 0 auto 30px; }
+.hub-eyebrow{ font-family: var(--sans); font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--accent-deep); font-weight: 700; }
+.hub-head h3{ font-family: var(--serif); font-size: clamp(28px, 4vw, 44px); line-height: 1.05; margin: 8px 0 10px; color: var(--ink); font-weight: 500; }
+.hub-head h3 .it{ font-style: italic; color: var(--accent-deep); }
+.hub-head p{ font-family: var(--sans); font-size: 13px; line-height: 1.6; color: var(--ink-soft); margin: 0; }
+.hub-hero{ display: grid; grid-template-columns: 1.05fr 1fr; gap: 0; background: var(--card-bg); border: 1px solid var(--rule); border-radius: 3px; overflow: hidden; }
+.hub-hero-media{ background: #cfc8b6; aspect-ratio: 4 / 3; }
+.hub-hero-media img{ width: 100%; height: 100%; object-fit: cover; display: block; }
+.hub-hero-body{ padding: clamp(22px, 3vw, 40px); display: flex; flex-direction: column; justify-content: center; }
+.hub-tag{ font-family: var(--mono); font-size: 10px; letter-spacing: .14em; color: var(--stone); }
+.hub-hero-body h4{ font-family: var(--serif); font-size: clamp(23px, 3vw, 33px); line-height: 1.12; margin: 10px 0 2px; color: var(--ink); font-weight: 500; }
+.hub-pc{ font-style: italic; color: var(--accent-deep); }
+.hub-sub{ font-family: var(--sans); font-size: 12px; font-weight: 600; letter-spacing: .015em; color: var(--accent-deep); margin: 8px 0 12px; line-height: 1.5; }
+.hub-desc{ font-family: var(--sans); font-size: 13px; line-height: 1.65; color: var(--ink-soft); margin: 0 0 20px; }
+.hub-hero-body .add-row{ display: flex; align-items: center; gap: 16px; }
+.hub-price{ font-family: var(--serif); font-style: italic; font-size: 16px; color: var(--ink-soft); }
+@media (max-width: 760px){ .hub-hero{ grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -4085,6 +4105,31 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
     
     </div>
 
+      <!-- =========================== INQUIRY HUB =========================== -->
+      <div class="inquiry-hub">
+        <div class="hub-head">
+          <span class="hub-eyebrow">Inquiry Hub</span>
+          <h3>Classroom Packs <span class="it">&amp; Labs</span></h3>
+          <p>Institutional-scale sets that arrive in their own sectioned trays, ready to provision a full station and move cleanly through a district purchase order.</p>
+        </div>
+
+        <article class="hub-hero">
+          <div class="hub-hero-media">
+            <img loading="lazy" src="{{ 'Papoose_Earth-Palette_Multi-Form_Classification_Hub_72-Piece.png' | file_url }}" alt="Papoose Earth-Palette Multi-Form Classification Hub: a nine-section rustic Suar-wood tinker tray fully stocked with 72 earth-palette loose parts for a multi-child math, sorting, and structural-design station."/>
+          </div>
+          <div class="hub-hero-body">
+            <span class="hub-tag">[ HERO SET &nbsp;&middot;&nbsp; 72-PIECE CLASSIFICATION HUB ]</span>
+            <h4>Papoose Earth-Palette Multi-Form Classification Hub <span class="hub-pc">72-Piece</span></h4>
+            <p class="hub-sub">Supports early mathematical seriation, structural engineering design, and attribute grouping through multi-form hardwood manipulation.</p>
+            <p class="hub-desc">A comprehensive classroom workspace packed with 72 high-density timber cylinders, nesting pillars, stacking cones, and concentric rings, neatly organized inside a sectioned hardwood display tray. Calibrated in a soft earth palette to support deep, focused investigation, this multi-child station develops spatial reasoning and material-tracking milestones over multiple school terms. Papoose, handcrafted in Indonesia under Fair Trade conditions. EN71 tested.</p>
+            <div class="add-row">
+              <button class="add-btn" type="button" data-sku="MTW-NP-MCH-72"><span class="plus"></span>Add to wagon</button>
+              <span class="hub-price">Price on request</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
     <div class="collection-bridge">
       <p>
         <strong>The Loose Parts Set &nbsp;&middot;&nbsp; MTW-NP-AUT</strong>
@@ -4403,6 +4448,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       "MTW-NP-PMP":{h:"felt-pumpkins-educator",v:"48345476235434",s:"Papoose pure wool felt · made in Nepal"},
       "MTW-NP-ACN":{h:"felt-acorns-orange-and-green-educator",v:"48345476366506",s:"Papoose pure wool felt · made in Nepal"},
       "MTW-NP-BLU":{h:"hand-felted-wool-counting-blueberries-36-pc",v:"48361119252650",s:"Hand-felted wool counting blueberries · set of 36"},
+      "MTW-NP-MCH-72":{h:"papoose-earth-palette-multi-form-classification-hub-72-piece",v:"48361144975530",s:"Earth-Palette Multi-Form Classification Hub · 72-piece classroom tinker tray"},
       "MTW-NP-HRV":{h:"bumbu-pumpkin-harvest-educator",v:"48345476464810",s:"Bumbu hand-carved linden wood · made in Romania"},
       "MTW-NP-TKY":{h:"wooden-turkey-pair-educator",v:"48345476563114",s:"Hand-painted wooden turkey pair"},
       "MTW-NP-MNL":{h:"wooden-woodland-leaves-educator",v:"48345476661418",s:"Wooden woodland leaves loose parts"},
