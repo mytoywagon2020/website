@@ -3387,7 +3387,8 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 @media (max-width: 760px){ .hub-hero{ grid-template-columns: 1fr; } }
 
 .hub-split{ display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 18px; }
-.hub-grid3{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 18px; }
+.hub-grid3{ display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 18px; }
+@media (max-width: 1100px){ .hub-grid3{ grid-template-columns: repeat(2, 1fr); } }
 .hub-card{ background: var(--card-bg); border: 1px solid var(--rule); border-radius: 3px; overflow: hidden; display: flex; flex-direction: column; }
 .hub-card-media{ background: #cfc8b6; aspect-ratio: 4 / 3; }
 .hub-card-media img{ width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -4209,6 +4210,17 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
               </div>
             </div>
           </article>
+          <article class="hub-card">
+            <div class="hub-card-media"><img loading="lazy" src="{{ 'hub-flintstones.png' | file_url }}" alt="The Flintstones: a set of natural, irregular timber balancing stones for open-ended stacking and structural-physics play."/></div>
+            <div class="hub-card-body">
+              <span class="hub-tag">[ TIER 3 &middot; STRUCTURAL PHYSICS ]</span>
+              <h5>The Flintstones</h5>
+              <p class="hub-card-desc">A set of natural, irregular timber stones for open-ended balancing and stacking. Their organic, asymmetric forms resist easy equilibrium, inviting children to test centres of gravity, counterweight, and load &mdash; a tactile contrast to the clean geometry of the discs and nesting circles.</p>
+              <div class="add-row">
+                <button class="add-btn" type="button" data-sku="MTW-NP-FLT"><span class="plus"></span>Add to wagon</button>
+              </div>
+            </div>
+          </article>
         </div>
       </div>
 
@@ -4537,6 +4549,7 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       "MTW-NP-CNC-12-NAT":{h:"papoose-concentric-nested-circles-natural-12-piece",v:"48361160507562",s:"Concentric Nested Circles · Natural finish · 12-piece nesting set"},
       "MTW-NP-BSL-35":{h:"papoose-primary-botanical-specimen-lab-35-piece-basket",v:"48361150218410",s:"Primary Botanical Specimen Lab · 35-piece basket"},
       "MTW-NP-SPL":{h:"papoose-natural-timber-spool-set-12-piece",v:"48361159000234",s:"Mixed-Shape Spool Set · 10-piece threading & stacking set"},
+      "MTW-NP-FLT":{h:"papoose-the-flintstones-balancing-stones",v:"48361165815978",s:"The Flintstones · natural balancing & stacking stones"},
       "MTW-NP-HRV":{h:"bumbu-pumpkin-harvest-educator",v:"48345476464810",s:"Bumbu hand-carved linden wood · made in Romania"},
       "MTW-NP-TKY":{h:"wooden-turkey-pair-educator",v:"48345476563114",s:"Hand-painted wooden turkey pair"},
       "MTW-NP-MNL":{h:"wooden-woodland-leaves-educator",v:"48345476661418",s:"Wooden woodland leaves loose parts"},
