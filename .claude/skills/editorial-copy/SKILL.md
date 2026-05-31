@@ -38,6 +38,7 @@ A discipline for writing copy that reads like a good magazine, not a brochure. U
 7. **Rhythm is a feature.** Vary sentence length. A long, textured sentence followed by three words. Read it aloud — if you run out of breath or it drones, recut.
 8. **Concrete sensory nouns.** Name materials, places, sounds, weights, temperatures. "Beechwood," "Kathmandu," "the click of the latch." Senses make copy feel observed, not invented.
 9. **Every claim must be true and sourced.** No origin, certification, material, or superlative claim goes in unless verified. A single wrong fact reads as the whole brand lying.
+10. **Earned personification: the noun must carry the verb.** If you give an inanimate object a verb of wanting, feeling, or knowing ("everything a tray of sand *wants*"), it has to survive a literal read. A tray wants nothing. When it doesn't survive, move the verb to the person who actually has the want or the act (the child, the teacher): not "everything a tray of sand wants" but "everything a child reaches for at the sand table." Objects *may* take verbs they can physically do or that are dead-idiom ("wool holds warmth," "the latch clicks," "the shelf invites"). Desire and emotion belong to people.
 
 ---
 
