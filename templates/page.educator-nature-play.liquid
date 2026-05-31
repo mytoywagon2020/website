@@ -3385,6 +3385,20 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
 .hub-hero-body .add-row{ display: flex; align-items: center; gap: 16px; }
 .hub-price{ font-family: var(--serif); font-style: italic; font-size: 16px; color: var(--ink-soft); }
 @media (max-width: 760px){ .hub-hero{ grid-template-columns: 1fr; } }
+
+.hub-split{ display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 18px; }
+.hub-grid3{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 18px; }
+.hub-card{ background: var(--card-bg); border: 1px solid var(--rule); border-radius: 3px; overflow: hidden; display: flex; flex-direction: column; }
+.hub-card-media{ background: #cfc8b6; aspect-ratio: 4 / 3; }
+.hub-card-media img{ width: 100%; height: 100%; object-fit: cover; display: block; }
+.hub-card-body{ padding: 20px 20px 22px; display: flex; flex-direction: column; flex: 1; }
+.hub-card .hub-tag{ font-family: var(--mono); font-size: 10px; letter-spacing: .12em; color: var(--stone); }
+.hub-card h5{ font-family: var(--serif); font-size: 21px; line-height: 1.15; margin: 8px 0 6px; color: var(--ink); font-weight: 500; }
+.hub-card-desc{ font-family: var(--sans); font-size: 12.5px; line-height: 1.6; color: var(--ink-soft); margin: 0 0 16px; }
+.hub-card .add-row{ display: flex; align-items: center; gap: 12px; margin-top: auto; }
+.hub-card .hub-price{ font-family: var(--serif); font-style: italic; font-size: 15px; color: var(--ink-soft); }
+@media (max-width: 860px){ .hub-grid3{ grid-template-columns: 1fr; } }
+@media (max-width: 760px){ .hub-split{ grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -4124,10 +4138,76 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
             <p class="hub-desc">A comprehensive classroom workspace packed with 72 high-density timber cylinders, nesting pillars, stacking cones, and concentric rings, neatly organized inside a sectioned hardwood display tray. Calibrated in a soft earth palette to support deep, focused investigation, this multi-child station develops spatial reasoning and material-tracking milestones over multiple school terms. Papoose, handcrafted in Indonesia under Fair Trade conditions. EN71 tested.</p>
             <div class="add-row">
               <button class="add-btn" type="button" data-sku="MTW-NP-MCH-72"><span class="plus"></span>Add to wagon</button>
-              <span class="hub-price">Price on request</span>
+              <span class="hub-price">$401.00</span>
             </div>
           </div>
         </article>
+
+        <div class="hub-split">
+          <article class="hub-card">
+            <div class="hub-card-media"><img loading="lazy" src="{{ 'hub-natural-architecture-464.png' | file_url }}" alt="Complete Natural Timber Architecture Hub &middot; 464-Piece"/></div>
+            <div class="hub-card-body">
+              <span class="hub-tag">[ TIER 2 &middot; SOLID HARDWOOD GEOMETRY ]</span>
+              <h5>Complete Natural Timber Architecture Hub &middot; 464-Piece</h5>
+              <p class="hub-card-desc">A high-density, multi-child spatial-reasoning resource center: 464 raw-hardwood components in an integrated grid organizer tray, for vertical balance, volumetric tracking, gravity tolerances, and biological property identification. Papoose, handcrafted in Indonesia under Fair Trade conditions. EN71 tested.</p>
+              <div class="add-row">
+                <button class="add-btn" type="button" data-sku="MTW-NP-NCH-464"><span class="plus"></span>Add to wagon</button>
+                <span class="hub-price">$397.95</span>
+              </div>
+            </div>
+          </article>
+          <article class="hub-card">
+            <div class="hub-card-media"><img loading="lazy" src="{{ 'hub-earth-loose-parts-97.png' | file_url }}" alt="Earth Loose Parts Tray &middot; 97-Piece"/></div>
+            <div class="hub-card-body">
+              <span class="hub-tag">[ TIER 2 &middot; MULTI-TEXTURE SORTING ]</span>
+              <h5>Earth Loose Parts Tray &middot; 97-Piece</h5>
+              <p class="hub-card-desc">A multi-texture sensory sorting tray in a soft earth palette: 97 loose parts in a sectioned timber grid, for color sorting, pattern-building, and early spatial reasoning. Papoose, handcrafted in Indonesia under Fair Trade conditions. EN71 tested.</p>
+              <div class="add-row">
+                <button class="add-btn" type="button" data-sku="MTW-NP-ELT-97"><span class="plus"></span>Add to wagon</button>
+                <span class="hub-price">$220.50</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="hub-grid3">
+          <article class="hub-card">
+            <div class="hub-card-media"><img loading="lazy" src="{{ 'hub-nested-tubes-12.png' | file_url }}" alt="Concentric Nested Tubes &middot; 12-Piece"/></div>
+            <div class="hub-card-body">
+              <span class="hub-tag">[ TIER 3 &middot; CONCENTRIC PHYSICS ]</span>
+              <h5>Concentric Nested Tubes &middot; 12-Piece</h5>
+              <p class="hub-card-desc">Twelve hollow timber cylinders that slide concentrically into nesting subsets, for tracking diameters, exploring spatial volume, and testing geometric alignment. Papoose, Indonesia, Fair Trade. EN71 tested.</p>
+              <div class="add-row">
+                <button class="add-btn" type="button" data-sku="MTW-NP-CNT-12"><span class="plus"></span>Add to wagon</button>
+                <span class="hub-price">$53.55</span>
+              </div>
+            </div>
+          </article>
+          <article class="hub-card">
+            <div class="hub-card-media"><img loading="lazy" src="{{ 'hub-botanical-lab-35.png' | file_url }}" alt="Primary Botanical Specimen Lab &middot; 35-Piece"/></div>
+            <div class="hub-card-body">
+              <span class="hub-tag">[ TIER 3 &middot; ORGANIC SPECIMEN LAB ]</span>
+              <h5>Primary Botanical Specimen Lab &middot; 35-Piece</h5>
+              <p class="hub-card-desc">A botanical classification basket of natural seed pods, husks, hand-felted mushrooms, and organic wood textures, for attribute sorting and place-based observation. Papoose, Indonesia, Fair Trade. EN71 tested.</p>
+              <div class="add-row">
+                <button class="add-btn" type="button" data-sku="MTW-NP-BSL-35"><span class="plus"></span>Add to wagon</button>
+                <span class="hub-price">$50.40</span>
+              </div>
+            </div>
+          </article>
+          <article class="hub-card">
+            <div class="hub-card-media"><img loading="lazy" src="{{ 'hub-nesting-ring-station.png' | file_url }}" alt="Multi-Tone Wooden Nesting Ring Station"/></div>
+            <div class="hub-card-body">
+              <span class="hub-tag">[ TIER 3 &middot; COLOR-THEORY EXTENSION ]</span>
+              <h5>Multi-Tone Wooden Nesting Ring Station</h5>
+              <p class="hub-card-desc">Five color-graduated hardwood nesting sets, for early seriation milestones, pattern tracking, and multi-child size-comparison loops. Papoose, Indonesia, Fair Trade. EN71 tested.</p>
+              <div class="add-row">
+                <button class="add-btn" type="button" data-sku="MTW-NP-NRS"><span class="plus"></span>Add to wagon</button>
+                <span class="hub-price">$102.00</span>
+              </div>
+            </div>
+          </article>
+        </div>
       </div>
 
     <div class="collection-bridge">
@@ -4449,6 +4529,11 @@ footer .legal .legal-links a:hover{ color: var(--cream); }
       "MTW-NP-ACN":{h:"felt-acorns-orange-and-green-educator",v:"48345476366506",s:"Papoose pure wool felt · made in Nepal"},
       "MTW-NP-BLU":{h:"hand-felted-wool-counting-blueberries-36-pc",v:"48361119252650",s:"Hand-felted wool counting blueberries · set of 36"},
       "MTW-NP-MCH-72":{h:"papoose-earth-palette-multi-form-classification-hub-72-piece",v:"48361144975530",s:"Earth-Palette Multi-Form Classification Hub · 72-piece classroom tinker tray"},
+      "MTW-NP-NCH-464":{h:"papoose-complete-natural-timber-architecture-hub",v:"48361148121258",s:"Complete Natural Timber Architecture Hub · 464-piece hardwood resource center"},
+      "MTW-NP-ELT-97":{h:"papoose-earth-loose-parts-tray-97-piece",v:"48361156280490",s:"Earth Loose Parts Tray · 97-piece multi-texture sorting tray"},
+      "MTW-NP-CNT-12":{h:"papoose-concentric-nested-tubes-set-12-piece",v:"48361156608170",s:"Concentric Nested Tubes · 12-piece nesting set"},
+      "MTW-NP-BSL-35":{h:"papoose-primary-botanical-specimen-lab-35-piece-basket",v:"48361156804778",s:"Primary Botanical Specimen Lab · 35-piece basket"},
+      "MTW-NP-NRS":{h:"papoose-multi-tone-wooden-nesting-ring-station",v:"48361156968618",s:"Multi-Tone Wooden Nesting Ring Station · five graduated sets"},
       "MTW-NP-HRV":{h:"bumbu-pumpkin-harvest-educator",v:"48345476464810",s:"Bumbu hand-carved linden wood · made in Romania"},
       "MTW-NP-TKY":{h:"wooden-turkey-pair-educator",v:"48345476563114",s:"Hand-painted wooden turkey pair"},
       "MTW-NP-MNL":{h:"wooden-woodland-leaves-educator",v:"48345476661418",s:"Wooden woodland leaves loose parts"},
